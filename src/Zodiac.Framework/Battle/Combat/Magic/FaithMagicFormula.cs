@@ -33,8 +33,8 @@ public static class FaithMagicFormula
         {
             ArgumentNullException.ThrowIfNull(request.Equipment);
             ArgumentNullException.ThrowIfNull(request.EvadeModifiers);
-            var prepared = MagicEvasion.Prepare(MagicEvasion.Load(request.Equipment), request.EvadeModifiers);
-            var rolled = MagicEvasion.Resolve(prepared, request.SecondaryEvadeable, formula.Mode, accuracy, next);
+            var rolled = MagicEvasion.MagicalEvadeCalculation(request.Equipment, request.EvadeModifiers,
+                request.SecondaryEvadeable, formula.Mode, accuracy, next);
             if (!rolled.Accepted) return Reject(FaithMagicResolutionRejection.RandomDrawCountExhausted);
             evasion = rolled.Outcome!; next = rolled.RngState; accuracy = evasion.Accuracy;
             if (!evasion.Hit)

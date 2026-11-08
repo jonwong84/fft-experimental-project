@@ -42,22 +42,52 @@ public static class FaithMagicAmountFormula
     private static (short Xa, short Product) PrepareProduct(FaithMagicAmountInput input)
     {
         var m = input.Modifiers; short xa = input.MagicAttack;
-        if (m.StrengthensElement) xa = ScaleXa(xa,5,4);
-        if (m.MagicAttackUp) xa = ScaleXa(xa,4,3);
-        if (input.Kind == FaithMagicAmountKind.Damage)
+        xa = ElementalStrengthen(xa, m.StrengthensElement);
+        if (input.Kind == FaithMagicAmountKind.Healing)
         {
-            if (m.MagicDefenseUp) xa = ScaleXa(xa,2,3);
-            if (m.TargetShell) xa = ScaleXa(xa,2,3);
-            if (m.TargetChickenOrFrog) xa = ScaleXa(xa,3,2);
+            return MagicalXaTimesYa(xa, input.Power, m);
         }
-        xa = ApplyCompatibility(xa,m.Compatibility);
+
+        xa = MagicalSupportStatusCompat(xa, m);
         short product = FaithMagicArithmetic.MultiplyStored(xa,input.Power);
         return (xa,product);
     }
 
+    /// <summary>Elemental Strengthen, formula_element_apply_strengthen: store XA *5/4 before either magic family.</summary>
+    private static short ElementalStrengthen(short xa, bool strengthens) => strengthens ? ScaleXa(xa, 5, 4) : xa;
+
+    /// <summary>Magical Support/Status/Compat, formula_apply_magical_modifiers: each helper stores its own signed16 XA.</summary>
+    private static short MagicalSupportStatusCompat(short xa, FaithMagicAmountModifiers modifiers)
+    {
+        xa = MagicAttackUp(xa, modifiers.MagicAttackUp);
+        xa = MagicDefenseUp(xa, modifiers.MagicDefenseUp);
+        xa = TargetStatusAffectingXaMagical(xa, modifiers);
+        return Compatibility(xa, modifiers.Compatibility);
+    }
+
+    /// <summary>Magical XA * YA, formula_calculate_magical_xa_times_ya: healing omits the target defense/status chain.</summary>
+    private static (short Xa, short Product) MagicalXaTimesYa(short xa, byte ya, FaithMagicAmountModifiers modifiers)
+    {
+        xa = MagicAttackUp(xa, modifiers.MagicAttackUp);
+        xa = Compatibility(xa, modifiers.Compatibility);
+        return (xa, FaithMagicArithmetic.MultiplyStored(xa, ya));
+    }
+
+    private static short MagicAttackUp(short xa, bool enabled) => enabled ? ScaleXa(xa, 4, 3) : xa;
+    private static short MagicDefenseUp(short xa, bool enabled) => enabled ? ScaleXa(xa, 2, 3) : xa;
+
+    /// <summary>Target's Status Affecting XA (Magical): Shell first, then one Chicken-or-Frog increase.</summary>
+    private static short TargetStatusAffectingXaMagical(short xa, FaithMagicAmountModifiers modifiers)
+    {
+        if (modifiers.TargetShell) xa = ScaleXa(xa, 2, 3);
+        if (modifiers.TargetChickenOrFrog) xa = ScaleXa(xa, 3, 2);
+        return xa;
+    }
+
     private static short ScaleXa(short xa, int numerator, int denominator) => unchecked((short)(xa * numerator / denominator));
 
-    private static short ApplyCompatibility(short xa, MagicCompatibility compatibility)
+    /// <summary>Original Compatibility, formula_apply_zodiac_compatibility; the later rewrite is deliberately excluded.</summary>
+    private static short Compatibility(short xa, MagicCompatibility compatibility)
     {
         if (compatibility == MagicCompatibility.Serpentarius) return xa;
         // Source keeps XA*25 in an unsigned halfword before dividing, then floors XA.

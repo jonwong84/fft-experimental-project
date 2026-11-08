@@ -1,5 +1,12 @@
 # Magic evasion and formula entry — ZOD-342, ZOD-344–347
 
+The [ZOD-436 shared-consumer review](ordinary-magic-pipeline-review.md) is now
+complete within its stated domains. Fresh formula entry calls
+`MagicEvasion.MagicalEvadeCalculation`; preparation now names
+`TransparentCalculation`, `AbandonCalculation` and `EvasionChangesDueToStatuses`.
+Public query behavior is preserved. The supplied-trace milestones below retain
+their original checkpoint scope.
+
 ## Supplied magical-evade wrapper — ZOD-436 support
 
 Owner-supplied FFHacktics documentation cross-checked on 2026-11-07 against

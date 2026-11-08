@@ -21,7 +21,9 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 399 entries index completed bounded work; they do not mean the full game is complete.
+These 400 entries index completed bounded work; they do not mean the full game is complete.
+
+- [ZOD-436 — Review ordinary magic arithmetic, evasion and shared result consumers](../behavior/ordinary-magic-pipeline-review.md)
 
 - [ZOD-435 — Review AI checked commands, continuations and recovery](../behavior/ai-command-continuation-review.md)
 

@@ -941,6 +941,7 @@
         }
       ],
       "evidenceDocs": [
+        "docs/behavior/ordinary-magic-pipeline-review.md",
         "PROJECT_PLAN.md",
         "docs/architecture/zod-104-accumulate-action.md",
         "docs/evidence/combat/accumulate-contract-v1.json",
@@ -1205,6 +1206,10 @@
         "src/Zodiac.Framework/Battle/Combat/Rewards/JobPointBalance.cs"
       ],
       "automatedChecks": [
+        {
+          "path": "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/MagicConsumerReviewTests.cs",
+          "scope": "Eight ZOD-436 cast-consumer regressions: separate modifier stores, family/mode routing, nullified-target isolation, zero-accuracy application and unchanged MP/RNG ownership."
+        },
         {
           "path": "tests/Zodiac.Framework.Tests/Battle/Combat/ImmediateAbilityBattleTests.cs",
           "scope": "Executed closed Accumulate proof and negatives; not complete original ability compatibility."

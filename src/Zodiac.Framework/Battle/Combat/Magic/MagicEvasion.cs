@@ -5,6 +5,15 @@ namespace Zodiac.Framework;
 /// <summary>Magic-only evasion rules; source 11464943bbdbd2a0af022d90cb7f10455cf911df.</summary>
 public static class MagicEvasion
 {
+    /// <summary>Magical Evade Calculation (0x801885B8): prepare all sources/modifiers, then calculate and roll hit.</summary>
+    internal static MagicEvasionResult MagicalEvadeCalculation(MagicEvadeEquipmentInput equipment,
+        MagicEvadeModifiers modifiers, bool secondaryEvadeable, MagicFormulaEvaluationMode mode,
+        ushort accuracy, RandomState rng)
+    {
+        var prepared = Prepare(Load(equipment), modifiers);
+        return Resolve(prepared, secondaryEvadeable, mode, accuracy, rng);
+    }
+
     /// <summary>Resolve a nonzero ability's magic checks from fresh hit=true/miss=0/item=0 work and supplied accuracy.</summary>
     public static MagicEvasionResult Resolve(MagicEvadePrepared prepared, bool secondaryEvadeable,
         MagicFormulaEvaluationMode mode, ushort initialAccuracy, RandomState rng)
@@ -54,14 +63,29 @@ public static class MagicEvasion
     {
         ArgumentNullException.ThrowIfNull(contributions);
         ArgumentNullException.ThrowIfNull(modifiers);
-        byte baseHit = 100;
-        var evades = modifiers.AttackerTransparent ? default : contributions.Evades;
-        bool abandon = modifiers.TargetActionUnrestricted && modifiers.TargetAbandon;
-        if (abandon) baseHit >>= 1;
+        var prepared = new MagicEvadePrepared(100, contributions.Evades, contributions.Items, false);
+        prepared = TransparentCalculation(prepared, modifiers.AttackerTransparent);
+        prepared = AbandonCalculation(prepared, modifiers.TargetActionUnrestricted && modifiers.TargetAbandon);
+        return EvasionChangesDueToStatuses(prepared, modifiers);
+    }
+
+    /// <summary>Transparent Calculation: clear all evades for a Transparent attacker, preserving base hit.</summary>
+    private static MagicEvadePrepared TransparentCalculation(MagicEvadePrepared prepared, bool attackerTransparent) =>
+        attackerTransparent ? new(prepared.BaseHit, default, prepared.Items, prepared.AbandonTriggered) : prepared;
+
+    /// <summary>Abandon Calculation: qualified target halves base hit and records the reaction marker; no Brave roll.</summary>
+    private static MagicEvadePrepared AbandonCalculation(MagicEvadePrepared prepared, bool targetCanUseAbandon) =>
+        targetCanUseAbandon ? new((byte)(prepared.BaseHit >> 1), prepared.Evades, prepared.Items, true) : prepared;
+
+    /// <summary>Evasion Changes due to Statuses: clear contributions first, then independently halve for Defending.</summary>
+    private static MagicEvadePrepared EvasionChangesDueToStatuses(MagicEvadePrepared prepared, MagicEvadeModifiers modifiers)
+    {
+        byte baseHit = prepared.BaseHit;
+        var evades = prepared.Evades;
         if (modifiers.TargetDontAct || modifiers.TargetSleep || modifiers.TargetStop || modifiers.TargetConfusion ||
             modifiers.TargetCharging || modifiers.TargetPerforming) evades = default;
         if (modifiers.TargetDefending) baseHit >>= 1;
-        return new(baseHit, evades, contributions.Items, abandon);
+        return new(baseHit, evades, prepared.Items, prepared.AbandonTriggered);
     }
 
     /// <summary>Load source contributions; class is always zero, weapons affect labels rather than evade.</summary>

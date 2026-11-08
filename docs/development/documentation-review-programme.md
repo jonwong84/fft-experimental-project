@@ -21,9 +21,13 @@ confirms bounded target/scenario membership, ties and masks without a new defect
 [ZOD-434](../behavior/ai-rank-selection-review.md) confirms bounded rank admission,
 lottery, retained-priority and ordinary fallback rules without a new defect.
 [ZOD-435](../behavior/ai-command-continuation-review.md) confirms bounded checked
-commands, continuations and recovery without a new defect. ZOD-436 next reviews
-ordinary magic arithmetic/evasion/routing; movement-origin study ZOD-426 remains
-queued as supporting work. ZOD-432 is the
+commands, continuations and recovery without a new defect.
+[ZOD-436](../behavior/ordinary-magic-pipeline-review.md) confirms bounded ordinary
+magic arithmetic/evasion/routing through actual, preview and AI consumers,
+extracts named routine methods and adds eight consumer regressions without a
+new confirmed gameplay defect. Movement-origin study ZOD-426 is next as supporting
+work. Full spell lifecycle/learning/rewards still need a separate review batch.
+ZOD-432 is the
 required readability/walkthrough/refactor gate after the full original-AI port,
 distinct from this broader behavior retrospective.
 

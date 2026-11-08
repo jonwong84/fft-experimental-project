@@ -26,6 +26,9 @@ AI choice/ranking remain in the AI project.
   [FaithMagicFormula.Resolve and MagicEvasion](../../docs/behavior/magic-evasion.md)
   add certified nonzero-ability entry with ordered magic evade work. Both return
   pure result data without spell commands or live publication; targeting remains separate.
+  The [shared-consumer review](../../docs/behavior/ordinary-magic-pipeline-review.md)
+  maps damage/healing modifiers, evasion, element routing and result consumers
+  to named source routine methods and their retained bounds.
   [FaithMagicInputs, MagicResources, MagicCharge and MagicCastQuery](../../docs/behavior/magic-current-inputs-and-casts.md)
   add current immutable stat projection, source resource/timing queries and one-cost
   supplied-order ready-cast results. They do not broaden sword state, discover

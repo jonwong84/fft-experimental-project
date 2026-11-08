@@ -4,7 +4,7 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-436 (Review ordinary magic arithmetic and routing), next batch of ZOD-428.**
+**Next bounded work: ZOD-426 (ordinary spell movement origins and baseline ranks), supporting the ongoing AI/review programme.**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 [Learning reports, owned slots and player casting](behavior/learn-on-hit.md)
@@ -53,14 +53,16 @@ the admitted membership, ordering and mask boundaries without a new defect.
 admitted baseline, tie, insertion and fallback boundaries without a new defect.
 [ZOD-435 command/continuation review](behavior/ai-command-continuation-review.md)
 confirms admitted authority, choice publication and recovery without a new defect.
-ZOD-436 is next; ZOD-426 remains queued as supporting AI study.
+[ZOD-436 ordinary magic review](behavior/ordinary-magic-pipeline-review.md) confirms
+shared arithmetic/evasion/routing and extracts named routine methods without a new
+gameplay defect. ZOD-426 is next as supporting movement-origin/baseline study.
 ZOD-432 records the required readability review after the full AI port.
 The owner's interim [routine ownership refactor](architecture/ai-routine-ownership.md)
 now exposes named methods matching the supported decision flow: `ActionSelect`,
 `GeneralSelect`, scenario/ability/rank/fallback work, and ordinary spell
 `AiActionSimulateAndScore` / `ActionHitsSimulate` / `StrikesSimulate`.
 It preserves current admission and does not close the remaining AI review work.
-There are 37 open tickets below. The 399 completed tickets, prior checkpoints and
+There are 36 open tickets below. The 400 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -84,73 +86,22 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-436 — Review ordinary magic arithmetic, evasion and result routing
+### ZOD-426 — Trace ordinary spell movement origins and baseline ranks
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready; next review batch under ZOD-428 · **Depends on:** ZOD-435
+**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-418, ZOD-425
 
-Continue the [retrospective](development/documentation-review-programme.md) from
-the [command review](behavior/ai-command-continuation-review.md). Trace current
-formula0x08/0x0C arithmetic, modifiers, Faith/zodiac, elements/weather/affinities,
-magic evasion, proc routing and result finalization through their shared actual,
-preview and AI consumers. Recheck widths, truncation/order, actual versus AI RNG,
-metadata/admission guards and independent vectors. Record verified domains,
-historical errata and bounded confirmed fixes with regressions. Full spell queue/
-learning/lifecycle review, general statuses/Reflect/Golem, broader formulas/shapes,
-autonomous magic, full origin study ZOD-426 and frame RNG remain separate. Pin
-source/current inputs and preserve owner drafts/JobStats/controller edits.
+Trace the callers beyond [current-origin evaluation](behavior/ordinary-spell-aim-ranking.md):
+reachable cast origins, origin tile ranks/order, act-before-move versus
+move-before-act destinations, foe proximity and movement-baseline admission.
+Pin source revision/functions and independently check literal origin ordering,
+ties, remaining-aim consumption and per-origin early exits without resetting
+decision RNG. Distinguish source walkable masks from movement reachability and
+record supported flat-ground/occupancy constraints. Select one bounded runtime
+child after the trace; do not activate broad movement search, full ability-list
+dispatch, ranked-list insertion/lottery, commands or autonomous magic turns here.
 
-The [supplied formula0x08 trace cross-check](behavior/faith-magic-amounts.md#supplied-formula0x08-trace-cross-check--zod-436-support)
-verifies all28 instruction words, eight calls, three exits and the dispatch return
-against prepared bytes. This supporting milestone leaves the ticket open; helper
-documentation and the full shared-consumer review remain to be assessed.
-The [magical-evade wrapper cross-check](behavior/magic-evasion.md#supplied-magical-evade-wrapper--zod-436-support)
-also records its five ordered dependencies,24 caller checks and corrections to
-the Transparent annotation, formula0x10 return address and formula0x4E label.
-Its equipment, Transparent, Abandon/restriction and target-status helper listings
-are now cross-checked as supporting evidence; shared final-hit/roll documentation
-was already supplied. The [magical-modifier wrapper](behavior/faith-magic-amounts.md#supplied-magical-modifier-wrapper--zod-436-support)
-also matches its14 words, four ordered dependencies and nine listed returns.
-Magic Attack Up matches20 words/seven returns, Magic Defense Up20 words/two
-returns, and both match all signed16 division inputs. Target's Status Affecting
-XA (Magical) matches38 words/two returns and524,288 signed/status combinations.
-The original Compatibility listing/table/17 callers also match, with10,816
-classification and393,216 arithmetic checks. The owner explicitly defers
-secondadvent's rewrite to a much later review. The
-[Elemental XA * YA wrapper](behavior/magic-elements-and-routing.md#supplied-elemental-xa--ya-wrapper--zod-436-support)
-matches18 words, three ordered calls and four returns. Its XA * YA helper matches
-13 words/nine returns and the modulo-store arithmetic. Weather Elemental effects
-matches64 words/four returns and4,194,304 signed amount/weather/element combinations.
-Its effective-weather dependency matches22 words/two returns, preserves flag
-precedence and corrects the notes' value5 label to Snow. Ability Elemental? matches
-65 words/three calls/four returns, retaining Oil's stored-damage quirk and continued
-affinity processing after Float cancellation. Elemental Damage Modification
-matches65 words/two returns and1,048,576 signed amount/affinity cases.
-Elemental Nullification matches22 words/two calls/five returns and its exact
-store footprint, correcting the notes to miss byte0x02/value0x05. Pending-proc
-cleanup matches17 words/four returns and preserves all work when pending is0;
-it clears only AddedEffect from target effects when pending is nonzero.
-Knockback cleanup matches16 words/six returns: test bit0x80, then clear the whole
-work byte and only target effect0x4000. Faith Calculation matches62 words/eight
-returns, Innocent precedence and the exact single division/store. The
-[absorption/proc wrapper](behavior/magic-conditional-proc.md#supplied-absorptionproc-wrapper--zod-436-support)
-matches ten words/two calls/four returns, preserving absorption-before-proc and
-mode distinctions. Elemental Absorption matches21 words/eight returns and the
-bit-preserving amount/type transfer. Both Conditional Status Proc Roll listings
-match20 words/five returns: call inner first, then return0 for Preview2 or test
-the marker in other modes.
-The inner routine matches21 words/the chance call/one return: Execute-only,
-Pass/Fail return0 sets0x0200 and failures preserve existing flags. Pass/Fail Roll
-matches 21 words, its RNG veneer and 14 listed callers after correcting the SCUS
-return to0x8005cfe8. Signed division and scaled thresholds agree with current C#.
-The preserving status wrapper matches 28 words, its inner call and 13 listed
-returns: only hit/miss/unsigned16 accuracy are restored. Current empty-record
-composition agrees. The [inner status applicator](behavior/status-action-application.md)
-matches 217 words, four calls, 17 direct callers and formula0x38 dispatch.
-Separate uses24, Invite effect0x0040; signed accuracy division agrees with the
-decomp's s16 field. Validate Status Changes matches 199 words/12 callers, with
-no calls/RNG. Rider/Frog/mask/cancellation order, generated row6 and the byte-sum
-return are recorded without activating general statuses. No more helper listing
-is needed for current empty-record admission; the shared-consumer review is next.
+Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
+Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.
 
 ## Review programme
 
@@ -169,7 +120,7 @@ bounded source-backed fixes with independent regressions. Close only when every
 scope entry has an evidence-backed disposition and outstanding issues are explicit.
 Owner drafts/JobStats and documented deferred mechanics retain their boundaries.
 The [progress receipt](evidence/maintenance/documentation-review-progress-v1.json)
-records completed ZOD-427/429/430/431/433/434/435 batches; full inventory groups remain open.
+records completed ZOD-427/429/430/431/433/434/435/436 batches; full inventory groups remain open.
 
 ### ZOD-432 — Review full AI readability, naming and organization
 
@@ -190,25 +141,6 @@ After AI completion and this walkthrough, prepare/review a PR into `main` in the
 owner's trunk-based workflow. Review the whole branch scope and actual SonarQube/
 CodeRabbit quality, coverage and review findings; address actionable issues and
 validate fixes before merging.
-
-## Queued supporting source study
-
-### ZOD-426 — Trace ordinary spell movement origins and baseline ranks
-
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-418, ZOD-425
-
-Trace the callers beyond [current-origin evaluation](behavior/ordinary-spell-aim-ranking.md):
-reachable cast origins, origin tile ranks/order, act-before-move versus
-move-before-act destinations, foe proximity and movement-baseline admission.
-Pin source revision/functions and independently check literal origin ordering,
-ties, remaining-aim consumption and per-origin early exits without resetting
-decision RNG. Distinguish source walkable masks from movement reachability and
-record supported flat-ground/occupancy constraints. Select one bounded runtime
-child after the trace; do not activate broad movement search, full ability-list
-dispatch, ranked-list insertion/lottery, commands or autonomous magic turns here.
-
-Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
-Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.
 
 ## Existing validation gates
 

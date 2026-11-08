@@ -1,5 +1,11 @@
 # Shared Faith magic arithmetic and amounts — ZOD-335/336
 
+The [ZOD-436 shared-consumer review](ordinary-magic-pipeline-review.md) is now
+complete within its stated domains. Its method extraction gives the amount
+pipeline explicit `ElementalStrengthen`, `MagicalSupportStatusCompat`,
+`MagicalXaTimesYa`, support/status and original `Compatibility` stages.
+The supplied-trace milestones below retain their original checkpoint scope.
+
 ## Supplied formula0x08 trace cross-check — ZOD-436 support
 
 On 2026-11-07 the owner supplied the FFHacktics formula0x08 call trace.

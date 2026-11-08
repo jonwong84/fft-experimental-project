@@ -342,9 +342,63 @@
         ]
       },
       "limits": "Older pair and actual-state edges are partial. Full native controller/frame/status/terminal behavior and magic commands remain open; managed authority/recovery is explicit architecture."
+    },
+    {
+      "ticket": "ZOD-436",
+      "managedReviewBaseline": "46ec95bdf7013567f3c07f2adca527bee973430a",
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "report": "docs/behavior/ordinary-magic-pipeline-review.md",
+      "receipt": "docs/evidence/combat/ordinary-magic-pipeline-review-v1.json",
+      "disposition": "Completed within stated domains; no new gameplay defect confirmed. Named routine extraction and eight consumer regressions preserve behavior.",
+      "reviewedPathsByFocus": {
+        "shared formula arithmetic evasion elements and finalization": [
+          "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicAmountFormula.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicArithmetic.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicFormula.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicHpRouting.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/MagicDamageElements.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvasion.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/MagicConditionalProc.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultFinalization.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicInputs.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/MagicResources.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastQuery.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/MagicReadyPlanQuery.cs"
+        ],
+        "ordinary execution publication and hypothetical calculation edges": [
+          "src/Zodiac.Framework/Battle/Combat/Magic/Execution/OrdinaryMagicCastExecution.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/Execution/OrdinaryMagicStatusRules.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/Execution/OrdinaryMagicBattleDefinition.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/Publication/MagicProjectionQuery.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/Publication/MagicCastProjection.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/Publication/MagicLivingApplication.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/Publication/OrdinaryMagicHitApplication.cs"
+        ],
+        "stored target calculation edges": [
+          "src/Zodiac.Framework/Battle/Combat/Targeting/Resolution/StoredSpellCastQuery.cs",
+          "src/Zodiac.Framework/Battle/Combat/Targeting/Resolution/SpellTargetCastResolution.cs"
+        ],
+        "AI formula consumer and current metadata admission edges": [
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiProjection.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiActionSimulation.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiHitSimulation.cs",
+          "src/Zodiac.Content/BattleSetup/PreparedOrdinaryMagicBattle.cs",
+          "src/Zodiac.Content/BattleSetup/PreparedOrdinarySpellAi.cs"
+        ],
+        "current regression edges": [
+          "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/MagicConsumerReviewTests.cs",
+          "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/FaithMagicArithmeticTests.cs",
+          "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/FaithMagicAmountTests.cs",
+          "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/FaithMagicElementPipelineTests.cs",
+          "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/FaithMagicResolutionTests.cs",
+          "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/MagicCastQueryTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiProjectionTests.cs"
+        ]
+      },
+      "limits": "Consumer/application/metadata edges are partial. Full spell lifecycle, general statuses, origins, commands and frame RNG remain open."
     }
   ],
   "fullyReviewedGroups": [],
-  "nextBatch": "ZOD-436",
+  "nextBatch": "ZOD-426",
   "overallBehaviorReviewCompleted": false
 }
