@@ -229,6 +229,27 @@
       "startLine": 243,
       "endLine": 351,
       "normalizedLfSha256": "46f845aa823b1f3869b21011dba6796bd331dfd5f48fb77920c1f12300991a70"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "status_modify_inflictions",
+      "startLine": 399,
+      "endLine": 469,
+      "normalizedLfSha256": "a19c63b4339bb0cd66da3a8b64d428b8fa1bf6a775490f5459a57352a611583e"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_nullify_action",
+      "startLine": 473,
+      "endLine": 489,
+      "normalizedLfSha256": "39ee3ba3c7f21f0e159eb3ef8409861e43b1a796c86ef5a1dd4260b394e26584"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_element_modify_damage",
+      "startLine": 493,
+      "endLine": 520,
+      "normalizedLfSha256": "06f727cc712d89400a3109b3d9d63ba6965102ddb5051c5511bf9aabaeca6d51"
     }
   ],
   "managedFiles": [
@@ -2478,6 +2499,216 @@
       "literalDescriptions": 36,
       "normalWeatherFlagDescriptions": 20,
       "sourceBoundaryDescriptions": 16,
+      "ownerBlobsVerified": 10,
+      "unrelatedOwnerEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlobAtReview": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "excludedFromCommit": true
+      },
+      "focusedManagedTestsPassed": 16,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedAbilityElementCheck": {
+    "managedBaseRevision": "6e87a99d5ce761df000a7f290d57f003420daae3",
+    "attachmentNormalizedLfSha256": "58e36f78dc7c0540557f16e25ac7f3ae7265083d704003c6eda953ace56728d2",
+    "start": "0x80186ff8",
+    "endInclusive": "0x801870f8",
+    "instructionCount": 65,
+    "instructionWords": [
+      "3c028019",
+      "8c422d98",
+      "27bdffe8",
+      "afbf0014",
+      "afb00010",
+      "9042005a",
+      "3c108019",
+      "921038f7",
+      "30420080",
+      "10400015",
+      "32020080",
+      "10400013",
+      "00002021",
+      "3c028019",
+      "844238ce",
+      "3c038019",
+      "8c632d90",
+      "00021040",
+      "3c018019",
+      "a42238ce",
+      "90620022",
+      "00000000",
+      "34420080",
+      "0c0612c9",
+      "a0620022",
+      "10400005",
+      "34020008",
+      "3c038019",
+      "8c632d90",
+      "00000000",
+      "a0620025",
+      "3c038019",
+      "8c632d98",
+      "00000000",
+      "90640182",
+      "00000000",
+      "30820080",
+      "10400007",
+      "3082001f",
+      "000218c0",
+      "00621823",
+      "00031980",
+      "3c028019",
+      "244208cc",
+      "00621821",
+      "9062005a",
+      "00000000",
+      "30420040",
+      "10400009",
+      "32020008",
+      "10400007",
+      "00000000",
+      "0c061390",
+      "00000000",
+      "3c038019",
+      "8c632d90",
+      "34020007",
+      "a0620002",
+      "0c0613a6",
+      "02002021",
+      "8fbf0014",
+      "8fb00010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "orderedDirectCalls": [
+      {
+        "callPc": "0x80187054",
+        "target": "0x80184b24",
+        "symbol": "status_modify_inflictions",
+        "delaySlotWord": "a0620022"
+      },
+      {
+        "callPc": "0x801870c8",
+        "target": "0x80184e40",
+        "symbol": "formula_nullify_action",
+        "delaySlotWord": "00000000"
+      },
+      {
+        "callPc": "0x801870e0",
+        "target": "0x80184e98",
+        "symbol": "formula_element_modify_damage",
+        "delaySlotWord": "02002021"
+      }
+    ],
+    "branches": [
+      {
+        "pc": "0x8018701c",
+        "operation": "beq",
+        "target": "0x80187074"
+      },
+      {
+        "pc": "0x80187024",
+        "operation": "beq",
+        "target": "0x80187074"
+      },
+      {
+        "pc": "0x8018705c",
+        "operation": "beq",
+        "target": "0x80187074"
+      },
+      {
+        "pc": "0x8018708c",
+        "operation": "beq",
+        "target": "0x801870ac"
+      },
+      {
+        "pc": "0x801870b8",
+        "operation": "beq",
+        "target": "0x801870e0"
+      },
+      {
+        "pc": "0x801870c0",
+        "operation": "beq",
+        "target": "0x801870e0"
+      }
+    ],
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80188794",
+        "returnAddress": "0x8018879c",
+        "target": "0x80186ff8"
+      },
+      {
+        "callPc": "0x80188e2c",
+        "returnAddress": "0x80188e34",
+        "target": "0x80186ff8"
+      },
+      {
+        "callPc": "0x80189d20",
+        "returnAddress": "0x80189d28",
+        "target": "0x80186ff8"
+      },
+      {
+        "callPc": "0x8018a61c",
+        "returnAddress": "0x8018a624",
+        "target": "0x80186ff8"
+      }
+    ],
+    "oilFire": {
+      "targetStatusOffset": "0x5a",
+      "oilMask": "0x80",
+      "fireElementMask": "0x80",
+      "xaEffect": "signed16 XA doubled after HP damage was already stored",
+      "stagedRemovalOffset": "0x22",
+      "filterArgument": 0,
+      "removalStoredInCallDelaySlot": true,
+      "survivingChangeType": "Assign type byte0x25 to0x08 when status_modify_inflictions returns nonzero",
+      "liveStatusChangedHere": false
+    },
+    "floatEarth": {
+      "targetStatusOffset": "0x5a",
+      "floatMask": "0x40",
+      "earthElementMask": "0x08",
+      "riderFlag": "0x80",
+      "partnerMask": "0x1f",
+      "originalUnitStride": "0x1c0",
+      "behavior": "Use the ridden partner status for a rider, otherwise target status. Float+Earth calls nullifier then assigns miss type7. Continue to common affinity processing; no early return."
+    },
+    "affinity": {
+      "parameter": "Saved ability-element byte passed in delay slot",
+      "alwaysCalledAfterOilFloat": true,
+      "order": "mark absorb, check nullify, then half and weak",
+      "liveHealingConversion": "Later absorption helper, not here"
+    },
+    "managedMapping": "MagicDamageElements.Transform owns admitted fresh affinity work. Fire/Oil and Earth/Float-or-rider branches remain explicit unsupported contexts; this source cross-check does not implement status filtering, mount lookup or Float miss routing.",
+    "clarifications": [
+      "Oil does not double stored HP or MP damage; retain original ordering, without applying the suggested bug fix.",
+      "The Oil filter sees all pending status-change work, not only the Oil bit; nonzero means changes remain after filtering.",
+      "The status-change type write assigns0x08 rather than ORing it into the existing type.",
+      "Float writes miss label7 before affinity processing; a later affinity-nullification call can replace it with the nullifier label5.",
+      "No change to general statuses, event VM, mount/rider behavior or runtime admission is made."
+    ],
+    "validation": {
+      "sourceAudit": {
+        "transformDescriptions": 24,
+        "projectionDescriptions": 12,
+        "routingDescriptions": 14,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "sourceFiles": 9,
+        "sourceFunctions": 14,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true
+      },
       "ownerBlobsVerified": 10,
       "unrelatedOwnerEdit": {
         "path": ".circleci/config.yml",

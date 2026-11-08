@@ -83,7 +83,12 @@ C# agrees. Effective weather at0x0018e660 matches22 words/two returns and the
 fixed script-variable0x23 read: ignore overrides snow, values<2 bypass conversion,
 otherwise Snow adds3. Value5 is ordinary Snow (the notes mislabel it Snowstorm).
 The managed consumer still takes already-effective weather; no general map/script
-classifier is added. Ability Elemental? is next. ZOD-436 remains open.
+classifier is added. Ability Elemental? matches65 words/three calls/four returns:
+Oil stages removal after doubling unused XA; Float/Earth writes miss7 before
+the unconditional affinity stage, whose nullifier can replace it with5.
+Relevant Oil/Float/rider contexts remain excluded. Elemental Damage Modification
+and Elemental Nullification are next; the broader status filter is a captured
+dependency for separate status work. ZOD-436 remains open.
 The unrelated owner edit in `.circleci/config.yml` remains uncommitted and excluded.
 The shared Calculate Hit %/final-hit/per-source roll
 documentation was already supplied; no duplicate is needed.

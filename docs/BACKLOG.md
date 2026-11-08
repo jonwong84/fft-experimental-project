@@ -116,8 +116,10 @@ matches18 words, three ordered calls and four returns. Its XA * YA helper matche
 13 words/nine returns and the modulo-store arithmetic. Weather Elemental effects
 matches64 words/four returns and4,194,304 signed amount/weather/element combinations.
 Its effective-weather dependency matches22 words/two returns, preserves flag
-precedence and corrects the notes' value5 label to Snow. Ability Elemental? is
-next; the full shared-consumer review remains open.
+precedence and corrects the notes' value5 label to Snow. Ability Elemental? matches
+65 words/three calls/four returns, retaining Oil's stored-damage quirk and continued
+affinity processing after Float cancellation. Elemental Damage Modification and
+Elemental Nullification are next; the full shared-consumer review remains open.
 
 ## Review programme
 

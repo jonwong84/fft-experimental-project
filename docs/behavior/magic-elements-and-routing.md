@@ -138,8 +138,53 @@ variable0. For this fixed0x23 request it does not take the special random-variab
 a general event-VM port or additional recursive documentation is not required
 here. All16 focused .NET element/projection/routing tests and eight Python tests
 pass; all ten owner draft blobs and the unrelated CI edit are unchanged. No
-runtime or fixture change is needed. The next useful page is Ability
-Elemental?. ZOD-436 remains open.
+runtime or fixture change is needed. ZOD-436 remains open.
+
+### Supplied Ability Elemental? routine
+
+The owner's listing matches all65 instruction words at `0x80186ff8`–`0x801870f8`,
+its six conditional branches and all four listed returns. The same supporting
+receipt pins the three callees and exact call/delay-slot instructions at the
+unchanged source/prepared baseline. The ordered dependencies are:
+
+1. Modify Status Inflictions, `status_modify_inflictions(0)` at `0x80184b24`,
+   conditionally for Oil/Fire after staging the Oil removal bit.
+2. Elemental Nullification, `formula_nullify_action` at `0x80184e40`,
+   conditionally for Earth against the relevant unit's Float status.
+3. Elemental Damage Modification, `formula_element_modify_damage` at
+   `0x80184e98`, always called last with the saved ability-element byte.
+
+Oil/Fire checks target byte`0x5a` bit`0x80` and Fire bit`0x80`. It doubles
+signed16 XA, not the already-stored HP/MP damage. It stages Oil removal in target
+action byte`0x22` before the status-filter call (the store is in the call delay
+slot). The argument0 requests the full filter. That filter considers all pending
+status work, removes innate/ineligible removals and returns whether any changes
+remain; it is not merely an Oil-specific test. A nonzero result **assigns** the
+action-type byte to`0x08`; it does not OR that bit into its prior value. Actual
+unit status removal is later. The suggested Oil damage fix is not adopted.
+
+The routine next chooses the unit whose Float status matters. A rider
+(`mount_info` bit`0x80`) uses its ridden partner (`mount_info &0x1f`, original
+unit-record stride`0x1c0`); other targets use themselves. Float is status
+byte`0x5a` bit`0x40`; Earth is element bit`0x08`. When both apply, the routine
+calls the nullifier and then writes miss type7 (`ForcedFailure`). It **continues**
+to common affinity processing. Thus a later affinity-nullification call can
+replace label7 with the nullifier's label5; an early return would change behavior.
+
+The affinity stage marks absorb, checks cancellation, then applies half and weak.
+Absorbed damage is converted to healing by the later helper, not this stage.
+The current `MagicDamageElements.Transform` implements only the admitted fresh
+affinity path. Relevant Fire/Oil and Earth/Float-or-rider work remains positively
+excluded; this study adds no live status filtering, mount lookup or Float routing.
+Existing admission tests must continue rejecting uncertified relevant contexts.
+All16 focused .NET element/projection/routing tests and eight Python tests pass;
+all ten owner draft blobs and the unrelated CI edit remain unchanged. No runtime
+or fixture change is required.
+
+The next useful supplied page is Elemental Damage Modification, then Elemental
+Nullification. Modify Status Inflictions is captured as a dependency; its broader
+status implementation belongs to separate work before admitting Oil/status
+side effects. ZOD-436 remains open.
 
 ## Original implementation checkpoint
 
