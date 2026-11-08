@@ -30,7 +30,7 @@ public static class OrdinarySpellAiCandidateQuery
         try
         {
             var work = new OrdinarySpellAiWork(state, catalog, request.ActorId, request.PrimarySlot, request.FollowUnit);
-            return OrdinarySpellAiSimulation.Run(work, request, rng);
+            return OrdinarySpellAiActionSimulation.Run(work, request, rng);
         }
         catch (Exception e) when (e is ArgumentException or NotSupportedException or OverflowException)
         {

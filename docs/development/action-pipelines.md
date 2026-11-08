@@ -66,9 +66,10 @@ helpers retain the existing `Decision/` and `Execution/` folders. The
 [AI starting guide](../../src/Zodiac.Framework.Ai/README.md) links the call flow.
 
 `AiDecisionMaker.Decide` reads in this order: fresh preparation/movement prefix,
-ability occurrences through `AiAbilityEvaluator`, per-occurrence candidate
-evaluation, best-candidate insertion and lottery. Each next calculation receives
-the preceding decision RNG. The returned plan has no command authority.
+then `AiGeneralActionSelection` for ability occurrences through `AiAbilityEvaluator`,
+per-occurrence candidate evaluation, best-candidate insertion and lottery.
+Each next calculation receives the preceding decision RNG. The returned plan
+has no command authority.
 `AiCommandExecutor` obtains a fresh decision inside Framework's checked command
 callback, then publishes one admitted actual command. `AiTurnController` adds
 continuations and turn completion with explicit facing.
@@ -85,7 +86,7 @@ usage and deadline groups. These queries do not compose a ranked magic search
 or enter the physical roster's full decision/command pipeline yet. The subsequent
 `OrdinarySpellAiSearchQuery` now composes enumeration and simulation for one
 owned slot at the current origin. Follow its pass loop into `ForAimPass`,
-`OrdinarySpellAiSimulation` and shared `AiCandidateRank`. It preserves one
+`OrdinarySpellAiActionSimulation` and shared `AiCandidateRank`. It preserves one
 decision RNG and unresolved per-pass exits. Multiple origins, full ability
 dispatch and command execution remain separate.
 

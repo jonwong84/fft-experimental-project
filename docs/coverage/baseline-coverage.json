@@ -1968,6 +1968,7 @@
         "src/Zodiac.Framework.Ai/Shared/RosterAiDirectTrajectory.cs",
         "src/Zodiac.Framework.Ai/ThrowStone/RosterThrowStoneAiEntry.cs",
         "src/Zodiac.Framework.Ai/AiDecisionMaker.cs",
+        "src/Zodiac.Framework.Ai/Decision/AiGeneralActionSelection.cs",
         "src/Zodiac.Framework/Battle/Movement/FlatRosterSpriteHeight.cs",
         "src/Zodiac.Framework/Battle/Movement/FlatRosterProjectileHeights.cs",
         "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectoryRequest.cs",

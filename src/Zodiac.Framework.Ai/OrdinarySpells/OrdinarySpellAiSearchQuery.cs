@@ -29,7 +29,7 @@ public static class OrdinarySpellAiSearchQuery
                 bool stopped = false;
                 foreach (var aim in pass.Aims)
                 {
-                    var candidate = OrdinarySpellAiSimulation.Run(passWork,
+                    var candidate = OrdinarySpellAiActionSimulation.Run(passWork,
                         new(request.ActorId, request.PrimarySlot, aim.Position, aim.UnitId is not null), decisionRng);
                     if (!candidate.Accepted) return Reject(candidate.Rejection!);
                     var score = candidate.Outcome!.Score;

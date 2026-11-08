@@ -60,10 +60,10 @@ files and nine functions. Neither C nor the original game was executed.
   capture. Its candidate preparation delegates to the same combat rule. The
   ready-hit diagnostic still captures an aim without scheduling another action.
 - `OrdinarySpellAiCandidateQuery` owns public admission and translates unsupported
-  work to an atomic rejection. `OrdinarySpellAiSimulation` privately orchestrates
+  work to an atomic rejection. `OrdinarySpellAiActionSimulation` privately orchestrates
   preparation, the existing clock, ready strikes and scoring. It applies the
   proposed caster state only to immutable hypothetical units.
-- `OrdinarySpellAiHitWork` has its own file and retains stored-aim resolution,
+- `OrdinarySpellAiHitSimulation` has its own file and retains stored-aim resolution,
   formula projection and private result application. `OrdinarySpellAiAccounting`
   and `OrdinarySpellAiScoring` remain the existing accounting/scoring owners.
 

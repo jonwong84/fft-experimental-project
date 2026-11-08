@@ -94,7 +94,7 @@ unchanged.
 
 `OrdinarySpellAiWork` privately owns the same current-state/catalog binding,
 initialized lists, considered usage, usefulness and initial aim capture for both
-query paths. `OrdinarySpellAiHitWork` owns stored anchor/tile resolution, fresh
+query paths. `OrdinarySpellAiHitSimulation` owns stored anchor/tile resolution, fresh
 green geometry, formula frames, movement exclusions and included HP/MP effects.
 It never repeats initial blue range. The current-aim public query now delegates
 to these private owners, preserving its output and rollback boundary. No public

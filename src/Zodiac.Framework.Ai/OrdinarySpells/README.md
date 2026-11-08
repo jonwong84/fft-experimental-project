@@ -24,13 +24,13 @@ Follow these owners in order:
 1. [OrdinarySpellAiWork](Simulation/OrdinarySpellAiWork.cs): admit current facts,
    bind the selected slot, initialize lists/parameters and filter useful targets.
    The corresponding rule owners live in `Selection/`.
-2. [OrdinarySpellAiSimulation](Simulation/OrdinarySpellAiSimulation.cs): capture
+2. [OrdinarySpellAiActionSimulation](Simulation/OrdinarySpellAiActionSimulation.cs): capture
    the aim and call Framework's shared primary preparation, privately applying
    its proposal to immutable hypothetical units.
 3. [OrdinarySpellAiClock](Simulation/OrdinarySpellAiClock.cs): advance a delayed
    action, or one event after an immediate useful hit. It records movement
    opportunities and retains source event-cap behavior.
-4. [OrdinarySpellAiHitWork](Simulation/OrdinarySpellAiHitWork.cs): resolve the
+4. [OrdinarySpellAiHitSimulation](Simulation/OrdinarySpellAiHitSimulation.cs): resolve the
    stored aim, call shared area/recipient rules and calculate result frames via
    [OrdinarySpellAiProjection](Simulation/OrdinarySpellAiProjection.cs).
 5. [OrdinarySpellAiAccounting](Scoring/OrdinarySpellAiAccounting.cs): exclusions,
@@ -40,7 +40,7 @@ Follow these owners in order:
 
 For a delayed action the clock precedes the ready strike. For an immediate
 action the strike precedes the required clock event. The numbered owners above
-identify responsibilities; `OrdinarySpellAiSimulation.Run` owns that ordering.
+identify responsibilities; `OrdinarySpellAiActionSimulation.Run` owns that ordering.
 
 `Selection/` owns lists, considered parameters, statistics and usefulness.
 `Simulation/` owns private work, clocks, strikes and formula projection.
@@ -49,9 +49,9 @@ older ready-hit query whose movement opportunities are explicitly supplied.
 All existing public declarations and namespaces are preserved.
 
 For the supported physical roster's complete decision, start with
-[AiDecisionMaker.Decide](../Decision/AiDecisionMaker.cs). For actual commands,
-start with [AiCommandExecutor.Execute](../Execution/AiCommandExecutor.cs), or
-[AiTurnController.Execute](../Execution/AiTurnController.cs) for a complete
+[AiDecisionMaker.Decide](../AiDecisionMaker.cs). For actual commands,
+start with [AiCommandExecutor.Execute](../AiCommandExecutor.cs), or
+[AiTurnController.Execute](../AiTurnController.cs) for a complete
 admitted turn. Potential lists, supplied-aim simulation and the current-origin
 one-slot search remain diagnostic entry points. Multiple origins, full dispatch,
 rank insertion/lottery and automatic spell turns are not connected to the

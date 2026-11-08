@@ -6,8 +6,14 @@ namespace Zodiac.Framework.Ai;
 internal sealed record OrdinarySpellAiHitOutcome(ImmutableArray<OrdinarySpellAiUnit> Units,
     ImmutableArray<MagicCastTargetResult> Frames, OrdinarySpellAiAccountingOutcome Accounting, RandomState RngState);
 
-/// <summary>Private fresh stored-aim work. Initial blue validation belongs only to Capture, never readiness.</summary>
-internal static class OrdinarySpellAiHitWork
+/// <summary>Resolve a stored aim, project strikes, account for useful hits and apply included hypothetical results.</summary>
+/// <remarks>
+/// Bounded action_hits_simulate (0x8019DCBC) / strikes_simulate (0x8019DD8C),
+/// fft_decomp 11464943bbdbd2a0af022d90cb7f10455cf911df.
+/// Projection owns formula/resource work; accounting owns exclusions, priority and average hit.
+/// Initial blue validation belongs only to Capture, never readiness. General reactions/multiple strikes remain gated.
+/// </remarks>
+internal static class OrdinarySpellAiHitSimulation
 {
     internal static OrdinarySpellAiHitOutcome Resolve(OrdinarySpellAiWork work, ImmutableArray<OrdinarySpellAiUnit> units,
         StoredSpellAim storedAim, ImmutableHashSet<BattleUnitId> moved, RandomState rng)

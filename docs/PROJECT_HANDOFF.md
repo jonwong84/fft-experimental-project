@@ -13,6 +13,21 @@ review results before merge. The owner-approved
 `AiTurnController.cs` readability edit is now included in the branch; its exact
 blob was already covered by the passing ZOD-435 full validation.
 
+Owner-requested routine ownership refactor: `AiDecisionMaker.Decide` now owns
+fresh preparation and atomic publication; `Decision/AiGeneralActionSelection`
+owns the prepared ability scan, insertion, ranked lottery and movement fallback.
+The internal ordinary spell owners are now `OrdinarySpellAiActionSimulation`
+and `OrdinarySpellAiHitSimulation`, with pinned source remarks and updated callers.
+The [routine ownership guide](architecture/ai-routine-ownership.md) maps the
+implemented responsibilities and remaining boundaries. Public APIs/namespaces,
+admission, historical receipts and owner drafts remain intact. This interim
+cleanup does not complete ZOD-436 or the eventual ZOD-432 walkthrough.
+Release build passes with zero warnings/errors; full validation passes 5,181 .NET
+tests (including 1,384 AI) and 794 Python tests. Coverage validates all 58 entries
+with the new selector path and matching generated view. All ten owner blobs,
+approved controller formatting and the disabled CI configuration are unchanged.
+Logs/TRX are under ignored `scratch/ai-routine-refactor-*`.
+
 Owner-requested AI navigation pass: `AiDecisionMaker.cs`, `AiCommandExecutor.cs`
 and `AiTurnController.cs` now live at the `Zodiac.Framework.Ai` project root,
 moved byte-for-byte. The project/repository READMEs link the decision and complete

@@ -8,7 +8,11 @@ namespace Zodiac.Framework.Ai;
 /// Immutable inputs provide isolation; decision RNG is retained on ordinary NotValuable exits.
 /// Unsupported work is rejected atomically by the query. No suspended-frame state is admitted.
 /// </summary>
-internal static class OrdinarySpellAiSimulation
+/// <remarks>
+/// Bounded ai_action_simulate_and_score (0x8019D37C), fft_decomp 11464943bbdbd2a0af022d90cb7f10455cf911df.
+/// Preparation, hit simulation, clock and scoring retain separate owners; no frame suspension or general reaction processing.
+/// </remarks>
+internal static class OrdinarySpellAiActionSimulation
 {
     internal static OrdinarySpellAiCandidateResult Run(OrdinarySpellAiWork work,
         OrdinarySpellAiCandidateRequest request, RandomState rng)
@@ -35,7 +39,7 @@ internal static class OrdinarySpellAiSimulation
         if (counter == 0)
         {
             formulaEntry = rng;
-            hit = OrdinarySpellAiHitWork.Resolve(work, units, stored, [], rng);
+            hit = OrdinarySpellAiHitSimulation.Resolve(work, units, stored, [], rng);
             if (!hit.Accounting.Valuable) return NotValuable(stored, null, formulaEntry, hit, hit.RngState);
             units = hit.Units;
             if (units.Single(u => u.Id == work.Actor.Id).Current.Statuses.Dead)
@@ -62,7 +66,7 @@ internal static class OrdinarySpellAiSimulation
                 Current = caster with { Statuses = caster.Statuses with { Charging = false } }
             });
             formulaEntry = advanced.RngState;
-            hit = OrdinarySpellAiHitWork.Resolve(work, units, stored, clock.HadMoveOpportunity, formulaEntry);
+            hit = OrdinarySpellAiHitSimulation.Resolve(work, units, stored, clock.HadMoveOpportunity, formulaEntry);
             if (!hit.Accounting.Valuable) return NotValuable(stored, clock, formulaEntry, hit, hit.RngState);
             units = hit.Units; exitRng = hit.RngState;
         }

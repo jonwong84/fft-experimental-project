@@ -18,9 +18,15 @@ handles subsequent commands, movement continuations and turn completion;
 
 These three public entry files live at the project root. Their configuration,
 result records and internal helpers remain in `Decision/` and `Execution/`.
-To read decision logic, continue from `AiDecisionMaker.Decide` into
-[Decision/AiAbilityEvaluator.cs](Decision/AiAbilityEvaluator.cs), which dispatches
-to the supported ability-family owners. `Shared/` contains their common work.
+To read decision logic, follow `AiDecisionMaker.Decide` through fresh preparation
+and then [Decision/AiGeneralActionSelection.cs](Decision/AiGeneralActionSelection.cs).
+The selector scans the prepared list through
+[Decision/AiAbilityEvaluator.cs](Decision/AiAbilityEvaluator.cs), inserts each
+ability's best candidate and runs the ranked lottery or movement fallback.
+`Shared/` contains the common preparation, simulation and ranking rules.
+The [routine ownership guide](../../docs/architecture/ai-routine-ownership.md)
+maps these classes to the original routines and distinguishes supported subsets
+from remaining work.
 
 The Windows host is not wired to this pipeline yet. Ordinary spell searches
 currently return diagnostic hypotheses and are not part of its executable
@@ -45,7 +51,7 @@ All share immutable `AiDecisionConfiguration`; a turn adds dispatch/facing throu
 ## Source map
 
 - Project root: the public decision, command and turn entry files above.
-- `Decision/`: configuration, decision records and internal ability dispatch used by the root decision maker.
+- `Decision/`: general action selection, configuration, decision records and internal ability dispatch used by the root decision maker.
 - `Execution/`: command/turn configuration, diagnostics, recovery and common stage routing used by the root execution entries.
 - `Shared/`: hypothetical clocks/state, roster preparation, movement/scenarios, target masks, scoring/ranking/lottery and immutable priority knowledge. `AiDamageHypotheses` completes admitted HP projections through the all-unit clock/score. `AiUnitPolicy`, `AiPreparedAbility` and `AiReachAdjustment` name shared data.
 - `Sword/`, `ThrowStone/`, `Accumulate/`, `Dash/`: specialized admission and searches. Stone/Dash now project through Framework's shared selected physical formula/rule owners; delivery and metadata policies remain distinct. Accumulate retains usefulness and self-PA hypotheses.

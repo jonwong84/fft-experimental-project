@@ -26,7 +26,7 @@ draw ordering rather than re-verifying the generator.
    narrows valuable membership to the current source pass. Units outside that
    useful mask still receive real formula work, can contribute collateral and
    remain in absolute roster scoring. Public cached diagnostics are not inputs.
-3. `OrdinarySpellAiSimulation` performs shared primary preparation, clock,
+3. `OrdinarySpellAiActionSimulation` performs shared primary preparation, clock,
    stored-aim hit work, accounting and scoring. Each aim starts from the same
    immutable battle baseline. The preceding candidate's exit RNG becomes the
    next entry RNG, including a NotValuable result's real formula draws.
