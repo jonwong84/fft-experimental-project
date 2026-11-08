@@ -357,8 +357,9 @@ branch, and absorbed0x08 retains its damage-family proc tail.
 
 All13 focused .NET routing/composition tests and eight Python tests pass; all ten
 owner draft blobs and the approved disabled-by-default CI gate are unchanged.
-No runtime or fixture change is required. The next useful supplied routine is
-Conditional Status Proc Roll (19%) at `0x001884c0`. ZOD-436 remains open.
+No runtime or fixture change is required. The supplied
+[Conditional Status Proc Roll wrapper](magic-conditional-proc.md#supplied-conditional-status-proc-roll-wrapper)
+at `0x001884c0` is now checked too; its inner routine is next. ZOD-436 remains open.
 
 ## Original implementation checkpoint
 

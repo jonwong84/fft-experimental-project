@@ -37,8 +37,41 @@ and16 Python tests pass; all ten owner draft blobs are unchanged. The approved
 CircleCI gate is committed separately with its job definitions retained and a
 false default. No runtime or fixture change is needed.
 The supplied [Elemental Absorption helper](magic-elements-and-routing.md#supplied-elemental-absorption)
-at `0x001870fc` is now checked too. Conditional Status Proc Roll (19%) at
-`0x001884c0` is next. ZOD-436 remains open.
+at `0x001870fc` is now checked too. ZOD-436 remains open.
+
+## Supplied Conditional Status Proc Roll wrapper
+
+Both owner-supplied annotated listings contain the same20 instruction words at
+`0x801884c0`–`0x8018850c`, all matching the verified prepared BATTLE.BIN. All five
+listed return locations and the one inner call match too. The same supporting
+receipt pins the source, mode enum and eight literal return descriptions at the
+unchanged reference revision.
+
+The outer routine **always calls** `conditional_status_proc_roll_inner` at
+`0x80187690` first. It then reads the scalar action-state word at `0x8018f5fc`:
+
+- Preview2 branches directly to return0, with the zero assignment in the branch
+  delay slot. It does not read the target effect marker on that path.
+- Otherwise it reads unsigned16 target effects at offset`0x10` and returns0 if
+  AddedEffect`0x0200` is set,1 if clear. Other effect bits do not imply success.
+
+It does not return an inner RNG result directly. A preexisting marker can make
+non-preview return0 even after the inner routine performs no roll or fails to
+set a new marker. Preview's return0 is an attempt request rather than
+proof of a roll, a flag delta or an applied status. The outer routine itself
+does not publish HP or statuses; the inner routine owns its execution-only RNG
+gate and flag update.
+
+`MagicFormulaEvaluationMode` keeps Execute0, AiSimulation1 and Preview2.
+`MagicConditionalProc.Evaluate` already preserves the admitted mode outcomes,
+no-draw Preview/AI behavior and the known-clear marker requirement on non-preview
+entry. Broader stale/pending contexts remain explicitly unsupported. The existing
+source/prepared audit passes six roll and26 decision descriptions plus four Fire
+tier/empty-status bindings. All15 focused .NET proc/composition tests and eight
+Python tests pass; all ten owner draft blobs and the approved disabled-by-default
+CI gate remain unchanged. No runtime or fixture change is required.
+The next useful supplied page is Conditional Status Proc Roll (19%) Inner Routine
+at `0x00187690`. ZOD-436 remains open.
 
 ## Original implementation checkpoint
 

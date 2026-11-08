@@ -110,8 +110,10 @@ original formula family. Zero requests a status attempt; preview/AI retain their
 existing draw/flag distinctions. Elemental Absorption matches21 words/eight
 returns: label5 gives no writes; otherwise the absorption marker selects a
 bit-preserving damage-to-healing transfer/type assignment, with no Undead check.
-Existing fresh-result routing agrees. Conditional Status Proc Roll at0x001884c0
-is next. ZOD-436 remains open.
+Existing fresh-result routing agrees. Both Conditional Status Proc Roll listings
+match20 words/five returns and the inner call. Preview2 returns0 after the inner
+call; other modes test post-call AddedEffect0x0200. Existing fresh-mode/marker
+guards agree. The inner routine at0x00187690 is next. ZOD-436 remains open.
 The owner-approved `.circleci/config.yml` gate is committed: CircleCI is intentionally
 paused by default through the `ci-enabled: false` workflow gate, with existing
 jobs/filters retained. Re-enabling is a later owner decision. Continue local

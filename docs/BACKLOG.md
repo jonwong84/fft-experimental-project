@@ -130,8 +130,10 @@ returns, Innocent precedence and the exact single division/store. The
 [absorption/proc wrapper](behavior/magic-conditional-proc.md#supplied-absorptionproc-wrapper--zod-436-support)
 matches ten words/two calls/four returns, preserving absorption-before-proc and
 mode distinctions. Elemental Absorption matches21 words/eight returns and the
-bit-preserving amount/type transfer; Conditional Status Proc Roll is next.
-The full shared-consumer review remains open.
+bit-preserving amount/type transfer. Both Conditional Status Proc Roll listings
+match20 words/five returns: call inner first, then return0 for Preview2 or test
+the marker in other modes.
+The inner routine is next; the full shared-consumer review remains open.
 
 ## Review programme
 

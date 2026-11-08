@@ -291,6 +291,13 @@
       "startLine": 857,
       "endLine": 866,
       "normalizedLfSha256": "0fc73881d8f26bf8b08f5ef4e88f1191ca80469bd89b2af35595d3df5f8a5c79"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "conditional_status_proc_roll_inner",
+      "startLine": 412,
+      "endLine": 418,
+      "normalizedLfSha256": "40d4f276cd1a506807f87002a9bc21cfac252bbf09da445b8ff5f0df14e9a008"
     }
   ],
   "managedFiles": [
@@ -371,6 +378,12 @@
       "hashEncoding": "utf8-lf",
       "byteLength": 339,
       "sha256": "a9a1f4c9a5669d862948a083998105ec95877dd1753c4984b06c2ebebd0a0f56"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicFormulaEvaluationMode.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 135,
+      "sha256": "378bc67c8bf7d692851dcec3c47b2c33d9e36b193eb3afa696ac3a605108b182"
     }
   ],
   "preparedValidation": {
@@ -4051,6 +4064,158 @@
         "ciEnabledDefault": false
       },
       "focusedManagedTestsPassed": 13,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedConditionalProcWrapperCheck": {
+    "managedBaseRevision": "5a17dcdf2094c3c71308b84d418fe6401e02ca6e",
+    "start": "0x801884c0",
+    "endInclusive": "0x8018850c",
+    "instructionCount": 20,
+    "suppliedListings": 2,
+    "listingsHaveIdenticalWords": true,
+    "instructionWords": [
+      "27bdffe8",
+      "afbf0010",
+      "0c061da4",
+      "00000000",
+      "3c038019",
+      "8c63f5fc",
+      "34020002",
+      "10620008",
+      "00001021",
+      "3c028019",
+      "8c422d90",
+      "00000000",
+      "94420010",
+      "00000000",
+      "30420200",
+      "2c420001",
+      "8fbf0010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "innerCall": {
+      "callPc": "0x801884c8",
+      "target": "0x80187690",
+      "symbol": "conditional_status_proc_roll_inner",
+      "calledBeforeModeBranch": true
+    },
+    "previewBranch": {
+      "pc": "0x801884dc",
+      "stateWord": "0x8018f5fc",
+      "previewValue": 2,
+      "target": "0x80188500",
+      "delaySlot": "Set r2=0"
+    },
+    "returnRule": "After the inner call, Preview2 returns0 without reading the target marker. Otherwise read unsigned16 effects at TCA0x10 and return0 iff AddedEffect0x0200 is set, else1.",
+    "literalReturnDescriptions": [
+      {
+        "actionState": 0,
+        "effectsAfterInnerCall": 0,
+        "expectedReturn": 1
+      },
+      {
+        "actionState": 0,
+        "effectsAfterInnerCall": 512,
+        "expectedReturn": 0
+      },
+      {
+        "actionState": 1,
+        "effectsAfterInnerCall": 0,
+        "expectedReturn": 1
+      },
+      {
+        "actionState": 1,
+        "effectsAfterInnerCall": 512,
+        "expectedReturn": 0
+      },
+      {
+        "actionState": 2,
+        "effectsAfterInnerCall": 0,
+        "expectedReturn": 0
+      },
+      {
+        "actionState": 2,
+        "effectsAfterInnerCall": 512,
+        "expectedReturn": 0
+      },
+      {
+        "actionState": 0,
+        "effectsAfterInnerCall": 1024,
+        "expectedReturn": 1
+      },
+      {
+        "actionState": 1,
+        "effectsAfterInnerCall": 65023,
+        "expectedReturn": 1
+      }
+    ],
+    "listedCallerChecks": [
+      {
+        "callPc": "0x8018868c",
+        "returnAddress": "0x80188694",
+        "target": "0x801884c0"
+      },
+      {
+        "callPc": "0x8018872c",
+        "returnAddress": "0x80188734",
+        "target": "0x801884c0"
+      },
+      {
+        "callPc": "0x801887d4",
+        "returnAddress": "0x801887dc",
+        "target": "0x801884c0"
+      },
+      {
+        "callPc": "0x80188ccc",
+        "returnAddress": "0x80188cd4",
+        "target": "0x801884c0"
+      },
+      {
+        "callPc": "0x80189d4c",
+        "returnAddress": "0x80189d54",
+        "target": "0x801884c0"
+      }
+    ],
+    "clarifications": [
+      "Both supplied instruction listings are identical annotations of one routine, not alternate implementations.",
+      "The mode load is a scalar state word, not a pointer to another state record.",
+      "The outer routine does not return an inner RNG result directly; it tests the effect marker left by the inner routine.",
+      "The outer routine always calls the inner routine, including Preview; the inner routine owns the execution-only RNG gate.",
+      "Return0 requests a later status attempt, not proof that a roll occurred or any status changed.",
+      "Non-preview stale AddedEffect can return0 after a failed/no inner roll; current non-preview admission requires the marker known clear at entry."
+    ],
+    "managedMapping": "MagicConditionalProc.Evaluate matches supported modes Execute0/AiSimulation1/Preview2, keeps no-draw Preview/AI paths and fresh-flag/no-pending guards. Broader stale/pending contexts remain rejected.",
+    "validation": {
+      "sourceAudit": {
+        "rollDescriptions": 6,
+        "decisionDescriptions": 26,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 9,
+        "sourceFunctions": 10,
+        "emptyStatusRecordVerified": true,
+        "fireTiersVerified": 4
+      },
+      "ownerBlobsVerified": 10,
+      "ownerApprovedCiEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "committed": true,
+        "ciEnabledDefault": false
+      },
+      "focusedManagedTestsPassed": 15,
       "focusedPythonTestsPassed": 8,
       "managedTestsExecuted": true,
       "runtimeChanged": false,
