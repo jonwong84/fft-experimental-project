@@ -351,6 +351,12 @@
       "hashEncoding": "utf8-lf",
       "byteLength": 482,
       "sha256": "ab974529b03dc13995560df1a3dafa2924a709bf2505645dc7692f8e4ca30e09"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/FaithValue.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 339,
+      "sha256": "a9a1f4c9a5669d862948a083998105ec95877dd1753c4984b06c2ebebd0a0f56"
     }
   ],
   "preparedValidation": {
@@ -3441,6 +3447,316 @@
         "sourceFunctions": 15,
         "emptyStatusRecordVerified": true,
         "fireTiersVerified": 4
+      },
+      "ownerBlobsVerified": 10,
+      "unrelatedOwnerEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlobAtReview": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "excludedFromCommit": true
+      },
+      "focusedManagedTestsPassed": 19,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedFaithCalculationCheck": {
+    "managedBaseRevision": "0c6c9d938693f896d6c297a3e3cbb0792b29e6db",
+    "attachmentNormalizedLfSha256": "714310f01ebaafbb4f765990d3a7baad5081067eadab6997abbd301344681f01",
+    "start": "0x80187150",
+    "endInclusive": "0x80187244",
+    "instructionCount": 62,
+    "instructionWords": [
+      "3c028019",
+      "8c422d94",
+      "00000000",
+      "9042005c",
+      "00000000",
+      "30420080",
+      "10400003",
+      "34020064",
+      "3c018019",
+      "a02238d3",
+      "3c028019",
+      "8c422d94",
+      "00000000",
+      "9042005c",
+      "00000000",
+      "30420040",
+      "10400003",
+      "00000000",
+      "3c018019",
+      "a02038d3",
+      "3c028019",
+      "8c422d98",
+      "00000000",
+      "9042005c",
+      "00000000",
+      "30420080",
+      "10400003",
+      "34020064",
+      "3c018019",
+      "a02238d2",
+      "3c028019",
+      "8c422d98",
+      "00000000",
+      "9042005c",
+      "00000000",
+      "30420040",
+      "10400003",
+      "00000000",
+      "3c018019",
+      "a02038d2",
+      "3c048019",
+      "8c842d90",
+      "3c028019",
+      "904238d2",
+      "84830004",
+      "00000000",
+      "00620018",
+      "00001812",
+      "3c028019",
+      "904238d3",
+      "00000000",
+      "00620018",
+      "00001812",
+      "3c0268db",
+      "34428bad",
+      "00620018",
+      "00031fc3",
+      "00001010",
+      "00021303",
+      "00431023",
+      "03e00008",
+      "a4820004"
+    ],
+    "allMatched": true,
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80188820",
+        "returnAddress": "0x80188828",
+        "target": "0x80187150"
+      },
+      {
+        "callPc": "0x801889ec",
+        "returnAddress": "0x801889f4",
+        "target": "0x80187150"
+      },
+      {
+        "callPc": "0x80188a4c",
+        "returnAddress": "0x80188a54",
+        "target": "0x80187150"
+      },
+      {
+        "callPc": "0x80188c7c",
+        "returnAddress": "0x80188c84",
+        "target": "0x80187150"
+      },
+      {
+        "callPc": "0x80188dc4",
+        "returnAddress": "0x80188dcc",
+        "target": "0x80187150"
+      },
+      {
+        "callPc": "0x80188f18",
+        "returnAddress": "0x80188f20",
+        "target": "0x80187150"
+      },
+      {
+        "callPc": "0x80189028",
+        "returnAddress": "0x80189030",
+        "target": "0x80187150"
+      },
+      {
+        "callPc": "0x801892e4",
+        "returnAddress": "0x801892ec",
+        "target": "0x80187150"
+      }
+    ],
+    "overrides": {
+      "statusByteOffset": "0x5c",
+      "faithMask": "0x80",
+      "innocentMask": "0x40",
+      "attackerWorkingFaith": "0x801938d3",
+      "targetWorkingFaith": "0x801938d2",
+      "order": "Attacker Faith then Innocent, target Faith then Innocent; Innocent wins independently",
+      "literalDescriptions": [
+        {
+          "stored": 0,
+          "faithStatus": false,
+          "innocentStatus": false,
+          "effective": 0
+        },
+        {
+          "stored": 0,
+          "faithStatus": true,
+          "innocentStatus": false,
+          "effective": 100
+        },
+        {
+          "stored": 0,
+          "faithStatus": false,
+          "innocentStatus": true,
+          "effective": 0
+        },
+        {
+          "stored": 0,
+          "faithStatus": true,
+          "innocentStatus": true,
+          "effective": 0
+        },
+        {
+          "stored": 1,
+          "faithStatus": false,
+          "innocentStatus": false,
+          "effective": 1
+        },
+        {
+          "stored": 1,
+          "faithStatus": true,
+          "innocentStatus": false,
+          "effective": 100
+        },
+        {
+          "stored": 1,
+          "faithStatus": false,
+          "innocentStatus": true,
+          "effective": 0
+        },
+        {
+          "stored": 1,
+          "faithStatus": true,
+          "innocentStatus": true,
+          "effective": 0
+        },
+        {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false,
+          "effective": 70
+        },
+        {
+          "stored": 70,
+          "faithStatus": true,
+          "innocentStatus": false,
+          "effective": 100
+        },
+        {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": true,
+          "effective": 0
+        },
+        {
+          "stored": 70,
+          "faithStatus": true,
+          "innocentStatus": true,
+          "effective": 0
+        },
+        {
+          "stored": 100,
+          "faithStatus": false,
+          "innocentStatus": false,
+          "effective": 100
+        },
+        {
+          "stored": 100,
+          "faithStatus": true,
+          "innocentStatus": false,
+          "effective": 100
+        },
+        {
+          "stored": 100,
+          "faithStatus": false,
+          "innocentStatus": true,
+          "effective": 0
+        },
+        {
+          "stored": 100,
+          "faithStatus": true,
+          "innocentStatus": true,
+          "effective": 0
+        },
+        {
+          "stored": 255,
+          "faithStatus": false,
+          "innocentStatus": false,
+          "effective": 255
+        },
+        {
+          "stored": 255,
+          "faithStatus": true,
+          "innocentStatus": false,
+          "effective": 100
+        },
+        {
+          "stored": 255,
+          "faithStatus": false,
+          "innocentStatus": true,
+          "effective": 0
+        },
+        {
+          "stored": 255,
+          "faithStatus": true,
+          "innocentStatus": true,
+          "effective": 0
+        }
+      ]
+    },
+    "arithmetic": {
+      "damageLoad": "signed16 target-action0x04",
+      "faithLoads": "unsigned8 target then attacker",
+      "division": "Single signed division by10000 after both multiplications",
+      "magicConstant": "0x68db8bad",
+      "postHighShift": 12,
+      "signCorrection": "subtract numerator arithmetic sign (-1 or0)",
+      "numeratorMinimum": -2130739200,
+      "numeratorMaximum": 2130674175,
+      "signed32OverflowPossible": false,
+      "quotientIntervals": 426141,
+      "endpointChecks": 852282,
+      "monotoneIntervalProofPassed": true,
+      "coveredIntegerNumerators": 4261413376,
+      "finalStore": "low16 bits in return delay slot at0x80187244"
+    },
+    "examples": [
+      {
+        "amount": 5,
+        "targetFaith": 90,
+        "attackerFaith": 90,
+        "expected": 4,
+        "incorrectSequentialDivisions": 3
+      },
+      {
+        "amount": -5,
+        "targetFaith": 90,
+        "attackerFaith": 90,
+        "expected": -4
+      }
+    ],
+    "managedMapping": "FaithValue.Effective gives Innocent precedence; FaithMagicArithmetic.ScaleStored uses the same single division and unchecked signed16 store. Working overrides do not mutate unit Faith.",
+    "boundaries": [
+      "No unit-stat Faith write, HP publication, hit/type change, cap, element/absorption stage or RNG occurs here.",
+      "Zero effective Faith makes the amount0 without nullifying the hit; formula0x08 can still reach its later conditional-proc tail.",
+      "The prose /100 twice summary is not a valid integer implementation; the instruction sequence divides once by10000.",
+      "The interval proof is offline integer arithmetic over the signed16/byte envelope, not original/C execution or admission of out-of-game Faith/stat values."
+    ],
+    "validation": {
+      "sourceAudit": {
+        "faithDescriptions": 15,
+        "productDescriptions": 7,
+        "amountDescriptions": 22,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 14,
+        "sourceFunctions": 36,
+        "preparedTiersVerified": 8
       },
       "ownerBlobsVerified": 10,
       "unrelatedOwnerEdit": {

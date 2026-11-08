@@ -100,7 +100,11 @@ survive no-pending lethal cleanup as already modeled. Knockback cleanup at
 whole work byte clears and target effect0x4000 alone is removed. Existing
 no-pending/fresh-work guards remain; no runtime change. The elemental/cleanup
 documentation checklist is complete, with the broader status filter still
-separate. Faith Calculation at0x00187150 is next. ZOD-436 remains open.
+separate. Faith Calculation matches62 words/eight returns: Faith100 then Innocent0
+on working copies, single signed /10000 after both Faith multiplications and the
+signed16 return-delay store. Offline interval endpoints prove the division over
+the full signed16/byte numerator envelope; existing C# agrees. Elemental Absorb
+and status roll at0x0018871c is next. ZOD-436 remains open.
 The unrelated owner edit in `.circleci/config.yml` remains uncommitted and excluded.
 The shared Calculate Hit %/final-hit/per-source roll
 documentation was already supplied; no duplicate is needed.

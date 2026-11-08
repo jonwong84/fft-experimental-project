@@ -227,8 +227,48 @@ dependencies, not ZOD-436's broader shared-consumer review. The supplied
 [Elemental XA * YA wrapper](magic-elements-and-routing.md#supplied-elemental-xa--ya-wrapper--zod-436-support)
 and its multiplication/weather/effective-weather/ability-element helpers are now
 checked too, along with common affinity modification, nullification and pending-
-proc/knockback cleanup. Faith Calculation is the next useful supplied routine;
+proc/knockback cleanup. The supplied Faith Calculation below is now checked too;
 the full shared-consumer review remains open.
+
+## Supplied Faith Calculation
+
+The owner's listing matches all62 instruction words at `0x80187150`–`0x80187244`
+and all eight listed returns, including formula0x08 damage and0x0C healing. The
+same supporting receipt pins the source, prepared bytes, Faith input type and
+managed arithmetic at `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+
+For each unit, the helper reads current status byte`0x5c`: Faith bit`0x80` first
+sets the **working copy** to100, then Innocent bit`0x40` sets it to0. Innocent
+therefore wins if both are present. The attacker copy is byte`0x801938d3`, target
+copy`0x801938d2`; the routine does not write either unit's actual Faith stat.
+The receipt checks20 literal stored-byte/status descriptions. `FaithValue.Effective`
+already preserves this precedence independently for both units.
+
+The arithmetic loads signed16 stored HP damage, multiplies by unsigned-byte
+target Faith and then attacker Faith, and performs **one signed division by10000**.
+The prose's two `/100` terms cannot be implemented as sequential integer
+divisions: damage5 with Faith90/90 gives4, while sequential divisions would give3.
+The source's `0x68db8bad` multiply-high, arithmetic shift12 and sign correction
+implement truncation toward zero. The sign correction uses0 or-1, not0 or1.
+The final signed16 damage store is in the return delay slot.
+
+Even full-byte Faith255/255 keeps the intermediate signed product in32 bits:
+the envelope is -2,130,739,200 through2,130,674,175. An offline division proof
+checks both endpoints of each of426,141 quotient intervals (852,282 checks),
+using monotonicity within each sign half and the checked -1/0 bridge to cover
+every integer numerator in that envelope. This is not execution of the original
+or C code or a claim to run billions of tests. The unchecked signed16 store
+retains output wrap; the routine introduces no cap, hit/type change, absorption,
+HP publication or RNG.
+
+`FaithMagicArithmetic.ScaleStored` already matches the single division and
+store. Zero effective Faith makes the damage amount0 without nullifying a hit;
+formula0x08 can still reach its later absorption/conditional-proc tail. Broader
+current-status admission and the final result cap remain separate. All19 focused
+.NET amount/arithmetic/current-input tests and eight Python tests pass; all ten
+owner draft blobs and the unrelated CI edit are unchanged. No runtime or fixture
+change is needed. The next useful supplied routine is Elemental
+Absorb and status roll at `0x0018871c`. ZOD-436 remains open.
 
 ## Original implementation checkpoint
 

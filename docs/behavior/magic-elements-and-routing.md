@@ -321,8 +321,10 @@ and eight Python tests pass; all ten owner draft blobs and the unrelated CI edit
 remain unchanged. No runtime or fixture change is needed.
 The supplied-document checklist for elemental processing and these cleanup
 dependencies is now complete; broader status/Oil/Float/mount handling and the
-full ZOD-436 shared-consumer review remain separate/open. The next useful routine
-on formula0x08's surviving-hit path is Faith Calculation at `0x00187150`.
+full ZOD-436 shared-consumer review remain separate/open. The supplied
+[Faith Calculation](faith-magic-amounts.md#supplied-faith-calculation) on
+formula0x08's surviving-hit path is now checked too; absorption/proc routing is
+next.
 
 ## Original implementation checkpoint
 
