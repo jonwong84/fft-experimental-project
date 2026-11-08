@@ -4,7 +4,7 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-441 (compose one fresh ordinary spell's caller passes), supporting the ongoing AI/review programme.**
+**Next bounded work: ZOD-442 (trace fresh spell list/scenario integration), supporting the ongoing AI/review programme.**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 [Learning reports, owned slots and player casting](behavior/learn-on-hit.md)
@@ -66,14 +66,17 @@ now resolves one fresh origin/pass with ordered placement, shared simulation,
 strict best rank and separate baseline admission. [ZOD-440 pass search](behavior/ordinary-spell-pass-search.md)
 now traverses one selected pass's origins with shared remaining aims/RNG, proven
 self-hit consumption, unresolved continuation and final-destination ties.
-Cross-pass/list composition remains separate.
+[ZOD-441 ability search](behavior/ordinary-spell-ability-search.md) now composes
+one owned offensive slot/scenario's caller passes with fresh masks, shared best
+and RNG, and a final baseline gate. Full list/scenario dispatch and insertion
+remain separate.
 ZOD-432 records the required readability review after the full AI port.
 The owner's interim [routine ownership refactor](architecture/ai-routine-ownership.md)
 now exposes named methods matching the supported decision flow: `ActionSelect`,
 `GeneralSelect`, scenario/ability/rank/fallback work, and ordinary spell
 `AiActionSimulateAndScore` / `ActionHitsSimulate` / `StrikesSimulate`.
 It preserves current admission and does not close the remaining AI review work.
-There are 36 open tickets below. The 405 completed tickets, prior checkpoints and
+There are 36 open tickets below. The 406 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -97,26 +100,27 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Next bounded milestone
 
-### ZOD-441 — Compose one fresh ordinary spell's caller passes
+### ZOD-442 — Trace fresh ordinary spell list/scenario integration
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-426, ZOD-440
+**Type:** Study · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-426, ZOD-441
 
-Trace the ordinary caller's unit/tile pass order, useful membership, remaining
-aim resets, current-best resets and rank insertion boundaries against the pinned
-reference before composing [one-pass search](behavior/ordinary-spell-pass-search.md).
-Internally derive one owned offensive slot and selected fresh Main/Complement
-scenario once, then compose only its admitted caller passes with continuous RNG.
-Expose pass order, per-pass results and source-backed baseline gates as diagnostics;
-do not infer cross-pass best ownership from independent query results. Preserve
-nonvaluable/unresolved continuation, exact ties, private unit restoration and
-whole-query rollback. Add independent literal multi-pass ordering, reset, RNG
-and late-rejection regressions. Share the pass runner; accept no caller caches.
+Trace `general_select`, `ability_list_evaluate`, `ai_ability_entry_load`,
+`ai_ability_outcome_evaluate`, scenario sequencing and `ai_best_rank_insert`
+against the pinned read-only reference. Map the existing fresh ordinary spell
+caller and shared rank owners to their enclosing original ownership: initialized
+list/slot order and terminators, movement/target preparation reuse, Main/Complement
+entry conditions, considered-usage resets, best/ranked reset and insertion
+boundaries, movement-baseline participation and RNG continuity. Include implicit
+Attack and other list families explicitly in the disposition; do not equate an
+owned spell subset with the complete original ability list.
 
-Full ability-list/scenario dispatch, ranked insertion/lottery, commands and
-autonomous magic remain separate. Mixed/healer lists, useful-self pathways,
-retained workspaces and broader geometry/status domains keep their gates.
-Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, full corpse/
-Golem/terminal/frame RNG, broad interfaces, ZOD-106 and custom cone stay separate.
+Produce independently checkable source/literal ordering and rank-insertion
+descriptions, identify unsupported reads and choose a bounded next runtime child.
+Reuse existing insertion/lottery owners where appropriate; do not activate full
+dispatch, commands or a broad new interface in this source-study ticket.
+Mixed/healer/useful-self/Reflect paths, retained workspaces and broader geometry/
+statuses retain their gates. Owner drafts/JobStats, Knight slot mapping, editor,
+automatic facing, full corpse/Golem/terminal/frame RNG, ZOD-106 and cone stay separate.
 
 ## Review programme
 

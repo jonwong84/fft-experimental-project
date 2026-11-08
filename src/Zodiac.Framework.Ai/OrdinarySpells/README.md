@@ -1,5 +1,15 @@
 # Ordinary spell AI pathway
 
+For one owned spell's ordinary caller passes in a fresh movement scenario, start
+with [OrdinarySpellAiAbilitySearchQuery.Evaluate](OrdinarySpellAiAbilitySearchQuery.cs).
+Follow [AiAbilityOutcomeEvaluate](Selection/OrdinarySpellAiAbilityEvaluation.cs)
+→ `OriginReachableEvaluate` → `OriginAimTilesEvaluate` → `AiActionSimulateAndScore`.
+Unit/tile passes share best and RNG; each rebuilds its remaining aims. The final
+baseline gate is diagnostic. See
+[ZOD-441](../../../docs/behavior/ordinary-spell-ability-search.md) for exact
+caller/reset ownership. List/scenario dispatch, ranked insertion and commands
+remain separate.
+
 For one fresh spell pass across cast origins, start with
 [OrdinarySpellAiPassSearchQuery.Evaluate](OrdinarySpellAiPassSearchQuery.cs).
 It derives fresh aims and movement once, then calls

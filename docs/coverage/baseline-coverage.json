@@ -1866,7 +1866,9 @@
         "docs/behavior/ordinary-spell-origin-evaluation.md",
         "docs/evidence/ai/spell-origin-evaluation-implementation-v1.json",
         "docs/behavior/ordinary-spell-pass-search.md",
-        "docs/evidence/ai/spell-pass-search-implementation-v1.json"
+        "docs/evidence/ai/spell-pass-search-implementation-v1.json",
+        "docs/behavior/ordinary-spell-ability-search.md",
+        "docs/evidence/ai/spell-ability-search-implementation-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -2042,7 +2044,9 @@
         "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiOriginQuery.cs",
         "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiOriginEvaluationQuery.cs",
         "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiPassSearchQuery.cs",
-        "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiPassEvaluation.cs"
+        "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiPassEvaluation.cs",
+        "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAbilitySearchQuery.cs",
+        "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAbilityEvaluation.cs"
       ],
       "automatedChecks": [
         {
@@ -2520,6 +2524,10 @@
         {
           "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiPassSearchTests.cs",
           "scope": "One fresh pass across origins: source self-hit membership, shared aim consumption/skips/RNG, unresolved continuation, final destination/exact ties, rank-only baseline and atomic late rollback."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiAbilitySearchTests.cs",
+          "scope": "One fresh slot/scenario caller: unit/tile order and mask resets, shared best and RNG, recipient versus useful membership, cross-pass rank/proximity ties, nonvaluable/unresolved continuation, final baseline gate and atomic late rollback."
         }
       ],
       "manualCheckpoint": {
@@ -2532,10 +2540,10 @@
         "General lists/rosters/maps, broader Blue/player-controlled/special policies, Defend, replacement interface, host activation and original frame RNG remain incomplete.",
         "Caller certificates still cover unrepresented original facts; no retail execution comparison establishes general equivalence."
       ],
-      "nextAction": "Compose one fresh offensive slot/scenario's caller passes under ZOD-441 after tracing best/mask resets and insertion boundaries; broader dispatch, autonomous magic and full AI review remain separate.",
+      "nextAction": "Trace fresh ordinary spell list/scenario integration under ZOD-442 before its next bounded runtime child; full dispatch/insertion, autonomous magic and full AI review remain separate.",
       "followUpTickets": [
         "ZOD-329",
-        "ZOD-441"
+        "ZOD-442"
       ]
     },
     {

@@ -9,11 +9,13 @@ internal static class OrdinarySpellAiPassEvaluation
 {
     internal static OrdinarySpellAiPassSearchResult OriginReachableEvaluate(OrdinarySpellAiWork work,
         OrdinarySpellAiOriginOutcome origins, OrdinarySpellAiOriginPass pass, ImmutableArray<OrdinarySpellAiOrigin> choices,
-        RandomState rng, bool consumeAims)
+        RandomState rng, bool consumeAims, OrdinarySpellAiPassBest? bestAtEntry = null)
     {
         var remaining = pass.Potential.Aims.Select(a => a.Position).ToHashSet();
         var traces = ImmutableArray.CreateBuilder<OrdinarySpellAiOriginTrace>();
-        OrdinarySpellAiPassBest? best = null;
+        // Only the fresh ability caller supplies this seed. Source unit/tile passes share best_action,
+        // while ai_cast_aim_tiles_build clears and rebuilds the remaining aims for every pass.
+        OrdinarySpellAiPassBest? best = bestAtEntry;
         var selfEffect = work.Usefulness.Single(u => u.UnitId == work.Actor.Id).Effect;
         if (selfEffect == OrdinarySpellAiEffect.Useful)
             throw new NotSupportedException("Useful-self origin consumption requires its separate source pathway.");

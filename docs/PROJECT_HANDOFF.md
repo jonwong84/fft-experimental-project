@@ -6,31 +6,34 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-440 is complete. Next: ZOD-441, compose one fresh spell's caller passes.**
+**ZOD-441 is complete. Next: ZOD-442, trace fresh spell list/scenario integration.**
 Read [BACKLOG.md](BACKLOG.md), the
 [origin study](behavior/ordinary-spell-movement-origins.md) and
-[pass search](behavior/ordinary-spell-pass-search.md).
-Trace caller pass order, best/mask resets and insertion ownership before composing
-one offensive owned slot/scenario. Full list dispatch/lottery/commands stay separate.
+[ability caller](behavior/ordinary-spell-ability-search.md).
+Trace the enclosing list/scenario entry, preparation reuse, rank insertion/reset
+and implicit Attack ownership before choosing the next bounded runtime child.
+Full dispatch/lottery/commands stay separate.
 
-Start pass search at
-`src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiPassSearchQuery.cs`.
-It binds fresh work once and calls `OrdinarySpellAiPassEvaluation`'s named
+Start one-slot/scenario caller search at
+`src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAbilitySearchQuery.cs`.
+It binds fresh work and movement once, then calls
+`OrdinarySpellAiAbilityEvaluation.AiAbilityOutcomeEvaluate` →
 `OriginReachableEvaluate` → `OriginAimTilesEvaluate` → shared
-`AiActionSimulateAndScore`. One pass shares remaining aims/RNG, with source-proven
-caster accounting for adverse-self consumption. Unresolved hit255 is compared
-before origin-local exit without consumption; later origins continue. Equal ranks
-use final movement destination proximity; exact ties stay first. Baseline admission
-is rank-only. Each hypothesis restores private units; any unsupported work rejects
-the entire entry RNG. The single-origin query shares this runner with consumption
-disabled and preserves its seventeen previous cases.
+`AiActionSimulateAndScore`. Moving/still unit groups and tile search retain one
+best and RNG; remaining aims rebuild per pass. The source best reset belongs at
+the later insertion boundary, which this query does not execute. Exact ties
+retain the earlier pass; equal ranks may improve final-destination proximity.
+Only the final rank-only movement-baseline gate is reported. Private resources
+restore between hypotheses and late rejection restores the entire entry RNG.
+Standalone pass and single-origin queries retain their previous contracts.
 
-Latest validation: zero-warning/error Release build, **5,247 .NET tests**
-(1,835 Framework, 1,442 AI) and **802 Python tests** pass. Thirteen new managed
-cases cover consumption/skips, self-hit exclusions, nonvaluable/empty recipients,
-unresolved continuation, ties, baseline admission, shared RNG and late rollback.
-Logs and seven TRX reports are under ignored `scratch/zod440-*`. The
-[receipt](evidence/ai/spell-pass-search-implementation-v1.json) pins source
+Latest validation: zero-warning/error Release build, **5,263 .NET tests**
+(1,835 Framework, 1,458 AI) and **802 Python tests** pass. Sixteen new managed
+cases cover pass order/mask rebuilds, shared best/RNG, deadline versus recipient
+membership, later damage/proximity improvements, exact ties, nonvaluable and
+unresolved continuation, early/empty returns, final baseline gate and rollback.
+Logs and seven TRX reports are under ignored `scratch/zod441-*`. The
+[receipt](evidence/ai/spell-ability-search-implementation-v1.json) pins source
 and preservation. Coverage remains 58 validated planning entries and partial.
 
 The owner's concurrent controller formatting is preserved exactly in separate
@@ -74,7 +77,7 @@ until explicitly re-enabled; current validation is local.
 The [review programme](development/documentation-review-programme.md) and
 [progress receipt](evidence/maintenance/documentation-review-progress-v1.json)
 record completed bounded batches through ZOD-436, the supporting ZOD-426
-study and bounded ZOD-437–440 implementations. ZOD-428 and complete inventory groups remain open. Prior helper
+study and bounded ZOD-437–441 implementations. ZOD-428 and complete inventory groups remain open. Prior helper
 cross-checks and annotation corrections live
 in their behavior/evidence notes; use [history](history/README.md) for completed
 ticket checkpoints, not old next-task advice.

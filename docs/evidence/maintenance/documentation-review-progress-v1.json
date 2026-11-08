@@ -399,7 +399,7 @@
     }
   ],
   "fullyReviewedGroups": [],
-  "nextBatch": "ZOD-441",
+  "nextBatch": "ZOD-442",
   "overallBehaviorReviewCompleted": false,
   "supportingSourceStudies": [
     {
@@ -433,6 +433,12 @@
       "report": "docs/behavior/ordinary-spell-pass-search.md",
       "receipt": "docs/evidence/ai/spell-pass-search-implementation-v1.json",
       "disposition": "One fresh selected pass across origins with shared remaining aims/RNG; no caller/list dispatch, review group or autonomous magic completed."
+    },
+    {
+      "ticket": "ZOD-441",
+      "report": "docs/behavior/ordinary-spell-ability-search.md",
+      "receipt": "docs/evidence/ai/spell-ability-search-implementation-v1.json",
+      "disposition": "One fresh owned offensive slot/scenario caller; pass-local masks and shared best/RNG, no full dispatch/insertion, review group or autonomous magic completed."
     }
   ]
 }

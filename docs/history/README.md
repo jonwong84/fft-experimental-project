@@ -21,7 +21,9 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 405 entries index completed bounded work; they do not mean the full game is complete.
+These 406 entries index completed bounded work; they do not mean the full game is complete.
+
+- [ZOD-441 — Compose one fresh ordinary spell's caller passes](../behavior/ordinary-spell-ability-search.md)
 
 - [ZOD-440 — Evaluate one fresh ordinary spell pass across cast origins](../behavior/ordinary-spell-pass-search.md)
 
