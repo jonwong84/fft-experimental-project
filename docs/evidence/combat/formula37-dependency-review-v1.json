@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "ae81a98c76c9541ecaec661884c853a60b6849cf",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Current formula0x37 dependency coverage inventory, not full modifier/terrain implementation or a new completed backlog ticket.",
+  "sourceReceipt": "docs/evidence/combat/physical-pipeline-review-source-v1.json",
+  "sourceFilesRechecked": 14,
+  "sourceFunctionsRechecked": 47,
+  "preparedBattle": {
+    "byteLength": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "loadAddress": "0x80067000"
+  },
+  "functions": [
+    {
+      "symbol": "formula_damage_random_y_times_pa",
+      "address": "0x80189f84",
+      "byteLength": 72,
+      "instructionSha256": "7cd7c303a86196dc019117a8b66628c389247d88a166dc51f0fdf0d3017e03e9",
+      "calls": [
+        {
+          "pc": "0x80189f8c",
+          "target": "0x80188510"
+        },
+        {
+          "pc": "0x80189f9c",
+          "target": "0x80185e04"
+        },
+        {
+          "pc": "0x80189fa4",
+          "target": "0x8018614c"
+        },
+        {
+          "pc": "0x80189fac",
+          "target": "0x80188adc"
+        },
+        {
+          "pc": "0x80189fb4",
+          "target": "0x8018691c"
+        }
+      ]
+    },
+    {
+      "symbol": "formula_evade_calculate_physical",
+      "address": "0x80188510",
+      "byteLength": 88,
+      "instructionSha256": "a91a0c3b819e2925f6a9b9eeb8c77c7b4643a274888fac6898e8c2fa0eb834e9",
+      "calls": [
+        {
+          "pc": "0x80188518",
+          "target": "0x80184f9c"
+        },
+        {
+          "pc": "0x80188520",
+          "target": "0x801852e4"
+        },
+        {
+          "pc": "0x80188528",
+          "target": "0x80185328"
+        },
+        {
+          "pc": "0x80188530",
+          "target": "0x8018537c"
+        },
+        {
+          "pc": "0x80188538",
+          "target": "0x801853f4"
+        },
+        {
+          "pc": "0x80188540",
+          "target": "0x80185738"
+        },
+        {
+          "pc": "0x80188548",
+          "target": "0x801854fc"
+        },
+        {
+          "pc": "0x80188550",
+          "target": "0x80188488"
+        }
+      ],
+      "documentationCoverage": "Supplied wrapper/equipment/final-hit/per-source listings and shared magic helper listings cross-checked; broader physical-specific leaf annotations are not all separately supplied.",
+      "runtimeScope": "Current base100/class/facing domain; full equipment, Concentrate, Dark/Confuse, Abandon, weather and status integration remain guarded."
+    },
+    {
+      "symbol": "formula_store_pa_and_y",
+      "address": "0x80185e04",
+      "byteLength": 44,
+      "instructionSha256": "7ba84ad18ea383b12df59dc04d4b4a27c7425ab28939ec1251d7bec8ff4951b3",
+      "calls": [],
+      "documentationCoverage": "Source-traced leaf and prepared bytes; a separately supplied listing is not required to identify PA/Y loads.",
+      "runtimeScope": "Effective PA and data-defined Y are used by the shared formula."
+    },
+    {
+      "symbol": "formula_apply_attack_up_and_martial_arts",
+      "address": "0x8018614c",
+      "byteLength": 184,
+      "instructionSha256": "9c71bf82b11e68702c8c3262d749ef177d88057c22bbd04aa9ff1629699fc9f0",
+      "calls": [],
+      "documentationCoverage": "Source-traced leaf and prepared bytes; Attack Up and Martial Arts listing would add an independent documentation cross-check.",
+      "runtimeScope": "Attack Up4/3 then eligible unarmed Martial Arts3/2 are traced; those support inputs are not admitted by the current closed physical profile."
+    },
+    {
+      "symbol": "formula_apply_physical_modifiers_without_supports",
+      "address": "0x80188adc",
+      "byteLength": 56,
+      "instructionSha256": "4434021d0802a29ef7e96ad5f361ca517e747eb8e8693aa3545ec530686d2c43",
+      "calls": [
+        {
+          "pc": "0x80188ae4",
+          "target": "0x80186254"
+        },
+        {
+          "pc": "0x80188aec",
+          "target": "0x801862cc"
+        },
+        {
+          "pc": "0x80188af4",
+          "target": "0x8018636c"
+        },
+        {
+          "pc": "0x80188afc",
+          "target": "0x80184964"
+        }
+      ],
+      "documentationCoverage": "Source-traced four-call cluster and prepared bytes; Cluster of Physical Routines listing would add an independent documentation cross-check.",
+      "runtimeScope": "Attacker Berserk/Frog, target Defense Up, target Protect/Sleep/Charging/Chicken/Frog, then original zodiac. Broad modifiers stay outside current profile."
+    },
+    {
+      "symbol": "formula_apply_damage_and_knockback",
+      "address": "0x8018691c",
+      "byteLength": 208,
+      "instructionSha256": "ebe485c19957f75db1d994cb3e13bc109185e7f4e2ecd0d34ea4e3b437478afc",
+      "calls": [
+        {
+          "pc": "0x80186924",
+          "target": "0x8018eea0"
+        },
+        {
+          "pc": "0x80186984",
+          "target": "0x8018eea0"
+        },
+        {
+          "pc": "0x801869c4",
+          "target": "0x8005e0cc"
+        },
+        {
+          "pc": "0x801869d4",
+          "target": "0x801843ec"
+        }
+      ],
+      "documentationCoverage": "Source-traced formula and knockback descendants, prepared bytes and existing actual/AI regressions; alternative damage/knockback listing would add an independent documentation cross-check.",
+      "runtimeScope": "Shared damage RNG, execution-only two-Brave comparison and supported flat single-target settlement are implemented. Full falls, mounts, extra targets and terrain are separate."
+    }
+  ],
+  "sharedDependencies": [
+    "Physical evade eight-stage preparation and common final-hit/per-source comparison chain.",
+    "Physical modifier cluster calls attacker statuses, Defense Up, target statuses, original zodiac.",
+    "Damage/knockback calls formula_get_random twice, random_roll_pass_fail once, and conditional knockback_calculate. Its landing/forced-movement descendants remain within the recorded bounded scope.",
+    "Common RNG, compatibility and action-restriction helpers have additional supplied cross-checks from ZOD-436."
+  ],
+  "validation": {
+    "sourceAudits": {
+      "dash": {
+        "formulaDescriptions": 24,
+        "actualDescriptions": 8,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false
+      },
+      "preparedDash": {
+        "abilityId": 147,
+        "range": 1,
+        "verticalTolerance": 1,
+        "formula": 55,
+        "y": 4,
+        "evadeable": false,
+        "directTrajectory": false,
+        "aiPhysical": true,
+        "aiDirectTrajectory": false,
+        "aiExhaustive": false,
+        "preparedVerified": true
+      }
+    },
+    "referenceClean": true,
+    "ownerBlobsVerified": 10,
+    "ownerApprovedCiEdit": {
+      "path": ".circleci/config.yml",
+      "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+      "committed": true,
+      "ciEnabledDefault": false
+    },
+    "runtimeChanged": false,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "focusedManagedTestsPassed": 186,
+    "focusedPythonTestsPassed": 2,
+    "managedTestsExecuted": true
+  }
+}

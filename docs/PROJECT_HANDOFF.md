@@ -206,6 +206,14 @@ description now preserve it. Historical v1 remains unchanged; current v2 records
 the corrected literal and nine new boundary vectors. Actual and AI delivery
 regressions cover the fix; retail Dash/Stone0x37 expectations remain unchanged.
 
+The owner's follow-up dependency check freshly matches all14 source files/47
+functions and accounts for all five formula0x37 direct helpers plus their major
+subpaths. The [coverage checklist](behavior/physical-pipeline-review.md#formula0x37-dependency-coverage-follow-up)
+separates source tracing, supplied listings and runtime admission. Attack Up/
+Martial Arts, the physical cluster and alternative damage/knockback are useful
+remaining supplied listings; their source is already traced. Broader modifiers,
+equipment and landing/fall behavior remain deferred. No runtime change.
+
 The subsequent supplied physical-evasion wrapper is also source/byte checked:
 eight calls and twenty caller return locations match. Its final call goes via
 `evade_roll` to the common hit-percentage routine, returning the hit flag rather

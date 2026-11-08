@@ -38,6 +38,55 @@ wiki. The caller then reaches applicable aftermath and result finalization;
 authoritative result application remains later. This confirmation changes no
 gameplay code and adds no original/C execution claim.
 
+## Formula0x37 dependency coverage follow-up
+
+The owner requested an explicit account of the routines called by Dash and
+Throw Stone's shared formula. All five direct helpers are already source-traced
+in the ZOD-427 receipt. A fresh check of its 14 files/47 functions against clean
+reference `11464943bbdbd2a0af022d90cb7f10455cf911df` matches every fingerprint.
+The [dependency inventory](../evidence/combat/formula37-dependency-review-v1.json)
+also records prepared instruction hashes and direct calls for the handler and
+all five helpers. Source tracing, supplied documentation checks and managed
+runtime admission are distinct coverage claims:
+
+- **Physical Evade Calculation (`0x80188510`):** the eight-stage wrapper,
+  physical equipment loader, final hit and per-source roll have supplied
+  cross-checks below. The shared Transparent, Abandon, target-status, restriction
+  and RNG helpers also have later magic-review evidence. Current physical
+  execution admits its narrower base100/class/facing inputs; broader physical
+  equipment, support, status and weather inputs are still guarded.
+- **Store PA and Y (`0x80185e04`):** a source-traced leaf with no calls. It loads
+  effective PA and ability Y into the working operands. Existing shared formula
+  code consumes those values; a separate wiki listing is not a prerequisite.
+- **Attack Up and Martial Arts (`0x8018614c`):** a source-traced leaf with no
+  calls. It applies Attack Up `4/3`, then Martial Arts `3/2` when the selected
+  weapon type is unarmed. It has no Two Hands step. These modifiers remain
+  excluded by current physical admission. A supplied listing would independently
+  cross-check its instruction-level conditions and stores.
+- **Cluster of Physical Routines (`0x80188adc`):** four ordered calls: attacker
+  Berserk/Frog, target Defense Up, target physical statuses, then original zodiac
+  compatibility. Attack Up/Martial Arts is already applied by its caller; the
+  cluster name does not mean Defense Up is skipped. All four callees are pinned
+  in the source review. Their broader inputs remain outside current admission.
+- **Damage and Knockback, alternative (`0x8018691c`):** calls the formula RNG
+  helper twice, Pass/Fail once and knockback calculation conditionally. Damage
+  uses random `1..Y`; only execution enters the strict two-Brave comparison.
+  Current actual/preview/AI code and regressions cover the admitted damage and
+  flat, single-target displacement path. Full landing/fall/terrain/mount behavior
+  is still separate; recording `knockback_calculate` does not claim all of it is
+  implemented.
+
+For further FFHacktics comparison, the most useful remaining supplied listings
+are **Attack Up and Martial Arts**, **Cluster of Physical Routines**, and
+**Damage and Knockback Routine (alternative)**. Their nested calls can then be
+matched to this inventory without repeating the already supplied shared helpers.
+These pages add independent annotations; they do not block the currently
+admitted source-traced behavior. No runtime or owner-definition change is
+required by this coverage check, and no broader review group is closed.
+All 186 focused .NET Dash/Stone/formula-assignment tests and two Python Dash
+tests pass. The prepared Dash record and 32 source-derived descriptions also
+pass; all ten owner draft blobs and the committed disabled CI gate are unchanged.
+
 ## Supplied physical-evasion wrapper (2026-11-07)
 
 The owner's full Physical Evade Calculation excerpt confirms the eight calls
