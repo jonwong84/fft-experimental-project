@@ -2,7 +2,15 @@ using System.Collections.Immutable;
 
 namespace Zodiac.Framework.Ai;
 
-public enum AiTurnStage { FirstCommand, RetainedCommand, PostActCommand, FinishFacing, RecoveryBinding }
+public enum AiTurnStage
+{
+    FirstCommand,
+    RetainedCommand,
+    PostActCommand,
+    FinishFacing,
+    RecoveryBinding
+}
+
 public sealed record AiTurnConfiguration(AiDecisionConfiguration Decision, AiDispatchProfile Dispatch, BattleFacing? Facing = null);
 public sealed record AiTurnFailure(AiTurnStage Stage, AiCommandFailure? CommandFailure = null,
     RosterMoveContinueResult? ContinuationFailure = null, RosterFacingResult? FacingFailure = null);
@@ -22,7 +30,13 @@ public sealed class AiTurnRecovery
     internal RosterFacingTurnState ExpectedState { get; }
     internal AiTurnInputs Inputs { get; }
     internal RosterMoveContinuation? Continuation { get; }
+
     internal AiTurnRecovery(RosterFacingTurnState state, AiTurnStage step,
         AiTurnInputs inputs, RosterMoveContinuation? continuation)
-    { ExpectedState = state; NextStep = step; Inputs = inputs; Continuation = continuation; }
+    {
+        ExpectedState = state;
+        NextStep = step;
+        Inputs = inputs;
+        Continuation = continuation;
+    }
 }
