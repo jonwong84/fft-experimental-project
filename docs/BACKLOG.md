@@ -104,6 +104,13 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 **Type:** Study · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-426, ZOD-441
 
+Owner-approved API direction: identify a narrow immutable context that pairs the
+current battle state with its matching definition-bound catalog. Keep actor,
+slot, scenario and supported-profile declaration in the request, with RNG passed
+explicitly. Establish context lifetime and validation in the enclosing decision
+flow before choosing a bounded refactor; retain fresh admission and reject
+mismatched definitions without accepting cached candidates or ranks.
+
 Trace `general_select`, `ability_list_evaluate`, `ai_ability_entry_load`,
 `ai_ability_outcome_evaluate`, scenario sequencing and `ai_best_rank_insert`
 against the pinned read-only reference. Map the existing fresh ordinary spell

@@ -14,6 +14,13 @@ Trace the enclosing list/scenario entry, preparation reuse, rank insertion/reset
 and implicit Attack ownership before choosing the next bounded runtime child.
 Full dispatch/lottery/commands stay separate.
 
+Owner-approved API direction for ZOD-442: pair current battle state and its
+matching catalog in a narrow immutable context; keep actor/slot/scenario and
+supported-profile declaration in the request, and pass RNG explicitly. Determine
+the context's lifetime/validation from the enclosing flow before the bounded
+refactor. Preserve the owner's ongoing review edits to the ability query and
+battle state; the current five-argument API remains in place during this study.
+
 Start one-slot/scenario caller search at
 `src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAbilitySearchQuery.cs`.
 It binds fresh work and movement once, then calls
