@@ -6,14 +6,23 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-442 is complete. Next: ZOD-443, introduce the validated spell query context.**
-Read [BACKLOG.md](BACKLOG.md) and the
-[list/scenario integration study](behavior/ordinary-spell-list-integration.md).
-Implement the owner-approved narrow immutable state/catalog context, request-owned
-actor/slot/scenario/profile and explicit RNG for the one-slot ability caller:
-`Evaluate(context, request, rng)`. Context validates matching definition identity;
-all current per-call admission and private simulation remain. No public prepared
-work, rank/mask caches or command authority. Preserve the owner's review edits.
+**ZOD-443 is complete. Next: the owner's review, before further development.**
+Read [BACKLOG.md](BACKLOG.md), the
+[context API](behavior/ordinary-spell-context.md) and
+[list/scenario study](behavior/ordinary-spell-list-integration.md).
+The caller now exposes `Evaluate(context, request, rng)`. `OrdinarySpellAiContext`
+holds only the immutable captured battle state and matching catalog; constructor
+validation rejects nulls and mismatched definition instances. The request owns
+actor/slot/profile/scenario. RNG remains explicit, and all per-call admission,
+private simulation and whole-entry rejection are preserved. Constructor/null
+argument exceptions and rejected-search results have documented distinct contracts.
+
+Create a new context for a new live state. Old contexts still replay their old
+snapshot and grant no command authority. Begin review at
+`src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiContext.cs`, then the request
+and `OrdinarySpellAiAbilitySearchQuery.cs`. Other query signatures are unchanged.
+This interim review does not complete ZOD-432 or the full AI port. Select a bounded
+shared-preparation/list child after review; no further ticket is activated now.
 
 The study confirms general ability evaluation runs scenario1 once; scenario0
 owns the move-only baseline/fallback. Complement is a diagnostic mask, not an
@@ -36,16 +45,19 @@ Only the final rank-only movement-baseline gate is reported. Private resources
 restore between hypotheses and late rejection restores the entire entry RNG.
 Standalone pass and single-origin queries retain their previous contracts.
 
-Latest validation: zero-warning/error Release build, **5,263 .NET tests**
-(1,835 Framework, 1,458 AI) and **810 Python tests** pass. Eight new Python tests
-validate twenty source-only list, usage, caller and insertion descriptions,
-boundaries and tamper rejection. ZOD-442 changes no managed runtime behavior.
-The owner's two pending query/battle-state review edits remain byte-for-byte
-preserved and uncommitted. Logs and seven TRX reports are in ignored
-`scratch/zod442-*`; the [receipt](evidence/ai/spell-list-integration-source-v1.json)
-pins source, descriptions and preservation. Coverage remains 58 validated planning
-entries and partial. ZOD-443 is the context API implementation, not part of the
-completed source study.
+Latest validation: zero-warning/error Release build, **5,276 .NET tests**
+(1,835 Framework, 1,471 AI) and **810 Python tests** pass. Thirteen new context
+cases cover null/definition identity, request/profile/current admission, actual
+command lifetime, old-snapshot replay and reuse after whole-query rejection.
+All sixteen prior ability-search vectors retain their exact assertions after
+call-site migration. Logs/seven TRX reports are in ignored `scratch/zod443-*`;
+the [receipt](evidence/ai/spell-context-implementation-v1.json) records validation,
+source-study audit and preservation. Coverage remains 58 planning entries and partial.
+
+The owner authorized committing the pending query/battle-state formatting. It is
+preserved in separate commit `973b39e`; the query's split signature and explicit
+braces are retained in the refactor, and the battle-state formatting blob remains
+`2dc345d4887b2ac3de98b5f74f7b4ddc9300cd54` exactly.
 
 The owner's concurrent controller formatting is preserved exactly in separate
 commit `0e868ac`; its non-whitespace text is unchanged. Current
@@ -88,7 +100,7 @@ until explicitly re-enabled; current validation is local.
 The [review programme](development/documentation-review-programme.md) and
 [progress receipt](evidence/maintenance/documentation-review-progress-v1.json)
 record completed bounded batches through ZOD-436, the supporting ZOD-426
-study, bounded ZOD-437–441 implementations and the ZOD-442 integration study. ZOD-428 and complete inventory groups remain open. Prior helper
+study, bounded ZOD-437–441 implementations, ZOD-442 integration study and ZOD-443 context API. ZOD-428 and complete inventory groups remain open. Prior helper
 cross-checks and annotation corrections live
 in their behavior/evidence notes; use [history](history/README.md) for completed
 ticket checkpoints, not old next-task advice.

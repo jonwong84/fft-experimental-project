@@ -18,8 +18,9 @@ geometry, origin ordering, private simulation and admission limits.
 
 Start at
 [`OrdinarySpellAiAbilitySearchQuery.Evaluate`](../../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAbilitySearchQuery.cs).
-It accepts the actor, owned primary slot, explicit movement scenario, admitted
-movement profile and RNG. It binds fresh `OrdinarySpellAiWork` and calls
+Its [ZOD-443 context API](ordinary-spell-context.md) accepts a captured matching
+state/catalog pair, a request containing actor/slot/profile/scenario and explicit
+RNG. It binds fresh `OrdinarySpellAiWork` and calls
 `OrdinarySpellAiOriginQuery.Build` once. It accepts no cached work or rank.
 
 Then follow

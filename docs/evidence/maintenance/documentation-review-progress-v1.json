@@ -399,7 +399,7 @@
     }
   ],
   "fullyReviewedGroups": [],
-  "nextBatch": "ZOD-443",
+  "nextBatch": "Owner review of ZOD-443",
   "overallBehaviorReviewCompleted": false,
   "supportingSourceStudies": [
     {
@@ -445,6 +445,12 @@
       "report": "docs/behavior/ordinary-spell-ability-search.md",
       "receipt": "docs/evidence/ai/spell-ability-search-implementation-v1.json",
       "disposition": "One fresh owned offensive slot/scenario caller; pass-local masks and shared best/RNG, no full dispatch/insertion, review group or autonomous magic completed."
+    },
+    {
+      "ticket": "ZOD-443",
+      "report": "docs/behavior/ordinary-spell-context.md",
+      "receipt": "docs/evidence/ai/spell-context-implementation-v1.json",
+      "disposition": "Validated raw-input context and three-argument ability-caller API; prior mechanics preserved. No full dispatch, review group or autonomous magic completed."
     }
   ]
 }

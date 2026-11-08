@@ -10,7 +10,7 @@ public sealed class OrdinarySpellAiAbilitySearchTests
     private static readonly BattleUnitId Mage = new("mage"), Guard = new("guard"), Other = new("other");
     private static OrdinarySpellAiAbilitySearchResult Query(OrdinarySpellAiCatalog catalog, OrdinaryMagicBattleState state,
         RandomState? rng = null, OrdinarySpellAiOriginScenario scenario = OrdinarySpellAiOriginScenario.Main) =>
-        OrdinarySpellAiAbilitySearchQuery.Evaluate(state, catalog, new(Mage, 0, scenario), new(true), rng ?? new(57, 0));
+        OrdinarySpellAiAbilitySearchQuery.Evaluate(new(state, catalog), new(Mage, 0, new(true), scenario), rng ?? new(57, 0));
 
     [Fact]
     public void Unit_best_survives_the_tile_pass_with_one_movement_prefix_and_continuous_rng()

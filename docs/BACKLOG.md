@@ -4,7 +4,7 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next bounded work: ZOD-443 (introduce the validated ordinary spell query context), supporting the ongoing AI/review programme.**
+**Next checkpoint: owner review of ZOD-443 before selecting further development.**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 [Learning reports, owned slots and player casting](behavior/learn-on-hit.md)
@@ -72,14 +72,16 @@ and RNG, and a final baseline gate. Full list/scenario dispatch and insertion
 remain separate. [ZOD-442 integration study](behavior/ordinary-spell-list-integration.md)
 now maps original list families/order, per-entry usage/loading, general scenario1
 dispatch, scenario0 baseline/fallback, ranked ownership and the agreed context
-lifetime. It selects the bounded ZOD-443 API refactor without activating dispatch.
+lifetime. [ZOD-443 context API](behavior/ordinary-spell-context.md) now validates
+the captured state/catalog pairing and exposes `Evaluate(context, request, rng)`
+with request-owned profile and preserved fresh admission. Dispatch remains separate.
 ZOD-432 records the required readability review after the full AI port.
 The owner's interim [routine ownership refactor](architecture/ai-routine-ownership.md)
 now exposes named methods matching the supported decision flow: `ActionSelect`,
 `GeneralSelect`, scenario/ability/rank/fallback work, and ordinary spell
 `AiActionSimulateAndScore` / `ActionHitsSimulate` / `StrikesSimulate`.
 It preserves current admission and does not close the remaining AI review work.
-There are 36 open tickets below. The 407 completed tickets, prior checkpoints and
+There are 35 open tickets below. The 408 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -101,35 +103,24 @@ provide detail. This file supersedes archived priorities and next-task advice.
   or old test counts here. Keep the handoff current rather than chronological.
 
 
-## Next bounded milestone
+## Owner review checkpoint
 
-### ZOD-443 — Introduce the validated ordinary spell query context
+ZOD-443 is complete. The owner will review the context API and current AI flow
+before selecting further work. Start with
+[`OrdinarySpellAiContext`](../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiContext.cs),
+[`OrdinarySpellAiAbilitySearchRequest`](../src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAbilitySearchRequest.cs)
+and [`Evaluate`](../src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAbilitySearchQuery.cs).
+The [context notes](behavior/ordinary-spell-context.md) specify constructor/query
+failure behavior and old-snapshot lifetime. This interim review does not close
+the full-port ZOD-432 readability ticket.
 
-**Type:** Story · **Priority:** P3 · **Status:** Ready · **Depends on:** ZOD-441, ZOD-442
-
-Implement the owner-approved [context boundary](behavior/ordinary-spell-list-integration.md#agreed-context-and-next-implementation)
-for the one-slot ability caller. Use a narrow immutable object pairing the
-captured `OrdinaryMagicBattleState` and its `OrdinarySpellAiCatalog`, rejecting
-null/mismatched definition references. Move the supported-profile declaration
-into the request beside actor/slot/scenario and expose
-`Evaluate(context, request, rng)`. Keep RNG explicit in both input and result.
-
-The context owns raw captured inputs only. Preserve fresh per-call actor, phase,
-learning/slot, current MP and profile admission, private hypotheses, whole-entry
-RNG rejection and immutable replay. Store no prepared work, list/mask/rank caches,
-RNG progress or command authority in the public context. New live state requires
-a new context; old contexts remain valid for pure old-snapshot replay.
-Migrate this caller and local call sites, preserve owner formatting and all
-existing candidate/pass/ability results, and add meaningful context identity,
-lifetime, null/profile and failed-query preservation regressions. State the
-constructor/factory failure contract explicitly. This is an API refactor, not
-list/scenario dispatch or gameplay expansion; keep other query migrations and
-shared full-list preparation as separately scoped work.
-
-Full mixed lists/Attack integration, ranked insertion/lottery, commands,
-useful-self/healer/Reflect paths and retained workspaces keep their gates.
-Owner drafts/JobStats, Knight slot mapping, editor, automatic facing, broad
-interfaces, full corpse/Golem/terminal/frame RNG, ZOD-106 and cone stay separate.
+After review, use the [ZOD-442 study](behavior/ordinary-spell-list-integration.md)
+to select a bounded shared-preparation/list-integration child. Full list/Attack,
+scenario dispatch, ranked insertion/lottery and magic command/turn activation
+remain separate; other query migrations need their own scope. Existing deferred
+domains, owner drafts/JobStats, Knight slot mapping, editor, automatic facing,
+broad interfaces, full corpse/Golem/terminal/frame RNG, ZOD-106 and cone retain
+their gates. No new development ticket is activated by this checkpoint.
 
 ## Review programme
 

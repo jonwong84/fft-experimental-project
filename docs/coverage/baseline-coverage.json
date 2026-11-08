@@ -1870,7 +1870,9 @@
         "docs/behavior/ordinary-spell-ability-search.md",
         "docs/evidence/ai/spell-ability-search-implementation-v1.json",
         "docs/behavior/ordinary-spell-list-integration.md",
-        "docs/evidence/ai/spell-list-integration-source-v1.json"
+        "docs/evidence/ai/spell-list-integration-source-v1.json",
+        "docs/behavior/ordinary-spell-context.md",
+        "docs/evidence/ai/spell-context-implementation-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -2048,7 +2050,8 @@
         "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiPassSearchQuery.cs",
         "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiPassEvaluation.cs",
         "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAbilitySearchQuery.cs",
-        "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAbilityEvaluation.cs"
+        "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAbilityEvaluation.cs",
+        "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiContext.cs"
       ],
       "automatedChecks": [
         {
@@ -2534,6 +2537,10 @@
         {
           "path": "tools/verification/test_spell_list_integration.py",
           "scope": "Twenty source-only human list/entry order, usage phase, general scenario sequence and ranked insertion descriptions; capacity/sentinel, stable duplicates, opaque bits and unknown/tampered input rejection. No managed runtime expansion."
+        },
+        {
+          "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiContextTests.cs",
+          "scope": "Definition identity and null failure contract; fresh request/profile/current-state admission; actual-command context lifetime and old-snapshot replay; reuse after whole-query rejection with unchanged source result/RNG vectors."
         }
       ],
       "manualCheckpoint": {
@@ -2546,10 +2553,9 @@
         "General lists/rosters/maps, broader Blue/player-controlled/special policies, Defend, replacement interface, host activation and original frame RNG remain incomplete.",
         "Caller certificates still cover unrepresented original facts; no retail execution comparison establishes general equivalence."
       ],
-      "nextAction": "Introduce the validated ordinary spell query context under ZOD-443; complete list/Attack integration, ranked insertion/lottery, autonomous magic and full AI review remain separate.",
+      "nextAction": "Owner review of ZOD-443, then select a bounded shared-preparation/list-integration child from ZOD-442. Full AI dispatch, autonomous magic and full-port review remain separate.",
       "followUpTickets": [
-        "ZOD-329",
-        "ZOD-443"
+        "ZOD-329"
       ]
     },
     {

@@ -3,9 +3,11 @@
 The [ZOD-442 integration study](../../../docs/behavior/ordinary-spell-list-integration.md)
 maps the enclosing original list, scenario, preparation and ranked ownership.
 General ability search uses scenario1, with scenario0 baseline/fallback; a
-Complement query does not add a second general dispatch pass. ZOD-443 will
-introduce the agreed state/catalog context and `Evaluate(context, request, rng)`
-boundary for the ability caller. Its current API remains in place during review.
+Complement query does not add a second general dispatch pass.
+[ZOD-443](../../../docs/behavior/ordinary-spell-context.md) now provides
+[OrdinarySpellAiContext](OrdinarySpellAiContext.cs) for the matching captured
+state/catalog pair. The ability caller uses `Evaluate(context, request, rng)`;
+its request includes the explicit profile. Other query APIs remain unchanged.
 
 For one owned spell's ordinary caller passes in a fresh movement scenario, start
 with [OrdinarySpellAiAbilitySearchQuery.Evaluate](OrdinarySpellAiAbilitySearchQuery.cs).

@@ -31,9 +31,11 @@ unresolved continuation and final-destination ties. The
 one owned offensive slot/scenario's passes with fresh masks, shared best/RNG and
 the final baseline gate. The [integration study](../behavior/ordinary-spell-list-integration.md)
 now maps original lists, current usage/loading, general scenario1 versus baseline0,
-rank insertion/reset and a narrow raw-input context. ZOD-443 next implements that
-context API for the ability caller. Full spell decisions, autonomous magic and
-the review gates remain open.
+rank insertion/reset and a narrow raw-input context. The
+[ZOD-443 context API](../behavior/ordinary-spell-context.md) now pairs captured
+state/catalog and moves profile into the request, retaining explicit RNG and fresh
+admission. The owner will review before further development. Full spell decisions,
+autonomous magic and the review gates remain open.
 
 ## Required readability review after the full port
 
