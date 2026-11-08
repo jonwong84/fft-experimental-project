@@ -219,9 +219,11 @@ duplicate listing is needed and secondadvent remains deferred. The supplied
 Berserk/Frog helper matches30 words/four returns and 262,144 signed/status
 arithmetic cases; its caller label at0x80188aec is corrected to the physical
 cluster. Defense Up now matches20 words/three callers and all65,536 signed2/3
-inputs, with no minimum clamp or new runtime admission. Target Physical Statuses
-and alternative damage/knockback remain useful supplied cross-checks; source
-order is already recorded. Broader modifiers,
+inputs, with no minimum clamp or new runtime admission. Target XA affecting
+Statuses (Physical) now matches61 words/three returns and 2,097,152 signed/status
+combinations, preserving the two OR-groups and separate stores. Alternative
+damage/knockback at0x8018691c is the remaining useful direct formula0x37 listing.
+Broader modifiers,
 equipment and landing/fall behavior remain deferred. No runtime change.
 
 The subsequent supplied physical-evasion wrapper is also source/byte checked:

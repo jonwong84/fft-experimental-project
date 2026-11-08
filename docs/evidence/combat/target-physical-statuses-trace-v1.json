@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "89a8ddd95ed0e8d74bbd3255dfed87fa55b5bed5",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Supplied Target XA affecting Statuses (Physical) helper; no broad physical-status runtime admission.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54735,
+      "sha256": "b37712b2e33a060f057e87f866c25ef0f4d4ba9b8bacf89447e2eeb0cd0c2bf9"
+    },
+    {
+      "path": "include/fft/status.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11673,
+      "sha256": "deeaeec02add8b9db7cca91c99517706033b18385ca433d32f1998d9d62e0e83"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/action.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14957,
+      "sha256": "6e97b3935c0d9cdcb8f6ba9ee2d40985b645bc0b03281a0d50d3d20aae35591c"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_target_physical_statuses",
+      "startLine": 1110,
+      "endLine": 1129,
+      "normalizedLfSha256": "ac56f4a4499df58be52652dbac5f34748dd09823be6d6fc7f291d72b5cb0f1c4"
+    }
+  ],
+  "preparedBattle": {
+    "path": "scratch/fft-decomp-work/build/extracted/files/BATTLE.BIN",
+    "byteLength": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "loadAddress": "0x80067000"
+  },
+  "start": "0x8018636c",
+  "endInclusive": "0x8018645c",
+  "instructionCount": 61,
+  "instructionWords": [
+    "3c028019",
+    "8c422d98",
+    "00000000",
+    "9042005b",
+    "00000000",
+    "30420020",
+    "1040000b",
+    "3c025555",
+    "3c048019",
+    "248438ce",
+    "84830000",
+    "34425556",
+    "00031840",
+    "00620018",
+    "00031fc3",
+    "00001010",
+    "00431023",
+    "a4820000",
+    "3c038019",
+    "8c632d98",
+    "00000000",
+    "9062005c",
+    "00000000",
+    "30420010",
+    "14400006",
+    "00000000",
+    "90620058",
+    "00000000",
+    "30420008",
+    "1040000b",
+    "00000000",
+    "3c048019",
+    "248438ce",
+    "84830000",
+    "00000000",
+    "00031040",
+    "00431021",
+    "00021fc2",
+    "00431021",
+    "00021043",
+    "a4820000",
+    "3c028019",
+    "8c422d98",
+    "00000000",
+    "9042005a",
+    "00000000",
+    "30420006",
+    "1040000b",
+    "00000000",
+    "3c048019",
+    "248438ce",
+    "84830000",
+    "00000000",
+    "00031040",
+    "00431021",
+    "00021fc2",
+    "00431021",
+    "00021043",
+    "a4820000",
+    "03e00008",
+    "00000000"
+  ],
+  "allMatched": true,
+  "directCalls": 0,
+  "listedCallers": [
+    {
+      "callPc": "0x80188618",
+      "returnAddress": "0x80188620",
+      "matched": true
+    },
+    {
+      "callPc": "0x80188af4",
+      "returnAddress": "0x80188afc",
+      "matched": true
+    },
+    {
+      "callPc": "0x801898a8",
+      "returnAddress": "0x801898b0",
+      "matched": true
+    }
+  ],
+  "selection": {
+    "protect": {
+      "unitByte": "0x5b",
+      "mask": "0x20"
+    },
+    "sleep": {
+      "unitByte": "0x5c",
+      "mask": "0x10"
+    },
+    "charging": {
+      "unitByte": "0x58",
+      "mask": "0x08"
+    },
+    "frogChicken": {
+      "unitByte": "0x5a",
+      "mask": "0x06"
+    }
+  },
+  "arithmetic": {
+    "stages": [
+      "Protect: signed2/3, truncation toward zero, store16.",
+      "Sleep OR Charging: signed3/2 once, truncation toward zero, store16.",
+      "Frog OR Chicken: signed3/2 once, truncation toward zero, store16."
+    ],
+    "signedXaInputs": 65536,
+    "statusCombinations": 32,
+    "comparisons": 2097152,
+    "literalFlagEncoding": {
+      "protect": 1,
+      "sleep": 2,
+      "charging": 4,
+      "frog": 8,
+      "chicken": 16
+    },
+    "literalDescriptions": [
+      {
+        "xa": 5,
+        "flags": 0,
+        "expectedXa": 5
+      },
+      {
+        "xa": 5,
+        "flags": 6,
+        "expectedXa": 7
+      },
+      {
+        "xa": 5,
+        "flags": 24,
+        "expectedXa": 7
+      },
+      {
+        "xa": 5,
+        "flags": 31,
+        "expectedXa": 6
+      },
+      {
+        "xa": 5,
+        "flags": 10,
+        "expectedXa": 10
+      },
+      {
+        "xa": -5,
+        "flags": 31,
+        "expectedXa": -6
+      },
+      {
+        "xa": 0,
+        "flags": 31,
+        "expectedXa": 0
+      },
+      {
+        "xa": 32767,
+        "flags": 10,
+        "expectedXa": -24579
+      },
+      {
+        "xa": -32768,
+        "flags": 10,
+        "expectedXa": 24576
+      },
+      {
+        "xa": 99,
+        "flags": 1,
+        "expectedXa": 66
+      },
+      {
+        "xa": 8,
+        "flags": 3,
+        "expectedXa": 7
+      }
+    ]
+  },
+  "clarifications": [
+    "Yes: Target Physical Statuses in prior notes is this exact Target XA affecting Statuses (Physical) routine.",
+    "66% means exact2/3 here, not66/100.",
+    "Sleep+Charging still boosts once, and Frog+Chicken still boosts once; the two groups can each contribute a separate boost.",
+    "The BNE at0x801863cc branches when Sleep is present; the not-sleeping annotation describes fallthrough, not the taken branch.",
+    "Separate signed reloads/stores prevent collapsing the sequence into one multiplier. XA5 with all statuses becomes3, then4, then6; without Protect but with both boost groups it becomes7, then10."
+  ],
+  "boundaries": [
+    "No calls, RNG, minimum clamp, YA update, final damage write, Defense Up or compatibility in this leaf.",
+    "Target Frog contributes to a vulnerability boost group here. The actor Frog overwrite belongs to the separate earlier attacker helper.",
+    "All original narrowing is retained for high-width inputs; no new physical profile or custom correction is activated.",
+    "Current physical paths still exclude these status modifiers; owner content/toggles and fixtures are unchanged.",
+    "The remaining useful direct formula0x37 listing is Damage and Knockback Routine (alternative) at0x8018691c. Compatibility is already checked."
+  ],
+  "validation": {
+    "referenceClean": true,
+    "sourceAudit": {
+      "formulaDescriptions": 24,
+      "actualDescriptions": 8,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false
+    },
+    "preparedDash": {
+      "abilityId": 147,
+      "range": 1,
+      "verticalTolerance": 1,
+      "formula": 55,
+      "y": 4,
+      "evadeable": false,
+      "directTrajectory": false,
+      "aiPhysical": true,
+      "aiDirectTrajectory": false,
+      "aiExhaustive": false,
+      "preparedVerified": true
+    },
+    "ownerBlobsVerified": 10,
+    "ownerApprovedCiEdit": {
+      "path": ".circleci/config.yml",
+      "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+      "committed": true,
+      "ciEnabledDefault": false
+    },
+    "runtimeChanged": false,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "runtimeTestsRerun": false,
+    "previousRuntimeValidationReceipt": "docs/evidence/combat/attack-up-martial-arts-trace-v1.json"
+  }
+}
