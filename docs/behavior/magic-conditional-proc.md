@@ -36,8 +36,9 @@ Fire tier/empty-status bindings. All23 focused .NET routing/proc/composition tes
 and16 Python tests pass; all ten owner draft blobs are unchanged. The approved
 CircleCI gate is committed separately with its job definitions retained and a
 false default. No runtime or fixture change is needed.
-The next useful supplied pages are Elemental Absorption at `0x001870fc` and
-Conditional Status Proc Roll (19%) at `0x001884c0`. ZOD-436 remains open.
+The supplied [Elemental Absorption helper](magic-elements-and-routing.md#supplied-elemental-absorption)
+at `0x001870fc` is now checked too. Conditional Status Proc Roll (19%) at
+`0x001884c0` is next. ZOD-436 remains open.
 
 ## Original implementation checkpoint
 

@@ -129,8 +129,9 @@ work byte and only target effect0x4000. Faith Calculation matches62 words/eight
 returns, Innocent precedence and the exact single division/store. The
 [absorption/proc wrapper](behavior/magic-conditional-proc.md#supplied-absorptionproc-wrapper--zod-436-support)
 matches ten words/two calls/four returns, preserving absorption-before-proc and
-mode distinctions. Its two helper pages are next; the full shared-consumer
-review remains open.
+mode distinctions. Elemental Absorption matches21 words/eight returns and the
+bit-preserving amount/type transfer; Conditional Status Proc Roll is next.
+The full shared-consumer review remains open.
 
 ## Review programme
 

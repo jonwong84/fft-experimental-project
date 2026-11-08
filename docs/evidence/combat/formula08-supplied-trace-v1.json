@@ -3877,5 +3877,186 @@
       "cExecuted": false,
       "fullTicketCompleted": false
     }
+  },
+  "suppliedElementalAbsorptionCheck": {
+    "managedBaseRevision": "7c599dc8dd6c47b2b539ba4dee42c18df0d56ab7",
+    "start": "0x801870fc",
+    "endInclusive": "0x8018714c",
+    "instructionCount": 21,
+    "instructionWords": [
+      "3c048019",
+      "8c842d90",
+      "00000000",
+      "90830002",
+      "34020005",
+      "1062000d",
+      "00000000",
+      "94820010",
+      "00000000",
+      "30420400",
+      "10400006",
+      "34020040",
+      "94830004",
+      "a4800004",
+      "a0820025",
+      "08061c52",
+      "a4830006",
+      "34020080",
+      "a0820025",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80188684",
+        "returnAddress": "0x8018868c",
+        "target": "0x801870fc",
+        "caller": "formula_calculate_weapon_damage"
+      },
+      {
+        "callPc": "0x80188724",
+        "returnAddress": "0x8018872c",
+        "target": "0x801870fc",
+        "caller": "formula_element_apply_absorption_and_status_proc"
+      },
+      {
+        "callPc": "0x801887cc",
+        "returnAddress": "0x801887d4",
+        "target": "0x801870fc",
+        "caller": "formula_element_apply_absorption_and_status"
+      },
+      {
+        "callPc": "0x80188c84",
+        "returnAddress": "0x80188c8c",
+        "target": "0x801870fc",
+        "caller": "formula_magic_gun"
+      },
+      {
+        "callPc": "0x80189b74",
+        "returnAddress": "0x80189b7c",
+        "target": "0x801870fc",
+        "caller": "formula_holy_sword"
+      },
+      {
+        "callPc": "0x80189c38",
+        "returnAddress": "0x80189c40",
+        "target": "0x801870fc",
+        "caller": "formula_mighty_sword"
+      },
+      {
+        "callPc": "0x80189d44",
+        "returnAddress": "0x80189d4c",
+        "target": "0x801870fc",
+        "caller": "formula_damage_pa_plus_y_half_times_pa"
+      },
+      {
+        "callPc": "0x8018ac2c",
+        "returnAddress": "0x8018ac34",
+        "target": "0x801870fc",
+        "caller": "formula_throw_damage"
+      }
+    ],
+    "literalRecordDescriptions": [
+      {
+        "miss": 0,
+        "effects": 1024,
+        "damageBits": 123,
+        "healingBits": 77,
+        "initialType": 160,
+        "expectedDamageBits": 0,
+        "expectedHealingBits": 123,
+        "expectedType": 64
+      },
+      {
+        "miss": 5,
+        "effects": 65535,
+        "damageBits": 123,
+        "healingBits": 77,
+        "initialType": 160,
+        "expectedDamageBits": 123,
+        "expectedHealingBits": 77,
+        "expectedType": 160
+      },
+      {
+        "miss": 0,
+        "effects": 0,
+        "damageBits": 123,
+        "healingBits": 77,
+        "initialType": 96,
+        "expectedDamageBits": 123,
+        "expectedHealingBits": 77,
+        "expectedType": 128
+      },
+      {
+        "miss": 7,
+        "effects": 1024,
+        "damageBits": 80,
+        "healingBits": 77,
+        "initialType": 160,
+        "expectedDamageBits": 0,
+        "expectedHealingBits": 80,
+        "expectedType": 64
+      },
+      {
+        "miss": 0,
+        "effects": 1024,
+        "damageBits": 65535,
+        "healingBits": 77,
+        "initialType": 160,
+        "expectedDamageBits": 0,
+        "expectedHealingBits": 65535,
+        "expectedType": 64
+      },
+      {
+        "miss": 0,
+        "effects": 1024,
+        "damageBits": 0,
+        "healingBits": 77,
+        "initialType": 160,
+        "expectedDamageBits": 0,
+        "expectedHealingBits": 0,
+        "expectedType": 64
+      }
+    ],
+    "guard": "Target-action miss byte0x02 equal5 returns with no writes; no generic hit/accuracy/zero-amount check occurs.",
+    "absorption": "If special_effect unsigned16 at0x10 has0x0400, load damage bits via lhu0x04, clear damage0x04, assign type0x40 and copy bits to healing0x06 in the jump delay slot at0x8018713c.",
+    "nonAbsorption": "Otherwise assign type0x80 only; this does not explicitly clear a stale healing field.",
+    "boundaries": [
+      "Transfer preserves all16 bits, including negative signed interpretations; no absolute value, clamp or recomputation occurs.",
+      "Type writes assign0x40/0x80 rather than ORing flags. The absorption/effect marker itself is preserved.",
+      "No target Undead/affinity read, live HP mutation, proc decision, RNG or nested call occurs here.",
+      "Elementally absorbed damage heals Undead too; formula0x0C healing-to-Undead reversal is a distinct later family path.",
+      "Raw miss7/stale-field descriptions explain source behavior only; current managed composition admits a fresh hit/nullified domain and no unrelated stale HP result work."
+    ],
+    "managedMapping": "FaithMagicHpRouting.Route preserves signed amount bits, nullification and the damage-family absorption route after Faith. Its separate Healing branch owns Undead reversal; absorbed damage retains the damage formula conditional tail.",
+    "validation": {
+      "sourceAudit": {
+        "transformDescriptions": 24,
+        "projectionDescriptions": 12,
+        "routingDescriptions": 14,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "sourceFiles": 9,
+        "sourceFunctions": 14,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true
+      },
+      "ownerBlobsVerified": 10,
+      "ownerApprovedCiEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "committed": true,
+        "ciEnabledDefault": false
+      },
+      "focusedManagedTestsPassed": 13,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
   }
 }

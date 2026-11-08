@@ -268,8 +268,8 @@ current-status admission and the final result cap remain separate. All19 focused
 .NET amount/arithmetic/current-input tests and eight Python tests pass; all ten
 owner draft blobs and the unrelated CI edit are unchanged. No runtime or fixture
 change is needed. The supplied [Elemental Absorb and status roll wrapper](magic-conditional-proc.md#supplied-absorptionproc-wrapper--zod-436-support)
-at `0x0018871c` is now checked too; its two helper pages are next. ZOD-436 remains
-open.
+at `0x0018871c` and its absorption helper are now checked too; the conditional-
+proc helper page is next. ZOD-436 remains open.
 
 ## Original implementation checkpoint
 

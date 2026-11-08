@@ -107,8 +107,11 @@ the full signed16/byte numerator envelope; existing C# agrees. The
 [absorption/proc wrapper](behavior/magic-conditional-proc.md#supplied-absorptionproc-wrapper--zod-436-support)
 matches ten words/two calls/four returns, preserving route-before-proc and the
 original formula family. Zero requests a status attempt; preview/AI retain their
-existing draw/flag distinctions. Elemental Absorption at0x001870fc and Conditional
-Status Proc Roll at0x001884c0 are next. ZOD-436 remains open.
+existing draw/flag distinctions. Elemental Absorption matches21 words/eight
+returns: label5 gives no writes; otherwise the absorption marker selects a
+bit-preserving damage-to-healing transfer/type assignment, with no Undead check.
+Existing fresh-result routing agrees. Conditional Status Proc Roll at0x001884c0
+is next. ZOD-436 remains open.
 The owner-approved `.circleci/config.yml` gate is committed: CircleCI is intentionally
 paused by default through the `ci-enabled: false` workflow gate, with existing
 jobs/filters retained. Re-enabling is a later owner decision. Continue local

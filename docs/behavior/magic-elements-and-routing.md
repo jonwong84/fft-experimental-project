@@ -326,6 +326,40 @@ full ZOD-436 shared-consumer review remain separate/open. The supplied
 formula0x08's surviving-hit path is now checked too; absorption/proc routing is
 next.
 
+### Supplied Elemental Absorption
+
+The owner's listing matches all21 words at `0x801870fc`–`0x8018714c` and all eight
+listed returns. The same supporting receipt records the exact guards, jump-delay
+store and six patterned result descriptions at the pinned source/prepared baseline.
+It consumes the existing result's marker rather than re-reading target affinities.
+
+Miss type5 at target-action byte`0x02` returns with **no writes**, even if an
+absorption bit is present. Otherwise, effect-word`0x0400` at offset`0x10` selects
+the absorbing path: load unsigned16 damage bits from`0x04`, clear damage, assign
+type`0x40`, then copy the bits into healing`0x06`. That final copy is in the
+unconditional jump's delay slot at `0x8018713c` and executes before return.
+With no absorption, only the type byte is assigned`0x80`; a stale healing field
+is not explicitly cleared. These type writes are assignments, not bitwise ORs.
+
+The unsigned load/halfword store preserves every amount bit, including negative
+signed interpretations. Damage bits`0xffff` become healing bits`0xffff`, not
+positive1; amount0 still selects the healing type when absorbed. No absolute
+value, cap, element calculation, RNG, status change or live HP publication occurs.
+Hit, accuracy, miss and the absorption/effect marker remain untouched.
+
+The guard is specifically label5, not any miss or hit=false. Raw label7/stale-
+field descriptions in the receipt explain source behavior without admitting
+those states into managed magic. `FaithMagicHpRouting.Route` already agrees in
+the admitted fresh hit/nullified domain, preserves signed amount bits and routes
+after Faith. The helper never reads Undead: absorbed damage heals an Undead
+target too. Formula0x0C's healing-to-Undead reversal remains a separate family
+branch, and absorbed0x08 retains its damage-family proc tail.
+
+All13 focused .NET routing/composition tests and eight Python tests pass; all ten
+owner draft blobs and the approved disabled-by-default CI gate are unchanged.
+No runtime or fixture change is required. The next useful supplied routine is
+Conditional Status Proc Roll (19%) at `0x001884c0`. ZOD-436 remains open.
+
 ## Original implementation checkpoint
 
 Implemented 2026-11-05 from managed base
