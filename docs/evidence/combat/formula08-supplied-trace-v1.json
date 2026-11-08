@@ -277,6 +277,20 @@
       "startLine": 777,
       "endLine": 785,
       "normalizedLfSha256": "b8375c1d3cc722956b37b757ea2dd50d20b60c3b9b884384b063a118dbbb0c57"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_element_apply_absorption",
+      "startLine": 194,
+      "endLine": 207,
+      "normalizedLfSha256": "90f66969ea618a56085bbe486af526c8910ab930a9cfbc7cd9357212ae7aa540"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_roll_conditional_status_proc",
+      "startLine": 857,
+      "endLine": 866,
+      "normalizedLfSha256": "0fc73881d8f26bf8b08f5ef4e88f1191ca80469bd89b2af35595d3df5f8a5c79"
     }
   ],
   "managedFiles": [
@@ -3766,6 +3780,97 @@
       },
       "focusedManagedTestsPassed": 19,
       "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedAbsorptionProcWrapperCheck": {
+    "managedBaseRevision": "204543225e7df9295c2469cfb68544945cd2d2e9",
+    "start": "0x8018871c",
+    "endInclusive": "0x80188740",
+    "instructionCount": 10,
+    "instructionWords": [
+      "27bdffe8",
+      "afbf0010",
+      "0c061c3f",
+      "00000000",
+      "0c062130",
+      "00000000",
+      "8fbf0010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "orderedDirectCalls": [
+      {
+        "callPc": "0x80188724",
+        "target": "0x801870fc",
+        "symbol": "formula_element_apply_absorption"
+      },
+      {
+        "callPc": "0x8018872c",
+        "target": "0x801884c0",
+        "symbol": "formula_roll_conditional_status_proc"
+      }
+    ],
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80188dcc",
+        "returnAddress": "0x80188dd4",
+        "target": "0x8018871c"
+      },
+      {
+        "callPc": "0x80188e50",
+        "returnAddress": "0x80188e58",
+        "target": "0x8018871c"
+      },
+      {
+        "callPc": "0x8018959c",
+        "returnAddress": "0x801895a4",
+        "target": "0x8018871c"
+      },
+      {
+        "callPc": "0x8018a640",
+        "returnAddress": "0x8018a648",
+        "target": "0x8018871c"
+      }
+    ],
+    "returnContract": "Forward the conditional-proc helper r2 unchanged:0 requests the later status attempt, nonzero skips it. The wrapper does not apply statuses.",
+    "order": "Elemental absorption/type routing first, conditional-proc helper second. Absorbed damage retains its original formula family and conditional tail.",
+    "modeBoundaries": [
+      "Fresh Execute context rolls19% through the later helper; not every invocation or mode draws.",
+      "Preview requests a status attempt without a draw or AddedEffect delta. Fresh AI with a clear marker excludes it without a draw.",
+      "Already-set AddedEffect can influence non-preview return behavior and remains outside the current fresh/no-pending composition.",
+      "Normal formula0x08 callers skip this entire wrapper after earlier nullification; the wrapper itself contains no such conditional branch."
+    ],
+    "managedMapping": "FaithMagicFormula.ResolveProjectedAfterHit calls FaithMagicHpRouting.Route before MagicConditionalProc.EvaluateAfterHit, retaining damage-family eligibility for absorbed healing and atomic candidate RNG/results.",
+    "validation": {
+      "sourceAudit": {
+        "rollDescriptions": 6,
+        "decisionDescriptions": 26,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 9,
+        "sourceFunctions": 10,
+        "emptyStatusRecordVerified": true,
+        "fireTiersVerified": 4
+      },
+      "ownerBlobsVerified": 10,
+      "ownerApprovedCiEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "committed": true,
+        "ciEnabledDefault": false
+      },
+      "focusedManagedTestsPassed": 23,
+      "focusedPythonTestsPassed": 16,
       "managedTestsExecuted": true,
       "runtimeChanged": false,
       "originalExecuted": false,

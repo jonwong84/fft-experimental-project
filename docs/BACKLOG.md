@@ -126,8 +126,11 @@ cleanup matches17 words/four returns and preserves all work when pending is0;
 it clears only AddedEffect from target effects when pending is nonzero.
 Knockback cleanup matches16 words/six returns: test bit0x80, then clear the whole
 work byte and only target effect0x4000. Faith Calculation matches62 words/eight
-returns, Innocent precedence and the exact single division/store. Elemental
-Absorb and status roll is next; the full shared-consumer review remains open.
+returns, Innocent precedence and the exact single division/store. The
+[absorption/proc wrapper](behavior/magic-conditional-proc.md#supplied-absorptionproc-wrapper--zod-436-support)
+matches ten words/two calls/four returns, preserving absorption-before-proc and
+mode distinctions. Its two helper pages are next; the full shared-consumer
+review remains open.
 
 ## Review programme
 

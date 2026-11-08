@@ -1,5 +1,46 @@
 # Magic conditional-proc decision — ZOD-340
 
+## Supplied absorption/proc wrapper — ZOD-436 support
+
+The owner's Elemental Absorb and status roll listing matches all ten words at
+`0x8018871c`–`0x80188740` and all four listed returns. The
+[formula0x08 supporting receipt](../evidence/combat/formula08-supplied-trace-v1.json)
+pins clean reference `11464943bbdbd2a0af022d90cb7f10455cf911df`, the verified
+prepared BATTLE.BIN, source functions and current managed inputs. The calls are:
+
+1. `0x801870fc`, `formula_element_apply_absorption`: perform the element-marked
+   damage/type routing after Faith.
+2. `0x801884c0`, `formula_roll_conditional_status_proc`: decide whether the
+   later status applicator should be attempted.
+
+The wrapper forwards the second helper's return unchanged: zero requests the
+later attempt, nonzero skips it. It does not apply statuses, inspect HP amount
+or branch on the absorption result. Its normal formula0x08 caller already skipped
+the wrapper if earlier element processing cleared hit; that gate is outside this
+wrapper itself.
+
+The "19%" summary describes the admitted fresh **execution** roll, not every
+mode. Preview requests an attempt without drawing or setting AddedEffect; fresh
+AI with the marker clear excludes it without a draw. A preexisting marker can
+change non-preview behavior and remains outside current fresh/no-pending
+composition. Zero return is not proof that a status changed, nor does it imply
+that the helper set the flag in preview. Exact source thresholds remain below.
+
+`FaithMagicFormula.ResolveProjectedAfterHit` already calls
+`FaithMagicHpRouting.Route` before `MagicConditionalProc.EvaluateAfterHit`.
+Absorption retains the original damage formula's conditional tail even when the
+HP route becomes healing; routing alone must not select the formula family.
+Existing atomic private-result/RNG rejection and admission boundaries remain.
+The source/prepared audit passes six roll and26 decision descriptions plus four
+Fire tier/empty-status bindings. All23 focused .NET routing/proc/composition tests
+and16 Python tests pass; all ten owner draft blobs are unchanged. The approved
+CircleCI gate is committed separately with its job definitions retained and a
+false default. No runtime or fixture change is needed.
+The next useful supplied pages are Elemental Absorption at `0x001870fc` and
+Conditional Status Proc Roll (19%) at `0x001884c0`. ZOD-436 remains open.
+
+## Original implementation checkpoint
+
 Implemented 2026-11-05 from managed base
 `e8ffff7cacba283321a2e8568753e5aa0647d6cf`, clean read-only fft_decomp
 `11464943bbdbd2a0af022d90cb7f10455cf911df`.

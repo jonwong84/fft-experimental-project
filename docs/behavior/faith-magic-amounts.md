@@ -267,8 +267,9 @@ formula0x08 can still reach its later absorption/conditional-proc tail. Broader
 current-status admission and the final result cap remain separate. All19 focused
 .NET amount/arithmetic/current-input tests and eight Python tests pass; all ten
 owner draft blobs and the unrelated CI edit are unchanged. No runtime or fixture
-change is needed. The next useful supplied routine is Elemental
-Absorb and status roll at `0x0018871c`. ZOD-436 remains open.
+change is needed. The supplied [Elemental Absorb and status roll wrapper](magic-conditional-proc.md#supplied-absorptionproc-wrapper--zod-436-support)
+at `0x0018871c` is now checked too; its two helper pages are next. ZOD-436 remains
+open.
 
 ## Original implementation checkpoint
 

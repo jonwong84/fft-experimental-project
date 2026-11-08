@@ -103,9 +103,13 @@ documentation checklist is complete, with the broader status filter still
 separate. Faith Calculation matches62 words/eight returns: Faith100 then Innocent0
 on working copies, single signed /10000 after both Faith multiplications and the
 signed16 return-delay store. Offline interval endpoints prove the division over
-the full signed16/byte numerator envelope; existing C# agrees. Elemental Absorb
-and status roll at0x0018871c is next. ZOD-436 remains open.
-The owner approved committing `.circleci/config.yml`: CircleCI is intentionally
+the full signed16/byte numerator envelope; existing C# agrees. The
+[absorption/proc wrapper](behavior/magic-conditional-proc.md#supplied-absorptionproc-wrapper--zod-436-support)
+matches ten words/two calls/four returns, preserving route-before-proc and the
+original formula family. Zero requests a status attempt; preview/AI retain their
+existing draw/flag distinctions. Elemental Absorption at0x001870fc and Conditional
+Status Proc Roll at0x001884c0 are next. ZOD-436 remains open.
+The owner-approved `.circleci/config.yml` gate is committed: CircleCI is intentionally
 paused by default through the `ci-enabled: false` workflow gate, with existing
 jobs/filters retained. Re-enabling is a later owner decision. Continue local
 validation; do not assume remote CI or Sonar analysis is running while paused.
