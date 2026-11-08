@@ -2,31 +2,67 @@
 
 The owner requested classes that follow the routines studied in FFHacktics and
 the decompilation. This incremental refactor names the existing decision and
-simulation responsibilities. Source is the clean read-only fft_decomp revision
-`11464943bbdbd2a0af022d90cb7f10455cf911df`; managed starting point is `b92b755`.
-No new original-game behavior is translated by this change.
+simulation responsibilities with corresponding methods. Source is the clean
+read-only fft_decomp revision `11464943bbdbd2a0af022d90cb7f10455cf911df`.
+The class-ownership pass started at managed `b92b755`; the subsequent routine
+method extraction starts at `641b860`. No new original-game behavior is translated.
 
 ## Follow a decision
 
 Start at [AiDecisionMaker.Decide](../../src/Zodiac.Framework.Ai/AiDecisionMaker.cs).
-It validates the request, prepares fresh roster facts/movement scenarios and
-passes them to
-[AiGeneralActionSelection.Select](../../src/Zodiac.Framework.Ai/Decision/AiGeneralActionSelection.cs).
-Only a successful selection publishes successor priority knowledge. Every
-rejected decision returns the entry RNG and the original workspace.
+It validates the request, prepares fresh roster/target facts and enters its
+`ActionSelect` method. That method names the currently admitted branch of
+`turn.c::action_select` and calls
+[AiGeneralActionSelection.GeneralSelect](../../src/Zodiac.Framework.Ai/Decision/AiGeneralActionSelection.cs).
+Read the supported general-search sequence as:
 
-The selector owns the admitted tail of `turn.c::general_select`: evaluate the
-prepared ability list, insert each ability's best candidate, run `ranked_select`,
-and fall back to the movement baseline. The existing `RosterAiGeneralScenarios`
-owns the earlier preparation/scenario work. `AiAbilityEvaluator` dispatches to
-the existing supported searches; `AiRankedInsertion` and `AiRankedLottery` own
-their independent source rules. List order, eight ranked slots, strict ties,
-fallback behavior and one chained decision RNG are preserved.
+```text
+AiDecisionMaker.Decide
+  fresh preparation (including RosterAiRefresh.DecisionFlagsRefresh)
+  ActionSelect
+    GeneralSelect
+      RosterAiGeneralScenarios.ScenariosBuild
+        ReachableTilesScore
+      AbilityListEvaluate
+        AiAbilityEvaluator.AiAbilityOutcomeEvaluate (each occurrence)
+          existing supported candidate searches
+          AiRankedInsertion.AiBestRankInsert
+      AiRankedLottery.RankedSelect
+      FallbackSelect (when no ranked action is selected)
+  publish successor priority knowledge
+```
+
+Each PascalCase routine name maps to the corresponding snake_case symbol in
+`src/battle/ai/turn.c`, except `ai_ability_outcome_evaluate`, which lives in
+`evaluation.c`. Open
+[RosterAiGeneralScenarios](../../src/Zodiac.Framework.Ai/Shared/RosterAiGeneralScenarios.cs)
+for `ScenariosBuild` / `ReachableTilesScore`,
+[AiAbilityEvaluator](../../src/Zodiac.Framework.Ai/Decision/AiAbilityEvaluator.cs)
+for per-occurrence outcome evaluation and insertion,
+[AiRankedInsertion](../../src/Zodiac.Framework.Ai/Shared/AiRankedInsertion.cs)
+and [AiRankedLottery](../../src/Zodiac.Framework.Ai/Shared/AiRankedLottery.cs)
+for their shared source arithmetic.
+
+`GeneralSelect` now calls scenario construction itself, before ability search,
+matching the original ownership/order. `AbilityListEvaluate` visits the prepared
+occurrences; `AiAbilityOutcomeEvaluate` owns each occurrence's final insertion,
+as the source does. List order, eight ranked slots, strict ties, baseline and
+fallback behavior and one chained decision RNG are preserved. The unsupported
+keep-charging branch is not represented by a pretend success stub.
+
+The existing `RosterAiGeneralScenarios.Evaluate` remains the fresh internal query
+adapter: it composes `Prepare` and `ScenariosBuild` and restores its entry RNG on
+any failure. `AiDecisionMaker` separately owns atomic rejection across the entire
+decision and publishes the workspace only on success. Internal stage results do
+not grant authority or become a public cached-preparation API.
 
 `turn.c::action_select` also dispatches status-imposed, retreat and auto-battle
 policies before general search. Those policies and keeping an existing charge
-are outside the current decision admission. Naming the implemented selector
-`AiGeneralActionSelection` keeps that distinction explicit.
+are outside the current decision admission and are rejected by the existing
+prefix/profile gates. The named `ActionSelect` currently dispatches only to
+`GeneralSelect`; adding branches requires implementing those policies first.
+Preparation still combines several bounded source responsibilities; this pass
+does not claim to reproduce every helper in the top-level command builder.
 
 For an actual command continue into
 [AiCommandExecutor](../../src/Zodiac.Framework.Ai/AiCommandExecutor.cs), which
@@ -40,24 +76,30 @@ Its recovery token is separate from the original scanline-budget suspension.
 ## Follow an ordinary spell hypothesis
 
 The separate ordinary spell query/search enters
-[OrdinarySpellAiActionSimulation.Run](../../src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiActionSimulation.cs),
-formerly `OrdinarySpellAiSimulation`. This is the bounded counterpart of
+[OrdinarySpellAiActionSimulation.AiActionSimulateAndScore](../../src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiActionSimulation.cs).
+This is the bounded counterpart of
 `evaluation.c::ai_action_simulate_and_score`, address `0x8019D37C`: privately
 prepare the cast, process immediate/delayed hits in their existing order,
 advance the clock and score the resulting state. An immediate useful hit
 precedes its required clock event; a delayed cast advances to readiness first.
 
 It calls
-[OrdinarySpellAiHitSimulation.Resolve](../../src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiHitSimulation.cs),
-formerly `OrdinarySpellAiHitWork`. This owns the admitted combination of
-`action_hits_simulate` (`0x8019DCBC`, the wiki's Call AI Ability Processing)
-and `strikes_simulate` (`0x8019DD8C`, AI Ability Processing). It resolves the
-stored aim and recipients, calls shared formula/resource projection, applies
-strike exclusions/accounting and publishes included hypothetical results.
-`OrdinarySpellAiProjection` and `OrdinarySpellAiAccounting` remain separate
-mechanics owners; an additional forwarding class for each original call adds
-no ownership today. The wrapper's general accounting sentinel, repeated
-strikes and recursive reactions are not claimed by this subset.
+[OrdinarySpellAiHitSimulation.ActionHitsSimulate](../../src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiHitSimulation.cs),
+the named counterpart of `action_hits_simulate` (`0x8019DCBC`, the wiki's Call AI
+Ability Processing). That wrapper calls `StrikesSimulate`, corresponding to
+`strikes_simulate` (`0x8019DD8C`, AI Ability Processing), and returns a boolean
+valuable-hit result alongside immutable hit diagnostics. Its callers use that
+result to reject an unhelpful candidate or continue clock/scoring work.
+
+`StrikesSimulate` owns stored aim/recipient resolution, formula projection,
+exclusions/accounting and included hypothetical result application. The existing
+optimization skips applying a nonvaluable private result that will be discarded.
+`OrdinarySpellAiProjection` and `OrdinarySpellAiAccounting` remain shared
+mechanics owners; the latter still computes the fresh accounting average.
+Thus this is a bounded structural correspondence, not a literal mutable-memory
+transcription. The wrapper's general accounting sentinel, repeated strikes and
+recursive reactions are not claimed by this subset. The earlier internal
+`Run` / `Resolve` names are removed; public queries retain their signatures.
 
 `OrdinarySpellAiClock` / `AiSimulationClock` retain between-turn simulation;
 Framework retains actual preparation, turn-end rules, combat formulas and result
@@ -83,7 +125,8 @@ sword settlement call it. Its source address and remaining limits are documented
 at the method; trigger RNG and actual movement remain with their source owners.
 
 Public types, namespaces, JSON/content definitions and query contracts remain
-unchanged. Only the two internal spell owners are renamed. Existing source
+unchanged. Routine methods replace the generic internal entry names; no new
+class hierarchy or command authority is introduced. Existing source
 receipts retain their original paths and hashes at their recorded revisions.
 Full magic origin search/dispatch, status policies, reactions, pickups,
 terrain/falls/mounts and frame/RNG scheduling remain gated as documented.
@@ -98,5 +141,8 @@ private class layout. Release build passed with zero warnings/errors. All 5,181
 .NET tests (including 1,384 AI) and 794 Python tests passed. The 58-entry coverage
 inventory validates with its regenerated view. All ten owner drafts, approved
 controller formatting and disabled CI configuration retain their prior blobs.
-Logs/TRX are under ignored `scratch/ai-routine-refactor-*`. No new tests or
-historical evidence changes were needed for this behavior-preserving extraction.
+The method extraction was rebuilt and revalidated with the same full totals;
+logs/TRX are under ignored `scratch/ai-routine-methods-*` (the earlier class pass
+uses `scratch/ai-routine-refactor-*`). Stored-hit regressions now also check the
+wrapper's valuable-hit boolean. No new test cases or historical evidence changes
+were needed for these behavior-preserving extractions.

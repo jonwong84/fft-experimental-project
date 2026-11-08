@@ -5,9 +5,10 @@ namespace Zodiac.Framework.Ai;
 /// <summary>Private effect-family dispatch after one owning fresh prefix. Search rules stay with their ability evaluators.</summary>
 internal static class AiAbilityEvaluator
 {
-    internal static (AiDecisionFailure? Failure, AiAbilityEvaluation? Evaluation) Evaluate(AttackBattleSnapshot state,
+    /// <summary>The admitted ai_ability_outcome_evaluate: search one occurrence and insert its best result.</summary>
+    internal static (AiDecisionFailure? Failure, AiAbilityEvaluation? Evaluation) AiAbilityOutcomeEvaluate(AttackBattleSnapshot state,
         BattleUnitId actorId, AiPreparedAbility entry, AiDecisionConfiguration configuration,
-        RosterAiGeneralScenarioOutcome m, RandomState rng, AiPriorityWorkspace workspace)
+        RosterAiGeneralScenarioOutcome m, RandomState rng, AiPriorityWorkspace workspace, AiRankedAbility?[] ranked)
     {
         if (!entry.Usable) return (null, new(entry, rng, rng));
         (AiDecisionFailure?, AiAbilityEvaluation?) Reject(AiDecisionFailure failure) => (failure, null);
@@ -65,6 +66,12 @@ internal static class AiAbilityEvaluator
                 break;
             default: throw new InvalidOperationException("An unsupported occurrence passed owned list admission.");
         }
-        return (null, new(entry, rng, current, attack, self, stone, best, Dash: dash));
+        int? insertion = null;
+        if (best is not null)
+        {
+            insertion = AiRankedInsertion.AiBestRankInsert(best, m.Movement[m.BaselineIndex].Outcome.Score,
+                ranked, candidate => candidate.Score, candidate => candidate.Proximity);
+        }
+        return (null, new(entry, rng, current, attack, self, stone, best, insertion, dash));
     }
 }

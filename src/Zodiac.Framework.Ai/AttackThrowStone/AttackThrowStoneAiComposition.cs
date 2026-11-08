@@ -134,5 +134,5 @@ internal static class AttackThrowStoneAiComposition
             result.ScoringRejection, result.ProjectionRejection);
 
     private static int? Insert(AttackThrowStoneAiAction best, AiCandidateScore baseline, AttackThrowStoneAiAction?[] ranked)
-        => AiRankedInsertion.Insert(best, baseline, ranked, a => a.Score, a => a.Proximity);
+        => AiRankedInsertion.AiBestRankInsert(best, baseline, ranked, a => a.Score, a => a.Proximity);
 }

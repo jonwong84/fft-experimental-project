@@ -65,9 +65,11 @@ public APIs and behavior remain unchanged. Configuration/results and internal
 helpers retain the existing `Decision/` and `Execution/` folders. The
 [AI starting guide](../../src/Zodiac.Framework.Ai/README.md) links the call flow.
 
-`AiDecisionMaker.Decide` reads in this order: fresh preparation/movement prefix,
-then `AiGeneralActionSelection` for ability occurrences through `AiAbilityEvaluator`,
-per-occurrence candidate evaluation, best-candidate insertion and lottery.
+`AiDecisionMaker.Decide` reads in this order: fresh roster/target preparation,
+`ActionSelect`, then `AiGeneralActionSelection.GeneralSelect`. General selection
+calls `ScenariosBuild` / `ReachableTilesScore`, `AbilityListEvaluate`,
+`AiAbilityOutcomeEvaluate` / `AiBestRankInsert`, `RankedSelect` and, when needed,
+`FallbackSelect`. These names follow the source routine responsibilities.
 Each next calculation receives the preceding decision RNG. The returned plan
 has no command authority.
 `AiCommandExecutor` obtains a fresh decision inside Framework's checked command
@@ -86,7 +88,7 @@ usage and deadline groups. These queries do not compose a ranked magic search
 or enter the physical roster's full decision/command pipeline yet. The subsequent
 `OrdinarySpellAiSearchQuery` now composes enumeration and simulation for one
 owned slot at the current origin. Follow its pass loop into `ForAimPass`,
-`OrdinarySpellAiActionSimulation` and shared `AiCandidateRank`. It preserves one
+`OrdinarySpellAiActionSimulation.AiActionSimulateAndScore` and shared `AiCandidateRank`. It preserves one
 decision RNG and unresolved per-pass exits. Multiple origins, full ability
 dispatch and command execution remain separate.
 
@@ -117,8 +119,10 @@ dispatch and command execution remain separate.
   records its masks, ordering and ranking boundaries. The subsequent ZOD-424
   query lists bounded potential aims without evaluating or ranking them.
 - `ai_action_simulate_and_score`,0x8019D37C, wrapper0x8019DCBC and strikes0x8019DD8C:
-  the supported spell subset is divided among simulation, hit work, accounting
-  and scoring. Original suspended snapshots/frame work remain documented gates.
+  the supported spell path now reads `AiActionSimulateAndScore` →
+  `ActionHitsSimulate` → `StrikesSimulate`, using the existing projection,
+  accounting and scoring owners. Original suspended snapshots/frame work remain
+  documented gates. See the [routine ownership guide](../architecture/ai-routine-ownership.md).
 
 Source fields and flags retain their distinct meanings: cardinal range is not a
 height lock; the untargetable-panel filter is not full obstacle trajectory

@@ -15,7 +15,17 @@ internal sealed record OrdinarySpellAiHitOutcome(ImmutableArray<OrdinarySpellAiU
 /// </remarks>
 internal static class OrdinarySpellAiHitSimulation
 {
-    internal static OrdinarySpellAiHitOutcome Resolve(OrdinarySpellAiWork work, ImmutableArray<OrdinarySpellAiUnit> units,
+    /// <summary>action_hits_simulate: run strikes and report whether the candidate struck a valuable target.</summary>
+    internal static bool ActionHitsSimulate(OrdinarySpellAiWork work, ImmutableArray<OrdinarySpellAiUnit> units,
+        StoredSpellAim storedAim, ImmutableHashSet<BattleUnitId> moved, RandomState rng, out OrdinarySpellAiHitOutcome hit)
+    {
+        hit = StrikesSimulate(work, units, storedAim, moved, rng);
+        // The fresh acting-unit subset always has accounting enabled. The shared accounting owner computes its average.
+        return hit.Accounting.Valuable;
+    }
+
+    /// <summary>strikes_simulate: resolve recipients/formulas, apply exclusions and project the included results.</summary>
+    private static OrdinarySpellAiHitOutcome StrikesSimulate(OrdinarySpellAiWork work, ImmutableArray<OrdinarySpellAiUnit> units,
         StoredSpellAim storedAim, ImmutableHashSet<BattleUnitId> moved, RandomState rng)
     {
         OrdinarySpellAiHitOutcome Empty() => new(units, [], new([], 0, 0, false), rng);

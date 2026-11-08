@@ -4,7 +4,7 @@ namespace Zodiac.Framework.Ai;
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-233/234. Null is a fresh reset slot in the admitted range.</remarks>
 internal static class AiRankedInsertion
 {
-    internal static int? Insert<T>(T best, AiCandidateScore baseline, T?[] ranked,
+    internal static int? AiBestRankInsert<T>(T best, AiCandidateScore baseline, T?[] ranked,
         Func<T, AiCandidateScore> score, Func<T, byte> proximity) where T : class
     {
         var bestScore = score(best);

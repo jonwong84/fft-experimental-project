@@ -44,7 +44,7 @@ internal static class BasicSkillAiSelection
     {
         if (!composition.Accepted) return new(false, new(BasicSkillAiSelectionStage.Composition, composition.Failure), null, decisionRng);
         var fresh = composition.Outcome!;
-        var lottery = AiRankedLottery.Evaluate(fresh.RankedActions.Select(a => a?.Score.HitPercent ?? (byte)0).ToImmutableArray(), composition.RngState);
+        var lottery = AiRankedLottery.RankedSelect(fresh.RankedActions.Select(a => a?.Score.HitPercent ?? (byte)0).ToImmutableArray(), composition.RngState);
         if (!lottery.Accepted) return new(false, new(BasicSkillAiSelectionStage.Lottery, LotteryIndex: lottery.FailedIndex), null, decisionRng);
         var chosen = lottery.Outcome!;
         var action = chosen.SelectedIndex is { } i ? fresh.RankedActions[i] : null;

@@ -18,11 +18,13 @@ handles subsequent commands, movement continuations and turn completion;
 
 These three public entry files live at the project root. Their configuration,
 result records and internal helpers remain in `Decision/` and `Execution/`.
-To read decision logic, follow `AiDecisionMaker.Decide` through fresh preparation
-and then [Decision/AiGeneralActionSelection.cs](Decision/AiGeneralActionSelection.cs).
-The selector scans the prepared list through
+To read decision logic, follow `AiDecisionMaker.Decide` through fresh preparation,
+`ActionSelect` and then
+[AiGeneralActionSelection.GeneralSelect](Decision/AiGeneralActionSelection.cs).
+It calls `ScenariosBuild` / `ReachableTilesScore`, then `AbilityListEvaluate` through
 [Decision/AiAbilityEvaluator.cs](Decision/AiAbilityEvaluator.cs), inserts each
-ability's best candidate and runs the ranked lottery or movement fallback.
+ability's best candidate with `AiBestRankInsert` and runs `RankedSelect` or
+`FallbackSelect`. Per-occurrence dispatch is named `AiAbilityOutcomeEvaluate`.
 `Shared/` contains the common preparation, simulation and ranking rules.
 The [routine ownership guide](../../docs/architecture/ai-routine-ownership.md)
 maps these classes to the original routines and distinguishes supported subsets

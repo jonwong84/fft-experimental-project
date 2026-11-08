@@ -14,7 +14,7 @@ namespace Zodiac.Framework.Ai;
 /// </remarks>
 internal static class OrdinarySpellAiActionSimulation
 {
-    internal static OrdinarySpellAiCandidateResult Run(OrdinarySpellAiWork work,
+    internal static OrdinarySpellAiCandidateResult AiActionSimulateAndScore(OrdinarySpellAiWork work,
         OrdinarySpellAiCandidateRequest request, RandomState rng)
     {
         OrdinarySpellAiCandidateResult Reject(string reason) =>
@@ -39,8 +39,8 @@ internal static class OrdinarySpellAiActionSimulation
         if (counter == 0)
         {
             formulaEntry = rng;
-            hit = OrdinarySpellAiHitSimulation.Resolve(work, units, stored, [], rng);
-            if (!hit.Accounting.Valuable) return NotValuable(stored, null, formulaEntry, hit, hit.RngState);
+            bool valuable = OrdinarySpellAiHitSimulation.ActionHitsSimulate(work, units, stored, [], rng, out hit);
+            if (!valuable) return NotValuable(stored, null, formulaEntry, hit, hit.RngState);
             units = hit.Units;
             if (units.Single(u => u.Id == work.Actor.Id).Current.Statuses.Dead)
                 return Reject("Immediate caster KO/terminal clock simulation needs a separate profile.");
@@ -66,8 +66,8 @@ internal static class OrdinarySpellAiActionSimulation
                 Current = caster with { Statuses = caster.Statuses with { Charging = false } }
             });
             formulaEntry = advanced.RngState;
-            hit = OrdinarySpellAiHitSimulation.Resolve(work, units, stored, clock.HadMoveOpportunity, formulaEntry);
-            if (!hit.Accounting.Valuable) return NotValuable(stored, clock, formulaEntry, hit, hit.RngState);
+            bool valuable = OrdinarySpellAiHitSimulation.ActionHitsSimulate(work, units, stored, clock.HadMoveOpportunity, formulaEntry, out hit);
+            if (!valuable) return NotValuable(stored, clock, formulaEntry, hit, hit.RngState);
             units = hit.Units; exitRng = hit.RngState;
         }
         var score = work.Score(units, hit.Accounting.HitPercent, hit.Accounting.PriorityDelta);

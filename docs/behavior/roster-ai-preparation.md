@@ -18,7 +18,7 @@ MP0, stable teams and source-order/TieKey agreement. The Framework's 21 source
 slots and 16 other movement records are separate boundaries. Old pair profiles
 and their guards remain unchanged.
 
-`RosterAiRefresh.Evaluate` requires an exact retained-policy row for every unit,
+`RosterAiRefresh.DecisionFlagsRefresh` requires an exact retained-policy row for every unit,
 fresh entry, known targetability, zero cached MP modifiers and clean actor delay
 cache. It accepts before-Move, after-Move and post-ACT live choices without
 inventing unused choices. The actor delay byte is captured from live CT before

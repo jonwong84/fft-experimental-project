@@ -93,7 +93,7 @@ internal static class SwordAiSelection
     internal static SwordAiRankedLotteryResult SelectFreshRanks(ImmutableArray<SwordAiScannedCandidate?> ranked,
         BattleUnitId actorId, TilePosition baselineDestination, RandomState entryRng, RandomState queryRng)
     {
-        var lottery = AiRankedLottery.Evaluate(ranked.Select(a => a?.Evaluation.Score!.HitPercent ?? (byte)0).ToImmutableArray(), entryRng);
+        var lottery = AiRankedLottery.RankedSelect(ranked.Select(a => a?.Evaluation.Score!.HitPercent ?? (byte)0).ToImmutableArray(), entryRng);
         if (!lottery.Accepted)
             return new(false, new(SwordAiSelectionRejection.RandomDrawCountExhausted, SwordAiSelectionStage.Lottery,
                 lottery.FailedIndex), null, queryRng);

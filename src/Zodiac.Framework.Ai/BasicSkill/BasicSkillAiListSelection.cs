@@ -28,7 +28,7 @@ internal static class BasicSkillAiListSelection
         var composed = BasicSkillAiListComposition.EvaluateCore(state, request, profile, rng, workspace, afterAct);
         if (!composed.Accepted) return Reject(composed.Failure!);
         var c = composed.Outcome!;
-        var lottery = AiRankedLottery.Evaluate(c.RankedActions.Select(r => r?.Action.Score.HitPercent ?? (byte)0).ToImmutableArray(), composed.RngState);
+        var lottery = AiRankedLottery.RankedSelect(c.RankedActions.Select(r => r?.Action.Score.HitPercent ?? (byte)0).ToImmutableArray(), composed.RngState);
         if (!lottery.Accepted) return Reject(new(BasicSkillAiDerivedStage.Lottery, LotteryIndex: lottery.FailedIndex));
         var l = lottery.Outcome!; var selected = l.SelectedIndex is { } i ? c.RankedActions[i] : null;
         var plan = new BasicSkillAiSelectedPlan(request.Turn.ActorId, selected?.Action.Destination ?? c.Scenarios.Movement.BaselineDestination, selected?.Action);

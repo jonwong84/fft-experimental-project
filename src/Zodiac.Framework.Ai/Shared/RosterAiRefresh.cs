@@ -47,7 +47,8 @@ public sealed record RosterAiRefreshResult(bool Accepted, RosterAiRejection Reje
 /// <summary>One private fresh whole-roster refresh, with diagnostics only. Source ZOD-283/284 at 11464943bbdbd2a0af022d90cb7f10455cf911df.</summary>
 internal static class RosterAiRefresh
 {
-    public static RosterAiRefreshResult Evaluate(AttackBattleSnapshot state, RosterAiRefreshRequest request,
+    /// <summary>The admitted decision_flags_refresh: simulate the clock, derive flags and retain only decision facts/RNG.</summary>
+    public static RosterAiRefreshResult DecisionFlagsRefresh(AttackBattleSnapshot state, RosterAiRefreshRequest request,
         RosterAiSimulationProfile simulation, RosterAiRefreshProfile profile, RandomState rng)
     {
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(request);

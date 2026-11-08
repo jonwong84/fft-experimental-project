@@ -27,7 +27,7 @@ internal static class RosterAiPreparation
                     .Any(e => e.Kind is not (AiHumanAbilityKind.Accumulate or AiHumanAbilityKind.ThrowStone or AiHumanAbilityKind.Dash)))) return Reject(RosterAiRejection.UnsupportedList);
         var body = state.TurnBattle.Battle.Units.FirstOrDefault(u => u.Id == request.ActorId);
         if (body is not null && body.Move > 124) return Reject(RosterAiRejection.UnsupportedProfile);
-        var refreshed = RosterAiRefresh.Evaluate(state, request, simulation, refreshProfile, rng);
+        var refreshed = RosterAiRefresh.DecisionFlagsRefresh(state, request, simulation, refreshProfile, rng);
         if (!refreshed.Accepted) return Reject(refreshed.Rejection);
         var r = refreshed.Outcome!; var flags = r.RefreshedUnits.ToDictionary(u => u.UnitId);
         BattleUnitId? lowest = null; int lowestShare = 256;

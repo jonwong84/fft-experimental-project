@@ -33,8 +33,8 @@ public static class OrdinarySpellAiReadyQuery
                 return new(OrdinarySpellAiReadyDisposition.NotValuable, null,
                     new(work.Ability, work.Usefulness, [], new([], 0, 0, false), work.Units, null), rng);
             var aim = work.Capture(request.Aim, request.FollowUnit);
-            var hit = OrdinarySpellAiHitSimulation.Resolve(work, work.Units, aim, request.HadMoveOpportunity, rng);
-            var score = hit.Accounting.Valuable ? work.Score(hit.Units, hit.Accounting.HitPercent, hit.Accounting.PriorityDelta) : null;
+            bool valuable = OrdinarySpellAiHitSimulation.ActionHitsSimulate(work, work.Units, aim, request.HadMoveOpportunity, rng, out var hit);
+            var score = valuable ? work.Score(hit.Units, hit.Accounting.HitPercent, hit.Accounting.PriorityDelta) : null;
             return new(score is null ? OrdinarySpellAiReadyDisposition.NotValuable : OrdinarySpellAiReadyDisposition.Scored,
                 null, new(work.Ability, work.Usefulness, hit.Frames, hit.Accounting, hit.Units, score), hit.RngState);
         }

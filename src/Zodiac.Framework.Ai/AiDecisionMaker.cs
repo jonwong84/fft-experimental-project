@@ -24,23 +24,35 @@ public static class AiDecisionMaker
             return Reject(new(AiDecisionStage.Admission));
         }
 
-        var prepared = RosterAiGeneralScenarios.Evaluate(state, request, configuration.Simulation, configuration.Refresh,
+        var prepared = RosterAiGeneralScenarios.Prepare(state, request, configuration.Simulation, configuration.Refresh,
             configuration.Lists, configuration.General, configuration.Movement, rng);
         if (!prepared.Accepted)
         {
             return Reject(new(AiDecisionStage.Prefix, prepared.Failure));
         }
 
-        var scenarios = prepared.Outcome!;
-        var selection = AiGeneralActionSelection.Select(state, request.ActorId, configuration, scenarios,
+        var selection = ActionSelect(state, request, configuration, prepared.Outcome!,
             prepared.RngState, workspace);
         if (selection.Failure is { } failure)
         {
             return Reject(failure);
         }
 
-        var successor = workspace.Write(scenarios.Movement.Select(tile =>
+        var successor = workspace.Write(selection.Decision!.Scenarios.Movement.Select(tile =>
             KeyValuePair.Create(tile.Outcome.Destination, tile.TilePriority)));
         return new(true, null, selection.Decision, selection.RngState, successor);
+    }
+
+    /// <summary>The admitted action_select branch, after fresh roster/target preparation.</summary>
+    /// <remarks>
+    /// Source: fft_decomp 11464943bbdbd2a0af022d90cb7f10455cf911df, src/battle/ai/turn.c::action_select.
+    /// Existing admission excludes status-imposed, conditional-retreat and special auto-battle policies.
+    /// They must be implemented before adding their branches here; they do not silently fall through to general search.
+    /// </remarks>
+    private static (AiDecision? Decision, AiDecisionFailure? Failure, RandomState RngState) ActionSelect(
+        AttackBattleSnapshot state, RosterAiRefreshRequest request, AiDecisionConfiguration configuration,
+        RosterAiGeneralPreparationOutcome preparation, RandomState rng, AiPriorityWorkspace workspace)
+    {
+        return AiGeneralActionSelection.GeneralSelect(state, request, configuration, preparation, rng, workspace);
     }
 }

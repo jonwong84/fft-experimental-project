@@ -56,8 +56,9 @@ confirms admitted authority, choice publication and recovery without a new defec
 ZOD-436 is next; ZOD-426 remains queued as supporting AI study.
 ZOD-432 records the required readability review after the full AI port.
 The owner's interim [routine ownership refactor](architecture/ai-routine-ownership.md)
-now separates general action selection from decision preparation and names the
-ordinary spell action/hit simulations after their source responsibilities.
+now exposes named methods matching the supported decision flow: `ActionSelect`,
+`GeneralSelect`, scenario/ability/rank/fallback work, and ordinary spell
+`AiActionSimulateAndScore` / `ActionHitsSimulate` / `StrikesSimulate`.
 It preserves current admission and does not close the remaining AI review work.
 There are 37 open tickets below. The 399 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).

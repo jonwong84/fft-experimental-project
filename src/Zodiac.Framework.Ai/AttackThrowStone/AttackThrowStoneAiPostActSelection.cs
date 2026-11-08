@@ -46,7 +46,7 @@ internal static class AttackThrowStoneAiPostActSelection
         // Owned closed-list preparation clears both actor entries after ACT; non-Frog Frog Attack was already unusable.
         // All ranked slots remain empty, so no origin scan/formula or unknown cast-key read occurs.
         var emptyHits = Enumerable.Repeat((byte)0, 8).ToImmutableArray(); // Original ranked_select slot count, not a content limit.
-        var lottery = AiRankedLottery.Evaluate(emptyHits, scenarios.RngState);
+        var lottery = AiRankedLottery.RankedSelect(emptyHits, scenarios.RngState);
         if (!lottery.Accepted)
             return Reject(new(AttackThrowStoneAiPostActSelectionRejection.LotteryRejected, FailedLotteryIndex: lottery.FailedIndex));
         var selected = lottery.Outcome!;

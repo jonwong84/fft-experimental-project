@@ -24,13 +24,14 @@ Follow these owners in order:
 1. [OrdinarySpellAiWork](Simulation/OrdinarySpellAiWork.cs): admit current facts,
    bind the selected slot, initialize lists/parameters and filter useful targets.
    The corresponding rule owners live in `Selection/`.
-2. [OrdinarySpellAiActionSimulation](Simulation/OrdinarySpellAiActionSimulation.cs): capture
+2. [OrdinarySpellAiActionSimulation.AiActionSimulateAndScore](Simulation/OrdinarySpellAiActionSimulation.cs): capture
    the aim and call Framework's shared primary preparation, privately applying
    its proposal to immutable hypothetical units.
 3. [OrdinarySpellAiClock](Simulation/OrdinarySpellAiClock.cs): advance a delayed
    action, or one event after an immediate useful hit. It records movement
    opportunities and retains source event-cap behavior.
-4. [OrdinarySpellAiHitSimulation](Simulation/OrdinarySpellAiHitSimulation.cs): resolve the
+4. [OrdinarySpellAiHitSimulation.ActionHitsSimulate](Simulation/OrdinarySpellAiHitSimulation.cs): call
+   `StrikesSimulate`, then report whether a valuable target was hit. Strike processing resolves the
    stored aim, call shared area/recipient rules and calculate result frames via
    [OrdinarySpellAiProjection](Simulation/OrdinarySpellAiProjection.cs).
 5. [OrdinarySpellAiAccounting](Scoring/OrdinarySpellAiAccounting.cs): exclusions,
@@ -40,7 +41,7 @@ Follow these owners in order:
 
 For a delayed action the clock precedes the ready strike. For an immediate
 action the strike precedes the required clock event. The numbered owners above
-identify responsibilities; `OrdinarySpellAiActionSimulation.Run` owns that ordering.
+identify responsibilities; `AiActionSimulateAndScore` owns that ordering.
 
 `Selection/` owns lists, considered parameters, statistics and usefulness.
 `Simulation/` owns private work, clocks, strikes and formula projection.

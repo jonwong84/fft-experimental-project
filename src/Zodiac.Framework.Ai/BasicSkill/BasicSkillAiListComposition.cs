@@ -54,7 +54,7 @@ internal static class BasicSkillAiListComposition
         var prefix = scenarios.Prefix!; var baseline = prefix.Movement[prefix.BaselineIndex].Outcome.Score;
         var ranked = new BasicSkillAiListCandidate?[8]; var entries = ImmutableArray.CreateBuilder<BasicSkillAiListEntryOutcome>();
         var currentRng = scenarios.Result.RngState; AiHumanAbilityKind? last = null;
-        int? Insert(int index, BasicSkillAiAction best) => AiRankedInsertion.Insert(new BasicSkillAiListCandidate(index, best), baseline,
+        int? Insert(int index, BasicSkillAiAction best) => AiRankedInsertion.AiBestRankInsert(new BasicSkillAiListCandidate(index, best), baseline,
             ranked, c => c.Action.Score, c => c.Action.Proximity);
         foreach (var occurrence in ready.Preparation.ActorEntries)
         {

@@ -56,7 +56,7 @@ public sealed class RosterAiPreparationTests
                     Assert.Equal(e.GetProperty("usable").EnumerateArray().Select(v=>v.GetString()),p.ActorEntries.Where(x=>x.Usable).Select(x=>Name(x.Source.Kind)));
                     Assert.Equal(e.GetProperty("enemyReach").GetInt32(),p.EnemyAbilityReach);Assert.Equal(e.GetProperty("allyReach").GetInt32(),p.AllyAbilityReach);
                 }
-                else {var r=RosterAiRefresh.Evaluate(s.State,s.Request,s.Simulation,Refresh,rng);Assert.True(r.Accepted,r.Rejection.ToString());o=r.Outcome!;end=r.RngState;}
+                else {var r=RosterAiRefresh.DecisionFlagsRefresh(s.State,s.Request,s.Simulation,Refresh,rng);Assert.True(r.Accepted,r.Rejection.ToString());o=r.Outcome!;end=r.RngState;}
                 Clock(e,o.TurnEndCt,o.MoveOpportunityUnitId,o.ElapsedTicks,o.Ticks,o.Units,end);
                 Assert.Equal(e.GetProperty("cachedDelay").GetByte(),o.CachedActorDelay);
                 Assert.Equal(Strings(e,"enemy"),o.RefreshedUnits.Where(u=>u.Enemy).Select(u=>u.UnitId.Value));
@@ -81,7 +81,7 @@ public sealed class RosterAiPreparationTests
             var old=mode.Acted ? SwordAiRefresh.EvaluateAfterAct(s.State,request,candidate,score,new(true,true,true),Rng)
                 : mode.Moved ? SwordAiRefresh.Evaluate(s.State,request,candidate,score,new(true,true,true),Rng)
                 : SwordAiRefresh.EvaluateUnmoved(s.State,request,candidate,score,new(true,true,true),Rng);
-            var current=RosterAiRefresh.Evaluate(s.State,s.Request,s.Simulation,Refresh,Rng);Assert.True(current.Accepted);Assert.True(old.Accepted);
+            var current=RosterAiRefresh.DecisionFlagsRefresh(s.State,s.Request,s.Simulation,Refresh,Rng);Assert.True(current.Accepted);Assert.True(old.Accepted);
             Assert.Equal(old.RngState,current.RngState);Assert.Equal(JsonSerializer.Serialize(old.Outcome!.Units),JsonSerializer.Serialize(current.Outcome!.Units));
             Assert.Equal(JsonSerializer.Serialize(old.Outcome.RefreshedUnits),JsonSerializer.Serialize(current.Outcome.RefreshedUnits));
             var body=s.State.TurnBattle.Battle.Units.Single(u=>u.Id==A);
@@ -98,23 +98,23 @@ public sealed class RosterAiPreparationTests
     {
         var s=Make();
         foreach (var p in new[]{new RosterAiRefreshProfile(),Refresh with{AllUnitsTargetable=false},Refresh with{CleanActorDelayCache=false},Refresh with{ZeroCachedMpAbilityModifiers=false}})
-            Rejected(RosterAiRefresh.Evaluate(s.State,s.Request,s.Simulation,p,Rng),RosterAiRejection.UnsupportedContext);
+            Rejected(RosterAiRefresh.DecisionFlagsRefresh(s.State,s.Request,s.Simulation,p,Rng),RosterAiRejection.UnsupportedContext);
         foreach (var rows in new[]{default(ImmutableArray<AiUnitPolicy>),ImmutableArray.Create(new AiUnitPolicy(A,false,false)),ImmutableArray.Create(new AiUnitPolicy(A,false,false),new(A,false,false),new(C,false,false))})
-            Rejected(RosterAiRefresh.Evaluate(s.State,s.Request with{Policies=rows},s.Simulation,Refresh,Rng),RosterAiRejection.InvalidPolicies);
-        Rejected(RosterAiRefresh.Evaluate(s.State,s.Request with{ActorId=new("absent")},s.Simulation,Refresh,Rng),RosterAiRejection.UnknownActor);
-        Rejected(RosterAiRefresh.Evaluate(s.State,s.Request,new(s.Simulation.Battle,s.Simulation.Units),Refresh,Rng),RosterAiRejection.UnsupportedContext);
+            Rejected(RosterAiRefresh.DecisionFlagsRefresh(s.State,s.Request with{Policies=rows},s.Simulation,Refresh,Rng),RosterAiRejection.InvalidPolicies);
+        Rejected(RosterAiRefresh.DecisionFlagsRefresh(s.State,s.Request with{ActorId=new("absent")},s.Simulation,Refresh,Rng),RosterAiRejection.UnknownActor);
+        Rejected(RosterAiRefresh.DecisionFlagsRefresh(s.State,s.Request,new(s.Simulation.Battle,s.Simulation.Units),Refresh,Rng),RosterAiRejection.UnsupportedContext);
     }
 
     [Fact]
     public void Exact_refresh_budget_ready_peers_and_tick_exhaustion_use_one_clock_call()
     {
         var s=Make();var last=new RandomState(1,ulong.MaxValue-1);
-        Assert.Equal(ulong.MaxValue,RosterAiRefresh.Evaluate(s.State,s.Request,s.Simulation,Refresh,last).RngState.DrawCount);
-        var empty=new RandomState(1,ulong.MaxValue);var failed=RosterAiRefresh.Evaluate(s.State,s.Request,s.Simulation,Refresh,empty);
+        Assert.Equal(ulong.MaxValue,RosterAiRefresh.DecisionFlagsRefresh(s.State,s.Request,s.Simulation,Refresh,last).RngState.DrawCount);
+        var empty=new RandomState(1,ulong.MaxValue);var failed=RosterAiRefresh.DecisionFlagsRefresh(s.State,s.Request,s.Simulation,Refresh,empty);
         Assert.False(failed.Accepted);Assert.Null(failed.Outcome);Assert.Equal(empty,failed.RngState);
-        var max=Make(ticks:ulong.MaxValue);Rejected(RosterAiRefresh.Evaluate(max.State,max.Request,max.Simulation,Refresh,Rng),RosterAiRejection.TickCountExhausted);
+        var max=Make(ticks:ulong.MaxValue);Rejected(RosterAiRefresh.DecisionFlagsRefresh(max.State,max.Request,max.Simulation,Refresh,Rng),RosterAiRejection.TickCountExhausted);
         var ready=Make([new("a",0,0,15),new("b",1,1,150),new("c",2,0,150)],ticks:ulong.MaxValue);
-        var r=RosterAiRefresh.Evaluate(ready.State,ready.Request,ready.Simulation,Refresh,Rng);Assert.True(r.Accepted);
+        var r=RosterAiRefresh.DecisionFlagsRefresh(ready.State,ready.Request,ready.Simulation,Refresh,Rng);Assert.True(r.Accepted);
         Assert.Equal((ulong)0,r.Outcome!.ElapsedTicks);Assert.Equal(B,r.Outcome.MoveOpportunityUnitId);
     }
 
@@ -124,7 +124,7 @@ public sealed class RosterAiPreparationTests
         foreach(int n in new[]{16,17})
         {
             var units=Enumerable.Range(0,n).Select(i=>new Unit(i==0 ? "a" : $"unit-{i}",i,i%4,i==0 ? 15 : 0)).ToArray();var s=Make(units);
-            var result=RosterAiRefresh.Evaluate(s.State,s.Request,s.Simulation,Refresh,Rng);Assert.Equal(n==16,result.Accepted);
+            var result=RosterAiRefresh.DecisionFlagsRefresh(s.State,s.Request,s.Simulation,Refresh,Rng);Assert.Equal(n==16,result.Accepted);
             Assert.Equal(n,s.Simulation.Units.Length);
         }
         var sample=Make();var baselines=sample.Simulation.Units.ToArray();var profile=new RosterAiSimulationProfile(sample.Simulation.Battle,baselines,true);

@@ -13,6 +13,21 @@ review results before merge. The owner-approved
 `AiTurnController.cs` readability edit is now included in the branch; its exact
 blob was already covered by the passing ZOD-435 full validation.
 
+Owner-requested AI routine method refactor: `Decide` now prepares fresh roster/
+target facts, then enters named `ActionSelect` / `GeneralSelect` methods.
+`GeneralSelect` calls `ScenariosBuild` / `ReachableTilesScore` before
+`AbilityListEvaluate`; each `AiAbilityOutcomeEvaluate` inserts its best through
+`AiBestRankInsert`, followed by `RankedSelect` and conditional `FallbackSelect`.
+Refresh is named `DecisionFlagsRefresh`. The ordinary spell path now reads
+`AiActionSimulateAndScore` → `ActionHitsSimulate` → `StrikesSimulate`; the wrapper
+reports a valuable hit alongside immutable diagnostics. Public APIs, entry RNG
+rollback, workspace publication, source arithmetic and admission remain intact.
+The [routine ownership guide](architecture/ai-routine-ownership.md) follows the
+method call order and identifies omitted policy/charging/reaction/frame branches.
+Release build passes with zero warnings/errors; all 5,181 .NET tests (1,384 AI)
+and 794 Python tests pass. Logs/TRX use ignored `scratch/ai-routine-methods-*`.
+This refactor does not complete ZOD-436 or the future ZOD-432 full review.
+
 Owner clarification: recognizable source routines should have corresponding
 named methods. `CombatRules/KnockbackRules.KnockbackCalculation` now owns the
 shared flat-ground landing proposal for physical abilities and sword criticals,

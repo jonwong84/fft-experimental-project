@@ -67,7 +67,7 @@ internal static class BasicSkillAiPostActSelection
         else movement = SwordAiMovementScenario.EvaluateAfterAct(state, p.Attack, p.Scoring, comparison, movementProfile, preparation.RngState);
         if (!movement.Accepted) return Reject(new(BasicSkillAiPostActStage.Movement, Movement: movement.Failure));
         // All three actor usable bits are cleared before the outcome sign-bit guard. No self coin or action scan can run.
-        var lottery = AiRankedLottery.Evaluate(Enumerable.Repeat((byte)0, 8).ToImmutableArray(), movement.RngState);
+        var lottery = AiRankedLottery.RankedSelect(Enumerable.Repeat((byte)0, 8).ToImmutableArray(), movement.RngState);
         if (!lottery.Accepted) return Reject(new(BasicSkillAiPostActStage.Lottery, LotteryIndex: lottery.FailedIndex));
         var fresh = movement.Outcome!;
         var plan = new BasicSkillAiSelectedPlan(request.Turn.ActorId, fresh.Scenario.BaselineDestination, null);

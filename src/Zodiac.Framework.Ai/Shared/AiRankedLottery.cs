@@ -12,7 +12,7 @@ internal sealed record AiRankedLotteryResult(bool Accepted, int? FailedIndex, Ai
 /// <remarks>Source 11464943bbdbd2a0af022d90cb7f10455cf911df; ZOD-139/192/194.</remarks>
 internal static class AiRankedLottery
 {
-    internal static AiRankedLotteryResult Evaluate(ImmutableArray<byte> hitPercentages, RandomState entryRng)
+    internal static AiRankedLotteryResult RankedSelect(ImmutableArray<byte> hitPercentages, RandomState entryRng)
     {
         var rng = entryRng; var random = new RandomStateGenerator(); bool any = false;
         var rolls = ImmutableArray.CreateBuilder<AiLotteryRoll>();

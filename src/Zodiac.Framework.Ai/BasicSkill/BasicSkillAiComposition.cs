@@ -122,7 +122,7 @@ internal static class BasicSkillAiComposition
         var stoneRequest = new ThrowStoneAiScanRequest(turn.ActorId, request.ThrowStoneAbilityId, turn.TargetId);
         var baseline = fresh.Movement[fresh.BaselineIndex].Outcome.Score;
         var ranked = new BasicSkillAiAction?[8]; // Original ranked capacity; not a managed catalog limit.
-        int? Insert(BasicSkillAiAction best) => AiRankedInsertion.Insert(best, baseline, ranked, a => a.Score, a => a.Proximity);
+        int? Insert(BasicSkillAiAction best) => AiRankedInsertion.AiBestRankInsert(best, baseline, ranked, a => a.Score, a => a.Proximity);
         var attack = SwordAiCandidateScan.EvaluateFresh(state, attackScenario, request.Weapon, p.Attack, p.Scoring,
             comparison, profile.AttackScan, fresh.Proximity, rng);
         if (attack.Disposition == SwordAiScanDisposition.Rejected) return Reject(AttackFailure(BasicSkillAiStage.Attack, attack));
