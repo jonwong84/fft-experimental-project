@@ -106,9 +106,49 @@ set delta and no-draw Preview/AI paths. Its atomic draw-counter exhaustion
 rejection is an explicit managed guard, not a PS1 counter rule. No runtime or
 fixture change is required. All15 focused .NET proc/composition tests and eight
 Python tests pass; all ten owner draft blobs and the approved disabled-by-default
-CI gate remain unchanged. The next useful supplied page is Pass/Fail Roll at
-`0x8005e0cc`; its local source is already pinned, and existing root RNG evidence
-remains reusable. ZOD-436 remains open.
+CI gate remain unchanged. The supplied Pass/Fail Roll is now checked below;
+existing root RNG evidence remains reusable. ZOD-436 remains open.
+
+## Supplied Pass/Fail Roll
+
+The owner's duplicated Pass/Fail Roll page matches all 21 instruction words at
+`0x8005e0cc`–`0x8005e11c` in the verified prepared SCUS executable. The supporting
+receipt pins clean reference `11464943bbdbd2a0af022d90cb7f10455cf911df`, the
+executable hash, `random_roll_pass_fail`, the BIOS veneer and the corrected SCUS
+caller. All 13 listed BATTLE.BIN return locations match. The listed SCUS address
+`0x8005cfe0` is the JAL instruction in `unit_job_abilities_learn`; its return is
+`0x8005cfe8`. The first word `27bdffe0` allocates 32 stack bytes, correcting the
+accompanying `-0x0010` text.
+
+The helper always calls `rand` once at `0x8002230c`, preserving threshold in the
+call delay slot. That three-word veneer selects BIOS A0 service `0x2f`; the
+existing [BIOS RNG verification](bios-rng-verification.md) supplies its raw
+0–32767 output contract. The helper has no preview/AI shortcut or threshold
+early exit. Even maximum 0 draws; callers own any execution-mode gates.
+
+Signed MULT followed by MFLO retains the low 32 product bits. If that signed
+product is negative, adding `0x7fff` before arithmetic shift 15 gives division
+by 32768 with truncation toward zero. The branch tests the product, not the
+unmultiplied RNG value. Signed SLT and XOR 1 return 0 below threshold and 1
+otherwise. Arbitrary large maxima can overflow the product; the range summary
+does not establish an unbounded mathematical contract. Current proc maximum 100
+keeps every product safely inside signed 32 bits.
+
+Offline checks compare all 32,768 raw values for seven nonoverflowing maxima
+(229,376 products), plus 13 signed division boundaries and eight threshold
+descriptions. For maximum 100 the scaled outputs span exactly 0–99; raw 6225
+passes threshold 19, while 6226 fails. Threshold 0 always fails and threshold
+100 always passes in that domain, with a draw in either case.
+
+`MagicConditionalProc.Evaluate` already uses the same raw scaling and below-19
+comparison after one `RandomStateGenerator.Next` transition. No runtime or
+fixture change is required. All 25 focused .NET RNG/proc/composition tests and
+eight Python tests pass; all ten owner drafts and the approved disabled CI gate
+remain unchanged. Listed caller checks do not establish a complete
+call graph or activate their other gameplay families. Frame/VSync RNG scheduling
+and broader status sets remain separate. The next useful supplied listing is
+**Apply status (to action) — Preserve hit status, evade type, hit %** at
+`0x80187eb4`. ZOD-436 remains open for the full shared-consumer review.
 
 ## Original implementation checkpoint
 

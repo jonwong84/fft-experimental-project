@@ -135,7 +135,10 @@ match20 words/five returns: call inner first, then return0 for Preview2 or test
 the marker in other modes.
 The inner routine matches21 words/the chance call/one return: Execute-only,
 Pass/Fail return0 sets0x0200 and failures preserve existing flags. Pass/Fail Roll
-is the next useful listing; the full shared-consumer review remains open.
+matches 21 words, its RNG veneer and 14 listed callers after correcting the SCUS
+return to0x8005cfe8. Signed division and scaled thresholds agree with current C#.
+The preserving status applicator at0x80187eb4 is the next useful listing; the
+full shared-consumer review remains open.
 
 ## Review programme
 

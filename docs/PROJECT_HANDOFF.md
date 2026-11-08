@@ -116,8 +116,12 @@ call; other modes test post-call AddedEffect0x0200. Existing fresh-mode/marker
 guards agree. The inner routine matches21 words, Pass/Fail(100,19) call and its
 listed return: state0 draws, return0 ORs0x0200, other modes/failure preserve flags.
 The inline success condition is reversed and the scaled roll range is0–99.
-Existing C# agrees. Pass/Fail Roll at0x8005e0cc is next; root RNG evidence already
-exists. ZOD-436 remains open.
+Existing C# agrees. Pass/Fail Roll matches 21 words, its rand veneer and 14 listed
+callers after correcting the SCUS return to0x8005cfe8. Its signed product/division
+and threshold behavior agree with the admitted C# path; 229,376 nonoverflowing
+products and 13 signed boundaries pass offline checks. The stack annotation is
+also corrected to32 bytes. The preserving status applicator at0x80187eb4 is the
+next useful listing; root RNG evidence already exists. ZOD-436 remains open.
 The owner-approved `.circleci/config.yml` gate is committed: CircleCI is intentionally
 paused by default through the `ci-enabled: false` workflow gate, with existing
 jobs/filters retained. Re-enabling is a later owner decision. Continue local

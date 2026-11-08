@@ -111,6 +111,30 @@
       "hashEncoding": "utf8-lf",
       "byteLength": 9954,
       "sha256": "2ed903ab22091474bfa4b364594dca038c201232b0062f3dbbd91c02d2d25bd2"
+    },
+    {
+      "path": "src/platform/psyq/libapi/rand.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 202,
+      "sha256": "6bae60cf1d89d9dd09abf3f36c837096bcac34b2928d49be98de770e9681ee52"
+    },
+    {
+      "path": "include/psx/abi_inline.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2336,
+      "sha256": "56c0193d73fdccb5eb180fd0e44ee2faefe2b1b240c94ed869d6ab100a4fc0f7"
+    },
+    {
+      "path": "include/psx/bios.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2708,
+      "sha256": "699cade209b354aedfd5c31a0e3a9b173cf6301758315c192ba4b5475ccd89f0"
+    },
+    {
+      "path": "src/main/unit_loadout.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 10491,
+      "sha256": "da8e9849ec2247b02e9dbfaced4524c9b9ca5553101f5d39b7cc5367fc4eb435"
     }
   ],
   "sourceFunctions": [
@@ -323,6 +347,20 @@
       "startLine": 84,
       "endLine": 88,
       "normalizedLfSha256": "fe644f4e2a6aefc5520152de095c4762912d9dd0dbb92fadd12c0ff5a5c89f88"
+    },
+    {
+      "path": "src/platform/psyq/libapi/rand.c",
+      "symbol": "rand",
+      "startLine": 6,
+      "endLine": 8,
+      "normalizedLfSha256": "a9d63b6389f15294c76f44ffe3a25d8fbb11351048b52e21425665297089590e"
+    },
+    {
+      "path": "src/main/unit_loadout.c",
+      "symbol": "unit_job_abilities_learn",
+      "startLine": 119,
+      "endLine": 187,
+      "normalizedLfSha256": "a00159d0f4a24a516ea792816962b21bc1e3ca023a9370a8d09d055f3b88c3e0"
     }
   ],
   "managedFiles": [
@@ -4422,6 +4460,324 @@
         "ciEnabledDefault": false
       },
       "focusedManagedTestsPassed": 15,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedPassFailRollCheck": {
+    "managedBaseRevision": "48f91f040b780d286c57d85aa2bb80eb39509989",
+    "start": "0x8005e0cc",
+    "endInclusive": "0x8005e11c",
+    "instructionCount": 21,
+    "instructionWords": [
+      "27bdffe0",
+      "afb00010",
+      "00808021",
+      "afb10014",
+      "afbf0018",
+      "0c0088c3",
+      "00a08821",
+      "00500018",
+      "00001012",
+      "04410002",
+      "00000000",
+      "24427fff",
+      "000213c3",
+      "0051102a",
+      "38420001",
+      "8fbf0018",
+      "8fb10014",
+      "8fb00010",
+      "27bd0020",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "preparedExecutable": {
+      "path": "scratch/all-data-extraction/SCUS_942.21",
+      "byteLength": 356352,
+      "sha256": "287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562",
+      "loadAddress": "0x80010000",
+      "fileHeaderBytes": 2048
+    },
+    "randCall": {
+      "pc": "0x8005e0e0",
+      "target": "0x8002230c",
+      "thresholdPreservedInDelaySlot": true,
+      "veneerWords": [
+        "240a00a0",
+        "01400008",
+        "2409002f"
+      ],
+      "biosVector": "0x000000a0",
+      "biosService": "0x2f",
+      "draws": 1
+    },
+    "arithmetic": {
+      "product": "signed MULT; MFLO retains low32",
+      "division": "Add0x7fff only when signed low32 product is negative, then arithmetic shift15: truncation toward zero",
+      "comparison": "Signed SLT against threshold, XOR1: return0 below,1 otherwise",
+      "procMaximum": 100,
+      "procThreshold": 19,
+      "procScaledRange": [
+        0,
+        99
+      ],
+      "procSuccessfulRawValues": 6226
+    },
+    "listedCallers": [
+      {
+        "image": "SCUS",
+        "listedReturnAddress": "0x8005cfe0",
+        "returnAddress": "0x8005cfe8",
+        "callPc": "0x8005cfe0",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x80176c80",
+        "returnAddress": "0x80176c80",
+        "callPc": "0x80176c78",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x80180270",
+        "returnAddress": "0x80180270",
+        "callPc": "0x80180268",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x801807e8",
+        "returnAddress": "0x801807e8",
+        "callPc": "0x801807e0",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x801843c0",
+        "returnAddress": "0x801843c0",
+        "callPc": "0x801843b8",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x80184900",
+        "returnAddress": "0x80184900",
+        "callPc": "0x801848f8",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x801869cc",
+        "returnAddress": "0x801869cc",
+        "callPc": "0x801869c4",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x8018758c",
+        "returnAddress": "0x8018758c",
+        "callPc": "0x80187584",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x801876b0",
+        "returnAddress": "0x801876b0",
+        "callPc": "0x801876a8",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x80187990",
+        "returnAddress": "0x80187990",
+        "callPc": "0x80187988",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x801880f0",
+        "returnAddress": "0x801880f0",
+        "callPc": "0x801880e8",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x8018c6f4",
+        "returnAddress": "0x8018c6f4",
+        "callPc": "0x8018c6ec",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x8018d3a4",
+        "returnAddress": "0x8018d3a4",
+        "callPc": "0x8018d39c",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x8018e850",
+        "returnAddress": "0x8018e850",
+        "callPc": "0x8018e848",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      }
+    ],
+    "documentationCorrections": [
+      "27bdffe0 allocates32 stack bytes; the accompanying -0x0010 text is incorrect.",
+      "The listed SCUS0x0005cfe0 is the JAL call, not its return. Its return is0x8005cfe8.",
+      "The negative-rounding branch tests the low32 product, not the unmultiplied RNG output."
+    ],
+    "arithmeticChecks": {
+      "rawValues": 32768,
+      "maxima": [
+        0,
+        1,
+        50,
+        100,
+        256,
+        32767,
+        65535
+      ],
+      "nonoverflowingProductComparisons": 229376,
+      "signedProductBoundaries": [
+        -2147483648,
+        -65537,
+        -65536,
+        -65535,
+        -32769,
+        -32768,
+        -32767,
+        -1,
+        0,
+        1,
+        32767,
+        32768,
+        2147483647
+      ],
+      "thresholdDescriptions": [
+        {
+          "raw": 0,
+          "maximum": 100,
+          "threshold": 0,
+          "scaledRoll": 0,
+          "expectedReturn": 1
+        },
+        {
+          "raw": 0,
+          "maximum": 100,
+          "threshold": 1,
+          "scaledRoll": 0,
+          "expectedReturn": 0
+        },
+        {
+          "raw": 6225,
+          "maximum": 100,
+          "threshold": 19,
+          "scaledRoll": 18,
+          "expectedReturn": 0
+        },
+        {
+          "raw": 6226,
+          "maximum": 100,
+          "threshold": 19,
+          "scaledRoll": 19,
+          "expectedReturn": 1
+        },
+        {
+          "raw": 32767,
+          "maximum": 100,
+          "threshold": 100,
+          "scaledRoll": 99,
+          "expectedReturn": 0
+        },
+        {
+          "raw": 32767,
+          "maximum": 100,
+          "threshold": 101,
+          "scaledRoll": 99,
+          "expectedReturn": 0
+        },
+        {
+          "raw": 0,
+          "maximum": 0,
+          "threshold": 0,
+          "scaledRoll": 0,
+          "expectedReturn": 1
+        },
+        {
+          "raw": 32767,
+          "maximum": 0,
+          "threshold": 1,
+          "scaledRoll": 0,
+          "expectedReturn": 0
+        }
+      ]
+    },
+    "managedMapping": "MagicConditionalProc.Evaluate consumes one RandomStateGenerator.Next output and scales raw*100/32768 before testing<19. All admitted products fit signed32. No generic pass/fail API or new runtime behavior is introduced.",
+    "boundaries": [
+      "The helper always calls rand, even for maximum0 or an out-of-range threshold; mode and invocation gates belong to callers.",
+      "The general arbitrary-int32 maximum can overflow the low32 product. This check records machine narrowing but does not promise unbounded mathematical or undefined-C-overflow equivalence.",
+      "The listed callers are checked at their instruction locations, not claimed as a complete call graph or full semantic port.",
+      "Existing BIOS RNG evidence is reused; no new BIOS/C/original execution or VSync scheduling claim.",
+      "The next useful supplied listing is formula_apply_status at0x80187eb4; general status-set implementation remains separate."
+    ],
+    "validation": {
+      "sourceAudit": {
+        "rollDescriptions": 6,
+        "decisionDescriptions": 26,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 9,
+        "sourceFunctions": 10,
+        "emptyStatusRecordVerified": true,
+        "fireTiersVerified": 4
+      },
+      "ownerBlobsVerified": 10,
+      "ownerApprovedCiEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "committed": true,
+        "ciEnabledDefault": false
+      },
+      "focusedManagedTestsPassed": 25,
       "focusedPythonTestsPassed": 8,
       "managedTestsExecuted": true,
       "runtimeChanged": false,
