@@ -1,5 +1,10 @@
 version: 2.1
 
+parameters:
+  ci-enabled:
+    type: boolean
+    default: false
+
 jobs:
   build-test-sonar:
     docker:
@@ -162,6 +167,7 @@ jobs:
 
 workflows:
   build-test-scan:
+    when: << pipeline.parameters.ci-enabled >>
     jobs:
       - build-test-sonar:
           context: global-v1

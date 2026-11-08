@@ -105,7 +105,10 @@ on working copies, single signed /10000 after both Faith multiplications and the
 signed16 return-delay store. Offline interval endpoints prove the division over
 the full signed16/byte numerator envelope; existing C# agrees. Elemental Absorb
 and status roll at0x0018871c is next. ZOD-436 remains open.
-The unrelated owner edit in `.circleci/config.yml` remains uncommitted and excluded.
+The owner approved committing `.circleci/config.yml`: CircleCI is intentionally
+paused by default through the `ci-enabled: false` workflow gate, with existing
+jobs/filters retained. Re-enabling is a later owner decision. Continue local
+validation; do not assume remote CI or Sonar analysis is running while paused.
 The shared Calculate Hit %/final-hit/per-source roll
 documentation was already supplied; no duplicate is needed.
 

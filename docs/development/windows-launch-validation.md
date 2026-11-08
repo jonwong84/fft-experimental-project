@@ -7,7 +7,15 @@ not add an installer, public release, original game content or campaign support.
 
 ## CI paths and reports
 
-`.circleci/config.yml` runs two independent jobs on `main`, `feature/*` and `codex/*`:
+The owner intentionally paused CircleCI on 2026-11-07. The `ci-enabled` boolean
+pipeline parameter defaults to `false` and gates the whole `build-test-scan`
+workflow. Job definitions and branch filters are retained. Re-enabling remains
+an explicit later owner decision; local validation and the outstanding remote CI/
+clean-machine evidence gates remain separate. The gate follows CircleCI's
+[conditional-workflow parameter pattern](https://circleci.com/docs/guides/server/orchestrate/pipeline-variables/#pipeline-parameters-and-conditional-workflows).
+
+When enabled, `.circleci/config.yml` runs two independent jobs on `main`,
+`feature/*` and `codex/*`:
 
 - Linux retains the pinned SDK container, locked solution restore, Release build,
   headless tests and Sonar analysis. Sonar still uses the `global-v1` context.
