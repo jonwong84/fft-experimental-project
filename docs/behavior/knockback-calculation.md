@@ -40,7 +40,7 @@ There are two actual calls. Other hyperlinks describe callers or annotations.
   layer selection, headroom, occupancy and fall-height staging within the
   [physical review's admitted domain](physical-pipeline-review.md#verified-behavior-within-the-admitted-domain).
   Equal source/destination edge heights are allowed: the notes' "lower than
-  origin" must not become a strict-lower test. Its supplied listing is next useful.
+  origin" must not become a strict-lower test. Its supplied listing is checked below.
 - **Float/Float/Fly movements**, `0x8017f020`, is
   `move_get_effective_flags(target)`. Its source combines movement abilities and
   statuses. The parent tests only effective Fly bit `0x80`; Float bit `0x40`
@@ -56,6 +56,64 @@ not forbid every slope; the child owns direction-dependent edge geometry.
 These calls consume no RNG in the pinned source. The parent itself performs no
 Brave, hit or HP check; its caller owns the random trigger, and later aftermath
 can still suppress a lethal target's displacement.
+
+## Supplied Knockback 2 destination checker
+
+All 178 words at `0x80184610`–`0x801848d4`, two direct calls and its listed return
+`0x801844e8` match the prepared file. The
+[destination receipt](../evidence/combat/knockback-destination-trace-v1.json)
+pins the same clean reference, source, layouts and supplied text. Its two calls
+are:
+
+- **Map Location Calculation (`0x801810a0`)**, source symbol
+  `battle_map_tile_calculate_unit_index`: calculate the target's source tile
+  index from X/Y and layer. This pure shared lookup was already source-traced in
+  the physical/action-restriction work; its separate supplied listing is optional.
+- **Get ID of Unit if Tile is Targetable (`0x8017dc88`)**, source symbol
+  `target_find_unit_at_tile`: delegate to `unit_find_at_tile` at `0x8017dca8` with
+  filters 0. Only return **-1** permits the landing. Occupied slots and -2
+  (invalid or blocked/untargetable tile) reject. This is not an "any negative
+  means empty" test. Its supplied wrapper listing is next useful.
+
+The Slope Type hyperlink describes packed tile data, not another call. No RNG
+is consumed along this checked path.
+
+Bounds reject negative X/Y or X/Y at or beyond map width/depth. Valid source
+directions 0–3 select exit/entry bit shifts: south 4/6, west 2/0, north 6/4,
+east 0/2. The edge formula is `height * 2 + halfHeight * coefficient`, with
+halfHeight from byte 3's low five bits and coefficient from the selected two
+bits of slope byte 4. The mask allows coefficient 3 too; the notes' 0/1/2 list
+does not establish a clamp. These are doubled tile-height units. Invalid
+directions fall through without setting the shift registers; the parent only
+supplies valid directions, and no fallback for other inputs is claimed.
+
+Lower and upper layers use original plane offset `0x100`. A blocked layer is
+assigned numeric height `0xff`. Layers at or below the source exit edge are
+reachable. If both qualify, choose the higher entry edge; equal heights choose
+layer 0. When exactly one qualifies, the other layer's entry edge minus its
+`byte5 & 0x1f` must be at least **source edge + 4**. Equality passes. Preserve
+the crossed-layer byte-5 accesses and the source-relative threshold, rather than
+substituting destination-floor clearance or a body-height property. This proves
+the arithmetic; it does not resolve every physical interpretation of byte 5.
+
+`0xff` is a finite sentinel, not infinity. Raw byte-domain heights can exceed it;
+that affects selection before the final collision/occupancy check. No claim is
+made that those extreme combinations occur on retail maps. The admitted flat
+maps stay below this boundary.
+
+After selecting a layer, the helper tests occupancy **once**. It does not retry
+the other layer when the preferred one rejects. Success stores the low byte of
+the edge-height difference at `0x801938ee` and copies the working target ID from
+`0x801938c1` to `0x801938ef`, then returns layer 0 or 1. Failure returns -1 and
+leaves old values alone. These are not pending-flag, live movement or HP writes;
+the parent still has its later tile gates.
+
+The source selection matches an independent candidate-layer description over
+172,800 representative height/headroom/occupancy combinations. Edge arithmetic
+checks cover 32,768 byte-height/half-height/coefficient combinations, and 12
+literal descriptions retain equality, layer ties, four-versus-three clearance,
+exact -1 occupancy, no retry and byte fall-height narrowing. These are offline
+source comparisons, not original/C execution or a managed general-geometry port.
 
 ## Staged result and failure boundaries
 
@@ -85,6 +143,7 @@ physical validation. Flying, general layers/slopes/headroom, mounts, terrain
 and fall damage remain guarded or deferred. Neither source presence nor these
 instruction checks establish full implementation of those domains.
 
-Next useful supplied listing: **Knockback 2 (`0x80184610`)**, followed by the
-effective-movement routine if available. No duplicate Pass/Fail or root BIOS RNG
-listing is needed.
+Next useful supplied listing: **Get ID of Unit if Tile is Targetable
+(`0x8017dc88`)**. The outer helper's effective-movement routine at `0x8017f020`
+also remains useful. Map Location Calculation is already source-traced; no
+duplicate Pass/Fail or root BIOS RNG listing is needed.

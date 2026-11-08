@@ -228,9 +228,12 @@ order agree with current bounded calculation. Pass/Fail is already checked;
 Random Process is source-traced. [Knockback Calculation](behavior/knockback-calculation.md)
 now matches137 words/two calls/two returns, with 261,120 direction cases and
 1,024 movement/status flag combinations. It stages layer/flags rather than live
-movement; its destination checker allows equal edge heights. Knockback 2 at
-0x80184610 is the next useful supplied dependency, followed by effective movement
-at0x8017f020, without activating broader landing/falls.
+movement; its destination checker allows equal edge heights. Knockback 2 now
+matches178 words/two calls/one return and 172,800 layer/headroom/occupancy cases.
+It requires exactly-1 from the selected layer's lookup and never retries another
+layer. Map Location Calculation is source-traced; the tile-unit lookup wrapper
+at0x8017dc88 is next useful, with effective movement at0x8017f020 still pending
+as a supplied cross-check. Broader landing/falls remain guarded.
 Broader modifiers,
 equipment and landing/fall behavior remain deferred. No runtime change.
 
