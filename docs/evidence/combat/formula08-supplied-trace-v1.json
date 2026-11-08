@@ -250,6 +250,13 @@
       "startLine": 493,
       "endLine": 520,
       "normalizedLfSha256": "06f727cc712d89400a3109b3d9d63ba6965102ddb5051c5511bf9aabaeca6d51"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_element_modify_weapon_damage",
+      "startLine": 154,
+      "endLine": 156,
+      "normalizedLfSha256": "bd672da379c7958c7cdb06829bfcbfe6039f5c210e5862481a0cc3628d803a4c"
     }
   ],
   "managedFiles": [
@@ -2695,6 +2702,199 @@
       "The status-change type write assigns0x08 rather than ORing it into the existing type.",
       "Float writes miss label7 before affinity processing; a later affinity-nullification call can replace it with the nullifier label5.",
       "No change to general statuses, event VM, mount/rider behavior or runtime admission is made."
+    ],
+    "validation": {
+      "sourceAudit": {
+        "transformDescriptions": 24,
+        "projectionDescriptions": 12,
+        "routingDescriptions": 14,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "sourceFiles": 9,
+        "sourceFunctions": 14,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true
+      },
+      "ownerBlobsVerified": 10,
+      "unrelatedOwnerEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlobAtReview": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "excludedFromCommit": true
+      },
+      "focusedManagedTestsPassed": 16,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedElementalAffinityCheck": {
+    "managedBaseRevision": "40addfa3c1ecb3608621a716dd1966f357319935",
+    "attachmentNormalizedLfSha256": "58812b8755dc11066ce325289eed35015f209e2ace5b162fc748cce0cafc9f61",
+    "start": "0x80184e98",
+    "endInclusive": "0x80184f98",
+    "instructionCount": 65,
+    "instructionWords": [
+      "3c028019",
+      "8c422d98",
+      "27bdffe8",
+      "afbf0010",
+      "9042006d",
+      "00802821",
+      "00451024",
+      "10400008",
+      "00000000",
+      "3c038019",
+      "8c632d90",
+      "00000000",
+      "94620010",
+      "00000000",
+      "34420400",
+      "a4620010",
+      "3c038019",
+      "8c632d98",
+      "00000000",
+      "9062006e",
+      "00000000",
+      "00451024",
+      "10400005",
+      "00000000",
+      "0c061390",
+      "00000000",
+      "080613e3",
+      "00000000",
+      "9062006f",
+      "00000000",
+      "00451024",
+      "1040000c",
+      "00000000",
+      "3c028019",
+      "8c422d90",
+      "00000000",
+      "94430004",
+      "00000000",
+      "00031c00",
+      "00032403",
+      "00031fc2",
+      "00832021",
+      "00042043",
+      "a4440004",
+      "3c028019",
+      "8c422d98",
+      "00000000",
+      "90420070",
+      "00000000",
+      "00451024",
+      "1040000a",
+      "00000000",
+      "3c028019",
+      "8c422d90",
+      "00000000",
+      "94430010",
+      "84440004",
+      "34630800",
+      "00042040",
+      "a4430010",
+      "a4440004",
+      "8fbf0010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "parameter": "r4: weapon or ability element mask; matching any target-affinity bit qualifies that stage once",
+    "targetAffinityOffsets": {
+      "absorb": "0x6d",
+      "nullify": "0x6e",
+      "half": "0x6f",
+      "weak": "0x70"
+    },
+    "orderedRules": [
+      "Mark absorption by ORing0x0400 into the 16-bit effect field at TCA0x10.",
+      "If nullified, call formula_nullify_action at0x80184e40 then jump to epilogue; prior absorption is cleared and half/weak are skipped.",
+      "Otherwise, half signed HP damage with explicit sign extension/correction, truncating toward zero.",
+      "Then if weak, OR0x0800 into the 16-bit effect field and double/store the signed16 HP damage."
+    ],
+    "nullificationCall": {
+      "callPc": "0x80184ef8",
+      "target": "0x80184e40",
+      "symbol": "formula_nullify_action",
+      "exitJumpPc": "0x80184f00",
+      "exitTarget": "0x80184f8c"
+    },
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80186fe0",
+        "returnAddress": "0x80186fe8",
+        "target": "0x80184e98"
+      },
+      {
+        "callPc": "0x801870e0",
+        "returnAddress": "0x801870e8",
+        "target": "0x80184e98"
+      }
+    ],
+    "arithmetic": {
+      "freshWork": true,
+      "signedAmounts": 65536,
+      "affinityMatchCombinations": 16,
+      "comparisons": 1048576,
+      "allMatched": true,
+      "samples": [
+        {
+          "inputAmount": -5,
+          "affinityBits": 12,
+          "outputAmount": -4,
+          "effectsWord": "0x0800",
+          "nullified": false
+        },
+        {
+          "inputAmount": -1,
+          "affinityBits": 4,
+          "outputAmount": 0,
+          "effectsWord": "0x0000",
+          "nullified": false
+        },
+        {
+          "inputAmount": 0,
+          "affinityBits": 9,
+          "outputAmount": 0,
+          "effectsWord": "0x0c00",
+          "nullified": false
+        },
+        {
+          "inputAmount": 5,
+          "affinityBits": 12,
+          "outputAmount": 4,
+          "effectsWord": "0x0800",
+          "nullified": false
+        },
+        {
+          "inputAmount": 5,
+          "affinityBits": 15,
+          "outputAmount": 0,
+          "effectsWord": "0x0000",
+          "nullified": true
+        },
+        {
+          "inputAmount": 32767,
+          "affinityBits": 8,
+          "outputAmount": -2,
+          "effectsWord": "0x0800",
+          "nullified": false
+        }
+      ]
+    },
+    "managedMapping": "MagicDamageElements.Transform follows absorb/nullify/half/weak order and named markers, requires fresh work and preserves signed16 stores; later routing owns conversion to healing.",
+    "clarifications": [
+      "Matching several element bits does not stack one affinity stage repeatedly.",
+      "Half+weak is not an identity for odd amounts:5 becomes4 and-5 becomes-4.",
+      "The initial lhu in halving is followed by explicit signed reconstruction; treating it as unsigned division would be wrong.",
+      "Absorb and weakness can both survive, including for zero damage; nullification overrides both and skips later arithmetic.",
+      "Fresh-work comparisons do not certify stale effect fields, pending reactions/procs or broader weapon/formula admission."
     ],
     "validation": {
       "sourceAudit": {

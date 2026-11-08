@@ -87,8 +87,10 @@ classifier is added. Ability Elemental? matches65 words/three calls/four returns
 Oil stages removal after doubling unused XA; Float/Earth writes miss7 before
 the unconditional affinity stage, whose nullifier can replace it with5.
 Relevant Oil/Float/rider contexts remain excluded. Elemental Damage Modification
-and Elemental Nullification are next; the broader status filter is a captured
-dependency for separate status work. ZOD-436 remains open.
+matches65 words/two returns and its nullifier call;1,048,576 fresh signed amount/
+affinity cases preserve absorb/nullify/half/weak order, flags and narrowing.
+Existing C# agrees. Elemental Nullification is next; the broader status filter is
+a captured dependency for separate status work. ZOD-436 remains open.
 The unrelated owner edit in `.circleci/config.yml` remains uncommitted and excluded.
 The shared Calculate Hit %/final-hit/per-source roll
 documentation was already supplied; no duplicate is needed.

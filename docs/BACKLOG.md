@@ -118,8 +118,9 @@ matches64 words/four returns and4,194,304 signed amount/weather/element combinat
 Its effective-weather dependency matches22 words/two returns, preserves flag
 precedence and corrects the notes' value5 label to Snow. Ability Elemental? matches
 65 words/three calls/four returns, retaining Oil's stored-damage quirk and continued
-affinity processing after Float cancellation. Elemental Damage Modification and
-Elemental Nullification are next; the full shared-consumer review remains open.
+affinity processing after Float cancellation. Elemental Damage Modification
+matches65 words/two returns and1,048,576 signed amount/affinity cases.
+Elemental Nullification is next; the full shared-consumer review remains open.
 
 ## Review programme
 

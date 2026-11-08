@@ -181,10 +181,48 @@ All16 focused .NET element/projection/routing tests and eight Python tests pass;
 all ten owner draft blobs and the unrelated CI edit remain unchanged. No runtime
 or fixture change is required.
 
-The next useful supplied page is Elemental Damage Modification, then Elemental
-Nullification. Modify Status Inflictions is captured as a dependency; its broader
+Modify Status Inflictions is captured as a dependency; its broader
 status implementation belongs to separate work before admitting Oil/status
 side effects. ZOD-436 remains open.
+
+### Supplied Elemental Damage Modification
+
+The owner's listing matches all65 words at `0x80184e98`–`0x80184f98`, both listed
+returns and its conditional call to Elemental Nullification at `0x80184e40`.
+The same supporting receipt pins the exact words, source helper and managed
+inputs at the unchanged reference/prepared baseline. The parameter is the weapon
+or ability element mask. A nonempty intersection with an affinity qualifies the
+stage once; several matching element bits do not repeat the operation.
+
+The original stages are:
+
+1. Target affinity byte`0x6d`: mark absorption by ORing`0x0400` into the unsigned16
+   target-action special-effect field at offset`0x10`.
+2. Byte`0x6e`: if nullified, `0x80184ef8` calls `formula_nullify_action` and
+   jump directly to the epilogue. This clears the preceding absorption marker
+   and skips half/weak. The nullifier's miss label is5.
+3. Byte`0x6f`: halve signed16 stored HP damage, truncating toward zero.
+4. Byte`0x70`: OR weakness`0x0800` into the effect field, double damage and
+   store signed16. The two effect-word masks correspond to the notes' second
+   effect-byte bits`0x04` and`0x08`.
+
+Halving starts with `lhu` but reconstructs the signed value using shifts, adds
+the sign bit, then arithmetic-shifts by1. It must not become unsigned division
+or rounding toward negative infinity. Weakness preserves the low16-bit store.
+Half plus weak therefore gives5 ->2 ->4 and-5 ->-2 ->-4, rather than an identity.
+Absorb and weak may both remain set, even for zero damage. Their combination
+does not turn this routine into healing conversion; that remains later.
+
+An offline fresh-work comparison across all65,536 signed amounts and16 affinity
+match combinations passes1,048,576 cases, including signed correction, wrap,
+markers and nullification precedence. It is integer/source-description evidence,
+not original/C execution or validation of stale result/effect work. The existing
+`MagicDamageElements.Transform` matches these admitted rules and retains its
+fresh-work and relevant Oil/Float/rider guards. All16 focused .NET tests and eight
+Python tests pass; all ten owner draft blobs and the unrelated CI edit remain
+unchanged. No runtime or fixture change is required. The next useful supplied
+page is Elemental Nullification.
+ZOD-436 remains open.
 
 ## Original implementation checkpoint
 
