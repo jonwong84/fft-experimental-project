@@ -19,34 +19,43 @@ public static class OrdinarySpellAiMovementQuery
         {
             OrdinarySpellAiAimEnumeration.ValidateRoster(state, request.ActorId);
             var work = new OrdinarySpellAiWork(state, catalog, request.ActorId, request.PrimarySlot, followUnit: false);
-            // Restrict this first adapter to ordinary offensive general scenarios. Healer/retreat policy is separate.
-            if (!profile.NormalFocusedScenario || state.Definition.MovementGround is null ||
-                state.Definition.Map.Width > 16 || state.Definition.Map.Depth > 16 || work.Actor.Definition.Move > 124 ||
-                state.Turns.Units.Any(t => t.TieKey != state.Units.Single(u => u.Id == t.Id).Occupant.SourceOrder) ||
-                work.Actor.Vitals.Critical || work.Actor.Vitals.Hp * 128 / work.Actor.Vitals.MaxHp < 45 ||
-                work.Lists[request.ActorId].Entries.Any(e => e.Slot.Spell.Targeting is null ||
-                    e.Slot.Behavior.TargetsAllies || e.Slot.Behavior.RandomUse ||
-                    e.Slot.Behavior.AddsStatus || e.Slot.Behavior.CancelsStatus || e.Slot.Behavior.Unequips ||
-                    e.Slot.Behavior.AffectsStats || e.Slot.Behavior.AffectsMp || e.Slot.Behavior.TargetsMapTiles) ||
-                !work.Ability.Behavior.TargetsEnemies)
-                return Reject("A certified fresh offensive normal general scenario is required.");
-
-            var refresh = DecisionFlagsRefresh(work, rng);
-            var targets = BuildTargets(work);
-            var focus = AiRosterNearest.FindEligibleEnemy(targets, targets.Units.Select(u => u.UnitId));
-            var geometry = OrdinaryMagicMovement.QueryFocused(state, request.ActorId, focus.TargetId);
-            if (!geometry.Accepted) return Reject("Movement geometry rejected: " + geometry.Rejection);
-            // Bare Attack contributes range1; currently affordable initialized offensive spells can lower it.
-            int minimumRange = work.Lists[request.ActorId].Entries
-                .Where(e => e.Slot.Behavior.TargetsEnemies && e.Slot.Spell.MpCost <= work.Actor.Current.Mp)
-                .Select(e => e.Slot.Spell.Targeting!.Range + e.Slot.Spell.Targeting.Area).Append(1).Min();
-            int reach = unchecked((byte)(geometry.Outcome!.EffectiveMove + minimumRange));
-            return ScenariosBuild(work, targets, focus, refresh.Outcome!, geometry.Outcome, reach, refresh.RngState);
+            return Build(work, profile, rng);
         }
         catch (Exception e) when (e is ArgumentException or NotSupportedException or OverflowException)
         {
             return Reject("Unsupported ordinary spell movement: " + e.Message);
         }
+    }
+
+    // A fresh internal work owner shares admission/list binding with composed diagnostics; no cached public outcome is accepted.
+    internal static OrdinarySpellAiMovementResult Build(OrdinarySpellAiWork work, OrdinarySpellAiMovementProfile profile, RandomState rng)
+    {
+        var state = work.State;
+        var actorId = work.Actor.Id;
+        OrdinarySpellAiMovementResult Reject(string reason) => new(false, reason, null, rng);
+        // Restrict this first adapter to ordinary offensive general scenarios. Healer/retreat policy is separate.
+        if (!profile.NormalFocusedScenario || state.Definition.MovementGround is null ||
+            state.Definition.Map.Width > 16 || state.Definition.Map.Depth > 16 || work.Actor.Definition.Move > 124 ||
+            state.Turns.Units.Any(t => t.TieKey != state.Units.Single(u => u.Id == t.Id).Occupant.SourceOrder) ||
+            work.Actor.Vitals.Critical || work.Actor.Vitals.Hp * 128 / work.Actor.Vitals.MaxHp < 45 ||
+            work.Lists[actorId].Entries.Any(e => e.Slot.Spell.Targeting is null ||
+                e.Slot.Behavior.TargetsAllies || e.Slot.Behavior.RandomUse ||
+                e.Slot.Behavior.AddsStatus || e.Slot.Behavior.CancelsStatus || e.Slot.Behavior.Unequips ||
+                e.Slot.Behavior.AffectsStats || e.Slot.Behavior.AffectsMp || e.Slot.Behavior.TargetsMapTiles) ||
+            !work.Ability.Behavior.TargetsEnemies)
+            return Reject("A certified fresh offensive normal general scenario is required.");
+
+        var refresh = DecisionFlagsRefresh(work, rng);
+        var targets = BuildTargets(work);
+        var focus = AiRosterNearest.FindEligibleEnemy(targets, targets.Units.Select(u => u.UnitId));
+        var geometry = OrdinaryMagicMovement.QueryFocused(state, actorId, focus.TargetId);
+        if (!geometry.Accepted) return Reject("Movement geometry rejected: " + geometry.Rejection);
+        // Bare Attack contributes range1; currently affordable initialized offensive spells can lower it.
+        int minimumRange = work.Lists[actorId].Entries
+            .Where(e => e.Slot.Behavior.TargetsEnemies && e.Slot.Spell.MpCost <= work.Actor.Current.Mp)
+            .Select(e => e.Slot.Spell.Targeting!.Range + e.Slot.Spell.Targeting.Area).Append(1).Min();
+        int reach = unchecked((byte)(geometry.Outcome!.EffectiveMove + minimumRange));
+        return ScenariosBuild(work, targets, focus, refresh.Outcome!, geometry.Outcome, reach, refresh.RngState);
     }
 
     private static AiTargetRoster BuildTargets(OrdinarySpellAiWork work)

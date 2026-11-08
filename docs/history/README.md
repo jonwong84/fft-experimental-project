@@ -21,7 +21,9 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 402 entries index completed bounded work; they do not mean the full game is complete.
+These 403 entries index completed bounded work; they do not mean the full game is complete.
+
+- [ZOD-438 — Enumerate fresh ordinary spell cast origins](../behavior/ordinary-spell-cast-origins.md)
 
 - [ZOD-437 — Derive fresh ordinary spell movement baseline diagnostics](../behavior/ordinary-spell-movement-baselines.md)
 

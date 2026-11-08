@@ -20,8 +20,10 @@ now traces ranked/exhaustive origins, ACT-first destination substitution,
 baseline widths, remaining aims and per-origin exits. The
 [movement baseline query](../behavior/ordinary-spell-movement-baselines.md) now
 derives fresh offensive D0/D1, ranks and priority provenance through shared
-clocks/scoring. ZOD-438 will enumerate potential cast origins before moved-origin
-casting. Spell decisions, autonomous magic and the review gates remain open.
+clocks/scoring. The [cast-origin enumerator](../behavior/ordinary-spell-cast-origins.md)
+now derives potential pass masks, order and destinations without formula
+evaluation. ZOD-439 will evaluate one fresh origin/pass. Cross-origin traversal,
+spell decisions, autonomous magic and the review gates remain open.
 
 ## Required readability review after the full port
 

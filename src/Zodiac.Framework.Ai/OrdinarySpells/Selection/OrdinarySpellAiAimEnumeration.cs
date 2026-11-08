@@ -20,7 +20,12 @@ internal static class OrdinarySpellAiAimEnumeration
             throw new NotSupportedException("The current source-sized ordinary turn roster is required.");
     }
 
-    internal static OrdinarySpellAiAimOutcome Build(OrdinarySpellAiWork work)
+    internal static OrdinarySpellAiAimOutcome Build(OrdinarySpellAiWork work) => BuildCore(work, currentOriginOnly: true);
+
+    /// <summary>Caller passes and walkable aims before any cast origin's selectable-range intersection.</summary>
+    internal static OrdinarySpellAiAimOutcome BuildPotentialPasses(OrdinarySpellAiWork work) => BuildCore(work, currentOriginOnly: false);
+
+    private static OrdinarySpellAiAimOutcome BuildCore(OrdinarySpellAiWork work, bool currentOriginOnly)
     {
         var map = work.State.Definition.Map;
         var ability = work.Ability;
@@ -99,7 +104,7 @@ internal static class OrdinarySpellAiAimEnumeration
             for (int x = 0; x < map.Width; x++)
             {
                 var position = new TilePosition(x, y, layer);
-                if ((rows[y] & (0x8000 >> x)) == 0 || !range.Contains(position)) continue;
+                if ((rows[y] & (0x8000 >> x)) == 0 || currentOriginOnly && !range.Contains(position)) continue;
                 var unit = unitMode ? work.State.Units.SingleOrDefault(u => u.Position == position) : null;
                 if (unitMode && unit is null) continue;
                 aims.Add(new(position, unit?.Id));

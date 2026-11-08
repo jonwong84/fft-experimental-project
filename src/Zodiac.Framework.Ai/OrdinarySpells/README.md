@@ -1,5 +1,13 @@
 # Ordinary spell AI pathway
 
+For potential cast origins within one fresh movement scenario, start with
+[OrdinarySpellAiOriginQuery.Evaluate](OrdinarySpellAiOriginQuery.cs). Follow
+shared `BuildPotentialPasses`, fresh movement `Build`, `AiCastAimTilesBuild`,
+priority binding, `OriginDestinationFinalize` and `OriginAimTilesBuild`.
+[ZOD-438](../../../docs/behavior/ordinary-spell-cast-origins.md) documents the
+unconsumed masks, known-priority boundary and ordering. No moved-origin formula
+evaluation or command authority is granted by this query.
+
 For fresh move-only D0/D1, baseline rank and priority-write diagnostics, start
 with [OrdinarySpellAiMovementQuery.Evaluate](OrdinarySpellAiMovementQuery.cs).
 Follow `DecisionFlagsRefresh`, `ScenariosBuild`, `ReachableTilesScore` and

@@ -6,33 +6,35 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-437 is complete. Next: ZOD-438, fresh ordinary spell cast-origin
-enumeration.** Read [BACKLOG.md](BACKLOG.md), the
-[origin study](behavior/ordinary-spell-movement-origins.md) and
-[movement baseline implementation](behavior/ordinary-spell-movement-baselines.md).
-Derive potential origins and destinations from internally owned fresh movement,
-pass masks and known priorities before adding moved-origin formula evaluation.
+**ZOD-438 is complete. Next: ZOD-439, evaluation at one fresh spell origin/pass.**
+Read [BACKLOG.md](BACKLOG.md), the
+[origin study](behavior/ordinary-spell-movement-origins.md),
+[movement baselines](behavior/ordinary-spell-movement-baselines.md) and
+[cast-origin enumerator](behavior/ordinary-spell-cast-origins.md).
+Evaluate one freshly derived potential origin/pass through shared spell
+simulation before adding cross-origin traversal or consumed-aim handling.
 Full magic dispatch/lottery/commands remain separate.
 
-Start move-only diagnostics at
-`src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiMovementQuery.cs`.
-Follow `DecisionFlagsRefresh`, `ScenariosBuild`, `ReachableTilesScore` and
-`RankBaselineSeed`. The bounded offensive query shares flat geometry,
-nearest/proximity, clock, absolute score and scenario selection. It preserves
-D0 versus D1, unknown priorities, scenario-mask overlap, CT refunds and one RNG
-stream. Named independent flags remain booleans. Mixed/healer lists, retained
-workspaces, spell origin evaluation and automatic policy dispatch are gated.
+Start potential origin diagnostics at
+`src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiOriginQuery.cs`.
+Follow shared `BuildPotentialPasses`, fresh movement `Build`,
+`AiCastAimTilesBuild`, `BindFresh`, `OriginDestinationFinalize` and
+`OriginAimTilesBuild`. The query preserves unit/tile masks, ranked reverse ties,
+exhaustive map order, ACT-first D1 substitution and per-origin selectable ranges.
+Unread priority and byte-count aliases reject atomically. No aim is consumed,
+no spell formula executes and no draw occurs after movement preparation.
+Explicit Main/Complement selection is diagnostic, not source policy dispatch.
 
-Latest validation: Release build with zero warnings/errors, **5,205 .NET tests**
-(1,835 Framework, 1,400 AI) and **802 Python tests** pass. Sixteen new managed
-scenarios cover ordering, provenance, occupancy, refunds/cap, reach RNG and
-atomic rejection/replay. Final logs and seven separate TRX files are under
-ignored `scratch/zod437-*`; the
-[receipt](evidence/ai/spell-movement-baselines-implementation-v1.json) records
-source fingerprints and preservation. Current coverage has 58 validated entries.
-All ten owner draft blobs, immutable JobStats, controller formatting and the
-disabled CI gate are preserved. No C, original executable or native presentation
-was run. The reference remains clean at
+Latest validation: Release build with zero warnings/errors, **5,217 .NET tests**
+(1,835 Framework, 1,412 AI) and **802 Python tests** pass. Twelve new managed
+cases include a real 256-panel aim union, unknown reads, replay and rollback.
+Final logs and seven separate TRX files are under ignored `scratch/zod438-*`;
+the [receipt](evidence/ai/spell-cast-origins-implementation-v1.json) records pinned
+source/prepared evidence and preservation. Current coverage has 58 entries.
+All ten owner drafts, immutable JobStats, approved controller formatting and
+disabled CI are preserved. Mixed/healer lists, retained workspaces, moved-origin
+formula evaluation and autonomous magic remain gated. No C, original executable
+or native presentation ran. The reference remains clean at
 `11464943bbdbd2a0af022d90cb7f10455cf911df`.
 
 ## Current navigation and owner direction
@@ -67,7 +69,7 @@ until explicitly re-enabled; current validation is local.
 The [review programme](development/documentation-review-programme.md) and
 [progress receipt](evidence/maintenance/documentation-review-progress-v1.json)
 record completed bounded batches through ZOD-436, the supporting ZOD-426
-study and the bounded ZOD-437 implementation. ZOD-428 and complete inventory groups remain open. Prior helper
+study and bounded ZOD-437/438 implementations. ZOD-428 and complete inventory groups remain open. Prior helper
 cross-checks and annotation corrections live
 in their behavior/evidence notes; use [history](history/README.md) for completed
 ticket checkpoints, not old next-task advice.

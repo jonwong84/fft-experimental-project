@@ -100,9 +100,9 @@ draws the adjustment: seed 57 gives raw 19852, halves reach 4 to 2 and chooses (
 seed 0 gives raw 16045, retains reach 4 and chooses (2,2,0). An independent affine
 LCG calculation checked those RNG literals.
 
-ZOD-438 will enumerate fresh pass-specific cast origins using these movement
-diagnostics, source target masks and known priority provenance. It must reject
-unread priorities and count aliases rather than invent values. Moved-origin
+[ZOD-438](ordinary-spell-cast-origins.md) now enumerates fresh pass-specific cast
+origins using these diagnostics, source masks and known priority provenance,
+rejecting unread priorities and count aliases. Moved-origin
 casting, shared aim consumption during evaluation, full list dispatch,
 insertion/lottery, magic commands and autonomous turns remain later milestones.
 Healer policies, general statuses, terrain, terminal/frame RNG, editor and cone
