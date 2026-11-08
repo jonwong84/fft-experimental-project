@@ -92,9 +92,12 @@ affinity cases preserve absorb/nullify/half/weak order, flags and narrowing.
 Existing C# agrees. Elemental Nullification matches22 words/two calls/five returns
 and its nine-byte result-store footprint. Miss byte0x02 is set to0x05, correcting
 the prose summary; type0x25 is cleared in the first cleanup call's delay slot.
-Conditional pending-proc and knockback cleanup helpers at0x0018bcf0/0x0018bd34
-are next; the broader status filter is a captured dependency for separate status
-work. Existing no-pending/fresh-work guards remain. ZOD-436 remains open.
+Pending-proc cleanup at0x0018bcf0 matches17 words/four returns: a zero unsigned16
+pending value causes no writes; nonzero clears the work ID/pending halfwords and
+only AddedEffect0x0200 in target effects. Ordinary magic proc markers therefore
+survive no-pending lethal cleanup as already modeled. Remove Knockback Flag at
+0x0018bd34 is next; the broader status filter remains separate. Existing
+no-pending/fresh-work guards remain. ZOD-436 remains open.
 The unrelated owner edit in `.circleci/config.yml` remains uncommitted and excluded.
 The shared Calculate Hit %/final-hit/per-source roll
 documentation was already supplied; no duplicate is needed.

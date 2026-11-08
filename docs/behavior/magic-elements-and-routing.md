@@ -260,9 +260,40 @@ cleanup, stale healing/status fields or all reactions.
 The existing finalization source/prepared audit passes20 raw and20 composed
 descriptions and four Fire tier/empty-status bindings. All35 focused .NET tests
 and16 Python tests pass; all ten owner draft blobs and the unrelated CI edit
-remain unchanged. No runtime or fixture change is required. The next useful
-supplied pages are Called by Nullify Action
-at `0x0018bcf0` and Remove Knockback Flag at `0x0018bd34`. ZOD-436 remains open.
+remain unchanged. No runtime or fixture change is required. ZOD-436 remains open.
+
+### Supplied pending-proc cleanup
+
+Called by Nullify Action matches all17 words at `0x8018bcf0`–`0x8018bd30` and all
+four listed returns. The same supporting receipt records its branch, exact mask
+and six literal cleanup descriptions, including a pending flag set only in its
+high byte. The pinned source calls this `formula_clear_pending_proc`.
+
+It reads the **unsigned16** pending field at `0x801938c8`. Zero branches to
+return with no writes. Otherwise it clears work reaction ID`0x801938c6` and
+pending`0x801938c8` with halfword stores, then ANDs the target-action effect word
+at offset`0x10` with`0xfdff`. This removes only AddedEffect`0x0200` (the notes'
+second effect-byte bit`0x02`) and preserves every other effect bit. Any nonzero
+pending halfword qualifies, including`0x0100`; checking only its low byte would
+be wrong.
+
+The work reaction ID is separate from target-action reaction ID`0x0e`, which is
+not cleared here. Hit, damage, accuracy, type and target statuses are untouched;
+there is no RNG or nested call. The generic "Proc/Reaction flag" wording maps
+specifically to source `weapon_proc_pending`, not universal reaction cancellation.
+
+In particular, an AddedEffect marker alone does not trigger cleanup. This
+supports the existing ordinary-magic behavior: its successful conditional-proc
+marker survives a later lethal-result cleanup while weapon-proc-pending is0.
+The parent nullifier still clears the effect word independently; this conditional
+helper behavior also matters for callers that invoke it directly.
+`NoPendingWeaponProcOrReaction` remains the managed boundary; no general pending
+weapon-spell/reaction implementation is introduced. Existing source-prepared
+finalization descriptions remain valid. All29 focused .NET finalization/formula/
+proc tests and16 Python tests pass; all ten owner draft blobs and the unrelated
+CI edit are unchanged. No runtime or fixture change is needed.
+Remove Knockback Flag at `0x0018bd34` is the next useful supplied page.
+ZOD-436 remains open.
 
 ## Original implementation checkpoint
 

@@ -3111,5 +3111,174 @@
       "cExecuted": false,
       "fullTicketCompleted": false
     }
+  },
+  "suppliedPendingProcCleanupCheck": {
+    "managedBaseRevision": "ab339ae94948b849531fe8a00b4c16f982f583e0",
+    "start": "0x8018bcf0",
+    "endInclusive": "0x8018bd30",
+    "instructionCount": 17,
+    "instructionWords": [
+      "3c048019",
+      "248438c8",
+      "94820000",
+      "00000000",
+      "1040000a",
+      "00000000",
+      "3c038019",
+      "8c632d90",
+      "3c018019",
+      "a42038c6",
+      "a4800000",
+      "94620010",
+      "00000000",
+      "3042fdff",
+      "a4620010",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "pendingGuard": {
+      "address": "0x801938c8",
+      "load": "unsigned16",
+      "skipBranchPc": "0x8018bd00",
+      "skipTarget": "0x8018bd2c",
+      "skipWhen": "pending halfword==0"
+    },
+    "writesWhenPending": [
+      {
+        "address": "0x801938c6",
+        "field": "work reaction_id",
+        "byteWidth": 2,
+        "value": 0
+      },
+      {
+        "address": "0x801938c8",
+        "field": "weapon_proc_pending",
+        "byteWidth": 2,
+        "value": 0
+      },
+      {
+        "field": "TCA special_effect at0x10",
+        "byteWidth": 2,
+        "operation": "AND0xfdff, removing only AddedEffect0x0200"
+      }
+    ],
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80184e78",
+        "returnAddress": "0x80184e80",
+        "target": "0x8018bcf0",
+        "caller": "formula_nullify_action"
+      },
+      {
+        "callPc": "0x80187dc8",
+        "returnAddress": "0x80187dd0",
+        "target": "0x8018bcf0",
+        "caller": "formula_apply_poach_and_train"
+      },
+      {
+        "callPc": "0x8018bb2c",
+        "returnAddress": "0x8018bb34",
+        "target": "0x8018bcf0",
+        "caller": "action_finalize_target_result"
+      },
+      {
+        "callPc": "0x8018bc40",
+        "returnAddress": "0x8018bc48",
+        "target": "0x8018bcf0",
+        "caller": "action_finalize_target_result"
+      }
+    ],
+    "maskCheck": {
+      "decodedMask": "0xfdff",
+      "clearsOnly": "0x0200",
+      "literalDescriptions": [
+        {
+          "pending": 0,
+          "workReactionId": 48879,
+          "effectsWord": 65535,
+          "expectedPending": 0,
+          "expectedWorkReactionId": 48879,
+          "expectedEffectsWord": 65535
+        },
+        {
+          "pending": 1,
+          "workReactionId": 48879,
+          "effectsWord": 65535,
+          "expectedPending": 0,
+          "expectedWorkReactionId": 0,
+          "expectedEffectsWord": 65023
+        },
+        {
+          "pending": 256,
+          "workReactionId": 4660,
+          "effectsWord": 1536,
+          "expectedPending": 0,
+          "expectedWorkReactionId": 0,
+          "expectedEffectsWord": 1024
+        },
+        {
+          "pending": 65535,
+          "workReactionId": 0,
+          "effectsWord": 49664,
+          "expectedPending": 0,
+          "expectedWorkReactionId": 0,
+          "expectedEffectsWord": 49152
+        },
+        {
+          "pending": 1,
+          "workReactionId": 0,
+          "effectsWord": 0,
+          "expectedPending": 0,
+          "expectedWorkReactionId": 0,
+          "expectedEffectsWord": 0
+        },
+        {
+          "pending": 0,
+          "workReactionId": 1,
+          "effectsWord": 512,
+          "expectedPending": 0,
+          "expectedWorkReactionId": 1,
+          "expectedEffectsWord": 512
+        }
+      ],
+      "allMatched": true
+    },
+    "clarifications": [
+      "Pending0 means no writes, even if AddedEffect or a work reaction ID is present.",
+      "Any nonzero16-bit pending value qualifies, including0x0100; do not narrow the guard to a low byte.",
+      "The cleared ID is shared work reaction_id, not target-action reaction_id0x0e.",
+      "All effect bits except0x0200 are preserved when called standalone; no HP, accuracy, type, target status or RNG change is performed.",
+      "The generic Proc/Reaction flag wording maps specifically to weapon_proc_pending, not universal reaction cancellation."
+    ],
+    "managedBoundary": "Current magic retains NoPendingWeaponProcOrReaction admission. Ordinary magic conditional AddedEffect is not erased solely because it is set; the no-pending cleanup path is a no-op, including during later lethal-result cleanup. No general pending-weapon reaction implementation is added.",
+    "validation": {
+      "sourceAudit": {
+        "rawDescriptions": 20,
+        "composedDescriptions": 20,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 8,
+        "sourceFunctions": 15,
+        "emptyStatusRecordVerified": true,
+        "fireTiersVerified": 4
+      },
+      "ownerBlobsVerified": 10,
+      "unrelatedOwnerEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlobAtReview": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "excludedFromCommit": true
+      },
+      "focusedManagedTestsPassed": 29,
+      "focusedPythonTestsPassed": 16,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
   }
 }
