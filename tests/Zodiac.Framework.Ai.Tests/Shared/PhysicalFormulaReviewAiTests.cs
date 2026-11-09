@@ -16,7 +16,7 @@ public sealed class PhysicalFormulaReviewAiTests
         var s = Make([new("a", 0, 0, 15, Pa: 1), new("b", 1, 1, 95), new("c", 2, 0)], rng: new(1, 0));
         var id = new AssetId(projectile ? "test:stone" : "test:dash");
         var delivery = projectile ? PhysicalAbilityDelivery.DirectProjectile : PhysicalAbilityDelivery.AdjacentUnit;
-        var definition = new PhysicalAbilityDefinition(id, delivery, new(AbilityFormulaId.RandomPaPlusHalfPa, new(9, 0)));
+        var definition = new PhysicalAbilityDefinition(id, delivery, new(AbilityFormulaId.PummelFormula, new(9, 0)));
         var grants = s.State.Combatants.Select(u => new TargetedAbilityUnitGrant(u.UnitId, [id], 0));
         var origin = s.State.TurnBattle.Battle.Units.Single(u => u.Id == A).Position;
         var before = Snapshot(s.State);

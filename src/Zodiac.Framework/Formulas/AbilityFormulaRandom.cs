@@ -11,6 +11,7 @@ internal sealed class AbilityFormulaRandom(AbilityFormulaMode mode, RandomState 
     {
         var draw = new RandomStateGenerator().Next(State);
         State = draw.State;
+
         return draw.Value;
     }
 
@@ -20,6 +21,7 @@ internal sealed class AbilityFormulaRandom(AbilityFormulaMode mode, RandomState 
         {
             return Next();
         }
+
         return 16384;
     }
 }

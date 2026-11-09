@@ -24,7 +24,7 @@ public sealed class PhysicalFormulaContentTests
         Assert.Equal(json,read.ToJson());Assert.Equal(2,read.Version);Assert.Equal(before,metadata.ToJson());
         var ability=Assert.Single(read.Abilities);Assert.Equal(SyntheticBasicSkillBattle.ThrowStone,ability.Id);
         Assert.Equal(1,ability.Range);Assert.False(ability.Definition.Evadeable);Assert.False(ability.Definition.DirectTrajectory);
-        Assert.Equal(AbilityFormulaId.RandomPaPlusHalfPa,ability.Formula.Id);Assert.Equal(9,ability.Formula.Parameters.X);Assert.Equal(0,ability.Formula.Parameters.Y);
+        Assert.Equal(AbilityFormulaId.PummelFormula,ability.Formula.Id);Assert.Equal(9,ability.Formula.Parameters.X);Assert.Equal(0,ability.Formula.Parameters.Y);
         Assert.Contains("\"ruleset\": \"custom\"",json);Assert.DoesNotContain("maximumDamageMultiplier",json);
     }
 
@@ -40,7 +40,7 @@ public sealed class PhysicalFormulaContentTests
 
     [Theory]
     [InlineData(AbilityFormulaId.RandomPa)]
-    [InlineData(AbilityFormulaId.RandomPaPlusHalfPa)]
+    [InlineData(AbilityFormulaId.PummelFormula)]
     public void Current_content_schemas_reject_Z_instead_of_losing_it_on_save(AbilityFormulaId id)
     {
         var metadata = SyntheticBasicSkillBattle.Metadata();

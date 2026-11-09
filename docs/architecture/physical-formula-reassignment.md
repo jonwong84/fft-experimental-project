@@ -104,7 +104,7 @@ Create a custom companion from existing definitions and matching metadata IDs:
 ```csharp
 var original = effects.Abilities.Single();
 var edited = new TargetedAbilityDefinition(original.Id, original.Effect,
-    new AbilityFormula(AbilityFormulaId.RandomPaPlusHalfPa, new AbilityFormulaParameters(9, 0)));
+    new AbilityFormula(AbilityFormulaId.PummelFormula, new AbilityFormulaParameters(9, 0)));
 var custom = new TargetedAbilityContentPackage(effects.PackageId,
     effects.ProfileId, effects.RequiredMetadataPackageId, [edited]);
 string json = custom.ToJson();

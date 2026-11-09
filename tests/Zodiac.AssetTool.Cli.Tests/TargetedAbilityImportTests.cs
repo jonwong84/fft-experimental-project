@@ -117,7 +117,7 @@ public sealed class TargetedAbilityImportTests
                 dash.PackageId,
                 dash.ProfileId,
                 dash.RequiredMetadataPackageId,
-                [new (dash.Abilities[0].Id,PhysicalAbilityDelivery.AdjacentUnit, new AbilityFormula(AbilityFormulaId.RandomPaPlusHalfPa, new(9, 0)))]);
+                [new (dash.Abilities[0].Id,PhysicalAbilityDelivery.AdjacentUnit, new AbilityFormula(AbilityFormulaId.PummelFormula, new(9, 0)))]);
 
             dash = TargetedAbilityContentPackage.ReadJson(edited.ToJson());
 

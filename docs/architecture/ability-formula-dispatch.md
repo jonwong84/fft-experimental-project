@@ -29,7 +29,7 @@ records the current Z policy and validation placement.
 
 ```csharp
 var formula = new AbilityFormula(
-    AbilityFormulaId.RandomPaPlusHalfPa,
+    AbilityFormulaId.PummelFormula,
     new AbilityFormulaParameters(x: 9, y: 0));
 var context = new AbilityFormulaContext(
     physicalAttack: 5, attackerBrave: 70, targetBrave: 70,
@@ -55,7 +55,7 @@ explicit input and returned state, not mutable battle state stored in the contex
 3. `AbilityFormula.Evaluate(context, rng)` selects the shared handler. Formula0x37
    calls `RandomPaDamageFormula`: random1..Y damage, followed by execution-only
    attacker/target Brave rolls and the strict knockback comparison. Formula0x32
-   calls `RandomPaPlusHalfPaDamageFormula`: critical check, conditional critical
+   calls `PummelDamageFormula`: critical check, conditional critical
    bonus, then random1..X damage with YA prepared from original PA and its normal
    zodiac floor. The latter requests knockback on a critical; it does not use
    formula0x37's Brave tail.
@@ -76,6 +76,30 @@ family arithmetic, consumes no RNG and grants no execution authority. New normal
 execution uses `Evaluate`. The signed16-safe definition envelope and unsupported
 formula rejection are retained; no new IDs or gameplay inputs are admitted.
 
+## Pummel naming and shared result bounds
+
+The owner selected `AbilityFormulaId.PummelFormula` and `PummelDamageFormula`
+for formula0x32, using the relocalized name of Repeating Fist. The numeric ID,
+content schema and selected handler behavior are unchanged. This is a formula
+label; an ability such as Dash can still select it without changing its identity.
+The decompilation symbol remains `formula_repeating_fist` for source comparison.
+
+[`FormulaDamageBounds`](../../src/Zodiac.Framework/Formulas/FormulaDamageBounds.cs)
+checks whether a calculated minimum/maximum damage range fits signed16 storage.
+It neither clamps values nor reproduces overflow. Pummel calculates its own
+maximum critical XA, original-PA YA and random factor envelope, then passes
+that range to the helper. The existing sword command, two-unit setup and
+immediate-ability setup guards share the same helper with their own maxima.
+Validation timing, exceptions/rejections, supported domains and the upper999
+damage cap remain unchanged. This managed admission guard is not a check made
+by the original game; broader signed-result compatibility still needs its own
+explicit implementation and validation.
+
+The [maintenance receipt](../evidence/maintenance/pummel-formula-maintenance-v1.json)
+records the rename, unchanged source/test vectors and preservation of owner
+formatting. No legacy enum alias is retained; callers use the new label while
+prepared JSON continues to store numeric formula50.
+
 ## Source correspondence and verification
 
 The supplied [Pre Formula Setup](ability-effect-families.md#pre-formula-setup-boundary)
@@ -94,7 +118,7 @@ RNG and uncapped formula versus capped combat results. Content tests reject
 nonzero Z at the current schema boundary; existing definition-time signed16
 rejection and maximum admitted raw-damage tests remain unchanged.
 
-Full validation passes: zero-warning/error Release build, 5,304 .NET tests and
+Full validation passes: zero-warning/error Release build, 5,306 .NET tests and
 810 Python tests. Owner enum/test layout edits are carried into the new API;
 owner drafts, immutable JobStats, controller formatting and disabled CI are
 preserved. Historical evidence payloads are unchanged. Owner review resumes next;

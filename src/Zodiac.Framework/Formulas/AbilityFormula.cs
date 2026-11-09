@@ -18,9 +18,9 @@ public sealed record AbilityFormula
 
         ArgumentNullException.ThrowIfNull(parameters);
 
-        if (id == AbilityFormulaId.RandomPaPlusHalfPa)
+        if (id == AbilityFormulaId.PummelFormula)
         {
-            RandomPaPlusHalfPaDamageFormula.ValidateParameters(parameters);
+            PummelDamageFormula.ValidateParameters(parameters);
         }
 
         Id = id;
@@ -38,7 +38,7 @@ public sealed record AbilityFormula
         return Id switch
         {
             AbilityFormulaId.RandomPa => RandomPaDamageFormula.Evaluate(Parameters, context, random),
-            AbilityFormulaId.RandomPaPlusHalfPa => RandomPaPlusHalfPaDamageFormula.Evaluate(Parameters, context, random),
+            AbilityFormulaId.PummelFormula => PummelDamageFormula.Evaluate(Parameters, context, random),
             _ => throw new NotSupportedException("Unsupported ability formula.")
         };
     }
@@ -54,7 +54,7 @@ public sealed record AbilityFormula
             AbilityFormulaId.RandomPa => criticalBonusRoll is null
                 ? RandomPaDamageFormula.CalculateDamage(Parameters, physicalAttack, damageRoll)
                 : throw new ArgumentException("Formula0x37 has no critical step.", nameof(criticalBonusRoll)),
-            AbilityFormulaId.RandomPaPlusHalfPa => RandomPaPlusHalfPaDamageFormula.CalculateDamage(Parameters, physicalAttack, damageRoll, criticalBonusRoll),
+            AbilityFormulaId.PummelFormula => PummelDamageFormula.CalculateDamage(Parameters, physicalAttack, damageRoll, criticalBonusRoll),
             _ => throw new NotSupportedException("Unsupported ability formula.")
         };
     }

@@ -4,5 +4,5 @@ namespace Zodiac.Framework.Formulas;
 public enum AbilityFormulaId
 {
     RandomPa = 0x37,
-    RandomPaPlusHalfPa = 0x32
+    PummelFormula = 0x32
 }

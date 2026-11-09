@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using Zodiac.Framework.Formulas;
 
 namespace Zodiac.Framework;
 
@@ -44,7 +45,7 @@ public sealed class ImmediateAbilityBattleProfile
         foreach (var unit in state.Combatants)
         {
             var weapon = weapons[unit.RightHandWeaponId!.Value];
-            if ((2 * 99 - 1) * weapon.Power > short.MaxValue)
+            if (!FormulaDamageBounds.FitsSigned16(0, (2L * 99 - 1) * weapon.Power))
                 throw new NotSupportedException("Ability-enabled sword power exceeds the reachable PA-99 damage envelope.");
         }
     }

@@ -77,6 +77,26 @@ public sealed class AttackBattleSimulatorTests
         Assert.Equal(damage == 0 ? 0 : 1, actual.Events.OfType<AttackHpChangedEvent>().Count());
     }
 
+    [Theory]
+    [InlineData(151, true)]
+    [InlineData(152, false)]
+    public void Shared_signed16_bound_preserves_the_exact_sword_envelope_edge(int power, bool accepted)
+    {
+        // PA109's maximum critical XA is217: WP151 reaches32767 exactly; WP152 exceeds it.
+        var before = State(seed: 57, pa: 109, maxHp: 65535);
+        var actual = Attack(before, power);
+        Assert.Equal(accepted, actual.Accepted);
+        if (!accepted)
+        {
+            AtomicReject(before, actual, AttackCommandRejection.UnsupportedSetup);
+            return;
+        }
+        var hit = Assert.Single(actual.Events.OfType<AttackResolvedEvent>());
+        Assert.True(hit.Critical);
+        Assert.Equal(999, hit.Damage);
+        Assert.Equal(7UL, actual.State.TurnBattle.Turns.RngState.DrawCount);
+    }
+
     [Fact]
     public void A_capped_formula_damage_can_exceed_the_actual_HP_loss()
     {

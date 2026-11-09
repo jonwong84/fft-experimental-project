@@ -9,7 +9,7 @@ public sealed class PhysicalDeliveryTests
     private static readonly AssetId Custom = new("test:physical/custom");
     private static PhysicalAbilityBattleProfile Profile(AttackBattleSnapshot state, PhysicalAbilityDelivery delivery,
         bool grant = true) => new(Ground, delivery,
-            [new(Custom, delivery, new(AbilityFormulaId.RandomPaPlusHalfPa, new(9, 0)))],
+            [new(Custom, delivery, new(AbilityFormulaId.PummelFormula, new(9, 0)))],
             state.Combatants.Select(u => new TargetedAbilityUnitGrant(u.UnitId, u.UnitId == A && grant ? [Custom] : [], 0)));
 
     [Theory]

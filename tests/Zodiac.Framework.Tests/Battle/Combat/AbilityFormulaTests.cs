@@ -53,7 +53,7 @@ public sealed class AbilityFormulaTests
 
     [Theory]
     [InlineData(AbilityFormulaId.RandomPa)]
-    [InlineData(AbilityFormulaId.RandomPaPlusHalfPa)]
+    [InlineData(AbilityFormulaId.PummelFormula)]
     public void Unused_Z_is_retained_in_definition_without_changing_current_handler_results(AbilityFormulaId id)
     {
         var parameters = new AbilityFormulaParameters(0, 0, 255);
@@ -89,7 +89,7 @@ public sealed class AbilityFormulaTests
         var context = new AbilityFormulaContext(5, 70, 70, mode);
         var entry = new RandomState(0, ulong.MaxValue);
         var randomPa = new AbilityFormula(AbilityFormulaId.RandomPa, new(0, 4));
-        var sum = new AbilityFormula(AbilityFormulaId.RandomPaPlusHalfPa, new(9, 0));
+        var sum = new AbilityFormula(AbilityFormulaId.PummelFormula, new(9, 0));
         Assert.Equal(new AbilityFormulaResult(15, false, false, entry), randomPa.Evaluate(context, entry));
         Assert.Equal(new AbilityFormulaResult(35, false, false, entry), sum.Evaluate(context, entry));
     }

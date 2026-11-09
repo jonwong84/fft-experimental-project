@@ -36,7 +36,7 @@ public sealed class PhysicalFormulaAssignmentTests
 
     private static readonly AssetId Dash=new("test:dash");
     private static DashAbilityBattleProfile Profile(AttackBattleSnapshot state)=>DashAbilityBattleProfile.FromDefinitions(Ground,
-        [new(Dash,1,false,false,new(AbilityFormulaId.RandomPaPlusHalfPa,new(9,0)))],
+        [new(Dash,1,false,false,new(AbilityFormulaId.PummelFormula,new(9,0)))],
         state.Combatants.Select(u=>new TargetedAbilityUnitGrant(u.UnitId,[Dash],0)));
 
     [Theory] [InlineData(0u,30,3,true)] [InlineData(1u,14,2,false)]
@@ -83,10 +83,10 @@ public sealed class PhysicalFormulaAssignmentTests
     public void Unsupported_formula_and_signed16_overflow_contexts_fail_at_definition_boundary()
     {
         Assert.Throws<NotSupportedException>(()=>new AbilityFormula((AbilityFormulaId)1,new(0,0)));
-        Assert.Throws<NotSupportedException>(()=>new AbilityFormula(AbilityFormulaId.RandomPaPlusHalfPa,new(255,255)));
+        Assert.Throws<NotSupportedException>(()=>new AbilityFormula(AbilityFormulaId.PummelFormula,new(255,255)));
         Assert.Throws<ArgumentOutOfRangeException>(()=>new AbilityFormula(AbilityFormulaId.RandomPa,new(0,256)));
         Assert.Throws<ArgumentException>(()=>new AbilityFormula(AbilityFormulaId.RandomPa,new(0,4)).CalculateDamage(5,0,0));
-        Assert.Equal(32538,new AbilityFormula(AbilityFormulaId.RandomPaPlusHalfPa,new(87,255)).CalculateDamage(99,32767,32767));
+        Assert.Equal(32538,new AbilityFormula(AbilityFormulaId.PummelFormula,new(87,255)).CalculateDamage(99,32767,32767));
         var original=new AbilityFormula(AbilityFormulaId.RandomPa,new(0,4));
         Assert.Throws<NotSupportedException>(()=>DashAbilityBattleProfile.FromDefinitions(Ground,[new(Dash,1,true,false,original)],[]));
         Assert.Throws<NotSupportedException>(()=>TargetedAbilityBattleProfile.FromDefinitions(Ground,[new(Dash,4,false,true,original)],[]));
