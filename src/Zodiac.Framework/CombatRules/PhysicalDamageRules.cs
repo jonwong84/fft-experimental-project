@@ -18,7 +18,7 @@ public static class PhysicalDamageRules
         if (classEvade is < 0 or > 100) throw new ArgumentOutOfRangeException(nameof(classEvade));
         var rng = entryRng;
         uint Draw() { var d = new RandomStateGenerator().Next(rng); rng = d.State; return d.Value; }
-        var context = new AbilityFormulaContext(physicalAttack, attackerBrave, targetBrave, mode);
+        var context = new AbilityFormulaContext(new AbilityFormulaPhysicalContext(physicalAttack, attackerBrave, targetBrave), mode);
         try
         {
             int evade = ability.Evadeable && IsFront(dx, dy, targetFacing) ? classEvade : 0;

@@ -11,12 +11,13 @@ internal static class RandomPowerTimesPaDamageFormula
 {
     public static AbilityFormulaResult Evaluate(AbilityFormulaParameters parameters, AbilityFormulaContext context, AbilityFormulaRandom random)
     {
-        int damage = CalculateDamage(parameters, context.PhysicalAttack!.Value, random.FormulaRoll());
+        var physical = context.Physical!;
+        int damage = CalculateDamage(parameters, physical.PhysicalAttack, random.FormulaRoll());
         bool knockbackTriggered = false;
 
         if (context.Mode == AbilityFormulaMode.Execution)
         {
-            knockbackTriggered = PhysicalDamageRules.AttemptsKnockback(context.AttackerBrave!.Value, context.TargetBrave!.Value, random.Next(), random.Next());
+            knockbackTriggered = PhysicalDamageRules.AttemptsKnockback(physical.AttackerBrave, physical.TargetBrave, random.Next(), random.Next());
         }
 
         return new(damage, false, knockbackTriggered, random.State);

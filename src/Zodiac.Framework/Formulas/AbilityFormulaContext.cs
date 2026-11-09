@@ -4,32 +4,36 @@ namespace Zodiac.Framework.Formulas;
 /// <remarks>Evasion, proc/status composition and final result application belong to their combat-rule owners.</remarks>
 public sealed record AbilityFormulaContext
 {
-    public int? PhysicalAttack { get; }
-    public int? AttackerBrave { get; }
-    public int? TargetBrave { get; }
+    public AbilityFormulaPhysicalContext? Physical { get; }
+    public int? PhysicalAttack => Physical?.PhysicalAttack;
+    public int? AttackerBrave => Physical?.AttackerBrave;
+    public int? TargetBrave => Physical?.TargetBrave;
     public AbilityFormulaMagicContext? Magic { get; }
     public byte? MagicalAttack => Magic?.MagicalAttack;
     public FaithValue? AttackerFaith => Magic?.AttackerFaith;
     public FaithValue? TargetFaith => Magic?.TargetFaith;
     public AbilityFormulaMode Mode { get; }
 
-    public AbilityFormulaContext(int physicalAttack, int attackerBrave, int targetBrave, AbilityFormulaMode mode)
+    public AbilityFormulaContext(AbilityFormulaPhysicalContext physical, AbilityFormulaMode mode)
     {
-        if (physicalAttack is < 1 or > 99) throw new ArgumentOutOfRangeException(nameof(physicalAttack));
-        if (attackerBrave is < 10 or > 100) throw new ArgumentOutOfRangeException(nameof(attackerBrave));
-        if (targetBrave is < 10 or > 100) throw new ArgumentOutOfRangeException(nameof(targetBrave));
-        if (!Enum.IsDefined(mode)) throw new ArgumentOutOfRangeException(nameof(mode));
+        ArgumentNullException.ThrowIfNull(physical);
+        if (!Enum.IsDefined(mode))
+        {
+            throw new ArgumentOutOfRangeException(nameof(mode));
+        }
 
-        PhysicalAttack = physicalAttack;
-        AttackerBrave = attackerBrave;
-        TargetBrave = targetBrave;
+        Physical = physical;
         Mode = mode;
     }
 
     public AbilityFormulaContext(AbilityFormulaMagicContext magic, AbilityFormulaMode mode)
     {
         ArgumentNullException.ThrowIfNull(magic);
-        if (!Enum.IsDefined(mode)) throw new ArgumentOutOfRangeException(nameof(mode));
+        if (!Enum.IsDefined(mode))
+        {
+            throw new ArgumentOutOfRangeException(nameof(mode));
+        }
+
         Magic = magic;
         Mode = mode;
     }

@@ -27,11 +27,20 @@ and optional elemental input. `AbilityFormulaContext` exposes `MagicalAttack`,
 values into competing fields. Faith/Innocent status overrides remain part of
 `FaithValue` rather than being discarded into plain integer Faith.
 
-Physical context construction retains its previous PA/Brave/mode checks. The
-physical-only values are nullable when a magic context is selected. Validation
+[`AbilityFormulaPhysicalContext`](../../src/Zodiac.Framework/Formulas/AbilityFormulaPhysicalContext.cs)
+now encapsulates PA and both Brave values symmetrically with the magic context.
+It retains the previous PA/Brave checks; `AbilityFormulaContext` owns mode and
+accepts either `(physical, mode)` or `(magic, mode)`. Its convenience stat properties
+forward to the selected object rather than duplicating values. The physical
+object and its projected values are absent when a magic context is selected. Validation
 rejects using a magic formula with physical inputs or the reverse before any
 formula draws. Missing elemental facts for damage still reject under the existing
 magic contracts; healing still bypasses that elemental branch.
+
+The [physical-context follow-up receipt](../evidence/maintenance/ability-formula-physical-context-v1.json)
+records this owner-requested symmetry change, preserved arithmetic/RNG contracts
+and full regression results. Physical handlers consume `context.Physical` just
+as the magic handler consumes `context.Magic`.
 
 ```csharp
 var magic = new AbilityFormulaMagicContext(

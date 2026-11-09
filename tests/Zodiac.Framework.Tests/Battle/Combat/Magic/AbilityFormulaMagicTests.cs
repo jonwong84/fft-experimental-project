@@ -50,6 +50,7 @@ public sealed class AbilityFormulaMagicTests
         Assert.Equal(input.CasterFaith, context.AttackerFaith);
         Assert.Equal(input.TargetFaith, context.TargetFaith);
         Assert.Null(context.PhysicalAttack);
+        Assert.Null(context.Physical);
         Assert.Equal(rng, result.RngState);
     }
 
@@ -94,7 +95,7 @@ public sealed class AbilityFormulaMagicTests
     [Fact]
     public void Wrong_or_missing_family_inputs_fail_instead_of_using_zero_stats()
     {
-        var physical = new AbilityFormulaContext(5, 70, 70, AbilityFormulaMode.Execution);
+        var physical = new AbilityFormulaContext(new AbilityFormulaPhysicalContext(5, 70, 70), AbilityFormulaMode.Execution);
         var magic = new AbilityFormulaContext(new AbilityFormulaMagicContext(5, new(70), new(70), false), AbilityFormulaMode.Execution);
         var entry = new RandomState(1, 0);
         Assert.Throws<ArgumentException>(() => new AbilityFormula(AbilityFormulaId.FaithMagicHealing, new(0, 14)).Evaluate(physical, entry));

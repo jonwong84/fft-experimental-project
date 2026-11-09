@@ -30,7 +30,8 @@ internal static class AbilityFormulaValidation
     public static void ValidateContext(AbilityFormulaId id, AbilityFormulaContext context)
     {
         bool magicFormula = id is AbilityFormulaId.FaithMagicDamage or AbilityFormulaId.FaithMagicHealing;
-        if (magicFormula != (context.Magic is not null))
+        bool hasInputs = magicFormula ? context.Magic is not null : context.Physical is not null;
+        if (!hasInputs)
         {
             throw new ArgumentException("Select combat inputs for the assigned formula family.", nameof(context));
         }

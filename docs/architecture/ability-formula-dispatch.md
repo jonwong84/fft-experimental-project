@@ -41,9 +41,9 @@ records the current Z policy and validation placement.
 var formula = new AbilityFormula(
     AbilityFormulaId.PummelFormula,
     new AbilityFormulaParameters(x: 9, y: 0));
-var context = new AbilityFormulaContext(
-    physicalAttack: 5, attackerBrave: 70, targetBrave: 70,
-    mode: AbilityFormulaMode.Execution);
+var physical = new AbilityFormulaPhysicalContext(
+    physicalAttack: 5, attackerBrave: 70, targetBrave: 70);
+var context = new AbilityFormulaContext(physical, AbilityFormulaMode.Execution);
 var result = formula.Evaluate(context, rng);
 ```
 

@@ -75,8 +75,8 @@ physical0x32/0x37 and existing Faith-magic0x08/0x0C amount/routing work.
 range helper is `FormulaDamageBounds.FitsSigned16Range`. The owner's formula0x37
 names are `RandomPowerTimesPa` / `RandomPowerTimesPaDamageFormula`.
 
-`AbilityFormulaContext` accepts either physical PA/Brave inputs or a typed
-`AbilityFormulaMagicContext`, exposing MA and attacker/target FaithValue with
+`AbilityFormulaContext` accepts either a typed `AbilityFormulaPhysicalContext`
+(PA/Brave) or `AbilityFormulaMagicContext`, exposing MA and attacker/target FaithValue with
 Faith/Innocent status facts. Missing-family values remain absent, and wrong-family
 evaluation rejects before formula draws. Results now include raw healing and
 opaque magic projection metadata. `FaithMagicFormula.Resolve` and `ResolveAfterHit`
@@ -96,9 +96,10 @@ Latest validation: zero-warning/error Release build, **5,346 .NET tests**
 (1,903 Framework, 1,471 AI) and **810 Python tests** pass. Forty new shared-magic
 cases reuse existing source literals; prior fixture payloads and gameplay
 expectations are unchanged. Full reports/logs are in ignored
-`scratch/magic-dispatch-*`. The [receipt](evidence/combat/faith-magic-dispatch-v1.json)
+`scratch/physical-context-*`. The [original receipt](evidence/combat/faith-magic-dispatch-v1.json)
 records renewed pinned-source checks, existing test parity, admitted boundaries
-and owner-edit preservation. Owner drafts/JobStats/controller formatting and
+and owner-edit preservation. The [physical-context follow-up](evidence/maintenance/ability-formula-physical-context-v1.json)
+records the symmetric input encapsulation and current validation. Owner drafts/JobStats/controller formatting and
 disabled CI remain intact. Historical hash receipts retain their own snapshots;
 coverage remains58 planning entries and partial.
 

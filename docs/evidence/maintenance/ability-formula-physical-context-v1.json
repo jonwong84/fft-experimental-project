@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-447",
+  "kind": "owner-review-symmetric-physical-context",
+  "date": "2026-11-09",
+  "managedBaseRevision": "097f855c46410237a61526f613794e8996ed0bd9",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "sourceBasis": "All14 source files match the ZOD-447 receipt; input encapsulation only, no new gameplay rule.",
+  "change": "AbilityFormulaPhysicalContext owns immutable PA/attacker Brave/target Brave and their prior bounds. AbilityFormulaContext accepts either physical or magic input plus mode; forwarding properties have one source of truth.",
+  "api": "new AbilityFormulaContext(new AbilityFormulaPhysicalContext(pa, attackerBrave, targetBrave), mode)",
+  "preserved": [
+    "PA1..99 and each Brave10..100; null input and invalid mode reject.",
+    "Physical and magic contexts remain mutually exclusive; wrong-family evaluation rejects before formula draws.",
+    "Arithmetic, signed stores, RNG, evasion, procs, result channels and command authority unchanged."
+  ],
+  "validation": {
+    "build": "Release, zero warnings/errors",
+    "dotnetPassed": 5346,
+    "pythonPassed": 810,
+    "projects": [
+      {
+        "project": "Fft.Client",
+        "passed": 447,
+        "report": "scratch/physical-context-trx/Fft.Client.trx"
+      },
+      {
+        "project": "Tessera.Engine",
+        "passed": 24,
+        "report": "scratch/physical-context-trx/Tessera.Engine.trx"
+      },
+      {
+        "project": "Zodiac.AssetTool.Cli",
+        "passed": 396,
+        "report": "scratch/physical-context-trx/Zodiac.AssetTool.Cli.trx"
+      },
+      {
+        "project": "Zodiac.AssetTool",
+        "passed": 206,
+        "report": "scratch/physical-context-trx/Zodiac.AssetTool.trx"
+      },
+      {
+        "project": "Zodiac.Content",
+        "passed": 899,
+        "report": "scratch/physical-context-trx/Zodiac.Content.trx"
+      },
+      {
+        "project": "Zodiac.Framework.Ai",
+        "passed": 1471,
+        "report": "scratch/physical-context-trx/Zodiac.Framework.Ai.trx"
+      },
+      {
+        "project": "Zodiac.Framework",
+        "passed": 1903,
+        "report": "scratch/physical-context-trx/Zodiac.Framework.trx"
+      }
+    ],
+    "existingTestIdentitiesAndOutcomesPreserved": true,
+    "historicalEvidenceAndFixturesUnchanged": true,
+    "preservation": [
+      {
+        "path": "src/Zodiac.Content/Definitions/Ability/AbilityToggles.cs",
+        "gitBlob": "16320578ffa448783221b68c4ef5c18e245b9f35",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Ability/AiBehaviorToggles.cs",
+        "gitBlob": "c67c4b154c471764fa11a6761710d2e9c9694a65",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Ability/AttributeToggles.cs",
+        "gitBlob": "1182777f8a0c3ca219afa23d0803c52af4ca9f8e",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Common/EquipmentSlot.cs",
+        "gitBlob": "091006b2d60ca558c303571a4eb779340be53629",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Common/StatusToggles.cs",
+        "gitBlob": "5136db2af350d7e3735e47fb92b905019316fd6f",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Item/ShopAvailabilityToggles.cs",
+        "gitBlob": "fd543d84dc8eb7860d710cf1c75499eb55306e14",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Job/EquipmentOptionToggles.cs",
+        "gitBlob": "694e44bbdc3e62103b64ff794addec1ad977d142",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Status/EffectBehaviorToggles.cs",
+        "gitBlob": "9792cdea7da1d92e9ec25cf1e97d3e879c24e8ae",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Status/StatusSelectionToggles.cs",
+        "gitBlob": "a0b2e2a8ddcb53a4bfd7416609927399b8339294",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Job/JobStats.cs",
+        "gitBlob": "bd617c374309aca1529a167a8d31a488160086cc",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Framework.Ai/AiTurnController.cs",
+        "gitBlob": "05d8eb9b12cbd1430daacfb5e960d53d1199ef3a",
+        "unchanged": true
+      },
+      {
+        "path": ".circleci/config.yml",
+        "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "unchanged": true
+      }
+    ],
+    "unrelatedOwnerEditsLeftUnstaged": [
+      {
+        "path": "src/Zodiac.Framework/Formulas/AbilityFormulaId.cs",
+        "gitBlob": "806fd56e930ecc8e4056e206ddaaf62ce9519ad5"
+      },
+      {
+        "path": "src/Zodiac.Framework/Formulas/AbilityFormulaMagicContext.cs",
+        "gitBlob": "2c12b81127fdb8e17811c35ec9ed1b93e55c7690"
+      },
+      {
+        "path": "src/Zodiac.Framework/Formulas/AbilityFormulaMode.cs",
+        "gitBlob": "e6565e9c70a17b8b216f7623b0438d414772e1c4"
+      },
+      {
+        "path": "src/Zodiac.Framework/Formulas/AbilityFormulaParameters.cs",
+        "gitBlob": "812b16b5c0c208de455b0a0bd346ce4072c1bdbb"
+      }
+    ],
+    "changedDocumentLocalLinks": 80
+  },
+  "nextCheckpoint": "Owner review, then select a bounded next formula family; no additional family activated."
+}

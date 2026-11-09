@@ -31,8 +31,8 @@ public sealed class AbilityFormulaTests
         var expected = row.GetProperty("expected");
         var parameters = new AbilityFormulaParameters(input.GetProperty("x").GetInt32(), input.GetProperty("y").GetInt32());
         var formula = new AbilityFormula((AbilityFormulaId)input.GetProperty("formula").GetInt32(), parameters);
-        var context = new AbilityFormulaContext(input.GetProperty("pa").GetInt32(),
-            input.GetProperty("attackerBrave").GetInt32(), input.GetProperty("targetBrave").GetInt32(),
+        var context = new AbilityFormulaContext(new AbilityFormulaPhysicalContext(input.GetProperty("pa").GetInt32(),
+            input.GetProperty("attackerBrave").GetInt32(), input.GetProperty("targetBrave").GetInt32()),
             Enum.Parse<AbilityFormulaMode>(input.GetProperty("mode").GetString()!));
         var rng = new RandomState(input.GetProperty("word").GetUInt32(), input.GetProperty("count").GetUInt64());
 
@@ -59,7 +59,7 @@ public sealed class AbilityFormulaTests
         var parameters = new AbilityFormulaParameters(0, 0, 255);
         var formula = new AbilityFormula(id, parameters);
         var original = new AbilityFormula(id, new(0, 0));
-        var context = new AbilityFormulaContext(5, 70, 70, AbilityFormulaMode.Execution);
+        var context = new AbilityFormulaContext(new AbilityFormulaPhysicalContext(5, 70, 70), AbilityFormulaMode.Execution);
         var rng = new RandomState(1, 0);
         Assert.Same(parameters, formula.Parameters);
         Assert.Equal(255, formula.Parameters.Z);
@@ -73,10 +73,11 @@ public sealed class AbilityFormulaTests
     public void Missing_or_unsupported_evaluation_inputs_fail_before_consuming_rng()
     {
         Assert.Throws<ArgumentNullException>(() => new AbilityFormula(AbilityFormulaId.RandomPowerTimesPa, null!));
-        Assert.Throws<ArgumentOutOfRangeException>(() => new AbilityFormulaContext(0, 70, 70, AbilityFormulaMode.Execution));
-        Assert.Throws<ArgumentOutOfRangeException>(() => new AbilityFormulaContext(5, 9, 70, AbilityFormulaMode.Execution));
-        Assert.Throws<ArgumentOutOfRangeException>(() => new AbilityFormulaContext(5, 70, 101, AbilityFormulaMode.Execution));
-        Assert.Throws<ArgumentOutOfRangeException>(() => new AbilityFormulaContext(5, 70, 70, (AbilityFormulaMode)99));
+        Assert.Throws<ArgumentOutOfRangeException>(() => new AbilityFormulaPhysicalContext(0, 70, 70));
+        Assert.Throws<ArgumentOutOfRangeException>(() => new AbilityFormulaPhysicalContext(5, 9, 70));
+        Assert.Throws<ArgumentOutOfRangeException>(() => new AbilityFormulaPhysicalContext(5, 70, 101));
+        Assert.Throws<ArgumentOutOfRangeException>(() => new AbilityFormulaContext(new AbilityFormulaPhysicalContext(5, 70, 70), (AbilityFormulaMode)99));
+        Assert.Throws<ArgumentNullException>(() => new AbilityFormulaContext((AbilityFormulaPhysicalContext)null!, AbilityFormulaMode.Execution));
         var formula = new AbilityFormula(AbilityFormulaId.RandomPowerTimesPa, new(0, 4));
         Assert.Throws<ArgumentNullException>(() => formula.Evaluate(null!, new(0, ulong.MaxValue)));
     }
@@ -86,7 +87,10 @@ public sealed class AbilityFormulaTests
     [InlineData(AbilityFormulaMode.Ai)]
     public void Prediction_uses_midpoint_and_skips_execution_only_effect_draws_even_with_exhausted_rng(AbilityFormulaMode mode)
     {
-        var context = new AbilityFormulaContext(5, 70, 70, mode);
+        var physical = new AbilityFormulaPhysicalContext(5, 70, 70);
+        var context = new AbilityFormulaContext(physical, mode);
+        Assert.Same(physical, context.Physical);
+        Assert.Null(context.Magic);
         var entry = new RandomState(0, ulong.MaxValue);
         var randomPa = new AbilityFormula(AbilityFormulaId.RandomPowerTimesPa, new(0, 4));
         var sum = new AbilityFormula(AbilityFormulaId.PummelFormula, new(9, 0));
@@ -98,7 +102,7 @@ public sealed class AbilityFormulaTests
     public void Dispatcher_returns_uncapped_damage_while_combat_rules_finalize_the_result()
     {
         var formula = new AbilityFormula(AbilityFormulaId.RandomPowerTimesPa, new(0, 255));
-        var context = new AbilityFormulaContext(99, 70, 70, AbilityFormulaMode.Preview);
+        var context = new AbilityFormulaContext(new AbilityFormulaPhysicalContext(99, 70, 70), AbilityFormulaMode.Preview);
         var entry = new RandomState(1, 0);
         var result = formula.Evaluate(context, entry);
         Assert.Equal(12672, result.Damage);
