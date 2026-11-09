@@ -18,7 +18,7 @@ public sealed class DefaultAbilityAiAimTests
         var d = AuthoredDefaultAbility.Document() with { SchemaVersion = 3, MetadataPackageId = "test:package/aims", Width = width };
         d.Spells[0] = d.Spells[0] with { ChargeTime = charge,
             Targeting = d.Spells[0].Targeting with { Area = area, Range = range, NoFollowTarget = noFollow, CanHitEnemies = force, CanHitAllies = alliesOnly },
-            Formula = healing ? new(FaithMagicAmountKind.Healing, 14, MagicElement.None, false) : d.Spells[0].Formula };
+            Formula = healing ? new(FaithMagicAmountKind.Healing, 14, ElementToggles.None, false) : d.Spells[0].Formula };
         d.Units[0] = d.Units[0] with { X = actorX, LearnedPrimarySlots = [0] };
         d.Units[1] = d.Units[1] with { X = targetX, Y = targetY, LearnedPrimarySlots = [],
             Team = healing ? SpellTargetTeam.Blue : SpellTargetTeam.Red, Hp = healing ? (ushort)30 : (ushort)200 };

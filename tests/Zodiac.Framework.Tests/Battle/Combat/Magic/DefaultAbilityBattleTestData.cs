@@ -30,7 +30,7 @@ internal static class DefaultAbilityBattleTestData
             new(targetHp, 200, 50, 70, targetHp <= 40), new(Raw(200, 100), Raw(50, 75), Raw(enemySpeed, 100), Raw(8, 90), Raw(5, 80)),
             new(11, 15, 100, 60, 50), new(100, 75, 100, 90, 80), new(8, 5, enemySpeed), 10, 0, 74, Job("squire"),
             points.SetItem(Job("squire"), new(100, 100, 1)), enemySpell ? [Fire] : []);
-        var spell = new MagicCastDefinition(Fire, 16, new(FaithMagicAmountKind.Damage, 14, MagicElement.Fire, true),
+        var spell = new MagicCastDefinition(Fire, 16, new(FaithMagicAmountKind.Damage, 14, new ElementToggles { Fire = true }, true),
             6, charge, true, Targeting: new(4, 1, 1));
         return new(new(7, 5, 1, Enumerable.Repeat(new BattleTile(10), 35).ToArray()), [mage, target], [spell], catalog,
             JobPointArithmeticTests.Thresholds, rng ?? new(57, 9));

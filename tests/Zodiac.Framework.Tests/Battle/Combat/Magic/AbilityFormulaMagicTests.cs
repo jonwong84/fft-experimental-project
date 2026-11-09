@@ -39,7 +39,7 @@ public sealed class AbilityFormulaMagicTests
         var input = MagicElementTestData.Input(row.GetProperty("input"));
         var expected = row.GetProperty("expected");
         var formula = new AbilityFormula(FormulaId(input.Kind), new(0, input.Power));
-        var context = Context(input, false, new(MagicElement.Dark, MagicDamageWeather.None, new(), new(true, true, true)), AbilityFormulaMode.Execution);
+        var context = Context(input, false, new(new ElementToggles { Dark = true }, MagicDamageWeather.None, new(), new(true, true, true)), AbilityFormulaMode.Execution);
         var rng = new RandomState(57, ulong.MaxValue);
         var result = formula.Evaluate(context, rng);
         var projection = result.MagicProjection!;
@@ -80,7 +80,7 @@ public sealed class AbilityFormulaMagicTests
     public void Formula_assignment_selects_damage_or_healing_from_the_same_magic_context()
     {
         var context = new AbilityFormulaContext(new AbilityFormulaMagicContext(10, new(70), new(60), false,
-            Elements: new(MagicElement.None, MagicDamageWeather.None, new(), new(true))), AbilityFormulaMode.Preview);
+            Elements: new(ElementToggles.None, MagicDamageWeather.None, new(), new(true))), AbilityFormulaMode.Preview);
         var entry = new RandomState(1, 0);
         var damage = new AbilityFormula(AbilityFormulaId.FaithMagicDamage, new(0, 20)).Evaluate(context, entry);
         var healing = new AbilityFormula(AbilityFormulaId.FaithMagicHealing, new(0, 20)).Evaluate(context, entry);

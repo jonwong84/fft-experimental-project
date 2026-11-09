@@ -25,7 +25,7 @@ public sealed class PreparedDefaultAbilityBattle
         RespectRequiredConstructorParameters = true,
         AllowDuplicateProperties = false,
         MaxDepth = 24,
-        Converters = { new JsonStringEnumConverter(allowIntegerValues: false) }
+        Converters = { new OriginalElementNamesJsonConverter(), new JsonStringEnumConverter(allowIntegerValues: false) }
     };
     private readonly string canonicalJson;
     public DefaultAbilityBattleDefinition Definition { get; }

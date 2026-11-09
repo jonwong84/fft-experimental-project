@@ -6,7 +6,7 @@ namespace Zodiac.Framework.Tests;
 [Trait("Ruleset","OriginalFft")]
 public sealed class MagicDamageElementTests
 {
-    private static MagicDamageElementContext Plain(MagicElement elements = MagicElement.Dark) => new(elements,MagicDamageWeather.None,new(),new(true));
+    private static MagicDamageElementContext Plain(ElementToggles? elements = null) => new(elements ?? new ElementToggles { Dark = true },MagicDamageWeather.None,new(),new(true));
 
     [Fact]
     public void Twenty_four_source_transforms_preserve_weather_stores_affinity_order_markers_and_signed_amounts()
@@ -28,19 +28,19 @@ public sealed class MagicDamageElementTests
 
     [Fact]
     public void Fresh_work_is_required_even_when_element_set_is_empty() =>
-        Assert.Throws<NotSupportedException>(() => MagicDamageElements.Transform(5,Plain(MagicElement.None) with { Profile=new() }));
+        Assert.Throws<NotSupportedException>(() => MagicDamageElements.Transform(5,Plain(ElementToggles.None) with { Profile=new() }));
 
-    [Theory] [InlineData(MagicElement.Fire)] [InlineData(MagicElement.Earth)]
-    public void Relevant_Oil_Float_or_rider_facts_must_be_certified(MagicElement elements) =>
-        Assert.Throws<NotSupportedException>(() => MagicDamageElements.Transform(5,Plain(elements)));
+    [Theory] [InlineData("Fire")] [InlineData("Earth")]
+    public void Relevant_Oil_Float_or_rider_facts_must_be_certified(string elements) =>
+        Assert.Throws<NotSupportedException>(() => MagicDamageElements.Transform(5,Plain(new ElementToggles { Fire = elements == "Fire", Earth = elements == "Earth" })));
 
     [Fact]
     public void Unrelated_status_certificates_are_not_required()
     {
         Assert.Equal((short)5,MagicDamageElements.Transform(5,Plain()).Amount);
-        Assert.Equal((short)5,MagicDamageElements.Transform(5,Plain(MagicElement.None)).Amount);
-        Assert.Equal((short)5,MagicDamageElements.Transform(5,Plain(MagicElement.Fire) with { Profile=new(true,true,false) }).Amount);
-        Assert.Equal((short)5,MagicDamageElements.Transform(5,Plain(MagicElement.Earth) with { Profile=new(true,false,true) }).Amount);
+        Assert.Equal((short)5,MagicDamageElements.Transform(5,Plain(ElementToggles.None)).Amount);
+        Assert.Equal((short)5,MagicDamageElements.Transform(5,Plain(new ElementToggles { Fire = true }) with { Profile=new(true,true,false) }).Amount);
+        Assert.Equal((short)5,MagicDamageElements.Transform(5,Plain(new ElementToggles { Earth = true }) with { Profile=new(true,false,true) }).Amount);
     }
 
     [Fact]

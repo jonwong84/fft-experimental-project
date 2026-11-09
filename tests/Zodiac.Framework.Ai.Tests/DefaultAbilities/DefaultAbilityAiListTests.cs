@@ -6,7 +6,7 @@ namespace Zodiac.Framework.Ai.Tests;
 public sealed class DefaultAbilityAiListTests
 {
     internal static MagicCastDefinition Spell(short original = 16, int cost = 6, byte charge = 4) => new(
-        new($"test:spell/source-{original}"), original, new(FaithMagicAmountKind.Damage, 14, MagicElement.Fire, true),
+        new($"test:spell/source-{original}"), original, new(FaithMagicAmountKind.Damage, 14, new ElementToggles { Fire = true }, true),
         cost, charge, true, Targeting: new(4, 1, 1));
     internal static AiAbilityBehavior FireBehavior => new(TargetsEnemies: true, AffectsHp: true, AffectedBySilence: true,
         AffectedByFaith: true, FollowTarget: true, Reflectable: true, MagicalAttack: true);

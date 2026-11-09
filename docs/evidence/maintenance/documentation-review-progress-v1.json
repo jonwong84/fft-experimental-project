@@ -399,7 +399,7 @@
     }
   ],
   "fullyReviewedGroups": [],
-  "nextBatch": "Owner review of ZOD-447 shared magic formula API, then select a bounded next formula family",
+  "nextBatch": "Owner review of ZOD-448 shared boolean elements, then select a bounded next formula family",
   "overallBehaviorReviewCompleted": false,
   "supportingSourceStudies": [
     {
@@ -475,6 +475,12 @@
       "report": "docs/architecture/faith-magic-formula-dispatch.md",
       "receipt": "docs/evidence/combat/faith-magic-dispatch-v1.json",
       "disposition": "Existing0x08/0x0C amount/routing connected to shared context/dispatch/results; no new status formula, full review group or autonomous magic completed."
+    },
+    {
+      "ticket": "ZOD-448",
+      "report": "docs/architecture/shared-element-model.md",
+      "receipt": "docs/evidence/maintenance/shared-element-model-v1.json",
+      "disposition": "Shared semantic element representation and legacy adapters only; no custom element mechanics, elemental sword profile, full review group or autonomous magic completed."
     }
   ]
 }

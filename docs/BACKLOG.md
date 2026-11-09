@@ -4,7 +4,7 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next checkpoint: owner review of the shared physical/magic formula API after ZOD-447, then select a source-traced next formula family.**
+**Next checkpoint: owner review of the shared physical/magic formula API after ZOD-448, then select a source-traced next formula family.**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 [Learning reports, owned slots and player casting](behavior/learn-on-hit.md)
@@ -88,13 +88,17 @@ handlers. Schemas, supported inputs and physical combat-rule boundaries remain.
 now connects existing0x08/0x0C amount/routing code to the shared dispatcher with
 MA/Faith context and HP healing results. Existing evasion/proc/finalization owners
 and physical delivery gates remain; other formula IDs require their own trace.
+[ZOD-448 shared elements](architecture/shared-element-model.md) moves immutable
+ElementToggles to Framework and replaces runtime element masks across magic,
+strengthening and affinities. Original byte/name adapters preserve existing
+formats and multi-element behavior; custom mechanics and elemental weapons remain gated.
 ZOD-432 records the required readability review after the full AI port.
 The owner's interim [routine ownership refactor](architecture/ai-routine-ownership.md)
 now exposes named methods matching the supported decision flow: `ActionSelect`,
 `GeneralSelect`, scenario/ability/rank/fallback work, and ordinary spell
 `AiActionSimulateAndScore` / `ActionHitsSimulate` / `StrikesSimulate`.
 It preserves current admission and does not close the remaining AI review work.
-There are 35 open tickets below. The 412 completed tickets, prior checkpoints and
+There are 35 open tickets below. The 413 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -118,7 +122,7 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Owner review checkpoint
 
-ZOD-443–447 are complete. The owner will review the context API, DefaultAbility naming, shared physical/magic formula dispatcher and current AI flow
+ZOD-443–448 are complete. The owner will review the context API, DefaultAbility naming, shared physical/magic formula dispatcher and current AI flow
 before selecting further work. Start with
 [`DefaultAbilityAiContext`](../src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiContext.cs),
 [`DefaultAbilityAiAbilitySearchRequest`](../src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiAbilitySearchRequest.cs)
@@ -280,14 +284,14 @@ bits in adapters. Record custom-only toggles explicitly; decide defaults, valida
 migration per family before implementing its converter. Do not guess mappings for unfinished
 definitions or treat all toggle groups as elemental flags.
 
-Bounded import candidate after the owner's definition refactor settles: extend the existing
-selected-weapon importer/exporter to map the original eight element bits into immutable
-`ElementToggles` and prepared JSON. Derive Neutral from an empty set; retain multi-element
-combinations and initialize custom Gravity/Poison to false for original inputs. Pin the
-reference mapping, version/migrate the existing numeric element schema, and verify neutral,
-individual bits, combinations and JSON round trips. Preserve raw import provenance and
-explicit unsupported-runtime diagnostics; richer content must not silently activate
-unimplemented combat behavior. This does not reorder the AI milestones or activate broad catalog import.
+ZOD-448 completes the shared boolean element model and preserves the selected
+importers' original eight-bit mapping, neutral derivation, combinations and
+prepared magic name strings. Original input leaves custom Gravity/Poison/Restore
+off. Sword schemas still serialize only neutral element0 and explicitly reject
+elemental weapons. A richer selected-weapon schema/runtime remains a separate
+bounded follow-up requiring versioning and rule admission. Preserve provenance,
+unknown fields and explicit unsupported-runtime diagnostics; this does not
+complete catalog import or activate custom elemental mechanics.
 
 [Detailed scope](history/2026-10-27/BACKLOG.md#zod-039--expand-typed-definitions-and-import-to-the-baseline-catalog).
 

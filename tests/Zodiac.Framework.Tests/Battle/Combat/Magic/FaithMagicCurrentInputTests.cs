@@ -17,14 +17,14 @@ internal static class MagicCurrentTestData
         var a = d.GetProperty("affinities"); var eq = d.GetProperty("equipment");
         return new(new(d.GetProperty("id").GetString()!), d.GetProperty("ma").GetByte(), d.GetProperty("faith").GetByte(),
             Identity(d.GetProperty("identity")), d.GetProperty("statuses").Deserialize<MagicCurrentStatuses>(Options)!,
-            d.GetProperty("supports").Deserialize<MagicCurrentSupports>(Options)!, (MagicElement)d.GetProperty("strengthen").GetByte(),
-            new((MagicElement)a.GetProperty("absorb").GetByte(), (MagicElement)a.GetProperty("nullify").GetByte(),
-                (MagicElement)a.GetProperty("half").GetByte(), (MagicElement)a.GetProperty("weak").GetByte()),
+            d.GetProperty("supports").Deserialize<MagicCurrentSupports>(Options)!, OriginalElementEncoding.FromByte(d.GetProperty("strengthen").GetByte()),
+            new(OriginalElementEncoding.FromByte(a.GetProperty("absorb").GetByte()), OriginalElementEncoding.FromByte(a.GetProperty("nullify").GetByte()),
+                OriginalElementEncoding.FromByte(a.GetProperty("half").GetByte()), OriginalElementEncoding.FromByte(a.GetProperty("weak").GetByte())),
             eq.ValueKind == JsonValueKind.Null ? null : MagicEvasionTestData.Equipment(eq),
             d.GetProperty("unrestricted").GetBoolean(), d.GetProperty("rider").GetBoolean(), d.GetProperty("mp").GetUInt16());
     }
     internal static FaithMagicSpell Spell(JsonElement d) => new(Enum.Parse<FaithMagicAmountKind>(d.GetProperty("kind").GetString()!),
-        d.GetProperty("power").GetByte(), (MagicElement)d.GetProperty("elements").GetByte(), d.GetProperty("evadeable").GetBoolean());
+        d.GetProperty("power").GetByte(), OriginalElementEncoding.FromByte(d.GetProperty("elements").GetByte()), d.GetProperty("evadeable").GetBoolean());
     internal static FaithMagicCurrentRequest Request(JsonElement r)
     {
         var p = r.GetProperty("profile"); var pe = p.GetProperty("entry"); var entry = r.GetProperty("entry");
@@ -115,7 +115,7 @@ public sealed class FaithMagicCurrentInputTests
     public void Consistent_self_target_is_supported_but_conflicting_same_ID_is_not()
     {
         var unit = new MagicCurrentUnit(new("self"), 5, 70, new(MagicZodiacSign.Aries), new(), new());
-        var spell = new FaithMagicSpell(FaithMagicAmountKind.Healing, 14, MagicElement.None, false);
+        var spell = new FaithMagicSpell(FaithMagicAmountKind.Healing, 14, ElementToggles.None, false);
         Assert.True(FaithMagicInputs.Project(unit, unit with { }, spell, MagicDamageWeather.None).Accepted);
         Assert.False(FaithMagicInputs.Project(unit, unit with { Faith = 71 }, spell, MagicDamageWeather.None).Accepted);
         Assert.Throws<ArgumentException>(() => FaithMagicInputs.Project(unit with { UnitId = default }, unit, spell, MagicDamageWeather.None));

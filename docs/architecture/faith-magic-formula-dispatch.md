@@ -1,5 +1,9 @@
 # Shared Faith-magic formula dispatch — ZOD-447
 
+The subsequent [ZOD-448 element refactor](shared-element-model.md) replaces the
+runtime element enum with the shared Framework `ElementToggles` record. Existing
+elemental rules and prepared name strings retain their compatibility behavior.
+
 Owner-selected next step from `668ef1f`, following the
 [formula/context refactor](ability-formula-dispatch.md). Read-only fft_decomp
 remains `11464943bbdbd2a0af022d90cb7f10455cf911df`. The

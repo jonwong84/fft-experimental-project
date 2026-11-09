@@ -12,7 +12,7 @@ public sealed class MagicConditionalProcTests
     private static RandomState BeforeRaw(uint raw,ulong count=17) => new(unchecked((((raw<<16)|0x1234u)-12345u)*4005161829u),count);
     private static FaithMagicElementAmount Projection(FaithMagicAmountKind kind,bool absorb=false,bool nullify=false,bool zeroFaith=false) =>
         FaithMagicAmountFormula.ProjectWithElementsAfterHit(new(kind,5,14,new(zeroFaith ? (byte)0 : (byte)70),new(70)),
-            new(MagicElement.Fire,MagicDamageWeather.None,new(absorb ? MagicElement.Fire : MagicElement.None,nullify ? MagicElement.Fire : MagicElement.None),new(true,true,true)));
+            new(new ElementToggles { Fire = true },MagicDamageWeather.None,new(absorb ? new ElementToggles { Fire = true } : ElementToggles.None,nullify ? new ElementToggles { Fire = true } : ElementToggles.None),new(true,true,true)));
 
     [Fact]
     public void Six_scaled_roll_boundaries_use_real_RNG_outputs_and_not_modulo()

@@ -17,7 +17,7 @@ public sealed class DefaultAbilityAiReadyTests
     {
         var d=AuthoredDefaultAbility.Document() with {SchemaVersion=3,MetadataPackageId="test:package/spell-ai"};
         d.Spells[0]=d.Spells[0] with {Targeting=d.Spells[0].Targeting with {Area=area},ChargeTime=charge,
-            Formula=heal?new(FaithMagicAmountKind.Healing,14,MagicElement.None,false):d.Spells[0].Formula};
+            Formula=heal?new(FaithMagicAmountKind.Healing,14,ElementToggles.None,false):d.Spells[0].Formula};
         d.Units[0]=d.Units[0] with {LearnedPrimarySlots=[0],Mp=mp,Faith=faith};
         d.Units[1]=d.Units[1] with {LearnedPrimarySlots=[],Team=heal?SpellTargetTeam.Blue:SpellTargetTeam.Red,Hp=targetHp??(heal?(ushort)30:(ushort)200)};
         var behavior=heal?new AiAbilityBehavior(TargetsAllies:true,AffectsHp:true,AffectedBySilence:true,AffectedByFaith:true,FollowTarget:true,Reflectable:true):DefaultAbilityAiListTests.FireBehavior;

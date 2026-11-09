@@ -17,7 +17,7 @@ public sealed class OriginalDefaultAbilityImporterTests
         var definition = imported.Package.Definition;
         var fire = Assert.Single(definition.Spells).Value;
         Assert.Equal(14, fire.Spell.Power); Assert.Equal(6, fire.MpCost); Assert.Equal((byte)4, fire.RawChargeTime);
-        Assert.Equal(MagicElement.Fire, fire.Spell.Elements); Assert.True(fire.Spell.SecondaryEvadeable);
+        Assert.Equal(new ElementToggles { Fire = true }, fire.Spell.Elements); Assert.True(fire.Spell.SecondaryEvadeable);
         Assert.Equal(35, imported.Records.Length); Assert.Equal(before, image);
         foreach (var record in imported.Records)
         {

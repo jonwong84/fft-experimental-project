@@ -26,7 +26,7 @@ public static class DefaultAbilityAiProjection
             unit.Occupant.Crystal || unit.Occupant.Treasure || unit.Occupant.InitialTeam != unit.Occupant.CurrentTeam ||
             unit.Current.Identity.IsMonster || unit.Current.IsMime || unit.Current.HasRider ||
             unit.Current.Equipment != DefaultAbilityBattleDefinition.BareEquipment || unit.Current.Supports != new MagicCurrentSupports() ||
-            unit.Current.Strengthens != MagicElement.None || unit.Current.Affinities != default || !unit.Current.ActionUnrestricted)
+            unit.Current.Strengthens != ElementToggles.None || unit.Current.Affinities != default || !unit.Current.ActionUnrestricted)
             return false;
         try { _ = DefaultAbilityHitApplication.Project(unit.Current, unit.Vitals, Miss); return true; }
         catch (Exception e) when (e is ArgumentException or NotSupportedException) { return false; }

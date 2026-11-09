@@ -7,7 +7,7 @@ namespace Zodiac.Framework.Tests;
 public sealed class FaithMagicElementPipelineTests
 {
     private static FaithMagicAmountInput Basic => new(FaithMagicAmountKind.Damage,5,14,new(70),new(70));
-    private static MagicDamageElementContext Plain => new(MagicElement.Dark,MagicDamageWeather.None,new(),new(true));
+    private static MagicDamageElementContext Plain => new(new ElementToggles { Dark = true },MagicDamageWeather.None,new(),new(true));
 
     [Fact]
     public void Twelve_source_projections_put_elements_before_Faith_and_skip_Faith_when_nullified()
@@ -43,7 +43,7 @@ public sealed class FaithMagicElementPipelineTests
     {
         var input=Basic with { Kind=FaithMagicAmountKind.Healing };
         Assert.Equal((short)34,FaithMagicAmountFormula.ProjectWithElementsAfterHit(input).Amount!.Amount);
-        var result=FaithMagicAmountFormula.ProjectWithElementsAfterHit(input,new((MagicElement)255,(MagicDamageWeather)99,new(MagicElement.Fire,MagicElement.Fire),new()));
+        var result=FaithMagicAmountFormula.ProjectWithElementsAfterHit(input,new(OriginalElementEncoding.FromByte(255),(MagicDamageWeather)99,new(new ElementToggles { Fire = true },new ElementToggles { Fire = true }),new()));
         Assert.Null(result.Elements);Assert.Equal((short)34,result.Amount!.Amount);
     }
 
@@ -56,11 +56,11 @@ public sealed class FaithMagicElementPipelineTests
 
     [Fact]
     public void Known_element_set_cannot_contradict_strengthening() =>
-        Assert.Throws<ArgumentException>(() => FaithMagicAmountFormula.ProjectWithElementsAfterHit(Basic with { Modifiers=new(StrengthensElement:true) },Plain with { Elements=MagicElement.None }));
+        Assert.Throws<ArgumentException>(() => FaithMagicAmountFormula.ProjectWithElementsAfterHit(Basic with { Modifiers=new(StrengthensElement:true) },Plain with { Elements=ElementToggles.None }));
 
     [Fact]
     public void Composed_damage_does_not_bypass_transform_scope() =>
-        Assert.Throws<NotSupportedException>(() => FaithMagicAmountFormula.ProjectWithElementsAfterHit(Basic,Plain with { Elements=MagicElement.Fire }));
+        Assert.Throws<NotSupportedException>(() => FaithMagicAmountFormula.ProjectWithElementsAfterHit(Basic,Plain with { Elements=new ElementToggles { Fire = true } }));
 
     [Fact]
     public void Fourteen_routing_vectors_preserve_absorption_undead_masks_signed_bits_and_uncapped_values()

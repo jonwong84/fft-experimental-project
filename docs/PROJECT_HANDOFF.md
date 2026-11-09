@@ -6,11 +6,12 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-443–447 are complete. Next: owner review of the shared physical/magic formula API, then a bounded source-traced next formula family.**
+**ZOD-443–448 are complete. Next: owner review of the shared physical/magic formula API, then a bounded source-traced next formula family.**
 Read [BACKLOG.md](BACKLOG.md), the
 [pathway names](architecture/default-ability-pathways.md),
 [execution names](architecture/default-ability-execution-names.md),
 [shared magic formulas](architecture/faith-magic-formula-dispatch.md),
+[shared boolean elements](architecture/shared-element-model.md),
 [context API](behavior/ordinary-spell-context.md) and
 [list/scenario study](behavior/ordinary-spell-list-integration.md).
 The caller now exposes `Evaluate(context, request, rng)`. `DefaultAbilityAiContext`
@@ -92,16 +93,26 @@ needs the certified magic resolver and normal command owners. Formulas0x09/0x0A/
 arbitrary prepared magic formula reassignment remain separate. Unused Z is
 retained by Framework but rejected by the current targeted content schemas.
 
-Latest validation: zero-warning/error Release build, **5,346 .NET tests**
-(1,903 Framework, 1,471 AI) and **810 Python tests** pass. Forty new shared-magic
-cases reuse existing source literals; prior fixture payloads and gameplay
-expectations are unchanged. Full reports/logs are in ignored
-`scratch/physical-context-*`. The [original receipt](evidence/combat/faith-magic-dispatch-v1.json)
-records renewed pinned-source checks, existing test parity, admitted boundaries
-and owner-edit preservation. The [physical-context follow-up](evidence/maintenance/ability-formula-physical-context-v1.json)
-records the symmetric input encapsulation and current validation. Owner drafts/JobStats/controller formatting and
-disabled CI remain intact. Historical hash receipts retain their own snapshots;
-coverage remains58 planning entries and partial.
+ZOD-448 moves `ElementToggles` from Content into Framework and replaces the
+runtime `MagicElement` enum. Ability elements, strengthening, all affinity sets
+and weapon definitions share it. Neutral/default value semantics remain intact.
+`OriginalElementEncoding` owns original byte/name conversion at boundaries;
+the scoped prepared JSON converter preserves existing element strings, versions
+and asset/profile IDs. Sword schemas still admit only neutral elements. Custom
+Gravity/Poison/Restore are representable but rejected by original consumers/
+encodings until separate rules exist. See the [element model](architecture/shared-element-model.md).
+
+Latest validation: zero-warning/error Release build, **5,354 .NET tests**
+(1,908 Framework, 1,471 AI) and **810 Python tests** pass. Eight added tests cover
+all256 byte combinations,65,536 overlaps, defaults/custom flags and legacy JSON.
+Existing source literals, expected results and RNG states are unchanged. Full
+reports/logs are in ignored `scratch/element-model-*`; the
+[receipt](evidence/maintenance/shared-element-model-v1.json) records source pins,
+preservation, type migration and test parity. Earlier formula/physical-context
+receipts retain their checkpoint data. Historical evidence/fixtures, owner drafts,
+JobStats, controller formatting and disabled CI remain intact. Coverage remains
+58 planning entries and partial. Review the shared model before selecting the
+next bounded formula family; no further development ticket is activated.
 
 The owner-authorized query/battle-state formatting was committed in `973b39e`.
 Its layout is preserved under the subsequent prefix substitutions. The old
@@ -151,7 +162,7 @@ The [review programme](development/documentation-review-programme.md) and
 [progress receipt](evidence/maintenance/documentation-review-progress-v1.json)
 record completed bounded batches through ZOD-436, the supporting ZOD-426
 study, bounded ZOD-437–441 implementations, ZOD-442 integration study,
-ZOD-443 context API, ZOD-444/445 naming maintenance, ZOD-446 formula refactor and ZOD-447 shared-magic dispatch. ZOD-428 and complete inventory
+ZOD-443 context API, ZOD-444/445 naming maintenance, ZOD-446 formula refactor, ZOD-447 shared-magic dispatch and ZOD-448 element representation. ZOD-428 and complete inventory
 groups remain open. Prior helper
 cross-checks and annotation corrections live
 in their behavior/evidence notes; use [history](history/README.md) for completed

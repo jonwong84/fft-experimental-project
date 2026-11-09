@@ -9,10 +9,10 @@ public sealed class MagicConsumerReviewTests
     private static readonly MagicResultFinalizationProfile Known = new(true, true, true, true, true, true, new(true, true, true));
     private static readonly MagicEvadeEquipmentInput Bare = new(false, new(255, 0, false), new(255, 0, false), new(255, 0, false));
     private static MagicCurrentUnit Caster => new(new("caster"), 7, 90, new(MagicZodiacSign.Aries, IsMale: true),
-        new(), new(MagicAttackUp: true, HalfMp: true), Strengthens: MagicElement.Fire, Equipment: Bare, Mp: 50);
+        new(), new(MagicAttackUp: true, HalfMp: true), Strengthens: new ElementToggles { Fire = true }, Equipment: Bare, Mp: 50);
     private static MagicCurrentUnit Target => new(new("target"), 5, 90, new(MagicZodiacSign.Leo, IsMale: true),
         new(Shell: true, Frog: true, Undead: true), new(MagicDefenseUp: true),
-        Affinities: new(Absorb: MagicElement.Fire, Half: MagicElement.Fire, Weak: MagicElement.Fire), Equipment: Bare, Mp: 20);
+        Affinities: new(Absorb: new ElementToggles { Fire = true }, Half: new ElementToggles { Fire = true }, Weak: new ElementToggles { Fire = true }), Equipment: Bare, Mp: 20);
 
     [Theory]
     [InlineData(MagicFormulaEvaluationMode.Execute)]
@@ -67,7 +67,7 @@ public sealed class MagicConsumerReviewTests
     [Fact]
     public void Nullified_first_target_does_not_leak_flags_or_skip_the_next_targets_formula_draws()
     {
-        var first = Target with { Affinities = Target.Affinities with { Nullify = MagicElement.Fire } };
+        var first = Target with { Affinities = Target.Affinities with { Nullify = new ElementToggles { Fire = true } } };
         var second = Target with { UnitId = new("second"), Affinities = default };
         var result = MagicCastQuery.ResolveTargets(Prepare(FaithMagicAmountKind.Damage, MagicFormulaEvaluationMode.Execute),
             [first, second], new(true, true), new(57, 0));
@@ -86,10 +86,10 @@ public sealed class MagicConsumerReviewTests
     [Fact]
     public void Rounded_zero_accuracy_keeps_the_ai_formula_tail_but_cannot_apply_hp()
     {
-        var caster = Caster with { MagicAttack = 5, Faith = 70, Supports = new(), Strengthens = MagicElement.None };
+        var caster = Caster with { MagicAttack = 5, Faith = 70, Supports = new(), Strengthens = ElementToggles.None };
         var target = Target with { Faith = 70, Identity = caster.Identity, Statuses = new(), Supports = new(),
-            Affinities = new(Weak: MagicElement.Fire), Equipment = new(false, new(1, 90, true), new(2, 90, true), new(3, 90, true)) };
-        var definition = new MagicCastDefinition(new("test:fire"), 16, new(FaithMagicAmountKind.Damage, 14, MagicElement.Fire, true), 6, 0, true);
+            Affinities = new(Weak: new ElementToggles { Fire = true }), Equipment = new(false, new(1, 90, true), new(2, 90, true), new(3, 90, true)) };
+        var definition = new MagicCastDefinition(new("test:fire"), 16, new(FaithMagicAmountKind.Damage, 14, new ElementToggles { Fire = true }, true), 6, 0, true);
         var cast = MagicCastQuery.PrepareReady(new(caster, definition, MagicDamageWeather.None,
             MagicFormulaEvaluationMode.AiSimulation, Known, new(true, true, true, true, true))).Cast!;
         var result = MagicCastQuery.ResolveTargets(cast, [target], new(true, true), new(57, 0));
@@ -110,7 +110,7 @@ public sealed class MagicConsumerReviewTests
     private static PreparedMagicCast Prepare(FaithMagicAmountKind kind, MagicFormulaEvaluationMode mode)
     {
         var definition = new MagicCastDefinition(new("test:faith"), (short)(kind == FaithMagicAmountKind.Damage ? 16 : 1),
-            new(kind, 11, MagicElement.Fire, true), 11, 0, true);
+            new(kind, 11, new ElementToggles { Fire = true }, true), 11, 0, true);
         var prepared = MagicCastQuery.PrepareReady(new(Caster, definition, MagicDamageWeather.Storm, mode,
             Known, new(true, true, true, true, true)));
         Assert.True(prepared.Accepted);

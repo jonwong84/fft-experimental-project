@@ -689,7 +689,9 @@
         "docs/architecture/ability-formula-dispatch.md",
         "docs/evidence/maintenance/ability-formula-refactor-v1.json",
         "docs/architecture/faith-magic-formula-dispatch.md",
-        "docs/evidence/combat/faith-magic-dispatch-v1.json"
+        "docs/evidence/combat/faith-magic-dispatch-v1.json",
+        "docs/architecture/shared-element-model.md",
+        "docs/evidence/maintenance/shared-element-model-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/Battle/Combat/BoundedSwordWeapon.cs",
@@ -791,7 +793,10 @@
         "src/Zodiac.Framework/Battle/Combat/Magic/Publication/MagicUnitVitals.cs",
         "src/Zodiac.Framework/Battle/Combat/Magic/Publication/MagicVitalArithmetic.cs",
         "src/Zodiac.Framework/Battle/Combat/Magic/Publication/MagicVitalChange.cs",
-        "src/Zodiac.Framework/Battle/Combat/Magic/Publication/MagicVitalInput.cs"
+        "src/Zodiac.Framework/Battle/Combat/Magic/Publication/MagicVitalInput.cs",
+        "src/Zodiac.Framework/Battle/Combat/Elements/ElementToggles.cs",
+        "src/Zodiac.Framework/Compatibility/OriginalElementEncoding.cs",
+        "src/Zodiac.Content/BattleSetup/OriginalElementNamesJsonConverter.cs"
       ],
       "automatedChecks": [
         {
@@ -1085,7 +1090,7 @@
         "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicAmount.cs",
         "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicElementAmount.cs",
         "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicAmountFormula.cs",
-        "src/Zodiac.Framework/Battle/Combat/Magic/MagicElement.cs",
+        "src/Zodiac.Framework/Battle/Combat/Elements/ElementToggles.cs",
         "src/Zodiac.Framework/Battle/Combat/Magic/MagicDamageWeather.cs",
         "src/Zodiac.Framework/Battle/Combat/Magic/MagicElementAffinities.cs",
         "src/Zodiac.Framework/Battle/Combat/Magic/MagicDamageElementProfile.cs",
@@ -1886,7 +1891,9 @@
         "docs/architecture/ability-formula-dispatch.md",
         "docs/evidence/maintenance/ability-formula-refactor-v1.json",
         "docs/architecture/faith-magic-formula-dispatch.md",
-        "docs/evidence/combat/faith-magic-dispatch-v1.json"
+        "docs/evidence/combat/faith-magic-dispatch-v1.json",
+        "docs/architecture/shared-element-model.md",
+        "docs/evidence/maintenance/shared-element-model-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",

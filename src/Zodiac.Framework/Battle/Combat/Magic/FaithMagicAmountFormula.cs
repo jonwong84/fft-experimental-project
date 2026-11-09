@@ -21,7 +21,8 @@ public static class FaithMagicAmountFormula
         if (input.Kind == FaithMagicAmountKind.Damage)
         {
             ArgumentNullException.ThrowIfNull(context);
-            if (input.Modifiers.StrengthensElement && context.Elements == MagicElement.None)
+            ArgumentNullException.ThrowIfNull(context.Elements);
+            if (input.Modifiers.StrengthensElement && context.Elements.Neutral)
                 throw new ArgumentException("Strengthening requires a nonempty ability element set.",nameof(context));
         }
         var (xa,product) = PrepareProduct(input);

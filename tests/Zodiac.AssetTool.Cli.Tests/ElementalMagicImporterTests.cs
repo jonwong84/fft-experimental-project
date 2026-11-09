@@ -63,8 +63,8 @@ public sealed class ElementalMagicImporterTests
         Assert.Empty(import.Package.Definition.Units[1].LearnedSpells);
         Assert.Null(import.VerifiedInputSha256);
         var ice = import.Package.Definition.Spells[new("fft.ps1:ability/source-0024")];
-        Assert.Equal(MagicElement.Ice, ice.Spell.Elements);
-        Assert.Equal(MagicElement.Lightning, import.Package.Definition.Spells[new("fft.ps1:ability/source-0020")].Spell.Elements);
+        Assert.Equal(new ElementToggles { Ice = true }, ice.Spell.Elements);
+        Assert.Equal(new ElementToggles { Lightning = true }, import.Package.Definition.Spells[new("fft.ps1:ability/source-0020")].Spell.Elements);
     }
 
     [Fact]

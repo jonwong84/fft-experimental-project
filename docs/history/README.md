@@ -21,7 +21,9 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 412 entries index completed bounded work; they do not mean the full game is complete.
+These 413 entries index completed bounded work; they do not mean the full game is complete.
+
+- [ZOD-448 — Share immutable boolean elements across Framework and Content](../architecture/shared-element-model.md)
 
 - [ZOD-447 — Connect existing Faith magic to shared ability formula dispatch](../architecture/faith-magic-formula-dispatch.md)
 

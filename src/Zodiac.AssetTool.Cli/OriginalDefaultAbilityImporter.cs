@@ -40,7 +40,7 @@ public static class OriginalDefaultAbilityImporter
             var raw = reader.Read("g_ability_range_data", 0x8005fbf0, 14, binding.Id, id);
             bool fourth = binding.Area == 2;
             byte[] expected = [4, binding.Area, binding.Vertical, 0, (byte)(fourth ? 1 : 0),
-                (byte)(fourth ? 34 : 226), (byte)(fourth ? 2 : 66), (byte)binding.Element, 8, 0,
+                (byte)(fourth ? 34 : 226), (byte)(fourth ? 2 : 66), OriginalElementEncoding.ToByte(binding.Element), 8, 0,
                 binding.Power, 0, binding.Charge, binding.Mp];
             if (!raw.SequenceEqual(expected))
                 throw new InvalidDataException($"{binding.Name} exceeds the traced ordinary empty-status binding.");
@@ -49,7 +49,7 @@ public static class OriginalDefaultAbilityImporter
             if (learning.JpCost > 9999) throw new InvalidDataException("Unsupported ordinary spell learning data.");
             learningCost = checked(learningCost + learning.JpCost);
             spells.Add(new(id, binding.Name, binding.Id,
-                new(FaithMagicAmountKind.Damage, raw[10], (MagicElement)raw[7], (raw[6] & 2) != 0),
+                new(FaithMagicAmountKind.Damage, raw[10], OriginalElementEncoding.FromByte(raw[7]), (raw[6] & 2) != 0),
                 raw[13], raw[12], (raw[5] & 0x20) != 0,
                 new(raw[0], raw[1], raw[2], CannotHitCaster: (raw[4] & 1) != 0)));
         }
@@ -76,7 +76,7 @@ public static class OriginalDefaultAbilityImporter
             if (cureLearningCost > 9999 || whiteMagic[0] != 1 ||
                 reader.Read("g_command_menu_types_by_skillset", 0x80065cb4, 1, 10, "fft.ps1:skillset/white-magic")[0] != 0)
                 throw new InvalidDataException("White Magic does not bind the traced default-menu Cure slot and learning data.");
-            spells.Insert(0, new(id, "Cure", 1, new(FaithMagicAmountKind.Healing, raw[10], MagicElement.None, false),
+            spells.Insert(0, new(id, "Cure", 1, new(FaithMagicAmountKind.Healing, raw[10], ElementToggles.None, false),
                 raw[13], raw[12], (raw[5] & 0x20) != 0, new(raw[0], raw[1], raw[2])));
             metadataSkillsets.Add(new(new("fft.ps1:skillset/white-magic"), [new(0, new(id))]));
         }
@@ -168,19 +168,19 @@ public static class OriginalDefaultAbilityImporter
     }, new JsonSerializerOptions { WriteIndented = true, NewLine = "\n" }) + "\n";
 
     // Each row independently inspected against the verified executable and pinned source.
-    private static readonly (short Id, string Name, byte Power, byte Area, byte Vertical, byte Charge, byte Mp, MagicElement Element)[] Bindings =
+    private static readonly (short Id, string Name, byte Power, byte Area, byte Vertical, byte Charge, byte Mp, ElementToggles Element)[] Bindings =
     [
-        (16, "Fire", 14, 1, 1, 4, 6, MagicElement.Fire),
-        (17, "Fire 2", 18, 1, 2, 5, 12, MagicElement.Fire),
-        (18, "Fire 3", 24, 1, 3, 7, 24, MagicElement.Fire),
-        (19, "Fire 4", 32, 2, 3, 10, 48, MagicElement.Fire),
-        (20, "Bolt", 14, 1, 1, 4, 6, MagicElement.Lightning),
-        (21, "Bolt 2", 18, 1, 2, 5, 10, MagicElement.Lightning),
-        (22, "Bolt 3", 24, 1, 3, 7, 24, MagicElement.Lightning),
-        (23, "Bolt 4", 32, 2, 3, 10, 48, MagicElement.Lightning),
-        (24, "Ice", 14, 1, 1, 4, 6, MagicElement.Ice),
-        (25, "Ice 2", 18, 1, 2, 5, 12, MagicElement.Ice),
-        (26, "Ice 3", 24, 1, 3, 7, 24, MagicElement.Ice),
-        (27, "Ice 4", 32, 2, 3, 10, 48, MagicElement.Ice)
+        (16, "Fire", 14, 1, 1, 4, 6, new ElementToggles { Fire = true }),
+        (17, "Fire 2", 18, 1, 2, 5, 12, new ElementToggles { Fire = true }),
+        (18, "Fire 3", 24, 1, 3, 7, 24, new ElementToggles { Fire = true }),
+        (19, "Fire 4", 32, 2, 3, 10, 48, new ElementToggles { Fire = true }),
+        (20, "Bolt", 14, 1, 1, 4, 6, new ElementToggles { Lightning = true }),
+        (21, "Bolt 2", 18, 1, 2, 5, 10, new ElementToggles { Lightning = true }),
+        (22, "Bolt 3", 24, 1, 3, 7, 24, new ElementToggles { Lightning = true }),
+        (23, "Bolt 4", 32, 2, 3, 10, 48, new ElementToggles { Lightning = true }),
+        (24, "Ice", 14, 1, 1, 4, 6, new ElementToggles { Ice = true }),
+        (25, "Ice 2", 18, 1, 2, 5, 12, new ElementToggles { Ice = true }),
+        (26, "Ice 3", 24, 1, 3, 7, 24, new ElementToggles { Ice = true }),
+        (27, "Ice 4", 32, 2, 3, 10, 48, new ElementToggles { Ice = true })
     ];
 }

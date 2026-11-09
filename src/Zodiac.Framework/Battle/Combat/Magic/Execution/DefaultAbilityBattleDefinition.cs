@@ -49,7 +49,7 @@ public sealed class DefaultAbilityBattleDefinition
             if (string.IsNullOrWhiteSpace(spell.Id.Value) || !selected.TryAdd(spell.Id, spell) ||
                 spell.OriginalAbilityId is < 1 or >= 368 || spell.OriginalAbilityId == 329 || spell.Persevere ||
                 spell.Targeting is null || spell.Targeting.Auto || spell.MpCost < 0 || spell.Spell is null ||
-                !Enum.IsDefined(spell.Spell.Kind))
+                !Enum.IsDefined(spell.Spell.Kind) || spell.Spell.Elements is null || spell.Spell.Elements.HasCustomElements)
                 throw new NotSupportedException("Select explicit single-strike ordinary empty-status spells.");
         }
         if (selected.Count == 0)
@@ -76,7 +76,7 @@ public sealed class DefaultAbilityBattleDefinition
                 !Enum.IsDefined(o.InitialTeam) || !positions.Add(o.Position) || !map.TryGetTile(o.Position, out _) ||
                 u.Current.Statuses != new MagicCurrentStatuses() || u.Current.Supports != new MagicCurrentSupports() ||
                 u.Current.Equipment != BareEquipment || u.Current.Identity.IsMonster || u.Current.HasRider || u.Current.IsMime ||
-                !u.Current.ActionUnrestricted || u.Current.Strengthens != MagicElement.None || u.Current.Affinities != default ||
+                !u.Current.ActionUnrestricted || u.Current.Strengthens != ElementToggles.None || u.Current.Affinities != default ||
                 u.Current.Faith > 100 || u.Level is < 1 or > 99 || u.Experience > 99 || !Enum.IsDefined(u.InitialFacing) ||
                 u.BaseAttributes.Speed == 0 || u.BaseAttributes.MagicAttack == 0 ||
                 u.Current.MagicAttack != Math.Min(99, (int)u.BaseAttributes.MagicAttack))

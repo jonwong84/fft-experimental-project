@@ -11,8 +11,8 @@ public sealed class FaithMagicFormulaTests
     private static FaithMagicFormulaRequest Request(bool weak = false) => new(
         new(FaithMagicAmountKind.Damage, 5, 14, new(70), new(70)), false, 100,
         MagicFormulaEvaluationMode.Execute, Known,
-        new(MagicElement.Fire, MagicDamageWeather.None,
-            new(Weak: weak ? MagicElement.Fire : MagicElement.None), new(true, true, true)));
+        new(new ElementToggles { Fire = true }, MagicDamageWeather.None,
+            new(Weak: weak ? new ElementToggles { Fire = true } : ElementToggles.None), new(true, true, true)));
 
     [Fact]
     public void Shared_entry_matches_twenty_existing_literal_composed_results_from_raw_inputs()

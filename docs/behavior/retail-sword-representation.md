@@ -35,7 +35,8 @@ their original numeric fields and values. The mapping was rechecked against
 `include/fft/item.h::weapon_flag_e` at reference revision
 `11464943bbdbd2a0af022d90cb7f10455cf911df` on 2026-10-28.
 
-`WeaponDefinition.WeaponElement` now uses immutable `ElementToggles`. All switches
+`WeaponDefinition.WeaponElement` uses the shared Framework
+[`ElementToggles`](../architecture/shared-element-model.md) after ZOD-448. All switches
 off derives Neutral; there is no stored Neutral switch. Original element bits
 map through `ability.h::element_flags_e` at that same rechecked revision; original
 zero maps to an empty toggle record, with custom Gravity/Poison false. The current

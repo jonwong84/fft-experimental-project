@@ -14,9 +14,9 @@ public sealed class DefaultAbilitySpellSelectionTests
         var document = AuthoredDefaultAbility.Document(); var fire = document.Spells[0];
         document = document with { Spells = [fire,
             fire with { Id = Bolt2, Name = "Bolt 2", OriginalId = 21, MpCost = 10, ChargeTime = 5,
-                Formula = new(FaithMagicAmountKind.Damage, 18, MagicElement.Lightning, true), Targeting = new(4, 1, 2) },
+                Formula = new(FaithMagicAmountKind.Damage, 18, new ElementToggles { Lightning = true }, true), Targeting = new(4, 1, 2) },
             fire with { Id = Ice4, Name = "Ice 4", OriginalId = 27, MpCost = 48, ChargeTime = 10,
-                Formula = new(FaithMagicAmountKind.Damage, 32, MagicElement.Ice, true), Targeting = new(4, 2, 3, CannotHitCaster: true) }] };
+                Formula = new(FaithMagicAmountKind.Damage, 32, new ElementToggles { Ice = true }, true), Targeting = new(4, 2, 3, CannotHitCaster: true) }] };
         document.Units[0] = document.Units[0] with { LearnedSpells = learnIce ? [AuthoredDefaultAbility.Fire, Bolt2, Ice4] : [AuthoredDefaultAbility.Fire, Bolt2] };
         return new(PreparedDefaultAbilityBattle.Create(document));
     }

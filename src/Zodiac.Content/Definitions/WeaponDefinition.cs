@@ -1,3 +1,4 @@
+using Zodiac.Framework;
 using System.Collections.Immutable;
 using Zodiac.Content.Definitions.Common;
 using Zodiac.Content.Definitions.Item;

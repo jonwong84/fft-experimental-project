@@ -29,7 +29,7 @@ public sealed class DefaultAbilityAiProjectionTests
     [Fact]
     public void Healing_ai_has_no_formula_draws_and_projects_critical_clear()
     {
-        var spell=DefaultAbilityAiListTests.Spell() with { Spell=new(FaithMagicAmountKind.Healing,14,MagicElement.None,false) };
+        var spell=DefaultAbilityAiListTests.Spell() with { Spell=new(FaithMagicAmountKind.Healing,14,ElementToggles.None,false) };
         var target=Target with { Vitals=Target.Vitals with { Hp=30,Critical=true } };
         var r=DefaultAbilityAiProjection.Calculate(Caster,spell,[target],new(57,7));
         Assert.True(r.Accepted); Assert.Equal(new RandomState(57,7),r.RngState);

@@ -25,7 +25,7 @@ public sealed class MagicResultFinalizationTests
             new(e.GetProperty("primary").GetBoolean(),e.GetProperty("noPending").GetBoolean(),e.GetProperty("clearFlag").GetBoolean()));
     }
     private static FaithMagicElementAmount Projection() => FaithMagicAmountFormula.ProjectWithElementsAfterHit(
-        new(FaithMagicAmountKind.Damage,5,14,new(70),new(70)),new(MagicElement.Fire,MagicDamageWeather.None,new(),new(true,true,true)));
+        new(FaithMagicAmountKind.Damage,5,14,new(70),new(70)),new(new ElementToggles { Fire = true },MagicDamageWeather.None,new(),new(true,true,true)));
 
     [Fact]
     public void Twenty_literal_raw_frames_preserve_signed_fields_hit_labels_and_flags()

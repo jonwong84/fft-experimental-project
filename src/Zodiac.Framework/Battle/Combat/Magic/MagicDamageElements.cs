@@ -9,28 +9,31 @@ public static class MagicDamageElements
         ArgumentNullException.ThrowIfNull(context); ArgumentNullException.ThrowIfNull(context.Profile);
         if (!Enum.IsDefined(context.EffectiveWeather)) throw new ArgumentOutOfRangeException(nameof(context));
         var elements = context.Elements; var p = context.Profile;
-        if (!p.FreshElementWork || Has(elements,MagicElement.Fire) && !p.FireTargetHasNoOil ||
-            Has(elements,MagicElement.Earth) && !p.EarthTargetHasNoFloatOrRider)
+        ArgumentNullException.ThrowIfNull(elements);
+        if (elements.HasCustomElements || context.TargetAffinities.HasCustomElements)
+            throw new NotSupportedException("Custom element rules are not part of the original-game calculation profile.");
+        if (!p.FreshElementWork || elements.Fire && !p.FireTargetHasNoOil ||
+            elements.Earth && !p.EarthTargetHasNoFloatOrRider)
             throw new NotSupportedException("Certify fresh work and the relevant Oil/Float/rider exclusions explicitly.");
         short weather = WeatherElementalEffects(amount, context.EffectiveWeather, elements);
         return ElementalDamageModification(weather, elements, context.TargetAffinities);
     }
 
     /// <summary>Weather Elemental effects: signed16 stores after each matching weather/element step.</summary>
-    private static short WeatherElementalEffects(short amount, MagicDamageWeather weather, MagicElement elements)
+    private static short WeatherElementalEffects(short amount, MagicDamageWeather weather, ElementToggles elements)
     {
         if (weather is MagicDamageWeather.Storm or MagicDamageWeather.StrongStorm)
         {
-            if (Has(elements,MagicElement.Fire)) amount = Scale(amount,3,4);
-            if (Has(elements,MagicElement.Lightning)) amount = Scale(amount,5,4);
+            if (elements.Fire) amount = Scale(amount,3,4);
+            if (elements.Lightning) amount = Scale(amount,5,4);
         }
-        if ((weather is MagicDamageWeather.Snowstorm or MagicDamageWeather.StrongSnowstorm) && Has(elements,MagicElement.Ice))
+        if ((weather is MagicDamageWeather.Snowstorm or MagicDamageWeather.StrongSnowstorm) && elements.Ice)
             amount = Scale(amount,5,4);
         return amount;
     }
 
     /// <summary>Elemental Damage Modification: absorption marker, nullification exit, then independent half and weakness stores.</summary>
-    private static MagicDamageElementOutcome ElementalDamageModification(short weather, MagicElement elements, MagicElementAffinities affinities)
+    private static MagicDamageElementOutcome ElementalDamageModification(short weather, ElementToggles elements, MagicElementAffinities affinities)
     {
         short amount = weather;
         bool absorbed = Has(elements,affinities.Absorb);
@@ -42,6 +45,6 @@ public static class MagicDamageElements
         return new(weather,amount,false,absorbed,weak);
     }
 
-    private static bool Has(MagicElement a, MagicElement b) => (a & b) != MagicElement.None;
+    private static bool Has(ElementToggles a, ElementToggles b) => a.Overlaps(b);
     private static short Scale(short amount, int numerator, int denominator) => unchecked((short)(amount * numerator / denominator));
 }

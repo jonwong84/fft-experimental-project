@@ -59,7 +59,7 @@ public sealed class MagicProjectionQueryTests
     public void Healing_and_absorption_reuse_existing_routes_then_clamp_target_hp()
     {
         var s = MagicProjectionTestData.Snapshot(); var first = s.Units.Single(u => u.Occupant.UnitId.Value == "first");
-        var absorb = first with { Current = first.Current! with { Affinities = new(Absorb: MagicElement.Fire) }, Vitals = first.Vitals! with { Hp = 80 } };
+        var absorb = first with { Current = first.Current! with { Affinities = new(Absorb: new ElementToggles { Fire = true }) }, Vitals = first.Vitals! with { Hp = 80 } };
         var before = new MagicProjectionSnapshot(s.Map, s.Units.Replace(first, absorb), s.RngState);
         var r = MagicProjectionQuery.Calculate(before, MagicProjectionTestData.Request(before), MagicCastProjectionTests.Known);
         Assert.True(r.Accepted); Assert.Equal((ushort)100, r.Proposal!.Candidate.Units.Single(u => u.Occupant.UnitId.Value == "first").Vitals!.Hp);

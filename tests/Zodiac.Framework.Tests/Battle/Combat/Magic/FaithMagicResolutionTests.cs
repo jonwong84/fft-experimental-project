@@ -10,7 +10,7 @@ public sealed class FaithMagicResolutionTests
     private static readonly MagicResultFinalizationProfile Known = new(true, true, true, true, true, true, new(true, true, true));
     private static FaithMagicResolutionRequest Request() => new(new(new(FaithMagicAmountKind.Damage, 5, 14, new(70), new(70)),
         false, 100, MagicFormulaEvaluationMode.Execute, Known,
-        new(MagicElement.Fire, MagicDamageWeather.None, new(), new(true, true, true))), new(true, true, true), true,
+        new(new ElementToggles { Fire = true }, MagicDamageWeather.None, new(), new(true, true, true))), new(true, true, true), true,
         new(false, new(255, 0, false), new(255, 0, false), new(255, 0, false)), new(true));
 
     [Fact]

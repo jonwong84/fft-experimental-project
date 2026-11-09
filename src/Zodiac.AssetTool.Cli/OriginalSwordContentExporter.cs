@@ -1,3 +1,4 @@
+using Zodiac.Framework;
 using Zodiac.Content.ContentPackages;
 using Zodiac.Content.Definitions;
 using Zodiac.Content.Definitions.Common;
@@ -48,17 +49,7 @@ public static class OriginalSwordContentExporter
             ForcedDoublehand = (source.Flags & 0x01) != 0,
         };
         // ability.h::element_flags_e at the same pinned revision; zero means all toggles off.
-        var elements = new ElementToggles
-        {
-            Fire = (source.Element & 0x80) != 0,
-            Lightning = (source.Element & 0x40) != 0,
-            Ice = (source.Element & 0x20) != 0,
-            Wind = (source.Element & 0x10) != 0,
-            Earth = (source.Element & 0x08) != 0,
-            Water = (source.Element & 0x04) != 0,
-            Holy = (source.Element & 0x02) != 0,
-            Dark = (source.Element & 0x01) != 0,
-        };
+        var elements = OriginalElementEncoding.FromByte(source.Element);
         var sword = new WeaponDefinition(new WeaponId(OriginalSwordImporter.WeaponId), WeaponType.Sword,
             source.Range, source.Power, (SwordDamageFormula)source.Formula, behavior,
             source.Evade, elements,

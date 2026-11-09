@@ -5,9 +5,9 @@ namespace Zodiac.Framework.Tests;
 internal static class MagicElementTestData
 {
     internal static JsonDocument Fixture() => JsonDocument.Parse(File.ReadAllText(Path.Combine(AppContext.BaseDirectory,"Fixtures","magic-elements-contract-v1.json")));
-    internal static MagicDamageElementContext Context(JsonElement d) => new((MagicElement)d.GetProperty("elements").GetByte(),
-        (MagicDamageWeather)d.GetProperty("weather").GetInt32(),new((MagicElement)d.GetProperty("absorb").GetByte(),
-            (MagicElement)d.GetProperty("nullify").GetByte(),(MagicElement)d.GetProperty("half").GetByte(),(MagicElement)d.GetProperty("weak").GetByte()),new(true,true,true));
+    internal static MagicDamageElementContext Context(JsonElement d) => new(OriginalElementEncoding.FromByte(d.GetProperty("elements").GetByte()),
+        (MagicDamageWeather)d.GetProperty("weather").GetInt32(),new(OriginalElementEncoding.FromByte(d.GetProperty("absorb").GetByte()),
+            OriginalElementEncoding.FromByte(d.GetProperty("nullify").GetByte()),OriginalElementEncoding.FromByte(d.GetProperty("half").GetByte()),OriginalElementEncoding.FromByte(d.GetProperty("weak").GetByte())),new(true,true,true));
     private static bool Flag(JsonElement d,string name) => d.TryGetProperty(name,out var value) && value.GetBoolean();
     internal static FaithMagicAmountInput Input(JsonElement d)
     {

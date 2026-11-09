@@ -30,7 +30,7 @@ public sealed class CureMagicImporterTests
         Assert.Equal(new[] { Cure, new AssetId("fft.ps1:ability/source-0016") }, import.Package.SpellOrder.ToArray());
         var cure = import.Package.Definition.Spells[Cure];
         Assert.Equal(FaithMagicAmountKind.Healing, cure.Spell.Kind); Assert.False(cure.Spell.SecondaryEvadeable);
-        Assert.Equal(MagicElement.None, cure.Spell.Elements); Assert.Null(import.VerifiedInputSha256);
+        Assert.Equal(ElementToggles.None, cure.Spell.Elements); Assert.Null(import.VerifiedInputSha256);
         var state = Resolve(Definition(30, 95));
         Assert.Equal((byte)11, state.Units[0].Level); Assert.Equal((byte)0, state.Units[0].Experience);
         Assert.Equal(7UL, state.Turns.RngState.DrawCount); Assert.Equal((ushort)84, state.Units[1].Vitals.Hp);

@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-448",
+  "date": "2026-11-09",
+  "managedBaseRevision": "e42c6eead1c1a67f8d74b62b8e1c03fa06923ab8",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "sourceReceiptsRechecked": [
+    {
+      "path": "docs/evidence/combat/magic-elements-source-v1.json",
+      "files": 9,
+      "functions": 14,
+      "rechecked": true
+    },
+    {
+      "path": "docs/evidence/combat/faith-magic-source-v1.json",
+      "files": 14,
+      "functions": 36,
+      "rechecked": true
+    }
+  ],
+  "kind": "shared-immutable-boolean-element-representation",
+  "typeMigration": {
+    "old": "src/Zodiac.Content/Definitions/Common/ElementToggles.cs",
+    "new": "src/Zodiac.Framework/Battle/Combat/Elements/ElementToggles.cs",
+    "previousGitBlob": "fa8bedd873e35b6e1f91295524a06113b1129bbd",
+    "currentGitBlob": "f984f224ef36e0d5d36a55591529db8d05284480",
+    "originalAndCustomBooleanPropertiesPreserved": [
+      "Fire",
+      "Ice",
+      "Lightning",
+      "Wind",
+      "Earth",
+      "Water",
+      "Holy",
+      "Dark",
+      "Gravity",
+      "Poison",
+      "Restore"
+    ],
+    "retiredEnum": "src/Zodiac.Framework/Battle/Combat/Magic/MagicElement.cs",
+    "legacyAliasAdded": false
+  },
+  "implementation": {
+    "sharedModel": "Zodiac.Framework.ElementToggles is reused by Content, magic inputs/affinities and weapon definitions.",
+    "boundaries": [
+      "OriginalElementEncoding maps original bytes and name strings; no element packing in combat rules.",
+      "Scoped prepared JSON converter preserves original element strings/canonical order and schema versions.",
+      "Neutral-only sword schemas retain element0 and unsupported elemental-weapon rejection."
+    ],
+    "preserved": [
+      "All original any-overlap semantics, weather order, affinity precedence and signed stores.",
+      "Default and explicit empty affinity values remain equal with equal hashes; absent strengthening becomes an immutable empty set.",
+      "Faith, Oil/Float admission, healing bypass, evasion/procs/RNG, command and AI gates remain."
+    ],
+    "custom": "Gravity/Poison/Restore remain representable; original consumers and original encodings reject custom flags instead of truncating or activating them."
+  },
+  "validation": {
+    "build": "Release, zero warnings/errors",
+    "dotnetPassed": 5354,
+    "pythonPassed": 810,
+    "projects": [
+      {
+        "project": "Fft.Client",
+        "passed": 447,
+        "added": 0,
+        "report": "scratch/element-model-trx/Fft.Client.trx"
+      },
+      {
+        "project": "Tessera.Engine",
+        "passed": 24,
+        "added": 0,
+        "report": "scratch/element-model-trx/Tessera.Engine.trx"
+      },
+      {
+        "project": "Zodiac.AssetTool.Cli",
+        "passed": 396,
+        "added": 0,
+        "report": "scratch/element-model-trx/Zodiac.AssetTool.Cli.trx"
+      },
+      {
+        "project": "Zodiac.AssetTool",
+        "passed": 206,
+        "added": 0,
+        "report": "scratch/element-model-trx/Zodiac.AssetTool.trx"
+      },
+      {
+        "project": "Zodiac.Content",
+        "passed": 902,
+        "added": 3,
+        "report": "scratch/element-model-trx/Zodiac.Content.trx"
+      },
+      {
+        "project": "Zodiac.Framework.Ai",
+        "passed": 1471,
+        "added": 0,
+        "report": "scratch/element-model-trx/Zodiac.Framework.Ai.trx"
+      },
+      {
+        "project": "Zodiac.Framework",
+        "passed": 1908,
+        "added": 5,
+        "report": "scratch/element-model-trx/Zodiac.Framework.trx"
+      }
+    ],
+    "priorCasesPreservedUnderInputRepresentationChange": 5346,
+    "addedTests": 8,
+    "byteCombinationsChecked": 256,
+    "overlapPairsChecked": 65536,
+    "legacyPreparedNameCombinationsChecked": 256,
+    "priorCaseIdentityPolicy": "Existing enum guard arguments Fire/Earth are now equivalent name strings; normalize only their display quotes.",
+    "fixturePayloadsAndHistoricalEvidenceUnchanged": true,
+    "existingLiteralExpectationsUnchanged": true,
+    "preservation": [
+      {
+        "path": "src/Zodiac.Content/Definitions/Ability/AbilityToggles.cs",
+        "gitBlob": "16320578ffa448783221b68c4ef5c18e245b9f35",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Ability/AiBehaviorToggles.cs",
+        "gitBlob": "c67c4b154c471764fa11a6761710d2e9c9694a65",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Ability/AttributeToggles.cs",
+        "gitBlob": "1182777f8a0c3ca219afa23d0803c52af4ca9f8e",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Common/EquipmentSlot.cs",
+        "gitBlob": "091006b2d60ca558c303571a4eb779340be53629",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Common/StatusToggles.cs",
+        "gitBlob": "5136db2af350d7e3735e47fb92b905019316fd6f",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Item/ShopAvailabilityToggles.cs",
+        "gitBlob": "fd543d84dc8eb7860d710cf1c75499eb55306e14",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Job/EquipmentOptionToggles.cs",
+        "gitBlob": "694e44bbdc3e62103b64ff794addec1ad977d142",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Status/EffectBehaviorToggles.cs",
+        "gitBlob": "9792cdea7da1d92e9ec25cf1e97d3e879c24e8ae",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Status/StatusSelectionToggles.cs",
+        "gitBlob": "a0b2e2a8ddcb53a4bfd7416609927399b8339294",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Job/JobStats.cs",
+        "gitBlob": "bd617c374309aca1529a167a8d31a488160086cc",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Framework.Ai/AiTurnController.cs",
+        "gitBlob": "05d8eb9b12cbd1430daacfb5e960d53d1199ef3a",
+        "unchanged": true
+      },
+      {
+        "path": ".circleci/config.yml",
+        "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "unchanged": true
+      }
+    ],
+    "ownerBattleStateUnchanged": true,
+    "baselineCoverageEntries": 58,
+    "openTickets": 35,
+    "completedTickets": 413,
+    "changedDocumentLocalLinks": 590
+  },
+  "nextCheckpoint": "Owner review, then select a bounded next formula family; custom element mechanics and full content import remain separate."
+}

@@ -21,17 +21,20 @@ public static class FaithMagicInputs
         FaithMagicSpell spell, MagicDamageWeather weather)
     {
         ValidateCurrentUnit(caster); ValidateCurrentUnit(target); ArgumentNullException.ThrowIfNull(spell);
+        ArgumentNullException.ThrowIfNull(spell.Elements);
         if (!Enum.IsDefined(spell.Kind)) throw new ArgumentOutOfRangeException(nameof(spell));
         if (spell.Kind == FaithMagicAmountKind.Damage && !Enum.IsDefined(weather)) throw new ArgumentOutOfRangeException(nameof(weather));
         if (Unsupported(caster.Statuses) || Unsupported(target.Statuses) ||
+            caster.Strengthens.HasCustomElements || target.Strengthens.HasCustomElements ||
+            caster.Affinities.HasCustomElements || target.Affinities.HasCustomElements || spell.Elements.HasCustomElements ||
             caster.UnitId == target.UnitId && caster != target) return new(false, null);
         var t = target.Statuses; var c = caster.Statuses;
         if (spell.Kind == FaithMagicAmountKind.Damage &&
-            ((spell.Elements & MagicElement.Fire) != 0 && t.Oil ||
-             (spell.Elements & MagicElement.Earth) != 0 && (t.Float || target.HasRider))) return new(false, null);
+            (spell.Elements.Fire && t.Oil ||
+             spell.Elements.Earth && (t.Float || target.HasRider))) return new(false, null);
         var amount = new FaithMagicAmountInput(spell.Kind, caster.MagicAttack, spell.Power,
             new(caster.Faith, c.Faith, c.Innocent), new(target.Faith, t.Faith, t.Innocent),
-            new((caster.Strengthens & spell.Elements) != 0, caster.Supports.MagicAttackUp,
+            new(caster.Strengthens.Overlaps(spell.Elements), caster.Supports.MagicAttackUp,
                 target.Supports.MagicDefenseUp, t.Shell, t.Chicken || t.Frog,
                 ClassifyCompatibility(caster.Identity, target.Identity)));
         if (spell.Kind == FaithMagicAmountKind.Healing) return new(true, new(amount, null, t.Undead, null, null));
@@ -50,6 +53,7 @@ public static class FaithMagicInputs
     {
         ArgumentNullException.ThrowIfNull(unit); ArgumentNullException.ThrowIfNull(unit.Statuses);
         ArgumentNullException.ThrowIfNull(unit.Supports);
+        ArgumentNullException.ThrowIfNull(unit.Strengthens);
         if (string.IsNullOrWhiteSpace(unit.UnitId.Value)) throw new ArgumentException("A current unit requires an ID.", nameof(unit));
         if (!Enum.IsDefined(unit.Identity.Sign)) throw new ArgumentOutOfRangeException(nameof(unit));
     }
