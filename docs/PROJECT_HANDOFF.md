@@ -74,17 +74,22 @@ admitted PA/Brave/mode inputs; `AbilityFormulaMode` replaces PhysicalDamageMode.
 Formula-specific critical/Brave RNG moves from PhysicalDamageRules into the
 handlers; evasion, upper999 cap and whole-calculation rollback remain with the
 combat rules. Actual, preview and AI callers use the shared entry. The raw-roll
-CalculateDamage adapter remains for existing arithmetic callers. Z is reserved
-and nonzero values reject; no Faith/equipment/status context, new formula family
+CalculateDamage adapter remains for existing arithmetic callers. Owner review moves
+the signed16 envelope check into the handler's ValidateParameters, called during
+definition construction. Framework definitions retain unused Z; the current
+content package rejects nonzero Z to prevent serialization loss. No
+Faith/equipment/status context, new formula family
 or prepared schema expansion is activated. Owner review of this API and the AI
 flow resumes next; no further development ticket is activated.
 
-Latest validation: zero-warning/error Release build, **5,302 .NET tests**
+Latest validation: zero-warning/error Release build, **5,304 .NET tests**
 (1,861 Framework, 1,471 AI) and **810 Python tests** pass. Existing source fixtures
-and gameplay expectations are unchanged; 26 dispatcher/context cases are added.
-Logs/seven full TRX reports are in ignored `scratch/ability-formula-*`. The
-[receipt](evidence/maintenance/ability-formula-refactor-v1.json) records source
-fingerprints, prior-test parity and preservation. Owner enum/test formatting is
+and gameplay expectations are unchanged; dispatcher/context and content-boundary
+tests cover the new API and Z policy. Latest logs/seven full TRX reports are in
+ignored `scratch/ability-formula-validation-*`. The
+[original receipt](evidence/maintenance/ability-formula-refactor-v1.json) records source
+fingerprints; the [follow-up receipt](evidence/maintenance/ability-formula-validation-v1.json)
+records current validation and preservation. Owner enum/test formatting is
 carried forward under the API edits; owner drafts and disabled CI remain intact.
 Historical receipts/fixtures retain their original payloads. Coverage remains
 58 planning entries and partial.

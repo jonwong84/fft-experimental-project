@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-446",
+  "kind": "owner-review-validation-follow-up",
+  "date": "2026-11-09",
+  "managedBaseRevision": "53d556e3b3e906452bf1e28de893e89e8a35bbbc",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "sourceBasis": "Unchanged four source files match the original formula refactor receipt; no arithmetic or RNG implementation changed.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/resolution.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 85515,
+      "sha256": "820411f8293d559677ff676f4e3d19a16ae52b667e7aa1393ab5495741f1e149"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 46088,
+      "sha256": "a9e58962104849ae4e947e3833236aaf2c1334394a1af12b19930428e6885e03"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54735,
+      "sha256": "b37712b2e33a060f057e87f866c25ef0f4d4ba9b8bacf89447e2eeb0cd0c2bf9"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 23857,
+      "sha256": "57dd4fa8b07ef93c4a8e21c73657a0fdbe6c601a6db0b0351ae15b3cd15e4aea"
+    }
+  ],
+  "changes": [
+    "Formula0x32 owns ValidateParameters; AbilityFormula calls it during construction.",
+    "Signed16 envelope, raw arithmetic adapter and execution RNG contracts remain unchanged.",
+    "Framework retains byte-range Z and current handlers ignore it.",
+    "Current schema1/schema2 targeted content rejects nonzero Z to prevent serialization loss."
+  ],
+  "validation": {
+    "build": "Release, zero warnings/errors",
+    "dotnetPassed": 5304,
+    "pythonPassed": 810,
+    "projects": [
+      {
+        "project": "Fft.Client",
+        "passed": 447,
+        "added": 0,
+        "report": "scratch/ability-formula-validation-trx/Fft.Client.trx"
+      },
+      {
+        "project": "Tessera.Engine",
+        "passed": 24,
+        "added": 0,
+        "report": "scratch/ability-formula-validation-trx/Tessera.Engine.trx"
+      },
+      {
+        "project": "Zodiac.AssetTool.Cli",
+        "passed": 396,
+        "added": 0,
+        "report": "scratch/ability-formula-validation-trx/Zodiac.AssetTool.Cli.trx"
+      },
+      {
+        "project": "Zodiac.AssetTool",
+        "passed": 206,
+        "added": 0,
+        "report": "scratch/ability-formula-validation-trx/Zodiac.AssetTool.trx"
+      },
+      {
+        "project": "Zodiac.Content",
+        "passed": 899,
+        "added": 2,
+        "report": "scratch/ability-formula-validation-trx/Zodiac.Content.trx"
+      },
+      {
+        "project": "Zodiac.Framework.Ai",
+        "passed": 1471,
+        "added": 0,
+        "report": "scratch/ability-formula-validation-trx/Zodiac.Framework.Ai.trx"
+      },
+      {
+        "project": "Zodiac.Framework",
+        "passed": 1861,
+        "added": 0,
+        "report": "scratch/ability-formula-validation-trx/Zodiac.Framework.trx"
+      }
+    ],
+    "changedTests": "Two prior Z-rejection cases now verify retained unused Z and unchanged raw/evaluated results; two new content-boundary cases reject Z loss.",
+    "otherExistingCasesPreserved": true,
+    "historicalEvidenceAndFixturesUnchanged": true,
+    "preservation": [
+      {
+        "path": "src/Zodiac.Content/Definitions/Ability/AbilityToggles.cs",
+        "gitBlob": "16320578ffa448783221b68c4ef5c18e245b9f35",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Ability/AiBehaviorToggles.cs",
+        "gitBlob": "c67c4b154c471764fa11a6761710d2e9c9694a65",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Ability/AttributeToggles.cs",
+        "gitBlob": "1182777f8a0c3ca219afa23d0803c52af4ca9f8e",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Common/EquipmentSlot.cs",
+        "gitBlob": "091006b2d60ca558c303571a4eb779340be53629",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Common/StatusToggles.cs",
+        "gitBlob": "5136db2af350d7e3735e47fb92b905019316fd6f",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Item/ShopAvailabilityToggles.cs",
+        "gitBlob": "fd543d84dc8eb7860d710cf1c75499eb55306e14",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Job/EquipmentOptionToggles.cs",
+        "gitBlob": "694e44bbdc3e62103b64ff794addec1ad977d142",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Status/EffectBehaviorToggles.cs",
+        "gitBlob": "9792cdea7da1d92e9ec25cf1e97d3e879c24e8ae",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Status/StatusSelectionToggles.cs",
+        "gitBlob": "a0b2e2a8ddcb53a4bfd7416609927399b8339294",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Job/JobStats.cs",
+        "gitBlob": "bd617c374309aca1529a167a8d31a488160086cc",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Framework.Ai/AiTurnController.cs",
+        "gitBlob": "05d8eb9b12cbd1430daacfb5e960d53d1199ef3a",
+        "unchanged": true
+      },
+      {
+        "path": ".circleci/config.yml",
+        "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "unchanged": true
+      }
+    ],
+    "ownerBattleStateAndCliFormattingUnchanged": true,
+    "changedDocumentLocalLinks": 67
+  },
+  "nextCheckpoint": "Owner review of formula API and AI flow; no further development ticket activated"
+}

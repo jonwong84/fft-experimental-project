@@ -14,10 +14,18 @@ The immutable definition selects a handler and owns
 [`AbilityFormulaParameters`](../../src/Zodiac.Framework/Formulas/AbilityFormulaParameters.cs).
 X/Y/Z are integer content operands, currently constrained to their source byte
 range. Z defaults to zero. The original item formulas obtain Z from item data;
-it is not a universal third ability-data field. Neither currently supported
-handler consumes Z, so a nonzero value rejects at definition construction.
-Prepared content remains schema1/schema2 with its existing X/Y fields; Z-based
-items are not enabled or silently serialized through that schema.
+it is not a universal third ability-data field. Framework definitions retain Z;
+the currently supported handlers ignore it. Prepared content remains
+schema1/schema2 with its existing X/Y fields, so the content package rejects a
+nonzero Z instead of losing it on save. Z-based item formulas are not enabled.
+
+Owner-review follow-up: formula0x32 owns `ValidateParameters`, called by
+`AbilityFormula` during construction. Its signed16-safe envelope is unchanged;
+both `Evaluate` and the raw arithmetic adapter therefore receive validated
+immutable parameters. Validation is not delayed until execution. The original
+refactor receipt describes the earlier checkpoint; the
+[follow-up receipt](../evidence/maintenance/ability-formula-validation-v1.json)
+records the current Z policy and validation placement.
 
 ```csharp
 var formula = new AbilityFormula(
@@ -81,10 +89,12 @@ The handlers preserve `formula_damage_random_y_times_pa`, `formula_repeating_fis
 the critical/damage-and-knockback helpers, and `formula_get_random` ordering within
 the admitted domain. Existing physical assignment/review fixtures and all prior
 test expectations are unchanged. Added dispatcher tests reuse the existing source
-vectors and cover missing/invalid context, unsupported Z, prediction at exhausted
-RNG and uncapped formula versus capped combat results.
+vectors and cover missing/invalid context, retained unused Z, prediction at exhausted
+RNG and uncapped formula versus capped combat results. Content tests reject
+nonzero Z at the current schema boundary; existing definition-time signed16
+rejection and maximum admitted raw-damage tests remain unchanged.
 
-Full validation passes: zero-warning/error Release build, 5,302 .NET tests and
+Full validation passes: zero-warning/error Release build, 5,304 .NET tests and
 810 Python tests. Owner enum/test layout edits are carried into the new API;
 owner drafts, immutable JobStats, controller formatting and disabled CI are
 preserved. Historical evidence payloads are unchanged. Owner review resumes next;

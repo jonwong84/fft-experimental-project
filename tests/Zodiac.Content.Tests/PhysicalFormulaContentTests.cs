@@ -38,6 +38,20 @@ public sealed class PhysicalFormulaContentTests
         Assert.Equal(AbilityFormulaId.RandomPa,package.Abilities[0].Formula.Id);
     }
 
+    [Theory]
+    [InlineData(AbilityFormulaId.RandomPa)]
+    [InlineData(AbilityFormulaId.RandomPaPlusHalfPa)]
+    public void Current_content_schemas_reject_Z_instead_of_losing_it_on_save(AbilityFormulaId id)
+    {
+        var metadata = SyntheticBasicSkillBattle.Metadata();
+        var formula = new AbilityFormula(id, new(0, 0, 1));
+        var ability = new TargetedAbilityDefinition(SyntheticBasicSkillBattle.ThrowStone,
+            TargetedAbilityEffect.DashFlat, formula);
+
+        Assert.Throws<ContentPackageValidationException>(() => new TargetedAbilityContentPackage(
+            "sample:package/custom", metadata.ProfileId, metadata.PackageId, [ability]));
+    }
+
     [Theory] [InlineData("formula","1")] [InlineData("x","256")] [InlineData("x","9.0")]
     [InlineData("y","-1")] [InlineData("range","4")] [InlineData("evadeable","true")]
     [InlineData("chargeTicks","1")] [InlineData("mpCost","1")]

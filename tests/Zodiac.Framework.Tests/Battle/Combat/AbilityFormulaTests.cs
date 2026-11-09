@@ -54,10 +54,17 @@ public sealed class AbilityFormulaTests
     [Theory]
     [InlineData(AbilityFormulaId.RandomPa)]
     [InlineData(AbilityFormulaId.RandomPaPlusHalfPa)]
-    public void Current_handlers_reject_Z_instead_of_silently_ignoring_an_item_operand(AbilityFormulaId id)
+    public void Unused_Z_is_retained_in_definition_without_changing_current_handler_results(AbilityFormulaId id)
     {
-        var parameters = new AbilityFormulaParameters(0, 0, 1);
-        Assert.Throws<NotSupportedException>(() => new AbilityFormula(id, parameters));
+        var parameters = new AbilityFormulaParameters(0, 0, 255);
+        var formula = new AbilityFormula(id, parameters);
+        var original = new AbilityFormula(id, new(0, 0));
+        var context = new AbilityFormulaContext(5, 70, 70, AbilityFormulaMode.Execution);
+        var rng = new RandomState(1, 0);
+        Assert.Same(parameters, formula.Parameters);
+        Assert.Equal(255, formula.Parameters.Z);
+        Assert.Equal(original.Evaluate(context, rng), formula.Evaluate(context, rng));
+        Assert.Equal(original.CalculateDamage(5, 32767), formula.CalculateDamage(5, 32767));
         Assert.Throws<ArgumentOutOfRangeException>(() => new AbilityFormulaParameters(0, 0, -1));
         Assert.Throws<ArgumentOutOfRangeException>(() => new AbilityFormulaParameters(0, 0, 256));
     }

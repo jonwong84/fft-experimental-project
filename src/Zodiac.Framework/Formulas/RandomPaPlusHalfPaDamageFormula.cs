@@ -3,6 +3,16 @@ namespace Zodiac.Framework.Formulas;
 /// <summary>Formula0x32's admitted neutral critical step followed by XA+YA and random1..X.</summary>
 internal static class RandomPaPlusHalfPaDamageFormula
 {
+    public static void ValidateParameters(AbilityFormulaParameters parameters)
+    {
+        // Keep every admitted PA1..99 execution (including a critical) within signed16.
+        // Wider operands need a separate signed-result application profile, not a silent clamp.
+        if ((197 + (99 + parameters.Y) / 2) * Math.Max(1, parameters.X) > short.MaxValue)
+        {
+            throw new NotSupportedException("The selected operands exceed the neutral signed16 damage envelope.");
+        }
+    }
+
     public static AbilityFormulaResult Evaluate(AbilityFormulaParameters parameters, AbilityFormulaContext context, AbilityFormulaRandom random)
     {
         bool critical = random.FormulaRoll() * 100 / 32768 < 4;

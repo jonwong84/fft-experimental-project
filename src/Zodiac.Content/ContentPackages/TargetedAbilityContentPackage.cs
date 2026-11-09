@@ -36,6 +36,8 @@ public sealed class TargetedAbilityContentPackage
             string path = $"$.abilities[{selected.Count}]";
             if (selected.Count == ContentPackage.MaxDefinitionsPerKind) throw v.Failure(null, "$.abilities", "Too many abilities.");
             if (ability is null) throw v.Failure(null, path, "An ability cannot be null.");
+            if (ability.Formula.Parameters.Z != 0)
+                throw v.Failure(ability.Id.Value, path + ".formula", "The targeted ability content schemas cannot preserve a nonzero Z operand.");
             string id = v.Id(ability.Id.Value, ability.Id.Value, path + ".id");
             if (id[..id.IndexOf(':')] != owner) throw v.Failure(id, path + ".id", "Ability must belong to the companion namespace.");
             if (!ids.Add(ability.Id)) throw v.Failure(id, path + ".id", "Duplicate ability.");

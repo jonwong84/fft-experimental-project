@@ -11,14 +11,18 @@ public sealed record AbilityFormula
 
     public AbilityFormula(AbilityFormulaId id, AbilityFormulaParameters parameters)
     {
-        if (!Enum.IsDefined(id)) throw new NotSupportedException("Unsupported ability formula.");
+        if (!Enum.IsDefined(id))
+        {
+            throw new NotSupportedException("Unsupported ability formula.");
+        }
+
         ArgumentNullException.ThrowIfNull(parameters);
-        if (parameters.Z != 0) throw new NotSupportedException("The supported formulas do not consume Z.");
-        // Keep every admitted PA1..99 execution (including a critical) within signed16.
-        // Wider operands need a separate signed-result application profile, not a silent clamp.
-        if (id == AbilityFormulaId.RandomPaPlusHalfPa &&
-            (197 + (99 + parameters.Y) / 2) * Math.Max(1, parameters.X) > short.MaxValue)
-            throw new NotSupportedException("The selected operands exceed the neutral signed16 damage envelope.");
+
+        if (id == AbilityFormulaId.RandomPaPlusHalfPa)
+        {
+            RandomPaPlusHalfPaDamageFormula.ValidateParameters(parameters);
+        }
+
         Id = id;
         Parameters = parameters;
     }
@@ -28,7 +32,9 @@ public sealed record AbilityFormula
     public AbilityFormulaResult Evaluate(AbilityFormulaContext context, RandomState rng)
     {
         ArgumentNullException.ThrowIfNull(context);
+
         var random = new AbilityFormulaRandom(context.Mode, rng);
+
         return Id switch
         {
             AbilityFormulaId.RandomPa => RandomPaDamageFormula.Evaluate(Parameters, context, random),
