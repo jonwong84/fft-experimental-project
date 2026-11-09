@@ -172,7 +172,7 @@ with the same decision RNG. A baseline check alone is not actual ranked admissio
 
 ## Agreed context and next implementation
 
-The narrow context should capture only the immutable `OrdinaryMagicBattleState`
+The narrow context should capture only the immutable `DefaultAbilityBattleState`
 and matching `DefaultAbilityAiCatalog`, validating reference identity of their
 definitions. This prevents mixing content and state from different definitions.
 It does not admit an actor, prove a profile or cache prepared work.

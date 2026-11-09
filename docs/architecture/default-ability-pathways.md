@@ -41,9 +41,10 @@ Shared targeting types are now `DefaultAbilityGeometry` and
 `AiAbilityOutcomeEvaluate`, `OriginReachableEvaluate` and `OriginAimTilesEvaluate`
 are preserved for source comparison. C# namespaces remain unchanged.
 
-`OrdinaryMagic...` names still describe the existing admitted magic encounter,
-prepared content and execution host. This prefix rename does not rename that
-separate encounter model or turn it into a general ability battle model.
+The [ZOD-445 execution rename](default-ability-execution-names.md) also aligns
+the former `OrdinaryMagic` battle, prepared-content and execution-host types with
+`DefaultAbility`. The encounter retains its existing magic-focused mechanics;
+neither naming change turns it into a general ability battle model.
 
 ## Anticipated menu use cases
 

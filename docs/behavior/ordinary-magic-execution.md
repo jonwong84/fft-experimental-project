@@ -87,7 +87,7 @@ not enabled by a caller-provided flag.
 
 ## ZOD-389
 
-`OrdinaryMagicBattleDefinition` now admits coherent human bare-equipment setups,
+`DefaultAbilityBattleDefinition` now admits coherent human bare-equipment setups,
 copied raw/growth/multiplier/base facts, complete careers/unlock rules and explicit
 learned spell grants. It validates numeric maxima and rejects unsupported
 statuses/RSM/affinities/equipment instead of silently dropping them. New immutable

@@ -54,11 +54,11 @@ public sealed class CureMagicImporterTests
     {
         var definition = Definition(30);
         definition = Copy(definition, definition.Units.SetItem(1, definition.Units[1] with { LearnedSpells = [Cure] }));
-        var state = Apply(definition.Start(), new OrdinaryMagicCommand.Advance());
-        state = Apply(state, new OrdinaryMagicCommand.Cast(Mage, Cure, new(4, 2, 0)));
-        state = Apply(state, new OrdinaryMagicCommand.Wait(Mage)); state = Apply(state, new OrdinaryMagicCommand.Advance());
-        state = Apply(state, new OrdinaryMagicCommand.Cast(Guard, Cure, new(4, 2, 0)));
-        state = Apply(state, new OrdinaryMagicCommand.Wait(Guard)); state = Apply(state, new OrdinaryMagicCommand.Advance());
+        var state = Apply(definition.Start(), new DefaultAbilityCommand.Advance());
+        state = Apply(state, new DefaultAbilityCommand.Cast(Mage, Cure, new(4, 2, 0)));
+        state = Apply(state, new DefaultAbilityCommand.Wait(Mage)); state = Apply(state, new DefaultAbilityCommand.Advance());
+        state = Apply(state, new DefaultAbilityCommand.Cast(Guard, Cure, new(4, 2, 0)));
+        state = Apply(state, new DefaultAbilityCommand.Wait(Guard)); state = Apply(state, new DefaultAbilityCommand.Advance());
         Assert.Equal((ushort)84, state.Units[1].Vitals.Hp); Assert.False(state.Units[1].Vitals.Critical);
         Assert.True(state.Units[1].Current.Statuses.Charging); Assert.Equal((byte)3, state.Pending[Guard].Counter);
     }
@@ -83,33 +83,33 @@ public sealed class CureMagicImporterTests
             case "menu": image[Offset(0x80065cb4 + 10)] = 8; break;
             case "learning": image[Offset(0x8005ebf0 + 8) + 1] = 255; break;
         }
-        Assert.Throws<InvalidDataException>(() => OriginalOrdinaryMagicImporter.DecodeSelection(image, OriginalDefaultAbilitySelection.CureAndFire));
+        Assert.Throws<InvalidDataException>(() => OriginalDefaultAbilityImporter.DecodeSelection(image, OriginalDefaultAbilitySelection.CureAndFire));
     }
 
-    private static OrdinaryMagicBattleState Resolve(OrdinaryMagicBattleDefinition definition)
+    private static DefaultAbilityBattleState Resolve(DefaultAbilityBattleDefinition definition)
     {
-        var state = Apply(definition.Start(), new OrdinaryMagicCommand.Advance());
-        state = Apply(state, new OrdinaryMagicCommand.Cast(Mage, Cure, new(4, 2, 0)));
-        state = Apply(state, new OrdinaryMagicCommand.Wait(Mage)); state = Apply(state, new OrdinaryMagicCommand.Advance());
-        state = Apply(state, new OrdinaryMagicCommand.Wait(Guard)); return Apply(state, new OrdinaryMagicCommand.Advance());
+        var state = Apply(definition.Start(), new DefaultAbilityCommand.Advance());
+        state = Apply(state, new DefaultAbilityCommand.Cast(Mage, Cure, new(4, 2, 0)));
+        state = Apply(state, new DefaultAbilityCommand.Wait(Mage)); state = Apply(state, new DefaultAbilityCommand.Advance());
+        state = Apply(state, new DefaultAbilityCommand.Wait(Guard)); return Apply(state, new DefaultAbilityCommand.Advance());
     }
-    private static OrdinaryMagicBattleState Apply(OrdinaryMagicBattleState state, OrdinaryMagicCommand command)
-    { var result = OrdinaryMagicBattle.Apply(state, command); Assert.True(result.Accepted, result.Rejection); return result.State; }
-    private static OrdinaryMagicBattleDefinition Definition(ushort hp, byte exp = 0)
+    private static DefaultAbilityBattleState Apply(DefaultAbilityBattleState state, DefaultAbilityCommand command)
+    { var result = DefaultAbilityBattle.Apply(state, command); Assert.True(result.Accepted, result.Rejection); return result.State; }
+    private static DefaultAbilityBattleDefinition Definition(ushort hp, byte exp = 0)
     {
         var definition = Import().Package.Definition;
         return Copy(definition, definition.Units.SetItem(0, definition.Units[0] with { Experience = exp })
             .SetItem(1, definition.Units[1] with { Vitals = definition.Units[1].Vitals with { Hp = hp, Critical = hp <= 40 } }));
     }
-    private static OrdinaryMagicBattleDefinition Copy(OrdinaryMagicBattleDefinition definition,
-        ImmutableArray<OrdinaryMagicUnitDefinition> units, RandomState? rng = null) =>
+    private static DefaultAbilityBattleDefinition Copy(DefaultAbilityBattleDefinition definition,
+        ImmutableArray<DefaultAbilityUnitDefinition> units, RandomState? rng = null) =>
         new(definition.Map, units, definition.Spells.Values, definition.Jobs, definition.JobThresholds, rng ?? definition.InitialRng,
             definition.MovementGround, definition.Learning);
-    private static OriginalOrdinaryMagicImport Import() => OriginalOrdinaryMagicImporter.DecodeSelection(Image(), OriginalDefaultAbilitySelection.CureAndFire);
+    private static OriginalDefaultAbilityImport Import() => OriginalDefaultAbilityImporter.DecodeSelection(Image(), OriginalDefaultAbilitySelection.CureAndFire);
     private static int Offset(uint address) => checked((int)(address - 0x80010000 + 0x800));
     internal static byte[] Image()
     {
-        byte[] image = OriginalOrdinaryMagicImporterTests.Image();
+        byte[] image = OriginalDefaultAbilityImporterTests.Image();
         new byte[] { 4, 1, 1, 0, 0, 226, 0, 0, 12, 0, 14, 0, 4, 6 }.CopyTo(image, Offset(0x8005fbf0 + 14));
         image[Offset(0x8005ebf0 + 8)] = 50; image[Offset(0x80064a94 + 10 * 25) + 3] = 1;
         return image;

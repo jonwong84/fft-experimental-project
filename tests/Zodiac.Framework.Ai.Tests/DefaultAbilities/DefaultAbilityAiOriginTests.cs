@@ -8,7 +8,7 @@ namespace Zodiac.Framework.Ai.Tests;
 public sealed class DefaultAbilityAiOriginTests
 {
     private static readonly BattleUnitId Mage = new("mage"), Guard = new("guard");
-    private static DefaultAbilityAiOriginResult Query(DefaultAbilityAiCatalog catalog, OrdinaryMagicBattleState state,
+    private static DefaultAbilityAiOriginResult Query(DefaultAbilityAiCatalog catalog, DefaultAbilityBattleState state,
         DefaultAbilityAiOriginScenario scenario = DefaultAbilityAiOriginScenario.Main, RandomState? rng = null) =>
         DefaultAbilityAiOriginQuery.Evaluate(state, catalog, new(Mage, 0, scenario), new(true), rng ?? new(57, 0));
 
@@ -150,11 +150,11 @@ public sealed class DefaultAbilityAiOriginTests
     {
         var (catalog, state) = DefaultAbilityAiAimTests.Setup();
         var d = state.Definition;
-        var definition = new OrdinaryMagicBattleDefinition(d.Map, d.Units.Select(u => u with {
+        var definition = new DefaultAbilityBattleDefinition(d.Map, d.Units.Select(u => u with {
             Occupant = u.Occupant with { InitialTeam = SpellTargetTeam.Blue, CurrentTeam = SpellTargetTeam.Blue } }),
             d.Spells.Values, d.Jobs, d.JobThresholds, d.InitialRng, d.MovementGround, d.Learning);
         catalog = new(definition, catalog.PrimaryByJob);
-        state = OrdinaryMagicBattle.Apply(definition.Start(), new OrdinaryMagicCommand.Advance()).State;
+        state = DefaultAbilityBattle.Apply(definition.Start(), new DefaultAbilityCommand.Advance()).State;
         var result = Query(catalog, state);
         Assert.True(result.Accepted, result.Rejection);
         Assert.True(result.Outcome!.Movement.Focus.UsedActorFallback);
@@ -194,10 +194,10 @@ public sealed class DefaultAbilityAiOriginTests
         var peers = panels.Select((p, i) => d.Units[1] with {
             Occupant = d.Units[1].Occupant with { UnitId = new("peer" + i), SourceOrder = i + 1, Position = new(p.X, p.Y, 0) },
             Current = d.Units[1].Current with { UnitId = new("peer" + i) } });
-        var definition = new OrdinaryMagicBattleDefinition(map, new[] { actor }.Concat(peers), d.Spells.Values,
+        var definition = new DefaultAbilityBattleDefinition(map, new[] { actor }.Concat(peers), d.Spells.Values,
             d.Jobs, d.JobThresholds, d.InitialRng, d.MovementGround, d.Learning);
         var largeCatalog = new DefaultAbilityAiCatalog(definition, catalog.PrimaryByJob);
-        var state = OrdinaryMagicBattle.Apply(definition.Start(), new OrdinaryMagicCommand.Advance()).State;
+        var state = DefaultAbilityBattle.Apply(definition.Start(), new DefaultAbilityCommand.Advance()).State;
         string before = DefaultAbilityAiReadyTests.Receipt(state);
         var result = Query(largeCatalog, state);
         Assert.False(result.Accepted);

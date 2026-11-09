@@ -1,7 +1,7 @@
 import copy,json,unittest
 from verify_ordinary_magic_content import FIXTURE,HEALING_FIXTURE,validate
 
-class OrdinaryMagicContentTests(unittest.TestCase):
+class DefaultAbilityContentTests(unittest.TestCase):
     def test_source_reviewed_vectors_are_coherent(self):
         self.assertEqual(dict(bindingVectors=12,sharedFormulas=1),validate(json.loads(FIXTURE.read_text())))
 

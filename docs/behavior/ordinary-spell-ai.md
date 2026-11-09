@@ -148,7 +148,7 @@ once privately, including self-target normalization. A later target's counter
 failure returns entry RNG with no partial cost or results. Unsupported status,
 equipment, identity, order and resource contexts fail closed.
 
-`OrdinaryMagicHitApplication` exposes only HP/Critical/Dead projections from the
+`DefaultAbilityHitApplication` exposes only HP/Critical/Dead projections from the
 same existing internal kernel used by actual battle execution; no duplicated
 damage formula, live state adoption, career, counter or learning authority is
 introduced. Strike accounting still decides which computed frames are applied.

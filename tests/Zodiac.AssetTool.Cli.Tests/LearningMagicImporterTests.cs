@@ -17,7 +17,7 @@ public sealed class LearningMagicImporterTests
     [Fact]
     public void Selected_fire4_metadata_and_slot_state_are_distinct_from_authored_encounter()
     {
-        var import = OriginalOrdinaryMagicImporter.DecodeSelection(Image(), OriginalDefaultAbilitySelection.LearnOnHit);
+        var import = OriginalDefaultAbilityImporter.DecodeSelection(Image(), OriginalDefaultAbilitySelection.LearnOnHit);
         Assert.Null(import.VerifiedInputSha256);
         Assert.Equal(37, import.Records.Length);
         var d = import.Package.Definition;
@@ -38,23 +38,23 @@ public sealed class LearningMagicImporterTests
     [InlineData(true)] [InlineData(false)]
     public void Prepared_learning_recipient_can_accept_or_decline_the_actual_cast(bool accept)
     {
-        var d = OriginalOrdinaryMagicImporter.DecodeSelection(Image(), OriginalDefaultAbilitySelection.LearnOnHit).Package.Definition;
+        var d = OriginalDefaultAbilityImporter.DecodeSelection(Image(), OriginalDefaultAbilitySelection.LearnOnHit).Package.Definition;
         var state = d.Start();
         var fire4 = new AssetId("fft.ps1:ability/source-0019");
-        void Apply(OrdinaryMagicCommand command)
-        { var result = OrdinaryMagicBattle.Apply(state, command); Assert.True(result.Accepted, result.Rejection); state = result.State; }
-        Apply(new OrdinaryMagicCommand.Advance());
-        Apply(new OrdinaryMagicCommand.Cast(new("mage"), fire4, new(4, 2, 0)));
-        Apply(new OrdinaryMagicCommand.Wait(new("mage")));
+        void Apply(DefaultAbilityCommand command)
+        { var result = DefaultAbilityBattle.Apply(state, command); Assert.True(result.Accepted, result.Rejection); state = result.State; }
+        Apply(new DefaultAbilityCommand.Advance());
+        Apply(new DefaultAbilityCommand.Cast(new("mage"), fire4, new(4, 2, 0)));
+        Apply(new DefaultAbilityCommand.Wait(new("mage")));
         for (int i = 0; i < 30 && !state.Pending.IsEmpty; i++)
-            Apply(state.Turns.ActiveUnitId is { } active ? new OrdinaryMagicCommand.Wait(active) : new OrdinaryMagicCommand.Advance());
+            Apply(state.Turns.ActiveUnitId is { } active ? new DefaultAbilityCommand.Wait(active) : new DefaultAbilityCommand.Advance());
         Assert.Equal((ushort)75, state.Units[1].Vitals.Hp);
         Assert.Equal((ushort)27, state.Units[0].Current.Mp);
-        var report = Assert.IsType<OrdinaryMagicLearningReport>(state.LearningReport);
+        var report = Assert.IsType<DefaultAbilityLearningReport>(state.LearningReport);
         Assert.Equal(new BattleUnitId("guard"), report.LearnerId);
         var rng = state.Turns.RngState;
-        Apply(new OrdinaryMagicCommand.AnswerLearning(report.Id, report.LearnerId, accept));
-        Assert.Equal(accept, OrdinaryMagicBattle.KnownSpells(state, report.LearnerId).Contains(fire4));
+        Apply(new DefaultAbilityCommand.AnswerLearning(report.Id, report.LearnerId, accept));
+        Assert.Equal(accept, DefaultAbilityBattle.KnownSpells(state, report.LearnerId).Contains(fire4));
         Assert.Equal(rng, state.Turns.RngState);
         Assert.Null(state.LearningReport);
     }

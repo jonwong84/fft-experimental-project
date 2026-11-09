@@ -25,10 +25,10 @@ public static class DefaultAbilityAiProjection
             unit.Current.Faith > 100 || !unit.Occupant.Active || unit.Occupant.Jump || unit.Occupant.Mount ||
             unit.Occupant.Crystal || unit.Occupant.Treasure || unit.Occupant.InitialTeam != unit.Occupant.CurrentTeam ||
             unit.Current.Identity.IsMonster || unit.Current.IsMime || unit.Current.HasRider ||
-            unit.Current.Equipment != OrdinaryMagicBattleDefinition.BareEquipment || unit.Current.Supports != new MagicCurrentSupports() ||
+            unit.Current.Equipment != DefaultAbilityBattleDefinition.BareEquipment || unit.Current.Supports != new MagicCurrentSupports() ||
             unit.Current.Strengthens != MagicElement.None || unit.Current.Affinities != default || !unit.Current.ActionUnrestricted)
             return false;
-        try { _ = OrdinaryMagicHitApplication.Project(unit.Current, unit.Vitals, Miss); return true; }
+        try { _ = DefaultAbilityHitApplication.Project(unit.Current, unit.Vitals, Miss); return true; }
         catch (Exception e) when (e is ArgumentException or NotSupportedException) { return false; }
     }
 

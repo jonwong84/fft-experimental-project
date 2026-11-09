@@ -27,7 +27,7 @@ Start at
    with actor delay cached before refresh, as in admitted physical preparation.
    No simulated CT or movement is adopted live.
 3. Shared `AiRosterNearest.FindEligibleEnemy` derives focus with source-order
-   ties and actor fallback. Framework's new `OrdinaryMagicMovement.QueryFocused`
+   ties and actor fallback. Framework's new `DefaultAbilityMovement.QueryFocused`
    exposes the existing flat kernel's target-distance rows. The original
    `Query` signature, geometry and command consumers are preserved.
 4. `ScenariosBuild` calls shared `AiScenarioLayout.Partition`, then

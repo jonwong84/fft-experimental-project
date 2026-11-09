@@ -10,12 +10,12 @@ public sealed class DefaultAbilityAiAimTests
 {
     private static readonly BattleUnitId Mage = new("mage"), Guard = new("guard"), Other = new("other");
 
-    internal static (DefaultAbilityAiCatalog Catalog, OrdinaryMagicBattleState State) Setup(
+    internal static (DefaultAbilityAiCatalog Catalog, DefaultAbilityBattleState State) Setup(
         byte charge = 2, byte area = 1, byte range = 4, bool follow = true, bool noFollow = false,
         bool force = false, bool healing = false, int width = 7, int actorX = 0, int targetX = 4, int targetY = 2, bool alliesOnly = false,
         (int X, int Y, SpellTargetTeam Team)? other = null, AiAbilityBehavior? behavior = null)
     {
-        var d = AuthoredOrdinaryMagic.Document() with { SchemaVersion = 3, MetadataPackageId = "test:package/aims", Width = width };
+        var d = AuthoredDefaultAbility.Document() with { SchemaVersion = 3, MetadataPackageId = "test:package/aims", Width = width };
         d.Spells[0] = d.Spells[0] with { ChargeTime = charge,
             Targeting = d.Spells[0].Targeting with { Area = area, Range = range, NoFollowTarget = noFollow, CanHitEnemies = force, CanHitAllies = alliesOnly },
             Formula = healing ? new(FaithMagicAmountKind.Healing, 14, MagicElement.None, false) : d.Spells[0].Formula };
@@ -28,17 +28,17 @@ public sealed class DefaultAbilityAiAimTests
             ? new(TargetsAllies: true, AffectsHp: true, AffectedByFaith: true, FollowTarget: follow, Reflectable: true)
             : DefaultAbilityAiListTests.FireBehavior with { FollowTarget = follow };
         var metadata = new ContentPackage(d.MetadataPackageId!, "test:profile/aims", ContentPackageKind.Baseline, null, [],
-            [new(new("test:skillset/magic"), [new(0, new(AuthoredOrdinaryMagic.Fire))])],
-            [new(new(AuthoredOrdinaryMagic.Fire), 50, 100, 1, behavior, true)]);
-        var content = PreparedOrdinaryMagicBattle.Create(d, metadata);
-        var spell = content.Definition.Spells[new(AuthoredOrdinaryMagic.Fire)];
+            [new(new("test:skillset/magic"), [new(0, new(AuthoredDefaultAbility.Fire))])],
+            [new(new(AuthoredDefaultAbility.Fire), 50, 100, 1, behavior, true)]);
+        var content = PreparedDefaultAbilityBattle.Create(d, metadata);
+        var spell = content.Definition.Spells[new(AuthoredDefaultAbility.Fire)];
         var catalog = new DefaultAbilityAiCatalog(content.Definition,
-            new Dictionary<AssetId, DefaultAbilityAiSkillset> { [new(AuthoredOrdinaryMagic.Wizard)] =
+            new Dictionary<AssetId, DefaultAbilityAiSkillset> { [new(AuthoredDefaultAbility.Wizard)] =
                 new(11, new("test:skillset/magic"), [new(0, spell, behavior, true)]) });
-        return (catalog, OrdinaryMagicBattle.Apply(content.Definition.Start(), new OrdinaryMagicCommand.Advance()).State);
+        return (catalog, DefaultAbilityBattle.Apply(content.Definition.Start(), new DefaultAbilityCommand.Advance()).State);
     }
 
-    private static DefaultAbilityAiAimOutcome Query(DefaultAbilityAiCatalog catalog, OrdinaryMagicBattleState state)
+    private static DefaultAbilityAiAimOutcome Query(DefaultAbilityAiCatalog catalog, DefaultAbilityBattleState state)
     {
         var result = DefaultAbilityAiAimQuery.Evaluate(state, catalog, new(Mage, 0));
         Assert.True(result.Accepted, result.Rejection);
@@ -237,14 +237,14 @@ public sealed class DefaultAbilityAiAimTests
         if (change == "self") state = state.With(units: state.Units.SetItem(0, mage with { Vitals = mage.Vitals with { Hp = 30 } }));
         if (change == "status") state = state.With(units: state.Units.SetItem(1, state.Units[1] with {
             Current = state.Units[1].Current with { Statuses = new(Sleep: true) } }));
-        if (change == "pending") state = OrdinaryMagicBattle.Apply(state,
-            new OrdinaryMagicCommand.Cast(Mage, new(AuthoredOrdinaryMagic.Fire), new(4, 2, 0))).State;
+        if (change == "pending") state = DefaultAbilityBattle.Apply(state,
+            new DefaultAbilityCommand.Cast(Mage, new(AuthoredDefaultAbility.Fire), new(4, 2, 0))).State;
         if (change == "ground")
         {
             var d = state.Definition;
-            var unbound = new OrdinaryMagicBattleDefinition(d.Map, d.Units, d.Spells.Values, d.Jobs, d.JobThresholds, d.InitialRng, learning: d.Learning);
+            var unbound = new DefaultAbilityBattleDefinition(d.Map, d.Units, d.Spells.Values, d.Jobs, d.JobThresholds, d.InitialRng, learning: d.Learning);
             catalog = new(unbound, catalog.PrimaryByJob);
-            state = OrdinaryMagicBattle.Apply(unbound.Start(), new OrdinaryMagicCommand.Advance()).State;
+            state = DefaultAbilityBattle.Apply(unbound.Start(), new DefaultAbilityCommand.Advance()).State;
         }
         string before = DefaultAbilityAiReadyTests.Receipt(state);
         var result = DefaultAbilityAiAimQuery.Evaluate(state, catalog, request);

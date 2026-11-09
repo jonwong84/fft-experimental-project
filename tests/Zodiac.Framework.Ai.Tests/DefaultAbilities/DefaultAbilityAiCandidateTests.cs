@@ -18,11 +18,11 @@ public sealed class DefaultAbilityAiCandidateTests
         var (_, catalog, state) = DefaultAbilityAiReadyTests.Setup(charge: raw);
         string before = DefaultAbilityAiReadyTests.Receipt(state);
         var candidate = DefaultAbilityAiCandidateQuery.Evaluate(state, catalog, Request(), new(57, 0));
-        var live = OrdinaryMagicBattle.Apply(state,
-            new OrdinaryMagicCommand.Cast(Mage, new("test:spell/fire"), new(4, 2, 0)));
+        var live = DefaultAbilityBattle.Apply(state,
+            new DefaultAbilityCommand.Cast(Mage, new("test:spell/fire"), new(4, 2, 0)));
         Assert.True(candidate.Accepted, candidate.Rejection);
         Assert.True(live.Accepted, live.Rejection);
-        var queued = Assert.Single(live.Events.OfType<OrdinaryMagicEvent.Queued>());
+        var queued = Assert.Single(live.Events.OfType<DefaultAbilityEvent.Queued>());
         Assert.Equal(expected, queued.ChargeTicks);
         Assert.Equal(queued.ChargeTicks, candidate.Outcome!.ActualChargeTime);
         if (expected != 0)
@@ -106,7 +106,7 @@ public sealed class DefaultAbilityAiCandidateTests
     public void Already_used_movement_gets_no_extra_ct_refund()
     {
         var (_,catalog,state)=DefaultAbilityAiReadyTests.Setup();
-        var moved=OrdinaryMagicBattle.Apply(state,new OrdinaryMagicCommand.Move(Mage,new(1,2,0)));
+        var moved=DefaultAbilityBattle.Apply(state,new DefaultAbilityCommand.Move(Mage,new(1,2,0)));
         Assert.True(moved.Accepted,moved.Rejection);
         var r=DefaultAbilityAiCandidateQuery.Evaluate(moved.State,catalog,Request(),new(57,0));
         Assert.True(r.Accepted,r.Rejection);Assert.Equal(30,r.Outcome!.Clock!.Units[0].Ct);
@@ -168,7 +168,7 @@ public sealed class DefaultAbilityAiCandidateTests
         Assert.Equal(20,state.Units[^1].Occupant.SourceOrder);
     }
 
-    private static (DefaultAbilityAiCatalog Catalog, OrdinaryMagicBattleState State, TilePosition[] Panels)
+    private static (DefaultAbilityAiCatalog Catalog, DefaultAbilityBattleState State, TilePosition[] Panels)
         CrowdedRoster(int count, int? lastSourceOrder=null)
     {
         var x=DefaultAbilityAiReadyTests.Setup(charge:127);var d=x.Content.Definition;
@@ -178,9 +178,9 @@ public sealed class DefaultAbilityAiCandidateTests
             Occupant=d.Units[1].Occupant with {UnitId=new("peer"+i),SourceOrder=i==count-1?lastSourceOrder??i:i,Position=panels[i-1]},
             Current=d.Units[1].Current with {UnitId=new("peer"+i)},BaseAttributes=d.Units[1].BaseAttributes with {Speed=50},
             RawStats=d.Units[1].RawStats with {Speed=819200}});
-        var def=new OrdinaryMagicBattleDefinition(d.Map,new[]{mage}.Concat(peers),d.Spells.Values,d.Jobs,d.JobThresholds,d.InitialRng,d.MovementGround,d.Learning);
+        var def=new DefaultAbilityBattleDefinition(d.Map,new[]{mage}.Concat(peers),d.Spells.Values,d.Jobs,d.JobThresholds,d.InitialRng,d.MovementGround,d.Learning);
         var catalog=new DefaultAbilityAiCatalog(def,x.Catalog.PrimaryByJob);var start=def.Start();
-        var state=start.With(turns:new(start.Turns.Units.Select(u=>new TurnUnitState(u.Id,u.Speed,u.Id==Mage?0:99,u.TieKey,u.Id==Mage)),new(57,0),10,TurnCyclePhase.UnitTurn),phase:OrdinaryMagicClockPhase.UnitTurn);
+        var state=start.With(turns:new(start.Turns.Units.Select(u=>new TurnUnitState(u.Id,u.Speed,u.Id==Mage?0:99,u.TieKey,u.Id==Mage)),new(57,0),10,TurnCyclePhase.UnitTurn),phase:DefaultAbilityClockPhase.UnitTurn);
         return (catalog,state,panels);
     }
 
@@ -199,7 +199,7 @@ public sealed class DefaultAbilityAiCandidateTests
     public void Unrelated_pending_cast_and_foreign_definition_are_rejected_without_rng()
     {
         var (_,catalog,state)=DefaultAbilityAiReadyTests.Setup();
-        var queued=OrdinaryMagicBattle.Apply(state,new OrdinaryMagicCommand.Cast(Mage,new("test:spell/fire"),new(4,2,0))).State;
+        var queued=DefaultAbilityBattle.Apply(state,new DefaultAbilityCommand.Cast(Mage,new("test:spell/fire"),new(4,2,0))).State;
         Assert.False(DefaultAbilityAiCandidateQuery.Evaluate(queued,catalog,Request(),new(57,0)).Accepted);
         Assert.False(DefaultAbilityAiCandidateQuery.Evaluate(state,DefaultAbilityAiReadyTests.Setup().Catalog,Request(),new(57,0)).Accepted);
     }

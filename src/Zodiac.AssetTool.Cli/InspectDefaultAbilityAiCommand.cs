@@ -16,9 +16,9 @@ public sealed class InspectDefaultAbilityAiCommand
             if (args.Length != 3 || args[0] is not ("inspect-magic-ai" or "inspect-delayed-magic-ai") || args[1] != "--content-root" || string.IsNullOrWhiteSpace(args[2]))
                 throw new ArgumentException("Usage: (inspect-magic-ai|inspect-delayed-magic-ai) --content-root <prepared-directory>");
             bool delayed = args[0] == "inspect-delayed-magic-ai";
-            var prepared = PreparedOrdinaryMagicBattle.Load(LooseAssetStore.Load(args[2]));
+            var prepared = PreparedDefaultAbilityBattle.Load(LooseAssetStore.Load(args[2]));
             var catalog = PreparedDefaultAbilityAi.CreateCatalog(prepared);
-            var advance = OrdinaryMagicBattle.Apply(prepared.Definition.Start(), new OrdinaryMagicCommand.Advance());
+            var advance = DefaultAbilityBattle.Apply(prepared.Definition.Start(), new DefaultAbilityCommand.Advance());
             if (!advance.Accepted || advance.State.Turns.ActiveUnitId is not { } actorId)
                 throw new NotSupportedException("The prepared scene did not reach an ordinary initial unit turn.");
             var state = advance.State; var actor = state.Units.Single(u => u.Id == actorId);
@@ -63,7 +63,7 @@ public sealed class InspectDefaultAbilityAiCommand
         }
     }
 
-    private static object DelayedCase(OrdinaryMagicBattleState state, DefaultAbilityAiCatalog catalog, BattleUnitId actorId,
+    private static object DelayedCase(DefaultAbilityBattleState state, DefaultAbilityAiCatalog catalog, BattleUnitId actorId,
         DefaultAbilityAiSlot slot, TilePosition aim, bool follow)
     {
         var r = DefaultAbilityAiCandidateQuery.Evaluate(state, catalog, new(actorId, slot.Index, aim, follow), state.Turns.RngState);

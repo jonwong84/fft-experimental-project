@@ -7,7 +7,7 @@ public static class MagicChargePlanQuery
 {
     public static MagicChargePlanResult Prepare(MagicChargePlanRequest request)
     {
-        var prepared = OrdinaryMagicPreparation.Prepare(request);
+        var prepared = DefaultAbilityPreparation.Prepare(request);
         return new(prepared.Accepted, prepared.Outcome?.Plan);
     }
 

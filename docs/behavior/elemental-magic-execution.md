@@ -21,7 +21,7 @@ Calculator and CounterMagic while retaining Silence/quote/Evadeable. The admitte
 bare/no-RSM context makes those omitted branches inactive. Bolt2 costs10 MP;
 Fire2/Ice2 cost12. The independently reviewed rows preserve that difference.
 
-`OriginalOrdinaryMagicImporter` replaces the initial Fire-specific importer and
+`OriginalDefaultAbilityImporter` replaces the initial Fire-specific importer and
 selects either Fire alone or the twelve elemental tiers. The existing
 `prepare-fire-battle` command retains its one-spell encounter; the new
 `prepare-elemental-magic-battle` prepares the larger selection. Exact edition/hash,

@@ -13,7 +13,7 @@ public sealed class DefaultAbilityAiStoredHitTests
         var work=new DefaultAbilityAiWork(state,catalog,new("mage"),0,true);
         var aim=work.Capture(new(4,2,0),true);
         var guard=work.Units[1];var units=work.Units.SetItem(1,guard with {Occupant=guard.Occupant with {Position=new(6,2,0)}});
-        Assert.DoesNotContain(new TilePosition(6,2,0),OrdinaryMagicBattle.Choice(state,new("mage"),work.Spell.Id).Outcome!.Range!.Panels);
+        Assert.DoesNotContain(new TilePosition(6,2,0),DefaultAbilityBattle.Choice(state,new("mage"),work.Spell.Id).Outcome!.Range!.Panels);
         Assert.True(DefaultAbilityAiHitSimulation.ActionHitsSimulate(work,units,aim,[],new(57,0),out var hit));
         Assert.True(hit.Accounting.Valuable);Assert.Equal((ushort)146,hit.Units[1].Vitals.Hp);
         Assert.Equal(4UL,hit.RngState.DrawCount);

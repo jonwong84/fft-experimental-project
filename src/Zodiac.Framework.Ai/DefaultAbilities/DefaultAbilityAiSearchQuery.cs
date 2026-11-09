@@ -6,7 +6,7 @@ namespace Zodiac.Framework.Ai;
 /// <summary>Fresh one-slot, current-origin aim evaluation and strict best rank. No movement search or command authority.</summary>
 public static class DefaultAbilityAiSearchQuery
 {
-    public static DefaultAbilityAiSearchResult Evaluate(OrdinaryMagicBattleState state, DefaultAbilityAiCatalog catalog,
+    public static DefaultAbilityAiSearchResult Evaluate(DefaultAbilityBattleState state, DefaultAbilityAiCatalog catalog,
         DefaultAbilityAiSearchRequest request, RandomState rng)
     {
         ArgumentNullException.ThrowIfNull(state);

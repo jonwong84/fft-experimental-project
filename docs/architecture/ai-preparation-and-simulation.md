@@ -44,7 +44,7 @@ files and nine functions. Neither C nor the original game was executed.
 
 ## Managed responsibilities
 
-- `Zodiac.Framework.CombatRules.OrdinaryMagicPreparation` accepts the existing
+- `Zodiac.Framework.CombatRules.DefaultAbilityPreparation` accepts the existing
   certified `MagicChargePlanRequest` and returns a prepared plan and proposed
   caster state. It validates active identities and derives timing from the
   selected definition/current supports. It proposes Charging for a delayed
@@ -53,7 +53,7 @@ files and nine functions. Neither C nor the original game was executed.
   commit ACT usage using their existing turn-state owners.
 - `MagicChargePlanQuery.Prepare` remains a compatible plan-only adapter. Existing
   public signatures and timing behavior are preserved.
-- `OrdinaryMagicBattle.Queue` consumes the shared proposal before queuing or
+- `DefaultAbilityBattle.Queue` consumes the shared proposal before queuing or
   immediately resolving the spell. MP remains spent at the existing ready-hit
   boundary, not preparation.
 - `DefaultAbilityAiWork` owns fresh admission, lists, usefulness and initial aim

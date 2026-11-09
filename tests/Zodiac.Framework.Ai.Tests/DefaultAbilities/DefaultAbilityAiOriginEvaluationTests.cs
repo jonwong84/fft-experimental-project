@@ -8,7 +8,7 @@ namespace Zodiac.Framework.Ai.Tests;
 public sealed class DefaultAbilityAiOriginEvaluationTests
 {
     private static readonly BattleUnitId Mage = new("mage"), Guard = new("guard");
-    private static DefaultAbilityAiOriginEvaluationResult Query(DefaultAbilityAiCatalog catalog, OrdinaryMagicBattleState state,
+    private static DefaultAbilityAiOriginEvaluationResult Query(DefaultAbilityAiCatalog catalog, DefaultAbilityBattleState state,
         TilePosition origin, DefaultAbilityAiAimPassKind pass = DefaultAbilityAiAimPassKind.UnitsStillAtDeadline,
         RandomState? rng = null) => DefaultAbilityAiOriginEvaluationQuery.Evaluate(state, catalog,
             new(Mage, 0, pass, origin), new(true), rng ?? new(57, 0));
@@ -123,16 +123,16 @@ public sealed class DefaultAbilityAiOriginEvaluationTests
         Assert.Equal(57UL, result.RngState.DrawCount); // Thirteen prefix draws plus eleven four-draw nonvaluable attempts.
     }
 
-    private static (DefaultAbilityAiCatalog Catalog, OrdinaryMagicBattleState State) EditSpell(
-        (DefaultAbilityAiCatalog Catalog, OrdinaryMagicBattleState State) setup, Func<MagicCastDefinition, MagicCastDefinition> edit)
+    private static (DefaultAbilityAiCatalog Catalog, DefaultAbilityBattleState State) EditSpell(
+        (DefaultAbilityAiCatalog Catalog, DefaultAbilityBattleState State) setup, Func<MagicCastDefinition, MagicCastDefinition> edit)
     {
         var d = setup.State.Definition;
         var spell = edit(d.Spells.Values.Single());
-        var definition = new OrdinaryMagicBattleDefinition(d.Map, d.Units, [spell], d.Jobs, d.JobThresholds,
+        var definition = new DefaultAbilityBattleDefinition(d.Map, d.Units, [spell], d.Jobs, d.JobThresholds,
             d.InitialRng, d.MovementGround, d.Learning);
         var catalog = new DefaultAbilityAiCatalog(definition, setup.Catalog.PrimaryByJob.Select(p => KeyValuePair.Create(p.Key,
             p.Value with { Slots = p.Value.Slots.Select(s => s with { Spell = spell }).ToImmutableArray() })));
-        return (catalog, OrdinaryMagicBattle.Apply(definition.Start(), new OrdinaryMagicCommand.Advance()).State);
+        return (catalog, DefaultAbilityBattle.Apply(definition.Start(), new DefaultAbilityCommand.Advance()).State);
     }
 
     [Fact]

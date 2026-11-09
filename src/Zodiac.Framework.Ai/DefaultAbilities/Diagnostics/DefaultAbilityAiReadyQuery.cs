@@ -19,7 +19,7 @@ public sealed record DefaultAbilityAiReadyResult(DefaultAbilityAiReadyDispositio
 /// <summary>Owns fresh ready-hit calculations at one initial aim; never a full delayed candidate or command authority.</summary>
 public static class DefaultAbilityAiReadyQuery
 {
-    public static DefaultAbilityAiReadyResult Evaluate(OrdinaryMagicBattleState state, DefaultAbilityAiCatalog catalog,
+    public static DefaultAbilityAiReadyResult Evaluate(DefaultAbilityBattleState state, DefaultAbilityAiCatalog catalog,
         DefaultAbilityAiReadyRequest request, RandomState rng)
     {
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(catalog); ArgumentNullException.ThrowIfNull(request);

@@ -5,8 +5,8 @@ namespace Zodiac.Framework.Ai;
 /// <summary>Private fresh admission/list/usefulness owner shared by current-aim and delayed queries.</summary>
 internal sealed class DefaultAbilityAiWork
 {
-    internal OrdinaryMagicBattleState State { get; }
-    internal OrdinaryMagicUnitState Actor { get; }
+    internal DefaultAbilityBattleState State { get; }
+    internal DefaultAbilityUnitState Actor { get; }
     internal ImmutableArray<DefaultAbilityAiUnit> Units { get; }
     internal ImmutableDictionary<BattleUnitId, DefaultAbilityAiList> Lists { get; }
     internal DefaultAbilityAiConsidered Ability { get; }
@@ -17,7 +17,7 @@ internal sealed class DefaultAbilityAiWork
     internal bool MovementTaken => State.Turns.Units.Single(u => u.Id == Actor.Id).MovementTaken ||
         SelectedOrigin is { } origin && origin.MovementDestination != State.Units.Single(u => u.Id == Actor.Id).Position;
 
-    internal DefaultAbilityAiWork(OrdinaryMagicBattleState state, DefaultAbilityAiCatalog catalog,
+    internal DefaultAbilityAiWork(DefaultAbilityBattleState state, DefaultAbilityAiCatalog catalog,
         BattleUnitId actorId, int primarySlot, bool followUnit)
     {
         // ai_command_build requires a compact record for every active unit before considering actions.
@@ -77,9 +77,9 @@ internal sealed class DefaultAbilityAiWork
 
     internal StoredSpellAim Capture(TilePosition aim, bool followUnit) => Confirm(aim, followUnit).Aim;
 
-    internal CombatRules.OrdinaryMagicPreparationOutcome Prepare(TilePosition aim, bool followUnit)
+    internal CombatRules.DefaultAbilityPreparationOutcome Prepare(TilePosition aim, bool followUnit)
     {
-        var result = CombatRules.OrdinaryMagicPreparation.Prepare(new(Confirm(aim, followUnit), Actor.Current,
+        var result = CombatRules.DefaultAbilityPreparation.Prepare(new(Confirm(aim, followUnit), Actor.Current,
             Units.Select(u => u.Occupant).ToImmutableArray(), new(true), new(true, true)));
         if (!result.Accepted) throw new NotSupportedException("The primary ordinary spell action could not be prepared.");
         return result.Outcome!;

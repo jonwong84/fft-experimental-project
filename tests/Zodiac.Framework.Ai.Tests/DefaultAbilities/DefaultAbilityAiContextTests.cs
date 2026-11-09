@@ -142,7 +142,7 @@ public sealed class DefaultAbilityAiContextTests
         string before = DefaultAbilityAiReadyTests.Receipt(state);
         var first = DefaultAbilityAiAbilitySearchQuery.Evaluate(captured, Request, entry);
         Assert.True(first.Accepted, first.Rejection);
-        var waited = OrdinaryMagicBattle.Apply(state, new OrdinaryMagicCommand.Wait(Mage));
+        var waited = DefaultAbilityBattle.Apply(state, new DefaultAbilityCommand.Wait(Mage));
         Assert.True(waited.Accepted, waited.Rejection);
         var current = new DefaultAbilityAiContext(waited.State, catalog);
         Assert.NotSame(captured.State, current.State);

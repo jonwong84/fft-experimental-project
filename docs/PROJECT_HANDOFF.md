@@ -6,9 +6,10 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-443/444 are complete. Next: the owner's review, before further development.**
+**ZOD-443–445 are complete. Next: the owner's review, before further development.**
 Read [BACKLOG.md](BACKLOG.md), the
 [pathway names](architecture/default-ability-pathways.md),
+[execution names](architecture/default-ability-execution-names.md),
 [context API](behavior/ordinary-spell-context.md) and
 [list/scenario study](behavior/ordinary-spell-list-integration.md).
 The caller now exposes `Evaluate(context, request, rng)`. `DefaultAbilityAiContext`
@@ -22,7 +23,7 @@ Create a new context for a new live state. Old contexts still replay their old
 snapshot and grant no command authority. Begin review at
 `src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiContext.cs`, then the request
 and `DefaultAbilityAiAbilitySearchQuery.cs`. Other query parameter shapes are
-unchanged; all former OrdinarySpell type/file prefixes now use DefaultAbility.
+unchanged; former OrdinarySpell and OrdinaryMagic type/file prefixes now use DefaultAbility.
 This interim review does not complete ZOD-432 or the full AI port. Select a bounded
 shared-preparation/list child after review; no further ticket is activated now.
 
@@ -57,20 +58,30 @@ Jump/Katana Inventory/Weapon Inventory/Mathematics/Monster use cases. Those name
 do not activate new loaders or ability support. Historical hash receipts remain
 unchanged; use the rename map for their older paths.
 
-Latest validation: zero-warning/error Release build, **5,276 .NET tests**
-(1,835 Framework, 1,471 AI) and **810 Python tests** pass. The rename retains
-every code file under exact prefix substitution and the same existing test case
-names/results under that substitution. No new expected gameplay vectors or tests were added.
-Logs/seven TRX reports are in ignored `scratch/default-ability-rename-*`;
-the [receipt](evidence/maintenance/default-ability-rename-v1.json) contains the
-before/after source map, test parity, unchanged menu-source audit and preservation.
-Coverage remains 58 planning entries and partial. The earlier context receipt
-retains its own validation/preservation checkpoint.
+ZOD-445 extends DefaultAbility naming to the former `OrdinaryMagic` Framework
+battle/commands/events/units/preparation/publication/learning family and dependent
+content, import, client and test classes. `DefaultAbilityBattle.Apply` and
+`DefaultAbilityBattleState` are the current execution/state entry names. The
+three project links for the moved `AuthoredDefaultAbility` fixture are updated.
+The same magic-focused mechanics, formats/IDs and CLI commands remain; no
+general ability support or AI command integration is activated.
 
-The owner authorized committing the pending query/battle-state formatting. It is
-preserved in separate commit `973b39e`; the query's split signature and explicit
-braces are retained in the refactor, and the battle-state formatting blob remains
-`2dc345d4887b2ac3de98b5f74f7b4ddc9300cd54` exactly.
+Latest validation: zero-warning/error Release build, **5,276 .NET tests**
+(1,835 Framework, 1,471 AI) and **810 Python tests** pass. Every affected code file
+and project link matches exact name substitution; existing test names/outcomes
+are preserved under that translation. Logs/seven TRX reports are in ignored
+`scratch/default-ability-magic-*`; the
+[receipt](evidence/maintenance/default-ability-execution-rename-v1.json) records
+the exact path/hash map, test parity, pinned source audit and preservation.
+Earlier hash receipts/fixture payloads are unchanged; their recorded old paths
+resolve through the rename maps at their original Git revisions. Coverage remains
+58 planning entries and partial.
+
+The owner-authorized query/battle-state formatting was committed in `973b39e`.
+Its layout is preserved under the subsequent prefix substitutions. The old
+`OrdinaryMagicBattleState.cs` blob `2dc345d4887b2ac3de98b5f74f7b4ddc9300cd54`
+belongs to that historical spelling; the ZOD-445 receipt maps it to the current
+`DefaultAbilityBattleState.cs` without other code changes.
 
 The owner's concurrent controller formatting is preserved exactly in separate
 commit `0e868ac`; its non-whitespace text is unchanged. Current
@@ -114,7 +125,7 @@ The [review programme](development/documentation-review-programme.md) and
 [progress receipt](evidence/maintenance/documentation-review-progress-v1.json)
 record completed bounded batches through ZOD-436, the supporting ZOD-426
 study, bounded ZOD-437–441 implementations, ZOD-442 integration study,
-ZOD-443 context API and ZOD-444 naming maintenance. ZOD-428 and complete inventory
+ZOD-443 context API and ZOD-444/445 naming maintenance. ZOD-428 and complete inventory
 groups remain open. Prior helper
 cross-checks and annotation corrections live
 in their behavior/evidence notes; use [history](history/README.md) for completed

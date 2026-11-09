@@ -6,8 +6,8 @@ Content supplies immutable definitions and prepared data through outer adapters.
 
 For a player action or AI decision, start with the
 [action pathway guide](../../docs/development/action-pipelines.md). Ordinary
-spell selection/commands enter through `OrdinaryMagicBattle.Choice` / `Apply`;
-the cast branch calls `OrdinaryMagicCastPreparation.PrepareAndQueue`.
+spell selection/commands enter through `DefaultAbilityBattle.Choice` / `Apply`;
+the cast branch calls `DefaultAbilityCastPreparation.PrepareAndQueue`.
 The [targeting source map](Battle/Combat/Targeting/README.md) links selection,
 geometry and readiness resolution in execution order. Shared rules remain here;
 AI choice/ranking remain in the AI project.

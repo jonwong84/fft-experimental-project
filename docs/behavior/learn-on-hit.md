@@ -53,7 +53,7 @@ presentation-frame RNG or save/checkpoint support is activated by this rule.
 
 ## Owned battle reports (ZOD-399)
 
-`OrdinaryMagicBattleDefinition` optionally owns a validated learning catalog,
+`DefaultAbilityBattleDefinition` optionally owns a validated learning catalog,
 with exact executable ability coverage and stable current-job primary slots.
 Its learning profile admits generic original jobs 74–93; special-job row aliases
 stay rejected until separately modeled. Each unit supplies an explicit initial

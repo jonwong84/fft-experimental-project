@@ -5,10 +5,10 @@ namespace Zodiac.Framework.Ai;
 /// <summary>Definition-bound selected primary spell facts. No secondary loadout is inferred from global grants.</summary>
 public sealed class DefaultAbilityAiCatalog
 {
-    public OrdinaryMagicBattleDefinition Definition { get; }
+    public DefaultAbilityBattleDefinition Definition { get; }
     public ImmutableDictionary<AssetId, DefaultAbilityAiSkillset> PrimaryByJob { get; }
 
-    public DefaultAbilityAiCatalog(OrdinaryMagicBattleDefinition definition,
+    public DefaultAbilityAiCatalog(DefaultAbilityBattleDefinition definition,
         IEnumerable<KeyValuePair<AssetId, DefaultAbilityAiSkillset>> primaryByJob)
     {
         ArgumentNullException.ThrowIfNull(definition); ArgumentNullException.ThrowIfNull(primaryByJob);
@@ -38,7 +38,7 @@ public sealed class DefaultAbilityAiCatalog
         Definition = definition;
     }
 
-    internal DefaultAbilityAiList List(OrdinaryMagicBattleState state, OrdinaryMagicUnitState unit)
+    internal DefaultAbilityAiList List(DefaultAbilityBattleState state, DefaultAbilityUnitState unit)
     {
         var rows = Definition.Jobs.Jobs.Select((job, index) => KeyValuePair.Create(index, unit.LearnedAbilitySlots[job.JobId])).ToImmutableDictionary();
         return DefaultAbilityAiLists.Build(PrimaryByJob[unit.Definition.RewardJobId], null, 5, rows, unit.Vitals.MaxMp);

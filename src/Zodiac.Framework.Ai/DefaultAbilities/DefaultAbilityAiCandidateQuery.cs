@@ -19,12 +19,12 @@ public sealed record DefaultAbilityAiCandidateResult(DefaultAbilityAiCandidateDi
 /// <summary>Fresh fixed-origin ordinary spell simulation through source clock/readiness/scoring. No live adoption.</summary>
 public static class DefaultAbilityAiCandidateQuery
 {
-    public static DefaultAbilityAiCandidateResult Evaluate(OrdinaryMagicBattleState state, DefaultAbilityAiCatalog catalog,
+    public static DefaultAbilityAiCandidateResult Evaluate(DefaultAbilityBattleState state, DefaultAbilityAiCatalog catalog,
         DefaultAbilityAiCandidateRequest request, RandomState rng)
     {
         ArgumentNullException.ThrowIfNull(state); ArgumentNullException.ThrowIfNull(catalog); ArgumentNullException.ThrowIfNull(request);
         DefaultAbilityAiCandidateResult Reject(string reason) => new(DefaultAbilityAiCandidateDisposition.Rejected, reason, null, rng);
-        if (state.ClockPhase != OrdinaryMagicClockPhase.UnitTurn || state.Units.Length > 21 ||
+        if (state.ClockPhase != DefaultAbilityClockPhase.UnitTurn || state.Units.Length > 21 ||
             state.Units.Any(u => u.Occupant.SourceOrder is < 0 or > 20))
             return Reject("The fixed-origin source clock profile is unavailable.");
         try

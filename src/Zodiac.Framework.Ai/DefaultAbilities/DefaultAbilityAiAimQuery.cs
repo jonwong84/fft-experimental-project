@@ -3,7 +3,7 @@ namespace Zodiac.Framework.Ai;
 /// <summary>Lists potential ordinary aims at the current origin, without simulation, RNG or command authority.</summary>
 public static class DefaultAbilityAiAimQuery
 {
-    public static DefaultAbilityAiAimResult Evaluate(OrdinaryMagicBattleState state, DefaultAbilityAiCatalog catalog,
+    public static DefaultAbilityAiAimResult Evaluate(DefaultAbilityBattleState state, DefaultAbilityAiCatalog catalog,
         DefaultAbilityAiAimRequest request)
     {
         ArgumentNullException.ThrowIfNull(state);

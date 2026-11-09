@@ -102,7 +102,7 @@ public sealed class MagicConsumerReviewTests
         Assert.True(frame.Types.PseudoStatus);
         Assert.Equal(4UL, result.RngState.DrawCount);
         var vitals = new MagicUnitVitals(100, 100, 50, 70, false);
-        var applied = OrdinaryMagicHitApplication.Project(target, vitals, frame);
+        var applied = DefaultAbilityHitApplication.Project(target, vitals, frame);
         Assert.Equal(target, applied.Current);
         Assert.Equal(vitals, applied.Vitals);
     }

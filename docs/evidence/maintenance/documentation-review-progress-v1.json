@@ -399,7 +399,7 @@
     }
   ],
   "fullyReviewedGroups": [],
-  "nextBatch": "Owner review of ZOD-443/444",
+  "nextBatch": "Owner review of ZOD-443\u2013445",
   "overallBehaviorReviewCompleted": false,
   "supportingSourceStudies": [
     {
@@ -457,6 +457,12 @@
       "report": "docs/architecture/default-ability-pathways.md",
       "receipt": "docs/evidence/maintenance/default-ability-rename-v1.json",
       "disposition": "DefaultAbility identifier/path naming maintenance and future menu-prefix record only; no gameplay expansion, full review group or autonomous magic completed."
+    },
+    {
+      "ticket": "ZOD-445",
+      "report": "docs/architecture/default-ability-execution-names.md",
+      "receipt": "docs/evidence/maintenance/default-ability-execution-rename-v1.json",
+      "disposition": "Naming-only alignment of Framework battle/execution and dependent content/client/CLI/test types to DefaultAbility; no gameplay expansion or full review group completed."
     }
   ]
 }

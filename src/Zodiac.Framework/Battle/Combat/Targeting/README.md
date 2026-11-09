@@ -11,7 +11,7 @@ Follow the supported cast in this order:
    panels and selection mode, corresponding to `target_range_set_for_action`.
 2. [SpellAimCapture](Selection/SpellAimCapture.cs): confirm a legal initial aim
    and retain a unit anchor or tile. The confirmed selection is immutable.
-3. [OrdinaryMagicPreparation](../../../CombatRules/OrdinaryMagicPreparation.cs):
+3. [DefaultAbilityPreparation](../../../CombatRules/DefaultAbilityPreparation.cs):
    shared primary preparation. The actual command owner commits ACT and queues it.
 4. [SpellAimResolver](Resolution/SpellAimResolver.cs): resolve the stored aim at
    readiness. A followed unit may have moved; initial range is not rechecked.

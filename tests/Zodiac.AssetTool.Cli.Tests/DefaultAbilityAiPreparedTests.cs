@@ -31,9 +31,9 @@ public sealed class DefaultAbilityAiPreparedTests
     [Theory] [MemberData(nameof(Cases))]
     public void Every_prepared_elemental_tier_uses_metadata_shared_formula_and_fresh_mp_score(int id,int damage,int cost,int score)
     {
-        var p=OriginalOrdinaryMagicImporter.DecodeSelection(Image(),OriginalDefaultAbilitySelection.ElementalTiers).Package;
+        var p=OriginalDefaultAbilityImporter.DecodeSelection(Image(),OriginalDefaultAbilitySelection.ElementalTiers).Package;
         var catalog=PreparedDefaultAbilityAi.CreateCatalog(p);
-        var state=OrdinaryMagicBattle.Apply(p.Definition.Start(),new OrdinaryMagicCommand.Advance()).State;
+        var state=DefaultAbilityBattle.Apply(p.Definition.Start(),new DefaultAbilityCommand.Advance()).State;
         var before=state.Turns.RngState;var original=p.ToJson();
         var r=DefaultAbilityAiReadyQuery.Evaluate(state,catalog,new(new("mage"),id-16,new(4,2,0),[]),new(57,0));
         Assert.True(r.Accepted,r.Rejection);Assert.Equal(score,r.Outcome!.Score!.Priority);
@@ -47,14 +47,14 @@ public sealed class DefaultAbilityAiPreparedTests
     [Fact]
     public void Newly_learned_slot_becomes_an_ai_entry_without_another_learning_or_reward_pass()
     {
-        var p=OriginalOrdinaryMagicImporter.DecodeSelection(Image(),OriginalDefaultAbilitySelection.LearnOnHit).Package;
+        var p=OriginalDefaultAbilityImporter.DecodeSelection(Image(),OriginalDefaultAbilitySelection.LearnOnHit).Package;
         var catalog=PreparedDefaultAbilityAi.CreateCatalog(p);var state=p.Definition.Start();
-        void Apply(OrdinaryMagicCommand c){var r=OrdinaryMagicBattle.Apply(state,c);Assert.True(r.Accepted,r.Rejection);state=r.State;}
-        Apply(new OrdinaryMagicCommand.Advance());Apply(new OrdinaryMagicCommand.Cast(new("mage"),new("fft.ps1:ability/source-0019"),new(4,2,0)));Apply(new OrdinaryMagicCommand.Wait(new("mage")));
-        while(!state.Pending.IsEmpty)Apply(state.Turns.ActiveUnitId is{} active?new OrdinaryMagicCommand.Wait(active):new OrdinaryMagicCommand.Advance());
-        var report=Assert.IsType<OrdinaryMagicLearningReport>(state.LearningReport);
-        Apply(new OrdinaryMagicCommand.AnswerLearning(report.Id,report.LearnerId,true));
-        while(state.Turns.ActiveUnitId!=new BattleUnitId("guard"))Apply(state.Turns.ActiveUnitId is{} active?new OrdinaryMagicCommand.Wait(active):new OrdinaryMagicCommand.Advance());
+        void Apply(DefaultAbilityCommand c){var r=DefaultAbilityBattle.Apply(state,c);Assert.True(r.Accepted,r.Rejection);state=r.State;}
+        Apply(new DefaultAbilityCommand.Advance());Apply(new DefaultAbilityCommand.Cast(new("mage"),new("fft.ps1:ability/source-0019"),new(4,2,0)));Apply(new DefaultAbilityCommand.Wait(new("mage")));
+        while(!state.Pending.IsEmpty)Apply(state.Turns.ActiveUnitId is{} active?new DefaultAbilityCommand.Wait(active):new DefaultAbilityCommand.Advance());
+        var report=Assert.IsType<DefaultAbilityLearningReport>(state.LearningReport);
+        Apply(new DefaultAbilityCommand.AnswerLearning(report.Id,report.LearnerId,true));
+        while(state.Turns.ActiveUnitId!=new BattleUnitId("guard"))Apply(state.Turns.ActiveUnitId is{} active?new DefaultAbilityCommand.Wait(active):new DefaultAbilityCommand.Advance());
         var before=state.Turns.RngState;var r=DefaultAbilityAiReadyQuery.Evaluate(state,catalog,new(new("guard"),3,new(0,2,0),[]),new(57,0));
         Assert.True(r.Accepted,r.Rejection);Assert.Equal((short)11,r.Outcome!.Score!.Priority); // Synthetic100 growth leaves maxHP100.
         Assert.Equal((ushort)100,state.Units[0].Vitals.MaxHp);
@@ -73,7 +73,7 @@ public sealed class DefaultAbilityAiPreparedTests
     [Fact]
     public void Secondary_cure_grants_remain_playable_but_do_not_infer_an_ai_learned_row()
     {
-        var p=OriginalOrdinaryMagicImporter.DecodeSelection(CureMagicImporterTests.Image(),OriginalDefaultAbilitySelection.CureAndFire).Package;
+        var p=OriginalDefaultAbilityImporter.DecodeSelection(CureMagicImporterTests.Image(),OriginalDefaultAbilitySelection.CureAndFire).Package;
         Assert.Contains(new AssetId("fft.ps1:ability/source-0001"),p.Definition.Units[0].LearnedSpells);
         Assert.Contains("secondary",Assert.Throws<NotSupportedException>(()=>PreparedDefaultAbilityAi.CreateCatalog(p)).Message);
     }
@@ -81,7 +81,7 @@ public sealed class DefaultAbilityAiPreparedTests
     [Theory] [InlineData(false)] [InlineData(true)]
     public void Prepared_only_inspection_is_repeatable_and_reports_source_timing_without_mutating_assets(bool delayed)
     {
-        var p=OriginalOrdinaryMagicImporter.DecodeSelection(Image(),OriginalDefaultAbilitySelection.ElementalTiers).Package;
+        var p=OriginalDefaultAbilityImporter.DecodeSelection(Image(),OriginalDefaultAbilitySelection.ElementalTiers).Package;
         WithPrepared(p,root=>
         {
             var before=Directory.GetFiles(root).ToDictionary(f=>Path.GetFileName(f)!,f=>Convert.ToHexString(SHA256.HashData(File.ReadAllBytes(f))));
@@ -115,7 +115,7 @@ public sealed class DefaultAbilityAiPreparedTests
     [Theory] [InlineData("inspect-magic-ai")] [InlineData("inspect-delayed-magic-ai")]
     public void Inspector_rejects_unrepresented_secondary_learning_without_partial_output(string command)
     {
-        var p=OriginalOrdinaryMagicImporter.DecodeSelection(CureMagicImporterTests.Image(),OriginalDefaultAbilitySelection.CureAndFire).Package;
+        var p=OriginalDefaultAbilityImporter.DecodeSelection(CureMagicImporterTests.Image(),OriginalDefaultAbilitySelection.CureAndFire).Package;
         WithPrepared(p,root=>
         {
             using var output=new StringWriter();using var error=new StringWriter();
@@ -124,7 +124,7 @@ public sealed class DefaultAbilityAiPreparedTests
         });
     }
 
-    private static void WithPrepared(PreparedOrdinaryMagicBattle prepared,Action<string> action)
+    private static void WithPrepared(PreparedDefaultAbilityBattle prepared,Action<string> action)
     {
         string root=Path.Combine(Path.GetTempPath(),"fft-ai-inspect-"+Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(root);
@@ -133,7 +133,7 @@ public sealed class DefaultAbilityAiPreparedTests
             var metadata=prepared.MetadataPackage!;
             byte[] package=Encoding.UTF8.GetBytes(prepared.ToJson()),companion=Encoding.UTF8.GetBytes(metadata.ToJson());
             File.WriteAllBytes(Path.Combine(root,"battle.json"),package);File.WriteAllBytes(Path.Combine(root,"metadata.json"),companion);
-            new PreparedAssetManifest([new(PreparedOrdinaryMagicBattle.AssetId,"battle.json",package.Length,Convert.ToHexStringLower(SHA256.HashData(package))),
+            new PreparedAssetManifest([new(PreparedDefaultAbilityBattle.AssetId,"battle.json",package.Length,Convert.ToHexStringLower(SHA256.HashData(package))),
                 new(new(metadata.PackageId),"metadata.json",companion.Length,Convert.ToHexStringLower(SHA256.HashData(companion)))])
                 .SaveToFile(Path.Combine(root,PreparedAssetManifest.FileName));
             action(root);

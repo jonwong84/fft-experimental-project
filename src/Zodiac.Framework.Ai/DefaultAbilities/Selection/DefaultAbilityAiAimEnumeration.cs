@@ -5,10 +5,10 @@ namespace Zodiac.Framework.Ai;
 /// <summary>Bounded evaluation.c masks/passes and turn.c usage policy; reference 11464943bbdbd2a0af022d90cb7f10455cf911df.</summary>
 internal static class DefaultAbilityAiAimEnumeration
 {
-    internal static void ValidateRoster(OrdinaryMagicBattleState state, BattleUnitId actorId)
+    internal static void ValidateRoster(DefaultAbilityBattleState state, BattleUnitId actorId)
     {
         var units = state.Units;
-        if (state.ClockPhase != OrdinaryMagicClockPhase.UnitTurn || units.IsDefaultOrEmpty || units.Length > 21 ||
+        if (state.ClockPhase != DefaultAbilityClockPhase.UnitTurn || units.IsDefaultOrEmpty || units.Length > 21 ||
             !units.Any(u => u.Id == actorId) || units.Any(u => u.Occupant.SourceOrder is < 0 or > 20 ||
                 u.Current.Statuses.Dead || u.Current.Statuses.Charging || !state.Definition.Map.TryGetTile(u.Position, out _)) ||
             units.Select(u => u.Id).Distinct().Count() != units.Length ||
@@ -56,7 +56,7 @@ internal static class DefaultAbilityAiAimEnumeration
         var passes = ImmutableArray.CreateBuilder<DefaultAbilityAiAimPass>();
         if (useful.IsEmpty) return Outcome();
 
-        var choice = OrdinaryMagicBattle.Choice(work.State, work.Actor.Id, work.Spell.Id);
+        var choice = DefaultAbilityBattle.Choice(work.State, work.Actor.Id, work.Spell.Id);
         if (!choice.Accepted || choice.Outcome?.Range is null ||
             behavior.FollowTarget && choice.Outcome.Mode != SpellTargetChoiceMode.UnitOrTile)
             throw new NotSupportedException("The fresh selectable range is unavailable.");

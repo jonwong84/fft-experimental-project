@@ -7,7 +7,7 @@ public sealed class DefaultAbilityAiUsefulnessTests
 {
     private static DefaultAbilityAiConsidered Ability => DefaultAbilityAiParameters.Load(DefaultAbilityAiParameterTests.Entry(), new(), new(Usable: true));
     internal static MagicCurrentUnit Unit => new(new("target"), 5, 70, new(MagicZodiacSign.Aries, IsMale: true), new(), new(),
-        Equipment: OrdinaryMagicBattleDefinition.BareEquipment, Mp: 50);
+        Equipment: DefaultAbilityBattleDefinition.BareEquipment, Mp: 50);
 
     [Theory]
     [InlineData(true, DefaultAbilityAiEffect.Useful)]

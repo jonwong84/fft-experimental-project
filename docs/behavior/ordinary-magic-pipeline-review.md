@@ -141,7 +141,7 @@ evasion/proc draws; the new cast regression uses nine draws for that pair.
 
 Stored-aim/ready-plan and pure Execute publication queries delegate to these
 same owners. Preview remains a query mode; the live host's complete preview
-experience is not claimed here. `OrdinaryMagicCastExecution.Resolve` invokes
+experience is not claimed here. `DefaultAbilityCastExecution.Resolve` invokes
 Execute at readiness, spends the one proposed cost, and applies finalized
 frames using the admitted HP/status kernel. Only its formula/resource/result
 edges were reviewed here; queue, charge lifecycle, rewards and learning need

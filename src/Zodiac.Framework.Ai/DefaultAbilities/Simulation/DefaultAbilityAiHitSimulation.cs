@@ -55,7 +55,7 @@ internal static class DefaultAbilityAiHitSimulation
         foreach (var frame in frames.Where(f => accounting.IncludedTargets.Contains(f.TargetId)))
         {
             int index = units.IndexOf(units.Single(u => u.Id == frame.TargetId));
-            var applied = OrdinaryMagicHitApplication.Project(units[index].Current, units[index].Vitals, frame.Result);
+            var applied = DefaultAbilityHitApplication.Project(units[index].Current, units[index].Vitals, frame.Result);
             units = units.SetItem(index, units[index] with { Current = applied.Current, Vitals = applied.Vitals });
         }
         return new(units, frames, accounting, projected.RngState);

@@ -12,26 +12,26 @@ namespace Zodiac.Framework.Ai.Tests;
 public sealed class DefaultAbilityAiReadyTests
 {
     internal static readonly BattleUnitId Mage=new("mage"), Guard=new("guard");
-    internal static (PreparedOrdinaryMagicBattle Content, DefaultAbilityAiCatalog Catalog, OrdinaryMagicBattleState State) Setup(
+    internal static (PreparedDefaultAbilityBattle Content, DefaultAbilityAiCatalog Catalog, DefaultAbilityBattleState State) Setup(
         byte area=1, ushort mp=75, byte faith=70, bool heal=false, bool learn=false, byte charge=4, ushort? targetHp=null)
     {
-        var d=AuthoredOrdinaryMagic.Document() with {SchemaVersion=3,MetadataPackageId="test:package/spell-ai"};
+        var d=AuthoredDefaultAbility.Document() with {SchemaVersion=3,MetadataPackageId="test:package/spell-ai"};
         d.Spells[0]=d.Spells[0] with {Targeting=d.Spells[0].Targeting with {Area=area},ChargeTime=charge,
             Formula=heal?new(FaithMagicAmountKind.Healing,14,MagicElement.None,false):d.Spells[0].Formula};
         d.Units[0]=d.Units[0] with {LearnedPrimarySlots=[0],Mp=mp,Faith=faith};
         d.Units[1]=d.Units[1] with {LearnedPrimarySlots=[],Team=heal?SpellTargetTeam.Blue:SpellTargetTeam.Red,Hp=targetHp??(heal?(ushort)30:(ushort)200)};
         var behavior=heal?new AiAbilityBehavior(TargetsAllies:true,AffectsHp:true,AffectedBySilence:true,AffectedByFaith:true,FollowTarget:true,Reflectable:true):DefaultAbilityAiListTests.FireBehavior;
         var meta=new ContentPackage(d.MetadataPackageId!,"test:profile/ai",ContentPackageKind.Baseline,null,[],
-            [new(new("test:skillset/magic"),[new(0,new(AuthoredOrdinaryMagic.Fire))])],
-            [new(new(AuthoredOrdinaryMagic.Fire),50,100,1,behavior,true,learnOnHit:learn)]);
-        var content=PreparedOrdinaryMagicBattle.Create(d,meta);
-        var spell=content.Definition.Spells[new(AuthoredOrdinaryMagic.Fire)];
+            [new(new("test:skillset/magic"),[new(0,new(AuthoredDefaultAbility.Fire))])],
+            [new(new(AuthoredDefaultAbility.Fire),50,100,1,behavior,true,learnOnHit:learn)]);
+        var content=PreparedDefaultAbilityBattle.Create(d,meta);
+        var spell=content.Definition.Spells[new(AuthoredDefaultAbility.Fire)];
         var catalog=new DefaultAbilityAiCatalog(content.Definition,
-            new Dictionary<AssetId,DefaultAbilityAiSkillset>{{new(AuthoredOrdinaryMagic.Wizard),new(11,new("test:skillset/magic"),[new(0,spell,behavior,true)])}});
-        return(content,catalog,OrdinaryMagicBattle.Apply(content.Definition.Start(),new OrdinaryMagicCommand.Advance()).State);
+            new Dictionary<AssetId,DefaultAbilityAiSkillset>{{new(AuthoredDefaultAbility.Wizard),new(11,new("test:skillset/magic"),[new(0,spell,behavior,true)])}});
+        return(content,catalog,DefaultAbilityBattle.Apply(content.Definition.Start(),new DefaultAbilityCommand.Advance()).State);
     }
 
-    internal static string Receipt(OrdinaryMagicBattleState state)=>JsonSerializer.Serialize(new {
+    internal static string Receipt(DefaultAbilityBattleState state)=>JsonSerializer.Serialize(new {
         state.Revision,state.Turns.Ticks,state.Turns.RngState,state.Turns.ActiveUnitId,state.LearningReport,state.Finished,
         units=state.Units.Select(u=>new {u.Id,u.Position,u.Facing,u.Current,u.Vitals,u.RawStats,u.Level,u.Experience,u.OutcomeMarker,
             career=u.JobPoints.OrderBy(p=>p.Key.Value).Select(p=>new {id=p.Key.Value,p.Value}),
@@ -116,12 +116,12 @@ public sealed class DefaultAbilityAiReadyTests
     {
         var low=Setup(mp:5);
         Assert.False(DefaultAbilityAiReadyQuery.Evaluate(low.State,low.Catalog,new(Mage,0,new(4,2,0),[]),new(57,0)).Accepted);
-        var x=Setup(learn:true);var state=OrdinaryMagicBattle.Apply(x.State,new OrdinaryMagicCommand.Cast(Mage,new(AuthoredOrdinaryMagic.Fire),new(4,2,0))).State;
+        var x=Setup(learn:true);var state=DefaultAbilityBattle.Apply(x.State,new DefaultAbilityCommand.Cast(Mage,new(AuthoredDefaultAbility.Fire),new(4,2,0))).State;
         Assert.False(DefaultAbilityAiReadyQuery.Evaluate(state,x.Catalog,new(Mage,0,new(4,2,0),[]),new(57,0)).Accepted);
-        state=OrdinaryMagicBattle.Apply(state,new OrdinaryMagicCommand.Wait(Mage)).State;
-        state=OrdinaryMagicBattle.Apply(state,new OrdinaryMagicCommand.Advance()).State;
-        state=OrdinaryMagicBattle.Apply(state,new OrdinaryMagicCommand.Wait(Guard)).State;
-        state=OrdinaryMagicBattle.Apply(state,new OrdinaryMagicCommand.Advance()).State;
+        state=DefaultAbilityBattle.Apply(state,new DefaultAbilityCommand.Wait(Mage)).State;
+        state=DefaultAbilityBattle.Apply(state,new DefaultAbilityCommand.Advance()).State;
+        state=DefaultAbilityBattle.Apply(state,new DefaultAbilityCommand.Wait(Guard)).State;
+        state=DefaultAbilityBattle.Apply(state,new DefaultAbilityCommand.Advance()).State;
         Assert.NotNull(state.LearningReport);
         Assert.False(DefaultAbilityAiReadyQuery.Evaluate(state,x.Catalog,new(Mage,0,new(4,2,0),[]),new(57,0)).Accepted);
     }

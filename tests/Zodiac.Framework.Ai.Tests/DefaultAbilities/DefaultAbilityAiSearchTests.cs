@@ -9,7 +9,7 @@ public sealed class DefaultAbilityAiSearchTests
 {
     private static readonly BattleUnitId Mage = new("mage"), Guard = new("guard"), Other = new("other");
 
-    private static DefaultAbilityAiSearchResult Query(DefaultAbilityAiCatalog catalog, OrdinaryMagicBattleState state,
+    private static DefaultAbilityAiSearchResult Query(DefaultAbilityAiCatalog catalog, DefaultAbilityBattleState state,
         RandomState? rng = null) => DefaultAbilityAiSearchQuery.Evaluate(state, catalog, new(Mage, 0), rng ?? new(57, 0));
 
     [Theory]
@@ -112,7 +112,7 @@ public sealed class DefaultAbilityAiSearchTests
         Assert.Equal((ushort)84, result.Outcome.Best.Candidate.Outcome.Units.Single(u => u.Id == Guard).Vitals.Hp);
     }
 
-    internal static (DefaultAbilityAiCatalog Catalog, OrdinaryMagicBattleState State) Congested(bool healing)
+    internal static (DefaultAbilityAiCatalog Catalog, DefaultAbilityBattleState State) Congested(bool healing)
     {
         var x = DefaultAbilityAiReadyTests.Setup(charge: 127, heal: healing);
         var d = x.Content.Definition;
@@ -124,12 +124,12 @@ public sealed class DefaultAbilityAiSearchTests
             Occupant = d.Units[1].Occupant with { UnitId = new("peer" + i), SourceOrder = i, Position = panels[i - 1] },
             Current = d.Units[1].Current with { UnitId = new("peer" + i) },
             BaseAttributes = d.Units[1].BaseAttributes with { Speed = 50 }, RawStats = d.Units[1].RawStats with { Speed = 819200 } });
-        var definition = new OrdinaryMagicBattleDefinition(d.Map, new[] { mage }.Concat(peers), d.Spells.Values, d.Jobs,
+        var definition = new DefaultAbilityBattleDefinition(d.Map, new[] { mage }.Concat(peers), d.Spells.Values, d.Jobs,
             d.JobThresholds, d.InitialRng, d.MovementGround, d.Learning);
         var catalog = new DefaultAbilityAiCatalog(definition, x.Catalog.PrimaryByJob);
         var start = definition.Start();
         return (catalog, start.With(turns: new(start.Turns.Units.Select(u => new TurnUnitState(u.Id, u.Speed,
-            u.Id == Mage ? 0 : 99, u.TieKey, u.Id == Mage)), new(57, 0), 10, TurnCyclePhase.UnitTurn), phase: OrdinaryMagicClockPhase.UnitTurn));
+            u.Id == Mage ? 0 : 99, u.TieKey, u.Id == Mage)), new(57, 0), 10, TurnCyclePhase.UnitTurn), phase: DefaultAbilityClockPhase.UnitTurn));
     }
 
     [Theory]
@@ -182,8 +182,8 @@ public sealed class DefaultAbilityAiSearchTests
         var (catalog, state) = DefaultAbilityAiAimTests.Setup();
         var request = new DefaultAbilityAiSearchRequest(change == "actor" ? new("missing") : Mage, change == "slot" ? 1 : 0);
         if (change == "foreign") catalog = DefaultAbilityAiAimTests.Setup().Catalog;
-        if (change == "pending") state = OrdinaryMagicBattle.Apply(state,
-            new OrdinaryMagicCommand.Cast(Mage, new("test:spell/fire"), new(4, 2, 0))).State;
+        if (change == "pending") state = DefaultAbilityBattle.Apply(state,
+            new DefaultAbilityCommand.Cast(Mage, new("test:spell/fire"), new(4, 2, 0))).State;
         var rng = new RandomState(57, 9);
         var result = DefaultAbilityAiSearchQuery.Evaluate(state, catalog, request, rng);
         Assert.False(result.Accepted);

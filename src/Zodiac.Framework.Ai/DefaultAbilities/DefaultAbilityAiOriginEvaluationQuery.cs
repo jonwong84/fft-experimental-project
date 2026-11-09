@@ -6,7 +6,7 @@ namespace Zodiac.Framework.Ai;
 /// <remarks>ZOD-439; evaluation.c at 11464943bbdbd2a0af022d90cb7f10455cf911df.</remarks>
 public static class DefaultAbilityAiOriginEvaluationQuery
 {
-    public static DefaultAbilityAiOriginEvaluationResult Evaluate(OrdinaryMagicBattleState state, DefaultAbilityAiCatalog catalog,
+    public static DefaultAbilityAiOriginEvaluationResult Evaluate(DefaultAbilityBattleState state, DefaultAbilityAiCatalog catalog,
         DefaultAbilityAiOriginEvaluationRequest request, DefaultAbilityAiMovementProfile profile, RandomState rng)
     {
         ArgumentNullException.ThrowIfNull(state);

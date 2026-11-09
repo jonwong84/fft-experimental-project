@@ -9,7 +9,7 @@ It does not enable additional ability families or an autonomous magic AI.
 ## Start here
 
 - Player spell selection and actual commands:
-  [OrdinaryMagicBattle.Choice / Apply](../../src/Zodiac.Framework/Battle/Combat/Magic/Execution/OrdinaryMagicBattle.cs).
+  [DefaultAbilityBattle.Choice / Apply](../../src/Zodiac.Framework/Battle/Combat/Magic/Execution/DefaultAbilityBattle.cs).
 - Complete supported physical-roster decision:
   [AiDecisionMaker.Decide](../../src/Zodiac.Framework.Ai/AiDecisionMaker.cs).
 - Checked actual AI command:
@@ -29,21 +29,21 @@ It does not enable additional ability families or an autonomous magic AI.
 
 ## Walk one player cast
 
-The host's [OrdinaryMagicInteraction](../../src/Fft.Client/Presentation/OrdinaryMagicInteraction.cs)
-handles input/selection modes. `OrdinaryMagicBattle.Choice` delegates to
+The host's [DefaultAbilityInteraction](../../src/Fft.Client/Presentation/DefaultAbilityInteraction.cs)
+handles input/selection modes. `DefaultAbilityBattle.Choice` delegates to
 `SpellTargetChoiceQuery.Evaluate`, which computes selectable range and the
-choice mode. Confirming a cast submits `OrdinaryMagicCommand.Cast` through
-`OrdinaryMagicBattle.Apply`; command admission and atomic rejection remain there.
+choice mode. Confirming a cast submits `DefaultAbilityCommand.Cast` through
+`DefaultAbilityBattle.Apply`; command admission and atomic rejection remain there.
 
 The cast branch now reads
-`OrdinaryMagicCastPreparation.PrepareAndQueue`. Open
-[that file](../../src/Zodiac.Framework/Battle/Combat/Magic/Execution/OrdinaryMagicCastPreparation.cs)
+`DefaultAbilityCastPreparation.PrepareAndQueue`. Open
+[that file](../../src/Zodiac.Framework/Battle/Combat/Magic/Execution/DefaultAbilityCastPreparation.cs)
 to follow learned grants and resource availability, choice/aim capture, shared
-`CombatRules.OrdinaryMagicPreparation`, ACT commitment and pending-plan creation.
-An immediate plan calls `OrdinaryMagicCastExecution.Resolve`; a delayed plan is
-ticked by the existing `OrdinaryMagicBattle.Advance` lifecycle before resolution.
+`CombatRules.DefaultAbilityPreparation`, ACT commitment and pending-plan creation.
+An immediate plan calls `DefaultAbilityCastExecution.Resolve`; a delayed plan is
+ticked by the existing `DefaultAbilityBattle.Advance` lifecycle before resolution.
 
-At readiness, [OrdinaryMagicCastExecution](../../src/Zodiac.Framework/Battle/Combat/Magic/Execution/OrdinaryMagicCastExecution.cs)
+At readiness, [DefaultAbilityCastExecution](../../src/Zodiac.Framework/Battle/Combat/Magic/Execution/DefaultAbilityCastExecution.cs)
 checks resources, resolves the stored aim, builds the affected area, collects
 recipients and invokes `MagicCastQuery.ResolveTargets`. The shared
 [FaithMagicFormula](../../src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicFormula.cs)
@@ -112,7 +112,7 @@ dispatch and command execution remain separate.
   current ordinary subset. Return1 from the dispatcher means no panels were
   marked, not Mathematics specifically. Range and area result enums differ.
 - `action_prepare`,0x8017C45C, and wrapper0x8017C3DC: shared primary preparation
-  and action-state proposal, currently `OrdinaryMagicPreparation`. Jump/items/
+  and action-state proposal, currently `DefaultAbilityPreparation`. Jump/items/
   other menu branches remain separately gated.
 - `origin_aim_tiles_evaluate`,0x8019CD9C: original candidate enumeration, not the
   stored-aim resolver. [The search study](../behavior/ordinary-spell-aim-search.md)
@@ -135,7 +135,7 @@ For range/height/area geometry, open `SpellTargetGeometry`. For following and
 choice policy, open `SpellTargetChoiceQuery`, `SpellAimCapture` and
 `SpellAimResolver`. For recipient ordering/team mutations, open
 `SpellTargetCollection`. For an ordinary cast's actual lifecycle, open
-`OrdinaryMagicCastPreparation` and `OrdinaryMagicCastExecution`. Formula math
+`DefaultAbilityCastPreparation` and `DefaultAbilityCastExecution`. Formula math
 and combat result rules stay in their existing shared owners, independent of
 those targeting stages. AI usefulness belongs in `Selection/`; candidate timing
 and hypotheses in `Simulation/`; accounting/absolute scores in `Scoring/`.

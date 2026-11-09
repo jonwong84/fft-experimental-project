@@ -8,7 +8,7 @@ namespace Zodiac.Content.BattleSetup;
 /// <summary>Copy the existing immutable metadata into the definition-bound AI query; never infer missing secondary learning.</summary>
 public static class PreparedDefaultAbilityAi
 {
-    public static DefaultAbilityAiCatalog CreateCatalog(PreparedOrdinaryMagicBattle prepared,
+    public static DefaultAbilityAiCatalog CreateCatalog(PreparedDefaultAbilityBattle prepared,
         IReadOnlyDictionary<SkillsetId, byte>? originalSkillsetIds = null)
     {
         ArgumentNullException.ThrowIfNull(prepared);

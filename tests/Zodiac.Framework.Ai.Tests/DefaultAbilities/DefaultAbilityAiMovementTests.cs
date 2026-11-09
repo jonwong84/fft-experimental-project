@@ -9,7 +9,7 @@ public sealed class DefaultAbilityAiMovementTests
 {
     private static readonly BattleUnitId Mage = new("mage"), Guard = new("guard");
 
-    private static DefaultAbilityAiMovementResult Query(DefaultAbilityAiCatalog catalog, OrdinaryMagicBattleState state,
+    private static DefaultAbilityAiMovementResult Query(DefaultAbilityAiCatalog catalog, DefaultAbilityBattleState state,
         RandomState? rng = null, DefaultAbilityAiMovementProfile? profile = null) =>
         DefaultAbilityAiMovementQuery.Evaluate(state, catalog, new(Mage, 0), profile ?? new(true), rng ?? new(57, 0));
 
@@ -80,10 +80,10 @@ public sealed class DefaultAbilityAiMovementTests
         var definitions = d.Units.Select(u => u with { Occupant = u.Occupant with {
             InitialTeam = u.Current.UnitId == Mage ? SpellTargetTeam.Red : SpellTargetTeam.Blue,
             CurrentTeam = u.Current.UnitId == Mage ? SpellTargetTeam.Red : SpellTargetTeam.Blue } }).ToArray();
-        var definition = new OrdinaryMagicBattleDefinition(d.Map, definitions, d.Spells.Values, d.Jobs,
+        var definition = new DefaultAbilityBattleDefinition(d.Map, definitions, d.Spells.Values, d.Jobs,
             d.JobThresholds, d.InitialRng, d.MovementGround, d.Learning);
         var swapped = new DefaultAbilityAiCatalog(definition, catalog.PrimaryByJob);
-        var state = OrdinaryMagicBattle.Apply(definition.Start(), new OrdinaryMagicCommand.Advance()).State;
+        var state = DefaultAbilityBattle.Apply(definition.Start(), new DefaultAbilityCommand.Advance()).State;
         var result = Query(swapped, state, new(seed, 0));
         Assert.True(result.Accepted, result.Rejection);
         var outcome = result.Outcome!;

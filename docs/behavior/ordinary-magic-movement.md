@@ -26,7 +26,7 @@ Rebuild legal destinations/path from current authoritative occupants; ally
 transit is permitted, occupied endpoints and enemy transit are not. Reject
 unsupported maps and exhausted publication counters without partial work.
 
-`OrdinaryMagicMovement.Query` now shares the existing internal flat graph and
+`DefaultAbilityMovement.Query` now shares the existing internal flat graph and
 backtrace kernel. Its new concrete input entry avoids fabricating sword combat
 stats or adding a public replacement interface. Existing sword/roster callers
 retain their entry points and the same algorithm. Confirmed movement requires

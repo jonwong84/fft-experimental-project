@@ -8,7 +8,7 @@ namespace Zodiac.Framework.Ai.Tests;
 public sealed class DefaultAbilityAiPassSearchTests
 {
     private static readonly BattleUnitId Mage = new("mage"), Guard = new("guard");
-    private static DefaultAbilityAiPassSearchResult Query(DefaultAbilityAiCatalog catalog, OrdinaryMagicBattleState state,
+    private static DefaultAbilityAiPassSearchResult Query(DefaultAbilityAiCatalog catalog, DefaultAbilityBattleState state,
         DefaultAbilityAiAimPassKind pass = DefaultAbilityAiAimPassKind.UnitsStillAtDeadline, RandomState? rng = null) =>
         DefaultAbilityAiPassSearchQuery.Evaluate(state, catalog, new(Mage, 0, pass), new(true), rng ?? new(57, 0));
 
@@ -209,10 +209,10 @@ public sealed class DefaultAbilityAiPassSearchTests
         var mage = d.Units[0] with { Move = 0, Occupant = d.Units[0].Occupant with { Position = new(0, 0, 0) } };
         var guard = d.Units[1] with { Occupant = d.Units[1].Occupant with { Position = new(2, 0, 0) },
             BaseAttributes = d.Units[1].BaseAttributes with { Speed = 1 }, RawStats = d.Units[1].RawStats with { Speed = 16384 } };
-        var definition = new OrdinaryMagicBattleDefinition(map, [mage, guard], d.Spells.Values, d.Jobs,
+        var definition = new DefaultAbilityBattleDefinition(map, [mage, guard], d.Spells.Values, d.Jobs,
             d.JobThresholds, d.InitialRng, d.MovementGround, d.Learning);
         var catalog = new DefaultAbilityAiCatalog(definition, setup.Catalog.PrimaryByJob);
-        var state = OrdinaryMagicBattle.Apply(definition.Start(), new OrdinaryMagicCommand.Advance()).State;
+        var state = DefaultAbilityBattle.Apply(definition.Start(), new DefaultAbilityCommand.Advance()).State;
         var result = Query(catalog, state);
         Assert.True(result.Accepted, result.Rejection);
         var trace = Assert.Single(result.Outcome!.Traces);
@@ -270,11 +270,11 @@ public sealed class DefaultAbilityAiPassSearchTests
         var d = setup.State.Definition;
         var spell = d.Spells.Values.Single();
         spell = spell with { MpCost = 0, Spell = spell.Spell with { Power = 0 } };
-        var definition = new OrdinaryMagicBattleDefinition(d.Map, d.Units, [spell], d.Jobs, d.JobThresholds,
+        var definition = new DefaultAbilityBattleDefinition(d.Map, d.Units, [spell], d.Jobs, d.JobThresholds,
             d.InitialRng, d.MovementGround, d.Learning);
         var catalog = new DefaultAbilityAiCatalog(definition, setup.Catalog.PrimaryByJob.Select(p => KeyValuePair.Create(p.Key,
             p.Value with { Slots = p.Value.Slots.Select(s => s with { Spell = spell }).ToImmutableArray() })));
-        var state = OrdinaryMagicBattle.Apply(definition.Start(), new OrdinaryMagicCommand.Advance()).State;
+        var state = DefaultAbilityBattle.Apply(definition.Start(), new DefaultAbilityCommand.Advance()).State;
         var result = Query(catalog, state);
         Assert.True(result.Accepted, result.Rejection);
         var outcome = result.Outcome!;

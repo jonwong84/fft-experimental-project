@@ -6,7 +6,7 @@ namespace Zodiac.Framework.Ai;
 /// <remarks>ZOD-440; evaluation.c at 11464943bbdbd2a0af022d90cb7f10455cf911df.</remarks>
 public static class DefaultAbilityAiPassSearchQuery
 {
-    public static DefaultAbilityAiPassSearchResult Evaluate(OrdinaryMagicBattleState state, DefaultAbilityAiCatalog catalog,
+    public static DefaultAbilityAiPassSearchResult Evaluate(DefaultAbilityBattleState state, DefaultAbilityAiCatalog catalog,
         DefaultAbilityAiPassSearchRequest request, DefaultAbilityAiMovementProfile profile, RandomState rng)
     {
         ArgumentNullException.ThrowIfNull(state);

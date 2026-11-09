@@ -7,7 +7,7 @@ namespace Zodiac.Framework.Ai;
 /// <remarks>ZOD-437; turn.c/evaluation.c at 11464943bbdbd2a0af022d90cb7f10455cf911df.</remarks>
 public static class DefaultAbilityAiMovementQuery
 {
-    public static DefaultAbilityAiMovementResult Evaluate(OrdinaryMagicBattleState state, DefaultAbilityAiCatalog catalog,
+    public static DefaultAbilityAiMovementResult Evaluate(DefaultAbilityBattleState state, DefaultAbilityAiCatalog catalog,
         DefaultAbilityAiMovementRequest request, DefaultAbilityAiMovementProfile profile, RandomState rng)
     {
         ArgumentNullException.ThrowIfNull(state);
@@ -48,7 +48,7 @@ public static class DefaultAbilityAiMovementQuery
         var refresh = DecisionFlagsRefresh(work, rng);
         var targets = BuildTargets(work);
         var focus = AiRosterNearest.FindEligibleEnemy(targets, targets.Units.Select(u => u.UnitId));
-        var geometry = OrdinaryMagicMovement.QueryFocused(state, actorId, focus.TargetId);
+        var geometry = DefaultAbilityMovement.QueryFocused(state, actorId, focus.TargetId);
         if (!geometry.Accepted) return Reject("Movement geometry rejected: " + geometry.Rejection);
         // Bare Attack contributes range1; currently affordable initialized offensive spells can lower it.
         int minimumRange = work.Lists[actorId].Entries

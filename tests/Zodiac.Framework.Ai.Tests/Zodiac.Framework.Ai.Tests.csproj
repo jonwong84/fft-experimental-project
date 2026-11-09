@@ -6,7 +6,7 @@
     <IsPackable>false</IsPackable>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="../Support/AuthoredOrdinaryMagic.cs" Link="Support/AuthoredOrdinaryMagic.cs" />
+    <Compile Include="../Support/AuthoredDefaultAbility.cs" Link="Support/AuthoredDefaultAbility.cs" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="xunit" />
     <PackageReference Include="xunit.runner.visualstudio" />

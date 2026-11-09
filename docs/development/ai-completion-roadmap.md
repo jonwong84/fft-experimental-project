@@ -36,7 +36,9 @@ rank insertion/reset and a narrow raw-input context. The
 state/catalog and moves profile into the request, retaining explicit RNG and fresh
 admission. The [ZOD-444 naming guide](../architecture/default-ability-pathways.md) now uses
 DefaultAbility for the default loader family and records anticipated special-menu
-prefixes, with existing support gates unchanged. The owner will review before further development. Full spell decisions,
+prefixes, with existing support gates unchanged. The
+[ZOD-445 execution rename](../architecture/default-ability-execution-names.md)
+aligns battle, content and presentation type names with the same family. The owner will review before further development. Full spell decisions,
 autonomous magic and the review gates remain open.
 
 ## Required readability review after the full port

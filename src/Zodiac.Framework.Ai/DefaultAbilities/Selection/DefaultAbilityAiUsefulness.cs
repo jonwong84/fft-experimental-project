@@ -31,7 +31,7 @@ public static class DefaultAbilityAiUsefulness
         return DefaultAbilityAiEffect.Useful;
     }
 
-    public static ImmutableArray<DefaultAbilityAiUsefulTarget> Filter(OrdinaryMagicBattleState state,
+    public static ImmutableArray<DefaultAbilityAiUsefulTarget> Filter(DefaultAbilityBattleState state,
         BattleUnitId actorId, DefaultAbilityAiConsidered ability)
     {
         ArgumentNullException.ThrowIfNull(state);
