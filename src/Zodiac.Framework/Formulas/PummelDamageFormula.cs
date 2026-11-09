@@ -26,7 +26,7 @@ internal static class PummelDamageFormula
         {
             bonus = random.FormulaRoll();
         }
-        int damage = CalculateDamage(parameters, context.PhysicalAttack, random.FormulaRoll(), bonus);
+        int damage = CalculateDamage(parameters, context.PhysicalAttack!.Value, random.FormulaRoll(), bonus);
         return new(damage, critical, critical, random.State);
     }
 

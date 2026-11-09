@@ -35,11 +35,11 @@ public sealed class PhysicalFormulaContentTests
         json["abilities"]![0]!["formula"]=50;
         var changed=TargetedAbilityContentPackage.ReadJson(json.ToJsonString());var ability=changed.Abilities[0];
         Assert.Equal(0,ability.Formula.Parameters.X);Assert.Equal(4,ability.Formula.Parameters.Y);Assert.Equal(9,ability.Formula.CalculateDamage(5,16384));
-        Assert.Equal(AbilityFormulaId.RandomPa,package.Abilities[0].Formula.Id);
+        Assert.Equal(AbilityFormulaId.RandomPowerTimesPa,package.Abilities[0].Formula.Id);
     }
 
     [Theory]
-    [InlineData(AbilityFormulaId.RandomPa)]
+    [InlineData(AbilityFormulaId.RandomPowerTimesPa)]
     [InlineData(AbilityFormulaId.PummelFormula)]
     public void Current_content_schemas_reject_Z_instead_of_losing_it_on_save(AbilityFormulaId id)
     {

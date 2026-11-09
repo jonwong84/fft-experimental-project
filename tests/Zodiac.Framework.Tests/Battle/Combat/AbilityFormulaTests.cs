@@ -52,7 +52,7 @@ public sealed class AbilityFormulaTests
     }
 
     [Theory]
-    [InlineData(AbilityFormulaId.RandomPa)]
+    [InlineData(AbilityFormulaId.RandomPowerTimesPa)]
     [InlineData(AbilityFormulaId.PummelFormula)]
     public void Unused_Z_is_retained_in_definition_without_changing_current_handler_results(AbilityFormulaId id)
     {
@@ -72,12 +72,12 @@ public sealed class AbilityFormulaTests
     [Fact]
     public void Missing_or_unsupported_evaluation_inputs_fail_before_consuming_rng()
     {
-        Assert.Throws<ArgumentNullException>(() => new AbilityFormula(AbilityFormulaId.RandomPa, null!));
+        Assert.Throws<ArgumentNullException>(() => new AbilityFormula(AbilityFormulaId.RandomPowerTimesPa, null!));
         Assert.Throws<ArgumentOutOfRangeException>(() => new AbilityFormulaContext(0, 70, 70, AbilityFormulaMode.Execution));
         Assert.Throws<ArgumentOutOfRangeException>(() => new AbilityFormulaContext(5, 9, 70, AbilityFormulaMode.Execution));
         Assert.Throws<ArgumentOutOfRangeException>(() => new AbilityFormulaContext(5, 70, 101, AbilityFormulaMode.Execution));
         Assert.Throws<ArgumentOutOfRangeException>(() => new AbilityFormulaContext(5, 70, 70, (AbilityFormulaMode)99));
-        var formula = new AbilityFormula(AbilityFormulaId.RandomPa, new(0, 4));
+        var formula = new AbilityFormula(AbilityFormulaId.RandomPowerTimesPa, new(0, 4));
         Assert.Throws<ArgumentNullException>(() => formula.Evaluate(null!, new(0, ulong.MaxValue)));
     }
 
@@ -88,7 +88,7 @@ public sealed class AbilityFormulaTests
     {
         var context = new AbilityFormulaContext(5, 70, 70, mode);
         var entry = new RandomState(0, ulong.MaxValue);
-        var randomPa = new AbilityFormula(AbilityFormulaId.RandomPa, new(0, 4));
+        var randomPa = new AbilityFormula(AbilityFormulaId.RandomPowerTimesPa, new(0, 4));
         var sum = new AbilityFormula(AbilityFormulaId.PummelFormula, new(9, 0));
         Assert.Equal(new AbilityFormulaResult(15, false, false, entry), randomPa.Evaluate(context, entry));
         Assert.Equal(new AbilityFormulaResult(35, false, false, entry), sum.Evaluate(context, entry));
@@ -97,7 +97,7 @@ public sealed class AbilityFormulaTests
     [Fact]
     public void Dispatcher_returns_uncapped_damage_while_combat_rules_finalize_the_result()
     {
-        var formula = new AbilityFormula(AbilityFormulaId.RandomPa, new(0, 255));
+        var formula = new AbilityFormula(AbilityFormulaId.RandomPowerTimesPa, new(0, 255));
         var context = new AbilityFormulaContext(99, 70, 70, AbilityFormulaMode.Preview);
         var entry = new RandomState(1, 0);
         var result = formula.Evaluate(context, entry);

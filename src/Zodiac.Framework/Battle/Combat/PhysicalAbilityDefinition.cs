@@ -31,6 +31,8 @@ public sealed record PhysicalAbilityDefinition
         if (string.IsNullOrWhiteSpace(id.Value)) throw new ArgumentException("An explicit ability ID is required.", nameof(id));
         if (range is < 1 or > 255) throw new ArgumentOutOfRangeException(nameof(range));
         ArgumentNullException.ThrowIfNull(formula);
+        if (formula.Id is not (AbilityFormulaId.RandomPowerTimesPa or AbilityFormulaId.PummelFormula))
+            throw new NotSupportedException("The physical delivery profiles require a supported physical formula.");
         Id = id; Range = range; Evadeable = evadeable; DirectTrajectory = directTrajectory; Formula = formula;
     }
 }

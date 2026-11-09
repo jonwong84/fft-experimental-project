@@ -1,4 +1,5 @@
 using Zodiac.Framework.Random;
+using Zodiac.Framework.Formulas;
 
 namespace Zodiac.Framework;
 
@@ -19,7 +20,8 @@ public static class FaithMagicFormula
         var formula = request.Formula;
         if (!Enum.IsDefined(formula.Mode)) throw new ArgumentOutOfRangeException(nameof(request));
         // Validate/project immutable amount inputs privately, without RNG or publishing work on a miss.
-        var projection = FaithMagicAmountFormula.ProjectWithElementsAfterHit(formula.Amount, formula.Elements);
+        var evaluated = EvaluateAmount(formula, rng);
+        var projection = evaluated.MagicProjection!;
         FaithMagicResolutionResult Reject(FaithMagicResolutionRejection reason) => new(false, reason, null, null, null, rng);
         if (request.Entry is not { FreshResultKnown: true, NoEarlierReactionsOrReflection: true, NonzeroAbilityKnown: true } ||
             formula.Accuracy != 100 || !MagicResultFinalization.Supported(formula.Profile) ||
@@ -45,7 +47,7 @@ public static class FaithMagicFormula
             }
         }
         // Rounded accuracy0 can retain hit=true here, so the source tail still runs before finalization.
-        var result = ResolveProjectedAfterHit(projection, formula.TargetIsUndead, accuracy, formula.Mode, formula.Profile, next);
+        var result = ResolveProjectedAfterHit(projection, formula.TargetIsUndead, accuracy, formula.Mode, formula.Profile, next, evaluated.MagicHp);
         if (!result.Accepted)
             return Reject(result.ProcRejection == MagicProcRejection.RandomDrawCountExhausted
                 ? FaithMagicResolutionRejection.RandomDrawCountExhausted : FaithMagicResolutionRejection.UnsupportedContext);
@@ -55,15 +57,38 @@ public static class FaithMagicFormula
     public static MagicResultCompositionResult ResolveAfterHit(FaithMagicFormulaRequest request, RandomState rng)
     {
         ArgumentNullException.ThrowIfNull(request);
-        var projection = FaithMagicAmountFormula.ProjectWithElementsAfterHit(request.Amount, request.Elements);
-        return ResolveProjectedAfterHit(projection, request.TargetIsUndead, request.Accuracy,
-            request.Mode, request.Profile, rng);
+        var evaluated = EvaluateAmount(request, rng);
+        return ResolveProjectedAfterHit(evaluated.MagicProjection!, request.TargetIsUndead, request.Accuracy,
+            request.Mode, request.Profile, rng, evaluated.MagicHp);
+    }
+
+    private static AbilityFormulaResult EvaluateAmount(FaithMagicFormulaRequest request, RandomState rng)
+    {
+        ArgumentNullException.ThrowIfNull(request.Amount);
+        var amount = request.Amount;
+        var id = amount.Kind switch
+        {
+            FaithMagicAmountKind.Damage => AbilityFormulaId.FaithMagicDamage,
+            FaithMagicAmountKind.Healing => AbilityFormulaId.FaithMagicHealing,
+            _ => throw new ArgumentOutOfRangeException(nameof(request))
+        };
+        var mode = request.Mode switch
+        {
+            MagicFormulaEvaluationMode.Execute => AbilityFormulaMode.Execution,
+            MagicFormulaEvaluationMode.Preview => AbilityFormulaMode.Preview,
+            MagicFormulaEvaluationMode.AiSimulation => AbilityFormulaMode.Ai,
+            _ => throw new ArgumentOutOfRangeException(nameof(request))
+        };
+        var formula = new AbilityFormula(id, new(0, amount.Power));
+        var context = new AbilityFormulaContext(new AbilityFormulaMagicContext(amount.MagicAttack,
+            amount.CasterFaith, amount.TargetFaith, request.TargetIsUndead, amount.Modifiers, request.Elements), mode);
+        return formula.Evaluate(context, rng);
     }
 
     // The projection-based compatibility API enters here too: one owner for the ordered tail.
     internal static MagicResultCompositionResult ResolveProjectedAfterHit(FaithMagicElementAmount projection,
         bool targetIsUndead, ushort accuracy, MagicFormulaEvaluationMode mode,
-        MagicResultFinalizationProfile? profile, RandomState rng)
+        MagicResultFinalizationProfile? profile, RandomState rng, FaithMagicHpResult? preparedHp = null)
     {
         ArgumentNullException.ThrowIfNull(projection);
         if (!Enum.IsDefined(mode)) throw new ArgumentOutOfRangeException(nameof(mode));
@@ -73,7 +98,7 @@ public static class FaithMagicFormula
             (!projection.Nullified && !profile!.EntryProcContext!.AddedEffectFlagKnownClear))
             return new(new(false, MagicResultFinalizationRejection.UnsupportedContext, null), null, rng);
 
-        var hp = FaithMagicHpRouting.Route(projection, targetIsUndead);
+        var hp = preparedHp ?? FaithMagicHpRouting.Route(projection, targetIsUndead);
         var proc = MagicConditionalProc.EvaluateAfterHit(projection, mode, profile!.EntryProcContext, rng);
         if (!proc.Accepted)
             return new(new(false, MagicResultFinalizationRejection.ProcDecisionRejected, null), null, rng, proc.Rejection);

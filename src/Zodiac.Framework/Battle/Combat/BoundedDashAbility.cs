@@ -9,7 +9,7 @@ public sealed record BoundedDashAbility
     public AssetId Id => Definition.Id;
     public BoundedDashAbility(AssetId id, AbilityFormula? formula = null)
         : this(new PhysicalAbilityDefinition(id, PhysicalAbilityDelivery.AdjacentUnit,
-            formula ?? new(AbilityFormulaId.RandomPa, new(0, 4)))) { }
+            formula ?? new(AbilityFormulaId.RandomPowerTimesPa, new(0, 4)))) { }
 
     internal static BoundedDashAbility FromDefinition(PhysicalAbilityDefinition definition) => new(definition);
 

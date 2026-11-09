@@ -6,10 +6,11 @@ and the selected task's design before editing. This file describes current state
 
 ## Next work
 
-**ZOD-443–446 are complete. Next: the owner's review, before further development.**
+**ZOD-443–447 are complete. Next: owner review of the shared physical/magic formula API, then a bounded source-traced next formula family.**
 Read [BACKLOG.md](BACKLOG.md), the
 [pathway names](architecture/default-ability-pathways.md),
 [execution names](architecture/default-ability-execution-names.md),
+[shared magic formulas](architecture/faith-magic-formula-dispatch.md),
 [context API](behavior/ordinary-spell-context.md) and
 [list/scenario study](behavior/ordinary-spell-list-integration.md).
 The caller now exposes `Evaluate(context, request, rng)`. `DefaultAbilityAiContext`
@@ -24,8 +25,9 @@ snapshot and grant no command authority. Begin review at
 `src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiContext.cs`, then the request
 and `DefaultAbilityAiAbilitySearchQuery.cs`. Other query parameter shapes are
 unchanged; former OrdinarySpell and OrdinaryMagic type/file prefixes now use DefaultAbility.
-This interim review does not complete ZOD-432 or the full AI port. Select a bounded
-shared-preparation/list child after review; no further ticket is activated now.
+This interim review does not complete ZOD-432 or the full AI port. The owner now prioritizes shared formula families; select a bounded Faith
+accuracy/percentage/status child after review. The AI list-integration child
+remains separate; no further development ticket is activated now.
 
 The study confirms general ability evaluation runs scenario1 once; scenario0
 owns the move-only baseline/fallback. Complement is a diagnostic mask, not an
@@ -66,43 +68,39 @@ three project links for the moved `AuthoredDefaultAbility` fixture are updated.
 The same magic-focused mechanics, formats/IDs and CLI commands remain; no
 general ability support or AI command integration is activated.
 
-ZOD-446 adds the owner-requested [formula dispatcher](architecture/ability-formula-dispatch.md).
-`AbilityFormula`/`AbilityFormulaId` replace the old physical definition names.
-Definitions own `AbilityFormulaParameters` (X/Y/Z); `Evaluate(context, rng)`
-dispatches to the supported0x32/0x37 handlers. `AbilityFormulaContext` owns the
-admitted PA/Brave/mode inputs; `AbilityFormulaMode` replaces PhysicalDamageMode.
-Formula-specific critical/Brave RNG moves from PhysicalDamageRules into the
-handlers; evasion, upper999 cap and whole-calculation rollback remain with the
-combat rules. Actual, preview and AI callers use the shared entry. The raw-roll
-CalculateDamage adapter remains for existing arithmetic callers. Owner review moves
-the signed16 envelope check into the handler's ValidateParameters, called during
-definition construction. Framework definitions retain unused Z; the current
-content package rejects nonzero Z to prevent serialization loss. No
-Faith/equipment/status context, new formula family
-or prepared schema expansion is activated. Owner review of this API and the AI
-flow resumes next; no further development ticket is activated.
+The [shared formula API](architecture/faith-magic-formula-dispatch.md) now admits
+physical0x32/0x37 and existing Faith-magic0x08/0x0C amount/routing work.
+`AbilityFormula` owns ID and immutable X/Y/Z, and its constructor delegates to
+`AbilityFormulaValidation`. Pummel still owns its numeric envelope; the shared
+range helper is `FormulaDamageBounds.FitsSigned16Range`. The owner's formula0x37
+names are `RandomPowerTimesPa` / `RandomPowerTimesPaDamageFormula`.
 
-Owner review now names formula0x32 `AbilityFormulaId.PummelFormula` with
-`PummelDamageFormula`. Numeric IDs, content and calculations are unchanged.
-`FormulaDamageBounds` shares the signed16 range check with the existing sword
-command/setup guards; each formula still calculates its own bounds, and Pummel
-validates at construction. The constructor now makes one call to
-`AbilityFormulaValidation.Validate`, whose dedicated dispatch routes handler-owned
-checks. The owner's `FitsSigned16Range` name and comments are preserved. See the
-[maintenance receipt](evidence/maintenance/pummel-formula-maintenance-v1.json) and
-[validation-dispatch receipt](evidence/maintenance/formula-validation-dispatch-v1.json).
+`AbilityFormulaContext` accepts either physical PA/Brave inputs or a typed
+`AbilityFormulaMagicContext`, exposing MA and attacker/target FaithValue with
+Faith/Innocent status facts. Missing-family values remain absent, and wrong-family
+evaluation rejects before formula draws. Results now include raw healing and
+opaque magic projection metadata. `FaithMagicFormula.Resolve` and `ResolveAfterHit`
+reach this dispatcher while preserving their evasion, proc/status, finalization,
+rollback and publication boundaries. Explicit mode mapping preserves both enum
+orders. No magic amount RNG is consumed; later source-owned rolls remain.
 
-Latest validation: zero-warning/error Release build, **5,306 .NET tests**
-(1,863 Framework, 1,471 AI) and **810 Python tests** pass. Existing source fixtures
-and gameplay expectations are unchanged; dispatcher/context and content-boundary
-tests cover the new API and Z policy. Latest logs/seven full TRX reports are in
-ignored `scratch/formula-validation-dispatch-*`. The
-[original receipt](evidence/maintenance/ability-formula-refactor-v1.json) records source
-fingerprints; the [follow-up receipt](evidence/maintenance/ability-formula-validation-v1.json)
-records current validation and preservation. Owner enum/test formatting is
-carried forward under the API edits; owner drafts and disabled CI remain intact.
-Historical receipts/fixtures retain their original payloads. Coverage remains
-58 planning entries and partial.
+Physical delivery definitions still admit only their existing physical IDs.
+Prepared schemas/live spell kind-power bindings and current support gates remain.
+Standalone magic evaluation is amount/HP routing only; a complete action still
+needs the certified magic resolver and normal command owners. Formulas0x09/0x0A/
+0x0B/0x0D/0x0E, wider result types, status families, inventory/menu dispatch and
+arbitrary prepared magic formula reassignment remain separate. Unused Z is
+retained by Framework but rejected by the current targeted content schemas.
+
+Latest validation: zero-warning/error Release build, **5,346 .NET tests**
+(1,903 Framework, 1,471 AI) and **810 Python tests** pass. Forty new shared-magic
+cases reuse existing source literals; prior fixture payloads and gameplay
+expectations are unchanged. Full reports/logs are in ignored
+`scratch/magic-dispatch-*`. The [receipt](evidence/combat/faith-magic-dispatch-v1.json)
+records renewed pinned-source checks, existing test parity, admitted boundaries
+and owner-edit preservation. Owner drafts/JobStats/controller formatting and
+disabled CI remain intact. Historical hash receipts retain their own snapshots;
+coverage remains58 planning entries and partial.
 
 The owner-authorized query/battle-state formatting was committed in `973b39e`.
 Its layout is preserved under the subsequent prefix substitutions. The old
@@ -152,7 +150,7 @@ The [review programme](development/documentation-review-programme.md) and
 [progress receipt](evidence/maintenance/documentation-review-progress-v1.json)
 record completed bounded batches through ZOD-436, the supporting ZOD-426
 study, bounded ZOD-437–441 implementations, ZOD-442 integration study,
-ZOD-443 context API, ZOD-444/445 naming maintenance and ZOD-446 formula refactor. ZOD-428 and complete inventory
+ZOD-443 context API, ZOD-444/445 naming maintenance, ZOD-446 formula refactor and ZOD-447 shared-magic dispatch. ZOD-428 and complete inventory
 groups remain open. Prior helper
 cross-checks and annotation corrections live
 in their behavior/evidence notes; use [history](history/README.md) for completed

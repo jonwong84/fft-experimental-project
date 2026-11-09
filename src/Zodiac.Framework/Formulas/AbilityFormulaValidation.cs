@@ -14,7 +14,9 @@ internal static class AbilityFormulaValidation
 
         switch (id)
         {
-            case AbilityFormulaId.RandomPa:
+            case AbilityFormulaId.RandomPowerTimesPa:
+            case AbilityFormulaId.FaithMagicDamage:
+            case AbilityFormulaId.FaithMagicHealing:
                 // The immutable operand object already validates the current family's input range.
                 break;
             case AbilityFormulaId.PummelFormula:
@@ -22,6 +24,15 @@ internal static class AbilityFormulaValidation
                 break;
             default:
                 throw new NotSupportedException("Unsupported ability formula.");
+        }
+    }
+
+    public static void ValidateContext(AbilityFormulaId id, AbilityFormulaContext context)
+    {
+        bool magicFormula = id is AbilityFormulaId.FaithMagicDamage or AbilityFormulaId.FaithMagicHealing;
+        if (magicFormula != (context.Magic is not null))
+        {
+            throw new ArgumentException("Select combat inputs for the assigned formula family.", nameof(context));
         }
     }
 }

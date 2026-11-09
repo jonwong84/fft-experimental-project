@@ -34,7 +34,7 @@ public sealed class TargetedAbilityDefinition
         if (!supported || chargeTicks != 0 || mpCost != 0)
             throw new NotSupportedException("Select immediate zero-MP flat Throw Stone (range4/Y2) or Dash (range1/Y4).");
         Delivery = ToDelivery(effect);
-        Definition = new(new(id.Value), Delivery, new(AbilityFormulaId.RandomPa, new(0, maximumDamageMultiplier)));
+        Definition = new(new(id.Value), Delivery, new(AbilityFormulaId.RandomPowerTimesPa, new(0, maximumDamageMultiplier)));
     }
 
     /// <summary>Explicit custom formula assignment; delivery retains the admitted original targeting and execution attributes.</summary>

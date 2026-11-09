@@ -66,7 +66,7 @@ public sealed class PhysicalDeliveryTests
     [Fact]
     public void Binding_preserves_definition_identity_and_rejects_mismatched_delivery_and_unresolved_grants()
     {
-        var formula = new AbilityFormula(AbilityFormulaId.RandomPa, new(0, 4));
+        var formula = new AbilityFormula(AbilityFormulaId.RandomPowerTimesPa, new(0, 4));
         var definition = new PhysicalAbilityDefinition(Custom, PhysicalAbilityDelivery.AdjacentUnit, formula);
         var abilities = new List<PhysicalAbilityDefinition> { definition };
         var grants = new List<TargetedAbilityUnitGrant> { new(A, [Custom], 0) };

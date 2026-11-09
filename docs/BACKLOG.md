@@ -4,7 +4,7 @@ This file owns **open work and its order**. [AGENTS.md](../AGENTS.md) owns proje
 constraints; [architecture](architecture/overview.md) owns design direction;
 [the handoff](PROJECT_HANDOFF.md) records current state and last validation.
 
-**Next checkpoint: owner review of the context API, DefaultAbility names and ZOD-446 formula dispatcher before further development.**
+**Next checkpoint: owner review of the shared physical/magic formula API after ZOD-447, then select a source-traced next formula family.**
 Prepared Fire, elemental/Cure casting, confirmed movement and
 [primary metadata binding](behavior/ordinary-spell-metadata.md) complete ZOD-387–397.
 [Learning reports, owned slots and player casting](behavior/learn-on-hit.md)
@@ -84,13 +84,17 @@ and dispatch boundaries remain unchanged.
 [ZOD-446 formula dispatch](architecture/ability-formula-dispatch.md) separates immutable
 X/Y/Z parameters from evaluation context and explicit RNG for the existing0x32/0x37
 handlers. Schemas, supported inputs and physical combat-rule boundaries remain.
+[ZOD-447 shared Faith-magic dispatch](architecture/faith-magic-formula-dispatch.md)
+now connects existing0x08/0x0C amount/routing code to the shared dispatcher with
+MA/Faith context and HP healing results. Existing evasion/proc/finalization owners
+and physical delivery gates remain; other formula IDs require their own trace.
 ZOD-432 records the required readability review after the full AI port.
 The owner's interim [routine ownership refactor](architecture/ai-routine-ownership.md)
 now exposes named methods matching the supported decision flow: `ActionSelect`,
 `GeneralSelect`, scenario/ability/rank/fallback work, and ordinary spell
 `AiActionSimulateAndScore` / `ActionHitsSimulate` / `StrikesSimulate`.
 It preserves current admission and does not close the remaining AI review work.
-There are 35 open tickets below. The 411 completed tickets, prior checkpoints and
+There are 35 open tickets below. The 412 completed tickets, prior checkpoints and
 full original ticket scopes are in the [history index](history/README.md).
 Summaries below retain current acceptance intent; linked original scopes/designs
 provide detail. This file supersedes archived priorities and next-task advice.
@@ -114,7 +118,7 @@ provide detail. This file supersedes archived priorities and next-task advice.
 
 ## Owner review checkpoint
 
-ZOD-443–446 are complete. The owner will review the context API, DefaultAbility naming, formula dispatcher and current AI flow
+ZOD-443–447 are complete. The owner will review the context API, DefaultAbility naming, shared physical/magic formula dispatcher and current AI flow
 before selecting further work. Start with
 [`DefaultAbilityAiContext`](../src/Zodiac.Framework.Ai/DefaultAbilities/DefaultAbilityAiContext.cs),
 [`DefaultAbilityAiAbilitySearchRequest`](../src/Zodiac.Framework.Ai/DefaultAbilities/Selection/DefaultAbilityAiAbilitySearchRequest.cs)
@@ -123,8 +127,10 @@ The [context notes](behavior/ordinary-spell-context.md) specify constructor/quer
 failure behavior and old-snapshot lifetime. This interim review does not close
 the full-port ZOD-432 readability ticket.
 
-After review, use the [ZOD-442 study](behavior/ordinary-spell-list-integration.md)
-to select a bounded shared-preparation/list-integration child. Full list/Attack,
+The owner now prioritizes the shared formula path. After review, select a bounded
+source-traced Faith accuracy/percentage/status family (such as0x09). The
+[ZOD-442 study](behavior/ordinary-spell-list-integration.md) still supplies the
+separate shared-preparation/list-integration follow-up. Full list/Attack,
 scenario dispatch, ranked insertion/lottery and magic command/turn activation
 remain separate; other query migrations need their own scope. Existing deferred
 domains, owner drafts/JobStats, Knight slot mapping, editor, automatic facing,

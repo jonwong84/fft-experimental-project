@@ -84,10 +84,10 @@ public sealed class PhysicalFormulaAssignmentTests
     {
         Assert.Throws<NotSupportedException>(()=>new AbilityFormula((AbilityFormulaId)1,new(0,0)));
         Assert.Throws<NotSupportedException>(()=>new AbilityFormula(AbilityFormulaId.PummelFormula,new(255,255)));
-        Assert.Throws<ArgumentOutOfRangeException>(()=>new AbilityFormula(AbilityFormulaId.RandomPa,new(0,256)));
-        Assert.Throws<ArgumentException>(()=>new AbilityFormula(AbilityFormulaId.RandomPa,new(0,4)).CalculateDamage(5,0,0));
+        Assert.Throws<ArgumentOutOfRangeException>(()=>new AbilityFormula(AbilityFormulaId.RandomPowerTimesPa,new(0,256)));
+        Assert.Throws<ArgumentException>(()=>new AbilityFormula(AbilityFormulaId.RandomPowerTimesPa,new(0,4)).CalculateDamage(5,0,0));
         Assert.Equal(32538,new AbilityFormula(AbilityFormulaId.PummelFormula,new(87,255)).CalculateDamage(99,32767,32767));
-        var original=new AbilityFormula(AbilityFormulaId.RandomPa,new(0,4));
+        var original=new AbilityFormula(AbilityFormulaId.RandomPowerTimesPa,new(0,4));
         Assert.Throws<NotSupportedException>(()=>DashAbilityBattleProfile.FromDefinitions(Ground,[new(Dash,1,true,false,original)],[]));
         Assert.Throws<NotSupportedException>(()=>TargetedAbilityBattleProfile.FromDefinitions(Ground,[new(Dash,4,false,true,original)],[]));
     }

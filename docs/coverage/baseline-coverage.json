@@ -84,7 +84,9 @@
         "docs/behavior/growth-and-job-unlocks.md",
         "docs/evidence/combat/growth-unlocks-source-v1.json",
         "docs/evidence/combat/growth-unlocks-implementation-v1.json",
-        "docs/fixtures/behavior/growth-unlocks-contract-v1.json"
+        "docs/fixtures/behavior/growth-unlocks-contract-v1.json",
+        "docs/architecture/faith-magic-formula-dispatch.md",
+        "docs/evidence/combat/faith-magic-dispatch-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/Random/RandomState.cs",
@@ -685,7 +687,9 @@
         "docs/evidence/combat/magic-publication-implementation-v1.json",
         "docs/fixtures/behavior/magic-publication-contract-v1.json",
         "docs/architecture/ability-formula-dispatch.md",
-        "docs/evidence/maintenance/ability-formula-refactor-v1.json"
+        "docs/evidence/maintenance/ability-formula-refactor-v1.json",
+        "docs/architecture/faith-magic-formula-dispatch.md",
+        "docs/evidence/combat/faith-magic-dispatch-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework/Battle/Combat/BoundedSwordWeapon.cs",
@@ -1880,7 +1884,9 @@
         "docs/architecture/default-ability-execution-names.md",
         "docs/evidence/maintenance/default-ability-execution-rename-v1.json",
         "docs/architecture/ability-formula-dispatch.md",
-        "docs/evidence/maintenance/ability-formula-refactor-v1.json"
+        "docs/evidence/maintenance/ability-formula-refactor-v1.json",
+        "docs/architecture/faith-magic-formula-dispatch.md",
+        "docs/evidence/combat/faith-magic-dispatch-v1.json"
       ],
       "implementationPaths": [
         "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
@@ -2561,7 +2567,7 @@
         "General lists/rosters/maps, broader Blue/player-controlled/special policies, Defend, replacement interface, host activation and original frame RNG remain incomplete.",
         "Caller certificates still cover unrepresented original facts; no retail execution comparison establishes general equivalence."
       ],
-      "nextAction": "Owner review of the context API, DefaultAbility names and ZOD-446 formula dispatcher, then select a bounded shared-preparation/list-integration child from ZOD-442. Full AI dispatch, autonomous magic and full-port review remain separate.",
+      "nextAction": "Owner review of the shared physical/magic formula API and AI context. Existing ZOD-442 shared-preparation/list integration remains a separate bounded child; no full dispatch, autonomous magic or full-port review is completed by ZOD-447.",
       "followUpTickets": [
         "ZOD-329"
       ]

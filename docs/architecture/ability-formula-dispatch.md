@@ -1,5 +1,11 @@
 # Ability formula parameters and evaluation — ZOD-446
 
+The subsequent [ZOD-447 integration](faith-magic-formula-dispatch.md) adds the
+existing Faith-magic0x08/0x0C families, typed magic context and raw HP healing
+channel to shared dispatch. It supersedes the physical-only context/support
+limits below; those descriptions retain the ZOD-446 milestone scope. The owner's
+formula0x37 names are now `RandomPowerTimesPa` / `RandomPowerTimesPaDamageFormula`.
+
 Owner-requested refactor from managed baseline `0811c64`, using clean read-only
 fft_decomp `11464943bbdbd2a0af022d90cb7f10455cf911df`. The
 [receipt](../evidence/maintenance/ability-formula-refactor-v1.json) records source
