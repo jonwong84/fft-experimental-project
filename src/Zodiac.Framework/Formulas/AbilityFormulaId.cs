@@ -5,6 +5,6 @@ public enum AbilityFormulaId
 {
     FaithMagicDamage = 0x08,
     FaithMagicHealing = 0x0C,
+    PummelFormula = 0x32,
     RandomPowerTimesPa = 0x37,
-    PummelFormula = 0x32
 }

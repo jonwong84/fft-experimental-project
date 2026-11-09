@@ -12,6 +12,7 @@ public sealed record AbilityFormulaParameters
         if (x is < 0 or > 255) throw new ArgumentOutOfRangeException(nameof(x));
         if (y is < 0 or > 255) throw new ArgumentOutOfRangeException(nameof(y));
         if (z is < 0 or > 255) throw new ArgumentOutOfRangeException(nameof(z));
+
         X = x;
         Y = y;
         Z = z;
