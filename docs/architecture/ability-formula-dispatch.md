@@ -19,8 +19,12 @@ the currently supported handlers ignore it. Prepared content remains
 schema1/schema2 with its existing X/Y fields, so the content package rejects a
 nonzero Z instead of losing it on save. Z-based item formulas are not enabled.
 
-Owner-review follow-up: formula0x32 owns `ValidateParameters`, called by
-`AbilityFormula` during construction. Its signed16-safe envelope is unchanged;
+Owner-review follow-up: formula0x32 owns `ValidateParameters`.
+`AbilityFormula` makes one construction-time call to
+[`AbilityFormulaValidation.Validate`](../../src/Zodiac.Framework/Formulas/AbilityFormulaValidation.cs),
+which routes to the selected handler's checks. New handler checks extend that
+dedicated dispatcher rather than adding conditions to the constructor.
+Its signed16-safe envelope is unchanged;
 both `Evaluate` and the raw arithmetic adapter therefore receive validated
 immutable parameters. Validation is not delayed until execution. The original
 refactor receipt describes the earlier checkpoint; the
@@ -85,7 +89,8 @@ label; an ability such as Dash can still select it without changing its identity
 The decompilation symbol remains `formula_repeating_fist` for source comparison.
 
 [`FormulaDamageBounds`](../../src/Zodiac.Framework/Formulas/FormulaDamageBounds.cs)
-checks whether a calculated minimum/maximum damage range fits signed16 storage.
+uses `FitsSigned16Range` to check whether a calculated minimum/maximum damage
+range fits signed16 storage.
 It neither clamps values nor reproduces overflow. Pummel calculates its own
 maximum critical XA, original-PA YA and random factor envelope, then passes
 that range to the helper. The existing sword command, two-unit setup and
@@ -99,6 +104,10 @@ The [maintenance receipt](../evidence/maintenance/pummel-formula-maintenance-v1.
 records the rename, unchanged source/test vectors and preservation of owner
 formatting. No legacy enum alias is retained; callers use the new label while
 prepared JSON continues to store numeric formula50.
+
+The [validation-dispatch receipt](../evidence/maintenance/formula-validation-dispatch-v1.json)
+records the constructor cleanup and the owner's range-helper rename/comments.
+All prior validation, supported IDs, operands, RNG and result contracts remain.
 
 ## Source correspondence and verification
 

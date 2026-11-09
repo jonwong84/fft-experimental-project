@@ -86,13 +86,17 @@ Owner review now names formula0x32 `AbilityFormulaId.PummelFormula` with
 `PummelDamageFormula`. Numeric IDs, content and calculations are unchanged.
 `FormulaDamageBounds` shares the signed16 range check with the existing sword
 command/setup guards; each formula still calculates its own bounds, and Pummel
-validates at construction. See the [maintenance receipt](evidence/maintenance/pummel-formula-maintenance-v1.json).
+validates at construction. The constructor now makes one call to
+`AbilityFormulaValidation.Validate`, whose dedicated dispatch routes handler-owned
+checks. The owner's `FitsSigned16Range` name and comments are preserved. See the
+[maintenance receipt](evidence/maintenance/pummel-formula-maintenance-v1.json) and
+[validation-dispatch receipt](evidence/maintenance/formula-validation-dispatch-v1.json).
 
 Latest validation: zero-warning/error Release build, **5,306 .NET tests**
 (1,863 Framework, 1,471 AI) and **810 Python tests** pass. Existing source fixtures
 and gameplay expectations are unchanged; dispatcher/context and content-boundary
 tests cover the new API and Z policy. Latest logs/seven full TRX reports are in
-ignored `scratch/pummel-*`. The
+ignored `scratch/formula-validation-dispatch-*`. The
 [original receipt](evidence/maintenance/ability-formula-refactor-v1.json) records source
 fingerprints; the [follow-up receipt](evidence/maintenance/ability-formula-validation-v1.json)
 records current validation and preservation. Owner enum/test formatting is

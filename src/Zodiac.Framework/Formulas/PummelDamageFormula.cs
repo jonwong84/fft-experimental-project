@@ -11,7 +11,7 @@ internal static class PummelDamageFormula
         int maximumCriticalXa = 2 * maximumPhysicalAttack - 1;
         long maximumYa = (maximumPhysicalAttack + parameters.Y) / 2;
         long maximumDamage = (maximumCriticalXa + maximumYa) * Math.Max(1, parameters.X);
-        if (!FormulaDamageBounds.FitsSigned16(0, maximumDamage))
+        if (!FormulaDamageBounds.FitsSigned16Range(0, maximumDamage))
         {
             throw new NotSupportedException("The selected operands exceed the neutral signed16 damage envelope.");
         }

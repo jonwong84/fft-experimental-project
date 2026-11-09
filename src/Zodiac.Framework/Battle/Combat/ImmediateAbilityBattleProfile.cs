@@ -45,7 +45,7 @@ public sealed class ImmediateAbilityBattleProfile
         foreach (var unit in state.Combatants)
         {
             var weapon = weapons[unit.RightHandWeaponId!.Value];
-            if (!FormulaDamageBounds.FitsSigned16(0, (2L * 99 - 1) * weapon.Power))
+            if (!FormulaDamageBounds.FitsSigned16Range(0, (2L * 99 - 1) * weapon.Power))
                 throw new NotSupportedException("Ability-enabled sword power exceeds the reachable PA-99 damage envelope.");
         }
     }

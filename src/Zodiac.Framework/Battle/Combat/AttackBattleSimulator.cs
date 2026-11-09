@@ -62,7 +62,7 @@ public static class AttackBattleSimulator
         if (validateProfile is null && state.TurnBattle.Battle.Map.TryGetTile(candidate, out _))
             return Reject(state, AttackCommandRejection.UnsupportedSetup);
         int baseXa = Math.Max(1, actor.PhysicalAttack); // Neutral zodiac still floors XA to 1.
-        if (!FormulaDamageBounds.FitsSigned16(0, (2L * baseXa - 1) * weapon.Power))
+        if (!FormulaDamageBounds.FitsSigned16Range(0, (2L * baseXa - 1) * weapon.Power))
             return Reject(state, AttackCommandRejection.UnsupportedSetup);
 
         var rng = state.TurnBattle.Turns.RngState;

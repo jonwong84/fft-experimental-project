@@ -48,7 +48,7 @@ public sealed class TwoUnitBattleDefinition
         {
             if (unit.RightHandWeaponId is not { } weaponId || !selected.TryGetValue(weaponId, out var weapon))
                 throw new ArgumentException($"Unit '{unit.UnitId}' requires a selected sword.", nameof(weapons));
-            if (!FormulaDamageBounds.FitsSigned16(0, (2L * Math.Max(1, unit.PhysicalAttack) - 1) * weapon.Power))
+            if (!FormulaDamageBounds.FitsSigned16Range(0, (2L * Math.Max(1, unit.PhysicalAttack) - 1) * weapon.Power))
                 throw new NotSupportedException("Scenario sword/PA exceeds the bounded signed-16 damage envelope.");
         }
         // Validate this scenario's selected movement policy at setup, including surfaces outside the

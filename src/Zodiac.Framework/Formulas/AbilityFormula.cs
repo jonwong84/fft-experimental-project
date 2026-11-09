@@ -11,17 +11,7 @@ public sealed record AbilityFormula
 
     public AbilityFormula(AbilityFormulaId id, AbilityFormulaParameters parameters)
     {
-        if (!Enum.IsDefined(id))
-        {
-            throw new NotSupportedException("Unsupported ability formula.");
-        }
-
-        ArgumentNullException.ThrowIfNull(parameters);
-
-        if (id == AbilityFormulaId.PummelFormula)
-        {
-            PummelDamageFormula.ValidateParameters(parameters);
-        }
+        AbilityFormulaValidation.Validate(id, parameters);
 
         Id = id;
         Parameters = parameters;
