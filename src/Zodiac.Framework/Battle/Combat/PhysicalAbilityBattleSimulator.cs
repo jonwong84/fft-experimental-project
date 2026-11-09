@@ -1,6 +1,7 @@
 using System.Collections.Immutable;
 using Zodiac.Framework.CombatRules;
 using Zodiac.Framework.Random;
+using Zodiac.Framework.Formulas;
 
 namespace Zodiac.Framework;
 
@@ -84,7 +85,7 @@ public static class PhysicalAbilityBattleSimulator
         if (!action.Accepted) return new(false, AttackCommandRejection.None, action.TurnRejection, action.MovementRejection, state, []);
 
         var calculation = PhysicalDamageRules.Calculate(ability, actor.PhysicalAttack, actor.Brave, target.Brave,
-            target.ClassPhysicalEvade, dx, dy, target.Facing, PhysicalDamageMode.Execution, state.TurnBattle.Turns.RngState);
+            target.ClassPhysicalEvade, dx, dy, target.Facing, AbilityFormulaMode.Execution, state.TurnBattle.Turns.RngState);
         if (!calculation.Accepted) return Reject(AttackCommandRejection.RandomDrawCountExhausted);
         var result = calculation.Outcome!;
         var rng = calculation.RngState;

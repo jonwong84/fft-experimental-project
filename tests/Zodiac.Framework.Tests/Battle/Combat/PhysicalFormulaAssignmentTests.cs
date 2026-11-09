@@ -20,11 +20,11 @@ public sealed class PhysicalFormulaAssignmentTests
     {
         using var fixture=Fixture();var row=fixture.RootElement.GetProperty("cases").EnumerateArray().Single(r=>r.GetProperty("id").GetString()==id);
         var d=row.GetProperty("input");var e=row.GetProperty("expected");
-        var formula=new PhysicalDamageFormula((PhysicalDamageFormulaId)d.GetProperty("formula").GetInt32(),d.GetProperty("x").GetInt32(),d.GetProperty("y").GetInt32());
+        var formula=new AbilityFormula((AbilityFormulaId)d.GetProperty("formula").GetInt32(),new(d.GetProperty("x").GetInt32(),d.GetProperty("y").GetInt32()));
         var ability=new PhysicalAbilityDefinition(new("test:unchanged-identity"),1,d.GetProperty("evadeable").GetBoolean(),false,formula);
         var entry=new RandomState(d.GetProperty("word").GetUInt32(),d.GetProperty("count").GetUInt64());
         var result=PhysicalDamageRules.Calculate(ability,d.GetProperty("pa").GetInt32(),d.GetProperty("attackerBrave").GetInt32(),d.GetProperty("targetBrave").GetInt32(),
-            d.GetProperty("classEvade").GetInt32(),1,0,BattleFacing.West,Enum.Parse<PhysicalDamageMode>(d.GetProperty("mode").GetString()!),entry);
+            d.GetProperty("classEvade").GetInt32(),1,0,BattleFacing.West,Enum.Parse<AbilityFormulaMode>(d.GetProperty("mode").GetString()!),entry);
         Assert.Equal(e.GetProperty("accepted").GetBoolean(),result.Accepted);
         Assert.Equal(new RandomState(e.GetProperty("word").GetUInt32(),e.GetProperty("count").GetUInt64()),result.RngState);
         if(!result.Accepted){Assert.Null(result.Outcome);return;}
@@ -36,7 +36,7 @@ public sealed class PhysicalFormulaAssignmentTests
 
     private static readonly AssetId Dash=new("test:dash");
     private static DashAbilityBattleProfile Profile(AttackBattleSnapshot state)=>DashAbilityBattleProfile.FromDefinitions(Ground,
-        [new(Dash,1,false,false,new(PhysicalDamageFormulaId.RandomPaPlusHalfPa,9,0))],
+        [new(Dash,1,false,false,new(AbilityFormulaId.RandomPaPlusHalfPa,new(9,0)))],
         state.Combatants.Select(u=>new TargetedAbilityUnitGrant(u.UnitId,[Dash],0)));
 
     [Theory] [InlineData(0u,30,3,true)] [InlineData(1u,14,2,false)]
@@ -71,7 +71,7 @@ public sealed class PhysicalFormulaAssignmentTests
         Assert.True(move.Accepted);Assert.NotNull(move.Continuation);
         var continued=RosterMoveDecisionBattle.Continue(move.State,A,move.Continuation);Assert.True(continued.Accepted);
         var calculation=PhysicalDamageRules.Calculate(profile.Abilities[Dash].Definition,5,70,70,0,1,0,BattleFacing.West,
-            PhysicalDamageMode.Execution,move.State.Battle.TurnBattle.Turns.RngState);
+            AbilityFormulaMode.Execution,move.State.Battle.TurnBattle.Turns.RngState);
         Assert.Equal(calculation.Outcome!.Damage,Assert.Single(continued.Events.OfType<DashResolvedEvent>()).Damage);
         Assert.Equal(calculation.RngState,continued.State.Battle.TurnBattle.Turns.RngState);
         var limited=Make(seed:0,count:ulong.MaxValue-2);var before=Snapshot(limited.State);
@@ -82,12 +82,12 @@ public sealed class PhysicalFormulaAssignmentTests
     [Fact]
     public void Unsupported_formula_and_signed16_overflow_contexts_fail_at_definition_boundary()
     {
-        Assert.Throws<NotSupportedException>(()=>new PhysicalDamageFormula((PhysicalDamageFormulaId)1,0,0));
-        Assert.Throws<NotSupportedException>(()=>new PhysicalDamageFormula(PhysicalDamageFormulaId.RandomPaPlusHalfPa,255,255));
-        Assert.Throws<ArgumentOutOfRangeException>(()=>new PhysicalDamageFormula(PhysicalDamageFormulaId.RandomPa,0,256));
-        Assert.Throws<ArgumentException>(()=>new PhysicalDamageFormula(PhysicalDamageFormulaId.RandomPa,0,4).CalculateDamage(5,0,0));
-        Assert.Equal(32538,new PhysicalDamageFormula(PhysicalDamageFormulaId.RandomPaPlusHalfPa,87,255).CalculateDamage(99,32767,32767));
-        var original=new PhysicalDamageFormula(PhysicalDamageFormulaId.RandomPa,0,4);
+        Assert.Throws<NotSupportedException>(()=>new AbilityFormula((AbilityFormulaId)1,new(0,0)));
+        Assert.Throws<NotSupportedException>(()=>new AbilityFormula(AbilityFormulaId.RandomPaPlusHalfPa,new(255,255)));
+        Assert.Throws<ArgumentOutOfRangeException>(()=>new AbilityFormula(AbilityFormulaId.RandomPa,new(0,256)));
+        Assert.Throws<ArgumentException>(()=>new AbilityFormula(AbilityFormulaId.RandomPa,new(0,4)).CalculateDamage(5,0,0));
+        Assert.Equal(32538,new AbilityFormula(AbilityFormulaId.RandomPaPlusHalfPa,new(87,255)).CalculateDamage(99,32767,32767));
+        var original=new AbilityFormula(AbilityFormulaId.RandomPa,new(0,4));
         Assert.Throws<NotSupportedException>(()=>DashAbilityBattleProfile.FromDefinitions(Ground,[new(Dash,1,true,false,original)],[]));
         Assert.Throws<NotSupportedException>(()=>TargetedAbilityBattleProfile.FromDefinitions(Ground,[new(Dash,4,false,true,original)],[]));
     }

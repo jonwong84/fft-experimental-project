@@ -23,9 +23,9 @@ public sealed class PhysicalDeliveryContentTests
         var metadata = new ContentPackage(original.PackageId, original.ProfileId, ContentPackageKind.Baseline, null,
             original.Jobs, [new(original.Skillsets[0].Id, [new(17, first), new(2048, second)])],
             [new(first, 50, 100, 1, new byte[4]), new(second, 60, 100, 1, new byte[4])]);
-        var formula = new PhysicalDamageFormula(PhysicalDamageFormulaId.RandomPaPlusHalfPa, 9, 0);
+        var formula = new AbilityFormula(AbilityFormulaId.RandomPaPlusHalfPa, new(9, 0));
         var content = new TargetedAbilityContentPackage("sample:package/physical", metadata.ProfileId, metadata.PackageId,
-            [new(first, delivery, formula), new(second, delivery, new(PhysicalDamageFormulaId.RandomPa, 0, 4))]);
+            [new(first, delivery, formula), new(second, delivery, new(AbilityFormulaId.RandomPa, new(0, 4)))]);
         string json = content.ToJson();
         var read = TargetedAbilityContentPackage.ReadJson(json);
         Assert.Equal(json, read.ToJson());

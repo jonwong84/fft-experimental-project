@@ -9,9 +9,9 @@ public sealed record PhysicalAbilityDefinition
     public int Range { get; }
     public bool Evadeable { get; }
     public bool DirectTrajectory { get; }
-    public PhysicalDamageFormula Formula { get; }
+    public AbilityFormula Formula { get; }
 
-    public PhysicalAbilityDefinition(AssetId id, PhysicalAbilityDelivery delivery, PhysicalDamageFormula formula)
+    public PhysicalAbilityDefinition(AssetId id, PhysicalAbilityDelivery delivery, AbilityFormula formula)
         : this(id, DeliveryRange(delivery), delivery == PhysicalAbilityDelivery.DirectProjectile,
             delivery == PhysicalAbilityDelivery.DirectProjectile, formula) { }
 
@@ -26,7 +26,7 @@ public sealed record PhysicalAbilityDefinition
         _ => throw new NotSupportedException("Select an admitted physical delivery profile.")
     };
 
-    public PhysicalAbilityDefinition(AssetId id, int range, bool evadeable, bool directTrajectory, PhysicalDamageFormula formula)
+    public PhysicalAbilityDefinition(AssetId id, int range, bool evadeable, bool directTrajectory, AbilityFormula formula)
     {
         if (string.IsNullOrWhiteSpace(id.Value)) throw new ArgumentException("An explicit ability ID is required.", nameof(id));
         if (range is < 1 or > 255) throw new ArgumentOutOfRangeException(nameof(range));

@@ -100,17 +100,29 @@ public sealed class TargetedAbilityImportTests
         }
     }
 
-    [Theory] [InlineData(false,false)] [InlineData(true,false)] [InlineData(false,true)] [InlineData(true,true)]
+    [Theory]
+    [InlineData(false,false)]
+    [InlineData(true,false)]
+    [InlineData(false,true)]
+    [InlineData(true,true)]
     public void Imported_Dash_lists_and_explicit_grants_reach_both_actual_turn_orders(bool moveFirst,bool customFormula)
     {
-        var image = Image(); var metadata = OriginalMetadataImporter.DecodeSelection(image).Package;
+        var image = Image();
+        var metadata = OriginalMetadataImporter.DecodeSelection(image).Package;
         var dash = OriginalTargetedAbilityImporter.DecodeSelection(image, metadata, TargetedAbilityEffect.DashFlat).Package;
-        if(customFormula)
+
+        if (customFormula)
         {
-            var edited=new TargetedAbilityContentPackage(dash.PackageId,dash.ProfileId,dash.RequiredMetadataPackageId,
-                [new(dash.Abilities[0].Id,PhysicalAbilityDelivery.AdjacentUnit,new PhysicalDamageFormula(PhysicalDamageFormulaId.RandomPaPlusHalfPa,9,0))]);
-            dash=TargetedAbilityContentPackage.ReadJson(edited.ToJson());
-            Assert.Equal(2,dash.Version);Assert.Contains("\"ruleset\": \"custom\"",edited.ToJson());
+            var edited = new TargetedAbilityContentPackage(
+                dash.PackageId,
+                dash.ProfileId,
+                dash.RequiredMetadataPackageId,
+                [new (dash.Abilities[0].Id,PhysicalAbilityDelivery.AdjacentUnit, new AbilityFormula(AbilityFormulaId.RandomPaPlusHalfPa, new(9, 0)))]);
+
+            dash = TargetedAbilityContentPackage.ReadJson(edited.ToJson());
+
+            Assert.Equal(2, dash.Version);
+            Assert.Contains("\"ruleset\": \"custom\"", edited.ToJson());
         }
         var stone = OriginalTargetedAbilityImporter.DecodeSelection(image, metadata, TargetedAbilityEffect.ThrowStoneFlat).Package;
         var self = new ImmediateAbilityContentPackage("fft.ps1:package/self", metadata.ProfileId, metadata.PackageId,
@@ -149,7 +161,7 @@ public sealed class TargetedAbilityImportTests
         var first = AiCommandExecutor.Execute(ready.State,request,configuration,new(true,true,true,true));
         Assert.True(first.Accepted);
         var expected=PhysicalDamageRules.Calculate(binding.Abilities[new(dash.Abilities[0].Id.Value)].Definition,5,70,70,100,
-            1,0,BattleFacing.West,PhysicalDamageMode.Execution,first.Outcome!.DecisionRng);
+            1,0,BattleFacing.West,AbilityFormulaMode.Execution,first.Outcome!.DecisionRng);
         if (moveFirst)
         {
             Assert.Equal(AiCommandKind.Move,first.Outcome!.Kind);

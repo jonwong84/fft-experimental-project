@@ -116,7 +116,7 @@ public sealed class TargetedAbilityContentPackage
             {
                 id = a.Id.Value, delivery = a.Delivery == PhysicalAbilityDelivery.AdjacentUnit ? "adjacent-unit" : "direct-projectile",
                 target = "occupied-unit", range = a.Range, evadeable = a.Definition.Evadeable,
-                formula = (int)a.Formula.Id, x = a.Formula.X, y = a.Formula.Y, chargeTicks = a.ChargeTicks, mpCost = a.MpCost
+                formula = (int)a.Formula.Id, x = a.Formula.Parameters.X, y = a.Formula.Parameters.Y, chargeTicks = a.ChargeTicks, mpCost = a.MpCost
             })
         } : new
         {
@@ -150,7 +150,7 @@ public sealed class TargetedAbilityContentPackage
         _ = v.Integer(node.GetProperty("mpCost"), id, path + ".mpCost", 0, 0);
         int formula = v.Integer(node.GetProperty("formula"), id, path + ".formula", 1, int.MaxValue);
         int x = v.Integer(node.GetProperty("x"), id, path + ".x", 0, 255), y = v.Integer(node.GetProperty("y"), id, path + ".y", 0, 255);
-        try { return new(new(id), delivery, new PhysicalDamageFormula((PhysicalDamageFormulaId)formula, x, y)); }
+        try { return new(new(id), delivery, new AbilityFormula((AbilityFormulaId)formula, new(x, y))); }
         catch (Exception e) when (e is NotSupportedException or ArgumentException)
         { throw v.Failure(id, path + ".formula", e.Message); }
     }

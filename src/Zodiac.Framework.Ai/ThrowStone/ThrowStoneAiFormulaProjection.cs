@@ -1,5 +1,6 @@
 using Zodiac.Framework.Random;
 using Zodiac.Framework.CombatRules;
+using Zodiac.Framework.Formulas;
 
 namespace Zodiac.Framework.Ai;
 
@@ -32,7 +33,7 @@ internal static class ThrowStoneAiFormulaProjection
         state.TurnBattle.Battle.TryGetUnit(target.UnitId, out var to);
         long dx = (long)to!.Position.X - from!.Position.X, dy = (long)to.Position.Y - from.Position.Y;
         var result = PhysicalDamageRules.Calculate(ability, actor.PhysicalAttack, actor.Brave, target.Brave,
-            target.ClassPhysicalEvade, dx, dy, target.Facing, PhysicalDamageMode.Ai, decisionRng);
+            target.ClassPhysicalEvade, dx, dy, target.Facing, AbilityFormulaMode.Ai, decisionRng);
         if (!result.Accepted) return new(false, AttackCommandRejection.RandomDrawCountExhausted, null, decisionRng);
         int hit = result.Outcome!.Accuracy, damage = result.Outcome.Damage;
         return new(true, AttackCommandRejection.None, new(hit, damage, Math.Max(0, target.Hp - damage)), result.RngState);

@@ -1,6 +1,7 @@
 using System.Collections.Immutable;
 using Zodiac.Framework.Random;
 using Zodiac.Framework.CombatRules;
+using Zodiac.Framework.Formulas;
 
 namespace Zodiac.Framework.Ai;
 
@@ -65,7 +66,7 @@ internal static class RosterDashAiCandidate
         var origin = candidate.ActBeforeMove ? state.TurnBattle.Battle.Units.Single(u => u.Id == actor.UnitId).Position : candidate.Destination;
         var to = state.TurnBattle.Battle.Units.Single(u => u.Id == target.UnitId).Position;
         var formula = PhysicalDamageRules.Calculate(ability, actor.PhysicalAttack, actor.Brave, target.Brave,
-            target.ClassPhysicalEvade, (long)to.X-origin.X, (long)to.Y-origin.Y, target.Facing, PhysicalDamageMode.Ai, rng);
+            target.ClassPhysicalEvade, (long)to.X-origin.X, (long)to.Y-origin.Y, target.Facing, AbilityFormulaMode.Ai, rng);
         if (!formula.Accepted) return new(AiScoringDisposition.Rejected, RosterDashAiCandidateRejection.RandomDrawCountExhausted, null, null, rng);
         if (!formula.Outcome!.Hit) return new(AiScoringDisposition.NotValuable, RosterDashAiCandidateRejection.None, null, null, formula.RngState);
         int damage = formula.Outcome!.Damage;

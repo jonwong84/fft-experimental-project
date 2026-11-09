@@ -9,7 +9,7 @@ public sealed class PhysicalDeliveryTests
     private static readonly AssetId Custom = new("test:physical/custom");
     private static PhysicalAbilityBattleProfile Profile(AttackBattleSnapshot state, PhysicalAbilityDelivery delivery,
         bool grant = true) => new(Ground, delivery,
-            [new(Custom, delivery, new(PhysicalDamageFormulaId.RandomPaPlusHalfPa, 9, 0))],
+            [new(Custom, delivery, new(AbilityFormulaId.RandomPaPlusHalfPa, new(9, 0)))],
             state.Combatants.Select(u => new TargetedAbilityUnitGrant(u.UnitId, u.UnitId == A && grant ? [Custom] : [], 0)));
 
     [Theory]
@@ -66,7 +66,7 @@ public sealed class PhysicalDeliveryTests
     [Fact]
     public void Binding_preserves_definition_identity_and_rejects_mismatched_delivery_and_unresolved_grants()
     {
-        var formula = new PhysicalDamageFormula(PhysicalDamageFormulaId.RandomPa, 0, 4);
+        var formula = new AbilityFormula(AbilityFormulaId.RandomPa, new(0, 4));
         var definition = new PhysicalAbilityDefinition(Custom, PhysicalAbilityDelivery.AdjacentUnit, formula);
         var abilities = new List<PhysicalAbilityDefinition> { definition };
         var grants = new List<TargetedAbilityUnitGrant> { new(A, [Custom], 0) };

@@ -508,7 +508,7 @@ factor5: corrected damage is10 rather than5. Execution from seed1 selects
 factor2: corrected damage is4 rather than2. Criticals still prepare YA from the
 original PA; the floor does not recompute YA from critical-boosted XA.
 
-[PhysicalDamageFormula](../../src/Zodiac.Framework/Formulas/PhysicalDamageFormula.cs)
+[AbilityFormula](../../src/Zodiac.Framework/Formulas/AbilityFormula.cs)
 now applies that mandatory neutral floor. This affects the supported formula0x32
 assignment boundary, including a Dash/Throw Stone definition selecting that
 formula. Retail Dash/Throw Stone still select0x37; their results and draw counts

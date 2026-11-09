@@ -8,9 +8,9 @@ public sealed record BoundedThrowStoneAbility
     public PhysicalAbilityDefinition Definition { get; }
     public AssetId Id => Definition.Id;
     public int Range => Definition.Range;
-    public BoundedThrowStoneAbility(AssetId id, PhysicalDamageFormula? formula = null)
+    public BoundedThrowStoneAbility(AssetId id, AbilityFormula? formula = null)
         : this(new PhysicalAbilityDefinition(id, PhysicalAbilityDelivery.DirectProjectile,
-            formula ?? new(PhysicalDamageFormulaId.RandomPa, 0, 2))) { }
+            formula ?? new(AbilityFormulaId.RandomPa, new(0, 2)))) { }
 
     internal static BoundedThrowStoneAbility FromDefinition(PhysicalAbilityDefinition definition) => new(definition);
 

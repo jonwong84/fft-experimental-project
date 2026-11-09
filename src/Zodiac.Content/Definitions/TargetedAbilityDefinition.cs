@@ -13,11 +13,11 @@ public sealed class TargetedAbilityDefinition
     public TargetedAbilityEffect Effect => Delivery == PhysicalAbilityDelivery.AdjacentUnit
         ? TargetedAbilityEffect.DashFlat : TargetedAbilityEffect.ThrowStoneFlat;
     public int Range => Definition.Range;
-    /// <summary>Legacy schema1 binding value. Configurable calculations use Formula.X/Y.</summary>
+    /// <summary>Legacy schema1 binding value. Configurable calculations use Formula.Parameters.</summary>
     public int MaximumDamageMultiplier => Delivery == PhysicalAbilityDelivery.AdjacentUnit ? 4 : 2;
     public int ChargeTicks => 0;
     public int MpCost => 0;
-    public PhysicalDamageFormula Formula => Definition.Formula;
+    public AbilityFormula Formula => Definition.Formula;
     public bool IsCustom { get; }
     public PhysicalAbilityDefinition Definition { get; }
 
@@ -34,15 +34,15 @@ public sealed class TargetedAbilityDefinition
         if (!supported || chargeTicks != 0 || mpCost != 0)
             throw new NotSupportedException("Select immediate zero-MP flat Throw Stone (range4/Y2) or Dash (range1/Y4).");
         Delivery = ToDelivery(effect);
-        Definition = new(new(id.Value), Delivery, new(PhysicalDamageFormulaId.RandomPa, 0, maximumDamageMultiplier));
+        Definition = new(new(id.Value), Delivery, new(AbilityFormulaId.RandomPa, new(0, maximumDamageMultiplier)));
     }
 
     /// <summary>Explicit custom formula assignment; delivery retains the admitted original targeting and execution attributes.</summary>
-    public TargetedAbilityDefinition(AbilityId id, TargetedAbilityEffect delivery, PhysicalDamageFormula formula)
+    public TargetedAbilityDefinition(AbilityId id, TargetedAbilityEffect delivery, AbilityFormula formula)
         : this(id, ToDelivery(delivery), formula) { }
 
     /// <summary>Custom data with explicit delivery and formula; no ability-specific class or defaults are required.</summary>
-    public TargetedAbilityDefinition(AbilityId id, PhysicalAbilityDelivery delivery, PhysicalDamageFormula formula)
+    public TargetedAbilityDefinition(AbilityId id, PhysicalAbilityDelivery delivery, AbilityFormula formula)
     {
         DefinitionValidation.RequiredId(id.Value, nameof(id));
         ArgumentNullException.ThrowIfNull(formula);

@@ -399,7 +399,7 @@
     }
   ],
   "fullyReviewedGroups": [],
-  "nextBatch": "Owner review of ZOD-443\u2013445",
+  "nextBatch": "Owner review of ZOD-443\u2013446",
   "overallBehaviorReviewCompleted": false,
   "supportingSourceStudies": [
     {
@@ -463,6 +463,12 @@
       "report": "docs/architecture/default-ability-execution-names.md",
       "receipt": "docs/evidence/maintenance/default-ability-execution-rename-v1.json",
       "disposition": "Naming-only alignment of Framework battle/execution and dependent content/client/CLI/test types to DefaultAbility; no gameplay expansion or full review group completed."
+    },
+    {
+      "ticket": "ZOD-446",
+      "report": "docs/architecture/ability-formula-dispatch.md",
+      "receipt": "docs/evidence/maintenance/ability-formula-refactor-v1.json",
+      "disposition": "Parameters/context and shared0x32/0x37 dispatch refactor only; existing gameplay/admission/RNG contracts retained. No full review group or autonomous magic completed."
     }
   ]
 }

@@ -14,7 +14,7 @@ public static class ThrowStoneFormula
 
     public static int Damage(int physicalAttack, uint raw)
     {
-        return new PhysicalDamageFormula(PhysicalDamageFormulaId.RandomPa, 0, 2).CalculateDamage(physicalAttack, raw);
+        return new AbilityFormula(AbilityFormulaId.RandomPa, new(0, 2)).CalculateDamage(physicalAttack, raw);
     }
 
     /// <summary>Two independently scaled Brave rolls; equality does not attempt a push.</summary>

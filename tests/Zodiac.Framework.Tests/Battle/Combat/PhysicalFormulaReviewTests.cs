@@ -18,7 +18,7 @@ public sealed class PhysicalFormulaReviewTests
         var id = new AssetId(projectile ? "test:stone" : "test:dash");
         var delivery = projectile ? PhysicalAbilityDelivery.DirectProjectile : PhysicalAbilityDelivery.AdjacentUnit;
         var profile = new PhysicalAbilityBattleProfile(Ground, delivery,
-            [new(id, delivery, new(PhysicalDamageFormulaId.RandomPaPlusHalfPa, 9, 0))],
+            [new(id, delivery, new(AbilityFormulaId.RandomPaPlusHalfPa, new(9, 0)))],
             s.State.Combatants.Select(u => new TargetedAbilityUnitGrant(u.UnitId, [id], 0)));
         var before = Snapshot(s.State);
         var result = PhysicalAbilityBattleSimulator.ApplyRoster(s.State, new(A, id, B), profile, s.Profile,

@@ -1,0 +1,413 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-446",
+  "date": "2026-11-09",
+  "managedBaseRevision": "0811c64e5962d868218d6c9e7c21186f54de8484",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "scope": "Refactor existing neutral physical0x32/0x37 into immutable AbilityFormula selection/parameters, context and explicit-RNG evaluation. No new formula or context domain.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/resolution.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 85515,
+      "sha256": "820411f8293d559677ff676f4e3d19a16ae52b667e7aa1393ab5495741f1e149"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 46088,
+      "sha256": "a9e58962104849ae4e947e3833236aaf2c1334394a1af12b19930428e6885e03"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54735,
+      "sha256": "b37712b2e33a060f057e87f866c25ef0f4d4ba9b8bacf89447e2eeb0cd0c2bf9"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 23857,
+      "sha256": "57dd4fa8b07ef93c4a8e21c73657a0fdbe6c601a6db0b0351ae15b3cd15e4aea"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_calculate_target_result",
+      "startLine": 473,
+      "endLine": 673,
+      "normalizedLfSha256": "6855ceea86f5e95b4b1edc5fff1d4f47e6623e4bae0309b2a84ed2d232de91c0"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_finalize_target_result",
+      "startLine": 694,
+      "endLine": 753,
+      "normalizedLfSha256": "2242654f86ef5c9efef9c0ca7dab88bdab2be0835224e79eb1efe9cc3b084a86"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_damage_random_y_times_pa",
+      "startLine": 852,
+      "endLine": 859,
+      "normalizedLfSha256": "732505faefa48d6ae1e172ca09a52c0e6cc4bdb2aaaadb5567de7642917ee85b"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_repeating_fist",
+      "startLine": 785,
+      "endLine": 804,
+      "normalizedLfSha256": "33a8b1be2efb3ce2d87218858c1d7b788c51c6ff6355819cd72b8fa0f1806df0"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_store_pa_and_pa_plus_y_divided_by_two",
+      "startLine": 923,
+      "endLine": 927,
+      "normalizedLfSha256": "42a1a80e8ddd1233531bf0775b9439eaf3cacda6b66e40b5de8125cd44463f2b"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_calculate_critical_hit",
+      "startLine": 1145,
+      "endLine": 1156,
+      "normalizedLfSha256": "c18e75778f250b30020d11622e664891ea8b8645a6505421cf5a00996accbe3d"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_store_xa_plus_ya",
+      "startLine": 1171,
+      "endLine": 1182,
+      "normalizedLfSha256": "050c58c4e80f9d043ae8d3d2d09eca9d0bf090fc23c5e072163c3dc2f69d729e"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_damage_and_knockback",
+      "startLine": 1283,
+      "endLine": 1301,
+      "normalizedLfSha256": "29ccebbc867f5dc10e796919cf3280b8cd0476d0d34efe29bb2aa34ce506e605"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "formula_get_random",
+      "startLine": 394,
+      "endLine": 399,
+      "normalizedLfSha256": "cdf6c4c0c319dc057ac12bd5c35829c7c3cd794b5acb4595ece35a9814e0512f"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "formula_roll_random_at_least",
+      "startLine": 402,
+      "endLine": 404,
+      "normalizedLfSha256": "c4766649bc9ec2cb81d545d75777587d8ce62995aa90492cb02981b59ac7208e"
+    }
+  ],
+  "managedFiles": [
+    {
+      "path": "src/Zodiac.Content/ContentPackages/TargetedAbilityContentPackage.cs",
+      "beforeNormalizedSha256": "39cf10b84dff33f1d06df6d5454490c2d412178697cac9c61538851eae825574",
+      "afterNormalizedSha256": "77a1e34e0d9a4ffb04e52684402f046c411627ab552281046dad974ae2e77fa3"
+    },
+    {
+      "path": "src/Zodiac.Content/Definitions/TargetedAbilityDefinition.cs",
+      "beforeNormalizedSha256": "bdd033dbb361465fec79e4d40edcb14b36bce6def2e942c668376088cfdd8250",
+      "afterNormalizedSha256": "eb08218ea5891bd67bb3f4474a94749e7ecdc59ae6bf613ce918c843502e8afd"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Dash/RosterDashAiCandidate.cs",
+      "beforeNormalizedSha256": "d524c84bda63e582b968e472bce9d83dba2ce015c8aaf030fe0c16cdd655dd10",
+      "afterNormalizedSha256": "d0b99f91a28e02797aee39f65cc000d54f3ceba506b85587c2d5a3564f12bfa9"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/ThrowStone/ThrowStoneAiFormulaProjection.cs",
+      "beforeNormalizedSha256": "babebdd6a1b8bc931cfca83477d9ca791970dbbb720d0266dec87e955561aac8",
+      "afterNormalizedSha256": "2269a0807b285f1517ccb700f7d19fbaead21473f1169eb72e8972d0d52445a8"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/BoundedDashAbility.cs",
+      "beforeNormalizedSha256": "559d7572b47b6a18aa14d6dd5468470b26c3dd04662a8bd038427f243a55a3c4",
+      "afterNormalizedSha256": "dce6c4254e5a1a74a04fbe95f0b4cddd796c9b5fc59ce76b45bcba7c2c7e7c9f"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/BoundedThrowStoneAbility.cs",
+      "beforeNormalizedSha256": "e7e2fd2e320757e24599e729b66ea62f4806a75d65d33797e855e335282a9d59",
+      "afterNormalizedSha256": "37afe0df48887c9f7fb8db6a63f5d397aa37fce52503a509922cde320469ff9e"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/DashFormula.cs",
+      "beforeNormalizedSha256": "f842c428ff2a5cd8010395cf9d4a4be352e68ec4cdb0644ec1ed5733a152deb4",
+      "afterNormalizedSha256": "3cbe7cd58360c71bcca1d2c55061f61d6628ecc8400b6d2f533bf5ee8223ccfb"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/PhysicalAbilityBattleSimulator.cs",
+      "beforeNormalizedSha256": "2e2cdd1f631e8247c884db5ef8654f11c6c28278e0bd741e85d625ad39e2ed45",
+      "afterNormalizedSha256": "bbaafad7c0b0a08a7aecf825147c947e863daee74a7940cebd1bf8928f438c9a"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/PhysicalAbilityDefinition.cs",
+      "beforeNormalizedSha256": "6f7ce8733981a64c8de74030f2a3edde3209d232a6a58d63b1a59656332a50bd",
+      "afterNormalizedSha256": "d2957f8e8ab7f7678a1240a9951b6c0527885c1cea24414e41a8b47acf5b5bc4"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/ThrowStoneFormula.cs",
+      "beforeNormalizedSha256": "50cde0b711ab5a7b1972270438bbbe396a8bd5848a47a299f29810ae8eef9fe8",
+      "afterNormalizedSha256": "73f942d3f9b9725a21d80014c44545c2ca805a97b0bda224d71702235a4b2124"
+    },
+    {
+      "path": "src/Zodiac.Framework/CombatRules/PhysicalDamageMode.cs",
+      "beforeNormalizedSha256": "58a110406305ccaf662e0a993c45116fc892390c03dcb16d4b8b2fad7007d78c",
+      "afterNormalizedSha256": null
+    },
+    {
+      "path": "src/Zodiac.Framework/CombatRules/PhysicalDamageRules.cs",
+      "beforeNormalizedSha256": "581c779daab1331bd96575dad5b88aaad86a9560cf1c48e2f904a6270353366a",
+      "afterNormalizedSha256": "a898e38f0694db9cdbb2de7aebccc581202bd1726d2266753ab36cbe561cf45b"
+    },
+    {
+      "path": "src/Zodiac.Framework/Formulas/AbilityFormula.cs",
+      "beforeNormalizedSha256": null,
+      "afterNormalizedSha256": "5af3b7ff45f93310b057bf8af4618d5b8863049dbe6dc459b06e0da198ce7d2f"
+    },
+    {
+      "path": "src/Zodiac.Framework/Formulas/AbilityFormulaContext.cs",
+      "beforeNormalizedSha256": null,
+      "afterNormalizedSha256": "7411a7d06074508cb0a2171f124b85dc7fdb37162fb2b52c077c2dd1b4e79ddc"
+    },
+    {
+      "path": "src/Zodiac.Framework/Formulas/AbilityFormulaId.cs",
+      "beforeNormalizedSha256": null,
+      "afterNormalizedSha256": "d372b3b60323d35fdcc90858377421a06cd13bc47c35d6593e09f4eb69c7f285"
+    },
+    {
+      "path": "src/Zodiac.Framework/Formulas/AbilityFormulaMode.cs",
+      "beforeNormalizedSha256": null,
+      "afterNormalizedSha256": "b5890fc3557a1f29f60f92ce94d26a76b537b93d05828a743a593dc38641d05e"
+    },
+    {
+      "path": "src/Zodiac.Framework/Formulas/AbilityFormulaParameters.cs",
+      "beforeNormalizedSha256": null,
+      "afterNormalizedSha256": "fa0991976b2eb3f9b39dafd637f275d679a272fc500a442d0cd814a31e5033fb"
+    },
+    {
+      "path": "src/Zodiac.Framework/Formulas/AbilityFormulaRandom.cs",
+      "beforeNormalizedSha256": null,
+      "afterNormalizedSha256": "d6ed73a852771a05748cc3cfb0990e5f153f5e85343f26d6efe752ec4c6eb433"
+    },
+    {
+      "path": "src/Zodiac.Framework/Formulas/AbilityFormulaResult.cs",
+      "beforeNormalizedSha256": null,
+      "afterNormalizedSha256": "f777dbb630ca7b7ceb3c452106402bfa977142cd5abc8c78d4ddc3a73426bcd9"
+    },
+    {
+      "path": "src/Zodiac.Framework/Formulas/PhysicalDamageFormula.cs",
+      "beforeNormalizedSha256": "dc72d37167b7bf1aca9fdaed5de7c54df4f9bfcabdb7ef09e9cdbb2d769c9cde",
+      "afterNormalizedSha256": null
+    },
+    {
+      "path": "src/Zodiac.Framework/Formulas/PhysicalDamageFormulaId.cs",
+      "beforeNormalizedSha256": "20befb1a80c4878721481f79a62c863e2138d1316c3d4afb8655a65c6f697f1f",
+      "afterNormalizedSha256": null
+    },
+    {
+      "path": "src/Zodiac.Framework/Formulas/RandomPaDamageFormula.cs",
+      "beforeNormalizedSha256": null,
+      "afterNormalizedSha256": "66f36e60c9e28306bb056214d9724cde0db4f1a166cdc8fd874d95922a95a69d"
+    },
+    {
+      "path": "src/Zodiac.Framework/Formulas/RandomPaPlusHalfPaDamageFormula.cs",
+      "beforeNormalizedSha256": null,
+      "afterNormalizedSha256": "84a247bfafec34fe3ce1c14ad570236bb58e28ec5cc87de7dfc248ecce29efc3"
+    },
+    {
+      "path": "tests/Zodiac.AssetTool.Cli.Tests/TargetedAbilityImportTests.cs",
+      "beforeNormalizedSha256": "88c85969b883b1b62639eef4007f074f302cf1863c178ff09cdec0271dc15278",
+      "afterNormalizedSha256": "63f53f321b631b8770d78c3fa1f3b84fd39345a4e7ff29f9ffde7a125d9f722c"
+    },
+    {
+      "path": "tests/Zodiac.Content.Tests/PhysicalDeliveryContentTests.cs",
+      "beforeNormalizedSha256": "afb59e2641621ec0ab99a9a94c492ffeaf5ae4058899f36470dcc861ac240707",
+      "afterNormalizedSha256": "54318ed9f8cc49347ade6696cb6f9e4180051c63801fa629f3f967d34c99aa3d"
+    },
+    {
+      "path": "tests/Zodiac.Content.Tests/PhysicalFormulaContentTests.cs",
+      "beforeNormalizedSha256": "ae9cf39347bb0c65eb8bf2f857b3904d3c313e6fe0508dffd426166a6d7f2be9",
+      "afterNormalizedSha256": "295014369e178bb78a25c255c14922f50e4acf9168fe573934eb71e6ed65cf63"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Ai.Tests/Shared/PhysicalFormulaReviewAiTests.cs",
+      "beforeNormalizedSha256": "c7ec14b4f75104ba4fc6b5efb0dbb8042c9d13cd1962c1ed660abb5170f58558",
+      "afterNormalizedSha256": "24533fbaf9edbee2d8f7c392860d4be7e0398665b44f5541cec989c978a28512"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Tests/Battle/Combat/AbilityFormulaTests.cs",
+      "beforeNormalizedSha256": null,
+      "afterNormalizedSha256": "8a94c98e3e41eba5360538f89fc22cfa76e50b405408485afa5f2d77345034eb"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Tests/Battle/Combat/PhysicalDeliveryTests.cs",
+      "beforeNormalizedSha256": "b8e20d54612d8b0bd84231e463ffa5af944e35384d8cfe24a3dc2aa31e2c0b68",
+      "afterNormalizedSha256": "adc4ca3c52db18e9fed9d15d9791c2a6e12208645e35d084729a8e0da9f1be2c"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Tests/Battle/Combat/PhysicalFormulaAssignmentTests.cs",
+      "beforeNormalizedSha256": "3663858cdc473e7ab43cb3d927b2569a3384fc0e0468a9f8574d49d6a763e381",
+      "afterNormalizedSha256": "67d001f4e35bc33da67d711373b04ffd2f7cc1b4be486ce3a97f0394ef5a9f63"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Tests/Battle/Combat/PhysicalFormulaReviewTests.cs",
+      "beforeNormalizedSha256": "b61278b46b6d616e28c494466a509fdfcf98d68024c34229d0e4bd0a9d526d7e",
+      "afterNormalizedSha256": "74d2eac964c1abe8fd4a351a9952a5cca24a575f696253a4fc16c5dfbac36e83"
+    }
+  ],
+  "api": {
+    "selection": "AbilityFormula(AbilityFormulaId, AbilityFormulaParameters)",
+    "evaluation": "Evaluate(AbilityFormulaContext, RandomState)",
+    "operands": "Immutable int X/Y/Z, source byte range. Current handlers require Z=0; original item Z sourcing remains future work.",
+    "context": "Immutable admitted PA/Brave/mode only. Future Faith/equipment/status families require separately traced inputs and validation.",
+    "rawAdapter": "CalculateDamage remains a no-RNG neutral physical arithmetic adapter; normal execution uses Evaluate.",
+    "failure": "Standalone dispatch throws on invalid arguments or exhausted RNG; combat-rule calculation retains full incoming-RNG rollback on exhaustion."
+  },
+  "preservedContracts": [
+    "Original and custom schema1/schema2 content/IDs unchanged; no Z schema field added.",
+    "Formula0x37 damage then execution-only two-Brave rolls; formula0x32 critical, conditional bonus, damage roll.",
+    "AI/preview formula midpoint/no formula draws; evasion retains prior real draws before dispatch.",
+    "Normal zodiac YA floor and source arithmetic envelope; upper999 cap remains in combat rules.",
+    "Later lethal/landing/HP/position/turn application and full AI scope remain unchanged."
+  ],
+  "validation": {
+    "build": "Release, zero warnings/errors",
+    "dotnetTests": [
+      {
+        "project": "Fft.Client",
+        "passed": 447,
+        "existingCasesPreserved": 447,
+        "added": 0,
+        "report": "scratch/ability-formula-trx/Fft.Client.trx"
+      },
+      {
+        "project": "Tessera.Engine",
+        "passed": 24,
+        "existingCasesPreserved": 24,
+        "added": 0,
+        "report": "scratch/ability-formula-trx/Tessera.Engine.trx"
+      },
+      {
+        "project": "Zodiac.AssetTool.Cli",
+        "passed": 396,
+        "existingCasesPreserved": 396,
+        "added": 0,
+        "report": "scratch/ability-formula-trx/Zodiac.AssetTool.Cli.trx"
+      },
+      {
+        "project": "Zodiac.AssetTool",
+        "passed": 206,
+        "existingCasesPreserved": 206,
+        "added": 0,
+        "report": "scratch/ability-formula-trx/Zodiac.AssetTool.trx"
+      },
+      {
+        "project": "Zodiac.Content",
+        "passed": 897,
+        "existingCasesPreserved": 897,
+        "added": 0,
+        "report": "scratch/ability-formula-trx/Zodiac.Content.trx"
+      },
+      {
+        "project": "Zodiac.Framework.Ai",
+        "passed": 1471,
+        "existingCasesPreserved": 1471,
+        "added": 0,
+        "report": "scratch/ability-formula-trx/Zodiac.Framework.Ai.trx"
+      },
+      {
+        "project": "Zodiac.Framework",
+        "passed": 1861,
+        "existingCasesPreserved": 1835,
+        "added": 26,
+        "report": "scratch/ability-formula-trx/Zodiac.Framework.trx"
+      }
+    ],
+    "totalDotnetPassed": 5302,
+    "totalExistingDotnetCasesPreserved": 5276,
+    "newDispatcherCases": 26,
+    "pythonPassed": 810,
+    "existingChangedTestFilesWithLiteralParity": 7,
+    "historicalEvidenceAndFixturesUnchanged": 388,
+    "preservation": [
+      {
+        "path": "src/Zodiac.Content/Definitions/Ability/AbilityToggles.cs",
+        "gitBlob": "16320578ffa448783221b68c4ef5c18e245b9f35",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Ability/AiBehaviorToggles.cs",
+        "gitBlob": "c67c4b154c471764fa11a6761710d2e9c9694a65",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Ability/AttributeToggles.cs",
+        "gitBlob": "1182777f8a0c3ca219afa23d0803c52af4ca9f8e",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Common/EquipmentSlot.cs",
+        "gitBlob": "091006b2d60ca558c303571a4eb779340be53629",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Common/StatusToggles.cs",
+        "gitBlob": "5136db2af350d7e3735e47fb92b905019316fd6f",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Item/ShopAvailabilityToggles.cs",
+        "gitBlob": "fd543d84dc8eb7860d710cf1c75499eb55306e14",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Job/EquipmentOptionToggles.cs",
+        "gitBlob": "694e44bbdc3e62103b64ff794addec1ad977d142",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Status/EffectBehaviorToggles.cs",
+        "gitBlob": "9792cdea7da1d92e9ec25cf1e97d3e879c24e8ae",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Status/StatusSelectionToggles.cs",
+        "gitBlob": "a0b2e2a8ddcb53a4bfd7416609927399b8339294",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Content/Definitions/Job/JobStats.cs",
+        "gitBlob": "bd617c374309aca1529a167a8d31a488160086cc",
+        "unchanged": true
+      },
+      {
+        "path": "src/Zodiac.Framework.Ai/AiTurnController.cs",
+        "gitBlob": "05d8eb9b12cbd1430daacfb5e960d53d1199ef3a",
+        "unchanged": true
+      },
+      {
+        "path": ".circleci/config.yml",
+        "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "unchanged": true
+      }
+    ],
+    "ownerBattleStateUnchanged": true,
+    "ownerFormatting": "Expanded enum layout retained in AbilityFormulaId; owner TargetedAbilityImportTests layout retained with formula API edits.",
+    "currentCoverageEntries": 58,
+    "openTickets": 35,
+    "completedTickets": 411,
+    "changedDocumentLocalLinks": {
+      "checked": 3015,
+      "missing": 0
+    }
+  },
+  "nextCheckpoint": "Owner review of formula API and AI flow; full-port readability review remains open"
+}

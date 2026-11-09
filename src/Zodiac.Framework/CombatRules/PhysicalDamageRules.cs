@@ -8,7 +8,7 @@ public static class PhysicalDamageRules
 {
     public static PhysicalDamageCalculationResult Calculate(PhysicalAbilityDefinition ability, int physicalAttack,
         int attackerBrave, int targetBrave, int classEvade, long dx, long dy, BattleFacing targetFacing,
-        PhysicalDamageMode mode, RandomState entryRng)
+        AbilityFormulaMode mode, RandomState entryRng)
     {
         ArgumentNullException.ThrowIfNull(ability);
         if (!Enum.IsDefined(mode)) throw new ArgumentOutOfRangeException(nameof(mode));
@@ -18,7 +18,7 @@ public static class PhysicalDamageRules
         if (classEvade is < 0 or > 100) throw new ArgumentOutOfRangeException(nameof(classEvade));
         var rng = entryRng;
         uint Draw() { var d = new RandomStateGenerator().Next(rng); rng = d.State; return d.Value; }
-        uint FormulaRoll() => mode == PhysicalDamageMode.Execution ? Draw() : 16384;
+        var context = new AbilityFormulaContext(physicalAttack, attackerBrave, targetBrave, mode);
         try
         {
             int evade = ability.Evadeable && IsFront(dx, dy, targetFacing) ? classEvade : 0;
@@ -26,21 +26,13 @@ public static class PhysicalDamageRules
             if (ability.Evadeable)
             {
                 foreach (int chance in new[] { 0, 0, 0, evade })
-                    if (Draw() * 100 / 32768 < chance && mode == PhysicalDamageMode.Execution)
+                    if (Draw() * 100 / 32768 < chance && mode == AbilityFormulaMode.Execution)
                         return new(true, new(false, 0, 0, false, false), rng);
             }
             if (accuracy == 0) return new(true, new(false, 0, 0, false, false), rng);
-            bool critical = false, knockback = false;
-            uint? bonus = null;
-            if (ability.Formula.Id == PhysicalDamageFormulaId.RandomPaPlusHalfPa)
-            {
-                critical = FormulaRoll() * 100 / 32768 < 4;
-                if (critical) { bonus = FormulaRoll(); knockback = true; }
-            }
-            int damage = ability.Formula.CalculateDamage(physicalAttack, FormulaRoll(), bonus);
-            if (ability.Formula.Id == PhysicalDamageFormulaId.RandomPa && mode == PhysicalDamageMode.Execution)
-                knockback = AttemptsKnockback(attackerBrave, targetBrave, Draw(), Draw());
-            return new(true, new(true, accuracy, Math.Min(999, damage), critical, knockback), rng);
+            var formula = ability.Formula.Evaluate(context, rng);
+            return new(true, new(true, accuracy, Math.Min(999, formula.Damage), formula.Critical,
+                formula.KnockbackAttempted), formula.RngState);
         }
         catch (OverflowException) { return new(false, null, entryRng); }
     }

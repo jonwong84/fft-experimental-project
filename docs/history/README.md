@@ -21,7 +21,9 @@ retain their own provenance. Original pre-cleanup bytes are available from Git.
 
 ## Completed tickets
 
-These 410 entries index completed bounded work; they do not mean the full game is complete.
+These 411 entries index completed bounded work; they do not mean the full game is complete.
+
+- [ZOD-446 — Separate ability formula parameters, context and dispatch](../architecture/ability-formula-dispatch.md)
 
 - [ZOD-445 — Align OrdinaryMagic execution names with DefaultAbility](../architecture/default-ability-execution-names.md)
 

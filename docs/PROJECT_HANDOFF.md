@@ -1,12 +1,12 @@
 # Tessera / Zodiac / FFT handoff
 
-Updated 2026-11-08. Read [AGENTS.md](../AGENTS.md), the [active backlog](BACKLOG.md)
+Updated 2026-11-09. Read [AGENTS.md](../AGENTS.md), the [active backlog](BACKLOG.md)
 and the selected task's design before editing. This file describes current state;
 [planning history](history/README.md) holds completed tickets and old checkpoints.
 
 ## Next work
 
-**ZOD-443–445 are complete. Next: the owner's review, before further development.**
+**ZOD-443–446 are complete. Next: the owner's review, before further development.**
 Read [BACKLOG.md](BACKLOG.md), the
 [pathway names](architecture/default-ability-pathways.md),
 [execution names](architecture/default-ability-execution-names.md),
@@ -66,15 +66,27 @@ three project links for the moved `AuthoredDefaultAbility` fixture are updated.
 The same magic-focused mechanics, formats/IDs and CLI commands remain; no
 general ability support or AI command integration is activated.
 
-Latest validation: zero-warning/error Release build, **5,276 .NET tests**
-(1,835 Framework, 1,471 AI) and **810 Python tests** pass. Every affected code file
-and project link matches exact name substitution; existing test names/outcomes
-are preserved under that translation. Logs/seven TRX reports are in ignored
-`scratch/default-ability-magic-*`; the
-[receipt](evidence/maintenance/default-ability-execution-rename-v1.json) records
-the exact path/hash map, test parity, pinned source audit and preservation.
-Earlier hash receipts/fixture payloads are unchanged; their recorded old paths
-resolve through the rename maps at their original Git revisions. Coverage remains
+ZOD-446 adds the owner-requested [formula dispatcher](architecture/ability-formula-dispatch.md).
+`AbilityFormula`/`AbilityFormulaId` replace the old physical definition names.
+Definitions own `AbilityFormulaParameters` (X/Y/Z); `Evaluate(context, rng)`
+dispatches to the supported0x32/0x37 handlers. `AbilityFormulaContext` owns the
+admitted PA/Brave/mode inputs; `AbilityFormulaMode` replaces PhysicalDamageMode.
+Formula-specific critical/Brave RNG moves from PhysicalDamageRules into the
+handlers; evasion, upper999 cap and whole-calculation rollback remain with the
+combat rules. Actual, preview and AI callers use the shared entry. The raw-roll
+CalculateDamage adapter remains for existing arithmetic callers. Z is reserved
+and nonzero values reject; no Faith/equipment/status context, new formula family
+or prepared schema expansion is activated. Owner review of this API and the AI
+flow resumes next; no further development ticket is activated.
+
+Latest validation: zero-warning/error Release build, **5,302 .NET tests**
+(1,861 Framework, 1,471 AI) and **810 Python tests** pass. Existing source fixtures
+and gameplay expectations are unchanged; 26 dispatcher/context cases are added.
+Logs/seven full TRX reports are in ignored `scratch/ability-formula-*`. The
+[receipt](evidence/maintenance/ability-formula-refactor-v1.json) records source
+fingerprints, prior-test parity and preservation. Owner enum/test formatting is
+carried forward under the API edits; owner drafts and disabled CI remain intact.
+Historical receipts/fixtures retain their original payloads. Coverage remains
 58 planning entries and partial.
 
 The owner-authorized query/battle-state formatting was committed in `973b39e`.
@@ -125,7 +137,7 @@ The [review programme](development/documentation-review-programme.md) and
 [progress receipt](evidence/maintenance/documentation-review-progress-v1.json)
 record completed bounded batches through ZOD-436, the supporting ZOD-426
 study, bounded ZOD-437–441 implementations, ZOD-442 integration study,
-ZOD-443 context API and ZOD-444/445 naming maintenance. ZOD-428 and complete inventory
+ZOD-443 context API, ZOD-444/445 naming maintenance and ZOD-446 formula refactor. ZOD-428 and complete inventory
 groups remain open. Prior helper
 cross-checks and annotation corrections live
 in their behavior/evidence notes; use [history](history/README.md) for completed

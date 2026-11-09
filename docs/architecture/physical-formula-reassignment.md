@@ -1,5 +1,11 @@
 # Assignable physical formulas — ZOD-420
 
+The later [ZOD-446 refactor](ability-formula-dispatch.md) renames the selected
+definition/ID to `AbilityFormula`/`AbilityFormulaId`, separates parameters/context
+and dispatches formula-specific RNG through the supported handlers. Historical
+milestone descriptions below retain their original names; the example uses the
+current API. Supported arithmetic, schemas and admission limits are unchanged.
+
 The later [ZOD-427 review](../behavior/physical-pipeline-review.md) corrects
 formula0x32's PA1/Y0 boundary: the source zodiac helper floors YA to1 even in
 the admitted neutral profile. Current verification uses the explicit v2 fixture;
@@ -98,7 +104,7 @@ Create a custom companion from existing definitions and matching metadata IDs:
 ```csharp
 var original = effects.Abilities.Single();
 var edited = new TargetedAbilityDefinition(original.Id, original.Effect,
-    new PhysicalDamageFormula(PhysicalDamageFormulaId.RandomPaPlusHalfPa, 9, 0));
+    new AbilityFormula(AbilityFormulaId.RandomPaPlusHalfPa, new AbilityFormulaParameters(9, 0)));
 var custom = new TargetedAbilityContentPackage(effects.PackageId,
     effects.ProfileId, effects.RequiredMetadataPackageId, [edited]);
 string json = custom.ToJson();

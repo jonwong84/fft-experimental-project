@@ -13,7 +13,7 @@ public sealed class PhysicalFormulaContentTests
     {
         var metadata=SyntheticBasicSkillBattle.Metadata();
         return new("sample:package/custom",metadata.ProfileId,metadata.PackageId,
-            [new(SyntheticBasicSkillBattle.ThrowStone,TargetedAbilityEffect.DashFlat,new PhysicalDamageFormula((PhysicalDamageFormulaId)formula,x,y))]);
+            [new(SyntheticBasicSkillBattle.ThrowStone,TargetedAbilityEffect.DashFlat,new AbilityFormula((AbilityFormulaId)formula,new(x,y)))]);
     }
 
     [Fact]
@@ -24,7 +24,7 @@ public sealed class PhysicalFormulaContentTests
         Assert.Equal(json,read.ToJson());Assert.Equal(2,read.Version);Assert.Equal(before,metadata.ToJson());
         var ability=Assert.Single(read.Abilities);Assert.Equal(SyntheticBasicSkillBattle.ThrowStone,ability.Id);
         Assert.Equal(1,ability.Range);Assert.False(ability.Definition.Evadeable);Assert.False(ability.Definition.DirectTrajectory);
-        Assert.Equal(PhysicalDamageFormulaId.RandomPaPlusHalfPa,ability.Formula.Id);Assert.Equal(9,ability.Formula.X);Assert.Equal(0,ability.Formula.Y);
+        Assert.Equal(AbilityFormulaId.RandomPaPlusHalfPa,ability.Formula.Id);Assert.Equal(9,ability.Formula.Parameters.X);Assert.Equal(0,ability.Formula.Parameters.Y);
         Assert.Contains("\"ruleset\": \"custom\"",json);Assert.DoesNotContain("maximumDamageMultiplier",json);
     }
 
@@ -34,8 +34,8 @@ public sealed class PhysicalFormulaContentTests
         var package=Package(55,0,4);var json=JsonNode.Parse(package.ToJson())!;
         json["abilities"]![0]!["formula"]=50;
         var changed=TargetedAbilityContentPackage.ReadJson(json.ToJsonString());var ability=changed.Abilities[0];
-        Assert.Equal(0,ability.Formula.X);Assert.Equal(4,ability.Formula.Y);Assert.Equal(9,ability.Formula.CalculateDamage(5,16384));
-        Assert.Equal(PhysicalDamageFormulaId.RandomPa,package.Abilities[0].Formula.Id);
+        Assert.Equal(0,ability.Formula.Parameters.X);Assert.Equal(4,ability.Formula.Parameters.Y);Assert.Equal(9,ability.Formula.CalculateDamage(5,16384));
+        Assert.Equal(AbilityFormulaId.RandomPa,package.Abilities[0].Formula.Id);
     }
 
     [Theory] [InlineData("formula","1")] [InlineData("x","256")] [InlineData("x","9.0")]

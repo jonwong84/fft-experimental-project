@@ -30,7 +30,7 @@ and formula directly, without selecting a named ability effect:
 var ability = new TargetedAbilityDefinition(
     new AbilityId("custom:ability/physical-action"),
     PhysicalAbilityDelivery.DirectProjectile,
-    new PhysicalDamageFormula(PhysicalDamageFormulaId.RandomPaPlusHalfPa, 9, 0));
+    new AbilityFormula(AbilityFormulaId.RandomPaPlusHalfPa, new AbilityFormulaParameters(9, 0)));
 ```
 
 `TargetedAbilityBattleSetup.CreatePhysicalProfile` resolves the selected metadata
