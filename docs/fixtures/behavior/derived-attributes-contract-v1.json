@@ -1,0 +1,1499 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-385",
+    "ZOD-386"
+  ],
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "mode1": [
+    {
+      "id": "ordinary",
+      "input": {
+        "raw": [
+          1638400,
+          1638400,
+          1638400,
+          1638400,
+          1638400
+        ],
+        "multipliers": [
+          100,
+          75,
+          100,
+          90,
+          80
+        ],
+        "hp": 90,
+        "mp": 80,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": false
+      },
+      "expected": {
+        "hp": 90,
+        "maxHp": 100,
+        "mp": 75,
+        "maxMp": 75,
+        "base": [
+          7,
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "id": "zero-raw-and-multipliers-floor-at-one",
+      "input": {
+        "raw": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "multipliers": [
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "hp": 0,
+        "mp": 0,
+        "base": [
+          0,
+          0,
+          0
+        ],
+        "egg": false
+      },
+      "expected": {
+        "hp": 0,
+        "maxHp": 1,
+        "mp": 0,
+        "maxMp": 1,
+        "base": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "grown-raw-retains-base-bytes",
+      "input": {
+        "raw": [
+          1716419,
+          1703936,
+          16777215,
+          16777215,
+          16777215
+        ],
+        "multipliers": [
+          100,
+          75,
+          255,
+          255,
+          255
+        ],
+        "hp": 100,
+        "mp": 75,
+        "base": [
+          1,
+          255,
+          0
+        ],
+        "egg": false
+      },
+      "expected": {
+        "hp": 100,
+        "maxHp": 104,
+        "mp": 75,
+        "maxMp": 78,
+        "base": [
+          1,
+          255,
+          0
+        ]
+      }
+    },
+    {
+      "id": "floor-boundary",
+      "input": {
+        "raw": [
+          16383,
+          32768,
+          0,
+          0,
+          0
+        ],
+        "multipliers": [
+          100,
+          50,
+          0,
+          0,
+          0
+        ],
+        "hp": 9,
+        "mp": 9,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": false
+      },
+      "expected": {
+        "hp": 1,
+        "maxHp": 1,
+        "mp": 1,
+        "maxMp": 1,
+        "base": [
+          7,
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "id": "exact-integer-maxima",
+      "input": {
+        "raw": [
+          32768,
+          49152,
+          0,
+          0,
+          0
+        ],
+        "multipliers": [
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "hp": 9,
+        "mp": 9,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": false
+      },
+      "expected": {
+        "hp": 2,
+        "maxHp": 2,
+        "mp": 3,
+        "maxMp": 3,
+        "base": [
+          7,
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "id": "normal-upper-caps",
+      "input": {
+        "raw": [
+          16777215,
+          16777215,
+          16777215,
+          16777215,
+          16777215
+        ],
+        "multipliers": [
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "hp": 5000,
+        "mp": 5000,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": false
+      },
+      "expected": {
+        "hp": 999,
+        "maxHp": 999,
+        "mp": 999,
+        "maxMp": 999,
+        "base": [
+          7,
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "id": "egg-full-width-product",
+      "input": {
+        "raw": [
+          16777215,
+          16777215,
+          16777215,
+          16777215,
+          16777215
+        ],
+        "multipliers": [
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "hp": 65535,
+        "mp": 65535,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": true
+      },
+      "expected": {
+        "hp": 26111,
+        "maxHp": 26111,
+        "mp": 26111,
+        "maxMp": 26111,
+        "base": [
+          7,
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "id": "egg-division-before-rounding",
+      "input": {
+        "raw": [
+          16383,
+          16384,
+          0,
+          0,
+          0
+        ],
+        "multipliers": [
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "hp": 50,
+        "mp": 50,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": true
+      },
+      "expected": {
+        "hp": 9,
+        "maxHp": 9,
+        "mp": 10,
+        "maxMp": 10,
+        "base": [
+          7,
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "id": "does-not-refill",
+      "input": {
+        "raw": [
+          1638400,
+          1638400,
+          1638400,
+          1638400,
+          1638400
+        ],
+        "multipliers": [
+          100,
+          75,
+          100,
+          90,
+          80
+        ],
+        "hp": 1,
+        "mp": 2,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": false
+      },
+      "expected": {
+        "hp": 1,
+        "maxHp": 100,
+        "mp": 2,
+        "maxMp": 75,
+        "base": [
+          7,
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "id": "below-cap",
+      "input": {
+        "raw": [
+          16367615,
+          16367615,
+          16367615,
+          16367615,
+          16367615
+        ],
+        "multipliers": [
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "hp": 65535,
+        "mp": 65535,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": false
+      },
+      "expected": {
+        "hp": 998,
+        "maxHp": 998,
+        "mp": 998,
+        "maxMp": 998,
+        "base": [
+          7,
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "id": "exact-cap",
+      "input": {
+        "raw": [
+          16367616,
+          16367616,
+          16367616,
+          16367616,
+          16367616
+        ],
+        "multipliers": [
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "hp": 65535,
+        "mp": 65535,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": false
+      },
+      "expected": {
+        "hp": 999,
+        "maxHp": 999,
+        "mp": 999,
+        "maxMp": 999,
+        "base": [
+          7,
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "id": "above-cap",
+      "input": {
+        "raw": [
+          16384000,
+          16384000,
+          16384000,
+          16384000,
+          16384000
+        ],
+        "multipliers": [
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        "hp": 65535,
+        "mp": 65535,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": false
+      },
+      "expected": {
+        "hp": 999,
+        "maxHp": 999,
+        "mp": 999,
+        "maxMp": 999,
+        "base": [
+          7,
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "id": "small-multiplier",
+      "input": {
+        "raw": [
+          16777215,
+          16777215,
+          16777215,
+          16777215,
+          16777215
+        ],
+        "multipliers": [
+          1,
+          1,
+          1,
+          1,
+          1
+        ],
+        "hp": 65535,
+        "mp": 65535,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": false
+      },
+      "expected": {
+        "hp": 10,
+        "maxHp": 10,
+        "mp": 10,
+        "maxMp": 10,
+        "base": [
+          7,
+          8,
+          9
+        ]
+      }
+    },
+    {
+      "id": "retains-base-above-actual-caps",
+      "input": {
+        "raw": [
+          1638400,
+          1638400,
+          1638400,
+          1638400,
+          1638400
+        ],
+        "multipliers": [
+          100,
+          75,
+          100,
+          90,
+          80
+        ],
+        "hp": 90,
+        "mp": 80,
+        "base": [
+          255,
+          255,
+          255
+        ],
+        "egg": false
+      },
+      "expected": {
+        "hp": 90,
+        "maxHp": 100,
+        "mp": 75,
+        "maxMp": 75,
+        "base": [
+          255,
+          255,
+          255
+        ]
+      }
+    }
+  ],
+  "equipment": [
+    {
+      "id": "no-items",
+      "input": {
+        "raw": [
+          1638400,
+          1638400,
+          1638400,
+          1638400,
+          1638400
+        ],
+        "multipliers": [
+          100,
+          75,
+          100,
+          90,
+          80
+        ],
+        "hp": 90,
+        "mp": 80,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": false,
+        "items": [],
+        "move": 3,
+        "jump": 3,
+        "monster": false
+      },
+      "expected": {
+        "hp": 90,
+        "maxHp": 100,
+        "mp": 75,
+        "maxMp": 75,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "bonuses": [
+          0,
+          0,
+          0
+        ],
+        "actual": [
+          7,
+          8,
+          9
+        ],
+        "move": 3,
+        "jump": 3
+      }
+    },
+    {
+      "id": "ordinary-bonuses",
+      "input": {
+        "raw": [
+          1638400,
+          1638400,
+          1638400,
+          1638400,
+          1638400
+        ],
+        "multipliers": [
+          100,
+          75,
+          100,
+          90,
+          80
+        ],
+        "hp": 90,
+        "mp": 80,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": false,
+        "items": [
+          [
+            true,
+            2,
+            3,
+            4,
+            1,
+            2,
+            false,
+            0,
+            0
+          ]
+        ],
+        "move": 3,
+        "jump": 3,
+        "monster": false
+      },
+      "expected": {
+        "hp": 90,
+        "maxHp": 100,
+        "mp": 75,
+        "maxMp": 75,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "bonuses": [
+          2,
+          3,
+          4
+        ],
+        "actual": [
+          9,
+          11,
+          13
+        ],
+        "move": 4,
+        "jump": 5
+      }
+    },
+    {
+      "id": "armor-before-current-clamp",
+      "input": {
+        "raw": [
+          1638400,
+          1638400,
+          1638400,
+          1638400,
+          1638400
+        ],
+        "multipliers": [
+          100,
+          75,
+          100,
+          90,
+          80
+        ],
+        "hp": 350,
+        "mp": 140,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": false,
+        "items": [
+          [
+            true,
+            0,
+            0,
+            0,
+            0,
+            0,
+            true,
+            100,
+            40
+          ],
+          [
+            true,
+            0,
+            0,
+            0,
+            0,
+            0,
+            true,
+            200,
+            30
+          ]
+        ],
+        "move": 3,
+        "jump": 3,
+        "monster": false
+      },
+      "expected": {
+        "hp": 350,
+        "maxHp": 400,
+        "mp": 140,
+        "maxMp": 145,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "bonuses": [
+          0,
+          0,
+          0
+        ],
+        "actual": [
+          7,
+          8,
+          9
+        ],
+        "move": 3,
+        "jump": 3
+      }
+    },
+    {
+      "id": "zero-armor-lowers-egg-maxima",
+      "input": {
+        "raw": [
+          16777215,
+          16777215,
+          16777215,
+          16777215,
+          16777215
+        ],
+        "multipliers": [
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "hp": 65535,
+        "mp": 65535,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": true,
+        "items": [
+          [
+            true,
+            0,
+            0,
+            0,
+            0,
+            0,
+            true,
+            0,
+            0
+          ]
+        ],
+        "move": 3,
+        "jump": 3,
+        "monster": false
+      },
+      "expected": {
+        "hp": 999,
+        "maxHp": 999,
+        "mp": 999,
+        "maxMp": 999,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "bonuses": [
+          0,
+          0,
+          0
+        ],
+        "actual": [
+          7,
+          8,
+          9
+        ],
+        "move": 3,
+        "jump": 3
+      }
+    },
+    {
+      "id": "nonarmor-vitals-ignored",
+      "input": {
+        "raw": [
+          1638400,
+          1638400,
+          1638400,
+          1638400,
+          1638400
+        ],
+        "multipliers": [
+          100,
+          75,
+          100,
+          90,
+          80
+        ],
+        "hp": 90,
+        "mp": 80,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": false,
+        "items": [
+          [
+            true,
+            0,
+            0,
+            0,
+            0,
+            0,
+            false,
+            255,
+            255
+          ]
+        ],
+        "move": 3,
+        "jump": 3,
+        "monster": false
+      },
+      "expected": {
+        "hp": 90,
+        "maxHp": 100,
+        "mp": 75,
+        "maxMp": 75,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "bonuses": [
+          0,
+          0,
+          0
+        ],
+        "actual": [
+          7,
+          8,
+          9
+        ],
+        "move": 3,
+        "jump": 3
+      }
+    },
+    {
+      "id": "absent-item-skips-all-caps",
+      "input": {
+        "raw": [
+          1638400,
+          1638400,
+          1638400,
+          1638400,
+          1638400
+        ],
+        "multipliers": [
+          100,
+          75,
+          100,
+          90,
+          80
+        ],
+        "hp": 90,
+        "mp": 80,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": false,
+        "items": [
+          [
+            false,
+            255,
+            255,
+            255,
+            255,
+            255,
+            true,
+            255,
+            255
+          ]
+        ],
+        "move": 255,
+        "jump": 255,
+        "monster": false
+      },
+      "expected": {
+        "hp": 90,
+        "maxHp": 100,
+        "mp": 75,
+        "maxMp": 75,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "bonuses": [
+          0,
+          0,
+          0
+        ],
+        "actual": [
+          7,
+          8,
+          9
+        ],
+        "move": 255,
+        "jump": 255
+      }
+    },
+    {
+      "id": "present-zero-item-applies-move-jump-caps",
+      "input": {
+        "raw": [
+          1638400,
+          1638400,
+          1638400,
+          1638400,
+          1638400
+        ],
+        "multipliers": [
+          100,
+          75,
+          100,
+          90,
+          80
+        ],
+        "hp": 90,
+        "mp": 80,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": false,
+        "items": [
+          [
+            true,
+            0,
+            0,
+            0,
+            0,
+            0,
+            false,
+            0,
+            0
+          ]
+        ],
+        "move": 255,
+        "jump": 255,
+        "monster": false
+      },
+      "expected": {
+        "hp": 90,
+        "maxHp": 100,
+        "mp": 75,
+        "maxMp": 75,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "bonuses": [
+          0,
+          0,
+          0
+        ],
+        "actual": [
+          7,
+          8,
+          9
+        ],
+        "move": 253,
+        "jump": 7
+      }
+    },
+    {
+      "id": "actual-caps-do-not-change-base",
+      "input": {
+        "raw": [
+          1638400,
+          1638400,
+          1638400,
+          1638400,
+          1638400
+        ],
+        "multipliers": [
+          100,
+          75,
+          100,
+          90,
+          80
+        ],
+        "hp": 90,
+        "mp": 80,
+        "base": [
+          255,
+          255,
+          255
+        ],
+        "egg": false,
+        "items": [],
+        "move": 3,
+        "jump": 3,
+        "monster": false
+      },
+      "expected": {
+        "hp": 90,
+        "maxHp": 100,
+        "mp": 75,
+        "maxMp": 75,
+        "base": [
+          255,
+          255,
+          255
+        ],
+        "bonuses": [
+          0,
+          0,
+          0
+        ],
+        "actual": [
+          99,
+          99,
+          50
+        ],
+        "move": 3,
+        "jump": 3
+      }
+    },
+    {
+      "id": "bonus-saturation-before-actual-caps",
+      "input": {
+        "raw": [
+          1638400,
+          1638400,
+          1638400,
+          1638400,
+          1638400
+        ],
+        "multipliers": [
+          100,
+          75,
+          100,
+          90,
+          80
+        ],
+        "hp": 90,
+        "mp": 80,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": false,
+        "items": [
+          [
+            true,
+            255,
+            255,
+            255,
+            0,
+            0,
+            false,
+            0,
+            0
+          ],
+          [
+            true,
+            100,
+            100,
+            100,
+            0,
+            0,
+            false,
+            0,
+            0
+          ]
+        ],
+        "move": 3,
+        "jump": 3,
+        "monster": false
+      },
+      "expected": {
+        "hp": 90,
+        "maxHp": 100,
+        "mp": 75,
+        "maxMp": 75,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "bonuses": [
+          255,
+          255,
+          255
+        ],
+        "actual": [
+          99,
+          99,
+          50
+        ],
+        "move": 3,
+        "jump": 3
+      }
+    },
+    {
+      "id": "move-jump-boundaries",
+      "input": {
+        "raw": [
+          1638400,
+          1638400,
+          1638400,
+          1638400,
+          1638400
+        ],
+        "multipliers": [
+          100,
+          75,
+          100,
+          90,
+          80
+        ],
+        "hp": 90,
+        "mp": 80,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": false,
+        "items": [
+          [
+            true,
+            0,
+            0,
+            0,
+            1,
+            1,
+            false,
+            0,
+            0
+          ]
+        ],
+        "move": 253,
+        "jump": 7,
+        "monster": false
+      },
+      "expected": {
+        "hp": 90,
+        "maxHp": 100,
+        "mp": 75,
+        "maxMp": 75,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "bonuses": [
+          0,
+          0,
+          0
+        ],
+        "actual": [
+          7,
+          8,
+          9
+        ],
+        "move": 253,
+        "jump": 7
+      }
+    },
+    {
+      "id": "monster-skips-unknown-item-captures",
+      "input": {
+        "raw": [
+          1638400,
+          1638400,
+          1638400,
+          1638400,
+          1638400
+        ],
+        "multipliers": [
+          100,
+          75,
+          100,
+          90,
+          80
+        ],
+        "hp": 90,
+        "mp": 80,
+        "base": [
+          255,
+          255,
+          255
+        ],
+        "egg": false,
+        "items": null,
+        "move": 3,
+        "jump": 3,
+        "monster": true
+      },
+      "expected": {
+        "hp": 90,
+        "maxHp": 100,
+        "mp": 75,
+        "maxMp": 75,
+        "base": [
+          255,
+          255,
+          255
+        ],
+        "bonuses": [
+          0,
+          0,
+          0
+        ],
+        "actual": [
+          99,
+          99,
+          50
+        ],
+        "move": 3,
+        "jump": 3
+      }
+    },
+    {
+      "id": "monster-egg-ignores-armor",
+      "input": {
+        "raw": [
+          16777215,
+          16777215,
+          16777215,
+          16777215,
+          16777215
+        ],
+        "multipliers": [
+          255,
+          255,
+          255,
+          255,
+          255
+        ],
+        "hp": 65535,
+        "mp": 65535,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": true,
+        "items": [
+          [
+            true,
+            255,
+            255,
+            255,
+            255,
+            255,
+            true,
+            255,
+            255
+          ]
+        ],
+        "move": 3,
+        "jump": 3,
+        "monster": true
+      },
+      "expected": {
+        "hp": 26111,
+        "maxHp": 26111,
+        "mp": 26111,
+        "maxMp": 26111,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "bonuses": [
+          0,
+          0,
+          0
+        ],
+        "actual": [
+          7,
+          8,
+          9
+        ],
+        "move": 3,
+        "jump": 3
+      }
+    },
+    {
+      "id": "repeated-contributions-are-not-deduplicated",
+      "input": {
+        "raw": [
+          1638400,
+          1638400,
+          1638400,
+          1638400,
+          1638400
+        ],
+        "multipliers": [
+          100,
+          75,
+          100,
+          90,
+          80
+        ],
+        "hp": 90,
+        "mp": 80,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": false,
+        "items": [
+          [
+            true,
+            2,
+            3,
+            4,
+            0,
+            0,
+            false,
+            0,
+            0
+          ],
+          [
+            true,
+            2,
+            3,
+            4,
+            0,
+            0,
+            false,
+            0,
+            0
+          ]
+        ],
+        "move": 3,
+        "jump": 3,
+        "monster": false
+      },
+      "expected": {
+        "hp": 90,
+        "maxHp": 100,
+        "mp": 75,
+        "maxMp": 75,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "bonuses": [
+          4,
+          6,
+          8
+        ],
+        "actual": [
+          11,
+          14,
+          17
+        ],
+        "move": 3,
+        "jump": 3
+      }
+    },
+    {
+      "id": "armor-upper-cap",
+      "input": {
+        "raw": [
+          1638400,
+          1638400,
+          1638400,
+          1638400,
+          1638400
+        ],
+        "multipliers": [
+          100,
+          75,
+          100,
+          90,
+          80
+        ],
+        "hp": 65535,
+        "mp": 65535,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "egg": false,
+        "items": [
+          [
+            true,
+            0,
+            0,
+            0,
+            0,
+            0,
+            true,
+            255,
+            255
+          ],
+          [
+            true,
+            0,
+            0,
+            0,
+            0,
+            0,
+            true,
+            255,
+            255
+          ],
+          [
+            true,
+            0,
+            0,
+            0,
+            0,
+            0,
+            true,
+            255,
+            255
+          ],
+          [
+            true,
+            0,
+            0,
+            0,
+            0,
+            0,
+            true,
+            255,
+            255
+          ]
+        ],
+        "move": 3,
+        "jump": 3,
+        "monster": false
+      },
+      "expected": {
+        "hp": 999,
+        "maxHp": 999,
+        "mp": 999,
+        "maxMp": 999,
+        "base": [
+          7,
+          8,
+          9
+        ],
+        "bonuses": [
+          0,
+          0,
+          0
+        ],
+        "actual": [
+          7,
+          8,
+          9
+        ],
+        "move": 3,
+        "jump": 3
+      }
+    }
+  ]
+}

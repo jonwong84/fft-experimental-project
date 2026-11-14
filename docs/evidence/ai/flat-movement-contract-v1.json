@@ -1,0 +1,1110 @@
+{
+  "format": "fft.flat-ai-movement-source-contract",
+  "schemaVersion": 1,
+  "ticket": "ZOD-120",
+  "recordedOn": "2026-10-26",
+  "managedBase": "b2f488d911467cc1ca698931ceba1c5673544a96",
+  "guide": "docs/architecture/zod-120-flat-ai-movement-contract.md",
+  "fixture": {
+    "path": "docs/fixtures/behavior/flat-ai-movement-contract-v1.json",
+    "hashEncoding": "utf8-lf",
+    "byteLength": 123653,
+    "sha256": "7466ff263f805c4a07b11624f68b72a74c20ca97e19e4d149843b6f211943291"
+  },
+  "reference": {
+    "root": "C:\\repositories\\fft_decomp",
+    "revision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "freshlyCheckedClean": true,
+    "readOnly": true,
+    "files": [
+      {
+        "path": "src/battle/map/move_range.c",
+        "hashEncoding": "utf8-lf",
+        "byteLength": 112855,
+        "sha256": "eab2f2f9f7074a9d8114636f0c048786410a3d6940ef5a357eb263ca39c85228",
+        "functions": [
+          {
+            "symbol": "weather_terrain_cost_get",
+            "startLine": 262,
+            "endLine": 272,
+            "normalizedLfSha256": "46324b772afcf8d28170382e1f17ed2ea0b8fd21b9292a070561560715946a57"
+          },
+          {
+            "symbol": "spread_unit_to_scratchpad_store",
+            "startLine": 300,
+            "endLine": 567,
+            "normalizedLfSha256": "b4d29cb0cef0d6ffaf2b39ab10119534ab038c969ea05a4d6d9f4ef3a91ac832"
+          },
+          {
+            "symbol": "move_range_build",
+            "startLine": 583,
+            "endLine": 631,
+            "normalizedLfSha256": "b5115bad6a345f0d82fcd9475554de27447a9c1c450353d64571bd9b60cfffb9"
+          },
+          {
+            "symbol": "spread_frontier_flags_set",
+            "startLine": 660,
+            "endLine": 780,
+            "normalizedLfSha256": "6eb4c7aa01c8dd78e2aeee8048c78720d9ebd8756085381003bab55538563984"
+          },
+          {
+            "symbol": "range_tile_flags_set",
+            "startLine": 788,
+            "endLine": 859,
+            "normalizedLfSha256": "bcfea6eb928d855308d7fb5312f712766d2c74d88f7c94cf5d2589aa81a9ddc8"
+          },
+          {
+            "symbol": "move_spread_preset_east",
+            "startLine": 863,
+            "endLine": 869,
+            "normalizedLfSha256": "51a31fc9f65b132809c19fe3a3a69a0e585a3ebce6728e09b089516249516a33"
+          },
+          {
+            "symbol": "move_spread_preset_north",
+            "startLine": 873,
+            "endLine": 879,
+            "normalizedLfSha256": "d899bb28027e625bd9a5d657c660e1034c7a609e1bf0004fa4b07ae7c861886c"
+          },
+          {
+            "symbol": "move_spread_preset_west",
+            "startLine": 883,
+            "endLine": 889,
+            "normalizedLfSha256": "d75ff01518bfa6fb58914d5e9f5d131ffbc6aa6444cb3aae80f7eef6f21d7291"
+          },
+          {
+            "symbol": "move_spread_preset_south",
+            "startLine": 893,
+            "endLine": 899,
+            "normalizedLfSha256": "6fd980d0fb7eef2520fe61f39c68c2190661a51eb11cbb73bf4eb25b1693ef4b"
+          },
+          {
+            "symbol": "path_spread_scratch_init",
+            "startLine": 903,
+            "endLine": 911,
+            "normalizedLfSha256": "1d93b1674796bce06a74fd172ea943459b0c17f495789b262570b519ce732ef1"
+          },
+          {
+            "symbol": "spread_source_panel_init",
+            "startLine": 962,
+            "endLine": 1010,
+            "normalizedLfSha256": "e0b1b968955ea144c734b218c2a595ec26b34b90a5fdac3e3f92fde96437fe60"
+          },
+          {
+            "symbol": "spread_destination_propagate",
+            "startLine": 1018,
+            "endLine": 1116,
+            "normalizedLfSha256": "4e5fd615eea3c776c5fba7f1d1cfbf3c6af9b7c01202f69ceac835740c3945fe"
+          },
+          {
+            "symbol": "spread_one_tile_around_check",
+            "startLine": 1123,
+            "endLine": 1139,
+            "normalizedLfSha256": "9767ff7e0675f7b6d482b8fb54b00a869b6bc7fa78536496b980039c9c4473d7"
+          },
+          {
+            "symbol": "spread_occupied_tile_standing_height_check",
+            "startLine": 1153,
+            "endLine": 1211,
+            "normalizedLfSha256": "4e86e5cbe9164960687ca46c06b6ad5e45ecd4f63abca30a1b87c0ed00a004c5"
+          },
+          {
+            "symbol": "spread_horizontal_jump_check",
+            "startLine": 1258,
+            "endLine": 1338,
+            "normalizedLfSha256": "f477be1e3a046d22b849109168262e587bd2d9f5c9b2d8da745c4d7502645774"
+          },
+          {
+            "symbol": "horizontal_jump_spread",
+            "startLine": 1345,
+            "endLine": 1382,
+            "normalizedLfSha256": "3c4ff714acf9ca339d306df1d1a424a9e2d8017a60e7ab7ed633c83ae7786e08"
+          },
+          {
+            "symbol": "move_path_build_to_tile",
+            "startLine": 1396,
+            "endLine": 1548,
+            "normalizedLfSha256": "8e5dc5214ca76d1895350d6118d09d03163f014cf6a41284706e6debaad12b13"
+          },
+          {
+            "symbol": "teleport_roll",
+            "startLine": 1552,
+            "endLine": 1566,
+            "normalizedLfSha256": "c1afce4c2cd02e01cfe0265eadccca92ca6d1a2ad06b8de90f4576418521757f"
+          },
+          {
+            "symbol": "path_steps_encode",
+            "startLine": 1575,
+            "endLine": 1711,
+            "normalizedLfSha256": "7cfee07a2d8a854fe2b10e72e781852aa43376e035cdc6599276d7685b577ebf"
+          },
+          {
+            "symbol": "path_source_geometry_init",
+            "startLine": 1720,
+            "endLine": 1759,
+            "normalizedLfSha256": "ef02d0bccfda031a8112246d0c8e7ed52984f99f5dd14174ac4d7936a55c01cb"
+          },
+          {
+            "symbol": "path_destination_geometry_init",
+            "startLine": 1769,
+            "endLine": 1832,
+            "normalizedLfSha256": "a6850cd2d7219d6020e8b22664fb4c3d3a443e0d52cb8ec14bfcb9468574749b"
+          },
+          {
+            "symbol": "path_candidate_update",
+            "startLine": 1840,
+            "endLine": 1892,
+            "normalizedLfSha256": "78d24be6a365e5762df04d565cc3c6848e42eb7d4664b9a18df8b1675d71406e"
+          },
+          {
+            "symbol": "path_neighbors_spread",
+            "startLine": 1901,
+            "endLine": 1925,
+            "normalizedLfSha256": "a25cdb420e635d93a273695331e2b1a2db6eeb249e75f1ac512f9c253e7b930a"
+          },
+          {
+            "symbol": "path_selected_candidate_apply",
+            "startLine": 1934,
+            "endLine": 1958,
+            "normalizedLfSha256": "9c2e3c72da7ce8b511e30ef740d1d3b07e4ab332f35eb39057aa4db975dfd835"
+          },
+          {
+            "symbol": "path_horizontal_jumps_spread",
+            "startLine": 1964,
+            "endLine": 2020,
+            "normalizedLfSha256": "8ef3ff112724acda15ed3d4b4a7ebe4371a32d82ca010a9129decba3b6d4c14f"
+          },
+          {
+            "symbol": "path_selected_candidate_save",
+            "startLine": 2027,
+            "endLine": 2088,
+            "normalizedLfSha256": "6459d882f0954bedda3985a28ee1fd9ad79d53cca41c3203260cb2f76d6f4372"
+          },
+          {
+            "symbol": "ai_move_propagate_from_target",
+            "startLine": 2332,
+            "endLine": 2430,
+            "normalizedLfSha256": "c3eb07538aad26f6a64ca6276af2842f3fc35b5142b9bf9bfa1e5c08c82a94cd"
+          }
+        ]
+      },
+      {
+        "path": "src/battle/ai/turn.c",
+        "hashEncoding": "utf8-lf",
+        "byteLength": 147880,
+        "sha256": "5519c4550e9fea302ee4366848435b8131c7d3aef24f02462c7571d11bd1cd17",
+        "functions": [
+          {
+            "symbol": "reachable_tiles_build",
+            "startLine": 478,
+            "endLine": 593,
+            "normalizedLfSha256": "157ef55cbc96b187ff8cbf4e959f61e81994c0486a987d0fabf1c8482171c438"
+          },
+          {
+            "symbol": "target_distance_grid_fill",
+            "startLine": 3181,
+            "endLine": 3231,
+            "normalizedLfSha256": "38bf70f5a7b043dec4319bab6b6e952acd137405baae62e251b9b3a4209bc8db"
+          },
+          {
+            "symbol": "destination_select",
+            "startLine": 1563,
+            "endLine": 1629,
+            "normalizedLfSha256": "ce1fca91677de2c3e4de8d7d295bc1b506a60989c80ea6d36e80dffdb2401f20"
+          },
+          {
+            "symbol": "ai_command_build",
+            "startLine": 131,
+            "endLine": 224,
+            "normalizedLfSha256": "b4a01ef870fceac6d31bc8ab370f0b4053aaee69fc3dd55d9b79c78a0975a5bf"
+          },
+          {
+            "symbol": "ai_move_origins_evaluate",
+            "startLine": 1777,
+            "endLine": 1808,
+            "normalizedLfSha256": "898f6045dcff4c23ad10909de558fd0b236e03f7f75b8aa31c1b32d9996691b9"
+          }
+        ]
+      },
+      {
+        "path": "src/battle/ai/evaluation.c",
+        "hashEncoding": "utf8-lf",
+        "byteLength": 111880,
+        "sha256": "22555f06b061bc6f017f721998a5e44dfb3d4fa4c7284a2ee3367dfa27ce80ad",
+        "functions": [
+          {
+            "symbol": "origin_reachable_evaluate",
+            "startLine": 832,
+            "endLine": 905,
+            "normalizedLfSha256": "f213309e60e63e57e9b159868cd3e6a95aee7e49a5d9b71f5bac60c0ec4d528b"
+          },
+          {
+            "symbol": "origin_destination_finalize",
+            "startLine": 913,
+            "endLine": 923,
+            "normalizedLfSha256": "456dc6cf56cf7c3e86c5bdfc3876b641f58d126e24b3f5920e491a693a7c1436"
+          },
+          {
+            "symbol": "origin_next_take",
+            "startLine": 931,
+            "endLine": 962,
+            "normalizedLfSha256": "528327ddb6e45728cc46749c03a9c7b4fce817d5637e9d81d8e9e010982d5930"
+          },
+          {
+            "symbol": "movement_pickup_simulate",
+            "startLine": 1736,
+            "endLine": 1757,
+            "normalizedLfSha256": "cd86df80f4ec09820ed3ad82aa56af77bce27e61a1f6f459f7d507d95373250a"
+          },
+          {
+            "symbol": "ai_acting_unit_place",
+            "startLine": 2442,
+            "endLine": 2446,
+            "normalizedLfSha256": "0127d5cdd423a574e7f6d32ad494c445a2d77c24343bdccd599353a933ffec11"
+          },
+          {
+            "symbol": "ai_pathfinding_budget_is_exhausted",
+            "startLine": 290,
+            "endLine": 292,
+            "normalizedLfSha256": "64d354d95047846f914deda46d3c69bb5bb2557cceb20d2014d747dd6180ab9e"
+          }
+        ]
+      },
+      {
+        "path": "src/battle/turn/controller.c",
+        "hashEncoding": "utf8-lf",
+        "byteLength": 187246,
+        "sha256": "2792e2b861e8de4f4f996a5491dbacde0b96f77518a75cc4b8eebf2d6bc1557f",
+        "functions": [
+          {
+            "symbol": "battle_state_select_move_tile_update",
+            "startLine": 2878,
+            "endLine": 2937,
+            "normalizedLfSha256": "a799c95dfcf5fe2ce97c9e5021aca7df3a6cbc6e1d92dba381f700410b455199"
+          },
+          {
+            "symbol": "move_confirm",
+            "startLine": 3067,
+            "endLine": 3095,
+            "normalizedLfSha256": "39e3103aa39d609ae0d0c13aa16de41865ceccc77352e4dcda7dd5b5ab61be35"
+          }
+        ]
+      },
+      {
+        "path": "src/battle/units/movement.c",
+        "hashEncoding": "utf8-lf",
+        "byteLength": 109656,
+        "sha256": "e008ef1f59d1a01c52b41d535203765af519e6336952b884f6e90762a4050e0c",
+        "functions": [
+          {
+            "symbol": "move_step_start_walk",
+            "startLine": 568,
+            "endLine": 612,
+            "normalizedLfSha256": "2ffffbb7d1047e0904cf9e8c26b45ad3bb033d8e1988fd16a67b35a08e6c7a67"
+          },
+          {
+            "symbol": "move_settle_on_tile",
+            "startLine": 1440,
+            "endLine": 1461,
+            "normalizedLfSha256": "bc83991c772183300cfb860b4df873ef92802e4229e95c2cdcbfe73beb067520"
+          }
+        ]
+      },
+      {
+        "path": "include/fft/move.h",
+        "hashEncoding": "utf8-lf",
+        "byteLength": 11466,
+        "sha256": "28cb002ca1ab5bf2fe139ffea6e4a71acaef70fe50c9023327439a1465b56fab",
+        "functions": []
+      },
+      {
+        "path": "include/fft/move_step.h",
+        "hashEncoding": "utf8-lf",
+        "byteLength": 3939,
+        "sha256": "15981546f0c53c697a7e3eccedaf07214660aabf0496bb52aea5254cb1f6fe5c",
+        "functions": []
+      },
+      {
+        "path": "include/fft/battle_map.h",
+        "hashEncoding": "utf8-lf",
+        "byteLength": 22162,
+        "sha256": "8e31c1b1320542770f2ddf587f22edf9e293e4bc45d5c85116d34a4cde96c296",
+        "functions": []
+      },
+      {
+        "path": "include/fft/ai.h",
+        "hashEncoding": "utf8-lf",
+        "byteLength": 25771,
+        "sha256": "fa7aabf5b4d21e3f42be7978c061fb859a52709a234e5b4205c5de5e2c8566b5",
+        "functions": []
+      },
+      {
+        "path": "include/fft/ai_decision.h",
+        "hashEncoding": "utf8-lf",
+        "byteLength": 9018,
+        "sha256": "a88a67152b5143b74121946b7dffd4c8b76b568d9947c828d6620014a741b02b",
+        "functions": []
+      },
+      {
+        "path": "include/fft/unit.h",
+        "hashEncoding": "utf8-lf",
+        "byteLength": 32072,
+        "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187",
+        "functions": []
+      },
+      {
+        "path": "include/fft/unit_runtime.h",
+        "hashEncoding": "utf8-lf",
+        "byteLength": 24677,
+        "sha256": "dd205932204a10a48224c7ddc3b73ca6aad3bd92bcf3cdbdd4f0c205d206f865",
+        "functions": []
+      },
+      {
+        "path": "include/fft/target.h",
+        "hashEncoding": "utf8-lf",
+        "byteLength": 3515,
+        "sha256": "9205682345d258f30701a0e8e5d016e93704c6147caa016df9051974db231448",
+        "functions": []
+      },
+      {
+        "path": "target/battle.yaml",
+        "hashEncoding": "utf8-lf",
+        "byteLength": 301903,
+        "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec",
+        "functions": []
+      },
+      {
+        "path": "target/main.yaml",
+        "hashEncoding": "utf8-lf",
+        "byteLength": 135004,
+        "sha256": "b6066d98d481d73eb49d2d16be57ae3fc5ae4070830176fdeeeaae2bdeaec2a3",
+        "functions": []
+      }
+    ]
+  },
+  "preservedFiles": [
+    {
+      "path": "docs/architecture/zod-116-ai-decision-contract.md",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 21299,
+      "sha256": "a297ee86c24f7bdcd3b3cc836c9bd7c3980467d4c8872c16ec07282c063cb1fb"
+    },
+    {
+      "path": "docs/architecture/zod-118-turn-facing-contract.md",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 18153,
+      "sha256": "de62b35daa53593c222d882fd1b67484226be531ae9c853aa48c6659df6f1535"
+    },
+    {
+      "path": "docs/behavior/sword-ai-formula-projection.md",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9389,
+      "sha256": "b7e68dc4b63f160f48ec524a4247596e38e48e1baf11231ca34f65744a4edc52"
+    },
+    {
+      "path": "docs/behavior/turn-facing-implementation.md",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 10577,
+      "sha256": "6fc77f52fc47a14a71ba2e61b12dd4d05ab86871717dfc28e67ea686e391bc06"
+    },
+    {
+      "path": "docs/evidence/ai/decision-contract-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 34072,
+      "sha256": "ff5976d78b9f66134e8f14de8523d4894de04607d23a8b9b72022bcca65e5b95"
+    },
+    {
+      "path": "docs/evidence/ai/sword-formula-implementation-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 41980,
+      "sha256": "b8ad6d06bebdc07fd7974db2d87545472be5199fe90a970482f3f8859c5544c0"
+    },
+    {
+      "path": "docs/evidence/ai/turn-facing-contract-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 29667,
+      "sha256": "d7067a623f07f90c831097084fc1c111bfb39e2f2286c9b1adce87a0ef439dd9"
+    },
+    {
+      "path": "docs/evidence/ai/turn-facing-implementation-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 43656,
+      "sha256": "d9ebf193d6b65c3edb8d6b97ecfd885815f8bac3a6c3eec89e4a85abb3366baf"
+    },
+    {
+      "path": "docs/evidence/combat/accumulate-contract-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 16914,
+      "sha256": "8772c17323d22066dc4e23c41871cff7ce2d33340c4f04307285968e795962d9"
+    },
+    {
+      "path": "docs/evidence/combat/accumulate-implementation-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 17175,
+      "sha256": "630eae1a230f832117ebaf022194a70dd465dde8d059233c4f9d0e40ea1df7b0"
+    },
+    {
+      "path": "docs/evidence/combat/accumulate-window-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11348,
+      "sha256": "d0987721ec45cd9b5b4cf488a332f89013ca1e49d13afde02a5fcc8cf9568c3d"
+    },
+    {
+      "path": "docs/evidence/combat/sword-facing-contract-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 29049,
+      "sha256": "38fd3916fe721c1abcc5dcccfa65153aab778c49590fc4b15fc7b45dc9a3862a"
+    },
+    {
+      "path": "docs/evidence/combat/sword-facing-implementation-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 24589,
+      "sha256": "e66f66317b60940c7035364b76fd3035ad1fac478bb20d7b5bd0021b0fd5de90"
+    },
+    {
+      "path": "docs/evidence/combat/sword-knockback-contract-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 26139,
+      "sha256": "5d3a028ae350e4fa5835cb5c28c56889aa2c1acd419c65393df47b303ea47211"
+    },
+    {
+      "path": "docs/evidence/combat/sword-knockback-implementation-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 25381,
+      "sha256": "593ed459b5bf99caa06ddc2390c1d53a57eff256e9bc5ab49a45e52e1e252aad"
+    },
+    {
+      "path": "docs/evidence/combat/throw-stone-content-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 36714,
+      "sha256": "9c68df3d342fe2ffd6f28f977be4a269b5b452c5b921742dcd9edb9cfa5403e4"
+    },
+    {
+      "path": "docs/evidence/combat/throw-stone-contract-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 20732,
+      "sha256": "ca3c40dc502240928b2039e7a2d6ba9d53ee931638f817a55c9be05c80d6e882"
+    },
+    {
+      "path": "docs/evidence/combat/throw-stone-implementation-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 36563,
+      "sha256": "89ab4247f44d6d820072e8604b7ab8ede44193f5c9165be3c5f08a9493f57f6e"
+    },
+    {
+      "path": "docs/evidence/combat/throw-stone-window-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11087,
+      "sha256": "aafe464983cdae890706b9b2e1d715fbb601f2ba76aa8f6a197403a37ef28ab3"
+    },
+    {
+      "path": "docs/fixtures/behavior/ai-decision-contract-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 27066,
+      "sha256": "22804c00ac66bf054e4b70397f0f3348aa293497e0479a47df51f3831e17a761"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-cap-ko-wrap.v3.settled-facing.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14931,
+      "sha256": "5fb6cef745faf4aef4ba07ef39036ceed95fac8a518ba40534a1d74d7ea333e2"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-cap-ko-wrap.v3.source-derived.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14214,
+      "sha256": "9a27a44e0ce960675cd75da7867fe1a7249ac5c32b61be4e492b77a7ff9c9c6d"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-critical.v3.settled-facing.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14777,
+      "sha256": "fdf11e72bc22422da3dd401c57ccba1f7eca26072a4966042be8c18812c58dd3"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-critical.v3.source-derived.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14060,
+      "sha256": "0afeb0d40c22ef4e713ea7d9b94d27e96df23c66ca826be418e970f2c2aaedec"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-diagonal-rejected.v3.settled-facing.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14036,
+      "sha256": "4902ed4c15d3afbac1dad17949cd71843c2afcbba57adea573dd42f5cdafe2c8"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-diagonal-rejected.v3.source-derived.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 13320,
+      "sha256": "5f39927e11a470e4ce5af89ec6e06fcc7599ca77178c3f7d6ae87b4f7dfb2b22"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-facing-supersession-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4239,
+      "sha256": "f9993b85a240fd7a28e17d6963f11944c02fb7a858e7517a42baca3ab62c08dd"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-flat-knockback-contract-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 41231,
+      "sha256": "eaced192831cae40be113417eb687895444ee0fa0b904ea6d3235b63b1ee30a5"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-ko.v2.source-description.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 13145,
+      "sha256": "797ed540677441fe30ed20daf7a69652f78f70d37bae7a0217b9a598ef85b481"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-ko.v3.settled-facing.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14896,
+      "sha256": "683560e77aa4dec91114b8fda3ce293dc9492df58ec66eb2b38bbf63e56e9224"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-ko.v3.source-derived.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14179,
+      "sha256": "525da6b57f58c702d5829a7c840cd975c008867e2961bda41312b4133a980947"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-miss.v3.settled-facing.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14415,
+      "sha256": "78bebb42d46aa8a5751ecb216d18fc0f725c987816fed54cd59bb47dc53d981c"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-miss.v3.source-derived.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 13698,
+      "sha256": "a47886d6b6bc68dac3a61f09f4543298f1556761e7143be191297d25c0dc518f"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-move-attack.v3.settled-facing.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 19477,
+      "sha256": "f25bd3e03ec8d464da5c1bc548d38cd75ce310a96018cb2994970cc43e3b4561"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-move-attack.v3.source-derived.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 18729,
+      "sha256": "6416eba1dc567230cda110f1b941485fac45a18a4482fc27f45f020dbea4674d"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-normal.v3.settled-facing.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14586,
+      "sha256": "155b6a0ffff730012f3513c778d0708c94bb59b60bb0ec49201b2ce10898aa97"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-normal.v3.source-derived.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 13869,
+      "sha256": "21c0a8645f3ce8780aeb9284cdea530866c93901b95108e5b75614766dbf54ae"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-settled-facing-contract-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 25854,
+      "sha256": "04f1c5e0d44cc277f4abc6d2fc3482d2c7d876015a3b6ec5c7f007ebb53f4144"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-side.v3.settled-facing.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14583,
+      "sha256": "9b15a726c245f63bc2054624f0ae8285ec563b2c1d326f572536a584714316e7"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-side.v3.source-derived.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 13866,
+      "sha256": "f25091e0be16350a65bfa7e83afb2f14a4ed918dd771245eb923844a85885f7e"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-zero-pa.v3.settled-facing.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14598,
+      "sha256": "b587f246759b1121f977539a924520d7185137b96b78d777a36f8abb85b7849c"
+    },
+    {
+      "path": "docs/fixtures/behavior/sword-zero-pa.v3.source-derived.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 13881,
+      "sha256": "ddc7db3630e995b1cf1c4df94dfe5cc62f240eecff38038c027f32c517fef446"
+    },
+    {
+      "path": "docs/fixtures/behavior/turn-facing-contract-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 41853,
+      "sha256": "eea7b9f4c53691daadaaef3698aa33a791c9399184bbc6be865c8a7fe8c66885"
+    },
+    {
+      "path": "docs/fixtures/saves/synthetic-world-idle-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1183,
+      "sha256": "9b78f5bbcb673432d2f6f21606371676e213d1d56329af39cba81a7b4076c78c"
+    },
+    {
+      "path": "docs/fixtures/saves/synthetic-world-idle-v2.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1247,
+      "sha256": "14d4d12de0d219734cff2f89c7cb8fead11292ea93a55867c221fdd81757c6cf"
+    },
+    {
+      "path": "docs/fixtures/saves/two-unit-active-v1.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1284,
+      "sha256": "412a97103d5ebeea25bf38767a20ccb9d2bafc12f855a7c931efbabf54d7d4e7"
+    },
+    {
+      "path": "docs/fixtures/saves/two-unit-active-v2.json",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1332,
+      "sha256": "b6f24ab8f2df2b81e9c00d33cdad0b50e2024411b88bcc0ee5ddad7c90719d95"
+    },
+    {
+      "path": "src/Zodiac.Framework/AttackBattleSimulator.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 10669,
+      "sha256": "67a8a453b75aaed8e150d066e67e148b9ce8b716c1d6184873ebda7f039b5e09"
+    },
+    {
+      "path": "src/Zodiac.Framework/AttackBattleSnapshot.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 8670,
+      "sha256": "30191d5e0f3899abf8909a26fa3bc4d2a5c2d43bd5f4ab672a367b76fe3018d7"
+    },
+    {
+      "path": "src/Zodiac.Framework/BattleSimulator.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3080,
+      "sha256": "79a7c226254441f92dd605311311b24b61299ebf224969ef7aa6733ba92e445c"
+    },
+    {
+      "path": "src/Zodiac.Framework/FacingTurnBattle.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11962,
+      "sha256": "b175b55b2662922e191a30f761fd2f69df7b87a17c1479fc7cbd1bd07d3ca3e3"
+    },
+    {
+      "path": "src/Zodiac.Framework/FftBiosRandom.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1468,
+      "sha256": "7e90bb10b1f9e0a7078ab34bb6ca55f5aba42afde873e428e7f1794c46b5ee06"
+    },
+    {
+      "path": "src/Zodiac.Framework/FlatSwordBattleProfile.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2295,
+      "sha256": "aacaa403d20d4f1f6cdf70ace879a71ec3920f6df01be17fece86c13ccee7359"
+    },
+    {
+      "path": "src/Zodiac.Framework/Properties/AssemblyInfo.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 208,
+      "sha256": "18940ad6c0a1a2c96ba7a6e67afc94b4c9baa40e28d19ee8eca11ae16ef13bc6"
+    },
+    {
+      "path": "src/Zodiac.Framework/SwordAiFormulaProjection.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4927,
+      "sha256": "59d9dca71d6904618469fa36bddc40c68baf260a07d4ad3669a73b90604007b4"
+    },
+    {
+      "path": "src/Zodiac.Framework/TurnBattleState.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 5051,
+      "sha256": "0d8cc554d74eb7ae669e90883516d278fc7aa5814559b6bf57f7df936158a0ee"
+    },
+    {
+      "path": "src/Zodiac.Framework/TurnCycle.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4646,
+      "sha256": "440054e853f473839fa2e7c201b6e9668ca94fbdeff134b79a18051da4b9d5de"
+    },
+    {
+      "path": "src/Zodiac.Framework/TurnCycleResult.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1829,
+      "sha256": "1c4a88355aab5e2422d408f13b7fa9f9234545f7e76e32d7954a3057fac98f8d"
+    },
+    {
+      "path": "src/Zodiac.Framework/TurnCycleState.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2177,
+      "sha256": "fe5604d4eeb5b7ffe39c6cefb7dc8bc316fd446bb42e96f0b3d7218ef5ac40fa"
+    },
+    {
+      "path": "src/Zodiac.Framework/TurnUnitState.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1685,
+      "sha256": "e58fbe5055066e281ea7c94c858f555052fe4a756a7e93891d77aad002bb7c25"
+    },
+    {
+      "path": "src/Zodiac.Framework/TwoUnitBattleScenario.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 15092,
+      "sha256": "4b1db39925481bb1aa54b9ce281086f2f4723e72ebf50dad15f45a14ee903b0e"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Tests/FacingTurnBattleTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 35604,
+      "sha256": "1d8eb9536a959ba3b8b51194c588f7382415091229aadac3c21101933c9dfeb7"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Tests/FlatSwordKnockbackTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 26099,
+      "sha256": "f1205c20d6076c6f8f73b93d52fbe2b6bcc78759232b32cbd7396d8e73dc62e8"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Tests/SwordAiFormulaProjectionTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 20137,
+      "sha256": "1f03ba9770cc1a723928d99b57abc0834f4444a8439d0a10b7911c3c0ee9a6e9"
+    },
+    {
+      "path": "tools/verification/test_ai_decision_contract.py",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 7363,
+      "sha256": "932fdafb14db650db2d83cd5a8205005f16d474652e774435e1e6dc0b47567ba"
+    },
+    {
+      "path": "tools/verification/test_turn_facing_contract.py",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 8276,
+      "sha256": "93505b11ad34877bd1c096f9729d47bad107c879b4bbf04d92b55658b8616511"
+    },
+    {
+      "path": "tools/verification/verify_ai_decision_contract.py",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 10840,
+      "sha256": "4e64e8f712823069dd2dc02370c67c62f9c63a9bc4debeaa2a220a87503bbc13"
+    },
+    {
+      "path": "tools/verification/verify_turn_facing_contract.py",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 10508,
+      "sha256": "ea47ce2e6afee3aaf43960139206fa669d9adbd40b59be35580f4b0247664e1d"
+    }
+  ],
+  "managedBaseline": [
+    {
+      "path": "src/Zodiac.Framework/AttackBattleSimulator.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 10669,
+      "sha256": "67a8a453b75aaed8e150d066e67e148b9ce8b716c1d6184873ebda7f039b5e09"
+    },
+    {
+      "path": "src/Zodiac.Framework/FlatSwordBattleProfile.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2295,
+      "sha256": "aacaa403d20d4f1f6cdf70ace879a71ec3920f6df01be17fece86c13ccee7359"
+    },
+    {
+      "path": "src/Zodiac.Framework/AttackBattleSnapshot.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 8670,
+      "sha256": "30191d5e0f3899abf8909a26fa3bc4d2a5c2d43bd5f4ab672a367b76fe3018d7"
+    },
+    {
+      "path": "src/Zodiac.Framework/TurnBattleState.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 5051,
+      "sha256": "0d8cc554d74eb7ae669e90883516d278fc7aa5814559b6bf57f7df936158a0ee"
+    },
+    {
+      "path": "src/Zodiac.Framework/TurnCycle.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4646,
+      "sha256": "440054e853f473839fa2e7c201b6e9668ca94fbdeff134b79a18051da4b9d5de"
+    },
+    {
+      "path": "src/Zodiac.Framework/TwoUnitBattleScenario.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 15092,
+      "sha256": "4b1db39925481bb1aa54b9ce281086f2f4723e72ebf50dad15f45a14ee903b0e"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Tests/FlatSwordKnockbackTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 26099,
+      "sha256": "f1205c20d6076c6f8f73b93d52fbe2b6bcc78759232b32cbd7396d8e73dc62e8"
+    },
+    {
+      "path": "src/Zodiac.Framework/SwordAiFormulaProjection.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4927,
+      "sha256": "59d9dca71d6904618469fa36bddc40c68baf260a07d4ad3669a73b90604007b4"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Tests/SwordAiFormulaProjectionTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 20137,
+      "sha256": "1f03ba9770cc1a723928d99b57abc0834f4444a8439d0a10b7911c3c0ee9a6e9"
+    },
+    {
+      "path": "src/Zodiac.Framework/TurnCycleState.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2177,
+      "sha256": "fe5604d4eeb5b7ffe39c6cefb7dc8bc316fd446bb42e96f0b3d7218ef5ac40fa"
+    },
+    {
+      "path": "src/Zodiac.Framework/TurnUnitState.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1685,
+      "sha256": "e58fbe5055066e281ea7c94c858f555052fe4a756a7e93891d77aad002bb7c25"
+    },
+    {
+      "path": "src/Zodiac.Framework/TurnCycleResult.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1829,
+      "sha256": "1c4a88355aab5e2422d408f13b7fa9f9234545f7e76e32d7954a3057fac98f8d"
+    },
+    {
+      "path": "src/Zodiac.Framework/BattleSimulator.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3080,
+      "sha256": "79a7c226254441f92dd605311311b24b61299ebf224969ef7aa6733ba92e445c"
+    },
+    {
+      "path": "src/Zodiac.Framework/FacingTurnBattle.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11962,
+      "sha256": "b175b55b2662922e191a30f761fd2f69df7b87a17c1479fc7cbd1bd07d3ca3e3"
+    },
+    {
+      "path": "src/Zodiac.Framework/Properties/AssemblyInfo.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 208,
+      "sha256": "18940ad6c0a1a2c96ba7a6e67afc94b4c9baa40e28d19ee8eca11ae16ef13bc6"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Tests/FacingTurnBattleTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 35604,
+      "sha256": "1d8eb9536a959ba3b8b51194c588f7382415091229aadac3c21101933c9dfeb7"
+    },
+    {
+      "path": "src/Tessera.Engine/FlatGridMovementRange.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2451,
+      "sha256": "fa231662adda08c6bd79b291082e96d3204ed3d382793a3a919eaf693d825088"
+    },
+    {
+      "path": "src/Zodiac.Framework/FlatGridMovementRange.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1176,
+      "sha256": "abc2530b4bfdfd92ecc5224bc22a93ae1e3a70f1ab9e86e3fc6942a12bd59907"
+    },
+    {
+      "path": "src/Zodiac.Framework/TerrainAwareMovementRange.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4440,
+      "sha256": "59498eb41bde9b5f00c9c9eb7df80d27801de0bbf22650cee856cdff53e28753"
+    },
+    {
+      "path": "src/Zodiac.Framework/OrdinaryAdjacentStepRange.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3816,
+      "sha256": "aef2210cc89e02d4e7b1f2610a6f1b989ea0f6892960f496dc750be35316922b"
+    },
+    {
+      "path": "src/Zodiac.Framework/UnitMovementProfile.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4451,
+      "sha256": "e52d1b495e14958485c83d55797612e10bd7a36ff06054bafd226fee6f4c1175"
+    }
+  ],
+  "retailMetadata": {
+    "spreadPresets": {
+      "preparedInput": "scratch/all-data-extraction/BATTLE.BIN",
+      "byteLength": 1397096,
+      "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+      "loadAddress": 2147905536,
+      "address": 2149119232,
+      "recordByteLength": 16,
+      "recordSha256": "3d82b402025ef8b8470d80d95f1593637d6afc45ed0e02c81acef0b6d44a1dff",
+      "decodedOrder": [
+        {
+          "direction": "East",
+          "address": 2149012688
+        },
+        {
+          "direction": "North",
+          "address": 2149012724
+        },
+        {
+          "direction": "West",
+          "address": 2149012764
+        },
+        {
+          "direction": "South",
+          "address": 2149012800
+        }
+      ]
+    },
+    "naturalCost": {
+      "preparedInput": "scratch/all-data-extraction/SCUS_942.21",
+      "exeByteLength": 356352,
+      "exeSha256": "287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562",
+      "loadAddress": 2147549184,
+      "payloadByteLength": 354304,
+      "address": 2147871312,
+      "byteLength": 1,
+      "recordSha256": "4bf5122f344554c53bde2ebb8cd2b7e3d1600ad631c385a5d7cce23c7785459a",
+      "decodedDefaultCost": 1,
+      "tableIndex": 0,
+      "surfaceIndex": 0,
+      "surfaceName": "Natural"
+    }
+  },
+  "findings": {
+    "ordinaryMoveClass": 7,
+    "flyMoveClass": 0,
+    "spreadOrder": [
+      "East",
+      "North",
+      "West",
+      "South"
+    ],
+    "packedStepDirections": {
+      "East": 0,
+      "West": 1,
+      "South": 2,
+      "North": 3
+    },
+    "moveCap": 124,
+    "jumpCap": 7,
+    "enemyGroundAndBodyBlock": true,
+    "originPhysicalDestination": false,
+    "originAiCandidate": true,
+    "reverseTargetDistanceClearsUnitRecords": true,
+    "reverseDistanceClosedDomain": "Manhattan",
+    "backtraceTie": "Previous predecessor direction, initially East; otherwise first E/N/W/S",
+    "adjacentShortestPredecessorAlwaysExists": true,
+    "straightStepsCompressed": false,
+    "aiPlacementChangesFacing": false,
+    "executionSettlesFinalStepFacing": true,
+    "closedHelpersRngDraws": 0
+  },
+  "proposal": {
+    "ticket": "ZOD-121",
+    "productionImplemented": false,
+    "entry": "Pure opt-in closed flat movement query; explicit profile/cost1/stable-enemy certification",
+    "outputs": [
+      "Physical destinations and residuals",
+      "AI origin mask including stay",
+      "Selected physical path and packed steps",
+      "Final execution heading as data only",
+      "Reverse target-distance rows"
+    ],
+    "phase": "Geometric query for either living actor; command/turn gating remains separate",
+    "movedFlag": "Filters AI origins only, not physical geometry or path-query authorization",
+    "limit": "Map1..16 each dimension is an explicit compatibility profile, not an engine-wide limit",
+    "noActivation": [
+      "Move execution",
+      "FacingTurnBattle",
+      "AI preview mutation",
+      "candidate clock",
+      "selector",
+      "IBattleDecisionPolicy",
+      "save",
+      "native",
+      "editor"
+    ]
+  },
+  "productionImplemented": false,
+  "fullAiExecuted": false,
+  "originalExecuted": false,
+  "nativeLaunched": false,
+  "validation": {
+    "pythonTests": {
+      "passed": 378,
+      "newTests": 19,
+      "failed": 0,
+      "log": {
+        "path": "scratch/flat-movement-120-python-final.txt",
+        "hashEncoding": "utf8-lf",
+        "byteLength": 1351,
+        "sha256": "02541bfaa6bfdb2e4c439d7d7e050058b23d3ab2a40d081cef5a7f7abca18b92"
+      },
+      "fullSuite": true,
+      "temporaryDirectory": "Writable ignored scratch via TEMP/TMP"
+    },
+    "initialFocusedRun": "Default sandbox temporary directory denied file writes; no semantic assertion failures. Full passing runs use writable scratch TEMP/TMP.",
+    "sourceAudits": {
+      "byteIdentical": true,
+      "reports": [
+        {
+          "path": "scratch/flat-movement-120-source-final-c.json",
+          "hashEncoding": "utf8-lf",
+          "byteLength": 411,
+          "sha256": "abb161cd2e3ec51b93881d8ea05eb46e325caa387e43f4746869de48e42a64d1"
+        },
+        {
+          "path": "scratch/flat-movement-120-source-final-d.json",
+          "hashEncoding": "utf8-lf",
+          "byteLength": 411,
+          "sha256": "abb161cd2e3ec51b93881d8ea05eb46e325caa387e43f4746869de48e42a64d1"
+        }
+      ],
+      "result": {
+        "vectors": 48,
+        "families": 5,
+        "implementationCasesUnexecuted": 18,
+        "preservedFiles": 68,
+        "managedBaselineFilesChecked": 21,
+        "referenceFilesChecked": 15,
+        "referenceFunctionsChecked": 42,
+        "retailRecordsChecked": 2,
+        "format": "fft.flat-ai-movement-source-audit",
+        "schemaVersion": 1,
+        "passed": true,
+        "productionImplemented": false,
+        "fullAiExecuted": false,
+        "originalExecuted": false
+      }
+    },
+    "dotnetRerun": false,
+    "lastImplementation": {
+      "ticket": "ZOD-119",
+      "dotnetTestsPassed": 3415,
+      "pythonTestsPassed": 359,
+      "evidence": {
+        "path": "docs/evidence/ai/turn-facing-implementation-v1.json",
+        "hashEncoding": "utf8-lf",
+        "byteLength": 43656,
+        "sha256": "d9ebf193d6b65c3edb8d6b97ecfd885815f8bac3a6c3eec89e4a85abb3366baf"
+      }
+    },
+    "managedRuntimeChanged": false,
+    "productionCasesExecuted": 0,
+    "nativeLaunched": false,
+    "headlessLaunched": false,
+    "originalExecuted": false,
+    "referenceCExecuted": false,
+    "historicalEvidenceRewritten": false
+  },
+  "deferred": [
+    "Editor redesign",
+    "ZOD-106 battle checkpoints"
+  ],
+  "verificationFiles": [
+    {
+      "path": "tools/verification/verify_flat_movement_contract.py",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 10426,
+      "sha256": "60f0be780ce8f051949951bdbb0412643128e4bdb5847294e5f792c825172c6a"
+    },
+    {
+      "path": "tools/verification/test_flat_movement_contract.py",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14285,
+      "sha256": "429b4835852ca80d430389cab1ced446ba8808c47ed898cc176e29c7343ea8e9"
+    }
+  ]
+}

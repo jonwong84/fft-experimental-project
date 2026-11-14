@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "621b183edf1d20d7d9eff5e102a59f611cc5f47f",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Supplied zero-filter tile-unit lookup wrapper; delegated lookup remains source-traced, no broader targeting/runtime admission.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/preparation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 80969,
+      "sha256": "e8ec92c02c53d3715b3813931685399e79481dad0fae6ae27505fbc5d086d444"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/target.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3515,
+      "sha256": "9205682345d258f30701a0e8e5d016e93704c6147caa016df9051974db231448"
+    },
+    {
+      "path": "include/fft/battle_map.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 22162,
+      "sha256": "8e31c1b1320542770f2ddf587f22edf9e293e4bc45d5c85116d34a4cde96c296"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "target_find_unit_at_tile",
+      "startLine": 1129,
+      "endLine": 1131,
+      "normalizedLfSha256": "1079c2d8ebd0775ecf2d005aec6561c953176ba92bf9e7dc953265ed27b20828"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "unit_find_at_tile",
+      "startLine": 1142,
+      "endLine": 1203,
+      "normalizedLfSha256": "80c44f88bd8eb2b4aa50d4df1640982f8defd67c4bc43835bb80e9c77e61df9f"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "reaction_targets_build",
+      "startLine": 472,
+      "endLine": 576,
+      "normalizedLfSha256": "02196a86f69c51ba98a8ecce9030cbf06abb85d1fc3ab7b356127f43cbc0bb5f"
+    }
+  ],
+  "preparedBattle": {
+    "path": "scratch/fft-decomp-work/build/extracted/files/BATTLE.BIN",
+    "byteLength": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "loadAddress": "0x80067000"
+  },
+  "start": "0x8017dc88",
+  "endInclusive": "0x8017dca4",
+  "instructionCount": 8,
+  "instructionWords": [
+    "27bdffe8",
+    "afbf0010",
+    "0c05f72a",
+    "00003821",
+    "8fbf0010",
+    "27bd0018",
+    "03e00008",
+    "00000000"
+  ],
+  "allMatched": true,
+  "call": {
+    "pc": "0x8017dc90",
+    "target": "0x8017dca8",
+    "symbol": "unit_find_at_tile",
+    "wikiTitle": "Check if another unit is on the same Tile",
+    "forwardedArguments": [
+      "r4 X",
+      "r5 Y",
+      "r6 layer"
+    ],
+    "delaySlot": "r7=0: no optional status/Chocobo/dry-low-slope filters"
+  },
+  "listedCallers": [
+    {
+      "listedReturnAddress": "0x8017b228",
+      "callPc": "0x8017b220",
+      "returnAddress": "0x8017b228",
+      "matched": true
+    },
+    {
+      "listedReturnAddress": "0x8017b23c",
+      "callPc": "0x8017b234",
+      "returnAddress": "0x8017b23c",
+      "matched": true
+    },
+    {
+      "listedReturnAddress": "0x8017b370",
+      "callPc": "0x8017b368",
+      "returnAddress": "0x8017b370",
+      "matched": true
+    },
+    {
+      "listedReturnAddress": "0x8017cba8",
+      "callPc": "0x8017cb64",
+      "returnAddress": "0x8017cb6c",
+      "matched": true
+    },
+    {
+      "listedReturnAddress": "0x8017ae74",
+      "callPc": "0x8017ae6c",
+      "returnAddress": "0x8017ae74",
+      "matched": true
+    },
+    {
+      "listedReturnAddress": "0x80184888",
+      "callPc": "0x80184880",
+      "returnAddress": "0x80184888",
+      "matched": true
+    }
+  ],
+  "correctedCaller": {
+    "listed": "0x8017cba8",
+    "correct": "0x8017cb6c",
+    "sourceCaller": "reaction_targets_build Reflect branch",
+    "listedLocationActuallyFollows": {
+      "callPc": "0x8017cba0",
+      "target": "0x8017bdd0",
+      "symbol": "target_is_unit_untargetable_and_store_tile"
+    }
+  },
+  "behavior": [
+    "The wrapper does not validate coordinates or inspect units itself. It passes the three arguments unchanged and sets only filters0 for the child.",
+    "No instruction after JAL changes r2; every child result is forwarded unchanged.",
+    "Source child returns battle-slot/mount-slot result, -1 for empty, -2 for invalid coordinates/layer or collision flags. Zero filters do not bypass bounds/tile validation or exclude existing occupied active units by status.",
+    "Knockback 2 accepts only -1. The wrapper must not collapse -1 and -2, return a boolean or decide general ability target legality."
+  ],
+  "boundaries": [
+    "Only the supplied eight-word wrapper and six listed caller locations are byte checked here; appearance of other targeting/reaction callers is not a completed port of them.",
+    "The child lookup at0x8017dca8 is source-traced; its supplied listing is next useful. Effective movement0x8017f020 remains an outer-knockback dependency.",
+    "No runtime, fixture, owner content or general targeting/terrain support changes."
+  ],
+  "validation": {
+    "referenceClean": true,
+    "ownerBlobsVerified": 10,
+    "ownerApprovedCiEdit": {
+      "path": ".circleci/config.yml",
+      "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+      "committed": true,
+      "ciEnabledDefault": false
+    },
+    "runtimeChanged": false,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "runtimeTestsRerun": false,
+    "previousRuntimeValidationReceipt": "docs/evidence/combat/attack-up-martial-arts-trace-v1.json"
+  }
+}

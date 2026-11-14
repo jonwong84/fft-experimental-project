@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "sourceFiles": [
+    {
+      "path": "src/battle/turn/clock.c",
+      "sha256": "8d96a9971e6d7165132227c77647f87f4a28f45744adbaaabfe1abb7a9342941"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "sha256": "78e9c58b26be31fc8b04107e8f22703efebc704a9297464cf0833f3452f826d5"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "sha256": "2e4cbd150c2e3a41557a8a2f111e6d12cbebd7c6b64a5cc4240fed9bc416b164"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "sha256": "70ea706441e8d01f392d7f1c74669d18866ac1ca086e3d75ab12fc331974f9ea"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "sha256": "d17147259db338a396354c3f5c7166e31b7a3e578869a36099abb0f45961ab26"
+    },
+    {
+      "path": "include/fft/turn.h",
+      "sha256": "bcbddec9b0846b1aa705f3fa6530d1c293eb3e99a61bc70921d4267c126ebda1"
+    },
+    {
+      "path": "include/fft/ai_decision.h",
+      "sha256": "37daae1989bf21cfee4703c1db83ac2e47fd8b3b440771974db3fb8363beccce"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "sha256": "939da0ee31959de0b3eef3c8c815b439d14c2d941f989d976f29efeef22e5905"
+    }
+  ],
+  "originalExecuted": false,
+  "cExecuted": false,
+  "scope": "Single ordinary charged action, effect-free turn phases, fixed cast origin; source simulation event cap and ready target accounting."
+}

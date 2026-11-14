@@ -1,0 +1,848 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-364",
+    "ZOD-365",
+    "ZOD-366",
+    "ZOD-367",
+    "ZOD-368",
+    "ZOD-369"
+  ],
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "confidence": "Normalized source-rule composition plus explicit managed admission guards; original/C/managed not executed by this description. Cast frames/RNG reuse prior literal vectors.",
+  "cases": [
+    {
+      "id": "charged-follow-execute",
+      "input": {
+        "answer": 6,
+        "rawCt": 9,
+        "short": false,
+        "non": false,
+        "noFollow": false,
+        "autoZero": false,
+        "beginMp": 0,
+        "beginAnchorActive": true,
+        "ticks": 9,
+        "tickBlocked": false,
+        "readyBlocked": false,
+        "readyMp": 30,
+        "readyMa": 5,
+        "readyHalf": false,
+        "readyAnchorActive": true,
+        "secondDead": false,
+        "knownAnchor": true,
+        "noEarlier": true,
+        "identityKnown": true,
+        "mode": "Execute",
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": true,
+        "block": null,
+        "rejection": "None",
+        "counter": 0,
+        "mp": 21,
+        "cost": 9,
+        "ids": [
+          "first",
+          "second"
+        ],
+        "damage": [
+          34,
+          68
+        ],
+        "added": [
+          true,
+          false
+        ],
+        "word": 1579910103,
+        "count": 19
+      }
+    },
+    {
+      "id": "charged-follow-Preview",
+      "input": {
+        "answer": 6,
+        "rawCt": 9,
+        "short": false,
+        "non": false,
+        "noFollow": false,
+        "autoZero": false,
+        "beginMp": 0,
+        "beginAnchorActive": true,
+        "ticks": 9,
+        "tickBlocked": false,
+        "readyBlocked": false,
+        "readyMp": 30,
+        "readyMa": 5,
+        "readyHalf": false,
+        "readyAnchorActive": true,
+        "secondDead": false,
+        "knownAnchor": true,
+        "noEarlier": true,
+        "identityKnown": true,
+        "mode": "Preview",
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": true,
+        "block": null,
+        "rejection": "None",
+        "counter": 0,
+        "mp": 30,
+        "cost": 9,
+        "ids": [
+          "first",
+          "second"
+        ],
+        "damage": [
+          34,
+          68
+        ],
+        "added": [
+          false,
+          false
+        ],
+        "word": 361004401,
+        "count": 17
+      }
+    },
+    {
+      "id": "charged-follow-AiSimulation",
+      "input": {
+        "answer": 6,
+        "rawCt": 9,
+        "short": false,
+        "non": false,
+        "noFollow": false,
+        "autoZero": false,
+        "beginMp": 0,
+        "beginAnchorActive": true,
+        "ticks": 9,
+        "tickBlocked": false,
+        "readyBlocked": false,
+        "readyMp": 30,
+        "readyMa": 5,
+        "readyHalf": false,
+        "readyAnchorActive": true,
+        "secondDead": false,
+        "knownAnchor": true,
+        "noEarlier": true,
+        "identityKnown": true,
+        "mode": "AiSimulation",
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": true,
+        "block": null,
+        "rejection": "None",
+        "counter": 0,
+        "mp": 21,
+        "cost": 9,
+        "ids": [
+          "first",
+          "second"
+        ],
+        "damage": [
+          34,
+          68
+        ],
+        "added": [
+          false,
+          false
+        ],
+        "word": 361004401,
+        "count": 17
+      }
+    },
+    {
+      "id": "tile-keeps-old-position",
+      "input": {
+        "answer": 5,
+        "rawCt": 9,
+        "short": false,
+        "non": false,
+        "noFollow": true,
+        "autoZero": false,
+        "beginMp": 0,
+        "beginAnchorActive": true,
+        "ticks": 9,
+        "tickBlocked": false,
+        "readyBlocked": false,
+        "readyMp": 30,
+        "readyMa": 5,
+        "readyHalf": false,
+        "readyAnchorActive": true,
+        "secondDead": false,
+        "knownAnchor": true,
+        "noEarlier": true,
+        "identityKnown": true,
+        "mode": "Execute",
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": true,
+        "block": null,
+        "rejection": "None",
+        "counter": 0,
+        "mp": 21,
+        "cost": 9,
+        "ids": [
+          "old"
+        ],
+        "damage": [
+          34
+        ],
+        "added": [
+          true
+        ],
+        "word": 2224270474,
+        "count": 14
+      }
+    },
+    {
+      "id": "yes-seven-keeps-old-position",
+      "input": {
+        "answer": 7,
+        "rawCt": 9,
+        "short": false,
+        "non": false,
+        "noFollow": false,
+        "autoZero": false,
+        "beginMp": 0,
+        "beginAnchorActive": true,
+        "ticks": 9,
+        "tickBlocked": false,
+        "readyBlocked": false,
+        "readyMp": 30,
+        "readyMa": 5,
+        "readyHalf": false,
+        "readyAnchorActive": true,
+        "secondDead": false,
+        "knownAnchor": true,
+        "noEarlier": true,
+        "identityKnown": true,
+        "mode": "Execute",
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": true,
+        "block": null,
+        "rejection": "None",
+        "counter": 0,
+        "mp": 21,
+        "cost": 9,
+        "ids": [
+          "old"
+        ],
+        "damage": [
+          34
+        ],
+        "added": [
+          true
+        ],
+        "word": 2224270474,
+        "count": 14
+      }
+    },
+    {
+      "id": "inactive-anchor-still-centres-bystander",
+      "input": {
+        "answer": 6,
+        "rawCt": 9,
+        "short": false,
+        "non": false,
+        "noFollow": false,
+        "autoZero": false,
+        "beginMp": 0,
+        "beginAnchorActive": true,
+        "ticks": 9,
+        "tickBlocked": false,
+        "readyBlocked": false,
+        "readyMp": 30,
+        "readyMa": 5,
+        "readyHalf": false,
+        "readyAnchorActive": false,
+        "secondDead": false,
+        "knownAnchor": true,
+        "noEarlier": true,
+        "identityKnown": true,
+        "mode": "Execute",
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": true,
+        "block": null,
+        "rejection": "None",
+        "counter": 0,
+        "mp": 21,
+        "cost": 9,
+        "ids": [
+          "second"
+        ],
+        "damage": [
+          68
+        ],
+        "added": [
+          true
+        ],
+        "word": 2224270474,
+        "count": 14
+      }
+    },
+    {
+      "id": "current-mp-and-ma-not-start-snapshots",
+      "input": {
+        "answer": 6,
+        "rawCt": 9,
+        "short": false,
+        "non": false,
+        "noFollow": false,
+        "autoZero": false,
+        "beginMp": 0,
+        "beginAnchorActive": true,
+        "ticks": 9,
+        "tickBlocked": false,
+        "readyBlocked": false,
+        "readyMp": 20,
+        "readyMa": 10,
+        "readyHalf": false,
+        "readyAnchorActive": true,
+        "secondDead": false,
+        "knownAnchor": true,
+        "noEarlier": true,
+        "identityKnown": true,
+        "mode": "Execute",
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": true,
+        "block": null,
+        "rejection": "None",
+        "counter": 0,
+        "mp": 11,
+        "cost": 9,
+        "ids": [
+          "first",
+          "second"
+        ],
+        "damage": [
+          68,
+          137
+        ],
+        "added": [
+          true,
+          false
+        ],
+        "word": 1579910103,
+        "count": 19
+      }
+    },
+    {
+      "id": "short-charge-still-unready-after-four",
+      "input": {
+        "answer": 6,
+        "rawCt": 9,
+        "short": true,
+        "non": false,
+        "noFollow": false,
+        "autoZero": false,
+        "beginMp": 0,
+        "beginAnchorActive": true,
+        "ticks": 4,
+        "tickBlocked": false,
+        "readyBlocked": false,
+        "readyMp": 30,
+        "readyMa": 5,
+        "readyHalf": false,
+        "readyAnchorActive": true,
+        "secondDead": false,
+        "knownAnchor": true,
+        "noEarlier": true,
+        "identityKnown": true,
+        "mode": "Execute",
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": false,
+        "block": null,
+        "rejection": "UnsupportedContext",
+        "counter": 1,
+        "mp": null,
+        "cost": null,
+        "ids": null,
+        "damage": null,
+        "added": null,
+        "word": 57,
+        "count": 9
+      }
+    },
+    {
+      "id": "non-charge-preview-ready-with-no-ticks",
+      "input": {
+        "answer": 6,
+        "rawCt": 9,
+        "short": false,
+        "non": true,
+        "noFollow": false,
+        "autoZero": false,
+        "beginMp": 0,
+        "beginAnchorActive": true,
+        "ticks": 0,
+        "tickBlocked": false,
+        "readyBlocked": false,
+        "readyMp": 30,
+        "readyMa": 5,
+        "readyHalf": false,
+        "readyAnchorActive": true,
+        "secondDead": false,
+        "knownAnchor": true,
+        "noEarlier": true,
+        "identityKnown": true,
+        "mode": "Preview",
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": true,
+        "block": null,
+        "rejection": "None",
+        "counter": 0,
+        "mp": 30,
+        "cost": 9,
+        "ids": [
+          "first",
+          "second"
+        ],
+        "damage": [
+          34,
+          68
+        ],
+        "added": [
+          false,
+          false
+        ],
+        "word": 361004401,
+        "count": 17
+      }
+    },
+    {
+      "id": "charging-does-not-read-zero-mp",
+      "input": {
+        "answer": 6,
+        "rawCt": 9,
+        "short": false,
+        "non": false,
+        "noFollow": false,
+        "autoZero": false,
+        "beginMp": 0,
+        "beginAnchorActive": true,
+        "ticks": 8,
+        "tickBlocked": false,
+        "readyBlocked": false,
+        "readyMp": 30,
+        "readyMa": 5,
+        "readyHalf": false,
+        "readyAnchorActive": true,
+        "secondDead": false,
+        "knownAnchor": true,
+        "noEarlier": true,
+        "identityKnown": true,
+        "mode": "Execute",
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": false,
+        "block": null,
+        "rejection": "UnsupportedContext",
+        "counter": 1,
+        "mp": null,
+        "cost": null,
+        "ids": null,
+        "damage": null,
+        "added": null,
+        "word": 57,
+        "count": 9
+      }
+    },
+    {
+      "id": "ready-budget-failure-has-no-payable-proposal",
+      "input": {
+        "answer": 6,
+        "rawCt": 9,
+        "short": false,
+        "non": false,
+        "noFollow": false,
+        "autoZero": false,
+        "beginMp": 0,
+        "beginAnchorActive": true,
+        "ticks": 9,
+        "tickBlocked": false,
+        "readyBlocked": false,
+        "readyMp": 8,
+        "readyMa": 5,
+        "readyHalf": false,
+        "readyAnchorActive": true,
+        "secondDead": false,
+        "knownAnchor": true,
+        "noEarlier": true,
+        "identityKnown": true,
+        "mode": "Execute",
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": false,
+        "block": "NotEnoughMp",
+        "rejection": "UnsupportedContext",
+        "counter": 0,
+        "mp": null,
+        "cost": null,
+        "ids": null,
+        "damage": null,
+        "added": null,
+        "word": 57,
+        "count": 9
+      }
+    },
+    {
+      "id": "late-counter-exhaustion-rolls-back",
+      "input": {
+        "answer": 6,
+        "rawCt": 9,
+        "short": false,
+        "non": false,
+        "noFollow": false,
+        "autoZero": false,
+        "beginMp": 0,
+        "beginAnchorActive": true,
+        "ticks": 9,
+        "tickBlocked": false,
+        "readyBlocked": false,
+        "readyMp": 30,
+        "readyMa": 5,
+        "readyHalf": false,
+        "readyAnchorActive": true,
+        "secondDead": false,
+        "knownAnchor": true,
+        "noEarlier": true,
+        "identityKnown": true,
+        "mode": "Execute",
+        "word": 57,
+        "count": 18446744073709551608
+      },
+      "expected": {
+        "accepted": false,
+        "block": null,
+        "rejection": "RandomDrawCountExhausted",
+        "counter": 0,
+        "mp": null,
+        "cost": null,
+        "ids": null,
+        "damage": null,
+        "added": null,
+        "word": 57,
+        "count": 18446744073709551608
+      }
+    },
+    {
+      "id": "late-dead-target-rolls-back",
+      "input": {
+        "answer": 6,
+        "rawCt": 9,
+        "short": false,
+        "non": false,
+        "noFollow": false,
+        "autoZero": false,
+        "beginMp": 0,
+        "beginAnchorActive": true,
+        "ticks": 9,
+        "tickBlocked": false,
+        "readyBlocked": false,
+        "readyMp": 30,
+        "readyMa": 5,
+        "readyHalf": false,
+        "readyAnchorActive": true,
+        "secondDead": true,
+        "knownAnchor": true,
+        "noEarlier": true,
+        "identityKnown": true,
+        "mode": "Execute",
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": false,
+        "block": null,
+        "rejection": "UnsupportedContext",
+        "counter": 0,
+        "mp": null,
+        "cost": null,
+        "ids": null,
+        "damage": null,
+        "added": null,
+        "word": 57,
+        "count": 9
+      }
+    },
+    {
+      "id": "unknown-current-anchor-never-falls-back",
+      "input": {
+        "answer": 6,
+        "rawCt": 9,
+        "short": false,
+        "non": false,
+        "noFollow": false,
+        "autoZero": false,
+        "beginMp": 0,
+        "beginAnchorActive": true,
+        "ticks": 9,
+        "tickBlocked": false,
+        "readyBlocked": false,
+        "readyMp": 30,
+        "readyMa": 5,
+        "readyHalf": false,
+        "readyAnchorActive": true,
+        "secondDead": false,
+        "knownAnchor": false,
+        "noEarlier": true,
+        "identityKnown": true,
+        "mode": "Execute",
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": false,
+        "block": null,
+        "rejection": "UnsupportedContext",
+        "counter": 0,
+        "mp": null,
+        "cost": null,
+        "ids": null,
+        "damage": null,
+        "added": null,
+        "word": 57,
+        "count": 9
+      }
+    },
+    {
+      "id": "blocked-zero-counter-is-not-ready",
+      "input": {
+        "answer": 6,
+        "rawCt": 9,
+        "short": false,
+        "non": false,
+        "noFollow": false,
+        "autoZero": false,
+        "beginMp": 0,
+        "beginAnchorActive": true,
+        "ticks": 9,
+        "tickBlocked": false,
+        "readyBlocked": true,
+        "readyMp": 30,
+        "readyMa": 5,
+        "readyHalf": false,
+        "readyAnchorActive": true,
+        "secondDead": false,
+        "knownAnchor": true,
+        "noEarlier": true,
+        "identityKnown": true,
+        "mode": "Execute",
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": false,
+        "block": null,
+        "rejection": "UnsupportedContext",
+        "counter": 0,
+        "mp": null,
+        "cost": null,
+        "ids": null,
+        "damage": null,
+        "added": null,
+        "word": 57,
+        "count": 9
+      }
+    },
+    {
+      "id": "unknown-identity-mapping-rejects",
+      "input": {
+        "answer": 6,
+        "rawCt": 9,
+        "short": false,
+        "non": false,
+        "noFollow": false,
+        "autoZero": false,
+        "beginMp": 0,
+        "beginAnchorActive": true,
+        "ticks": 9,
+        "tickBlocked": false,
+        "readyBlocked": false,
+        "readyMp": 30,
+        "readyMa": 5,
+        "readyHalf": false,
+        "readyAnchorActive": true,
+        "secondDead": false,
+        "knownAnchor": true,
+        "noEarlier": true,
+        "identityKnown": false,
+        "mode": "Execute",
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": false,
+        "block": null,
+        "rejection": "UnsupportedContext",
+        "counter": 0,
+        "mp": null,
+        "cost": null,
+        "ids": null,
+        "damage": null,
+        "added": null,
+        "word": 57,
+        "count": 9
+      }
+    },
+    {
+      "id": "auto-no-targeting-remains-outside-manual-capture",
+      "input": {
+        "answer": 6,
+        "rawCt": 9,
+        "short": false,
+        "non": false,
+        "noFollow": false,
+        "autoZero": true,
+        "beginMp": 0,
+        "beginAnchorActive": true,
+        "ticks": 9,
+        "tickBlocked": false,
+        "readyBlocked": false,
+        "readyMp": 30,
+        "readyMa": 5,
+        "readyHalf": false,
+        "readyAnchorActive": true,
+        "secondDead": false,
+        "knownAnchor": true,
+        "noEarlier": true,
+        "identityKnown": true,
+        "mode": "Execute",
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": false,
+        "block": null,
+        "rejection": "UnsupportedContext",
+        "counter": null,
+        "mp": null,
+        "cost": null,
+        "ids": null,
+        "damage": null,
+        "added": null,
+        "word": 57,
+        "count": 9
+      }
+    },
+    {
+      "id": "inactive-anchor-rejects-at-preparation",
+      "input": {
+        "answer": 6,
+        "rawCt": 9,
+        "short": false,
+        "non": false,
+        "noFollow": false,
+        "autoZero": false,
+        "beginMp": 0,
+        "beginAnchorActive": false,
+        "ticks": 9,
+        "tickBlocked": false,
+        "readyBlocked": false,
+        "readyMp": 30,
+        "readyMa": 5,
+        "readyHalf": false,
+        "readyAnchorActive": true,
+        "secondDead": false,
+        "knownAnchor": true,
+        "noEarlier": true,
+        "identityKnown": true,
+        "mode": "Execute",
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": false,
+        "block": null,
+        "rejection": "UnsupportedContext",
+        "counter": null,
+        "mp": null,
+        "cost": null,
+        "ids": null,
+        "damage": null,
+        "added": null,
+        "word": 57,
+        "count": 9
+      }
+    },
+    {
+      "id": "half-mp-read-at-readiness",
+      "input": {
+        "answer": 6,
+        "rawCt": 9,
+        "short": false,
+        "non": false,
+        "noFollow": false,
+        "autoZero": false,
+        "beginMp": 0,
+        "beginAnchorActive": true,
+        "ticks": 9,
+        "tickBlocked": false,
+        "readyBlocked": false,
+        "readyMp": 30,
+        "readyMa": 5,
+        "readyHalf": true,
+        "readyAnchorActive": true,
+        "secondDead": false,
+        "knownAnchor": true,
+        "noEarlier": true,
+        "identityKnown": true,
+        "mode": "Execute",
+        "word": 57,
+        "count": 9
+      },
+      "expected": {
+        "accepted": true,
+        "block": null,
+        "rejection": "None",
+        "counter": 0,
+        "mp": 26,
+        "cost": 4,
+        "ids": [
+          "first",
+          "second"
+        ],
+        "damage": [
+          34,
+          68
+        ],
+        "added": [
+          true,
+          false
+        ],
+        "word": 1579910103,
+        "count": 19
+      }
+    }
+  ]
+}

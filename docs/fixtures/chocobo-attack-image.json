@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "assetId": "base:battle/cyoko.spr",
+  "sourceByteLength": 49572,
+  "sourceSha256": "7f7a94e5615137f9a4fa6e1dcfbad8b2760a6b66099154171b0e1feb137632d2",
+  "imageWidth": 256,
+  "imageHeight": 200,
+  "bitsPerPixel": 4,
+  "pixelPacking": "first-pixel-high-nibble",
+  "decodedByteLength": 25600,
+  "decodedSha256": "d07fff4e49bf5e0a8b91343b2a722521ac5309e34ec23d2d5810e579a741c24f",
+  "referenceSource": "scratch/fft-decomp-work/src/battle/battle_scene.c",
+  "referenceFunction": "sprite_decompress_attack_image",
+  "referenceCommit": "611b504d25d4a9b03fab8023d7dbea75fe381d5d",
+  "oracleKind": "independent source-derived transcription; original C routine was not executed"
+}

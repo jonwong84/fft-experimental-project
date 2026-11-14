@@ -1,0 +1,212 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-237",
+  "date": "2026-11-04",
+  "kind": "self-act-command-source-study",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "managedBaseRevision": "e51c1faaab2fdcbee49b570d3b0f234025962496",
+  "productionImplemented": false,
+  "sourceFiles": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 147880,
+      "sha256": "5519c4550e9fea302ee4366848435b8131c7d3aef24f02462c7571d11bd1cd17"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 23857,
+      "sha256": "57dd4fa8b07ef93c4a8e21c73657a0fdbe6c601a6db0b0351ae15b3cd15e4aea"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 187246,
+      "sha256": "2792e2b861e8de4f4f996a5491dbacde0b96f77518a75cc4b8eebf2d6bc1557f"
+    },
+    {
+      "path": "src/battle/combat/targets.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 69383,
+      "sha256": "b891ce80c358af2b3914d68f06a832fd0d4e73ba7516c37aeffed6ba1c09071d"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 80969,
+      "sha256": "e8ec92c02c53d3715b3813931685399e79481dad0fae6ae27505fbc5d086d444"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54735,
+      "sha256": "b37712b2e33a060f057e87f866c25ef0f4d4ba9b8bacf89447e2eeb0cd0c2bf9"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 85515,
+      "sha256": "820411f8293d559677ff676f4e3d19a16ae52b667e7aa1393ab5495741f1e149"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40868,
+      "sha256": "f76188542c39818fa2ab478e42ef63b4eb0f2c1c2db5a74db4120ddbaf4cb8cb"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_command_build",
+      "startLine": 131,
+      "endLine": 224,
+      "normalizedLfSha256": "b4a01ef870fceac6d31bc8ab370f0b4053aaee69fc3dd55d9b79c78a0975a5bf"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "ai_simulation_end",
+      "startLine": 43,
+      "endLine": 47,
+      "normalizedLfSha256": "17a6b63b2c51acaeb468f3e70ea2d437459d680c8da7810da4b40889d4b636db"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_ai_command_update",
+      "startLine": 2665,
+      "endLine": 2768,
+      "normalizedLfSha256": "11c99d696f9f045abdb27800c9452d187368a1197d3249c793c5b94515da64e9"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "action_execute_ability",
+      "startLine": 2021,
+      "endLine": 2052,
+      "normalizedLfSha256": "97e760f9870b916f1f207cb77f7c48913b28d7084e35ae78ca580c5b0425277d"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "target_tile_select",
+      "startLine": 2094,
+      "endLine": 2135,
+      "normalizedLfSha256": "bef63e96b052eb80ab2aa48910458764e8561ea3616dd5261970601ab315e916"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "unit_facing_turn_to_cursor",
+      "startLine": 1101,
+      "endLine": 1124,
+      "normalizedLfSha256": "eaf8154468a6db71a461d16cc01ff9c41507bba0066e687a6e25a9a7d7c14d58"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "unit_facing_turn_to_target",
+      "startLine": 1152,
+      "endLine": 1194,
+      "normalizedLfSha256": "c3946d90339479f48a2357db7c1ad884f6898a57d3e5f56ec2a923cab873f5a2"
+    },
+    {
+      "path": "src/battle/combat/targets.c",
+      "symbol": "target_range_set_for_action",
+      "startLine": 968,
+      "endLine": 1058,
+      "normalizedLfSha256": "3e0fa439ba68dd52e1ef6455d41a11ec87c37b04aaae0e95c731e20a4c68397f"
+    },
+    {
+      "path": "src/battle/combat/targets.c",
+      "symbol": "target_area_set_for_action",
+      "startLine": 1065,
+      "endLine": 1133,
+      "normalizedLfSha256": "354f8d7ff6a3c9af3306933a74bbb2d679e773ccd814f1eec66e34f8a6d417d1"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "action_commit_preparation",
+      "startLine": 153,
+      "endLine": 161,
+      "normalizedLfSha256": "96f4d3ed79ea76fac957450047f623666c7cd2510d1521eae477cae4d6c37885"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "action_prepare",
+      "startLine": 177,
+      "endLine": 375,
+      "normalizedLfSha256": "1f6a6b279fb1f2c584883bd0fb68c88d53eaa6f20d26317711a09d18d0e6b4fe"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "strike_data_init",
+      "startLine": 855,
+      "endLine": 933,
+      "normalizedLfSha256": "6d13c5406e4634610049e924f02a28dfa0aa8e5b14aaba33a7b5aea1740ce553"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_add_pa_y",
+      "startLine": 1276,
+      "endLine": 1279,
+      "normalizedLfSha256": "6455a8fccadddc309f628d3894979e7b4f4b522e3e6d12c4a5c057c2741ae396"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_clear_current_data",
+      "startLine": 792,
+      "endLine": 801,
+      "normalizedLfSha256": "1200e15fe4c9cca228a5dd8ff338f97337abc1241e279616878e265cff5d7e4b"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_apply_target_result",
+      "startLine": 837,
+      "endLine": 1039,
+      "normalizedLfSha256": "72f17f94af572c3b4f21f92787e7f80000bdc33fb418921c718432c9d46b00a5"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "stat_delta_apply",
+      "startLine": 1590,
+      "endLine": 1625,
+      "normalizedLfSha256": "2b879b567c3e7e725b0d9e33b4392b4ed2d4c4c2c3964f737ddb386fdef510c1"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_act_taken_set",
+      "startLine": 911,
+      "endLine": 913,
+      "normalizedLfSha256": "2e7ff86ef337d8518e041f9c75fee3baa524c575c33d2d7648dbdee014b71c72"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_move_act_taken_set",
+      "startLine": 923,
+      "endLine": 940,
+      "normalizedLfSha256": "ab6508dce1e9e9ef352a27b22a0166a0526d1571fb059f969937605b630782d7"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_end",
+      "startLine": 947,
+      "endLine": 974,
+      "normalizedLfSha256": "2071e4d41c2099741ca3ae787add5e7b731df488197b87a47ca84291a6ac268b"
+    }
+  ],
+  "design": "docs/architecture/zod-237-self-act-command.md",
+  "selectedChildren": [
+    "ZOD-238",
+    "ZOD-239"
+  ],
+  "actualResolutionDraws": 0,
+  "suppliedActFirst": {
+    "decisionWord": 3794901700,
+    "decisionCount": 26,
+    "paBefore": 5,
+    "paAfter": 6,
+    "ct": 15,
+    "moveUsed": false,
+    "completionReceipt": false,
+    "additionalActualDraws": 0
+  },
+  "originalExecuted": false,
+  "cExecuted": false
+}

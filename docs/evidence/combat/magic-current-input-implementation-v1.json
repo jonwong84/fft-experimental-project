@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-348",
+    "ZOD-349",
+    "ZOD-350",
+    "ZOD-351",
+    "ZOD-352",
+    "ZOD-353",
+    "ZOD-354",
+    "ZOD-355",
+    "ZOD-356",
+    "ZOD-357"
+  ],
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "behavior": "docs/behavior/magic-current-inputs-and-casts.md",
+  "sourceReceipts": [
+    "docs/evidence/combat/magic-current-input-source-v1.json",
+    "docs/evidence/combat/magic-resource-source-v1.json"
+  ],
+  "milestones": [
+    {
+      "ticket": "ZOD-348",
+      "managedBaseRevision": "61a0a3b16ec8fe51f593a16134b76ebd24b5cd3a",
+      "validation": "Eight focused Python cases; 56 independent descriptions; source12/16 clean; managed code unchanged",
+      "reports": "scratch/magic-inputs-348-357/"
+    },
+    {
+      "ticket": "ZOD-349",
+      "managedBaseRevision": "a936970fe56479f558ec1bfd5e77363ef8c5633b",
+      "validation": "Three focused Framework cases; all33 literal compatibilities and unknown signs; Release compilation passed",
+      "reports": "scratch/magic-inputs-348-357/"
+    },
+    {
+      "ticket": "ZOD-350",
+      "managedBaseRevision": "4921b2b4438fa21e2b33e81e087a61b982b88ea6",
+      "validation": "Five cumulative focused Framework cases; 33 relations and12 projections, two new cases; Release compilation passed",
+      "reports": "scratch/magic-inputs-348-357/"
+    },
+    {
+      "ticket": "ZOD-351",
+      "managedBaseRevision": "6930abff572eab6ff6f119f921c209294b58e4e1",
+      "validation": "76 focused magic cases; eight cumulative new current-input cases, three new current-query cases; Release compilation passed",
+      "reports": "scratch/magic-inputs-348-357/"
+    },
+    {
+      "ticket": "ZOD-352",
+      "managedBaseRevision": "a789f350a8ba1ee1ed9cc4ab863d457c45837e73",
+      "validation": "Eight focused Python cases / 59 resource and charge descriptions; source12/10 clean",
+      "reports": "scratch/magic-inputs-348-357/"
+    },
+    {
+      "ticket": "ZOD-353",
+      "managedBaseRevision": "882a2eb5b8a536ece37305c199ea3159f7e674fb",
+      "validation": "Two focused Framework cases /32 literal MP checks, guards and immutable inputs; Release compilation passed",
+      "reports": "scratch/magic-inputs-348-357/"
+    },
+    {
+      "ticket": "ZOD-354",
+      "managedBaseRevision": "bce0b8188faf3b077f752964e5da5fffad6891ed",
+      "validation": "Four cumulative resource cases; 10 execution setups and seven AI delays, two new cases; Release compilation passed",
+      "reports": "scratch/magic-inputs-348-357/"
+    },
+    {
+      "ticket": "ZOD-355",
+      "managedBaseRevision": "90445ad4cd7eff9bbb6e53f326a2061f3ac31cc3",
+      "validation": "Five cumulative resource cases / all59 descriptions, one new countdown case; Release compilation passed",
+      "reports": "scratch/magic-inputs-348-357/"
+    },
+    {
+      "ticket": "ZOD-356",
+      "managedBaseRevision": "92a5f66f561b77022664ed9306d954ac53602108",
+      "validation": "Six focused ready-cast cases, one-time cost, modes, source blocks and readiness guards; Release compilation passed",
+      "reports": "scratch/magic-inputs-348-357/"
+    },
+    {
+      "ticket": "ZOD-357",
+      "managedBaseRevision": "808078c249df0b6851b5fc1802f50717038af3d1",
+      "validation": "90 focused magic cases; three new cast cases /13 literal casts; full .NET4652 and Python673, zero-warning Release",
+      "reports": "scratch/magic-inputs-348-357/"
+    }
+  ],
+  "validation": {
+    "dotnetPassed": 4652,
+    "frameworkPassed": 1611,
+    "aiPassed": 1217,
+    "contentPassed": 838,
+    "cliPassed": 328,
+    "pythonPassed": 673,
+    "newFrameworkCases": 22,
+    "newPythonCases": 24,
+    "compatibilityDescriptions": 33,
+    "projectionDescriptions": 12,
+    "currentQueryDescriptions": 11,
+    "mpDescriptions": 32,
+    "setupDescriptions": 10,
+    "aiDelayDescriptions": 7,
+    "tickDescriptions": 10,
+    "castDescriptions": 13,
+    "currentSourceFiles": 12,
+    "currentSourceFunctions": 16,
+    "resourceSourceFiles": 12,
+    "resourceSourceFunctions": 10,
+    "lockedRestore": true,
+    "releaseWarnings": 0,
+    "releaseErrors": 0,
+    "trxReports": 7,
+    "sourcePreparedAudits": true,
+    "algorithmGuideAudit": true,
+    "coverageAudit": true,
+    "localLinkAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/magic-inputs-348-357/"
+  },
+  "invariants": [
+    "current effective MA/current Faith copied without recomputing base/equipment or original Faith",
+    "source zodiac table and independent identity bits, strengthening intersection and named current facts preserved",
+    "MP is proposed once at ready resolution, never by charge scheduling or per-target calculation",
+    "restriction/Frog/Silence order, cost-before-budget failure, signed16 MP read and preview/AI store semantics retained",
+    "execution and original AI candidate charge quirks remain distinct; no global clock/event or frame RNG activation",
+    "source-valid pure results and candidate state/RNG only; unsupported context/counter failure returns no aggregate proposal",
+    "all pre-batch C# code/tests/fixtures, owner drafts, JobStats, content/AI/host/project/dependency code unchanged",
+    "no geometry, live publication, command/AI activation, full status/corpse/scheduler/terminal work or universal interfaces"
+  ]
+}

@@ -1,0 +1,921 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "originalExecuted": false,
+  "cExecuted": false,
+  "scope": "Source-only bounded aim-mask intersection, ordinary unit/tile pass order, fresh-marker rank ties and baseline admission; no runtime search or source execution.",
+  "masks": [
+    {
+      "id": "followed-unit-aim",
+      "input": {
+        "width": 4,
+        "depth": 3,
+        "area": 1,
+        "targets": [
+          [
+            2,
+            1,
+            0
+          ]
+        ],
+        "walkable": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            3,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ],
+          [
+            2,
+            2,
+            0
+          ],
+          [
+            3,
+            2,
+            0
+          ]
+        ],
+        "rangePanels": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            3,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ],
+          [
+            2,
+            2,
+            0
+          ],
+          [
+            3,
+            2,
+            0
+          ]
+        ],
+        "targeting": 6,
+        "follow": true
+      },
+      "expected": [
+        [
+          2,
+          1,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "followed-ability-tile-centers",
+      "input": {
+        "width": 4,
+        "depth": 3,
+        "area": 1,
+        "targets": [
+          [
+            2,
+            1,
+            0
+          ]
+        ],
+        "walkable": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            3,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ],
+          [
+            2,
+            2,
+            0
+          ],
+          [
+            3,
+            2,
+            0
+          ]
+        ],
+        "rangePanels": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            3,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ],
+          [
+            2,
+            2,
+            0
+          ],
+          [
+            3,
+            2,
+            0
+          ]
+        ],
+        "targeting": 5,
+        "follow": true
+      },
+      "expected": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ]
+      ]
+    },
+    {
+      "id": "tile-aim-layer-then-row-column-order",
+      "input": {
+        "width": 4,
+        "depth": 3,
+        "area": 1,
+        "targets": [
+          [
+            2,
+            1,
+            0
+          ]
+        ],
+        "walkable": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            3,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ],
+          [
+            2,
+            2,
+            0
+          ],
+          [
+            3,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            2,
+            0,
+            1
+          ],
+          [
+            3,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            3,
+            1,
+            1
+          ],
+          [
+            0,
+            2,
+            1
+          ],
+          [
+            1,
+            2,
+            1
+          ],
+          [
+            2,
+            2,
+            1
+          ],
+          [
+            3,
+            2,
+            1
+          ]
+        ],
+        "rangePanels": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            3,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ],
+          [
+            2,
+            2,
+            0
+          ],
+          [
+            3,
+            2,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ],
+          [
+            1,
+            0,
+            1
+          ],
+          [
+            2,
+            0,
+            1
+          ],
+          [
+            3,
+            0,
+            1
+          ],
+          [
+            0,
+            1,
+            1
+          ],
+          [
+            1,
+            1,
+            1
+          ],
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            3,
+            1,
+            1
+          ],
+          [
+            0,
+            2,
+            1
+          ],
+          [
+            1,
+            2,
+            1
+          ],
+          [
+            2,
+            2,
+            1
+          ],
+          [
+            3,
+            2,
+            1
+          ]
+        ],
+        "targeting": 5,
+        "follow": false
+      },
+      "expected": [
+        [
+          2,
+          0,
+          0
+        ],
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          2,
+          1,
+          0
+        ],
+        [
+          3,
+          1,
+          0
+        ],
+        [
+          2,
+          2,
+          0
+        ],
+        [
+          2,
+          0,
+          1
+        ],
+        [
+          1,
+          1,
+          1
+        ],
+        [
+          2,
+          1,
+          1
+        ],
+        [
+          3,
+          1,
+          1
+        ],
+        [
+          2,
+          2,
+          1
+        ]
+      ]
+    },
+    {
+      "id": "aim-must-intersect-source-range",
+      "input": {
+        "width": 4,
+        "depth": 3,
+        "area": 1,
+        "targets": [
+          [
+            2,
+            1,
+            0
+          ]
+        ],
+        "walkable": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            1,
+            0,
+            0
+          ],
+          [
+            2,
+            0,
+            0
+          ],
+          [
+            3,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ],
+          [
+            3,
+            1,
+            0
+          ],
+          [
+            0,
+            2,
+            0
+          ],
+          [
+            1,
+            2,
+            0
+          ],
+          [
+            2,
+            2,
+            0
+          ],
+          [
+            3,
+            2,
+            0
+          ]
+        ],
+        "rangePanels": [
+          [
+            1,
+            1,
+            0
+          ],
+          [
+            2,
+            1,
+            0
+          ]
+        ],
+        "targeting": 5,
+        "follow": false
+      },
+      "expected": [
+        [
+          1,
+          1,
+          0
+        ],
+        [
+          2,
+          1,
+          0
+        ]
+      ]
+    }
+  ],
+  "passes": [
+    {
+      "id": "two-ct-groups-before-tiles",
+      "input": {
+        "follow": true,
+        "consume": false,
+        "area": 1
+      },
+      "expected": [
+        "unit-moves-by-deadline",
+        "unit-still-at-deadline",
+        "tile"
+      ]
+    },
+    {
+      "id": "consume-unit-pass-before-tiles",
+      "input": {
+        "follow": true,
+        "consume": true,
+        "area": 1
+      },
+      "expected": [
+        "unit",
+        "tile"
+      ]
+    },
+    {
+      "id": "zero-area-omits-tile-alternative",
+      "input": {
+        "follow": true,
+        "consume": false,
+        "area": 0
+      },
+      "expected": [
+        "unit-moves-by-deadline",
+        "unit-still-at-deadline"
+      ]
+    },
+    {
+      "id": "non-following-ability-tiles-only",
+      "input": {
+        "follow": false,
+        "consume": false,
+        "area": 1
+      },
+      "expected": [
+        "tile"
+      ]
+    }
+  ],
+  "ranks": [
+    {
+      "id": "priority-before-hit",
+      "input": {
+        "candidate": {
+          "priority": 10,
+          "hit": 0,
+          "proximity": 8
+        },
+        "incumbent": {
+          "priority": 9,
+          "hit": 100,
+          "proximity": 0
+        }
+      },
+      "expected": {
+        "higherWithProximity": true,
+        "beatsMovementBaseline": true
+      }
+    },
+    {
+      "id": "negative-priority-is-not-zero",
+      "input": {
+        "candidate": {
+          "priority": -1,
+          "hit": 255,
+          "proximity": 0
+        },
+        "incumbent": {
+          "priority": 0,
+          "hit": 0,
+          "proximity": 8
+        }
+      },
+      "expected": {
+        "higherWithProximity": false,
+        "beatsMovementBaseline": false
+      }
+    },
+    {
+      "id": "hit-breaks-priority-tie",
+      "input": {
+        "candidate": {
+          "priority": 5,
+          "hit": 100,
+          "proximity": 2
+        },
+        "incumbent": {
+          "priority": 5,
+          "hit": 99,
+          "proximity": 2
+        }
+      },
+      "expected": {
+        "higherWithProximity": true,
+        "beatsMovementBaseline": true
+      }
+    },
+    {
+      "id": "exact-tie-retains-first",
+      "input": {
+        "candidate": {
+          "priority": 5,
+          "hit": 100,
+          "proximity": 2
+        },
+        "incumbent": {
+          "priority": 5,
+          "hit": 100,
+          "proximity": 2
+        }
+      },
+      "expected": {
+        "higherWithProximity": false,
+        "beatsMovementBaseline": false
+      }
+    },
+    {
+      "id": "proximity-does-not-beat-equal-baseline",
+      "input": {
+        "candidate": {
+          "priority": 5,
+          "hit": 100,
+          "proximity": 1
+        },
+        "incumbent": {
+          "priority": 5,
+          "hit": 100,
+          "proximity": 2
+        }
+      },
+      "expected": {
+        "higherWithProximity": true,
+        "beatsMovementBaseline": false
+      }
+    },
+    {
+      "id": "unresolved-hit255-remains-rankable",
+      "input": {
+        "candidate": {
+          "priority": 0,
+          "hit": 255,
+          "proximity": 2
+        },
+        "incumbent": {
+          "priority": 0,
+          "hit": 100,
+          "proximity": 2
+        }
+      },
+      "expected": {
+        "higherWithProximity": true,
+        "beatsMovementBaseline": true
+      }
+    },
+    {
+      "id": "priority-is-signed16",
+      "input": {
+        "candidate": {
+          "priority": -32768,
+          "hit": 255,
+          "proximity": 0
+        },
+        "incumbent": {
+          "priority": 32767,
+          "hit": 0,
+          "proximity": 8
+        }
+      },
+      "expected": {
+        "higherWithProximity": false,
+        "beatsMovementBaseline": false
+      }
+    }
+  ]
+}

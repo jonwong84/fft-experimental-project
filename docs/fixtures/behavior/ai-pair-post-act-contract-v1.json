@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-209",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "kind": "supplied-post-act-fact-descriptions",
+  "vectors": [
+    {
+      "id": "attack-hit",
+      "input": {
+        "actor": [
+          1,
+          1
+        ],
+        "target": [
+          2,
+          1
+        ],
+        "hp": 40,
+        "maxHp": 50,
+        "move": 3,
+        "ct": 15,
+        "speed": 5,
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "moved": false,
+        "acted": true,
+        "decided": true,
+        "savedChoices": [
+          false,
+          false
+        ],
+        "rng": [
+          995405759,
+          49
+        ]
+      },
+      "expected": {
+        "kind": "FreshLivingPreparation",
+        "refreshRng": [
+          2102736524,
+          50
+        ],
+        "refreshEndCt": 35,
+        "refreshActorCt": 40,
+        "refreshPeerCt": 0,
+        "elapsedTicks": 1,
+        "actorDelay": 17,
+        "targetDelay": 1,
+        "initializedEntries": 3,
+        "evadeModifier": 2,
+        "usableBeforeActClear": 2,
+        "attackUsable": false,
+        "throwStoneUsable": false,
+        "hasRangedAbility": true,
+        "enemyHarmful": 2,
+        "enemyReach": 4,
+        "allyReach": 3,
+        "distance": 1,
+        "branch": "InReach",
+        "d0CopiesD1": true,
+        "hypotheticalMoveEndCt": 15,
+        "hypotheticalStayEndCt": 35,
+        "abilityFormulaDraws": 0,
+        "emptyLotteryDraws": 8
+      }
+    },
+    {
+      "id": "stone-hit",
+      "input": {
+        "actor": [
+          1,
+          1
+        ],
+        "target": [
+          2,
+          1
+        ],
+        "hp": 40,
+        "maxHp": 50,
+        "move": 0,
+        "ct": 15,
+        "speed": 5,
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "moved": false,
+        "acted": true,
+        "decided": true,
+        "savedChoices": [
+          false,
+          false
+        ],
+        "rng": [
+          3823029677,
+          27
+        ]
+      },
+      "expected": {
+        "kind": "FreshLivingPreparation",
+        "refreshRng": [
+          3914758370,
+          28
+        ],
+        "refreshEndCt": 35,
+        "refreshActorCt": 40,
+        "refreshPeerCt": 0,
+        "elapsedTicks": 1,
+        "actorDelay": 17,
+        "targetDelay": 1,
+        "initializedEntries": 3,
+        "evadeModifier": 2,
+        "usableBeforeActClear": 2,
+        "attackUsable": false,
+        "throwStoneUsable": false,
+        "hasRangedAbility": true,
+        "enemyHarmful": 2,
+        "enemyReach": 1,
+        "allyReach": 0,
+        "distance": 1,
+        "branch": "InReach",
+        "d0CopiesD1": true,
+        "hypotheticalMoveEndCt": 15,
+        "hypotheticalStayEndCt": 35,
+        "abilityFormulaDraws": 0,
+        "emptyLotteryDraws": 8
+      }
+    },
+    {
+      "id": "stone-miss",
+      "input": {
+        "actor": [
+          1,
+          1
+        ],
+        "target": [
+          2,
+          1
+        ],
+        "hp": 50,
+        "maxHp": 50,
+        "move": 0,
+        "ct": 15,
+        "speed": 5,
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "moved": false,
+        "acted": true,
+        "decided": true,
+        "savedChoices": [
+          false,
+          false
+        ],
+        "rng": [
+          675780521,
+          31
+        ]
+      },
+      "expected": {
+        "kind": "FreshLivingPreparation",
+        "refreshRng": [
+          744964398,
+          32
+        ],
+        "refreshEndCt": 35,
+        "refreshActorCt": 40,
+        "refreshPeerCt": 0,
+        "elapsedTicks": 1,
+        "actorDelay": 17,
+        "targetDelay": 1,
+        "initializedEntries": 3,
+        "evadeModifier": 2,
+        "usableBeforeActClear": 2,
+        "attackUsable": false,
+        "throwStoneUsable": false,
+        "hasRangedAbility": true,
+        "enemyHarmful": 2,
+        "enemyReach": 1,
+        "allyReach": 0,
+        "distance": 1,
+        "branch": "InReach",
+        "d0CopiesD1": true,
+        "hypotheticalMoveEndCt": 15,
+        "hypotheticalStayEndCt": 35,
+        "abilityFormulaDraws": 0,
+        "emptyLotteryDraws": 8
+      }
+    },
+    {
+      "id": "stone-push",
+      "input": {
+        "actor": [
+          1,
+          1
+        ],
+        "target": [
+          3,
+          1
+        ],
+        "hp": 40,
+        "maxHp": 50,
+        "move": 0,
+        "ct": 15,
+        "speed": 5,
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "moved": false,
+        "acted": true,
+        "decided": true,
+        "savedChoices": [
+          false,
+          false
+        ],
+        "rng": [
+          2928661168,
+          27
+        ]
+      },
+      "expected": {
+        "kind": "FreshLivingPreparation",
+        "refreshRng": [
+          3381560617,
+          28
+        ],
+        "refreshEndCt": 35,
+        "refreshActorCt": 40,
+        "refreshPeerCt": 0,
+        "elapsedTicks": 1,
+        "actorDelay": 17,
+        "targetDelay": 1,
+        "initializedEntries": 3,
+        "evadeModifier": 2,
+        "usableBeforeActClear": 2,
+        "attackUsable": false,
+        "throwStoneUsable": false,
+        "hasRangedAbility": true,
+        "enemyHarmful": 2,
+        "enemyReach": 1,
+        "allyReach": 0,
+        "distance": 2,
+        "branch": "OutOfReach",
+        "d0CopiesD1": true,
+        "hypotheticalMoveEndCt": 15,
+        "hypotheticalStayEndCt": 35,
+        "abilityFormulaDraws": 0,
+        "emptyLotteryDraws": 8
+      }
+    },
+    {
+      "id": "stone-ko",
+      "input": {
+        "actor": [
+          1,
+          1
+        ],
+        "target": [
+          2,
+          1
+        ],
+        "hp": 0,
+        "maxHp": 10,
+        "move": 0,
+        "ct": 15,
+        "speed": 5,
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "moved": false,
+        "acted": true,
+        "decided": true,
+        "savedChoices": [
+          false,
+          false
+        ],
+        "rng": [
+          3914758370,
+          28
+        ]
+      },
+      "expected": {
+        "kind": "TerminalUnsupported",
+        "sourceNearestDefault": "Actor",
+        "queryDraws": 0,
+        "rng": [
+          3914758370,
+          28
+        ]
+      }
+    },
+    {
+      "id": "unchanged-saved-choices",
+      "input": {
+        "actor": [
+          1,
+          1
+        ],
+        "target": [
+          2,
+          1
+        ],
+        "hp": 40,
+        "maxHp": 50,
+        "move": 3,
+        "ct": 15,
+        "speed": 5,
+        "targetCt": 95,
+        "targetSpeed": 5,
+        "moved": false,
+        "acted": true,
+        "decided": true,
+        "savedChoices": [
+          false,
+          true
+        ],
+        "rng": [
+          995405759,
+          49
+        ]
+      },
+      "expected": {
+        "kind": "NoProgressEnd",
+        "queryDraws": 0,
+        "rng": [
+          995405759,
+          49
+        ]
+      }
+    }
+  ]
+}

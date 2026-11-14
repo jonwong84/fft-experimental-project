@@ -1,0 +1,405 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "c97862c629ecfdcbd2e7a847c2fa3251c0668f60",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Supplied Knockback Calculation wrapper, direction and staging gates; detailed landing/movement child listings and broader runtime support remain separate.",
+  "suppliedTextSha256": "737b383152813ceda3dd519760ba478803c15b069ec9d693788d12407522cfb6",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54735,
+      "sha256": "b37712b2e33a060f057e87f866c25ef0f4d4ba9b8bacf89447e2eeb0cd0c2bf9"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 80969,
+      "sha256": "e8ec92c02c53d3715b3813931685399e79481dad0fae6ae27505fbc5d086d444"
+    },
+    {
+      "path": "include/fft/move.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11466,
+      "sha256": "28cb002ca1ab5bf2fe139ffea6e4a71acaef70fe50c9023327439a1465b56fab"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/action.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14957,
+      "sha256": "6e97b3935c0d9cdcb8f6ba9ee2d40985b645bc0b03281a0d50d3d20aae35591c"
+    },
+    {
+      "path": "include/fft/battle_map.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 22162,
+      "sha256": "8e31c1b1320542770f2ddf587f22edf9e293e4bc45d5c85116d34a4cde96c296"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "knockback_calculate",
+      "startLine": 99,
+      "endLine": 186,
+      "normalizedLfSha256": "5a7f2614c5426a583669e2a591af966ff3936a39ed9f41e38a11ad62003db9e2"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "knockback_destination_check",
+      "startLine": 202,
+      "endLine": 285,
+      "normalizedLfSha256": "9be9e962bba2e1f8c5f67f1fdad606fdc21e2d7e82aaab9842e77dcd097bfe01"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "move_get_effective_flags",
+      "startLine": 1923,
+      "endLine": 1969,
+      "normalizedLfSha256": "2b1d78715a580c8a3ddc1d77dd14709f39c6c63bcd03542a71c8318e74671f19"
+    }
+  ],
+  "preparedBattle": {
+    "path": "scratch/fft-decomp-work/build/extracted/files/BATTLE.BIN",
+    "byteLength": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "loadAddress": "0x80067000"
+  },
+  "start": "0x801843ec",
+  "endInclusive": "0x8018460c",
+  "instructionCount": 137,
+  "instructionWords": [
+    "27bdffe0",
+    "3c038019",
+    "906338ec",
+    "34020001",
+    "afbf001c",
+    "afb20018",
+    "afb10014",
+    "1462007a",
+    "afb00010",
+    "3c058019",
+    "8ca52d98",
+    "00000000",
+    "90a30005",
+    "00000000",
+    "30620004",
+    "14400072",
+    "30630003",
+    "34020003",
+    "1062006f",
+    "00000000",
+    "3c048019",
+    "8c842d94",
+    "00000000",
+    "10a4006a",
+    "00000000",
+    "90a20182",
+    "00000000",
+    "14400066",
+    "00000000",
+    "90a90047",
+    "90830047",
+    "90a60048",
+    "90820048",
+    "01234023",
+    "00c23823",
+    "05010002",
+    "01002021",
+    "00042023",
+    "04e10002",
+    "00e01821",
+    "00031823",
+    "00831021",
+    "10400057",
+    "01208021",
+    "0064102a",
+    "10400008",
+    "00c08821",
+    "19000003",
+    "34040003",
+    "08061137",
+    "26100001",
+    "34040001",
+    "08061137",
+    "2610ffff",
+    "18e00003",
+    "34040002",
+    "08061137",
+    "26310001",
+    "00002021",
+    "2631ffff",
+    "02002821",
+    "0c061184",
+    "02203021",
+    "00409021",
+    "06400041",
+    "00000000",
+    "3c02800e",
+    "90424e9c",
+    "00000000",
+    "02220018",
+    "00121200",
+    "00001812",
+    "00431021",
+    "00501021",
+    "000210c0",
+    "3c038019",
+    "2463f8cc",
+    "00432021",
+    "90830000",
+    "90820006",
+    "00000000",
+    "30420002",
+    "1440002f",
+    "3063003f",
+    "90820003",
+    "00000000",
+    "304200e0",
+    "1440002a",
+    "00000000",
+    "90820003",
+    "00000000",
+    "3042001f",
+    "28420003",
+    "10400024",
+    "306300ff",
+    "34020012",
+    "10620021",
+    "3402001c",
+    "1062001f",
+    "00000000",
+    "3c048019",
+    "8c842d98",
+    "0c05fc08",
+    "00000000",
+    "30420080",
+    "1040000a",
+    "34020081",
+    "3c028019",
+    "8c422d98",
+    "00000000",
+    "9042005a",
+    "00000000",
+    "30420006",
+    "14400002",
+    "34020081",
+    "34020082",
+    "3c018019",
+    "a02238ed",
+    "3c038019",
+    "8c632d90",
+    "3c018019",
+    "a03038ca",
+    "3c018019",
+    "a03138cb",
+    "3c018019",
+    "a03238cc",
+    "94620010",
+    "00000000",
+    "34424000",
+    "a4620010",
+    "8fbf001c",
+    "8fb20018",
+    "8fb10014",
+    "8fb00010",
+    "27bd0020",
+    "03e00008",
+    "00000000"
+  ],
+  "allMatched": true,
+  "callSites": [
+    {
+      "pc": "0x801844e0",
+      "target": "0x80184610"
+    },
+    {
+      "pc": "0x80184584",
+      "target": "0x8017f020"
+    }
+  ],
+  "listedCallers": [
+    {
+      "callPc": "0x80186550",
+      "returnAddress": "0x80186558",
+      "matched": true
+    },
+    {
+      "callPc": "0x801869d4",
+      "returnAddress": "0x801869dc",
+      "matched": true
+    }
+  ],
+  "eligibility": [
+    "Target count must equal1.",
+    "Target team flags bit0x04 (immortal) rejects.",
+    "Target team flags&0x03 equal3 (importance3) rejects; not an identity-based Ramza special case.",
+    "Target and actor pointers must differ.",
+    "Any nonzero target mount byte rejects.",
+    "Target and actor must differ in X or Y, even if their layers differ."
+  ],
+  "direction": {
+    "rule": "Move one square away on the dominant coordinate; Y wins absolute ties.",
+    "sourceCoordinateRange": [
+      0,
+      255
+    ],
+    "nonzeroDeltaChecks": 261120,
+    "literalDescriptions": [
+      {
+        "dx": 1,
+        "dy": 0,
+        "directionCode": 3,
+        "step": [
+          1,
+          0
+        ]
+      },
+      {
+        "dx": -1,
+        "dy": 0,
+        "directionCode": 1,
+        "step": [
+          -1,
+          0
+        ]
+      },
+      {
+        "dx": 0,
+        "dy": 1,
+        "directionCode": 2,
+        "step": [
+          0,
+          1
+        ]
+      },
+      {
+        "dx": 0,
+        "dy": -1,
+        "directionCode": 0,
+        "step": [
+          0,
+          -1
+        ]
+      },
+      {
+        "dx": 1,
+        "dy": 1,
+        "directionCode": 2,
+        "step": [
+          0,
+          1
+        ]
+      },
+      {
+        "dx": -1,
+        "dy": -1,
+        "directionCode": 0,
+        "step": [
+          0,
+          -1
+        ]
+      },
+      {
+        "dx": 2,
+        "dy": 1,
+        "directionCode": 3,
+        "step": [
+          1,
+          0
+        ]
+      }
+    ]
+  },
+  "landing": {
+    "child": "knockback_destination_check(direction,x,y) at0x80184610",
+    "childAlias": "Knockback 2",
+    "negativeResult": "Reject parent without staging new knockback flags.",
+    "nonnegativeResult": "Map layer index; parent tile index=(layer<<8)+y*width+x, eight-byte tile stride.",
+    "parentTileFilters": [
+      "Untargetable bit0x02 of tile byte6 rejects.",
+      "Any depth bits0xe0 of tile byte3 reject.",
+      "Half-height bits0x1f of tile byte3 must be<3.",
+      "Surface low6 bits must be neither0x12 lava nor0x1c obstacle."
+    ],
+    "sourceHeightClarification": "The destination child permits equal source/destination edge heights; lower-than-origin notes are not a strict-lower rule."
+  },
+  "movementAndWrites": {
+    "child": "move_get_effective_flags(target) at0x8017f020",
+    "childAlias": "Float/Float/Fly movements",
+    "usedBit": "Only effective Fly0x80 is tested here; Float0x40 alone does not choose0x82.",
+    "pendingFlag": "Assign0x81 normally; assign0x82 only with effective Fly and neither Frog nor Chicken.",
+    "flagChecks": 1024,
+    "workStores": [
+      "0x801938ed pending/kind byte",
+      "0x801938ca destination X byte",
+      "0x801938cb destination Y byte",
+      "0x801938cc destination layer byte"
+    ],
+    "targetEffect": "OR0x4000 into target action halfword0x10, preserving unrelated bits."
+  },
+  "dependencies": {
+    "destination": "Source-traced under prior physical/sword reviews. Its supplied listing at0x80184610 is next useful; it owns bounds, layered edges/headroom, occupancy and fall-height staging.",
+    "effectiveMovement": "Source-traced; supplied listing at0x8017f020 remains useful afterward. Its own source clears Fly for Frog/Chicken, but parent repeats the status check and preserves the original sequence."
+  },
+  "clarifications": [
+    "0x8018446c loads attacker Y, not the comment X.",
+    "Destination elevation in these notes is the chosen layer, not an absolute height.",
+    "Importance3 rejection is generic; there is no character ID test.",
+    "The parent stages action work and a special effect; it does not move the unit or apply HP/fall damage."
+  ],
+  "boundaries": [
+    "No RNG or Brave/hit/HP check in this helper; the caller owns random triggers and later aftermath owns lethal/settlement handling.",
+    "Early exits do not actively clear preexisting knockback data. The destination child can write fall-height/post-action target fields before a later parent tile rejection; that work is not rolled back here.",
+    "The four direct work-byte stores and effect-halfword update occur only after all parent gates; preserve this boundary without claiming all child work is transactional.",
+    "Current ordinary flat single-target knockback remains admitted; flying, fall damage, arbitrary terrain, layers, mounts and other target flags remain guarded/deferred.",
+    "Source classification and supplied byte checks do not activate those broader runtime domains."
+  ],
+  "validation": {
+    "referenceClean": true,
+    "sourceAudit": {
+      "formulaDescriptions": 24,
+      "actualDescriptions": 8,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false
+    },
+    "preparedDash": {
+      "abilityId": 147,
+      "range": 1,
+      "verticalTolerance": 1,
+      "formula": 55,
+      "y": 4,
+      "evadeable": false,
+      "directTrajectory": false,
+      "aiPhysical": true,
+      "aiDirectTrajectory": false,
+      "aiExhaustive": false,
+      "preparedVerified": true
+    },
+    "ownerBlobsVerified": 10,
+    "ownerApprovedCiEdit": {
+      "path": ".circleci/config.yml",
+      "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+      "committed": true,
+      "ciEnabledDefault": false
+    },
+    "runtimeChanged": false,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "runtimeTestsRerun": false,
+    "previousRuntimeValidationReceipt": "docs/evidence/combat/attack-up-martial-arts-trace-v1.json"
+  }
+}

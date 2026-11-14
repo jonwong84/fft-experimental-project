@@ -1,0 +1,185 @@
+{
+  "format": "fft.ai-execution-rng-source-evidence",
+  "schemaVersion": 1,
+  "ticket": "ZOD-154",
+  "date": "2026-10-28",
+  "managedBaseRevision": "b3894f0e5cfe150a1bf0d4bab6118074f7b8e3b5",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "sourceReceipt": "docs/evidence/ai/wait-settlement-contract-v1.json",
+  "contract": "docs/architecture/zod-154-ai-execution-rng.md",
+  "fixture": "docs/fixtures/behavior/ai-execution-rng-contract-v1.json",
+  "additionalSourceFiles": [
+    {
+      "path": "src/main/system_callbacks.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1571,
+      "sha256": "8608d100977c20d10f4dbbb7e5166d22b68fdc070c742c4497cd0a7b5de28e28"
+    },
+    {
+      "path": "src/main/startup.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4028,
+      "sha256": "56042aafa98685bcc2cebf1884baf3e6ee045b07bb37bc5bffdd2c02b910e085"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 15884,
+      "sha256": "7ddb1c8ed2e0cad3de18dae6945364d4fffd2299aa4383a659ecbe27717b7eb9"
+    },
+    {
+      "path": "src/platform/psyq/libapi/rand.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 202,
+      "sha256": "6bae60cf1d89d9dd09abf3f36c837096bcac34b2928d49be98de770e9681ee52"
+    },
+    {
+      "path": "include/fft/ai_decision.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9018,
+      "sha256": "a88a67152b5143b74121946b7dffd4c8b76b568d9947c828d6620014a741b02b"
+    },
+    {
+      "path": "include/fft/turn_command.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2166,
+      "sha256": "bff9d91a197c4e67bdbb633c8a034c0aa8c28ba8ac04e86cef68e199c7a64eb8"
+    }
+  ],
+  "additionalSourceFunctions": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_command_build",
+      "startLine": 131,
+      "endLine": 224,
+      "normalizedLfSha256": "b4a01ef870fceac6d31bc8ab370f0b4053aaee69fc3dd55d9b79c78a0975a5bf"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "decision_flags_refresh",
+      "startLine": 270,
+      "endLine": 323,
+      "normalizedLfSha256": "b64660e3cd084717a39ff0bbd764421152e45a21e458d466bf4b4b51bab204fb"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "ai_simulation_begin",
+      "startLine": 34,
+      "endLine": 39,
+      "normalizedLfSha256": "ba32367fee182cbe3f45c3319e95d221464c09fbfcc15417f55cf6cc7eae0a93"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "ai_simulation_end",
+      "startLine": 43,
+      "endLine": 47,
+      "normalizedLfSha256": "17a6b63b2c51acaeb468f3e70ea2d437459d680c8da7810da4b40889d4b636db"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "formula_get_random",
+      "startLine": 394,
+      "endLine": 399,
+      "normalizedLfSha256": "cdf6c4c0c319dc057ac12bd5c35829c7c3cd794b5acb4595ece35a9814e0512f"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "evade_source_roll",
+      "startLine": 291,
+      "endLine": 302,
+      "normalizedLfSha256": "26a09b9e4435a85b92128833800106817452b3a59cf8a24bf8306dec88de127a"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_calculate_critical_hit",
+      "startLine": 1145,
+      "endLine": 1156,
+      "normalizedLfSha256": "c18e75778f250b30020d11622e664891ea8b8645a6505421cf5a00996accbe3d"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "conditional_status_proc_roll_inner",
+      "startLine": 412,
+      "endLine": 418,
+      "normalizedLfSha256": "40d4f276cd1a506807f87002a9bc21cfac252bbf09da445b8ff5f0df14e9a008"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_ai_command_update",
+      "startLine": 2665,
+      "endLine": 2768,
+      "normalizedLfSha256": "11c99d696f9f045abdb27800c9452d187368a1197d3249c793c5b94515da64e9"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_continue_turn_update",
+      "startLine": 4162,
+      "endLine": 4200,
+      "normalizedLfSha256": "b550d805d45f27da83b9718829849dc3c41996da4a91ee19876a32cfa3d0960c"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_post_move_events_update",
+      "startLine": 3259,
+      "endLine": 3341,
+      "normalizedLfSha256": "41c6e8a5e32177a0ff7f80124eaca00c21f52846e784772229b16d9215ba6bf3"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "upkeep_action_build",
+      "startLine": 399,
+      "endLine": 481,
+      "normalizedLfSha256": "db3bb2342ef78ca6d64b5b2e911e9e2fd14e5a77cd1820472fa784c35cfeaa22"
+    },
+    {
+      "path": "src/main/system_callbacks.c",
+      "symbol": "system_vsync_callback",
+      "startLine": 17,
+      "endLine": 37,
+      "normalizedLfSha256": "ff40cca8f7456e57b6f8b4f54b3ebdd502860e7dc08d91813182b7c189246fc2"
+    },
+    {
+      "path": "src/main/startup.c",
+      "symbol": "boot_startup_run",
+      "startLine": 55,
+      "endLine": 83,
+      "normalizedLfSha256": "a903bde11dcb820e3d3f764278c3f31a6ec50c1f47c105b31801af8cb1a9dbe8"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "symbol": "random_roll_pass_fail",
+      "startLine": 84,
+      "endLine": 88,
+      "normalizedLfSha256": "fe644f4e2a6aefc5520152de095c4762912d9dd0dbb92fadd12c0ff5a5c89f88"
+    },
+    {
+      "path": "src/platform/psyq/libapi/rand.c",
+      "symbol": "rand",
+      "startLine": 6,
+      "endLine": 8,
+      "normalizedLfSha256": "a9d63b6389f15294c76f44ffe3a25d8fbb11351048b52e21425665297089590e"
+    }
+  ],
+  "productionImplemented": false,
+  "runtimeActivated": false,
+  "originalExecuted": false,
+  "cReferenceExecuted": false,
+  "managedAcceptanceStatus": "Unexecuted proposals for ZOD-155",
+  "expectationKind": "Source-derived command guards and supplied-prefix RNG arithmetic; no fresh managed selection or command execution",
+  "findings": [
+    "Candidate restore does not restore RNG; actual combat rolls start after selection",
+    "Unchanged-command guard precedes post-ACT reselection; ordinary Move can reuse selection",
+    "Current selector begins after earlier refresh/policy work; do not claim its costs cover full command building",
+    "Source VSync callback draws BIOS rand once per frame; managed gameplay stream isolation is an explicit fidelity limit"
+  ],
+  "nextChild": "ZOD-155: one fresh already-moved in-reach selection and actual Attack or Wait command",
+  "validation": {
+    "sourceAudit": "scratch/ai-execution-rng-154/source.json",
+    "pythonPassed": 500,
+    "pythonLog": "scratch/ai-execution-rng-154/python.txt",
+    "lastDotnetPassed": 3821,
+    "dotnetRerunForThisTicket": false,
+    "managedCommandProposalsExecuted": false
+  }
+}

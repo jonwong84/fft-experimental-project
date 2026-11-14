@@ -1,0 +1,556 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-332",
+  "date": "2026-11-05",
+  "managedBaseRevision": "78df755e8aa3377214708dedd7f4a43a15a09bf1",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "behavior": "docs/development/framework-source-layout.md",
+  "sourceFilesMoved": 51,
+  "testFilesMoved": 53,
+  "allMovedFilesByteIdentical": true,
+  "namespacesChanged": false,
+  "publicApiChanged": false,
+  "projectFilesChanged": false,
+  "fixturesChanged": false,
+  "dependenciesChanged": false,
+  "validation": {
+    "lockedRestore": true,
+    "releaseWarnings": 0,
+    "releaseErrors": 0,
+    "dotnetPassed": 4531,
+    "frameworkPassed": 1521,
+    "aiPassed": 1217,
+    "contentPassed": 833,
+    "pythonPassed": 596,
+    "trxReports": 7,
+    "coverageAudit": true,
+    "localLinkAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/framework-layout-332/"
+  },
+  "moves": [
+    {
+      "from": "src/Zodiac.Framework/AttackBattleSnapshot.cs",
+      "to": "src/Zodiac.Framework/Battle/State/AttackBattleSnapshot.cs",
+      "sha256": "30191d5e0f3899abf8909a26fa3bc4d2a5c2d43bd5f4ab672a367b76fe3018d7"
+    },
+    {
+      "from": "src/Zodiac.Framework/BattleMapDefinition.cs",
+      "to": "src/Zodiac.Framework/Battle/State/BattleMapDefinition.cs",
+      "sha256": "b88216f17df7dc9208c085d606ad171b6bc83aff406abbbdd8c21445e832cb12"
+    },
+    {
+      "from": "src/Zodiac.Framework/BattleState.cs",
+      "to": "src/Zodiac.Framework/Battle/State/BattleState.cs",
+      "sha256": "2475ff853675d176bfb834e259983ea19df830e86219c0bfc89c7cbac2bfe81d"
+    },
+    {
+      "from": "src/Zodiac.Framework/BattleTile.cs",
+      "to": "src/Zodiac.Framework/Battle/State/BattleTile.cs",
+      "sha256": "bad68f851b72c8e45ddff0a9c898310a1bf8e1e25f2573fc123130e9a05e7ce8"
+    },
+    {
+      "from": "src/Zodiac.Framework/BattleTileMovementFlags.cs",
+      "to": "src/Zodiac.Framework/Battle/State/BattleTileMovementFlags.cs",
+      "sha256": "b0d15330acc442fc24205d9d3c048b70e2b7d758e76a6ea2579ab037d77cfcb0"
+    },
+    {
+      "from": "src/Zodiac.Framework/BattleUnitId.cs",
+      "to": "src/Zodiac.Framework/Battle/State/BattleUnitId.cs",
+      "sha256": "665d6257777941ef456165df9bf1ad68c06987c614a8b43e66eb7d7bd04b6019"
+    },
+    {
+      "from": "src/Zodiac.Framework/BattleUnitState.cs",
+      "to": "src/Zodiac.Framework/Battle/State/BattleUnitState.cs",
+      "sha256": "85529f919d6e6ebb48a145156238a628737285adb5e654718a721795f8db55de"
+    },
+    {
+      "from": "src/Zodiac.Framework/TilePosition.cs",
+      "to": "src/Zodiac.Framework/Battle/State/TilePosition.cs",
+      "sha256": "68a85b45b3ea0fdf92bf2a63cf110c9384d94115e9290018bea3cd29a402176e"
+    },
+    {
+      "from": "src/Zodiac.Framework/TileSlope.cs",
+      "to": "src/Zodiac.Framework/Battle/State/TileSlope.cs",
+      "sha256": "0410a25a8b8656dd5e2f2c79819bb3c9bca837fe6815eca51ac0555a2f696506"
+    },
+    {
+      "from": "src/Zodiac.Framework/TwoUnitBattleScenario.cs",
+      "to": "src/Zodiac.Framework/Battle/State/TwoUnitBattleScenario.cs",
+      "sha256": "4b1db39925481bb1aa54b9ce281086f2f4723e72ebf50dad15f45a14ee903b0e"
+    },
+    {
+      "from": "src/Zodiac.Framework/BattleMovementEvent.cs",
+      "to": "src/Zodiac.Framework/Battle/Movement/BattleMovementEvent.cs",
+      "sha256": "344f9b7fccb6b183a6caa1506856930360df3a8c43e76d9167497effe47a611c"
+    },
+    {
+      "from": "src/Zodiac.Framework/BattleMovementPolicy.cs",
+      "to": "src/Zodiac.Framework/Battle/Movement/BattleMovementPolicy.cs",
+      "sha256": "4753f9a3b89549c81dadbf6e6dc5c21b437bca304ba7fda53681eead0a0037ad"
+    },
+    {
+      "from": "src/Zodiac.Framework/BattleSimulator.cs",
+      "to": "src/Zodiac.Framework/Battle/Movement/BattleSimulator.cs",
+      "sha256": "79a7c226254441f92dd605311311b24b61299ebf224969ef7aa6733ba92e445c"
+    },
+    {
+      "from": "src/Zodiac.Framework/BattleTransitionResult.cs",
+      "to": "src/Zodiac.Framework/Battle/Movement/BattleTransitionResult.cs",
+      "sha256": "12ce4f5fa555b0ce47b9555c03227db9064386789ea519001deeb489428df777"
+    },
+    {
+      "from": "src/Zodiac.Framework/ConfirmedPathMovement.cs",
+      "to": "src/Zodiac.Framework/Battle/Movement/ConfirmedPathMovement.cs",
+      "sha256": "cbd0f80e522c71f9da120cb72c53a3d288d0f514a53b131b16a30ede0db56272"
+    },
+    {
+      "from": "src/Zodiac.Framework/FacingTurnPathMovement.cs",
+      "to": "src/Zodiac.Framework/Battle/Movement/FacingTurnPathMovement.cs",
+      "sha256": "8b46df73540292c6307ee7f4c5abbc488b23486b441f8e7bc56d515bdb62d012"
+    },
+    {
+      "from": "src/Zodiac.Framework/FlatGridMovementRange.cs",
+      "to": "src/Zodiac.Framework/Battle/Movement/FlatGridMovementRange.cs",
+      "sha256": "abbbfa151a54953b4c199a7abbd15b35bfc02a24fd52f42f1349d0ddb0f35d88"
+    },
+    {
+      "from": "src/Zodiac.Framework/FlatOrdinaryMovement.cs",
+      "to": "src/Zodiac.Framework/Battle/Movement/FlatOrdinaryMovement.cs",
+      "sha256": "039397bc7220181d2b81d95af8145beefc0480761c0788cc4ea7e58fa2bbcfbf"
+    },
+    {
+      "from": "src/Zodiac.Framework/FlatRosterDirectTrajectory.cs",
+      "to": "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectory.cs",
+      "sha256": "bd595ce1d5dac9878614937c1989d467ae073266afb57c3f0dd1e4c6171eaad6"
+    },
+    {
+      "from": "src/Zodiac.Framework/FlatRosterMovement.cs",
+      "to": "src/Zodiac.Framework/Battle/Movement/FlatRosterMovement.cs",
+      "sha256": "7a5a5a7613a30c9263e162a0f8af99b2d3463df47a7f2cd7af1c25509b28ed7d"
+    },
+    {
+      "from": "src/Zodiac.Framework/FlatRosterPathMovement.cs",
+      "to": "src/Zodiac.Framework/Battle/Movement/FlatRosterPathMovement.cs",
+      "sha256": "e600ed0cda7acb64fb1fe9f28e6990ba44b2ddda9f9cfbffe281f93c6e5f2671"
+    },
+    {
+      "from": "src/Zodiac.Framework/MoveUnitCommand.cs",
+      "to": "src/Zodiac.Framework/Battle/Movement/MoveUnitCommand.cs",
+      "sha256": "7fe9258b40080868addac01bba0cc0fd1789bb1785a5768b7c741a68770399f3"
+    },
+    {
+      "from": "src/Zodiac.Framework/OrdinaryAdjacentStepRange.cs",
+      "to": "src/Zodiac.Framework/Battle/Movement/OrdinaryAdjacentStepRange.cs",
+      "sha256": "aef2210cc89e02d4e7b1f2610a6f1b989ea0f6892960f496dc750be35316922b"
+    },
+    {
+      "from": "src/Zodiac.Framework/TerrainAwareMovementRange.cs",
+      "to": "src/Zodiac.Framework/Battle/Movement/TerrainAwareMovementRange.cs",
+      "sha256": "59498eb41bde9b5f00c9c9eb7df80d27801de0bbf22650cee856cdff53e28753"
+    },
+    {
+      "from": "src/Zodiac.Framework/TerrainMovementCost.cs",
+      "to": "src/Zodiac.Framework/Battle/Movement/TerrainMovementCost.cs",
+      "sha256": "0e70ca73604b2f5b04d38e92bc71d2c0dbe5922964c815bfe7b3ea81ef1bdf96"
+    },
+    {
+      "from": "src/Zodiac.Framework/TerrainSurfaceId.cs",
+      "to": "src/Zodiac.Framework/Battle/Movement/TerrainSurfaceId.cs",
+      "sha256": "2b3f1d519b4cd8e93372982aea12507707ecf07dfe37e4835df0268dd6c312cf"
+    },
+    {
+      "from": "src/Zodiac.Framework/UnitMovementMode.cs",
+      "to": "src/Zodiac.Framework/Battle/Movement/UnitMovementMode.cs",
+      "sha256": "f603303da9df569ad75bbd3c233f51389431f47007ee15c87740cbd77defc865"
+    },
+    {
+      "from": "src/Zodiac.Framework/UnitMovementProfile.cs",
+      "to": "src/Zodiac.Framework/Battle/Movement/UnitMovementProfile.cs",
+      "sha256": "e52d1b495e14958485c83d55797612e10bd7a36ff06054bafd226fee6f4c1175"
+    },
+    {
+      "from": "src/Zodiac.Framework/UnitMovementTraits.cs",
+      "to": "src/Zodiac.Framework/Battle/Movement/UnitMovementTraits.cs",
+      "sha256": "e39c6ac79b42970d85f0b2fe0689f8566e8f5db35aa0a436b3f1a76d917fc525"
+    },
+    {
+      "from": "src/Zodiac.Framework/AttackBattleSimulator.cs",
+      "to": "src/Zodiac.Framework/Battle/Combat/AttackBattleSimulator.cs",
+      "sha256": "2b7f815367d3e9c452d4904af27b6abcf4d78843ebadb02a2486ff10e5658c44"
+    },
+    {
+      "from": "src/Zodiac.Framework/DashAbilityBattle.cs",
+      "to": "src/Zodiac.Framework/Battle/Combat/DashAbilityBattle.cs",
+      "sha256": "935b5d110cb3a5fd5297d5a0695d5d6880d7a361d584cd720090877d887337fa"
+    },
+    {
+      "from": "src/Zodiac.Framework/DashFormula.cs",
+      "to": "src/Zodiac.Framework/Battle/Combat/DashFormula.cs",
+      "sha256": "a6ffb534bec0223a1455b5022c914caa5bceb8c35de83ffe24215db7fb51d1b2"
+    },
+    {
+      "from": "src/Zodiac.Framework/FlatRosterBattleProfile.cs",
+      "to": "src/Zodiac.Framework/Battle/Combat/FlatRosterBattleProfile.cs",
+      "sha256": "db5d2f78752933ce9c418de4a720cc51c3261b994831b57e2f9d0b2e4d58c53f"
+    },
+    {
+      "from": "src/Zodiac.Framework/FlatSwordBattleProfile.cs",
+      "to": "src/Zodiac.Framework/Battle/Combat/FlatSwordBattleProfile.cs",
+      "sha256": "58a5e2e67fa2bec7c74137e07b407975c623ef10c9a5dce9a06ec586d3e68f10"
+    },
+    {
+      "from": "src/Zodiac.Framework/ImmediateAbilityBattle.cs",
+      "to": "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattle.cs",
+      "sha256": "35b1f0fde10a6952217dd0f75d79a4a315fa6c54a670cdff471b2df427998087"
+    },
+    {
+      "from": "src/Zodiac.Framework/PhysicalWeaponEvasion.cs",
+      "to": "src/Zodiac.Framework/Battle/Combat/PhysicalWeaponEvasion.cs",
+      "sha256": "1461a1200093e8f41b1f2e672bde0d92c9cd530984dbd154585fdbcecbeb5b6c"
+    },
+    {
+      "from": "src/Zodiac.Framework/TargetedAbilityBattle.cs",
+      "to": "src/Zodiac.Framework/Battle/Combat/TargetedAbilityBattle.cs",
+      "sha256": "81cc1dcf97419968ea781a913a53aeea51b799c60dbf5f5433b6589263cf4b41"
+    },
+    {
+      "from": "src/Zodiac.Framework/ThrowStoneFormula.cs",
+      "to": "src/Zodiac.Framework/Battle/Combat/ThrowStoneFormula.cs",
+      "sha256": "8c03ea57472109dae78aaaf150e205cd4f230d18d2472551d2e3144ca357df7e"
+    },
+    {
+      "from": "src/Zodiac.Framework/FacingReceiptRules.cs",
+      "to": "src/Zodiac.Framework/Battle/Turns/FacingReceiptRules.cs",
+      "sha256": "653579b30bd35a80740e7982d1650fd6964595eca7e1edc3ad4eae2b4ba00351"
+    },
+    {
+      "from": "src/Zodiac.Framework/FacingTurnBattle.cs",
+      "to": "src/Zodiac.Framework/Battle/Turns/FacingTurnBattle.cs",
+      "sha256": "5302f752403e73b52a55fb6fa116cdbe24b2584a97cb7aa5938eeb6eedfd232e"
+    },
+    {
+      "from": "src/Zodiac.Framework/RosterFacingTurnBattle.cs",
+      "to": "src/Zodiac.Framework/Battle/Turns/RosterFacingTurnBattle.cs",
+      "sha256": "0264c4ec1ca2d8349a5f937113550705b081c39e87a7fca0b205aeab54ea5a67"
+    },
+    {
+      "from": "src/Zodiac.Framework/TurnBattleState.cs",
+      "to": "src/Zodiac.Framework/Battle/Turns/TurnBattleState.cs",
+      "sha256": "0d8cc554d74eb7ae669e90883516d278fc7aa5814559b6bf57f7df936158a0ee"
+    },
+    {
+      "from": "src/Zodiac.Framework/TurnCycle.cs",
+      "to": "src/Zodiac.Framework/Battle/Turns/TurnCycle.cs",
+      "sha256": "e498ff19794b3f81c08ff517f6f5a6eb91b844027557a2f13f8a73d217f1192c"
+    },
+    {
+      "from": "src/Zodiac.Framework/TurnCycleResult.cs",
+      "to": "src/Zodiac.Framework/Battle/Turns/TurnCycleResult.cs",
+      "sha256": "1c4a88355aab5e2422d408f13b7fa9f9234545f7e76e32d7954a3057fac98f8d"
+    },
+    {
+      "from": "src/Zodiac.Framework/TurnCycleState.cs",
+      "to": "src/Zodiac.Framework/Battle/Turns/TurnCycleState.cs",
+      "sha256": "cc71f5b73870608dfa717f573eafbba9ec8b81c925397e292b427caee7ff164c"
+    },
+    {
+      "from": "src/Zodiac.Framework/TurnUnitState.cs",
+      "to": "src/Zodiac.Framework/Battle/Turns/TurnUnitState.cs",
+      "sha256": "e58fbe5055066e281ea7c94c858f555052fe4a756a7e93891d77aad002bb7c25"
+    },
+    {
+      "from": "src/Zodiac.Framework/FacingDecision.cs",
+      "to": "src/Zodiac.Framework/Battle/Commands/FacingDecision.cs",
+      "sha256": "7ee6fb5123193dc6dc868f3f539b00631a962bdb038e30d60844be5d31f506a8"
+    },
+    {
+      "from": "src/Zodiac.Framework/FacingMoveDecision.cs",
+      "to": "src/Zodiac.Framework/Battle/Commands/FacingMoveDecision.cs",
+      "sha256": "054dafb6b254bdce23b3f55631e8d834a402e8b608c0d8670806d6b272070ddb"
+    },
+    {
+      "from": "src/Zodiac.Framework/RosterDecision.cs",
+      "to": "src/Zodiac.Framework/Battle/Commands/RosterDecision.cs",
+      "sha256": "89cc5c0f956c4a645bb28c25bd7e2ca9fc64dee74075a8bfa649ee8675fea35e"
+    },
+    {
+      "from": "src/Zodiac.Framework/RosterMoveContinuation.cs",
+      "to": "src/Zodiac.Framework/Battle/Commands/RosterMoveContinuation.cs",
+      "sha256": "ff3f9e039e77160efe113912035138de5049f14a1acba32cc71f8ca414e9addb"
+    },
+    {
+      "from": "src/Zodiac.Framework/RosterPlannedMove.cs",
+      "to": "src/Zodiac.Framework/Battle/Commands/RosterPlannedMove.cs",
+      "sha256": "fc1122830ec844222eb450429e7f61a4b9e0eea01e29cbe428d99ac5e417d7ae"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/AttackSnapshotTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/State/AttackSnapshotTests.cs",
+      "sha256": "11f26ef41819a4439119b4eb95e8a4a6fe17d4932ef24a2e21115054465ff779"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/BattleMapDefinitionTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/State/BattleMapDefinitionTests.cs",
+      "sha256": "4eca8a3f4a11f7f5eb7f9855b3456ab826bb7a9886fc2ccdcfecb0d6f6dda7da"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/BattleSimulatorTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Movement/BattleSimulatorTests.cs",
+      "sha256": "237834a9f56ea3913f15a3f285f754728ff6e4949ab030daae4c5680c65fe728"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/FacingTurnPathMovementTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Movement/FacingTurnPathMovementTests.cs",
+      "sha256": "7d8c8d3540835fa4a612ccfb3da561b090bf50c134972482eb06c0e1eb6326f3"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/FlatGridMovementRangeTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Movement/FlatGridMovementRangeTests.cs",
+      "sha256": "513129cea0d80396e89e4ee21dfc6dde35ef6fd3bc083bc6d34e551a3af9255c"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/FlatOrdinaryMovementTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Movement/FlatOrdinaryMovementTests.cs",
+      "sha256": "c138889a46da94c15790c794d08233b665fe2424885d1a86bfb4f6140bad5366"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/FlatRosterDirectTrajectoryTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Movement/FlatRosterDirectTrajectoryTests.cs",
+      "sha256": "dd47bd15dff5ab4c8e8fa3df233c5095bf25172c16673fecb80cfa774bd725a3"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/MovementInputModelTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Movement/MovementInputModelTests.cs",
+      "sha256": "4778baec4cee7f2da66c01f6f14d04234490bdf41460c7d3a00deab872418f5b"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/OrdinaryAdjacentStepTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Movement/OrdinaryAdjacentStepTests.cs",
+      "sha256": "e5797c05c7db078f618f3a3f17403d148949f5fa088db097a6a9a79eef70afef"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/TerrainAwareMovementRangeTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Movement/TerrainAwareMovementRangeTests.cs",
+      "sha256": "b283e6d2bb344c009feebcc50dd95914ef913a54365d9dbb1865d21166467fea"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/TerrainTransitionTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Movement/TerrainTransitionTests.cs",
+      "sha256": "16fe1b0e07d7b1399fd81b06b05ffab51af7ea545071e37afe109317c1ba054f"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/AttackBattleSimulatorTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Combat/AttackBattleSimulatorTests.cs",
+      "sha256": "9dc8ef1dba5ab16c5c8a878e71960a2836c1247769fadd4f3fefe4858c68fae4"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/AttackFixtureV3Tests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Combat/AttackFixtureV3Tests.cs",
+      "sha256": "80868fc1e875714c124ef33d35241c576527cf3641885e5e233d37a34e56e933"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/DashAbilityTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Combat/DashAbilityTests.cs",
+      "sha256": "4206311aec5900471549a439096cc2fb33d9f5c4299a5f4a46dc2303bf2f21ba"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/FlatRosterCombatTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Combat/FlatRosterCombatTests.cs",
+      "sha256": "2ac376d667339f349d513d88629c6c764ca722217e904bb4397839f806bfe323"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/FlatSwordKnockbackTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Combat/FlatSwordKnockbackTests.cs",
+      "sha256": "3408e3a69a04f757f5f60f009d033f610fa219ed28898fb192ba65880d8df827"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/ImmediateAbilityBattleTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Combat/ImmediateAbilityBattleTests.cs",
+      "sha256": "c00b02b0e22e5f5432129f0335e193952452809cb5fe899bddde2089e7e47008"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/PhysicalWeaponEvasionTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Combat/PhysicalWeaponEvasionTests.cs",
+      "sha256": "220d33f87a88fc769bfac65e86f8db4b36b2b13230ce425c797a58e6a7064fd5"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/RosterCombatTestData.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Combat/RosterCombatTestData.cs",
+      "sha256": "9572166c095dd636e373a3406e5be40289afdc687e4c28a6b2a95a542d8b2f45"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/RosterImmediateAbilityTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Combat/RosterImmediateAbilityTests.cs",
+      "sha256": "99727f6e830e1cfd549785e9ccba7d32ef95c45d0b745f38396d54b8b7aa74f4"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/RosterThrowStoneTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Combat/RosterThrowStoneTests.cs",
+      "sha256": "68d1961dd8feef4bbfbeff73f828607ca386cc48a3db54b1f2e17adc1588bec4"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/ThrowStoneBattleTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Combat/ThrowStoneBattleTests.cs",
+      "sha256": "fe4d8e601169bd4486cb8a1a20eb9eb936d65b8862e61ad1b6c33cd21b5f84a9"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/FacingTurnBattleTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Turns/FacingTurnBattleTests.cs",
+      "sha256": "455141ee9615141741adb96513444b0b7e9624c672ed90977dc6cfc94763dc7e"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/RosterFacingTurnTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Turns/RosterFacingTurnTests.cs",
+      "sha256": "ae088f10d228faafa66408b1dce11c3781b888cf563e3c609b6caf9be6fc694a"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/SwordSettledFacingTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Turns/SwordSettledFacingTests.cs",
+      "sha256": "29e1186287579a65d05d52b3a9f1c7af4e37284f4962956c404b28b31ff8ce64"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/TurnBattleSimulatorTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Turns/TurnBattleSimulatorTests.cs",
+      "sha256": "8f1cbe3d4bbd2fda16069291402ef24670a6d4897e10ed0a8f933704be8cd0cd"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/TurnCycleTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Turns/TurnCycleTests.cs",
+      "sha256": "e86d59c8bd41ab68dae55925afd3821f9c8bde7d8d258357e37133554e13eb4a"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/FacingDecisionPlannedMoveTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Commands/FacingDecisionPlannedMoveTests.cs",
+      "sha256": "8911a69a6062a3f6d1696c2d60482df651f2b5eee4ab6b18c825cc9181e89b35"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/FacingDecisionTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Commands/FacingDecisionTests.cs",
+      "sha256": "44cf9a732feca545ac382b2b25d64d85af5b3a38260d6643013ea4565d1dde48"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/FacingMoveDecisionTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Commands/FacingMoveDecisionTests.cs",
+      "sha256": "7e12da020931c690f54d6b4085cda3cf07c77e4afa0c4f1148fd3141e4369c57"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/FacingTurnEndingDecisionTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Commands/FacingTurnEndingDecisionTests.cs",
+      "sha256": "d7bb7dad7b5d20ab93e1d547336dcc2c1259154caab05b95bd89566e46fd9400"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/ImmediateAbilityDecisionTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Commands/ImmediateAbilityDecisionTests.cs",
+      "sha256": "14bbabf27a3231df6f32349e035a68c8513c1d1ade02b489421422379686edce"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/RosterDecisionTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Commands/RosterDecisionTests.cs",
+      "sha256": "4727c1ac040fd7a44c20d22c8a4f8c58642806578a564428727c6673c4f0a7ea"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/RosterMoveContinuationTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Commands/RosterMoveContinuationTests.cs",
+      "sha256": "f15e5cbbd2d6e1b143e393076b92ac15d726aefdb11845a73410eaff45eab4b3"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/RosterPlannedMoveTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Commands/RosterPlannedMoveTests.cs",
+      "sha256": "60394ce4044cb39fd6f651feceb0f9c35ce512316c797ea8003ef870d754a540"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/RosterTargetedAbilitySessionTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Commands/RosterTargetedAbilitySessionTests.cs",
+      "sha256": "5d953a1ff00e6c44bdbba5e21155b6716a126cffaf3b327e2a680e7b2bd09a9a"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/TargetedAbilityDecisionTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Commands/TargetedAbilityDecisionTests.cs",
+      "sha256": "bedbe1ec978eb6246f96cc7754b9b786dce3787c2df2d634f4bc9457b69efbd6"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/TargetedAbilityMoveDecisionTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Battle/Commands/TargetedAbilityMoveDecisionTests.cs",
+      "sha256": "82b9442e6c746114f2ae6ea69db75f599662d95e136c1bf2c810bb6c39102ac6"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/BannerReadySequenceTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Events/BannerReadySequenceTests.cs",
+      "sha256": "137fea537b9f9568a11604021cce39edd2d03c2eb8d080da4b57aa4225c80b0c"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/BannerSceneBoundaryTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Events/BannerSceneBoundaryTests.cs",
+      "sha256": "7c7d3d77aa04610829ee120a660b9a9574d7a37bc50ed08d41637a8f4bb72a88"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/BattleIntroductionTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Events/BattleIntroductionTests.cs",
+      "sha256": "9067ecf303ab6791f79d69a99fd7725c0c0f474a78358fda35f9a9b7d939c25b"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/ConditionalEventExecutorTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Events/ConditionalEventExecutorTests.cs",
+      "sha256": "d70edf15709fcd240d571e11ee0ec0c71e43e41270c1eec778e28990ca69e723"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/DarkScreenContractTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Events/DarkScreenContractTests.cs",
+      "sha256": "c76c74dbd7212193fb0e36f7c3ed84739950e40e4d24342fae90da4371513afa"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionBoundaryTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Events/DarkScreenIntroductionBoundaryTests.cs",
+      "sha256": "bd1711eedd43c363e4a6e555dad0e70cf197229b35ea7ccacee3ea5b26bc7969"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/DarkScreenIntroductionContractTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Events/DarkScreenIntroductionContractTests.cs",
+      "sha256": "3a6df940263371064cffb5c13362f54846cb68d8315739e00b0ba61e32dbc5d6"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/GeneralBannerContractTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Events/GeneralBannerContractTests.cs",
+      "sha256": "a756547e3f3d8db3d725656bfe7423d45c945ff7951f17704bfda097e843c278"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/OrderedBannerContractTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Events/OrderedBannerContractTests.cs",
+      "sha256": "d1e28be0a2e88be6ce405bb2bd343c4378241695209fee772326f71ed1d9236a"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/ReadySceneContractTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Events/ReadySceneContractTests.cs",
+      "sha256": "f8e8eb99193033408d50e24076b2f3ef265a840935947c3a16a89b11d1d0477c"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/SceneEventExecutorTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Events/SceneEventExecutorTests.cs",
+      "sha256": "c65128b76e51aac4b52f9a89ec66154ab81668252569e7df00a1c07cf859dc24"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/SceneTaskContractTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Events/SceneTaskContractTests.cs",
+      "sha256": "621040e1de1131543211620808f503d52355569955a716b86bebb2ae943aa878"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/SceneTaskLedgerTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Events/SceneTaskLedgerTests.cs",
+      "sha256": "d4d294e7dd6ff8fbd454ddf177ddf1bc0f642d21403961c55d891b6dc0720831"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/TimedEventExecutorTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Events/TimedEventExecutorTests.cs",
+      "sha256": "ccfdd4df46f8b2abd2827a375deb9be7055c23aa1d871af244740bbb7309ea01"
+    },
+    {
+      "from": "tests/Zodiac.Framework.Tests/WorldCheckpointTests.cs",
+      "to": "tests/Zodiac.Framework.Tests/Campaign/WorldCheckpointTests.cs",
+      "sha256": "a7704ee778aa7a71413359c5bb1f0acfff26de9b6ff2cb4f74c1dc0c9e42b6d7"
+    }
+  ]
+}

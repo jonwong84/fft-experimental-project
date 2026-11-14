@@ -1,0 +1,965 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-370",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "confidence": "Independent normalized source vital arithmetic and explicit bounded living-projection admission; no original/C/managed execution.",
+  "vitals": [
+    {
+      "id": "ordinary-damage",
+      "input": {
+        "hp": 100,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "hit": true,
+        "damage": 34,
+        "healing": 0,
+        "mpDamage": 0,
+        "mpHealing": 0
+      },
+      "expected": {
+        "hp": 66,
+        "mp": 30,
+        "changed": true
+      }
+    },
+    {
+      "id": "healing-caps",
+      "input": {
+        "hp": 90,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "hit": true,
+        "damage": 0,
+        "healing": 34,
+        "mpDamage": 0,
+        "mpHealing": 0
+      },
+      "expected": {
+        "hp": 100,
+        "mp": 30,
+        "changed": true
+      }
+    },
+    {
+      "id": "negative-damage-heals",
+      "input": {
+        "hp": 90,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "hit": true,
+        "damage": -10,
+        "healing": 0,
+        "mpDamage": 0,
+        "mpHealing": 0
+      },
+      "expected": {
+        "hp": 100,
+        "mp": 30,
+        "changed": true
+      }
+    },
+    {
+      "id": "negative-healing-damages",
+      "input": {
+        "hp": 50,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "hit": true,
+        "damage": 0,
+        "healing": -5,
+        "mpDamage": 0,
+        "mpHealing": 0
+      },
+      "expected": {
+        "hp": 45,
+        "mp": 30,
+        "changed": true
+      }
+    },
+    {
+      "id": "unsigned-hp-signed-damage",
+      "input": {
+        "hp": 65535,
+        "maxHp": 65535,
+        "mp": 30,
+        "maxMp": 50,
+        "hit": true,
+        "damage": 32767,
+        "healing": 0,
+        "mpDamage": 0,
+        "mpHealing": 0
+      },
+      "expected": {
+        "hp": 32768,
+        "mp": 30,
+        "changed": true
+      }
+    },
+    {
+      "id": "combine-before-clamp",
+      "input": {
+        "hp": 300,
+        "maxHp": 500,
+        "mp": 30,
+        "maxMp": 50,
+        "hit": true,
+        "damage": 32767,
+        "healing": 32767,
+        "mpDamage": 0,
+        "mpHealing": 0
+      },
+      "expected": {
+        "hp": 300,
+        "mp": 30,
+        "changed": false
+      }
+    },
+    {
+      "id": "lower-clamp",
+      "input": {
+        "hp": 1,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "hit": true,
+        "damage": 32767,
+        "healing": 0,
+        "mpDamage": 0,
+        "mpHealing": 0
+      },
+      "expected": {
+        "hp": 0,
+        "mp": 30,
+        "changed": true
+      }
+    },
+    {
+      "id": "upper-even-zero-fields",
+      "input": {
+        "hp": 200,
+        "maxHp": 100,
+        "mp": 60,
+        "maxMp": 50,
+        "hit": true,
+        "damage": 0,
+        "healing": 0,
+        "mpDamage": 0,
+        "mpHealing": 0
+      },
+      "expected": {
+        "hp": 100,
+        "mp": 50,
+        "changed": true
+      }
+    },
+    {
+      "id": "miss-skips-clamps",
+      "input": {
+        "hp": 200,
+        "maxHp": 100,
+        "mp": 60,
+        "maxMp": 50,
+        "hit": false,
+        "damage": 300,
+        "healing": -10,
+        "mpDamage": 50,
+        "mpHealing": 0
+      },
+      "expected": {
+        "hp": 200,
+        "mp": 60,
+        "changed": false
+      }
+    },
+    {
+      "id": "independent-mp-fields",
+      "input": {
+        "hp": 100,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "hit": true,
+        "damage": 0,
+        "healing": 0,
+        "mpDamage": 10,
+        "mpHealing": 2
+      },
+      "expected": {
+        "hp": 100,
+        "mp": 22,
+        "changed": true
+      }
+    },
+    {
+      "id": "negative-mp-damage",
+      "input": {
+        "hp": 100,
+        "maxHp": 100,
+        "mp": 0,
+        "maxMp": 65535,
+        "hit": true,
+        "damage": 0,
+        "healing": 0,
+        "mpDamage": -32768,
+        "mpHealing": 0
+      },
+      "expected": {
+        "hp": 100,
+        "mp": 32768,
+        "changed": true
+      }
+    },
+    {
+      "id": "negative-mp-healing-lower-clamp",
+      "input": {
+        "hp": 100,
+        "maxHp": 100,
+        "mp": 0,
+        "maxMp": 50,
+        "hit": true,
+        "damage": 0,
+        "healing": 0,
+        "mpDamage": 0,
+        "mpHealing": -1
+      },
+      "expected": {
+        "hp": 100,
+        "mp": 0,
+        "changed": false
+      }
+    },
+    {
+      "id": "hp-negative-min-upper-clamp",
+      "input": {
+        "hp": 65535,
+        "maxHp": 65535,
+        "mp": 30,
+        "maxMp": 50,
+        "hit": true,
+        "damage": -32768,
+        "healing": 0,
+        "mpDamage": 0,
+        "mpHealing": 0
+      },
+      "expected": {
+        "hp": 65535,
+        "mp": 30,
+        "changed": false
+      }
+    },
+    {
+      "id": "one-expression-not-two-clamps",
+      "input": {
+        "hp": 50,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "hit": true,
+        "damage": 60,
+        "healing": 20,
+        "mpDamage": 0,
+        "mpHealing": 0
+      },
+      "expected": {
+        "hp": 10,
+        "mp": 30,
+        "changed": true
+      }
+    },
+    {
+      "id": "exact-zero",
+      "input": {
+        "hp": 1,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "hit": true,
+        "damage": 2,
+        "healing": 1,
+        "mpDamage": 0,
+        "mpHealing": 0
+      },
+      "expected": {
+        "hp": 0,
+        "mp": 30,
+        "changed": true
+      }
+    },
+    {
+      "id": "zero-max-raw-arithmetic",
+      "input": {
+        "hp": 10,
+        "maxHp": 0,
+        "mp": 10,
+        "maxMp": 0,
+        "hit": true,
+        "damage": 0,
+        "healing": 0,
+        "mpDamage": 0,
+        "mpHealing": 0
+      },
+      "expected": {
+        "hp": 0,
+        "mp": 0,
+        "changed": true
+      }
+    },
+    {
+      "id": "full-signed-range",
+      "input": {
+        "hp": 32768,
+        "maxHp": 65535,
+        "mp": 30,
+        "maxMp": 50,
+        "hit": true,
+        "damage": -32768,
+        "healing": 32767,
+        "mpDamage": 0,
+        "mpHealing": 0
+      },
+      "expected": {
+        "hp": 65535,
+        "mp": 30,
+        "changed": true
+      }
+    },
+    {
+      "id": "miss-ignores-both-signed-fields",
+      "input": {
+        "hp": 100,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "hit": false,
+        "damage": -32768,
+        "healing": 32767,
+        "mpDamage": 0,
+        "mpHealing": 0
+      },
+      "expected": {
+        "hp": 100,
+        "mp": 30,
+        "changed": false
+      }
+    }
+  ],
+  "living": [
+    {
+      "id": "ordinary-surviving-damage",
+      "input": {
+        "hp": 100,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "brave": 70,
+        "critical": false,
+        "chicken": false,
+        "sleep": false,
+        "confusion": false,
+        "transparent": false,
+        "dead": false,
+        "petrify": false,
+        "wall": false,
+        "hit": true,
+        "damage": 34,
+        "healing": 0,
+        "hpDamageType": true,
+        "reactionsAbsent": true,
+        "golemSharingAbsent": true,
+        "otherWorkAbsent": true,
+        "ordinaryStatusRules": true,
+        "charmAbsent": true
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "hp": 66,
+        "mp": 30,
+        "changed": true
+      }
+    },
+    {
+      "id": "healing-upper-cap",
+      "input": {
+        "hp": 90,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "brave": 70,
+        "critical": false,
+        "chicken": false,
+        "sleep": false,
+        "confusion": false,
+        "transparent": false,
+        "dead": false,
+        "petrify": false,
+        "wall": false,
+        "hit": true,
+        "damage": 0,
+        "healing": 34,
+        "hpDamageType": false,
+        "reactionsAbsent": true,
+        "golemSharingAbsent": true,
+        "otherWorkAbsent": true,
+        "ordinaryStatusRules": true,
+        "charmAbsent": true
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "hp": 100,
+        "mp": 30,
+        "changed": true
+      }
+    },
+    {
+      "id": "would-knock-out",
+      "input": {
+        "hp": 100,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "brave": 70,
+        "critical": false,
+        "chicken": false,
+        "sleep": false,
+        "confusion": false,
+        "transparent": false,
+        "dead": false,
+        "petrify": false,
+        "wall": false,
+        "hit": true,
+        "damage": 100,
+        "healing": 0,
+        "hpDamageType": true,
+        "reactionsAbsent": true,
+        "golemSharingAbsent": true,
+        "otherWorkAbsent": true,
+        "ordinaryStatusRules": true,
+        "charmAbsent": true
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "WouldKnockOut",
+        "hp": null,
+        "mp": null,
+        "changed": false
+      }
+    },
+    {
+      "id": "would-inflict-critical",
+      "input": {
+        "hp": 100,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "brave": 70,
+        "critical": false,
+        "chicken": false,
+        "sleep": false,
+        "confusion": false,
+        "transparent": false,
+        "dead": false,
+        "petrify": false,
+        "wall": false,
+        "hit": true,
+        "damage": 80,
+        "healing": 0,
+        "hpDamageType": true,
+        "reactionsAbsent": true,
+        "golemSharingAbsent": true,
+        "otherWorkAbsent": true,
+        "ordinaryStatusRules": true,
+        "charmAbsent": true
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "WouldChangeStatus",
+        "hp": null,
+        "mp": null,
+        "changed": false
+      }
+    },
+    {
+      "id": "would-remove-critical",
+      "input": {
+        "hp": 20,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "brave": 70,
+        "critical": true,
+        "chicken": false,
+        "sleep": false,
+        "confusion": false,
+        "transparent": false,
+        "dead": false,
+        "petrify": false,
+        "wall": false,
+        "hit": true,
+        "damage": 0,
+        "healing": 10,
+        "hpDamageType": false,
+        "reactionsAbsent": true,
+        "golemSharingAbsent": true,
+        "otherWorkAbsent": true,
+        "ordinaryStatusRules": true,
+        "charmAbsent": true
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "WouldChangeStatus",
+        "hp": null,
+        "mp": null,
+        "changed": false
+      }
+    },
+    {
+      "id": "critical-stays-set",
+      "input": {
+        "hp": 20,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "brave": 70,
+        "critical": true,
+        "chicken": false,
+        "sleep": false,
+        "confusion": false,
+        "transparent": false,
+        "dead": false,
+        "petrify": false,
+        "wall": false,
+        "hit": true,
+        "damage": 1,
+        "healing": 0,
+        "hpDamageType": true,
+        "reactionsAbsent": true,
+        "golemSharingAbsent": true,
+        "otherWorkAbsent": true,
+        "ordinaryStatusRules": true,
+        "charmAbsent": true
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "hp": 19,
+        "mp": 30,
+        "changed": true
+      }
+    },
+    {
+      "id": "sleep-removal-even-zero-damage",
+      "input": {
+        "hp": 100,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "brave": 70,
+        "critical": false,
+        "chicken": false,
+        "sleep": true,
+        "confusion": false,
+        "transparent": false,
+        "dead": false,
+        "petrify": false,
+        "wall": false,
+        "hit": true,
+        "damage": 0,
+        "healing": 0,
+        "hpDamageType": true,
+        "reactionsAbsent": true,
+        "golemSharingAbsent": true,
+        "otherWorkAbsent": true,
+        "ordinaryStatusRules": true,
+        "charmAbsent": true
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "WouldChangeStatus",
+        "hp": null,
+        "mp": null,
+        "changed": false
+      }
+    },
+    {
+      "id": "confusion-removal",
+      "input": {
+        "hp": 100,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "brave": 70,
+        "critical": false,
+        "chicken": false,
+        "sleep": false,
+        "confusion": true,
+        "transparent": false,
+        "dead": false,
+        "petrify": false,
+        "wall": false,
+        "hit": true,
+        "damage": 34,
+        "healing": 0,
+        "hpDamageType": true,
+        "reactionsAbsent": true,
+        "golemSharingAbsent": true,
+        "otherWorkAbsent": true,
+        "ordinaryStatusRules": true,
+        "charmAbsent": true
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "WouldChangeStatus",
+        "hp": null,
+        "mp": null,
+        "changed": false
+      }
+    },
+    {
+      "id": "transparent-removal-with-negative-damage",
+      "input": {
+        "hp": 90,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "brave": 70,
+        "critical": false,
+        "chicken": false,
+        "sleep": false,
+        "confusion": false,
+        "transparent": true,
+        "dead": false,
+        "petrify": false,
+        "wall": false,
+        "hit": true,
+        "damage": -10,
+        "healing": 0,
+        "hpDamageType": true,
+        "reactionsAbsent": true,
+        "golemSharingAbsent": true,
+        "otherWorkAbsent": true,
+        "ordinaryStatusRules": true,
+        "charmAbsent": true
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "WouldChangeStatus",
+        "hp": null,
+        "mp": null,
+        "changed": false
+      }
+    },
+    {
+      "id": "type-bit-does-not-gate-arithmetic",
+      "input": {
+        "hp": 100,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "brave": 70,
+        "critical": false,
+        "chicken": false,
+        "sleep": false,
+        "confusion": false,
+        "transparent": false,
+        "dead": false,
+        "petrify": false,
+        "wall": false,
+        "hit": true,
+        "damage": 34,
+        "healing": 0,
+        "hpDamageType": false,
+        "reactionsAbsent": true,
+        "golemSharingAbsent": true,
+        "otherWorkAbsent": true,
+        "ordinaryStatusRules": true,
+        "charmAbsent": true
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "hp": 66,
+        "mp": 30,
+        "changed": true
+      }
+    },
+    {
+      "id": "miss-before-unknown-downstream-work",
+      "input": {
+        "hp": 100,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "brave": 70,
+        "critical": false,
+        "chicken": false,
+        "sleep": false,
+        "confusion": false,
+        "transparent": false,
+        "dead": false,
+        "petrify": false,
+        "wall": false,
+        "hit": false,
+        "damage": 999,
+        "healing": 0,
+        "hpDamageType": true,
+        "reactionsAbsent": true,
+        "golemSharingAbsent": false,
+        "otherWorkAbsent": false,
+        "ordinaryStatusRules": false,
+        "charmAbsent": false
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "hp": 100,
+        "mp": 30,
+        "changed": false
+      }
+    },
+    {
+      "id": "miss-still-needs-known-reactions",
+      "input": {
+        "hp": 100,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "brave": 70,
+        "critical": false,
+        "chicken": false,
+        "sleep": false,
+        "confusion": false,
+        "transparent": false,
+        "dead": false,
+        "petrify": false,
+        "wall": false,
+        "hit": false,
+        "damage": 34,
+        "healing": 0,
+        "hpDamageType": true,
+        "reactionsAbsent": false,
+        "golemSharingAbsent": true,
+        "otherWorkAbsent": true,
+        "ordinaryStatusRules": true,
+        "charmAbsent": true
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "hp": null,
+        "mp": null,
+        "changed": false
+      }
+    },
+    {
+      "id": "unknown-charm",
+      "input": {
+        "hp": 100,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "brave": 70,
+        "critical": false,
+        "chicken": false,
+        "sleep": false,
+        "confusion": false,
+        "transparent": false,
+        "dead": false,
+        "petrify": false,
+        "wall": false,
+        "hit": true,
+        "damage": 34,
+        "healing": 0,
+        "hpDamageType": true,
+        "reactionsAbsent": true,
+        "golemSharingAbsent": true,
+        "otherWorkAbsent": true,
+        "ordinaryStatusRules": true,
+        "charmAbsent": false
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "hp": null,
+        "mp": null,
+        "changed": false
+      }
+    },
+    {
+      "id": "unknown-sharing",
+      "input": {
+        "hp": 100,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "brave": 70,
+        "critical": false,
+        "chicken": false,
+        "sleep": false,
+        "confusion": false,
+        "transparent": false,
+        "dead": false,
+        "petrify": false,
+        "wall": false,
+        "hit": true,
+        "damage": 34,
+        "healing": 0,
+        "hpDamageType": true,
+        "reactionsAbsent": true,
+        "golemSharingAbsent": false,
+        "otherWorkAbsent": true,
+        "ordinaryStatusRules": true,
+        "charmAbsent": true
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "hp": null,
+        "mp": null,
+        "changed": false
+      }
+    },
+    {
+      "id": "chicken-already-consistent",
+      "input": {
+        "hp": 100,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "brave": 9,
+        "critical": false,
+        "chicken": true,
+        "sleep": false,
+        "confusion": false,
+        "transparent": false,
+        "dead": false,
+        "petrify": false,
+        "wall": false,
+        "hit": true,
+        "damage": 34,
+        "healing": 0,
+        "hpDamageType": true,
+        "reactionsAbsent": true,
+        "golemSharingAbsent": true,
+        "otherWorkAbsent": true,
+        "ordinaryStatusRules": true,
+        "charmAbsent": true
+      },
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "hp": 66,
+        "mp": 30,
+        "changed": true
+      }
+    },
+    {
+      "id": "chicken-flag-would-clear",
+      "input": {
+        "hp": 100,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "brave": 70,
+        "critical": false,
+        "chicken": true,
+        "sleep": false,
+        "confusion": false,
+        "transparent": false,
+        "dead": false,
+        "petrify": false,
+        "wall": false,
+        "hit": true,
+        "damage": 34,
+        "healing": 0,
+        "hpDamageType": true,
+        "reactionsAbsent": true,
+        "golemSharingAbsent": true,
+        "otherWorkAbsent": true,
+        "ordinaryStatusRules": true,
+        "charmAbsent": true
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedState",
+        "hp": null,
+        "mp": null,
+        "changed": false
+      }
+    },
+    {
+      "id": "dead-outside-living-slice",
+      "input": {
+        "hp": 0,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "brave": 70,
+        "critical": false,
+        "chicken": false,
+        "sleep": false,
+        "confusion": false,
+        "transparent": false,
+        "dead": true,
+        "petrify": false,
+        "wall": false,
+        "hit": true,
+        "damage": 34,
+        "healing": 0,
+        "hpDamageType": true,
+        "reactionsAbsent": true,
+        "golemSharingAbsent": true,
+        "otherWorkAbsent": true,
+        "ordinaryStatusRules": true,
+        "charmAbsent": true
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedState",
+        "hp": null,
+        "mp": null,
+        "changed": false
+      }
+    },
+    {
+      "id": "positive-unfinalized-amount",
+      "input": {
+        "hp": 100,
+        "maxHp": 100,
+        "mp": 30,
+        "maxMp": 50,
+        "brave": 70,
+        "critical": false,
+        "chicken": false,
+        "sleep": false,
+        "confusion": false,
+        "transparent": false,
+        "dead": false,
+        "petrify": false,
+        "wall": false,
+        "hit": true,
+        "damage": 1000,
+        "healing": 0,
+        "hpDamageType": true,
+        "reactionsAbsent": true,
+        "golemSharingAbsent": true,
+        "otherWorkAbsent": true,
+        "ordinaryStatusRules": true,
+        "charmAbsent": true
+      },
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedFrame",
+        "hp": null,
+        "mp": null,
+        "changed": false
+      }
+    }
+  ]
+}

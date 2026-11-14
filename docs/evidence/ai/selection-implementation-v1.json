@@ -1,0 +1,51 @@
+{
+  "format": "fft.ai-selection-implementation-evidence",
+  "schemaVersion": 1,
+  "ticket": "ZOD-140",
+  "date": "2026-10-27",
+  "managedBaseRevision": "779b64ae54337662c07248d4563d981556b93583",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "sourceContract": "docs/architecture/zod-139-ai-selection-contract.md",
+  "sourceReceipt": "docs/evidence/ai/selection-contract-v1.json",
+  "behaviorGuide": "docs/behavior/sword-ai-selection.md",
+  "implementation": "src/Zodiac.Framework/SwordAiSelection.cs",
+  "tests": "tests/Zodiac.Framework.Tests/SwordAiSelectionTests.cs",
+  "productionImplemented": true,
+  "runtimeActivated": false,
+  "authoritativeCommands": false,
+  "liveRngCommitted": false,
+  "originalExecuted": false,
+  "cReferenceExecuted": false,
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuild": true,
+    "buildWarnings": 0,
+    "buildErrors": 0,
+    "dotnetPassed": 3706,
+    "pythonPassed": 496,
+    "newSelectionCases": 27,
+    "priorDotnetCasesPassed": 3679,
+    "sourceReceiptVerified": true,
+    "referenceClean": true,
+    "referenceFiles": 8,
+    "referenceFunctions": 31,
+    "dotnetResults": "scratch/ai-selection-140-final-trx/",
+    "logs": "scratch/ai-selection-140-*"
+  },
+  "managedAcceptance": {
+    "SLC-001": "Fresh composition prefix plus literal one-draw partial-hit success",
+    "SLC-002": "Strict equality fails first roll, all eight slots draw, same Attack selected",
+    "SLC-003": "Inactive/no-origin/equal/NotValuable empty ranking, D0 fallback, no scored Attack payload",
+    "SLC-004": "Negative/zero real priorities and both Attack orders; no live damage or facing application",
+    "SLC-005": "Each new fact required before composition; nested admission/movement/Attack failure propagation",
+    "SLC-006": "Exact-MAX one/eight-draw paths and whole-query rollback at multiple lottery slots",
+    "SLC-007": "Both actor IDs, collection/profile order, replay, carry, immutable live state and MAX ticks"
+  },
+  "limits": [
+    "Original scenario mask/destinations remain certified supplied inputs; no original observation proof",
+    "Terminal Attack entry, no Defend support and fresh ordinary defaults must be explicitly asserted",
+    "Zero/one real ranked entry; no multi-ability/roster search or native resume",
+    "Selected plans are diagnostics, not command receipts; no facing execution or live RNG commitment"
+  ],
+  "receiptPolicy": "Identify implementation by the Git commit containing this evidence; no routine current-file hash freeze"
+}

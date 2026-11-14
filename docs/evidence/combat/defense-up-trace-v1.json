@@ -1,0 +1,202 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "1462ec08e36b2fd23c1180de85f0c470feb088c7",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Supplied physical Defense Up helper; no expansion of admitted support/status inputs.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54735,
+      "sha256": "b37712b2e33a060f057e87f866c25ef0f4d4ba9b8bacf89447e2eeb0cd0c2bf9"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/action.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14957,
+      "sha256": "6e97b3935c0d9cdcb8f6ba9ee2d40985b645bc0b03281a0d50d3d20aae35591c"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_defense_up",
+      "startLine": 1094,
+      "endLine": 1098,
+      "normalizedLfSha256": "9518367a88831e128e0d5ef1c1b0d8be7e3b4498105e5d52f55118d83a05e460"
+    }
+  ],
+  "preparedBattle": {
+    "path": "scratch/fft-decomp-work/build/extracted/files/BATTLE.BIN",
+    "byteLength": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "loadAddress": "0x80067000"
+  },
+  "start": "0x801862cc",
+  "endInclusive": "0x80186318",
+  "instructionCount": 20,
+  "instructionWords": [
+    "3c028019",
+    "8c422d98",
+    "00000000",
+    "90420090",
+    "00000000",
+    "30420008",
+    "1040000b",
+    "3c025555",
+    "3c048019",
+    "248438ce",
+    "84830000",
+    "34425556",
+    "00031840",
+    "00620018",
+    "00031fc3",
+    "00001010",
+    "00431023",
+    "a4820000",
+    "03e00008",
+    "00000000"
+  ],
+  "allMatched": true,
+  "directCalls": 0,
+  "listedCallers": [
+    {
+      "callPc": "0x80188610",
+      "returnAddress": "0x80188618",
+      "matched": true
+    },
+    {
+      "callPc": "0x80188aec",
+      "returnAddress": "0x80188af4",
+      "matched": true
+    },
+    {
+      "callPc": "0x801898a0",
+      "returnAddress": "0x801898a8",
+      "matched": true
+    }
+  ],
+  "selection": {
+    "unit": "target pointer0x80192d98",
+    "supportByte": "0x90",
+    "mask": "0x08",
+    "xaAddress": "0x801938ce",
+    "disabled": "Branch skips XA load/store; XA is unchanged."
+  },
+  "arithmetic": {
+    "input": "signed16 XA",
+    "operation": "XA*2/3 with signed truncation toward zero, then halfword store",
+    "multiplyHighConstant": "0x55555556",
+    "signedInputsChecked": 65536,
+    "resultRange": [
+      -21845,
+      21844
+    ],
+    "literalDescriptions": [
+      {
+        "xa": 99,
+        "defenseUp": true,
+        "expectedXa": 66
+      },
+      {
+        "xa": 3,
+        "defenseUp": true,
+        "expectedXa": 2
+      },
+      {
+        "xa": 2,
+        "defenseUp": true,
+        "expectedXa": 1
+      },
+      {
+        "xa": 1,
+        "defenseUp": true,
+        "expectedXa": 0
+      },
+      {
+        "xa": 0,
+        "defenseUp": true,
+        "expectedXa": 0
+      },
+      {
+        "xa": -5,
+        "defenseUp": true,
+        "expectedXa": -3
+      },
+      {
+        "xa": -32768,
+        "defenseUp": true,
+        "expectedXa": -21845
+      },
+      {
+        "xa": 32767,
+        "defenseUp": true,
+        "expectedXa": 21844
+      },
+      {
+        "xa": 99,
+        "defenseUp": false,
+        "expectedXa": 99
+      }
+    ]
+  },
+  "clarifications": [
+    "Exact2/3 is not literal66/100; XA99 becomes66 rather than65.",
+    "The signed correction matters for negative operands; XA-5 becomes-3, not floor(-10/3)=-4.",
+    "No minimum clamp: XA1 becomes0. The later original compatibility routine owns its own floor.",
+    "This checks target support bit0x08, not a Defending status or Magic Defense Up bit0x02."
+  ],
+  "boundaries": [
+    "No calls/RNG, YA update, final HP result, critical, Protect or zodiac work in this leaf.",
+    "The same signed2/3 arithmetic was independently checked in the magical modifier study; the physical support selector here remains distinct.",
+    "Current closed physical profiles exclude Defense Up. This milestone does not activate it or alter owner toggles/content.",
+    "Next supplied listing: Target Physical Statuses at0x8018636c. Alternative damage/knockback remains useful afterward."
+  ],
+  "validation": {
+    "referenceClean": true,
+    "sourceAudit": {
+      "formulaDescriptions": 24,
+      "actualDescriptions": 8,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false
+    },
+    "preparedDash": {
+      "abilityId": 147,
+      "range": 1,
+      "verticalTolerance": 1,
+      "formula": 55,
+      "y": 4,
+      "evadeable": false,
+      "directTrajectory": false,
+      "aiPhysical": true,
+      "aiDirectTrajectory": false,
+      "aiExhaustive": false,
+      "preparedVerified": true
+    },
+    "ownerBlobsVerified": 10,
+    "ownerApprovedCiEdit": {
+      "path": ".circleci/config.yml",
+      "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+      "committed": true,
+      "ciEnabledDefault": false
+    },
+    "runtimeChanged": false,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "runtimeTestsRerun": false,
+    "previousRuntimeValidationReceipt": "docs/evidence/combat/attack-up-martial-arts-trace-v1.json"
+  }
+}

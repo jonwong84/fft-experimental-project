@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-348",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "61a0a3b16ec8fe51f593a16134b76ebd24b5cd3a",
+  "sourceFiles": [
+    {
+      "path": "include/fft/ability.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 34632,
+      "sha256": "530676861205ea3cf31cada08ffc927142db98af0ad2c986722ad83b069b9a2f"
+    },
+    {
+      "path": "include/fft/action.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14957,
+      "sha256": "6e97b3935c0d9cdcb8f6ba9ee2d40985b645bc0b03281a0d50d3d20aae35591c"
+    },
+    {
+      "path": "include/fft/item.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 17162,
+      "sha256": "d416f46d0784ec89ad86459fe56ac1fe3303d8a744601310ece0dbd6f29b8450"
+    },
+    {
+      "path": "include/fft/status.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11673,
+      "sha256": "deeaeec02add8b9db7cca91c99517706033b18385ca433d32f1998d9d62e0e83"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/unit_runtime.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 24677,
+      "sha256": "dd205932204a10a48224c7ddc3b73ca6aad3bd92bcf3cdbdd4f0c205d206f865"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54735,
+      "sha256": "b37712b2e33a060f057e87f866c25ef0f4d4ba9b8bacf89447e2eeb0cd0c2bf9"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40418,
+      "sha256": "04542e66135d779fd739adbce9fa6ee714feb6dc8607dfa4584c87222a38343c"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 46088,
+      "sha256": "a9e58962104849ae4e947e3833236aaf2c1334394a1af12b19930428e6885e03"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 85515,
+      "sha256": "820411f8293d559677ff676f4e3d19a16ae52b667e7aa1393ab5495741f1e149"
+    },
+    {
+      "path": "src/battle/menu/ability_choices.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 33117,
+      "sha256": "3b551809fc63ec825a7b2156c45591719871793c857c481564d2e74b558638fc"
+    },
+    {
+      "path": "src/main/unit_init.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54895,
+      "sha256": "b00210ca20e145084bc70615dc57b13cf89f625b764567d6dc8e42fb1d8d9bca"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_calculate_target_result",
+      "startLine": 473,
+      "endLine": 673,
+      "normalizedLfSha256": "6855ceea86f5e95b4b1edc5fff1d4f47e6623e4bae0309b2a84ed2d232de91c0"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_store_ma_and_y",
+      "startLine": 908,
+      "endLine": 914,
+      "normalizedLfSha256": "ab08ff83195c1ab0b066b81e7dee3251538befc0df41efe294d4824069d4ed58"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_calculate_faith",
+      "startLine": 213,
+      "endLine": 234,
+      "normalizedLfSha256": "0812837b942de11405114acecfb45320118930ffab21e427ce991a8ef39e2a3f"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_element_apply_strengthen",
+      "startLine": 1027,
+      "endLine": 1031,
+      "normalizedLfSha256": "f19ac1e9a4cbbb2865d8d894049982303e3c3c4abb99d2b97578f30b841b4034"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_magic_attack_up",
+      "startLine": 1073,
+      "endLine": 1077,
+      "normalizedLfSha256": "ae8a476c744a6e4907da1737c661ba0470f184119a18e9adfc7e1efdfabcea0e"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_magic_defense_up",
+      "startLine": 1101,
+      "endLine": 1105,
+      "normalizedLfSha256": "f1bf6bd3b80784a36c4c107fce4bb7a90ae165200e88dea916b513a4572b2e7c"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_target_magical_statuses",
+      "startLine": 1132,
+      "endLine": 1140,
+      "normalizedLfSha256": "bc905c3ec2eaffa1e57eaaf2e65de1f27d5d6a64ad1328678f5bac68a3870a0a"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_zodiac_compatibility",
+      "startLine": 319,
+      "endLine": 387,
+      "normalizedLfSha256": "b2983bca04a561e880d8f4d125419a63d7c792db0b9dba6f75488f6a0b6c1c77"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_apply_magical_modifiers",
+      "startLine": 957,
+      "endLine": 962,
+      "normalizedLfSha256": "e99f35218c3aa5d3c7a1a401f6c45c1b56378c8e2475b04c95b1a4062d8b69b4"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_calculate_magical_xa_times_ya",
+      "startLine": 28,
+      "endLine": 32,
+      "normalizedLfSha256": "ed541ae1a1270ee6dafbcf7b0a96f4a07ab66a5087c072d47336e2bc38d4ac40"
+    },
+    {
+      "path": "src/main/unit_init.c",
+      "symbol": "unit_equipment_attributes_set",
+      "startLine": 1045,
+      "endLine": 1149,
+      "normalizedLfSha256": "426361028992aa7d244ef4d350d53b8c636cdfcde1e64fc0e1b9e8df0329f039"
+    },
+    {
+      "path": "src/main/unit_init.c",
+      "symbol": "initial_stats_calculate",
+      "startLine": 598,
+      "endLine": 686,
+      "normalizedLfSha256": "37a64f37ae80517eb3f38a84f2965885ded11fe413955f5fb916fc40354ef527"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "stat_delta_apply",
+      "startLine": 1590,
+      "endLine": 1625,
+      "normalizedLfSha256": "2b879b567c3e7e725b0d9e33b4392b4ed2d4c4c2c3964f737ddb386fdef510c1"
+    },
+    {
+      "path": "src/battle/menu/ability_choices.c",
+      "symbol": "unit_get_action_restriction",
+      "startLine": 125,
+      "endLine": 152,
+      "normalizedLfSha256": "efcf7e4ece9b80d1ed75494ed4f3aca35bb4582974f62234e42d4eda6eb9d5e4"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_evade_store_magical",
+      "startLine": 600,
+      "endLine": 629,
+      "normalizedLfSha256": "3977774860d190eaf3dce086da5d88ba93f92cb0968bbf03ad53612fe8d92a1c"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_evade_calculate_magical",
+      "startLine": 896,
+      "endLine": 902,
+      "normalizedLfSha256": "98cd6ca6adacfe714ad5d1239aa35453951e9de2c9d906c5164c4a448707988d"
+    }
+  ],
+  "originalExecuted": false,
+  "cExecuted": false
+}

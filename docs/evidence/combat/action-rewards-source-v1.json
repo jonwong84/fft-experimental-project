@@ -1,0 +1,254 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-376",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "c4994e4bcb908290fff5cf3090d5fd1ef83879f5",
+  "originalExecuted": false,
+  "cExecuted": false,
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/preparation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 80969,
+      "sha256": "e8ec92c02c53d3715b3813931685399e79481dad0fae6ae27505fbc5d086d444"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 85515,
+      "sha256": "820411f8293d559677ff676f4e3d19a16ae52b667e7aa1393ab5495741f1e149"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 187246,
+      "sha256": "2792e2b861e8de4f4f996a5491dbacde0b96f77518a75cc4b8eebf2d6bc1557f"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 23857,
+      "sha256": "57dd4fa8b07ef93c4a8e21c73657a0fdbe6c601a6db0b0351ae15b3cd15e4aea"
+    },
+    {
+      "path": "src/main/job_progress.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 5633,
+      "sha256": "b3d35360910b8fcfee5cccd8a8c126ca012881663ddaad83400d301282dea9b1"
+    },
+    {
+      "path": "src/main/unit_stats.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11279,
+      "sha256": "c067b3adfe646dea5b6627ff6ca9a3f986d564e80f016443f37f176116511349"
+    },
+    {
+      "path": "include/fft/action.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14957,
+      "sha256": "6e97b3935c0d9cdcb8f6ba9ee2d40985b645bc0b03281a0d50d3d20aae35591c"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/job.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14276,
+      "sha256": "ce67c92d42d72be78b847259bc24e24138f5bcb589d1180e24640251e66a70b1"
+    },
+    {
+      "path": "include/fft/reward.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2757,
+      "sha256": "13e14bb4cf2faa8115b88f0a7e8db216b7807a0ebbc58aebd6dc68024352ef3b"
+    },
+    {
+      "path": "target/main.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 135004,
+      "sha256": "b6066d98d481d73eb49d2d16be57ae3fc5ae4070830176fdeeeaae2bdeaec2a3"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "action_init_current_data",
+      "startLine": 423,
+      "endLine": 460,
+      "normalizedLfSha256": "1c9392fe9c971c8f13a540c5c9d10b6098a63f9a94f26d132d592f40b95276ea"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "mp_check_and_consume",
+      "startLine": 1055,
+      "endLine": 1100,
+      "normalizedLfSha256": "6aef7817e989014fe208b327ab18079b89b17e1bd2dce464317a2cac07a648c9"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "action_store_actor_data",
+      "startLine": 1110,
+      "endLine": 1126,
+      "normalizedLfSha256": "ecc451103295ad292049599bdafce96a45d3d99e61ebcb0bc6d3bc7bb74ed964"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "strike_data_init",
+      "startLine": 855,
+      "endLine": 933,
+      "normalizedLfSha256": "6d13c5406e4634610049e924f02a28dfa0aa8e5b14aaba33a7b5aea1740ce553"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "action_resolve_strike",
+      "startLine": 630,
+      "endLine": 782,
+      "normalizedLfSha256": "5f8d5e4b18be3ac6d0ee33bfb3a0b921eec53629c4d1b24438dc477cc3ac6995"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "reward_apply_action",
+      "startLine": 1604,
+      "endLine": 1686,
+      "normalizedLfSha256": "a52b88f5171b749207e2c851331e447fbddc35972761af52be73e55048bb19ab"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "reward_load_job_level",
+      "startLine": 1694,
+      "endLine": 1713,
+      "normalizedLfSha256": "ff3b73b2818e498183a119a5c14fe23da8914b7a92964a8c35af1ea2a2a33356"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "reward_add_job_jp",
+      "startLine": 1721,
+      "endLine": 1778,
+      "normalizedLfSha256": "8d16f4a97988e7a983cd08c1354864aa753158970af025ca781183bfaf2a0821"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_apply_target_result",
+      "startLine": 837,
+      "endLine": 1039,
+      "normalizedLfSha256": "72f17f94af572c3b4f21f92787e7f80000bdc33fb418921c718432c9d46b00a5"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_apply_attacker_result",
+      "startLine": 1677,
+      "endLine": 1698,
+      "normalizedLfSha256": "a9ba850b79447cfbef2f832bfa0c7dd183acf6eb124aaad864ba7b7c5cc55624"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "attacker_exp_update",
+      "startLine": 1634,
+      "endLine": 1669,
+      "normalizedLfSha256": "b63897e8e04a417f6c57887b1c42192a5a26054a1efdf98b758dec542f97dffd"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "action_announce_next",
+      "startLine": 1786,
+      "endLine": 1859,
+      "normalizedLfSha256": "46b4c8c61b2c6736bff4bd4a5b6f288232839527b5b6594ad95b951d7ec1204f"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "action_apply_strike_results",
+      "startLine": 1876,
+      "endLine": 1939,
+      "normalizedLfSha256": "08cfc32af489697ca489b31ca405753dfadd8c55a86a1187bee0d6dba2f8e635"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "unit_result_apply",
+      "startLine": 1541,
+      "endLine": 1549,
+      "normalizedLfSha256": "6ab274a6a4a14ac3c30de8b97dc5cd6e46571c1cf3eed9a1da54904ad1f75764"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "reward_grant",
+      "startLine": 1659,
+      "endLine": 1679,
+      "normalizedLfSha256": "bdb455d6c4999b8ab7899963fa8c429dc16d7fdb14bd705a8183e0b1c19834cb"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_resume_attack_phase_update",
+      "startLine": 3850,
+      "endLine": 3900,
+      "normalizedLfSha256": "bf80579747aa9c4cb1c48e2cc7e91c29574336fb756e021b0146061f4f114909"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "action_end_command",
+      "startLine": 1275,
+      "endLine": 1279,
+      "normalizedLfSha256": "d6f4187a4f1d2b5da0074aa262a495ccabe2500383b590ce9e1993e2f3589fc6"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "ability_find_learn_on_hit_unit",
+      "startLine": 83,
+      "endLine": 157,
+      "normalizedLfSha256": "641d882ecfc44d76d2523cb78a9c3248b9d89cc2fe60d1bb60948645909e641a"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "ai_simulation_begin",
+      "startLine": 34,
+      "endLine": 39,
+      "normalizedLfSha256": "ba32367fee182cbe3f45c3319e95d221464c09fbfcc15417f55cf6cc7eae0a93"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "ai_simulation_end",
+      "startLine": 43,
+      "endLine": 47,
+      "normalizedLfSha256": "17a6b63b2c51acaeb468f3e70ea2d437459d680c8da7810da4b40889d4b636db"
+    },
+    {
+      "path": "src/main/job_progress.c",
+      "symbol": "job_level_calculate",
+      "startLine": 142,
+      "endLine": 152,
+      "normalizedLfSha256": "685b5606e8f40c1d0425c2a5ba3d9356e271cfa4cbcc29257994519aa69f3a10"
+    },
+    {
+      "path": "src/main/job_progress.c",
+      "symbol": "job_unlocks_calculate",
+      "startLine": 14,
+      "endLine": 65,
+      "normalizedLfSha256": "d464fdc3546dd789b8a0549d9de21ec0b02e9f9ba76361da99ff1a1be81ab612"
+    },
+    {
+      "path": "src/main/unit_stats.c",
+      "symbol": "unit_level_up_check",
+      "startLine": 174,
+      "endLine": 191,
+      "normalizedLfSha256": "029b5cb9909739ab37d0fc7b9075517567f351e98fbed57ed5cf21ab7e67d479"
+    }
+  ],
+  "preparedThresholds": {
+    "address": "0x80066182",
+    "values": [
+      100,
+      200,
+      350,
+      550,
+      800,
+      1150,
+      1550,
+      2100
+    ],
+    "executableSha256": "287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562"
+  }
+}

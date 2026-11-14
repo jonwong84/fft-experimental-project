@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-426",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "originalExecuted": false,
+  "cExecuted": false,
+  "runtimeImplemented": false,
+  "scope": "Source-only literal origin/mask/baseline descriptions and supplied candidate-result tapes; not executable spell search or an original-game oracle.",
+  "coordinateFormat": "Tiles are [x,y,layer]; destination-finalization records add the source coordinate word's fourth byte as [x,y,layer,zero].",
+  "policies": [
+    {"id":"one-pair-is-still-ranked","input":{"exhaustiveOrigins":false,"consumeEvaluatedAims":false,"aimTiles":1,"originTiles":1},"expected":{"ranked":true,"consume":false,"aimCountByte":1,"originCountByte":1,"possibilitiesByte":1,"mayVisitOrigins":true}},
+    {"id":"combination-product-wrap-does-not-disable-ranking","input":{"exhaustiveOrigins":false,"consumeEvaluatedAims":false,"aimTiles":16,"originTiles":16},"expected":{"ranked":true,"consume":false,"aimCountByte":16,"originCountByte":16,"possibilitiesByte":0,"mayVisitOrigins":true}},
+    {"id":"ranked-aim-count-wrap-skips-nonempty-mask","input":{"exhaustiveOrigins":false,"consumeEvaluatedAims":true,"aimTiles":256,"originTiles":1},"expected":{"ranked":true,"consume":true,"aimCountByte":0,"originCountByte":1,"possibilitiesByte":0,"mayVisitOrigins":false}},
+    {"id":"ranked-origin-count-wrap-skips-nonempty-mask","input":{"exhaustiveOrigins":false,"consumeEvaluatedAims":false,"aimTiles":1,"originTiles":256},"expected":{"ranked":true,"consume":false,"aimCountByte":1,"originCountByte":0,"possibilitiesByte":0,"mayVisitOrigins":false}},
+    {"id":"exhaustive-clears-caller-consumption","input":{"exhaustiveOrigins":true,"consumeEvaluatedAims":true,"aimTiles":1,"originTiles":2},"expected":{"ranked":false,"consume":false,"aimCountByte":1,"originCountByte":2,"possibilitiesByte":null,"mayVisitOrigins":true}},
+    {"id":"exhaustive-loop-does-not-use-wrapped-count-guard","input":{"exhaustiveOrigins":true,"consumeEvaluatedAims":true,"aimTiles":256,"originTiles":256},"expected":{"ranked":false,"consume":false,"aimCountByte":0,"originCountByte":0,"possibilitiesByte":null,"mayVisitOrigins":true}}
+  ],
+  "orders": [
+    {"id":"signed-priority-precedes-proximity","input":{"exhaustiveOrigins":false,"origins":[{"id":"negative","tile":[0,0,0],"priority":-1,"proximity":255},{"id":"zero","tile":[1,0,0],"priority":0,"proximity":0}]},"expected":["negative","zero"]},
+    {"id":"ranked-equal-keys-take-last-layer-y-x","input":{"exhaustiveOrigins":false,"origins":[{"id":"a","tile":[0,0,0],"priority":2,"proximity":10},{"id":"b","tile":[1,0,0],"priority":2,"proximity":10},{"id":"c","tile":[0,1,0],"priority":2,"proximity":10},{"id":"d","tile":[0,0,1],"priority":2,"proximity":10}]},"expected":["d","c","b","a"]},
+    {"id":"exhaustive-scans-layer-y-x-without-priority","input":{"exhaustiveOrigins":true,"origins":[{"id":"d","tile":[0,0,1],"priority":-10,"proximity":0},{"id":"c","tile":[0,1,0],"priority":1,"proximity":0},{"id":"b","tile":[1,0,0],"priority":2,"proximity":0},{"id":"a","tile":[0,0,0],"priority":3,"proximity":0}]},"expected":["a","b","c","d"]}
+  ],
+  "destinations": [
+    {"id":"actor-origin-casts-first-and-substitutes-move-destination","input":{"actor":[1,1,0,0],"chosenOrigin":[1,1,0,0],"scenarioDestination":[4,4,0,0]},"expected":{"actBeforeMove":true,"castOrigin":[1,1,0,0],"destination":[4,4,0,0]}},
+    {"id":"other-origin-moves-first","input":{"actor":[1,1,0,0],"chosenOrigin":[2,1,0,0],"scenarioDestination":[4,4,0,0]},"expected":{"actBeforeMove":false,"castOrigin":[2,1,0,0],"destination":[2,1,0,0]}},
+    {"id":"coordinate-word-comparison-includes-fourth-byte","input":{"actor":[1,1,0,0],"chosenOrigin":[1,1,0,1],"scenarioDestination":[4,4,0,0]},"expected":{"actBeforeMove":false,"castOrigin":[1,1,0,1],"destination":[1,1,0,1]}},
+    {"id":"same-xy-other-layer-is-not-actor-origin","input":{"actor":[1,1,0,0],"chosenOrigin":[1,1,1,0],"scenarioDestination":[4,4,0,0]},"expected":{"actBeforeMove":false,"castOrigin":[1,1,1,0],"destination":[1,1,1,0]}}
+  ],
+  "baselines": [
+    {"id":"halfword-minimum-negation-wraps","input":{"storedTilePriority":-32768,"candidate":{"decided":false,"priority":-32767,"hit":0,"proximity":255}},"expected":{"priority":-32768,"hit":100,"decided":false,"passesBaseline":true}},
+    {"id":"better-proximity-cannot-beat-equal-baseline","input":{"storedTilePriority":7,"candidate":{"decided":false,"priority":-7,"hit":100,"proximity":0}},"expected":{"priority":-7,"hit":100,"decided":false,"passesBaseline":false}},
+    {"id":"unresolved-hit255-can-beat-baseline-hit100","input":{"storedTilePriority":7,"candidate":{"decided":false,"priority":-7,"hit":255,"proximity":255}},"expected":{"priority":-7,"hit":100,"decided":false,"passesBaseline":true}},
+    {"id":"higher-hit-cannot-overcome-lower-priority","input":{"storedTilePriority":-12,"candidate":{"decided":false,"priority":11,"hit":255,"proximity":0}},"expected":{"priority":12,"hit":100,"decided":false,"passesBaseline":false}},
+    {"id":"known-decided-marker-precedes-priority","input":{"storedTilePriority":0,"candidate":{"decided":true,"priority":-100,"hit":0,"proximity":255}},"expected":{"priority":0,"hit":100,"decided":false,"passesBaseline":true}}
+  ],
+  "masks": [
+    {"id":"walkable-aim-outside-actor-move-remains-an-aim","input":{"width":5,"depth":1,"range":2,"area":0,"unitTargeting":true,"followTarget":true,"actor":[0,0,0],"usefulTargets":[[0,0,0],[4,0,0]],"scenarioOrigins":[[0,0,0],[1,0,0],[2,0,0]],"walkableAims":[[0,0,0],[1,0,0],[2,0,0],[3,0,0],[4,0,0]]},"expected":{"castOrigins":[[2,0,0]],"aims":[[4,0,0]]}},
+    {"id":"tile-pass-uses-range-plus-area-and-own-layer-xor","input":{"width":5,"depth":3,"range":1,"area":1,"unitTargeting":false,"followTarget":true,"actor":[0,1,0],"usefulTargets":[[3,1,0]],"scenarioOrigins":[[0,1,0],[1,1,0],[2,1,0]],"walkableAims":[[3,0,0],[2,1,0],[3,1,0],[4,1,0],[3,2,0],[3,1,1]]},"expected":{"castOrigins":[[1,1,0],[2,1,0]],"aims":[[3,0,0],[2,1,0],[4,1,0],[3,2,0],[3,1,1]]}}
+  ],
+  "traces": [
+    {"id":"consumed-aim-skipped-at-next-origin-one-rng","input":{"seed":57,"exhaustiveOrigins":false,"consumeEvaluatedAims":true,"aims":[{"id":"p","tile":[0,1,0]},{"id":"q","tile":[1,1,0]}],"origins":[
+      {"id":"a","tile":[0,0,0],"priority":0,"proximity":0,"candidates":[{"aim":"p","status":"scored","priority":10,"hit":80,"destinationProximity":3,"draws":4}]},
+      {"id":"b","tile":[1,0,0],"priority":1,"proximity":0,"candidates":[{"aim":"p","status":"scored","priority":99,"hit":100,"destinationProximity":0,"draws":5},{"aim":"q","status":"scored","priority":11,"hit":80,"destinationProximity":4,"draws":5}]}
+    ]},"expected":{"originOrder":["a","b"],"calls":[["a","p"],["b","q"]],"consumed":[["a","p"],["b","q"]],"stoppedOrigins":[],"best":["b","q"],"draws":9,"seed":1040713558,"remainingAims":[]}},
+    {"id":"self-outcome-can-consume-with-setting-off","input":{"seed":57,"exhaustiveOrigins":false,"consumeEvaluatedAims":false,"aims":[{"id":"p","tile":[0,1,0]},{"id":"q","tile":[1,1,0]}],"origins":[
+      {"id":"a","tile":[0,0,0],"priority":0,"proximity":0,"candidates":[{"aim":"p","status":"scored","priority":10,"hit":80,"destinationProximity":3,"draws":5,"selfEffect":"adverse","selfHit":false}]},
+      {"id":"b","tile":[1,0,0],"priority":1,"proximity":0,"candidates":[{"aim":"p","status":"scored","priority":99,"hit":100,"destinationProximity":0,"draws":5},{"aim":"q","status":"not-valuable","draws":4}]}
+    ]},"expected":{"originOrder":["a","b"],"calls":[["a","p"],["b","q"]],"consumed":[["a","p"]],"stoppedOrigins":[],"best":["a","p"],"draws":9,"seed":1040713558,"remainingAims":["q"]}},
+    {"id":"unresolved-compared-before-stop-and-before-consume","input":{"seed":57,"exhaustiveOrigins":false,"consumeEvaluatedAims":true,"aims":[{"id":"p","tile":[0,1,0]},{"id":"q","tile":[1,1,0]}],"origins":[
+      {"id":"a","tile":[0,0,0],"priority":0,"proximity":0,"candidates":[{"aim":"p","status":"unresolved","priority":40,"hit":255,"destinationProximity":8,"draws":255},{"aim":"q","status":"scored","priority":999,"hit":100,"destinationProximity":0,"draws":5}]},
+      {"id":"b","tile":[1,0,0],"priority":1,"proximity":0,"candidates":[{"aim":"p","status":"scored","priority":40,"hit":100,"destinationProximity":1,"draws":5},{"aim":"q","status":"scored","priority":41,"hit":50,"destinationProximity":9,"draws":4}]}
+    ]},"expected":{"originOrder":["a","b"],"calls":[["a","p"],["b","p"],["b","q"]],"consumed":[["b","p"],["b","q"]],"stoppedOrigins":["a"],"best":["b","q"],"draws":264,"seed":1800344689,"remainingAims":[]}},
+    {"id":"first-equal-candidate-survives-reverse-origin-tie-order","input":{"seed":57,"exhaustiveOrigins":false,"consumeEvaluatedAims":false,"aims":[{"id":"p","tile":[0,1,0]}],"origins":[
+      {"id":"a","tile":[0,0,0],"priority":0,"proximity":2,"candidates":[{"aim":"p","status":"scored","priority":10,"hit":100,"destinationProximity":2,"draws":4}]},
+      {"id":"b","tile":[1,0,0],"priority":0,"proximity":2,"candidates":[{"aim":"p","status":"scored","priority":10,"hit":100,"destinationProximity":2,"draws":4}]}
+    ]},"expected":{"originOrder":["b","a"],"calls":[["b","p"],["a","p"]],"consumed":[],"stoppedOrigins":[],"best":["b","p"],"draws":8,"seed":361004401,"remainingAims":["p"]}}
+  ]
+}

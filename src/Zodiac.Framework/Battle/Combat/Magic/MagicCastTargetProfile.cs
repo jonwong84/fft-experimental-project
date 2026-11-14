@@ -1,0 +1,6 @@
+using System.Collections.Immutable;
+using Zodiac.Framework.Random;
+
+namespace Zodiac.Framework;
+
+public sealed record MagicCastTargetProfile(bool EligibilityAndOrderKnown = false, bool NoEarlierTargetEffectsKnown = false);

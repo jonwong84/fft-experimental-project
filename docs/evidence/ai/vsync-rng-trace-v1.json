@@ -1,0 +1,242 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "48633af504bf5e71478ce730a6a932ce5a5ee392",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "report": "docs/behavior/ai-vsync-rng-review.md",
+  "scope": "Supplied SDK VSync query/wait distinction, AI timing-query caller and source registration/interrupt callback RNG edge. Does not emulate GPU/timers/interrupts or resolve full frame-interleaved RNG.",
+  "sourceFiles": [
+    {
+      "path": "src/platform/psyq/libetc/VSync.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 737,
+      "sha256": "7e9bdd7d3ce0906e5d7ecce02da74e1f3621be0f42f36a3e0b808c83a1108ebd"
+    },
+    {
+      "path": "src/platform/psyq/libetc/v_wait.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 716,
+      "sha256": "1f00161eb8fb5405fee556da309faccf077d12d0fef9d31a0cc3dac983aea615"
+    },
+    {
+      "path": "src/platform/psyq/libetc/VSyncCallback.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 218,
+      "sha256": "594ed995acd9c027e78ae08038bab7a0aad5f2235d9eab94bfb0a62a2c3bee09"
+    },
+    {
+      "path": "src/platform/psyq/libetc/setIntrVSync.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 358,
+      "sha256": "cf4a023738073384152b4f5140e6dcc94f016e42a17350b2899d1f19f616e165"
+    },
+    {
+      "path": "src/platform/psyq/libetc/startIntrVSync.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 538,
+      "sha256": "0af00c01aa3b4528fb802556c46a75cad489f780e1252bc0a889599ae3081b89"
+    },
+    {
+      "path": "src/platform/psyq/libetc/trapIntrVSync.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 378,
+      "sha256": "29a0e9dc8b27c0e0d32f4eefcb19493ead898932e90c95d13532207d54e69caa"
+    },
+    {
+      "path": "src/platform/psyq/libetc/startIntr.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1513,
+      "sha256": "217805a463337aea8667d032cbb06461c230b5d68cf339db0adbdfd0640e231b"
+    },
+    {
+      "path": "src/main/system_callbacks.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1571,
+      "sha256": "8608d100977c20d10f4dbbb7e5166d22b68fdc070c742c4497cd0a7b5de28e28"
+    },
+    {
+      "path": "src/main/startup.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4028,
+      "sha256": "56042aafa98685bcc2cebf1884baf3e6ee045b07bb37bc5bffdd2c02b910e085"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 147880,
+      "sha256": "5519c4550e9fea302ee4366848435b8131c7d3aef24f02462c7571d11bd1cd17"
+    },
+    {
+      "path": "include/psx/libetc.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 5743,
+      "sha256": "7f47835385953a76aa7a221c5af3b065cd7dafefd71f8d97fa02be8331c05b5e"
+    },
+    {
+      "path": "include/psx/libgpu.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 31267,
+      "sha256": "5bbd2e3810b1bcf8a7db41a319a599e7a13f8ee98fb50015e55ae08f21d9a70e"
+    },
+    {
+      "path": "include/fft/ai_decision.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9018,
+      "sha256": "a88a67152b5143b74121946b7dffd4c8b76b568d9947c828d6620014a741b02b"
+    },
+    {
+      "path": "target/main.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 135004,
+      "sha256": "b6066d98d481d73eb49d2d16be57ae3fc5ae4070830176fdeeeaae2bdeaec2a3"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/platform/psyq/libetc/VSync.c",
+      "symbol": "VSync",
+      "startLine": 3,
+      "endLine": 18,
+      "normalizedLfSha256": "18076c51c4f53e8095cd02b27e0bc6b1f0e112d606e55a70614d90f033120882"
+    },
+    {
+      "path": "src/platform/psyq/libetc/v_wait.c",
+      "symbol": "v_wait",
+      "startLine": 5,
+      "endLine": 16,
+      "normalizedLfSha256": "5f8131a4182abd40b640f2b8843ba88e54ab13d4fa6c8c1c0a1412d813b109a2"
+    },
+    {
+      "path": "src/platform/psyq/libetc/VSyncCallback.c",
+      "symbol": "VSyncCallback",
+      "startLine": 3,
+      "endLine": 6,
+      "normalizedLfSha256": "1e2894d270d2366df2357569118a848fee94045a32f4d4a02cccf2240e303fcc"
+    },
+    {
+      "path": "src/platform/psyq/libetc/setIntrVSync.c",
+      "symbol": "setIntrVSync",
+      "startLine": 4,
+      "endLine": 9,
+      "normalizedLfSha256": "422f6c84ad760c32f6f9fa51086075a9a099118f30f74933baab09907ae5cf21"
+    },
+    {
+      "path": "src/platform/psyq/libetc/startIntrVSync.c",
+      "symbol": "startIntrVSync",
+      "startLine": 6,
+      "endLine": 12,
+      "normalizedLfSha256": "3b155377d41206046a23667c21760d70e02c5c7132137dbc7429b08acf545307"
+    },
+    {
+      "path": "src/platform/psyq/libetc/trapIntrVSync.c",
+      "symbol": "trapIntrVSync",
+      "startLine": 4,
+      "endLine": 13,
+      "normalizedLfSha256": "6662ad1ade1c9f44e9ff92181def6dde8572255ad2699b7db41e773852cd8d59"
+    },
+    {
+      "path": "src/platform/psyq/libetc/startIntr.c",
+      "symbol": "startIntr",
+      "startLine": 5,
+      "endLine": 29,
+      "normalizedLfSha256": "89da1cad40f1755fefae0ef2ccf77e52df9dd5ec73d3041db96976b854aa057c"
+    },
+    {
+      "path": "src/main/system_callbacks.c",
+      "symbol": "system_vsync_callback",
+      "startLine": 17,
+      "endLine": 37,
+      "normalizedLfSha256": "ff40cca8f7456e57b6f8b4f54b3ebdd502860e7dc08d91813182b7c189246fc2"
+    },
+    {
+      "path": "src/main/startup.c",
+      "symbol": "boot_startup_run",
+      "startLine": 55,
+      "endLine": 83,
+      "normalizedLfSha256": "a903bde11dcb820e3d3f764278c3f31a6ec50c1f47c105b31801af8cb1a9dbe8"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_command_build",
+      "startLine": 131,
+      "endLine": 224,
+      "normalizedLfSha256": "b4a01ef870fceac6d31bc8ab370f0b4053aaee69fc3dd55d9b79c78a0975a5bf"
+    }
+  ],
+  "preparedValidation": {
+    "executable": {
+      "byteLength": 356352,
+      "sha256": "287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562"
+    },
+    "battle": {
+      "byteLength": 1397096,
+      "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+      "loadAddress": "0x80067000"
+    }
+  },
+  "suppliedInstructionCheck": {
+    "start": "0x8001dba8",
+    "endInclusive": "0x8001dcec",
+    "instructionCount": 82,
+    "allMatched": true
+  },
+  "callChecks": [
+    {
+      "pc": "0x80193e6c",
+      "target": "0x8001dba8",
+      "symbol": "VSync",
+      "returnAddress": "0x80193e74"
+    },
+    {
+      "pc": "0x8001dc38",
+      "target": "0x8001dcf0",
+      "symbol": "v_wait",
+      "returnAddress": "0x8001dc40"
+    },
+    {
+      "pc": "0x8001dc5c",
+      "target": "0x8001dcf0",
+      "symbol": "v_wait",
+      "returnAddress": "0x8001dc64"
+    },
+    {
+      "pc": "0x800434e4",
+      "target": "0x8002230c",
+      "symbol": "rand",
+      "returnAddress": "0x800434ec"
+    }
+  ],
+  "aiModeSetup": {
+    "pc": "0x80193e64",
+    "argument": 1,
+    "delaySlot": "Saves s0, not argument setup"
+  },
+  "findings": {
+    "mode1": "Returns (timer1_count-Hcount)&0xffff before waits/baseline writes; no direct RNG call",
+    "negativeMode": "Returns Vcount",
+    "waitingModes": "Mode0 or>1 reaches two v_wait calls and optional GPU height/field-change polling, then updates last-vblank/Hcount; returns elapsed captured before waiting",
+    "timer": "startIntrVSync configures timer1 horizontal-blank counting",
+    "registration": "boot_startup_run installs system_vsync_callback through VSyncCallback slot0; startIntr binds startIntrVSync/setIntrVSync; trapIntrVSync increments Vcount and invokes installed callbacks in slot order",
+    "rng": "system_vsync_callback calls rand unconditionally once per invocation, before play-time/wait-frame updates; other game consumers may also draw",
+    "aiBudgets": {
+      "decision": 441,
+      "pathfinding": 325,
+      "turnSimulation": 313,
+      "unit": "elapsed hardware counter thresholds, separate from CT ticks and event/phase counts"
+    },
+    "uncertainty": "Exact interrupt timing and all external RNG consumers relative to suspended AI phases remain unresolved; no host wall-clock/renderer RNG link added"
+  },
+  "ownerEditPreserved": {
+    "path": "src/Zodiac.Framework.Ai/AiTurnController.cs",
+    "gitBlob": "373d13f739439813f9608aefc2d84715d8ed1346"
+  },
+  "runtimeChanged": false,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "testsRerun": false
+}

@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-230",
+    "ZOD-231",
+    "ZOD-232"
+  ],
+  "date": "2026-11-04",
+  "kind": "managed-accumulate-ai-implementation",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "525974b3ebede803d9797220801f3c393c26a76b",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/accumulate-contract-v1.json",
+  "design": "docs/behavior/accumulate-ai.md",
+  "implementationPaths": [
+    "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiCandidateProjection.cs",
+    "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiCandidateScoring.cs",
+    "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiMapEntry.cs",
+    "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiPreparation.cs",
+    "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiUsefulness.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Ai.Tests/Accumulate/AccumulateAiCandidateTests.cs",
+    "tests/Zodiac.Framework.Ai.Tests/Accumulate/AccumulateAiMapEntryTests.cs",
+    "tests/Zodiac.Framework.Ai.Tests/Accumulate/AccumulateAiPreparationTests.cs",
+    "tests/Zodiac.Framework.Ai.Tests/Accumulate/AccumulateAiUsefulnessTests.cs"
+  ],
+  "sharedChanges": [
+    "src/Zodiac.Framework.Ai/Shared/AiCandidateScoring.cs"
+  ],
+  "behavior": {
+    "effectTarget": "actor",
+    "hostileScorer": "opponent",
+    "pa": "min(99, currentPA+1), zero bonus",
+    "statHitCredit": 3,
+    "hitPercent": 100,
+    "directPaStateScore": 0,
+    "preparationDraws": "one refresh upkeep draw",
+    "usefulnessDraws": "one coin for eligible active self, none for ordinary enemy",
+    "candidateFormulaDraws": 0,
+    "candidateClockDraws": 1,
+    "originOrder": [
+      "ActThenMove",
+      "MoveThenActIfDifferent"
+    ],
+    "completeTie": "retain ACT-first",
+    "rollback": "whole query returns incoming RNG and no partial outcome"
+  },
+  "literalIsolatedEntry": {
+    "seed": 5,
+    "drawCount": 7,
+    "raw": [
+      18655,
+      8457,
+      10616,
+      31877,
+      10193
+    ],
+    "phases": [
+      "refresh",
+      "move baseline",
+      "self usefulness",
+      "ACT-first clock",
+      "Move-first clock"
+    ],
+    "finalWord": 2815492134,
+    "finalDrawCount": 12,
+    "paBefore": 98,
+    "eachPaAfter": 99,
+    "candidatePriorities": [
+      3,
+      3
+    ],
+    "bestIndex": 0
+  },
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4156,
+    "aiPassed": 952,
+    "newAiCases": 24,
+    "pythonPassed": 539,
+    "trxReports": 7,
+    "sourcePreparedAudit": true,
+    "algorithmGuideAudit": true,
+    "reports": "scratch/accumulate-ai-230-232/",
+    "ownerDraftsIncludedInValidation": true,
+    "ownerDraftsExcludedFromCommit": true
+  },
+  "notImplemented": [
+    "combined Attack/Accumulate/Throw Stone selection or complete decision RNG certificate",
+    "three-action D0/D1 derivation, general lists/rosters and broader policies",
+    "authoritative self ACT or Move continuation",
+    "host/editor activation or battle saving"
+  ],
+  "originalExecuted": false,
+  "cExecuted": false,
+  "manualPresentationReviewed": false
+}

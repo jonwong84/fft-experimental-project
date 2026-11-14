@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-314",
+    "ZOD-315"
+  ],
+  "date": "2026-11-05",
+  "kind": "fresh-roster-command-and-bounded-turn-integration",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "dc660e9",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/roster-authority-source-v1.json",
+  "sourceAudit": "docs/evidence/ai/roster-turn-source-v1.json",
+  "design": "docs/architecture/zod-310-roster-decision-authority.md",
+  "behavior": "docs/behavior/roster-ai-command-and-turn.md",
+  "sourceFixture": "docs/fixtures/behavior/roster-turn-contract-v1.json",
+  "implementationPaths": [
+    "src/Zodiac.Framework.Ai/BasicSkill/RosterBasicSkillAiCommandExecution.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/RosterBasicSkillAiTurnExecution.cs",
+    "src/Zodiac.Framework.Ai/Shared/AiTurnProgress.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Ai.Tests/BasicSkill/RosterBasicSkillAiTurnExecutionTests.cs"
+  ],
+  "invariants": [
+    "fresh private full-list selection inside Framework; no caller RNG or cached plan input",
+    "actual roster facts matched semantically; concrete actual command factories derive current-choice dispatch",
+    "priority knowledge and decision RNG publish only with accepted actual progress; late failures retain exact input",
+    "shared stage routing, frozen Move continuation, fresh post-ACT, actual receipt-bound explicit facing; no next clock",
+    "opaque exact-session recovery freezes configuration/workspace/stage/token and emits only newly accepted progress",
+    "actual ACT-first KO retained at deferred corpse guard; Move-first KO may finish via real receipt; no invented terminal policy"
+  ],
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4449,
+    "frameworkPassed": 1516,
+    "aiPassed": 1188,
+    "newAiCases": 20,
+    "pythonPassed": 587,
+    "newPythonCases": 3,
+    "trxReports": 7,
+    "sourceFiles": 27,
+    "sourceFunctions": 83,
+    "sourceDescriptions": 12,
+    "preparedSdkFactors": 192,
+    "algorithmGuideAudit": true,
+    "localLinkAudit": true,
+    "coverageAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/roster-turn-314-315/"
+  },
+  "dependencyChanges": false,
+  "newProductionFriendAccess": false,
+  "originalExecuted": false,
+  "cExecuted": false
+}

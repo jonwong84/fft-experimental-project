@@ -1,0 +1,765 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-435",
+  "managedBaseRevision": "edc1aec71638219e4c9228f811cb91bda723a978",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "report": "docs/behavior/ai-command-continuation-review.md",
+  "scope": "Current ordinary roster checked-command/continuation/facing/recovery owners plus selected pair and actual-state/RNG edges; excludes full frame/controller/status/presentation/terminal branches.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 147880,
+      "sha256": "5519c4550e9fea302ee4366848435b8131c7d3aef24f02462c7571d11bd1cd17"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 187246,
+      "sha256": "2792e2b861e8de4f4f996a5491dbacde0b96f77518a75cc4b8eebf2d6bc1557f"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40868,
+      "sha256": "f76188542c39818fa2ab478e42ef63b4eb0f2c1c2db5a74db4120ddbaf4cb8cb"
+    },
+    {
+      "path": "include/fft/command.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 16578,
+      "sha256": "1c033381864b735aded0393f686443333b09d2ee62c539ecbbd3ae9a7ebb60a0"
+    },
+    {
+      "path": "include/fft/turn_command.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2166,
+      "sha256": "bff9d91a197c4e67bdbb633c8a034c0aa8c28ba8ac04e86cef68e199c7a64eb8"
+    },
+    {
+      "path": "include/fft/turn.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2844,
+      "sha256": "bf8eac9a51807894a645b9587c68323ab8c95411a176a0ccfbbfd752dfbfe6dd"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/ai.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 25771,
+      "sha256": "fa7aabf5b4d21e3f42be7978c061fb859a52709a234e5b4205c5de5e2c8566b5"
+    },
+    {
+      "path": "include/fft/ai_decision.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9018,
+      "sha256": "a88a67152b5143b74121946b7dffd4c8b76b568d9947c828d6620014a741b02b"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_command_build",
+      "startLine": 131,
+      "endLine": 224,
+      "normalizedLfSha256": "b4a01ef870fceac6d31bc8ab370f0b4053aaee69fc3dd55d9b79c78a0975a5bf"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "acting_unit_init",
+      "startLine": 231,
+      "endLine": 257,
+      "normalizedLfSha256": "a37e5edabf630b38b02bb72acb35f5a27c0ab64a0a4e821b660418b321ab2987"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "ai_command_enter",
+      "startLine": 420,
+      "endLine": 432,
+      "normalizedLfSha256": "df699a46b35a19301adaad11547840328a841b304c43acaea0a3ceba95a3240d"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_ai_command_update",
+      "startLine": 2665,
+      "endLine": 2768,
+      "normalizedLfSha256": "11c99d696f9f045abdb27800c9452d187368a1197d3249c793c5b94515da64e9"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "action_execute_ability",
+      "startLine": 2021,
+      "endLine": 2052,
+      "normalizedLfSha256": "97e760f9870b916f1f207cb77f7c48913b28d7084e35ae78ca580c5b0425277d"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "move_confirm",
+      "startLine": 3067,
+      "endLine": 3095,
+      "normalizedLfSha256": "39e3103aa39d609ae0d0c13aa16de41865ceccc77352e4dcda7dd5b5ab61be35"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_after_command_enter",
+      "startLine": 784,
+      "endLine": 790,
+      "normalizedLfSha256": "8bb512841a813278a63e6d44b3d5b90897550ec3c970dfe82b081e96c9be946b"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_after_command_update",
+      "startLine": 4133,
+      "endLine": 4150,
+      "normalizedLfSha256": "37a6003dc815cb2dd91db8a4513ffb2d969509f2580e171012e68d75209e254c"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_continue_turn_update",
+      "startLine": 4162,
+      "endLine": 4200,
+      "normalizedLfSha256": "b550d805d45f27da83b9718829849dc3c41996da4a91ee19876a32cfa3d0960c"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_wait_direction_enter",
+      "startLine": 1034,
+      "endLine": 1058,
+      "normalizedLfSha256": "a356903cb09ce880fb1c957b88630b1c26a0c1c2f6c84176b7f87463efbc6354"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_act_taken_set",
+      "startLine": 911,
+      "endLine": 913,
+      "normalizedLfSha256": "2e7ff86ef337d8518e041f9c75fee3baa524c575c33d2d7648dbdee014b71c72"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_move_taken_set",
+      "startLine": 917,
+      "endLine": 919,
+      "normalizedLfSha256": "33ab5c25886e5024d08162213229046ed8d7442ef11ca4db3363107098785b79"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_move_act_taken_set",
+      "startLine": 923,
+      "endLine": 940,
+      "normalizedLfSha256": "ab6508dce1e9e9ef352a27b22a0166a0526d1571fb059f969937605b630782d7"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_end",
+      "startLine": 947,
+      "endLine": 974,
+      "normalizedLfSha256": "2071e4d41c2099741ca3ae787add5e7b731df488197b87a47ca84291a6ac268b"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_should_end",
+      "startLine": 979,
+      "endLine": 993,
+      "normalizedLfSha256": "e681268c0903794a2ff9b9de8f2b18b663bc565ea4a047e6f005e63bc6155e86"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "symbol": "turn_is_over",
+      "startLine": 997,
+      "endLine": 1007,
+      "normalizedLfSha256": "54cefb6c873e7a4f3556cc0650d2d0cea964f1e8df26ccefe745c38668f80518"
+    }
+  ],
+  "managedInputs": [
+    {
+      "path": "src/Zodiac.Framework.Ai/AiCommandExecutor.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 5852,
+      "sha256": "9605605a4b9ca1e3974ca9d3d61d74635ee529e7a4d99b34d4b2a6eac2caf234"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/AiTurnController.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4262,
+      "sha256": "1b33ccf7b499080b5fc033d72899a75b54fb029e1abf0378847d9103d65592c4"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Execution/AiCommand.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1323,
+      "sha256": "1892cfc3948cecbbb68ce9f75c831b14dee44118ad65cf4d4f1f9805ca0a2b51"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Execution/AiTurn.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1530,
+      "sha256": "6caec90da65c0ae04c6478ea40283bfd16e918fb5d347fa998428fb5246f465e"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Execution/AiTurnProgress.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 922,
+      "sha256": "88439350728d4002d117abfa7f0e6219cdc13df19e3cfa282551c2305cc8e82d"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Decision/AiDecisionConfiguration.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 843,
+      "sha256": "a6fefc48226ab7588c4bb2f31575c698ba4466c0ed06add47ebaf924a44d833a"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Commands/RosterDecisionBattle.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3419,
+      "sha256": "5208e5f7cfd49ff0f8cae0bd041cbed208662af0c81d8de5ab3f1f5fc8fe1db5"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Commands/RosterDecisionContext.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4452,
+      "sha256": "c47007be31e34a180222b3eeb9456045a8f10e64989807f612379cfa93d6deb7"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Commands/RosterDecisionContext.PlannedMove.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4500,
+      "sha256": "ae2943e285aaaddfbc21abc3dacdd41de94cacf58d59314051a3b444c4142f06"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Commands/RosterDecision.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1041,
+      "sha256": "401d4f24c0d0029ccf5996a1181cc9769dcbae9783869cd0a4897cbc6e964b00"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Commands/RosterDecisionResult.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 510,
+      "sha256": "88391b67bcae7d029e559fd070fb76980586ec79a814d30465745e9972747d81"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Commands/RosterDecisionResult.PlannedMove.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 181,
+      "sha256": "f59a1406385ab550a30f0165f744adb06c0074334d04796032a1c2c8ac49b54e"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Commands/RosterMoveDecisionBattle.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1974,
+      "sha256": "5be3d31777d87adfac9a7b94dda05b88c88b8220d05a9badbc8749540230d788"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Commands/RosterMoveContinuation.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 851,
+      "sha256": "60b171bf530c5ccd8db647fac7b393808cb429d129dc08c8cc25e0f11bf0b3d1"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Turns/RosterFacingTurnBattle.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 7453,
+      "sha256": "39caed091aa8c4144b333a225b88adb9f4c1f148b86e6de0fe004029b29990c1"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Turns/RosterFacingTurnState.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 732,
+      "sha256": "8954e570803e5d4e45dcb49a3c98a09503011e79d2898835f3553b7f066a2c1a"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Turns/FacingReceiptRules.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1586,
+      "sha256": "653579b30bd35a80740e7982d1650fd6964595eca7e1edc3ad4eae2b4ba00351"
+    },
+    {
+      "path": "src/Zodiac.Framework/Random/RandomStateGenerator.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2309,
+      "sha256": "1518224ceaf9ecb7c049931e93eb63436a6bcac0833c75eaab51ccb046128576"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Turns/TurnCycle.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4684,
+      "sha256": "9a3f20d6b965aaeb877f1341e904b2583b4d92e82751f9e55878d0cac26fdb36"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Turns/TurnBattleSimulator.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3431,
+      "sha256": "287114e8cbc9ccb8da70d2ac5bc3fe0065bca372a940634dbda6cc4c33ad4df2"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Movement/FlatRosterPathMovement.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1167,
+      "sha256": "698735b71de917f23cb9462732f5653cc16e2f6ec35892466c22aff7851d6855"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Movement/ConfirmedPathMovement.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1671,
+      "sha256": "cbd0f80e522c71f9da120cb72c53a3d288d0f514a53b131b16a30ede0db56272"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Commands/FacingDecisionBattle.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 6302,
+      "sha256": "9edaf3b42e9ee439dd1053a54a284dd58bcd4a960e2710761dcccfcb7da88e0a"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Commands/FacingMoveDecisionBattle.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 7662,
+      "sha256": "855ac7da1661edc04902673605767a6ead33e2d74cbf9800eaad16bddf8fa4de"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Tests/Battle/Commands/RosterDecisionTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 7283,
+      "sha256": "4727c1ac040fd7a44c20d22c8a4f8c58642806578a564428727c6673c4f0a7ea"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Tests/Battle/Commands/RosterMoveContinuationTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 7365,
+      "sha256": "f15e5cbbd2d6e1b143e393076b92ac15d726aefdb11845a73410eaff45eab4b3"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Ai.Tests/Execution/AiTurnControllerTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 16830,
+      "sha256": "63bf76f13ba8f70063967a369e28ed30e6f3225a27a03a3f72e273640e77a695"
+    }
+  ],
+  "findings": [
+    {
+      "id": "COMMAND-435-01",
+      "disposition": "verified-within-domain",
+      "finding": "Native MOVE/ACT/END branch order and saved Move-first ACT versus fresh post-ACT selection match owned command paths; native no-progress/frame history is distinct from managed authority."
+    },
+    {
+      "id": "COMMAND-435-02",
+      "disposition": "verified-within-domain",
+      "finding": "Current-invocation opaque proposals, actor/choice/profile guards and full-word/count forward RNG verification stage one real command atomically without adopting prediction as actual state."
+    },
+    {
+      "id": "COMMAND-435-03",
+      "disposition": "verified-within-domain",
+      "finding": "Exact state/battle/revision/lineage/actor continuations freeze intent and use real post-Move admission/RNG; late failure preserves an accepted Move and retry/abandonment cannot cross branches."
+    },
+    {
+      "id": "COMMAND-435-04",
+      "disposition": "verified-within-domain",
+      "finding": "Actual facing receipts and turn-stage precedence retain accepted partial progress, immutable priority successors and deterministic exact-session recovery; stop before next clock."
+    },
+    {
+      "id": "COMMAND-435-05",
+      "disposition": "deferred",
+      "finding": "Managed atomicity/recovery is not native VSync resumption or save-token behavior. Automatic facing, host/frame/event integration, full corpse/terminal/status/special policies and broad magic commands remain separate."
+    }
+  ],
+  "confirmedDefects": [],
+  "historicalEvidenceErrata": [],
+  "runtimeChanged": false,
+  "sourceAuditResults": {
+    "authority": {
+      "rosterAuthorityDescriptions": 21,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false,
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "referenceClean": true,
+      "sourceFiles": 27,
+      "sourceFunctions": 83
+    },
+    "selfSettlement": {
+      "rosterSelfSettlementDescriptions": 8,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false,
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "referenceClean": true,
+      "sourceFiles": 26,
+      "sourceFunctions": 79
+    },
+    "turnCompositions": {
+      "rosterCommandTurnDescriptions": 12,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false
+    },
+    "independentChecks": {
+      "rawDispatchCases": [
+        {
+          "moved": false,
+          "acted": false,
+          "actFirst": false,
+          "differentDestination": false,
+          "hasAction": false,
+          "command": "End"
+        },
+        {
+          "moved": false,
+          "acted": false,
+          "actFirst": false,
+          "differentDestination": false,
+          "hasAction": true,
+          "command": "Act"
+        },
+        {
+          "moved": false,
+          "acted": false,
+          "actFirst": false,
+          "differentDestination": true,
+          "hasAction": false,
+          "command": "Move"
+        },
+        {
+          "moved": false,
+          "acted": false,
+          "actFirst": false,
+          "differentDestination": true,
+          "hasAction": true,
+          "command": "Move"
+        },
+        {
+          "moved": false,
+          "acted": false,
+          "actFirst": true,
+          "differentDestination": false,
+          "hasAction": false,
+          "command": "End"
+        },
+        {
+          "moved": false,
+          "acted": false,
+          "actFirst": true,
+          "differentDestination": false,
+          "hasAction": true,
+          "command": "Act"
+        },
+        {
+          "moved": false,
+          "acted": false,
+          "actFirst": true,
+          "differentDestination": true,
+          "hasAction": false,
+          "command": "End"
+        },
+        {
+          "moved": false,
+          "acted": false,
+          "actFirst": true,
+          "differentDestination": true,
+          "hasAction": true,
+          "command": "Act"
+        },
+        {
+          "moved": false,
+          "acted": true,
+          "actFirst": false,
+          "differentDestination": false,
+          "hasAction": false,
+          "command": "End"
+        },
+        {
+          "moved": false,
+          "acted": true,
+          "actFirst": false,
+          "differentDestination": false,
+          "hasAction": true,
+          "command": "End"
+        },
+        {
+          "moved": false,
+          "acted": true,
+          "actFirst": false,
+          "differentDestination": true,
+          "hasAction": false,
+          "command": "Move"
+        },
+        {
+          "moved": false,
+          "acted": true,
+          "actFirst": false,
+          "differentDestination": true,
+          "hasAction": true,
+          "command": "Move"
+        },
+        {
+          "moved": false,
+          "acted": true,
+          "actFirst": true,
+          "differentDestination": false,
+          "hasAction": false,
+          "command": "End"
+        },
+        {
+          "moved": false,
+          "acted": true,
+          "actFirst": true,
+          "differentDestination": false,
+          "hasAction": true,
+          "command": "End"
+        },
+        {
+          "moved": false,
+          "acted": true,
+          "actFirst": true,
+          "differentDestination": true,
+          "hasAction": false,
+          "command": "Move"
+        },
+        {
+          "moved": false,
+          "acted": true,
+          "actFirst": true,
+          "differentDestination": true,
+          "hasAction": true,
+          "command": "Move"
+        },
+        {
+          "moved": true,
+          "acted": false,
+          "actFirst": false,
+          "differentDestination": false,
+          "hasAction": false,
+          "command": "End"
+        },
+        {
+          "moved": true,
+          "acted": false,
+          "actFirst": false,
+          "differentDestination": false,
+          "hasAction": true,
+          "command": "Act"
+        },
+        {
+          "moved": true,
+          "acted": false,
+          "actFirst": false,
+          "differentDestination": true,
+          "hasAction": false,
+          "command": "End"
+        },
+        {
+          "moved": true,
+          "acted": false,
+          "actFirst": false,
+          "differentDestination": true,
+          "hasAction": true,
+          "command": "Act"
+        },
+        {
+          "moved": true,
+          "acted": false,
+          "actFirst": true,
+          "differentDestination": false,
+          "hasAction": false,
+          "command": "End"
+        },
+        {
+          "moved": true,
+          "acted": false,
+          "actFirst": true,
+          "differentDestination": false,
+          "hasAction": true,
+          "command": "Act"
+        },
+        {
+          "moved": true,
+          "acted": false,
+          "actFirst": true,
+          "differentDestination": true,
+          "hasAction": false,
+          "command": "End"
+        },
+        {
+          "moved": true,
+          "acted": false,
+          "actFirst": true,
+          "differentDestination": true,
+          "hasAction": true,
+          "command": "Act"
+        },
+        {
+          "moved": true,
+          "acted": true,
+          "actFirst": false,
+          "differentDestination": false,
+          "hasAction": false,
+          "command": "End"
+        },
+        {
+          "moved": true,
+          "acted": true,
+          "actFirst": false,
+          "differentDestination": false,
+          "hasAction": true,
+          "command": "End"
+        },
+        {
+          "moved": true,
+          "acted": true,
+          "actFirst": false,
+          "differentDestination": true,
+          "hasAction": false,
+          "command": "End"
+        },
+        {
+          "moved": true,
+          "acted": true,
+          "actFirst": false,
+          "differentDestination": true,
+          "hasAction": true,
+          "command": "End"
+        },
+        {
+          "moved": true,
+          "acted": true,
+          "actFirst": true,
+          "differentDestination": false,
+          "hasAction": false,
+          "command": "End"
+        },
+        {
+          "moved": true,
+          "acted": true,
+          "actFirst": true,
+          "differentDestination": false,
+          "hasAction": true,
+          "command": "End"
+        },
+        {
+          "moved": true,
+          "acted": true,
+          "actFirst": true,
+          "differentDestination": true,
+          "hasAction": false,
+          "command": "End"
+        },
+        {
+          "moved": true,
+          "acted": true,
+          "actFirst": true,
+          "differentDestination": true,
+          "hasAction": true,
+          "command": "End"
+        }
+      ],
+      "dispatchCounts": {
+        "Move": 6,
+        "Act": 7,
+        "End": 19
+      },
+      "turnRoutes": [
+        {
+          "retained": false,
+          "pendingFacing": false,
+          "actorActive": false,
+          "next": null
+        },
+        {
+          "retained": false,
+          "pendingFacing": false,
+          "actorActive": true,
+          "next": "PostActCommand"
+        },
+        {
+          "retained": false,
+          "pendingFacing": true,
+          "actorActive": false,
+          "next": "FinishFacing"
+        },
+        {
+          "retained": false,
+          "pendingFacing": true,
+          "actorActive": true,
+          "next": "FinishFacing"
+        },
+        {
+          "retained": true,
+          "pendingFacing": false,
+          "actorActive": false,
+          "next": "RetainedCommand"
+        },
+        {
+          "retained": true,
+          "pendingFacing": false,
+          "actorActive": true,
+          "next": "RetainedCommand"
+        },
+        {
+          "retained": true,
+          "pendingFacing": true,
+          "actorActive": false,
+          "next": "RetainedCommand"
+        },
+        {
+          "retained": true,
+          "pendingFacing": true,
+          "actorActive": true,
+          "next": "RetainedCommand"
+        }
+      ],
+      "affineVersusDirectTransitions": 1032,
+      "rawCasesDoNotAssertAllChoiceCombinationsArePlayable": true
+    }
+  },
+  "additionalDocumentation": {
+    "requiredForThisBatch": false,
+    "usefulForNextBatch": "FFHacktics Formula08 Dmg F(MA*Y) and Formula0C Heal F(MA*Y) pages with their called-routine traces; current local source remains available."
+  },
+  "validation": {
+    "dotnet": {
+      "total": 5181,
+      "failed": 0,
+      "skipped": 0,
+      "projects": {
+        "Engine": 24,
+        "AssetTool": 206,
+        "Framework": 1827,
+        "Ai": 1384,
+        "Cli": 396,
+        "Content": 897,
+        "Client": 447
+      },
+      "command": "dotnet test Fft.sln -c Release --no-restore"
+    },
+    "python": {
+      "total": 794,
+      "result": "OK",
+      "command": "python -m unittest discover -s tools/verification -p 'test_*.py'"
+    },
+    "newRegressionCases": 0,
+    "productionTestsAndFixturesUnchanged": true,
+    "historicalReceiptsUnchanged": true,
+    "ownerBlobs": 10,
+    "approvedFormattingPreserved": true,
+    "unstagedOwnerEdit": {
+      "path": "src/Zodiac.Framework.Ai/AiTurnController.cs",
+      "gitBlob": "4856db5509cd27ee13f02e7918d72ce42a47852f",
+      "preserved": true,
+      "excludedFromCommit": true,
+      "includedInCurrentReviewInput": true
+    },
+    "originalExecuted": false,
+    "cExecuted": false,
+    "nativePresentationRerun": false
+  }
+}

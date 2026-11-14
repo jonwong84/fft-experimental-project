@@ -1,0 +1,31 @@
+{
+  "formulaDescriptions": 24,
+  "actualDescriptions": 8,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "managedExecuted": false,
+  "source": {
+    "rosterAuthorityDescriptions": 21,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "managedExecuted": false,
+    "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "referenceClean": true,
+    "sourceFiles": 27,
+    "sourceFunctions": 83
+  },
+  "prepared": {
+    "abilityId": 147,
+    "range": 1,
+    "verticalTolerance": 1,
+    "formula": 55,
+    "y": 4,
+    "evadeable": false,
+    "directTrajectory": false,
+    "aiPhysical": true,
+    "aiDirectTrajectory": false,
+    "aiExhaustive": false,
+    "preparedVerified": true
+  },
+  "sourceStudy": "docs/evidence/ai/roster-authority-source-v1.json"
+}

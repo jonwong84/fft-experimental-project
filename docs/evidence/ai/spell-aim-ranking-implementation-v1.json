@@ -1,0 +1,222 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-425",
+  "managedBaseRevision": "67f09d891e2739afb6c58debaa687cbf0a1fa4a0",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "sourceReceipt": "docs/evidence/ai/spell-aim-ranking-source-v1.json",
+  "sourceAudit": {
+    "rankIterationDescriptions": 4,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "sourceFiles": 9,
+    "sourceFunctions": 33
+  },
+  "entryPoint": "OrdinarySpellAiSearchQuery.Evaluate(state, catalog, request, rng)",
+  "scope": "Fresh one-slot current-origin enumeration, pass-specific valuable masks, isolated candidate simulation and strict best comparison with one decision RNG. No retained evaluations accepted; no movement search, baseline/list insertion, lottery or command authority.",
+  "callerCorrection": "origin_reachable_evaluate clears consume-evaluated-aims for exhaustive origin scans after grouping; the potential pass diagnostic and existing short-reach boundary regression now reflect it.",
+  "implementationFiles": [
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiSearchQuery.cs",
+      "hashEncoding": "utf8-lf",
+      "sha256": "f6b621fb378c674663e677a139e27d8279a8dddee61a0b44e773d52aef132c06"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiWork.cs",
+      "hashEncoding": "utf8-lf",
+      "sha256": "9168b59467ac100452b28db42003354abdfdfbaf97ec26e778265eea52127537"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiCandidateRank.cs",
+      "hashEncoding": "utf8-lf",
+      "sha256": "7152af3ef98c0e9515d86b484d2bc50f3818fc2010be9b7f469148165f526f2d"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAimEnumeration.cs",
+      "hashEncoding": "utf8-lf",
+      "sha256": "81f675cc13407a07c99948666677e7914b1a9b9bec6ea577ec1b08793d15b764"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiSearchTests.cs",
+      "hashEncoding": "utf8-lf",
+      "sha256": "ee0fd3af85dd9191b26eb215b22092ffba775dad7ce45449a0a8165265cc432d"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiAimTests.cs",
+      "hashEncoding": "utf8-lf",
+      "sha256": "9173bbf6e48a8dc1fb6801ee1118c8df0e14330c14d86be4195ff185e16dc2f6"
+    },
+    {
+      "path": "docs/fixtures/behavior/spell-aim-ranking-v1.json",
+      "hashEncoding": "utf8-lf",
+      "sha256": "6cb2c014c88ce410997044493d371ca2ecd00b00720898836d348497909e17d7"
+    },
+    {
+      "path": "tools/verification/verify_spell_aim_ranking.py",
+      "hashEncoding": "utf8-lf",
+      "sha256": "0b6046063d457aef8bdf4212d2c4a9863257000a50f5894541a049893a1188eb"
+    },
+    {
+      "path": "tools/verification/test_spell_aim_ranking.py",
+      "hashEncoding": "utf8-lf",
+      "sha256": "1893677e1909690aa3a1c736e731ec382016c8109992ae31dcf084e9f84479d8"
+    }
+  ],
+  "validation": {
+    "lockedRestore": "passed",
+    "releaseBuild": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "dotnet": {
+      "passed": 5142,
+      "failed": 0,
+      "assemblies": [
+        {
+          "assembly": "Fft.Client.Tests.dll",
+          "total": 447,
+          "passed": 447,
+          "failed": 0
+        },
+        {
+          "assembly": "Tessera.Engine.Tests.dll",
+          "total": 24,
+          "passed": 24,
+          "failed": 0
+        },
+        {
+          "assembly": "Zodiac.AssetTool.Cli.Tests.dll",
+          "total": 396,
+          "passed": 396,
+          "failed": 0
+        },
+        {
+          "assembly": "Zodiac.AssetTool.Tests.dll",
+          "total": 206,
+          "passed": 206,
+          "failed": 0
+        },
+        {
+          "assembly": "Zodiac.Content.Tests.dll",
+          "total": 897,
+          "passed": 897,
+          "failed": 0
+        },
+        {
+          "assembly": "Zodiac.Framework.Ai.Tests.dll",
+          "total": 1356,
+          "passed": 1356,
+          "failed": 0
+        },
+        {
+          "assembly": "Zodiac.Framework.Tests.dll",
+          "total": 1816,
+          "passed": 1816,
+          "failed": 0
+        }
+      ],
+      "newSearchScenarios": 18
+    },
+    "python": {
+      "passed": 790,
+      "failed": 0,
+      "newSourceDescriptionTests": 4
+    },
+    "preservation": {
+      "ownerFiles": [
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AbilityToggles.cs",
+          "gitBlob": "16320578ffa448783221b68c4ef5c18e245b9f35",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AiBehaviorToggles.cs",
+          "gitBlob": "c67c4b154c471764fa11a6761710d2e9c9694a65",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AttributeToggles.cs",
+          "gitBlob": "1182777f8a0c3ca219afa23d0803c52af4ca9f8e",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Common/EquipmentSlot.cs",
+          "gitBlob": "091006b2d60ca558c303571a4eb779340be53629",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Common/StatusToggles.cs",
+          "gitBlob": "5136db2af350d7e3735e47fb92b905019316fd6f",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Item/ShopAvailabilityToggles.cs",
+          "gitBlob": "fd543d84dc8eb7860d710cf1c75499eb55306e14",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Job/EquipmentOptionToggles.cs",
+          "gitBlob": "694e44bbdc3e62103b64ff794addec1ad977d142",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Status/EffectBehaviorToggles.cs",
+          "gitBlob": "9792cdea7da1d92e9ec25cf1e97d3e879c24e8ae",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Status/StatusSelectionToggles.cs",
+          "gitBlob": "a0b2e2a8ddcb53a4bfd7416609927399b8339294",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Job/JobStats.cs",
+          "gitBlob": "bd617c374309aca1529a167a8d31a488160086cc",
+          "unchanged": true
+        }
+      ],
+      "approvedFormatting": {
+        "path": "src/Zodiac.Framework/Battle/Combat/Targeting/Selection/SpellTargetChoiceQuery.cs",
+        "gitBlob": "014193b92e056d5a5207b2aff07a77047e9e1280",
+        "originalCommit": "b7a222d"
+      },
+      "allPreserved": true
+    },
+    "native": "Not rerun: no host or command pathway changed; historical ZOD-423 native receipts remain separate.",
+    "artifacts": "scratch/spell-search-425/"
+  },
+  "literalScenarios": {
+    "areaBest": {
+      "aim": [
+        3,
+        1,
+        0
+      ],
+      "priority": -401,
+      "hit": 100,
+      "evaluations": 12,
+      "draws": 88,
+      "seed": 3396639393
+    },
+    "unresolvedAllied": {
+      "passes": 2,
+      "evaluations": 2,
+      "priority": 7381,
+      "hit": 255,
+      "draws": 510,
+      "mpSpent": 0
+    }
+  },
+  "deferred": [
+    "movement-origin selection and baseline rank trace (ZOD-426)",
+    "multiple origins and dynamic aim consumption",
+    "full ability-list dispatch, ranked-list insertion and lottery",
+    "actual AI magic commands and autonomous turns",
+    "useful self, Reflect, broader statuses/corpses, equipment, trajectories and shapes",
+    "zero-range special cases and broader maps/radii",
+    "Golem, terminal and frame RNG",
+    "owner drafts/JobStats, editor and custom cone"
+  ],
+  "originalExecuted": false,
+  "cExecuted": false
+}

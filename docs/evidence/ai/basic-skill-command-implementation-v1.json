@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-240",
+    "ZOD-241",
+    "ZOD-242"
+  ],
+  "date": "2026-11-04",
+  "kind": "managed-fresh-three-entry-command",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "54faaa722c11d2ebadbaf28a457e1353630dc11b",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/self-act-source-v1.json",
+  "design": "docs/behavior/basic-skill-ai-command-execution.md",
+  "dispatchFunctions": [
+    "ai_command_build",
+    "ai_simulation_end",
+    "battle_state_ai_command_update",
+    "turn_end"
+  ],
+  "implementationPaths": [
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiCommandExecution.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiMoveFirstExecution.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiSameTileEndExecution.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiActFirstExecution.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiCommandExecutionTests.cs",
+    "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiActFirstExecutionTests.cs",
+    "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiTestData.cs"
+  ],
+  "actualRulesOwners": [
+    "src/Zodiac.Framework/FacingDecision.cs",
+    "src/Zodiac.Framework/FacingMoveDecision.cs",
+    "src/Zodiac.Framework/FacingTurnBattle.cs"
+  ],
+  "newProductionFriendAccess": false,
+  "newPublicSessionOrReceiptConstructors": false,
+  "newFrameworkImplementation": false,
+  "frozenSelfToken": false,
+  "behavior": {
+    "freshSelectionsPerCommand": 1,
+    "adoptRngOnce": true,
+    "copiedHypotheticalUnits": false,
+    "sameTileEmptyEnd": true,
+    "moveFirstContinuation": "existing exact-session Attack/targeted ACT/Wait",
+    "followUpFailure": "preserve published Move",
+    "firstCommandOnly": true,
+    "postActSelection": false,
+    "ctRefundPerUnusedChoice": 20,
+    "ctCap": 60
+  },
+  "vectors": {
+    "stone": {
+      "decisionWord": 267834847,
+      "decisionCount": 17,
+      "actualWord": 3791773014,
+      "actualCount": 24,
+      "damage": 10
+    },
+    "attack": {
+      "decisionWord": 3791773014,
+      "decisionCount": 24,
+      "actualWord": 1343201072,
+      "actualCount": 30,
+      "damage": 10
+    },
+    "empty": {
+      "decisionWord": 836760821,
+      "decisionCount": 19,
+      "lotteryDraws": 8,
+      "moveThenWaitCt": 35,
+      "sameTileEndCt": 55,
+      "cappedCt": 60
+    }
+  },
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4198,
+    "frameworkPassed": 1467,
+    "aiPassed": 986,
+    "newAiCases": 13,
+    "pythonPassed": 539,
+    "trxReports": 7,
+    "sourcePreparedAudit": true,
+    "algorithmGuideAudit": true,
+    "reports": "scratch\\basic-skill-command-240-242/",
+    "ownerDraftsIncludedInValidation": true,
+    "ownerDraftsExcludedFromCommit": true
+  },
+  "boundaries": [
+    "supplied known-score S/D0/D1 and existing source assertions",
+    "both choices unused",
+    "no derived scenarios, three-entry post-ACT reselection or complete turns",
+    "no broad original policies, host/editor activation or battle saves"
+  ],
+  "originalExecuted": false,
+  "cExecuted": false
+}

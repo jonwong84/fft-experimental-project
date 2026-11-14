@@ -1,0 +1,545 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "5355da756a2ab86f4f3d6781c7d1ba274674c4d4",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Supplied Knockback 2 destination checker; layer/edge/headroom/occupancy/staging source cross-check, not a general managed landing/fall port.",
+  "suppliedTextSha256": "6154e4608fabb290b15d4d14da6256bd9e687a4900f2e4d2f4f6662dfd00130d",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54735,
+      "sha256": "b37712b2e33a060f057e87f866c25ef0f4d4ba9b8bacf89447e2eeb0cd0c2bf9"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 80969,
+      "sha256": "e8ec92c02c53d3715b3813931685399e79481dad0fae6ae27505fbc5d086d444"
+    },
+    {
+      "path": "src/battle/units/roster.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9567,
+      "sha256": "8decea51b4efd0a1fc50f7fb943d61e46e476112f998882bdd141c2354954352"
+    },
+    {
+      "path": "include/fft/action.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14957,
+      "sha256": "6e97b3935c0d9cdcb8f6ba9ee2d40985b645bc0b03281a0d50d3d20aae35591c"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/battle_map.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 22162,
+      "sha256": "8e31c1b1320542770f2ddf587f22edf9e293e4bc45d5c85116d34a4cde96c296"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "knockback_destination_check",
+      "startLine": 202,
+      "endLine": 285,
+      "normalizedLfSha256": "9be9e962bba2e1f8c5f67f1fdad606fdc21e2d7e82aaab9842e77dcd097bfe01"
+    },
+    {
+      "path": "src/battle/units/roster.c",
+      "symbol": "battle_map_tile_calculate_unit_index",
+      "startLine": 227,
+      "endLine": 232,
+      "normalizedLfSha256": "1bd7141c2018998396c14dffc0134dbc250487d894d7f6f27ec9bf00166dbbe6"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "target_find_unit_at_tile",
+      "startLine": 1129,
+      "endLine": 1131,
+      "normalizedLfSha256": "1079c2d8ebd0775ecf2d005aec6561c953176ba92bf9e7dc953265ed27b20828"
+    },
+    {
+      "path": "src/battle/combat/preparation.c",
+      "symbol": "unit_find_at_tile",
+      "startLine": 1142,
+      "endLine": 1203,
+      "normalizedLfSha256": "80c44f88bd8eb2b4aa50d4df1640982f8defd67c4bc43835bb80e9c77e61df9f"
+    }
+  ],
+  "preparedBattle": {
+    "path": "scratch/fft-decomp-work/build/extracted/files/BATTLE.BIN",
+    "byteLength": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "loadAddress": "0x80067000"
+  },
+  "start": "0x80184610",
+  "endInclusive": "0x801848d4",
+  "instructionCount": 178,
+  "instructionWords": [
+    "27bdffd8",
+    "afb20018",
+    "00a09021",
+    "afb3001c",
+    "00c09821",
+    "afbf0020",
+    "afb10014",
+    "064000a1",
+    "afb00010",
+    "066000a0",
+    "2402ffff",
+    "3c02800e",
+    "90424e9c",
+    "00000000",
+    "0242102a",
+    "1040009a",
+    "2402ffff",
+    "3c02800e",
+    "90424ea0",
+    "00000000",
+    "0262102a",
+    "10400093",
+    "34020001",
+    "10820012",
+    "28820002",
+    "10400005",
+    "00000000",
+    "10800011",
+    "00000000",
+    "080611b3",
+    "00000000",
+    "34020002",
+    "10820006",
+    "34020003",
+    "1482000c",
+    "00000000",
+    "00008021",
+    "080611b3",
+    "34110002",
+    "34100006",
+    "080611b3",
+    "34110004",
+    "34100002",
+    "080611b3",
+    "00008821",
+    "34100004",
+    "34110006",
+    "3c048019",
+    "8c842d98",
+    "0c060428",
+    "00000000",
+    "000210c0",
+    "3c058019",
+    "24a5f8cc",
+    "00451021",
+    "90440003",
+    "90430004",
+    "3084001f",
+    "02031807",
+    "30630003",
+    "00830018",
+    "00002012",
+    "3c03800e",
+    "90634e9c",
+    "00000000",
+    "02630018",
+    "90420002",
+    "00000000",
+    "00021040",
+    "00443021",
+    "00001012",
+    "00521021",
+    "24430100",
+    "000210c0",
+    "00454021",
+    "000318c0",
+    "91020006",
+    "00000000",
+    "30420001",
+    "10400003",
+    "00653821",
+    "080611e2",
+    "340400ff",
+    "91030003",
+    "91020004",
+    "3063001f",
+    "02221007",
+    "30420003",
+    "00620018",
+    "91020002",
+    "00000000",
+    "00021040",
+    "00001812",
+    "00432021",
+    "90e20006",
+    "00000000",
+    "30420001",
+    "1440000c",
+    "340300ff",
+    "90e30003",
+    "90e20004",
+    "3063001f",
+    "02221007",
+    "30420003",
+    "00620018",
+    "90e20002",
+    "00000000",
+    "00021040",
+    "00001812",
+    "00431821",
+    "00c4282a",
+    "10a00005",
+    "00c3102a",
+    "10400012",
+    "00c4102a",
+    "0806122e",
+    "2402ffff",
+    "1040000d",
+    "00000000",
+    "14a0000e",
+    "00000000",
+    "90e20005",
+    "00000000",
+    "3042001f",
+    "00621823",
+    "24c20004",
+    "0062102a",
+    "1440002a",
+    "2402ffff",
+    "0806121a",
+    "00008821",
+    "00c4102a",
+    "1040000d",
+    "00c3102a",
+    "1440000c",
+    "0083102a",
+    "91020005",
+    "00000000",
+    "3042001f",
+    "00822023",
+    "24c20004",
+    "0082102a",
+    "1440001b",
+    "2402ffff",
+    "0806121c",
+    "34110001",
+    "0083102a",
+    "14400004",
+    "34110001",
+    "00008821",
+    "0806121d",
+    "00c48023",
+    "00c38023",
+    "0600000f",
+    "02402021",
+    "02602821",
+    "0c05f722",
+    "02203021",
+    "2403ffff",
+    "1443000a",
+    "2402ffff",
+    "3c038019",
+    "906338c1",
+    "3c018019",
+    "a03038ee",
+    "3c018019",
+    "a02338ef",
+    "0806122e",
+    "02201021",
+    "2402ffff",
+    "8fbf0020",
+    "8fb3001c",
+    "8fb20018",
+    "8fb10014",
+    "8fb00010",
+    "27bd0028",
+    "03e00008",
+    "00000000"
+  ],
+  "allMatched": true,
+  "callSites": [
+    {
+      "pc": "0x801846d4",
+      "target": "0x801810a0"
+    },
+    {
+      "pc": "0x80184880",
+      "target": "0x8017dc88"
+    }
+  ],
+  "listedCaller": {
+    "callPc": "0x801844e0",
+    "returnAddress": "0x801844e8",
+    "matched": true
+  },
+  "geometry": {
+    "validDirections": {
+      "south": [
+        4,
+        6
+      ],
+      "west": [
+        2,
+        0
+      ],
+      "north": [
+        6,
+        4
+      ],
+      "east": [
+        0,
+        2
+      ]
+    },
+    "edgeFormula": "heightByte*2+(byte3&31)*((slopeByte>>directionShift)&3)",
+    "edgeDomainChecks": 32768,
+    "sourceAndDestinationEdgesRange": [
+      0,
+      603
+    ],
+    "blockedLayerHeight": 255,
+    "layerSelection": "Among numerically reachable layers choose higher edge; tie chooses layer0. If exactly one is reachable, require the other edge minus its byte5&31 to be>=sourceEdge+4.",
+    "comparisonCases": 172800,
+    "literalDescriptions": [
+      {
+        "name": "Equal-height flat lower landing",
+        "input": {
+          "sourceEdge": 20,
+          "lowerEdge": 20,
+          "upperEdge": 255,
+          "lowerCeiling": 0,
+          "upperCeiling": 0,
+          "occupancyReturn": -1
+        },
+        "expectedLayerAndFallByte": [
+          0,
+          0
+        ]
+      },
+      {
+        "name": "Higher reachable lower layer wins",
+        "input": {
+          "sourceEdge": 20,
+          "lowerEdge": 18,
+          "upperEdge": 16,
+          "lowerCeiling": 0,
+          "upperCeiling": 0,
+          "occupancyReturn": -1
+        },
+        "expectedLayerAndFallByte": [
+          0,
+          2
+        ]
+      },
+      {
+        "name": "Higher reachable upper layer wins",
+        "input": {
+          "sourceEdge": 20,
+          "lowerEdge": 16,
+          "upperEdge": 18,
+          "lowerCeiling": 0,
+          "upperCeiling": 0,
+          "occupancyReturn": -1
+        },
+        "expectedLayerAndFallByte": [
+          1,
+          2
+        ]
+      },
+      {
+        "name": "Equal layer heights choose lower",
+        "input": {
+          "sourceEdge": 20,
+          "lowerEdge": 18,
+          "upperEdge": 18,
+          "lowerCeiling": 0,
+          "upperCeiling": 0,
+          "occupancyReturn": -1
+        },
+        "expectedLayerAndFallByte": [
+          0,
+          2
+        ]
+      },
+      {
+        "name": "Both layers above origin reject",
+        "input": {
+          "sourceEdge": 20,
+          "lowerEdge": 21,
+          "upperEdge": 22,
+          "lowerCeiling": 0,
+          "upperCeiling": 0,
+          "occupancyReturn": -1
+        },
+        "expectedLayerAndFallByte": null
+      },
+      {
+        "name": "Only lower fits with exactly four headroom",
+        "input": {
+          "sourceEdge": 20,
+          "lowerEdge": 18,
+          "upperEdge": 25,
+          "lowerCeiling": 0,
+          "upperCeiling": 1,
+          "occupancyReturn": -1
+        },
+        "expectedLayerAndFallByte": [
+          0,
+          2
+        ]
+      },
+      {
+        "name": "Only lower fits with three headroom rejects",
+        "input": {
+          "sourceEdge": 20,
+          "lowerEdge": 18,
+          "upperEdge": 25,
+          "lowerCeiling": 0,
+          "upperCeiling": 2,
+          "occupancyReturn": -1
+        },
+        "expectedLayerAndFallByte": null
+      },
+      {
+        "name": "Only upper fits with exactly four headroom",
+        "input": {
+          "sourceEdge": 20,
+          "lowerEdge": 25,
+          "upperEdge": 18,
+          "lowerCeiling": 1,
+          "upperCeiling": 0,
+          "occupancyReturn": -1
+        },
+        "expectedLayerAndFallByte": [
+          1,
+          2
+        ]
+      },
+      {
+        "name": "Only upper fits with three headroom rejects",
+        "input": {
+          "sourceEdge": 20,
+          "lowerEdge": 25,
+          "upperEdge": 18,
+          "lowerCeiling": 2,
+          "upperCeiling": 0,
+          "occupancyReturn": -1
+        },
+        "expectedLayerAndFallByte": null
+      },
+      {
+        "name": "Occupied selected layer does not retry other layer",
+        "input": {
+          "sourceEdge": 20,
+          "lowerEdge": 20,
+          "upperEdge": 19,
+          "lowerCeiling": 0,
+          "upperCeiling": 0,
+          "occupancyReturn": 0
+        },
+        "expectedLayerAndFallByte": null
+      },
+      {
+        "name": "Invalid lookup result is not empty",
+        "input": {
+          "sourceEdge": 20,
+          "lowerEdge": 20,
+          "upperEdge": 255,
+          "lowerCeiling": 0,
+          "upperCeiling": 0,
+          "occupancyReturn": -2
+        },
+        "expectedLayerAndFallByte": null
+      },
+      {
+        "name": "Raw wide fall narrows to byte",
+        "input": {
+          "sourceEdge": 603,
+          "lowerEdge": 0,
+          "upperEdge": 0,
+          "lowerCeiling": 0,
+          "upperCeiling": 0,
+          "occupancyReturn": -1
+        },
+        "expectedLayerAndFallByte": [
+          0,
+          91
+        ]
+      }
+    ]
+  },
+  "occupancy": {
+    "call": "target_find_unit_at_tile(x,y,selectedLayer)",
+    "acceptedReturn": -1,
+    "rejected": "Every other return, including -2; do not treat all negatives as empty.",
+    "retryOtherLayer": false,
+    "sourceDelegate": "unit_find_at_tile(x,y,layer,0): no status filter. Blocked/untargetable tile returns-2; any occupied active slot is not empty."
+  },
+  "writes": {
+    "successOnly": [
+      "work0x801938ee=low8(sourceEdge-selectedEdge)",
+      "work0x801938ef=current ability target byte0x801938c1"
+    ],
+    "returns": "Selected layer0 or1 on success, -1 on failure. Layer argument to occupancy and success-return assignment use delay slots."
+  },
+  "dependencies": {
+    "mapLocation": "0x801810a0 battle_map_tile_calculate_unit_index: source-traced pure lower/upper layer tile index. Shared with earlier action-restriction study; no new general lookup behavior.",
+    "unitAtTile": "0x8017dc88 target_find_unit_at_tile delegates to0x8017dca8 unit_find_at_tile with filters0. Its supplied wrapper listing is next useful. Effective movement0x8017f020 remains another outer-knockback dependency."
+  },
+  "boundaries": [
+    "This checker allows equal edge heights, and the notes lower-than-origin phrase must not become strict<.",
+    "The four-half-unit headroom is relative to source edge, not destination floor or an actor body-height parameter. The crossed-layer byte5 accesses are verified arithmetic; no stronger geometric meaning than the source is inferred.",
+    "Blocked uses finite sentinel0xff. Do not replace it with infinity; wide byte-domain cases can select that numeric height and later fail the occupancy/collision check. No claim these cases occur on retail maps.",
+    "Edge coefficient is masked to two bits0..3; notes listing only0/1/2 do not establish rejection or clamping of3.",
+    "Only valid directions0..3 supplied by the parent are covered. Invalid direction falls through without initializing shift registers; no deterministic fallback is claimed.",
+    "The helper has no RNG, live movement, HP/fall damage, pending-flag or effect-bit writes. Parent and later resolution own those stages.",
+    "Failure does not clear previous fall-height/target work. Successful child writes can survive later parent depth/slope/surface rejection.",
+    "Current flat admitted behavior is unchanged; layered/slope/fall/mount/terrain expansion remains guarded/deferred."
+  ],
+  "validation": {
+    "referenceClean": true,
+    "sourceAudit": {
+      "formulaDescriptions": 24,
+      "actualDescriptions": 8,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false
+    },
+    "preparedDash": {
+      "abilityId": 147,
+      "range": 1,
+      "verticalTolerance": 1,
+      "formula": 55,
+      "y": 4,
+      "evadeable": false,
+      "directTrajectory": false,
+      "aiPhysical": true,
+      "aiDirectTrajectory": false,
+      "aiExhaustive": false,
+      "preparedVerified": true
+    },
+    "ownerBlobsVerified": 10,
+    "ownerApprovedCiEdit": {
+      "path": ".circleci/config.yml",
+      "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+      "committed": true,
+      "ciEnabledDefault": false
+    },
+    "runtimeChanged": false,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "runtimeTestsRerun": false,
+    "previousRuntimeValidationReceipt": "docs/evidence/combat/attack-up-martial-arts-trace-v1.json"
+  }
+}

@@ -1,0 +1,377 @@
+{
+  "format": "fft.dark-screen-intro-contract",
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "managedBase": "9e69322bc6692e8ae3f22c4fa7ce5153bdb41e46",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "specificationOnly": true,
+  "executed": false,
+  "profile": "Authored preloaded DarkScreen/general/Ready/release/synthetic exit then existing battle; no original event playback or measured duration.",
+  "operationCount": 9,
+  "taskCount": 3,
+  "maximumConcurrentLedgerTasks": 2,
+  "selectedMaximumDelay": 41,
+  "naturalExitFormula": "155 + generalHold + readyHold",
+  "cases": [
+    {
+      "id": "DSI-001",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "All three prevalidated definitions and readiness bindings",
+      "action": "Admit the fixed scene with adequate budgets",
+      "expected": "One clock/consumer/ledger; dark task sequence1 born at tick0 revision0, no draw/sample, pending class54 barrier; battle unavailable.",
+      "executed": false
+    },
+    {
+      "id": "DSI-002",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "Selected original delay grid with maximum41",
+      "action": "Advance ticks1..54 with false samples",
+      "expected": "Pre-update tile draws and exact original counters; still class54 at54, no display task or battle command.",
+      "executed": false
+    },
+    {
+      "id": "DSI-003",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "Entry last body at55",
+      "action": "Advance once from54",
+      "expected": "Same dark identity becomes Holding revision1 with final Tiles draw; parent remains waiting, no general admission yet.",
+      "executed": false
+    },
+    {
+      "id": "DSI-004",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "Holding first yield55",
+      "action": "Advance tick56 with Circle true",
+      "expected": "Parent observes class54 absent, starts general sequence2 and pending class56 barrier; dark first Flash; general birth sample discarded and no extra resume.",
+      "executed": false
+    },
+    {
+      "id": "DSI-005",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "General active over held dark",
+      "action": "Advance through natural display lifecycle",
+      "expected": "Exactly dark plus one display live; one tick per command; dark flash persists through general hidden/exit-yield gaps; no Ready overlap.",
+      "executed": false
+    },
+    {
+      "id": "DSI-006",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "Holds60/60, all samples false",
+      "action": "Observe general clear147 and tick148",
+      "expected": "General clears147 with pending parent; Ready sequence3 born148, scale48 initialization draw, no birth sample; general retained terminal.",
+      "executed": false
+    },
+    {
+      "id": "DSI-007",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "Ready birth148 hold60",
+      "action": "Observe release208, child216, dispatcher217 and next poll218",
+      "expected": "Same-tick dispatcher release precedes child fade; seven fade-out draws; child/dispatcher completion never opens battle; dark release waits until218.",
+      "executed": false
+    },
+    {
+      "id": "DSI-008",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "Dark held until ordered release218",
+      "action": "Advance release218 then219",
+      "expected": "Dark enters Leaving revision2 under same identity; final Flash218, reset delays with no body step; first release Tiles219.",
+      "executed": false
+    },
+    {
+      "id": "DSI-009",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "Natural60/60 release218",
+      "action": "Observe273/274/275",
+      "expected": "Last extra body273, dark terminal revision3 and empty draw274, event still pending; parent observes and synthetic exit publishes battle availability once275.",
+      "executed": false
+    },
+    {
+      "id": "DSI-010",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "Holds0/0, all samples false",
+      "action": "Advance to155",
+      "expected": "General birth56 clear87; Ready birth/release88 scale128; child96 dispatcher97; dark release98 clear154; exit155.",
+      "executed": false
+    },
+    {
+      "id": "DSI-011",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "Holds255/255, all samples false",
+      "action": "Advance to665",
+      "expected": "General clear342, Ready birth343 release598 child606 dispatcher607; dark release608 clear664; exit665.",
+      "executed": false
+    },
+    {
+      "id": "DSI-012",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "Holds60/60 with samples at1,55,56,57,59,60",
+      "action": "Advance to127",
+      "expected": "Dark ignores Circle; general birth56 discards sample, skip57 clear58; Ready birth59 discards sample, release60 child68 dispatcher69; dark release70 clear126; exit127.",
+      "executed": false
+    },
+    {
+      "id": "DSI-013",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "Natural general enters Hiding at136",
+      "action": "Compare Circle true versus false at137",
+      "expected": "General hiding/counters/draws and later timeline identical; no queued skip for Ready; dark unchanged.",
+      "executed": false
+    },
+    {
+      "id": "DSI-014",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "Admitted scene and protected managed bindings",
+      "action": "Supply wrong scene/owner/definition/revision/lastProcessedTick or forged worker",
+      "expected": "Reject whole candidate with original reference, empty trace, no identities/ticks or availability consumed.",
+      "executed": false
+    },
+    {
+      "id": "DSI-015",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "Fixed aggregate owns every task",
+      "action": "Attempt an external update or release injection",
+      "expected": "No external task mutation API is admitted; guarded entry rejects unsupported requests, including predicted future task identities; all state unchanged.",
+      "executed": false
+    },
+    {
+      "id": "DSI-016",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "Existing standalone DarkScreen executor before/after Holding",
+      "action": "Run its existing early/repeated/no-match release cases after any helper extraction",
+      "expected": "Existing accepted no-match behavior and traces remain unchanged; the combined program adds no pending early-release queue.",
+      "executed": false
+    },
+    {
+      "id": "DSI-017",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "Initial admission and tick56 general birth",
+      "action": "Use instruction budget1 then retry adequately",
+      "expected": "Failure after candidate admission restores initial snapshot, clock/identity counters and empty trace; retry equals clean full transaction.",
+      "executed": false
+    },
+    {
+      "id": "DSI-018",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "Natural tick146 before general completion147",
+      "action": "Advance with update budget0 then retry1",
+      "expected": "Late completion failure rolls back already advanced dark flash/counters and general/event state together; retry matches clean tick147.",
+      "executed": false
+    },
+    {
+      "id": "DSI-019",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "Entry tick54",
+      "action": "Advance55 with update budget0 then retry1",
+      "expected": "Holding phase publication failure rolls back every cell/draw/phase/clock; no partial revision1 leaks.",
+      "executed": false
+    },
+    {
+      "id": "DSI-020",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "Natural tick217 before dark release",
+      "action": "Advance218 with update budget0 then retry adequately",
+      "expected": "No release signal, phase/revision, barrier, input-sample progress, trace or tick is published on rejection.",
+      "executed": false
+    },
+    {
+      "id": "DSI-021",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "Invalid command and checked clock envelope",
+      "action": "Try missing Circle, budgets outside0..8192/0..64 and checked tick overflow",
+      "expected": "Reject deterministically with unchanged snapshot and empty trace; awaiting-tick versus ready-command rules remain closed.",
+      "executed": false
+    },
+    {
+      "id": "DSI-022",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "Identical initial definition and full explicit input schedule",
+      "action": "Replay while reading/rendering snapshots zero, once or many times",
+      "expected": "Identical complete states, cells, task traces, instruction/update counts and ownership; no wall clock, I/O or renderer facts.",
+      "executed": false
+    },
+    {
+      "id": "DSI-023",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "After all three workers complete",
+      "action": "Inspect ledger and call a post-exit advance",
+      "expected": "Three terminal tombstones retain sequences/revisions; gate publishes once; post-exit command rejects without a new tick or publication.",
+      "executed": false
+    },
+    {
+      "id": "DSI-024",
+      "implementationTicket": "ZOD-097",
+      "area": "core",
+      "setup": "A retained already-started or contaminated aggregate",
+      "action": "Attempt duplicate admission, restart or concurrent general/Ready",
+      "expected": "Reject without task identity reuse or worker replacement; at most dark plus one display ever live; Ready child has no extra ledger task.",
+      "executed": false
+    },
+    {
+      "id": "DSI-025",
+      "implementationTicket": "ZOD-098",
+      "area": "integration",
+      "setup": "New closed descriptor and derived IDs",
+      "action": "Parse valid schema then malformed/unknown/duplicate/null/oversized/colliding-ID/invalid-hold variants",
+      "expected": "Accept only authored pinned profile and exact fields, size/depth/ID limits; old formats/profiles stay unchanged and reject new fields.",
+      "executed": false
+    },
+    {
+      "id": "DSI-026",
+      "implementationTicket": "ZOD-098",
+      "area": "integration",
+      "setup": "Descriptor references three resource packages",
+      "action": "Remove or corrupt each manifest/payload or resource identity before launch",
+      "expected": "Failure before scene/window admission or new check output; no task/tick/sample/availability; partial graphics resources disposed.",
+      "executed": false
+    },
+    {
+      "id": "DSI-027",
+      "implementationTicket": "ZOD-098",
+      "area": "integration",
+      "setup": "Valid descriptor with wrong dark owner/provenance or wrong artwork/reference",
+      "action": "Try preparation/load/start",
+      "expected": "Reject deterministic binding/policy mismatch before admission; Ready uses its explicit image0/palette2 data, not inherited VRAM.",
+      "executed": false
+    },
+    {
+      "id": "DSI-028",
+      "implementationTicket": "ZOD-098",
+      "area": "integration",
+      "setup": "Same dark math/owner with different standalone preview holdFrames",
+      "action": "Run same combined holds and input schedule",
+      "expected": "Logical states/draws/traces and release depend only on Ready completion; no standalone timer/interpreter is attached; resource receipts may identify differing packages.",
+      "executed": false
+    },
+    {
+      "id": "DSI-029",
+      "implementationTicket": "ZOD-098",
+      "area": "integration",
+      "setup": "Explicit opaque RGB5 checker and actual prepared artwork",
+      "action": "Compose entry, held-general, held-Ready and release snapshots independently",
+      "expected": "Exact background then DarkScreen then active display order, per-component draw order/materials; deliberate reversed-layer control differs on a sensitive sample.",
+      "executed": false
+    },
+    {
+      "id": "DSI-030",
+      "implementationTicket": "ZOD-098",
+      "area": "integration",
+      "setup": "General and Ready hidden/yield/clear gaps",
+      "action": "Compose every accepted gap snapshot from a fresh background",
+      "expected": "Held dark remains visible; no prior-frame glyphs, general/Ready overlap, or double application/flattening of dark quads.",
+      "executed": false
+    },
+    {
+      "id": "DSI-031",
+      "implementationTicket": "ZOD-098",
+      "area": "integration",
+      "setup": "Finite Windows profile after graphics readiness",
+      "action": "Read back every captured native frame",
+      "expected": "Actual CPU/GPU pixels and independent combined model match at zero tolerance; receipt identifies authored profile and no original-duration claim.",
+      "executed": false
+    },
+    {
+      "id": "DSI-032",
+      "implementationTicket": "ZOD-098",
+      "area": "integration",
+      "setup": "One accepted state before/during/after transition",
+      "action": "Repeat or omit paints, recreate resources, resize and exercise focus handlers",
+      "expected": "All worker/event/task/battle state and ownership remain unchanged; a given snapshot recomposes identically after recreation.",
+      "executed": false
+    },
+    {
+      "id": "DSI-033",
+      "implementationTicket": "ZOD-098",
+      "area": "integration",
+      "setup": "Battle closed through dark clear274 in natural60/60",
+      "action": "Attempt all key/action/click/cursor/restart/save/load routes before exit",
+      "expected": "Battle state, CT, RNG, command journal, selection/mode/cursor remain frozen with no deferred command queued.",
+      "executed": false
+    },
+    {
+      "id": "DSI-034",
+      "implementationTicket": "ZOD-098",
+      "area": "integration",
+      "setup": "Accepted natural event exit275 with all three terminal",
+      "action": "Complete the host handoff update",
+      "expected": "One availability publication, zero battle commands/CT/RNG consumption in that call; view switches through existing battle host; no automatic first turn.",
+      "executed": false
+    },
+    {
+      "id": "DSI-035",
+      "implementationTicket": "ZOD-098",
+      "area": "integration",
+      "setup": "Queued/held keyboard and mouse across ownership or focus",
+      "action": "Baseline at handoff, then release and freshly press",
+      "expected": "Old intro presses and held buttons do not reach battle; later fresh command works; programmed probes do not claim physical USB/display latency.",
+      "executed": false
+    },
+    {
+      "id": "DSI-036",
+      "implementationTicket": "ZOD-098",
+      "area": "integration",
+      "setup": "Battle available after new introduction",
+      "action": "Run existing headless/native battle scenario and restart",
+      "expected": "Existing rules/formulas/replay/RNG/journal/save schema preserved; restart resets battle only, without replaying the introduction.",
+      "executed": false
+    },
+    {
+      "id": "DSI-037",
+      "implementationTicket": "ZOD-098",
+      "area": "integration",
+      "setup": "Recorded finite native scenarios with preserved old outputs",
+      "action": "Run normal/repeat, zero, maximum, skip, hide-Circle and isolated cases",
+      "expected": "Stay within at most7 Windows processes, 4096 ticks and120 seconds each; normal content artifacts repeat; old standalone and intro artifacts/traces remain exact.",
+      "executed": false
+    },
+    {
+      "id": "DSI-038",
+      "implementationTicket": "ZOD-098",
+      "area": "integration",
+      "setup": "Only required prepared roots accessible",
+      "action": "Run isolated prepared-only native case",
+      "expected": "No original BIN/archive/state, C reference, emulator or native PS1 library is required/read by the running application; output equals normal content.",
+      "executed": false
+    },
+    {
+      "id": "DSI-039",
+      "implementationTicket": "ZOD-098",
+      "area": "integration",
+      "setup": "Injected initial graphics failure or later resource recreation failure",
+      "action": "Exercise readiness boundary and fail recreation without advancing",
+      "expected": "No initial scene/check output before readiness; later failure cannot publish simulation progress or battle availability.",
+      "executed": false
+    },
+    {
+      "id": "DSI-040",
+      "implementationTicket": "ZOD-098",
+      "area": "manual",
+      "setup": "Labeled original-independent authored gallery",
+      "action": "Owner reviews entry, dark-under-general/Ready, hidden gaps, release tail and battle switch",
+      "expected": "Record new gallery identity and separate owner approval; prior standalone/original gallery approvals do not automatically approve this composition.",
+      "executed": false
+    }
+  ]
+}

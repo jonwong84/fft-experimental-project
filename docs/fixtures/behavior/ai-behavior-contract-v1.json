@@ -1,0 +1,1377 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-326",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "vectors": [
+    {
+      "id": "bit0",
+      "flags": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": true,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit1",
+      "flags": [
+        2,
+        0,
+        0,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": true,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit2",
+      "flags": [
+        4,
+        0,
+        0,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": true,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit3",
+      "flags": [
+        8,
+        0,
+        0,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": true,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit4",
+      "flags": [
+        16,
+        0,
+        0,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": true,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit5",
+      "flags": [
+        32,
+        0,
+        0,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": true,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit6",
+      "flags": [
+        64,
+        0,
+        0,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": true,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit7",
+      "flags": [
+        128,
+        0,
+        0,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": true,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit8",
+      "flags": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": true,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit9",
+      "flags": [
+        0,
+        2,
+        0,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": true,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit10",
+      "flags": [
+        0,
+        4,
+        0,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": true,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit11",
+      "flags": [
+        0,
+        8,
+        0,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": true,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit12",
+      "flags": [
+        0,
+        16,
+        0,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": true,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit13",
+      "flags": [
+        0,
+        32,
+        0,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": true,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit14",
+      "flags": [
+        0,
+        64,
+        0,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": true,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit15",
+      "flags": [
+        0,
+        128,
+        0,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": true,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit16",
+      "flags": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": true,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit17",
+      "flags": [
+        0,
+        0,
+        2,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": true,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit18",
+      "flags": [
+        0,
+        0,
+        4,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": true
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit19",
+      "flags": [
+        0,
+        0,
+        8,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": true
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit20",
+      "flags": [
+        0,
+        0,
+        16,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": true
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit21",
+      "flags": [
+        0,
+        0,
+        32,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": true
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit22",
+      "flags": [
+        0,
+        0,
+        64,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": true,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit23",
+      "flags": [
+        0,
+        0,
+        128,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": true,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit24",
+      "flags": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": true,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "bit25",
+      "flags": [
+        0,
+        0,
+        0,
+        2
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": true
+      }
+    },
+    {
+      "id": "bit26",
+      "flags": [
+        0,
+        0,
+        0,
+        4
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": true
+      }
+    },
+    {
+      "id": "bit27",
+      "flags": [
+        0,
+        0,
+        0,
+        8
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": true
+      }
+    },
+    {
+      "id": "bit28",
+      "flags": [
+        0,
+        0,
+        0,
+        16
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": true
+      }
+    },
+    {
+      "id": "bit29",
+      "flags": [
+        0,
+        0,
+        0,
+        32
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": true
+      }
+    },
+    {
+      "id": "bit30",
+      "flags": [
+        0,
+        0,
+        0,
+        64
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": true
+      }
+    },
+    {
+      "id": "bit31",
+      "flags": [
+        0,
+        0,
+        0,
+        128
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": true,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "Accumulate",
+      "flags": [
+        9,
+        128,
+        0,
+        129
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": true,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": true,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": true,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": true,
+        "motion": true,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "ThrowStone",
+      "flags": [
+        130,
+        2,
+        65,
+        129
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": true,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": true,
+          "AffectedBySilence": false,
+          "Evadeable": true,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": true,
+          "MagicalAttack": false,
+          "DirectTrajectory": true,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": true,
+        "motion": true,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "Dash",
+      "flags": [
+        130,
+        2,
+        1,
+        129
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": true,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": true,
+          "AffectedBySilence": false,
+          "Evadeable": true,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": true,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": true,
+        "motion": true,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "all-zero",
+      "flags": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": false,
+          "TargetsEnemies": false,
+          "Unequips": false,
+          "AffectsStats": false,
+          "AddsStatus": false,
+          "CancelsStatus": false,
+          "AffectsMp": false,
+          "AffectsHp": false,
+          "AffectedBySilence": false,
+          "Evadeable": false,
+          "AffectedByFaith": false,
+          "RandomUse": false,
+          "FollowTarget": false,
+          "UndeadReverse": false,
+          "Reflectable": false,
+          "TargetsMapTiles": false,
+          "PhysicalAttack": false,
+          "MagicalAttack": false,
+          "DirectTrajectory": false,
+          "ArcTrajectory": false,
+          "HasExhaustiveAreaShape": false
+        },
+        "usable": false,
+        "motion": false,
+        "unresolved": false
+      }
+    },
+    {
+      "id": "all-set",
+      "flags": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "expected": {
+        "behavior": {
+          "TargetsAllies": true,
+          "TargetsEnemies": true,
+          "Unequips": true,
+          "AffectsStats": true,
+          "AddsStatus": true,
+          "CancelsStatus": true,
+          "AffectsMp": true,
+          "AffectsHp": true,
+          "AffectedBySilence": true,
+          "Evadeable": true,
+          "AffectedByFaith": true,
+          "RandomUse": true,
+          "FollowTarget": true,
+          "UndeadReverse": true,
+          "Reflectable": true,
+          "TargetsMapTiles": true,
+          "PhysicalAttack": true,
+          "MagicalAttack": true,
+          "DirectTrajectory": true,
+          "ArcTrajectory": true,
+          "HasExhaustiveAreaShape": true
+        },
+        "usable": true,
+        "motion": true,
+        "unresolved": true
+      }
+    }
+  ]
+}

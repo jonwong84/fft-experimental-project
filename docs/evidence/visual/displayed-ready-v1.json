@@ -1,0 +1,2463 @@
+{
+  "format": "fft.ready-displayed-validation",
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "managedBase": "70629be2e6f0bba0e353ee2553f31f7554de401c",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referencePathsClean": true,
+  "policy": "ready-glyph-rgb5-v1",
+  "sourcePaths": [
+    "src/event/require/conditions.c",
+    "src/event/require/entry_conditions.c",
+    "src/event/require/screen_support.c",
+    "src/lib/thread/scheduler.c",
+    "src/battle/frame.c",
+    "src/battle/entry.c",
+    "src/lib/menu/display.c",
+    "src/event/require/entry_dark_screen.c"
+  ],
+  "sourceStudy": {
+    "localPath": "scratch/ready-source-083-g/report.json",
+    "bytes": 15965,
+    "sha256": "eb031e71ef2c4dac8e2ebc80affcbc1e109b6ff22516a184aab8bf05503a2951"
+  },
+  "originalInputs": [
+    {
+      "localPath": "scratch/all-data-extraction/EVENT/REQUIRE.OUT",
+      "bytes": 127684,
+      "sha256": "97112c50c0b037b2cb5c9d93ae9e2a7506b582c5edbd86a1debfb7ab8e777630"
+    },
+    {
+      "localPath": "scratch/all-data-extraction/EVENT/BONUS.BIN",
+      "bytes": 958464,
+      "sha256": "c5d881b1fb62c04d1d7f0e5238faff4131676165c08e35b5cadb68b21c89165f"
+    },
+    {
+      "localPath": "scratch/all-data-extraction/EVENT/TEST.EVT",
+      "bytes": 4096000,
+      "sha256": "107b109254ccbb150aca7baf336b632837b22e340677e2b9e746ac61b3de4405"
+    },
+    {
+      "localPath": "scratch/all-data-extraction/BATTLE.BIN",
+      "bytes": 1397096,
+      "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94"
+    }
+  ],
+  "entryState": {
+    "localPath": "scratch/banner-circle-hold-exit-a/first/states/fft-clean-base-game.state.auto",
+    "bytes": 1492949,
+    "sha256": "1bfcadf28adcbea4c4cd6859df6997399d216a1e3226a4b4c8512838466672d5"
+  },
+  "originalCode": [
+    {
+      "address": 2149359532,
+      "fileOffset": 44972,
+      "bytes": 1688,
+      "sha256": "ac96742eb4a60b7889e6f5093d0211f46d1efecde99e788c168303a48c5e02ce"
+    },
+    {
+      "address": 2149363668,
+      "fileOffset": 49108,
+      "bytes": 392,
+      "sha256": "5daba3919c5bcdeb01c189f145ee30d788d1fd7a5f531caf763dc7233bfc500e"
+    },
+    {
+      "address": 2149333924,
+      "fileOffset": 19364,
+      "bytes": 108,
+      "sha256": "0a5f70e3ab9123be15c716df228b9159fc826deea3af916141918e7ec862200a"
+    },
+    {
+      "address": 2149354808,
+      "fileOffset": 40248,
+      "bytes": 292,
+      "sha256": "f259cec1a6ecdc8c38eda15b979367e22ed8046a483578189703a2acb88431d0"
+    },
+    {
+      "address": 2149338820,
+      "fileOffset": 24260,
+      "bytes": 124,
+      "sha256": "a81f2c639ae71f983c606eebc75ddb3955f5aae62a4a237070e698516ab2dec5"
+    },
+    {
+      "address": 2148088472,
+      "bytes": 344,
+      "sha256": "1b36797b7b673151d2baac9dc6f5219504ece941251149af47fcd25d33191055"
+    },
+    {
+      "address": 2147981976,
+      "bytes": 1852,
+      "sha256": "8ada54ca495c6cab8d6372374082be64cffb75a11682a2e7f0a5a6bcca21939f"
+    },
+    {
+      "address": 2147605416,
+      "bytes": 328,
+      "sha256": "52593b17cb59da9fca39f2dc7b537615812a1c5bd54f4551bef0a6d1ae270aa2"
+    },
+    {
+      "address": 2147605744,
+      "bytes": 156,
+      "sha256": "65614fd4dad4c750ef5a792b8f0533e19ade2d4ff23ffb7e2ed68445e7162347"
+    },
+    {
+      "address": 2148845912,
+      "bytes": 60,
+      "sha256": "23aa4a3549fe6cb707b4f4e7a19e7f36356ce2411a96dfbb3d64c6fc5d1c2392"
+    },
+    {
+      "address": 2148846032,
+      "bytes": 76,
+      "sha256": "29370957c26343c793a1c82447b0b7e40b38718e28ed7dcca189978d9b8b37f9"
+    }
+  ],
+  "sourceSelectionRanges": [
+    {
+      "address": 2149389628,
+      "fileOffset": 75068,
+      "bytes": 2,
+      "sha256": "40d88127d4d31a3891f41598eeed41174e5bc89b1eb9bbd66a8cbfc09956a3fd"
+    },
+    {
+      "address": 2149388008,
+      "fileOffset": 73448,
+      "bytes": 72,
+      "sha256": "d683d8cf6f60818ad871f1e5a2dc3338e9541530bbba6c4dfc59ea21ed10168c"
+    },
+    {
+      "address": 2149389640,
+      "fileOffset": 75080,
+      "bytes": 120,
+      "sha256": "6e49be7cf5a0f2156e1e865289df2ba4305eae1a9bd9717c226a0e484bea4961"
+    },
+    {
+      "address": 2149384304,
+      "fileOffset": 69744,
+      "bytes": 8,
+      "sha256": "f83702f2efe22401f556e941c19d84fc387c944a3b7c77de8abaa225ef2ee849"
+    }
+  ],
+  "preparedInputs": [
+    {
+      "localPath": "scratch/ready-086-artwork-a/assets.manifest.json",
+      "bytes": 682,
+      "sha256": "251b40e4bff16bc9876d35539a9527ad28ffb9433e856da1ac3e8b51b28460a0"
+    },
+    {
+      "localPath": "scratch/ready-086-artwork-a/artwork.json",
+      "bytes": 3912,
+      "sha256": "4099de6a8317bfe29054e70e585b3466b24df05b90d0365804e0f16c13f5a7dd"
+    },
+    {
+      "localPath": "scratch/ready-086-artwork-a/indices.bin",
+      "bytes": 51200,
+      "sha256": "515778839288e154c76e51db57a44e82c63a8e27c079bf3a1803136e389191dd"
+    },
+    {
+      "localPath": "scratch/ready-086-artwork-a/palette-2.bin",
+      "bytes": 32,
+      "sha256": "06ab76ecb265e6f4a40d0abf00812d2ac0f2817c4d20c80b69a502c2978b3256"
+    }
+  ],
+  "plans": [
+    {
+      "localPath": "scratch/ready-displayed-087-d/plan.json",
+      "bytes": 5820,
+      "sha256": "7b831d8c70a821ee422ec23d0eea6ffe072a8e8e0e0a87c77346a7aa0183b971"
+    },
+    {
+      "localPath": "scratch/ready-displayed-087-e/plan.json",
+      "bytes": 5820,
+      "sha256": "7b831d8c70a821ee422ec23d0eea6ffe072a8e8e0e0a87c77346a7aa0183b971"
+    }
+  ],
+  "reports": [
+    {
+      "localPath": "scratch/ready-displayed-087-d/report.json",
+      "bytes": 159801,
+      "sha256": "57b16dfa1102798da38da5dd10608ee626a71bbacfc94db671e9c1dba18cd2ac"
+    },
+    {
+      "localPath": "scratch/ready-displayed-087-e/report.json",
+      "bytes": 159801,
+      "sha256": "9077a68f7bb3b074246109d54d6da1553863ab137105d8ba1226b113ed9d1aeb"
+    }
+  ],
+  "finiteSelectionReports": [
+    {
+      "localPath": "scratch/ready-087-selection-b/report.json",
+      "bytes": 16306,
+      "sha256": "3a7f83d5224eec1b00fe6e4e5250cf2440444e826880cdf23cb011afde7c1531"
+    },
+    {
+      "localPath": "scratch/ready-087-selection-c/report.json",
+      "bytes": 32541,
+      "sha256": "f9bf3e19dd728352c2a314f1beea365782d67e123ffeb85732f0bc4ea97eef37"
+    }
+  ],
+  "retainedFailedComparisons": [
+    "scratch/ready-displayed-087-preflight-a",
+    "scratch/ready-displayed-087-a"
+  ],
+  "repeatability": {
+    "exact": true,
+    "artifactCount": 96,
+    "artifacts": [
+      {
+        "relativePath": "008-background.png",
+        "bytes": 36564,
+        "sha256": "569b65e2c3cc7deae19ee4ab5fc184b43ce4bfa685714f798ab541f5c4a5de1b"
+      },
+      {
+        "relativePath": "008-csharp.png",
+        "bytes": 37978,
+        "sha256": "3c8a0c86edff7bca16dec9bf6ea457a1c946a17aa050e180979a5b7142f97967"
+      },
+      {
+        "relativePath": "008-original.png",
+        "bytes": 37978,
+        "sha256": "3c8a0c86edff7bca16dec9bf6ea457a1c946a17aa050e180979a5b7142f97967"
+      },
+      {
+        "relativePath": "010-background.png",
+        "bytes": 36344,
+        "sha256": "96c7b85460bc52bca0100089e50c75e124edf8dd7b5780716553dbd0eb4d4941"
+      },
+      {
+        "relativePath": "010-csharp.png",
+        "bytes": 37814,
+        "sha256": "fc0b3e7e9ce01323fa113f45a7bb58f17bb1e3298734b280d2da70b2783afe52"
+      },
+      {
+        "relativePath": "010-original.png",
+        "bytes": 37814,
+        "sha256": "fc0b3e7e9ce01323fa113f45a7bb58f17bb1e3298734b280d2da70b2783afe52"
+      },
+      {
+        "relativePath": "060-background.png",
+        "bytes": 36503,
+        "sha256": "ea33a509643a1e50a65b6ad13b736cdce33866c4f3d413813a84121755a03ba2"
+      },
+      {
+        "relativePath": "060-csharp.png",
+        "bytes": 37918,
+        "sha256": "57eb567d013b7a62406a5715ddb2f35b192a0e9d891cbe1ec67f2dfced47b3a3"
+      },
+      {
+        "relativePath": "060-original.png",
+        "bytes": 37918,
+        "sha256": "57eb567d013b7a62406a5715ddb2f35b192a0e9d891cbe1ec67f2dfced47b3a3"
+      },
+      {
+        "relativePath": "064-background.png",
+        "bytes": 36237,
+        "sha256": "7aeac6e186e187ab3ed1d1c068a47156a70a55d02eff2f594624e8b83d5f9976"
+      },
+      {
+        "relativePath": "064-csharp.png",
+        "bytes": 37514,
+        "sha256": "ee5bab958ec41312b6294e5a174d44ac5992f49c1a88efa8a863767f54555c3a"
+      },
+      {
+        "relativePath": "064-original.png",
+        "bytes": 37514,
+        "sha256": "ee5bab958ec41312b6294e5a174d44ac5992f49c1a88efa8a863767f54555c3a"
+      },
+      {
+        "relativePath": "066-background.png",
+        "bytes": 36465,
+        "sha256": "9483983a9967905b8d5aec503931592843ea567fa13b78621cd7b557c5f97692"
+      },
+      {
+        "relativePath": "066-csharp.png",
+        "bytes": 37521,
+        "sha256": "8db82a48cea97ecc67f53270d0660c556ff3ab1bb68210fc321d422d54e90052"
+      },
+      {
+        "relativePath": "066-original.png",
+        "bytes": 37521,
+        "sha256": "8db82a48cea97ecc67f53270d0660c556ff3ab1bb68210fc321d422d54e90052"
+      },
+      {
+        "relativePath": "067-background.png",
+        "bytes": 36350,
+        "sha256": "81eacb9ca6c46e7bb5b0337e6a74ac219a9597d0e8c18a39045e94142ebd4e31"
+      },
+      {
+        "relativePath": "067-csharp.png",
+        "bytes": 36350,
+        "sha256": "81eacb9ca6c46e7bb5b0337e6a74ac219a9597d0e8c18a39045e94142ebd4e31"
+      },
+      {
+        "relativePath": "067-original.png",
+        "bytes": 36350,
+        "sha256": "81eacb9ca6c46e7bb5b0337e6a74ac219a9597d0e8c18a39045e94142ebd4e31"
+      },
+      {
+        "relativePath": "background-008.rgba",
+        "bytes": 245760,
+        "sha256": "e17636002af04ed9a7fb1b5b172059c112a1650009aba68757f1c22b3f8e04c6"
+      },
+      {
+        "relativePath": "background-010.rgba",
+        "bytes": 245760,
+        "sha256": "c6f5907b84e0f0c72e46cd7f6e5ab7bd92312102c78d739f2dbede4ae5b2037b"
+      },
+      {
+        "relativePath": "background-060.rgba",
+        "bytes": 245760,
+        "sha256": "a5fa6069e75759c0b35d55caa9bc254734a0142720ba6fc51311b2d9b9c147e7"
+      },
+      {
+        "relativePath": "background-064.rgba",
+        "bytes": 245760,
+        "sha256": "6d203df6860c313ff34a41a3d6918b86be4d56bdc42140c90ecf23a9d4e1a8ab"
+      },
+      {
+        "relativePath": "background-066.rgba",
+        "bytes": 245760,
+        "sha256": "a9eccf62bbcbb79c2879c8b993f8e80adabac6a0b5a784e26a45fb3197278f60"
+      },
+      {
+        "relativePath": "background-067.rgba",
+        "bytes": 245760,
+        "sha256": "1dd90adf5a18e1d47fdd1839a17aec0f4f8bb5aac5d987f0a73b8fed398a114a"
+      },
+      {
+        "relativePath": "probe.state",
+        "bytes": 1492922,
+        "sha256": "9a13284eb2ed3cbd0a40252e28f8dad4426f5208b1e72020383529ce5205ff98"
+      },
+      {
+        "relativePath": "native/check.json",
+        "bytes": 16620,
+        "sha256": "c5889f0ce777b16e4e01ebb4739fb7854e24bd60ca901a9e6e605a1cd3fea336"
+      },
+      {
+        "relativePath": "native/tick-008.rgba",
+        "bytes": 245760,
+        "sha256": "8f483e5998fc57c3a02a0c35b74519ab750800f6ee7499daedd728abc16b8a6b"
+      },
+      {
+        "relativePath": "native/tick-010.rgba",
+        "bytes": 245760,
+        "sha256": "c99efbebdad0453bd7b35b0b494827dd821edde1d600c9c647db4826136a11b2"
+      },
+      {
+        "relativePath": "native/tick-060.rgba",
+        "bytes": 245760,
+        "sha256": "3d315b350e045b697dd6fa64510e4c609d8dfbbeeeae4b030227323729173524"
+      },
+      {
+        "relativePath": "native/tick-064.rgba",
+        "bytes": 245760,
+        "sha256": "ea2426e6ad1943452072d26debd13714bd0aaa129c3155cda987a099ee38f8d8"
+      },
+      {
+        "relativePath": "native/tick-066.rgba",
+        "bytes": 245760,
+        "sha256": "3ced8e96e55df65e12e0d7949f4dbf305795b93d2f7a52af102a2c46b1c021bb"
+      },
+      {
+        "relativePath": "native/tick-067.rgba",
+        "bytes": 245760,
+        "sha256": "1dd90adf5a18e1d47fdd1839a17aec0f4f8bb5aac5d987f0a73b8fed398a114a"
+      },
+      {
+        "relativePath": "original-018/frame.png",
+        "bytes": 40152,
+        "sha256": "0f16867384654646f191def72713016e62517c38044055683df0e30a56645e47"
+      },
+      {
+        "relativePath": "original-022/frame.png",
+        "bytes": 39968,
+        "sha256": "55aad24a0d4c46b12ce7f35d38a7a562f12ff70f74bfdea78bfd86a2a681874b"
+      },
+      {
+        "relativePath": "original-026/frame.png",
+        "bytes": 39782,
+        "sha256": "1070b77917052a46bbb35e757460142ab9c4b1b92f8157904df1c7b597704762"
+      },
+      {
+        "relativePath": "original-122/frame.png",
+        "bytes": 39754,
+        "sha256": "f122a047d70e8ea6fd93b199e81bb0f71af600f82599ba46ee40b61049b504c9"
+      },
+      {
+        "relativePath": "original-126/frame.png",
+        "bytes": 39925,
+        "sha256": "d3f7a8c10e7a0f08c0caf2d42b2a9fa9656f6996cc104ce7f5c79b53d83a2862"
+      },
+      {
+        "relativePath": "original-130/frame.png",
+        "bytes": 39512,
+        "sha256": "04cedb3aae144aa0195658a9db4177ee695e681c6ec7fb3ad66932e9c18edcb6"
+      },
+      {
+        "relativePath": "original-134/frame.png",
+        "bytes": 39295,
+        "sha256": "210de7a4cfa9b4e4c236a28b4565dafa04980d6435cbdfd507d3c856478436bb"
+      },
+      {
+        "relativePath": "original-136/frame.png",
+        "bytes": 39573,
+        "sha256": "4bf3b9aeaabfabfdc2ac7a3175870d3c760cff4c741b3c82103e26c34de6d30e"
+      },
+      {
+        "relativePath": "original-138/frame.png",
+        "bytes": 39467,
+        "sha256": "79b1aaebb3e7eb1416a22247da332f81ed371076bd9d51bad580937080e2537b"
+      },
+      {
+        "relativePath": "original-140/frame.png",
+        "bytes": 38744,
+        "sha256": "58c0dc6484af81a625695e9db25fafdaaa729f002df3cef06d770827b2bc8e5c"
+      },
+      {
+        "relativePath": "probe-022/frame.png",
+        "bytes": 38960,
+        "sha256": "265e6f0c2b08bef1028fab416398fa12e8f8ceb298de01f88baf67657d9a996f"
+      },
+      {
+        "relativePath": "probe-026/frame.png",
+        "bytes": 38761,
+        "sha256": "8b45ed96c24372ff1785059d5183754f2037ea80a72cf48bf757d6e62b15bb5f"
+      },
+      {
+        "relativePath": "probe-126/frame.png",
+        "bytes": 38998,
+        "sha256": "1d1f39b79056a2ef9a1989d4e0c16cb5d3e95710d72bd48e7bd1713f23399da6"
+      },
+      {
+        "relativePath": "probe-134/frame.png",
+        "bytes": 38510,
+        "sha256": "202b6a0c90ad50ddab99bb359fbc9f13ef4aeaeb47baba81a4ae9db78c54f216"
+      },
+      {
+        "relativePath": "probe-138/frame.png",
+        "bytes": 38813,
+        "sha256": "669fa689a25106a88d93af3248b3716ec1ad7b45716426e27d7e5235eca68cd3"
+      },
+      {
+        "relativePath": "probe-140/frame.png",
+        "bytes": 38744,
+        "sha256": "58c0dc6484af81a625695e9db25fafdaaa729f002df3cef06d770827b2bc8e5c"
+      },
+      {
+        "relativePath": "original-018/states/fft-clean-base-game.state",
+        "bytes": 1492949,
+        "sha256": "1bfcadf28adcbea4c4cd6859df6997399d216a1e3226a4b4c8512838466672d5"
+      },
+      {
+        "relativePath": "original-018/states/fft-clean-base-game.state.auto",
+        "bytes": 1494634,
+        "sha256": "07c026106cdb1567492f1e0cf0c2cd3513d05c4dabf55efc0abc7a6b58c5d81c"
+      },
+      {
+        "relativePath": "original-018/states/fft-clean-base-game.state.auto.png",
+        "bytes": 40152,
+        "sha256": "0f16867384654646f191def72713016e62517c38044055683df0e30a56645e47"
+      },
+      {
+        "relativePath": "original-022/states/fft-clean-base-game.state",
+        "bytes": 1492949,
+        "sha256": "1bfcadf28adcbea4c4cd6859df6997399d216a1e3226a4b4c8512838466672d5"
+      },
+      {
+        "relativePath": "original-022/states/fft-clean-base-game.state.auto",
+        "bytes": 1494672,
+        "sha256": "01a20b8c3d7b61b1cac5dd9a5427516b9eef72bbf261914372a3a6e205e2c144"
+      },
+      {
+        "relativePath": "original-022/states/fft-clean-base-game.state.auto.png",
+        "bytes": 39968,
+        "sha256": "55aad24a0d4c46b12ce7f35d38a7a562f12ff70f74bfdea78bfd86a2a681874b"
+      },
+      {
+        "relativePath": "original-026/states/fft-clean-base-game.state",
+        "bytes": 1492949,
+        "sha256": "1bfcadf28adcbea4c4cd6859df6997399d216a1e3226a4b4c8512838466672d5"
+      },
+      {
+        "relativePath": "original-026/states/fft-clean-base-game.state.auto",
+        "bytes": 1494476,
+        "sha256": "6a0a6b3ef0b9273d766305475cab4d0e500116ba498ef0584e174a52bd2310c3"
+      },
+      {
+        "relativePath": "original-026/states/fft-clean-base-game.state.auto.png",
+        "bytes": 39782,
+        "sha256": "1070b77917052a46bbb35e757460142ab9c4b1b92f8157904df1c7b597704762"
+      },
+      {
+        "relativePath": "original-122/states/fft-clean-base-game.state",
+        "bytes": 1492949,
+        "sha256": "1bfcadf28adcbea4c4cd6859df6997399d216a1e3226a4b4c8512838466672d5"
+      },
+      {
+        "relativePath": "original-122/states/fft-clean-base-game.state.auto",
+        "bytes": 1496613,
+        "sha256": "0e9d60e7c78e5d6ced0b03e27b53c9c9442f252a5502c8c23b5ab4b23d96d298"
+      },
+      {
+        "relativePath": "original-122/states/fft-clean-base-game.state.auto.png",
+        "bytes": 39754,
+        "sha256": "f122a047d70e8ea6fd93b199e81bb0f71af600f82599ba46ee40b61049b504c9"
+      },
+      {
+        "relativePath": "original-126/states/fft-clean-base-game.state",
+        "bytes": 1492949,
+        "sha256": "1bfcadf28adcbea4c4cd6859df6997399d216a1e3226a4b4c8512838466672d5"
+      },
+      {
+        "relativePath": "original-126/states/fft-clean-base-game.state.auto",
+        "bytes": 1496652,
+        "sha256": "365d8f8fc39cd67f635814976a3da8c89dbe559ff4254d2b10b064d19ab32fa9"
+      },
+      {
+        "relativePath": "original-126/states/fft-clean-base-game.state.auto.png",
+        "bytes": 39925,
+        "sha256": "d3f7a8c10e7a0f08c0caf2d42b2a9fa9656f6996cc104ce7f5c79b53d83a2862"
+      },
+      {
+        "relativePath": "original-130/states/fft-clean-base-game.state",
+        "bytes": 1492949,
+        "sha256": "1bfcadf28adcbea4c4cd6859df6997399d216a1e3226a4b4c8512838466672d5"
+      },
+      {
+        "relativePath": "original-130/states/fft-clean-base-game.state.auto",
+        "bytes": 1495974,
+        "sha256": "278ebae0746ade6663ed5077525370985f46ba98edaff50747caebac93504857"
+      },
+      {
+        "relativePath": "original-130/states/fft-clean-base-game.state.auto.png",
+        "bytes": 39512,
+        "sha256": "04cedb3aae144aa0195658a9db4177ee695e681c6ec7fb3ad66932e9c18edcb6"
+      },
+      {
+        "relativePath": "original-134/states/fft-clean-base-game.state",
+        "bytes": 1492949,
+        "sha256": "1bfcadf28adcbea4c4cd6859df6997399d216a1e3226a4b4c8512838466672d5"
+      },
+      {
+        "relativePath": "original-134/states/fft-clean-base-game.state.auto",
+        "bytes": 1495448,
+        "sha256": "86173d3d22c5743538877343955c20f59b8f3f6e41bbec59928b1c9b1473fd56"
+      },
+      {
+        "relativePath": "original-134/states/fft-clean-base-game.state.auto.png",
+        "bytes": 39295,
+        "sha256": "210de7a4cfa9b4e4c236a28b4565dafa04980d6435cbdfd507d3c856478436bb"
+      },
+      {
+        "relativePath": "original-136/states/fft-clean-base-game.state",
+        "bytes": 1492949,
+        "sha256": "1bfcadf28adcbea4c4cd6859df6997399d216a1e3226a4b4c8512838466672d5"
+      },
+      {
+        "relativePath": "original-136/states/fft-clean-base-game.state.auto",
+        "bytes": 1494784,
+        "sha256": "9f140794b09df218ed4e5b4eb06eff12ebfaf12e0a1c0679f88f41772fd05295"
+      },
+      {
+        "relativePath": "original-136/states/fft-clean-base-game.state.auto.png",
+        "bytes": 39573,
+        "sha256": "4bf3b9aeaabfabfdc2ac7a3175870d3c760cff4c741b3c82103e26c34de6d30e"
+      },
+      {
+        "relativePath": "original-138/states/fft-clean-base-game.state",
+        "bytes": 1492949,
+        "sha256": "1bfcadf28adcbea4c4cd6859df6997399d216a1e3226a4b4c8512838466672d5"
+      },
+      {
+        "relativePath": "original-138/states/fft-clean-base-game.state.auto",
+        "bytes": 1492852,
+        "sha256": "a6cdc73a896d699735bd46979e0f770d4ef2e1a5f5b7e548f15a3594306a4a06"
+      },
+      {
+        "relativePath": "original-138/states/fft-clean-base-game.state.auto.png",
+        "bytes": 39467,
+        "sha256": "79b1aaebb3e7eb1416a22247da332f81ed371076bd9d51bad580937080e2537b"
+      },
+      {
+        "relativePath": "original-140/states/fft-clean-base-game.state",
+        "bytes": 1492949,
+        "sha256": "1bfcadf28adcbea4c4cd6859df6997399d216a1e3226a4b4c8512838466672d5"
+      },
+      {
+        "relativePath": "original-140/states/fft-clean-base-game.state.auto",
+        "bytes": 1490722,
+        "sha256": "3c6bc7197b001c080e007a08c894325b56e35f90b42760ca2a4f7d1f399a143a"
+      },
+      {
+        "relativePath": "original-140/states/fft-clean-base-game.state.auto.png",
+        "bytes": 38744,
+        "sha256": "58c0dc6484af81a625695e9db25fafdaaa729f002df3cef06d770827b2bc8e5c"
+      },
+      {
+        "relativePath": "probe-022/states/fft-clean-base-game.state",
+        "bytes": 1492922,
+        "sha256": "9a13284eb2ed3cbd0a40252e28f8dad4426f5208b1e72020383529ce5205ff98"
+      },
+      {
+        "relativePath": "probe-022/states/fft-clean-base-game.state.auto",
+        "bytes": 1491596,
+        "sha256": "9ce493d704f8efdf0bc99231dfbe63f59a68a45464e7668222d449e4a0693f2e"
+      },
+      {
+        "relativePath": "probe-022/states/fft-clean-base-game.state.auto.png",
+        "bytes": 38960,
+        "sha256": "265e6f0c2b08bef1028fab416398fa12e8f8ceb298de01f88baf67657d9a996f"
+      },
+      {
+        "relativePath": "probe-026/states/fft-clean-base-game.state",
+        "bytes": 1492922,
+        "sha256": "9a13284eb2ed3cbd0a40252e28f8dad4426f5208b1e72020383529ce5205ff98"
+      },
+      {
+        "relativePath": "probe-026/states/fft-clean-base-game.state.auto",
+        "bytes": 1491340,
+        "sha256": "22579bf6ca689d23d38806967e6fd56118a751cfc7bf348b71d7a200dce7cce2"
+      },
+      {
+        "relativePath": "probe-026/states/fft-clean-base-game.state.auto.png",
+        "bytes": 38761,
+        "sha256": "8b45ed96c24372ff1785059d5183754f2037ea80a72cf48bf757d6e62b15bb5f"
+      },
+      {
+        "relativePath": "probe-126/states/fft-clean-base-game.state",
+        "bytes": 1492922,
+        "sha256": "9a13284eb2ed3cbd0a40252e28f8dad4426f5208b1e72020383529ce5205ff98"
+      },
+      {
+        "relativePath": "probe-126/states/fft-clean-base-game.state.auto",
+        "bytes": 1493589,
+        "sha256": "c61f5c6daebb3a60c153028b9995891827177f8b85f09d99f51ca076e164b58f"
+      },
+      {
+        "relativePath": "probe-126/states/fft-clean-base-game.state.auto.png",
+        "bytes": 38998,
+        "sha256": "1d1f39b79056a2ef9a1989d4e0c16cb5d3e95710d72bd48e7bd1713f23399da6"
+      },
+      {
+        "relativePath": "probe-134/states/fft-clean-base-game.state",
+        "bytes": 1492922,
+        "sha256": "9a13284eb2ed3cbd0a40252e28f8dad4426f5208b1e72020383529ce5205ff98"
+      },
+      {
+        "relativePath": "probe-134/states/fft-clean-base-game.state.auto",
+        "bytes": 1492876,
+        "sha256": "8f114961cb4210b13714171288cb8568a9b12c2b09c08e8f795c402f8b4e91b0"
+      },
+      {
+        "relativePath": "probe-134/states/fft-clean-base-game.state.auto.png",
+        "bytes": 38510,
+        "sha256": "202b6a0c90ad50ddab99bb359fbc9f13ef4aeaeb47baba81a4ae9db78c54f216"
+      },
+      {
+        "relativePath": "probe-138/states/fft-clean-base-game.state",
+        "bytes": 1492922,
+        "sha256": "9a13284eb2ed3cbd0a40252e28f8dad4426f5208b1e72020383529ce5205ff98"
+      },
+      {
+        "relativePath": "probe-138/states/fft-clean-base-game.state.auto",
+        "bytes": 1491558,
+        "sha256": "740ab841916cd00bfa09095911c53b022265fbb17186bbd051fbee2aabd66b78"
+      },
+      {
+        "relativePath": "probe-138/states/fft-clean-base-game.state.auto.png",
+        "bytes": 38813,
+        "sha256": "669fa689a25106a88d93af3248b3716ec1ad7b45716426e27d7e5235eca68cd3"
+      },
+      {
+        "relativePath": "probe-140/states/fft-clean-base-game.state",
+        "bytes": 1492922,
+        "sha256": "9a13284eb2ed3cbd0a40252e28f8dad4426f5208b1e72020383529ce5205ff98"
+      },
+      {
+        "relativePath": "probe-140/states/fft-clean-base-game.state.auto",
+        "bytes": 1490694,
+        "sha256": "e73f3f1279815c22b0e5967bb77fa8bf78dd0dcdbb4f03947cfa662fddee3cc9"
+      },
+      {
+        "relativePath": "probe-140/states/fft-clean-base-game.state.auto.png",
+        "bytes": 38744,
+        "sha256": "58c0dc6484af81a625695e9db25fafdaaa729f002df3cef06d770827b2bc8e5c"
+      }
+    ],
+    "excluded": "Path-specific plans/configs/commands/logs/reports; content and state identities are compared directly."
+  },
+  "newOriginalCaptures": true,
+  "emulatorLaunched": true,
+  "controllersDisconnected": true,
+  "muted": true,
+  "sourceStatesPreserved": true,
+  "normalConfigsUnchanged": true,
+  "captureProfile": {
+    "localPath": "scratch/retroarch-reference-033-b/profile.json",
+    "bytes": 1975,
+    "sha256": "343d79415a14794c8a457f7a6463f6a70907ad3843908a5026fba9e9dc8380a3"
+  },
+  "displayedFrameBinding": "Checked pre-submission VSync main-stack context, source counter distance 2, same polarity/destination surface/restoration epoch; prior queued packets bind selected displayed pixels.",
+  "controlledBackgroundProbe": {
+    "vramOrigin": [
+      416,
+      254
+    ],
+    "paletteBank": 2,
+    "wordCount": 16,
+    "byteCount": 32,
+    "nonGpuSubsystemsUnchanged": true,
+    "gpuRegistersUnchanged": true,
+    "onlySelectedEntryPaletteChanged": true,
+    "originalProbeFootprintChecked": true
+  },
+  "checks": [
+    {
+      "displayedLogicalTick": 8,
+      "scale": 112,
+      "sourceFrame": 9011,
+      "displayedAtFrame": 9013,
+      "sourceFrameDistance": 2,
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "opaque": {
+          "compared": true,
+          "pixels": 1202,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            42,
+            98,
+            177,
+            24
+          ],
+          "sampleMaskSha256": "eff75a3bed1a573467696a7e7778040c7e7d5bc9e72afcfaa459fea6b16c9b18",
+          "exactEquality": true
+        },
+        "stp": {
+          "compared": true,
+          "pixels": 77,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            49,
+            98,
+            170,
+            24
+          ],
+          "sampleMaskSha256": "fa37b07f3ed1c5b1d934e9d662947adbc071e7b6f223447d341f5dc7ddd24e29",
+          "exactEquality": true
+        },
+        "transparent": {
+          "compared": true,
+          "pixels": 1049,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            42,
+            98,
+            182,
+            24
+          ],
+          "sampleMaskSha256": "6e10ad144287eeba2e257bb75a14a8bd6cbe147132baf8486406cc4d46d85bdf",
+          "exactEquality": true
+        },
+        "outsideProbeFootprint": {
+          "compared": true,
+          "pixels": 60161,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "65343002be74841050d144ebe4f1068c4a5235ef56038834100030b1090498d3",
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        }
+      },
+      "stpChangesBackground": {
+        "compared": true,
+        "pixels": 77,
+        "changedPixels": 77,
+        "minOriginalMinusManaged": [
+          8,
+          8,
+          0
+        ],
+        "maxOriginalMinusManaged": [
+          48,
+          40,
+          32
+        ],
+        "maxAbsoluteDelta": [
+          48,
+          40,
+          32
+        ],
+        "sumAbsoluteDelta": [
+          1808,
+          1728,
+          1288
+        ],
+        "bounds": [
+          49,
+          98,
+          170,
+          24
+        ],
+        "sampleMaskSha256": "fa37b07f3ed1c5b1d934e9d662947adbc071e7b6f223447d341f5dc7ddd24e29",
+        "exactEquality": false
+      },
+      "passed": true,
+      "visibleArtworkCompared": true
+    },
+    {
+      "displayedLogicalTick": 10,
+      "scale": 128,
+      "sourceFrame": 9013,
+      "displayedAtFrame": 9015,
+      "sourceFrameDistance": 2,
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "opaque": {
+          "compared": true,
+          "pixels": 1202,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            42,
+            98,
+            177,
+            24
+          ],
+          "sampleMaskSha256": "eff75a3bed1a573467696a7e7778040c7e7d5bc9e72afcfaa459fea6b16c9b18",
+          "exactEquality": true
+        },
+        "stp": {
+          "compared": true,
+          "pixels": 77,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            49,
+            98,
+            170,
+            24
+          ],
+          "sampleMaskSha256": "fa37b07f3ed1c5b1d934e9d662947adbc071e7b6f223447d341f5dc7ddd24e29",
+          "exactEquality": true
+        },
+        "transparent": {
+          "compared": true,
+          "pixels": 1049,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            42,
+            98,
+            182,
+            24
+          ],
+          "sampleMaskSha256": "6e10ad144287eeba2e257bb75a14a8bd6cbe147132baf8486406cc4d46d85bdf",
+          "exactEquality": true
+        },
+        "outsideProbeFootprint": {
+          "compared": true,
+          "pixels": 60161,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "65343002be74841050d144ebe4f1068c4a5235ef56038834100030b1090498d3",
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        }
+      },
+      "stpChangesBackground": {
+        "compared": true,
+        "pixels": 77,
+        "changedPixels": 77,
+        "minOriginalMinusManaged": [
+          8,
+          8,
+          0
+        ],
+        "maxOriginalMinusManaged": [
+          56,
+          48,
+          40
+        ],
+        "maxAbsoluteDelta": [
+          56,
+          48,
+          40
+        ],
+        "sumAbsoluteDelta": [
+          1664,
+          1640,
+          1280
+        ],
+        "bounds": [
+          49,
+          98,
+          170,
+          24
+        ],
+        "sampleMaskSha256": "fa37b07f3ed1c5b1d934e9d662947adbc071e7b6f223447d341f5dc7ddd24e29",
+        "exactEquality": false
+      },
+      "passed": true,
+      "visibleArtworkCompared": true
+    },
+    {
+      "displayedLogicalTick": 60,
+      "scale": 128,
+      "sourceFrame": 9063,
+      "displayedAtFrame": 9065,
+      "sourceFrameDistance": 2,
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "opaque": {
+          "compared": true,
+          "pixels": 1202,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            42,
+            98,
+            177,
+            24
+          ],
+          "sampleMaskSha256": "eff75a3bed1a573467696a7e7778040c7e7d5bc9e72afcfaa459fea6b16c9b18",
+          "exactEquality": true
+        },
+        "stp": {
+          "compared": true,
+          "pixels": 77,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            49,
+            98,
+            170,
+            24
+          ],
+          "sampleMaskSha256": "fa37b07f3ed1c5b1d934e9d662947adbc071e7b6f223447d341f5dc7ddd24e29",
+          "exactEquality": true
+        },
+        "transparent": {
+          "compared": true,
+          "pixels": 1049,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            42,
+            98,
+            182,
+            24
+          ],
+          "sampleMaskSha256": "6e10ad144287eeba2e257bb75a14a8bd6cbe147132baf8486406cc4d46d85bdf",
+          "exactEquality": true
+        },
+        "outsideProbeFootprint": {
+          "compared": true,
+          "pixels": 60161,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "65343002be74841050d144ebe4f1068c4a5235ef56038834100030b1090498d3",
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        }
+      },
+      "stpChangesBackground": {
+        "compared": true,
+        "pixels": 77,
+        "changedPixels": 77,
+        "minOriginalMinusManaged": [
+          8,
+          8,
+          0
+        ],
+        "maxOriginalMinusManaged": [
+          48,
+          40,
+          32
+        ],
+        "maxAbsoluteDelta": [
+          48,
+          40,
+          32
+        ],
+        "sumAbsoluteDelta": [
+          1648,
+          1616,
+          1272
+        ],
+        "bounds": [
+          49,
+          98,
+          170,
+          24
+        ],
+        "sampleMaskSha256": "fa37b07f3ed1c5b1d934e9d662947adbc071e7b6f223447d341f5dc7ddd24e29",
+        "exactEquality": false
+      },
+      "passed": true,
+      "visibleArtworkCompared": true
+    },
+    {
+      "displayedLogicalTick": 64,
+      "scale": 80,
+      "sourceFrame": 9067,
+      "displayedAtFrame": 9069,
+      "sourceFrameDistance": 2,
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "opaque": {
+          "compared": true,
+          "pixels": 1202,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            42,
+            98,
+            177,
+            24
+          ],
+          "sampleMaskSha256": "eff75a3bed1a573467696a7e7778040c7e7d5bc9e72afcfaa459fea6b16c9b18",
+          "exactEquality": true
+        },
+        "stp": {
+          "compared": true,
+          "pixels": 77,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            49,
+            98,
+            170,
+            24
+          ],
+          "sampleMaskSha256": "fa37b07f3ed1c5b1d934e9d662947adbc071e7b6f223447d341f5dc7ddd24e29",
+          "exactEquality": true
+        },
+        "transparent": {
+          "compared": true,
+          "pixels": 1049,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            42,
+            98,
+            182,
+            24
+          ],
+          "sampleMaskSha256": "6e10ad144287eeba2e257bb75a14a8bd6cbe147132baf8486406cc4d46d85bdf",
+          "exactEquality": true
+        },
+        "outsideProbeFootprint": {
+          "compared": true,
+          "pixels": 60161,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "65343002be74841050d144ebe4f1068c4a5235ef56038834100030b1090498d3",
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        }
+      },
+      "stpChangesBackground": {
+        "compared": true,
+        "pixels": 77,
+        "changedPixels": 77,
+        "minOriginalMinusManaged": [
+          16,
+          16,
+          8
+        ],
+        "maxOriginalMinusManaged": [
+          56,
+          48,
+          40
+        ],
+        "maxAbsoluteDelta": [
+          56,
+          48,
+          40
+        ],
+        "sumAbsoluteDelta": [
+          1920,
+          1856,
+          1544
+        ],
+        "bounds": [
+          49,
+          98,
+          170,
+          24
+        ],
+        "sampleMaskSha256": "fa37b07f3ed1c5b1d934e9d662947adbc071e7b6f223447d341f5dc7ddd24e29",
+        "exactEquality": false
+      },
+      "passed": true,
+      "visibleArtworkCompared": true
+    },
+    {
+      "displayedLogicalTick": 66,
+      "scale": 56,
+      "sourceFrame": 9069,
+      "displayedAtFrame": 9071,
+      "sourceFrameDistance": 2,
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "opaque": {
+          "compared": true,
+          "pixels": 1202,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            42,
+            98,
+            177,
+            24
+          ],
+          "sampleMaskSha256": "eff75a3bed1a573467696a7e7778040c7e7d5bc9e72afcfaa459fea6b16c9b18",
+          "exactEquality": true
+        },
+        "stp": {
+          "compared": true,
+          "pixels": 77,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            49,
+            98,
+            170,
+            24
+          ],
+          "sampleMaskSha256": "fa37b07f3ed1c5b1d934e9d662947adbc071e7b6f223447d341f5dc7ddd24e29",
+          "exactEquality": true
+        },
+        "transparent": {
+          "compared": true,
+          "pixels": 1049,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            42,
+            98,
+            182,
+            24
+          ],
+          "sampleMaskSha256": "6e10ad144287eeba2e257bb75a14a8bd6cbe147132baf8486406cc4d46d85bdf",
+          "exactEquality": true
+        },
+        "outsideProbeFootprint": {
+          "compared": true,
+          "pixels": 60161,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "65343002be74841050d144ebe4f1068c4a5235ef56038834100030b1090498d3",
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        }
+      },
+      "stpChangesBackground": {
+        "compared": true,
+        "pixels": 77,
+        "changedPixels": 77,
+        "minOriginalMinusManaged": [
+          16,
+          16,
+          8
+        ],
+        "maxOriginalMinusManaged": [
+          56,
+          56,
+          48
+        ],
+        "maxAbsoluteDelta": [
+          56,
+          56,
+          48
+        ],
+        "sumAbsoluteDelta": [
+          2104,
+          2064,
+          1816
+        ],
+        "bounds": [
+          49,
+          98,
+          170,
+          24
+        ],
+        "sampleMaskSha256": "fa37b07f3ed1c5b1d934e9d662947adbc071e7b6f223447d341f5dc7ddd24e29",
+        "exactEquality": false
+      },
+      "passed": true,
+      "visibleArtworkCompared": true
+    },
+    {
+      "displayedLogicalTick": 67,
+      "scale": null,
+      "sourceFrame": 9070,
+      "displayedAtFrame": 9072,
+      "sourceFrameDistance": 2,
+      "checks": {
+        "fullCanvas": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "opaque": {
+          "pixels": 0,
+          "changedPixels": 0,
+          "compared": false,
+          "exactEquality": null
+        },
+        "stp": {
+          "pixels": 0,
+          "changedPixels": 0,
+          "compared": false,
+          "exactEquality": null
+        },
+        "transparent": {
+          "pixels": 0,
+          "changedPixels": 0,
+          "compared": false,
+          "exactEquality": null
+        },
+        "outsideProbeFootprint": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "originalPngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        },
+        "probePngScanout": {
+          "compared": true,
+          "pixels": 61440,
+          "changedPixels": 0,
+          "minOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxOriginalMinusManaged": [
+            0,
+            0,
+            0
+          ],
+          "maxAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "sumAbsoluteDelta": [
+            0,
+            0,
+            0
+          ],
+          "bounds": [
+            0,
+            0,
+            256,
+            240
+          ],
+          "sampleMaskSha256": "5c20b482f5be4e6b8498ab7d60525fb80940fc3da544845620662f9c47edaac6",
+          "exactEquality": true
+        }
+      },
+      "stpChangesBackground": {
+        "pixels": 0,
+        "changedPixels": 0,
+        "compared": false,
+        "exactEquality": null
+      },
+      "passed": true,
+      "visibleArtworkCompared": false
+    }
+  ],
+  "passed": true,
+  "missingObservations": [
+    {
+      "displayedTicks": [
+        0,
+        1
+      ],
+      "reason": "Frontend endpoints 6/8, and selection budget 7, stop inside interrupt handling outside the closed main VSync classifier. No displayed birth correspondence inferred.",
+      "followUp": "ZOD-088"
+    }
+  ],
+  "toleranceRgb": [
+    0,
+    0,
+    0
+  ],
+  "opaqueAlphaAndZeroPaddedRgb5Required": true,
+  "originalAndProbePngMatchOwnVramScanout": true,
+  "tools": [
+    {
+      "localPath": "tools/verification/compare_ready_display.py",
+      "bytes": 24976,
+      "sha256": "8986247548667c0958f56c0fe0bc214c049b1f04a495ecc4f6ad91e4877750d0"
+    },
+    {
+      "localPath": "tools/verification/analyze_banner_precision.py",
+      "bytes": 11968,
+      "sha256": "0721ef12c3d54fd4a2d8c69ee3b942dc40bff1cef3e6737275ad5e0912341bf2"
+    },
+    {
+      "localPath": "tools/verification/capture_banner_continuation.py",
+      "bytes": 16116,
+      "sha256": "d9d973d970f8ebfdf9bf9b5907022a8c9ff70cdb6e26d955b9734c8a08cf269c"
+    },
+    {
+      "localPath": "tools/verification/compare_banner_background.py",
+      "bytes": 21212,
+      "sha256": "0388ec7a12742798f2acd5b2bda86f01de780c111f94d2491b916c92a501d26a"
+    },
+    {
+      "localPath": "tools/verification/compare_banner_hide.py",
+      "bytes": 21845,
+      "sha256": "9a375e7dfa44fd18404d1f2fd8eabd31db5a166dded4ef25432b1d50fec56c28"
+    },
+    {
+      "localPath": "tools/verification/compare_observed_banner.py",
+      "bytes": 16702,
+      "sha256": "50d1ce4be252cb10b3820293170965a599046aa267ca56040f7ba29e5bff7911"
+    },
+    {
+      "localPath": "tools/verification/compare_visual_checkpoints.py",
+      "bytes": 13970,
+      "sha256": "3ee039e9a767c491d2b44b9889b7d3512262d456e51cf34017945b5e84e3210b"
+    },
+    {
+      "localPath": "tools/verification/inspect_banner_event.py",
+      "bytes": 10569,
+      "sha256": "e2293c00c86507df9fc5847331dd6ac9c245aff21ba1d33f41855ea9df0c6362"
+    },
+    {
+      "localPath": "tools/verification/prepare_retroarch_reference.py",
+      "bytes": 11773,
+      "sha256": "3bf0e6ffb79f0e12afaf8f4ba6da030034d18de828baee9bd5ae8220c9d365b0"
+    },
+    {
+      "localPath": "tools/verification/trace_banner_draw_state.py",
+      "bytes": 6618,
+      "sha256": "15f44edd29c87f43ae0824c92e3b415deec58e6bd80c2b0ab487f7d4d3afdd9a"
+    },
+    {
+      "localPath": "tools/banner-blend-check/ReadySequence.cs",
+      "bytes": 5852,
+      "sha256": "8e02bbaed353f8477f1632af4e230987af4cb1ab8de1d9bc1934369d26172c68"
+    },
+    {
+      "localPath": "tools/banner-blend-check/Program.cs",
+      "bytes": 8947,
+      "sha256": "fde909660a268a3d7eb93c85a2a7c99ee55f221ac95590e3be1d5ba7d5227ae9"
+    },
+    {
+      "localPath": "tools/banner-blend-check/BannerBlendCheck.csproj",
+      "bytes": 341,
+      "sha256": "d8f66aad44a1ae0598c7b397b866bfecc3e17fdb580229d6648e15aad884a3a2"
+    },
+    {
+      "localPath": "tools/banner-blend-check/packages.lock.json",
+      "bytes": 1759,
+      "sha256": "7ed89903772726ac14a0fd6f7161155e03ce9c8a0bf0c25fcce89eedfd26dacb"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/ReadyPresentation.cs",
+      "bytes": 6500,
+      "sha256": "5a7cda34c4fb94414a572de66f663c9238ccd6d333d25031021e69a915c888ca"
+    },
+    {
+      "localPath": "src/Zodiac.Framework/Events/ReadyDisplayState.cs",
+      "bytes": 4852,
+      "sha256": "f3b96a4b06e722de57c3b039fbdc4fcd071079a12cfc623ad99430a9081f35c6"
+    }
+  ],
+  "compiledAssemblies": [
+    {
+      "localPath": "tools/banner-blend-check/bin/Release/net10.0/BannerBlendCheck.dll",
+      "bytes": 35840,
+      "sha256": "a437e4e61e1c4796c627ea81d2926bb0e6ce53dd1e909a5ff878321436d324d6"
+    },
+    {
+      "localPath": "tools/banner-blend-check/bin/Release/net10.0/Fft.Client.dll",
+      "bytes": 190976,
+      "sha256": "14ba2216ea8e88f0ae01adbd39a83ceaa553d3bb17133b43d11e9b27d8d732e4"
+    },
+    {
+      "localPath": "tools/banner-blend-check/bin/Release/net10.0/Zodiac.Content.dll",
+      "bytes": 230912,
+      "sha256": "86854d4783dd21b4b8a3814d7aa824cabecd6a2933d2bbe02bed5c07aa6e75b1"
+    },
+    {
+      "localPath": "tools/banner-blend-check/bin/Release/net10.0/Zodiac.Framework.dll",
+      "bytes": 222720,
+      "sha256": "dd708fad9c3b442ba6a745152a6183041ffe41396976c67b995928c3d4328e9d"
+    }
+  ],
+  "nativeReceipts": [
+    {
+      "localPath": "scratch/ready-displayed-087-d/native/check.json",
+      "bytes": 16620,
+      "sha256": "c5889f0ce777b16e4e01ebb4739fb7854e24bd60ca901a9e6e605a1cd3fea336"
+    },
+    {
+      "localPath": "scratch/ready-displayed-087-e/native/check.json",
+      "bytes": 16620,
+      "sha256": "c5889f0ce777b16e4e01ebb4739fb7854e24bd60ca901a9e6e605a1cd3fea336"
+    }
+  ],
+  "actualHostNegativeChecks": {
+    "report": {
+      "localPath": "scratch/ready-087-host-negatives/report.json",
+      "bytes": 861,
+      "sha256": "2c3a44cd346f62dae87bf3bce50efc0bed54b2c87adb0263a3fe34ccbbc5ae4e"
+    },
+    "cases": [
+      {
+        "case": "last-digest",
+        "exitCode": 2,
+        "diagnostic": "Banner background check failed: Background digest differs.",
+        "outputPreserved": true
+      },
+      {
+        "case": "wrong-last-tick",
+        "exitCode": 2,
+        "diagnostic": "Banner background check failed: Wrong Ready anchors.",
+        "outputPreserved": true
+      },
+      {
+        "case": "duplicate-field",
+        "exitCode": 2,
+        "diagnostic": "Banner background check failed: Unexpected or duplicate fields.",
+        "outputPreserved": true
+      },
+      {
+        "case": "alpha",
+        "exitCode": 2,
+        "diagnostic": "Banner background check failed: Expected opaque zero-padded RGB5 background.",
+        "outputPreserved": true
+      },
+      {
+        "case": "existing-output",
+        "exitCode": 2,
+        "diagnostic": "Banner background check failed: Output exists.",
+        "outputPreserved": true
+      }
+    ]
+  },
+  "tests": {
+    "dotnetPassed": 1794,
+    "pythonPassed": 179,
+    "newPythonTests": 16,
+    "lockedRestores": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "authoredVerifierTests": {
+      "localPath": "tools/verification/test_ready_display.py",
+      "bytes": 10710,
+      "sha256": "a10340fca536bbc3ce5b6b272340e7fc5777fb311a36c73dfafa1e38362edf23"
+    }
+  },
+  "ownerReview": {
+    "status": "approved",
+    "gallery": "scratch/ready-displayed-087-e/review.html",
+    "galleryIdentity": {
+      "localPath": "scratch/ready-displayed-087-e/review.html",
+      "bytes": 2271,
+      "sha256": "119358448fb4f8fe25ceb82cfcd5e6cb9c964ec8562cdd5bddef81f24a6b7e45"
+    },
+    "date": "2026-10-25",
+    "quote": "Visually, they look identical to my eyes.",
+    "scope": "Six displayed original/control/C# gallery anchors; missing birth/next-frame observations remain ZOD-088."
+  },
+  "runtimeRendererChanged": false,
+  "simulationChanged": false,
+  "gpuReadbackPerformed": false,
+  "originalTimingEstablished": false,
+  "hardwareEquivalenceEstablished": false,
+  "fullEventPlaybackEstablished": false,
+  "mapRenderingEstablished": false,
+  "mediaPolicy": "Only paths, identities, scalar observations and metrics committed; original/prepared bytes and screenshots remain ignored under scratch."
+}

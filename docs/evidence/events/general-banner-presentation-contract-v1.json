@@ -1,0 +1,177 @@
+{
+  "format": "fft.general-banner-presentation-expectations",
+  "schemaVersion": 1,
+  "date": "2026-10-23",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "managedBase": "c84e0c4",
+  "specificationOnly": true,
+  "executed": false,
+  "proofId": "sample:general-banner-presentation/v1",
+  "evidencePolicy": "Authored arithmetic/material/readiness examples plus source-derived selected equal-height timing. No retail table/pixel payload, implemented renderer, original execution or visual comparison.",
+  "previewPolicy": {
+    "canvas": [256, 240],
+    "primitiveToScreenTranslation": [-128, 0],
+    "sourceUvStores": "unsigned-byte modulo 256 before prepared range validation",
+    "sampling": "point; half-open rectangles; pixel-center gradient interpolation",
+    "channels": "RGB8; five-to-eight bit replication; floor after modulation; saturation 0..255",
+    "modulationNeutral": 128,
+    "drawMode": "ordering-table interpretation with no interleaved primitives",
+    "readiness": "prepared data and host resources ready before scene creation",
+    "parity": "unresolved source initial packet parity; no chosen retail parity in normalized preview",
+    "originalEquivalenceClaimed": false
+  },
+  "cases": [
+    {
+      "id": "PACKING",
+      "evidence": "authored source-layout arithmetic",
+      "input": { "packedByte": 163, "byteOffset": 0 },
+      "expected": { "leftIndex": 3, "rightIndex": 10, "packedBytesPerRow": 128, "preparedIndicesPerRow": 256 }
+    },
+    {
+      "id": "CLUT",
+      "evidence": "authored source-layout arithmetic",
+      "input": { "uploadRect": [384, 254, 64, 2], "selectedOrigin": [384, 255] },
+      "expected": { "paletteBank": 4, "byteOffsetFromPaletteSection": 128, "paletteBytes": 32 }
+    },
+    {
+      "id": "UV-WRAP",
+      "evidence": "authored unsigned-byte assignment example",
+      "input": { "sourceRect": [7, 0, 16, 16] },
+      "expected": { "uvRect": [7, 128, 16, 16], "bottomV": 144 }
+    },
+    {
+      "id": "FULL-GEOMETRY",
+      "evidence": "authored source-formula example",
+      "input": { "sourceRect": [4, 130, 16, 16], "sourceOffset": [-100, -50] },
+      "expected": {
+        "primitiveOrigin": [156, 70],
+        "screenVertices": [[28, 70], [44, 70], [28, 86], [44, 86]],
+        "uvVertices": [[4, 2], [20, 2], [4, 18], [20, 18]]
+      }
+    },
+    {
+      "id": "REVEAL-CROP",
+      "evidence": "authored source-formula example",
+      "input": { "sourceRect": [4, 130, 16, 16], "sourceOffset": [-100, -50], "revealPixels": 8 },
+      "expected": {
+        "screenVertices": [[28, 78], [44, 78], [28, 86], [44, 86]],
+        "uvVertices": [[4, 10], [20, 10], [4, 18], [20, 18]],
+        "glyphScaling": false
+      }
+    },
+    {
+      "id": "HIDE-CROP",
+      "evidence": "authored source-formula example",
+      "input": { "sourceRect": [4, 130, 16, 16], "sourceOffset": [-100, -50], "hidePixels": 4 },
+      "expected": {
+        "screenVertices": [[28, 74], [44, 74], [28, 86], [44, 86]],
+        "uvVertices": [[4, 6], [20, 6], [4, 18], [20, 18]]
+      }
+    },
+    {
+      "id": "SHARED-CLAMP",
+      "evidence": "authored isolated source-loop arithmetic; not admission of a different retail layout",
+      "input": { "initialSharedOffset": 24, "visitOrder": [5, 4, 3], "visitedHeights": [20, 12, 16] },
+      "expected": { "visitedOffsets": [20, 12, 12], "nextSharedOffsetAfterIncrement": 20 }
+    },
+    {
+      "id": "PALETTE-WORDS",
+      "evidence": "authored selected-preview color policy",
+      "input": { "words": [0, 32768, 31, 33760] },
+      "expected": [
+        { "discard": true },
+        { "discard": false, "rgb": [0, 0, 0], "semiTransparent": true },
+        { "discard": false, "rgb": [255, 0, 0], "semiTransparent": false, "blendBehavior": "opaque-replace-regardless-of-add-or-subtract-material" },
+        { "discard": false, "rgb": [0, 255, 0], "semiTransparent": true }
+      ]
+    },
+    {
+      "id": "MODULATION",
+      "evidence": "authored RGB8 preview policy; not native GPU precision",
+      "input": { "textureRgb": [100, 120, 140], "vertexRgb": [128, 64, 192] },
+      "expected": { "shadedRgb": [100, 60, 210] }
+    },
+    {
+      "id": "GRADIENT-CENTER",
+      "evidence": "authored RGB8 preview policy; not native GPU rasterization",
+      "input": { "topRgb": [64, 96, 128], "bottomRgb": [128, 160, 192], "height": 16, "row": 3, "textureRgb": [128, 128, 128] },
+      "expected": { "interpolatedVertexRgb": [78, 110, 142], "shadedRgb": [78, 110, 142] }
+    },
+    {
+      "id": "ORDER-MATTERS",
+      "evidence": "authored head-insertion and saturating RGB8 blend example",
+      "input": { "backgroundChannel": 100, "sourceCallOrder": [2, 1, 0], "pieces": ["subtract-70", "subtract-70", "add-80"] },
+      "expected": { "selectedTraversal": [0, 1, 2], "selectedFinalChannel": 80, "immediateModeFinalChannel": 40 }
+    },
+    {
+      "id": "SELECTED-MILESTONES",
+      "evidence": "source-derived equal-height-31 geometry and ZOD-075 post-readiness timing; no original observation",
+      "input": { "holdFrames": 1, "circlePressed": false, "attachTick": 0 },
+      "expected": [
+        { "tick": 0, "phase": "Revealing", "submission": "none" },
+        { "tick": 1, "phase": "Revealing", "firstTripletVisibleRows": 0, "secondTriplet": "absent" },
+        { "tick": 2, "phase": "Revealing", "firstTripletVisibleRows": 8, "secondTriplet": "absent" },
+        { "tick": 5, "phase": "Revealing", "firstTripletVisibleRows": 31, "secondTriplet": "absent" },
+        { "tick": 9, "phase": "Revealing", "firstTripletVisibleRows": 31, "secondTriplet": "absent" },
+        { "tick": 10, "phase": "Revealing", "firstTripletVisibleRows": 31, "secondTripletVisibleRows": 0 },
+        { "tick": 11, "phase": "Revealing", "firstTripletVisibleRows": 31, "secondTripletVisibleRows": 8 },
+        { "tick": 14, "phase": "Revealing", "firstTripletVisibleRows": 31, "secondTripletVisibleRows": 31 },
+        { "tick": 20, "phase": "Holding", "hideCompleted": 0, "submission": "full-six-pieces" },
+        { "tick": 21, "phase": "Hiding", "hideCompleted": 0, "submission": "full-six-cached-pieces" },
+        { "tick": 22, "phase": "Hiding", "hideCompleted": 1, "hidePixels": 0 },
+        { "tick": 23, "phase": "Hiding", "hideCompleted": 2, "hidePixels": 8 },
+        { "tick": 26, "phase": "Hiding", "hideCompleted": 5, "hidePixels": 31, "visibleRows": 0 },
+        { "tick": 31, "phase": "ExitYield", "hideCompleted": 10, "visibleRows": 0 },
+        { "tick": 32, "phase": "Completed", "submission": "none" }
+      ]
+    },
+    {
+      "id": "ZERO-HOLD-BOUNDARY",
+      "evidence": "source-derived boundary",
+      "input": { "holdFrames": 0 },
+      "expected": { "tick20": "Hiding-with-hideCompleted-0-and-full-last-reveal", "tick21HidePixels": 0, "completionTick": 31 }
+    },
+    {
+      "id": "SKIP-FIRST",
+      "evidence": "source-derived skip plus selected submission policy",
+      "input": { "circlePressedAtTick": 1 },
+      "expected": { "tick1": "ExitYield-with-no-submission", "tick2": "Completed-with-no-submission", "revealCompleted": 0 }
+    },
+    {
+      "id": "CANCEL",
+      "evidence": "native owner-cancellation policy retained from ZOD-076",
+      "input": { "validOwnerCancellationAtTick": 5 },
+      "expected": { "phase": "Cancelled", "submission": "none", "rendererSuppliedTaskAcknowledgment": false }
+    },
+    {
+      "id": "FAILED-TICK",
+      "evidence": "native atomic transition/presentation policy",
+      "input": { "holdFrames": 0, "acceptedTick": 30, "attemptedTick": 31, "instructionBudget": 0, "program": "E5-56; D4" },
+      "expected": { "sameEffectAndScene": true, "samePresentationProjection": true, "acceptedTick": 30, "phase": "ExitYield", "completionPublished": false }
+    },
+    {
+      "id": "REDRAW-OR-OMIT",
+      "evidence": "native presentation independence policy",
+      "input": { "holdFrames": 60, "logicalHistory": "91 accepted ticks with Circle false", "drawSchedules": ["every-tick", "each-tick-twice", "no-draws"] },
+      "expected": { "identicalLogicalHistory": true, "completionTick": 91, "rendererSuppliedTaskAcknowledgments": 0 }
+    },
+    {
+      "id": "READINESS-FAILURE",
+      "evidence": "native preload policy; not original startup timing",
+      "input": { "preparedFileHashMatches": false },
+      "expected": { "loadError": true, "sceneCreated": false, "taskAllocated": false, "ticksConsumed": 0 }
+    },
+    {
+      "id": "RESTART-RETAINS-EFFECT",
+      "evidence": "native scene lifetime policy retained from ZOD-076",
+      "input": { "holdFrames": 60, "firstVmExitsAtTick": 0, "nextVmStartsAtTick": 5 },
+      "expected": { "sameEffectIdentityAndStartTick": true, "tick5RevealCompleted": 5, "completionTick": 91, "presentationReset": false }
+    },
+    {
+      "id": "REJECT-UNSUPPORTED-PREPARED-INPUTS",
+      "evidence": "native closed prepared profile policy",
+      "inputVariants": ["unknown-version", "unknown-field", "duplicate-piece-index", "missing-asset", "hash-mismatch", "bad-byte-length", "index-16", "crop-past-row-199", "nonpositive-dimension", "piece-height-not-31", "screen-coordinate-overflow", "unsupported-material", "other-condition", "other-image", "original-parity-required"],
+      "expected": { "accepted": false, "partialLoadedBannerPublished": false, "taskAllocated": false }
+    }
+  ]
+}

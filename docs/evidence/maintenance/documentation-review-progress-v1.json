@@ -1,0 +1,486 @@
+{
+  "schemaVersion": 1,
+  "epic": "ZOD-428",
+  "scopeInventory": "docs/evidence/maintenance/documentation-review-scope-v1.json",
+  "scopeSnapshot": "8f87533987e53502f474201db804b725f3ec22ec",
+  "completedBatches": [
+    {
+      "ticket": "ZOD-427",
+      "managedReviewBaseline": "e62a4d75d77f2c8b8887adba4748d228b52a1df7",
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "report": "docs/behavior/physical-pipeline-review.md",
+      "receipt": "docs/evidence/combat/physical-pipeline-review-implementation-v1.json",
+      "disposition": "Completed bounded normal neutral single-target physical review; one confirmed formula/oracle defect fixed.",
+      "reviewedPathsByFocus": {
+        "formula and execution": [
+          "src/Zodiac.Framework/Formulas/PhysicalDamageFormula.cs",
+          "src/Zodiac.Framework/CombatRules/PhysicalDamageRules.cs",
+          "src/Zodiac.Framework/Battle/Combat/PhysicalAbilityDefinition.cs",
+          "src/Zodiac.Framework/Battle/Combat/PhysicalAbilityBattleProfile.cs",
+          "src/Zodiac.Framework/Battle/Combat/PhysicalAbilityBattleSimulator.cs",
+          "src/Zodiac.Framework/Battle/Combat/BoundedDashAbility.cs",
+          "src/Zodiac.Framework/Battle/Combat/BoundedThrowStoneAbility.cs",
+          "src/Zodiac.Framework/Battle/Combat/DashFormula.cs",
+          "src/Zodiac.Framework/Battle/Combat/ThrowStoneFormula.cs",
+          "src/Zodiac.Framework/Battle/Combat/DashAbilityBattleSimulator.cs",
+          "src/Zodiac.Framework/Battle/Combat/TargetedAbilityBattleSimulator.cs",
+          "src/Zodiac.Framework/Battle/Combat/TargetedAbilityBattleProfile.cs"
+        ],
+        "admission and trajectory": [
+          "src/Zodiac.Framework/Battle/State/AttackBattleSnapshot.cs",
+          "src/Zodiac.Framework/Battle/State/AttackUnitState.cs",
+          "src/Zodiac.Framework/Battle/Combat/FlatRosterBattleProfile.cs",
+          "src/Zodiac.Framework/Battle/Combat/FlatSwordBattleProfile.cs",
+          "src/Zodiac.Framework/Battle/Movement/FlatRosterDirectTrajectory.cs"
+        ],
+        "physical AI integration edges": [
+          "src/Zodiac.Framework.Ai/ThrowStone/ThrowStoneAiFormulaProjection.cs",
+          "src/Zodiac.Framework.Ai/ThrowStone/ThrowStoneAiCandidateProjection.cs",
+          "src/Zodiac.Framework.Ai/ThrowStone/ThrowStoneAiCandidateScoring.cs",
+          "src/Zodiac.Framework.Ai/ThrowStone/RosterThrowStoneAiCandidate.cs",
+          "src/Zodiac.Framework.Ai/ThrowStone/RosterThrowStoneAiEntry.cs",
+          "src/Zodiac.Framework.Ai/Dash/RosterDashAiCandidate.cs",
+          "src/Zodiac.Framework.Ai/Dash/RosterDashAiEntry.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiDamageHypothesis.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiRosterCastGeometry.cs",
+          "src/Zodiac.Framework.Ai/Shared/RosterAiDirectTrajectory.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiAbilityBehavior.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiHumanAbilityLists.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiRankedInsertion.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiRankedLottery.cs",
+          "src/Zodiac.Framework.Ai/Decision/AiAbilityEvaluator.cs",
+          "src/Zodiac.Framework.Ai/Decision/AiDecisionMaker.cs",
+          "src/Zodiac.Framework.Ai/Execution/AiCommandExecutor.cs",
+          "src/Zodiac.Framework/Battle/Commands/RosterDecisionContext.PlannedMove.cs"
+        ],
+        "content binding edges": [
+          "src/Zodiac.Content/BattleSetup/TargetedAbilityBattleSetup.cs",
+          "src/Zodiac.Content/BattleSetup/PreparedBasicSkillBattle.cs",
+          "src/Zodiac.Content/ContentPackages/TargetedAbilityContentPackage.cs"
+        ]
+      },
+      "limits": "Integration-edge review does not close all branches of shared AI/movement/turn/command/content owners. Full inventory groups remain open."
+    },
+    {
+      "ticket": "ZOD-429",
+      "managedReviewBaseline": "b16c11d9dccfe5c38e7e18aa511686236c4ef220",
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "report": "docs/behavior/sword-accumulate-review.md",
+      "receipt": "docs/evidence/combat/sword-accumulate-review-v1.json",
+      "disposition": "Completed bounded neutral sword Attack/zero-bonus Accumulate mechanics and current pair/roster AI integration-edge review; no new defect confirmed.",
+      "reviewedPathsByFocus": {
+        "execution and admission": [
+          "src/Zodiac.Framework/Battle/Combat/AttackBattleSimulator.cs",
+          "src/Zodiac.Framework/Battle/Combat/BoundedSwordWeapon.cs",
+          "src/Zodiac.Framework/Battle/Combat/AccumulateFormula.cs",
+          "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattleSimulator.cs",
+          "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityBattleProfile.cs",
+          "src/Zodiac.Framework/Battle/Combat/ImmediateAbilityUnitGrant.cs",
+          "src/Zodiac.Framework/Battle/Combat/BoundedImmediateAbility.cs",
+          "src/Zodiac.Framework/Battle/State/AttackUnitState.cs",
+          "src/Zodiac.Framework/Battle/State/AttackBattleSnapshot.cs",
+          "src/Zodiac.Framework/Battle/Combat/FlatRosterBattleProfile.cs"
+        ],
+        "sword formula and scoring edges": [
+          "src/Zodiac.Framework.Ai/Sword/SwordAiFormulaProjection.cs",
+          "src/Zodiac.Framework.Ai/Sword/SwordAiCandidateProjection.cs",
+          "src/Zodiac.Framework.Ai/Sword/SwordAiCandidateScoring.cs",
+          "src/Zodiac.Framework.Ai/Sword/RosterSwordAiCandidate.cs",
+          "src/Zodiac.Framework.Ai/Sword/RosterSwordAiAttackEntry.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiDamageHypothesis.cs"
+        ],
+        "Accumulate usefulness projection and scoring": [
+          "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiUsefulness.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/RosterAccumulateAiUsefulness.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/AiSelfStatProjection.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiCandidateProjection.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiCandidateScoring.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiEntryEvaluation.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/RosterAccumulateAiEntry.cs"
+        ],
+        "shared simulation and score edges": [
+          "src/Zodiac.Framework.Ai/Shared/AiMovementSimulation.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiCandidateScoring.cs"
+        ],
+        "content binding edges": [
+          "src/Zodiac.Content/BattleSetup/AttackBattleSetup.cs",
+          "src/Zodiac.Content/BattleSetup/ImmediateAbilityBattleSetup.cs"
+        ]
+      },
+      "limits": "Bounded neutral sword Attack and zero-equipment-bonus PA+1 execution plus current pair/roster formula/usefulness/projection/score integration edges. Full shared movement/clock/decision owners remain open."
+    },
+    {
+      "ticket": "ZOD-430",
+      "managedReviewBaseline": "b2d66e0a3e1670a8431814635956654821d22c35",
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "report": "docs/behavior/shared-ai-simulation-review.md",
+      "receipt": "docs/evidence/ai/shared-simulation-review-v1.json",
+      "disposition": "Completed bounded shared baseline/clock/accounting/absolute-score review; fixed oversized ordinary magic candidate admission.",
+      "reviewedPathsByFocus": {
+        "shared physical baseline clock and score": [
+          "src/Zodiac.Framework.Ai/Shared/AiCandidateState.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiSimulationClock.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiSimulationTypes.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiMovementSimulation.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiDamageHypothesis.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiCandidateScoring.cs",
+          "src/Zodiac.Framework.Ai/Shared/RosterAiRefresh.cs"
+        ],
+        "ordinary magic simulation accounting and scoring": [
+          "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiCandidateQuery.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiWork.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiSimulation.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiClock.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiHitWork.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiProjection.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Scoring/OrdinarySpellAiAccounting.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Scoring/OrdinarySpellAiScoring.cs"
+        ],
+        "current admission and caller edges": [
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Diagnostics/OrdinarySpellAiReadyQuery.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAimQuery.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiSearchQuery.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAimEnumeration.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiCatalog.cs",
+          "src/Zodiac.Framework.Ai/ThrowStone/ThrowStoneAiCandidateProjection.cs",
+          "src/Zodiac.Framework.Ai/Sword/SwordAiCandidateProjection.cs",
+          "src/Zodiac.Framework.Ai/Sword/SwordAiCandidateScoring.cs",
+          "src/Zodiac.Framework.Ai/Sword/RosterSwordAiCandidate.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/AiSelfStatProjection.cs"
+        ],
+        "ordinary magic definition admission edge": [
+          "src/Zodiac.Framework/Battle/Combat/Magic/Execution/OrdinaryMagicBattleDefinition.cs"
+        ],
+        "regressions and clock boundary": [
+          "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiCandidateTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiSearchTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiClockTests.cs"
+        ]
+      },
+      "limits": "Current integration edges include partial caller/definition boundaries, not all branches. General effects, origin/ranking/command coverage and frame suspension/RNG remain open."
+    },
+    {
+      "ticket": "ZOD-431",
+      "managedReviewBaseline": "05cb5e6c82da12bfa8a080d18e9e91896960d1bf",
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "report": "docs/behavior/shared-ai-preparation-review.md",
+      "receipt": "docs/evidence/ai/shared-preparation-review-v1.json",
+      "disposition": "Completed bounded shared preparation/usefulness review; fixed neutral HP usefulness and special-menu admission.",
+      "reviewedPathsByFocus": {
+        "shared list and preparation owners": [
+          "src/Zodiac.Framework.Ai/Shared/AiHumanAbilityLists.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiAbilityBehavior.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiPreparationTypes.cs",
+          "src/Zodiac.Framework.Ai/Shared/RosterAiPreparation.cs",
+          "src/Zodiac.Framework.Ai/Shared/RosterAiRefresh.cs",
+          "src/Zodiac.Framework.Ai/Shared/RosterAiGeneralPreparation.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiOrdinaryPairRoster.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiTargetRoster.cs"
+        ],
+        "ordinary spell lists parameters and usefulness": [
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiLists.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiParameters.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiCatalog.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiStatistics.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiUsefulness.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiWork.cs"
+        ],
+        "older physical preparation and usefulness edges": [
+          "src/Zodiac.Framework.Ai/Sword/SwordAiPreparation.cs",
+          "src/Zodiac.Framework.Ai/Sword/SwordAiRefresh.cs",
+          "src/Zodiac.Framework.Ai/AttackThrowStone/AttackThrowStoneAiPreparation.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiPreparation.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiUsefulness.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/RosterAccumulateAiUsefulness.cs",
+          "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListPreparation.cs"
+        ],
+        "shared timing and content adapter edges": [
+          "src/Zodiac.Framework/Battle/Combat/Magic/MagicCharge.cs",
+          "src/Zodiac.Content/BattleSetup/PreparedOrdinarySpellAi.cs",
+          "src/Zodiac.Content/BattleSetup/OrdinaryHumanAiAbilityListSetup.cs"
+        ],
+        "tests and profile boundaries": [
+          "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiListTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiParameterTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiStatisticTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiUsefulnessTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/Shared/AiHumanAbilityListTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/Shared/RosterAiPreparationTests.cs"
+        ]
+      },
+      "limits": "Partial older caller/content and general-prefix edges do not close all branches; broader selection/origin/ranking/command/special-policy work remains open."
+    },
+    {
+      "ticket": "ZOD-433",
+      "managedReviewBaseline": "f169b4559a839ccbb2ad82611a65001b839b5ed4",
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "report": "docs/behavior/ai-target-scenario-review.md",
+      "receipt": "docs/evidence/ai/target-scenario-review-v1.json",
+      "disposition": "Completed bounded target-selection/scenario admission and magic aim integration-edge review; no new defect confirmed.",
+      "reviewedPathsByFocus": {
+        "target memberships and restored pair consumers": [
+          "src/Zodiac.Framework.Ai/Shared/AiTargetRoster.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiRosterNearest.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiRosterActiveTargets.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiRosterProximity.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiOrdinaryPairRoster.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiMovementPrefix.cs"
+        ],
+        "scenario layout and admitted caller edges": [
+          "src/Zodiac.Framework.Ai/Shared/AiScenarioLayout.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiMovementScenarios.cs",
+          "src/Zodiac.Framework.Ai/Shared/RosterAiGeneralPreparation.cs",
+          "src/Zodiac.Framework.Ai/Shared/RosterAiGeneralScenarios.cs",
+          "src/Zodiac.Framework.Ai/Shared/RosterAiMovementBaseline.cs",
+          "src/Zodiac.Framework.Ai/Sword/SwordAiMovementScenario.cs",
+          "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListScenarios.cs",
+          "src/Zodiac.Framework.Ai/AttackThrowStone/AttackThrowStoneAiMovementScenario.cs"
+        ],
+        "cast geometry and magic aim integration edges": [
+          "src/Zodiac.Framework.Ai/Shared/RosterAiCastOrigins.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiRosterCastGeometry.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiAimEnumeration.cs"
+        ],
+        "flat movement and admission edges": [
+          "src/Zodiac.Framework/Battle/Movement/FlatRosterMovement.cs",
+          "src/Zodiac.Framework/Battle/Movement/FlatOrdinaryMovement.cs",
+          "src/Zodiac.Framework/Battle/Combat/FlatRosterBattleProfile.cs"
+        ],
+        "current scenario and target regression inputs": [
+          "tests/Zodiac.Framework.Ai.Tests/Shared/AiRosterTargetingTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/Shared/RosterAiGeneralTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/Shared/AiRosterPairIntegrationTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiAimTests.cs"
+        ]
+      },
+      "limits": "Current geometry and older caller edges are partial; full terrain/target-policy/origin/rank/command branches and frame RNG remain open."
+    },
+    {
+      "ticket": "ZOD-434",
+      "managedReviewBaseline": "0b6db614d0ab5cade08fc0dd9bd54c517cb7a29f",
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "report": "docs/behavior/ai-rank-selection-review.md",
+      "receipt": "docs/evidence/ai/rank-selection-review-v1.json",
+      "disposition": "Completed bounded rank admission/lottery/ordinary fallback and retained-priority review; no new defect confirmed.",
+      "reviewedPathsByFocus": {
+        "shared rank lottery and priority owners": [
+          "src/Zodiac.Framework.Ai/Shared/AiCandidateRank.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiRankedInsertion.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiRankedLottery.cs",
+          "src/Zodiac.Framework.Ai/Shared/AiPriorityWorkspace.cs"
+        ],
+        "fresh selection and dispatch edges": [
+          "src/Zodiac.Framework.Ai/AiDecisionMaker.cs",
+          "src/Zodiac.Framework.Ai/Decision/AiAbilityEvaluator.cs",
+          "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListComposition.cs",
+          "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListSelection.cs",
+          "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiPostActSelection.cs",
+          "src/Zodiac.Framework.Ai/Sword/SwordAiComposition.cs",
+          "src/Zodiac.Framework.Ai/Sword/SwordAiSelection.cs",
+          "src/Zodiac.Framework.Ai/AttackThrowStone/AttackThrowStoneAiFallbackExecution.cs"
+        ],
+        "per-entry best and magic fixed-origin comparison edges": [
+          "src/Zodiac.Framework.Ai/Sword/SwordAiCandidateScan.cs",
+          "src/Zodiac.Framework.Ai/Sword/RosterSwordAiAttackEntry.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiEntryEvaluation.cs",
+          "src/Zodiac.Framework.Ai/Accumulate/RosterAccumulateAiEntry.cs",
+          "src/Zodiac.Framework.Ai/ThrowStone/RosterThrowStoneAiEntry.cs",
+          "src/Zodiac.Framework.Ai/Dash/RosterDashAiEntry.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiSearchQuery.cs"
+        ],
+        "selection regression inputs": [
+          "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiSelectionTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiSelectionTests.cs"
+        ]
+      },
+      "limits": "Per-entry and command edges are partial; complete origin/aim traversal, policies, commands and frame RNG remain open."
+    },
+    {
+      "ticket": "ZOD-435",
+      "managedReviewBaseline": "edc1aec71638219e4c9228f811cb91bda723a978",
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "report": "docs/behavior/ai-command-continuation-review.md",
+      "receipt": "docs/evidence/ai/command-continuation-review-v1.json",
+      "disposition": "Completed bounded checked command/continuation/facing/recovery review; no new defect confirmed.",
+      "reviewedPathsByFocus": {
+        "fresh AI command turn and recovery owners": [
+          "src/Zodiac.Framework.Ai/AiCommandExecutor.cs",
+          "src/Zodiac.Framework.Ai/AiTurnController.cs",
+          "src/Zodiac.Framework.Ai/Execution/AiCommand.cs",
+          "src/Zodiac.Framework.Ai/Execution/AiTurn.cs",
+          "src/Zodiac.Framework.Ai/Execution/AiTurnProgress.cs",
+          "src/Zodiac.Framework.Ai/Decision/AiDecisionConfiguration.cs"
+        ],
+        "Framework roster proposal and continuation authority": [
+          "src/Zodiac.Framework/Battle/Commands/RosterDecisionBattle.cs",
+          "src/Zodiac.Framework/Battle/Commands/RosterDecisionContext.cs",
+          "src/Zodiac.Framework/Battle/Commands/RosterDecisionContext.PlannedMove.cs",
+          "src/Zodiac.Framework/Battle/Commands/RosterDecision.cs",
+          "src/Zodiac.Framework/Battle/Commands/RosterDecisionResult.cs",
+          "src/Zodiac.Framework/Battle/Commands/RosterDecisionResult.PlannedMove.cs",
+          "src/Zodiac.Framework/Battle/Commands/RosterMoveDecisionBattle.cs",
+          "src/Zodiac.Framework/Battle/Commands/RosterMoveContinuation.cs"
+        ],
+        "actual facing turn and RNG integration": [
+          "src/Zodiac.Framework/Battle/Turns/RosterFacingTurnBattle.cs",
+          "src/Zodiac.Framework/Battle/Turns/RosterFacingTurnState.cs",
+          "src/Zodiac.Framework/Battle/Turns/FacingReceiptRules.cs",
+          "src/Zodiac.Framework/Random/RandomStateGenerator.cs",
+          "src/Zodiac.Framework/Battle/Turns/TurnCycle.cs",
+          "src/Zodiac.Framework/Battle/Turns/TurnBattleSimulator.cs",
+          "src/Zodiac.Framework/Battle/Movement/FlatRosterPathMovement.cs",
+          "src/Zodiac.Framework/Battle/Movement/ConfirmedPathMovement.cs"
+        ],
+        "older pair authority edges": [
+          "src/Zodiac.Framework/Battle/Commands/FacingDecisionBattle.cs",
+          "src/Zodiac.Framework/Battle/Commands/FacingMoveDecisionBattle.cs"
+        ],
+        "current regression inputs": [
+          "tests/Zodiac.Framework.Tests/Battle/Commands/RosterDecisionTests.cs",
+          "tests/Zodiac.Framework.Tests/Battle/Commands/RosterMoveContinuationTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/Execution/AiTurnControllerTests.cs"
+        ]
+      },
+      "limits": "Older pair and actual-state edges are partial. Full native controller/frame/status/terminal behavior and magic commands remain open; managed authority/recovery is explicit architecture."
+    },
+    {
+      "ticket": "ZOD-436",
+      "managedReviewBaseline": "46ec95bdf7013567f3c07f2adca527bee973430a",
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "report": "docs/behavior/ordinary-magic-pipeline-review.md",
+      "receipt": "docs/evidence/combat/ordinary-magic-pipeline-review-v1.json",
+      "disposition": "Completed within stated domains; no new gameplay defect confirmed. Named routine extraction and eight consumer regressions preserve behavior.",
+      "reviewedPathsByFocus": {
+        "shared formula arithmetic evasion elements and finalization": [
+          "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicAmountFormula.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicArithmetic.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicFormula.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicHpRouting.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/MagicDamageElements.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvasion.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/MagicConditionalProc.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultFinalization.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicInputs.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/MagicResources.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastQuery.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/MagicReadyPlanQuery.cs"
+        ],
+        "ordinary execution publication and hypothetical calculation edges": [
+          "src/Zodiac.Framework/Battle/Combat/Magic/Execution/OrdinaryMagicCastExecution.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/Execution/OrdinaryMagicStatusRules.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/Execution/OrdinaryMagicBattleDefinition.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/Publication/MagicProjectionQuery.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/Publication/MagicCastProjection.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/Publication/MagicLivingApplication.cs",
+          "src/Zodiac.Framework/Battle/Combat/Magic/Publication/OrdinaryMagicHitApplication.cs"
+        ],
+        "stored target calculation edges": [
+          "src/Zodiac.Framework/Battle/Combat/Targeting/Resolution/StoredSpellCastQuery.cs",
+          "src/Zodiac.Framework/Battle/Combat/Targeting/Resolution/SpellTargetCastResolution.cs"
+        ],
+        "AI formula consumer and current metadata admission edges": [
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiProjection.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiActionSimulation.cs",
+          "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiHitSimulation.cs",
+          "src/Zodiac.Content/BattleSetup/PreparedOrdinaryMagicBattle.cs",
+          "src/Zodiac.Content/BattleSetup/PreparedOrdinarySpellAi.cs"
+        ],
+        "current regression edges": [
+          "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/MagicConsumerReviewTests.cs",
+          "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/FaithMagicArithmeticTests.cs",
+          "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/FaithMagicAmountTests.cs",
+          "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/FaithMagicElementPipelineTests.cs",
+          "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/FaithMagicResolutionTests.cs",
+          "tests/Zodiac.Framework.Tests/Battle/Combat/Magic/MagicCastQueryTests.cs",
+          "tests/Zodiac.Framework.Ai.Tests/OrdinarySpells/OrdinarySpellAiProjectionTests.cs"
+        ]
+      },
+      "limits": "Consumer/application/metadata edges are partial. Full spell lifecycle, general statuses, origins, commands and frame RNG remain open."
+    }
+  ],
+  "fullyReviewedGroups": [],
+  "nextBatch": "Owner review of ZOD-448 shared boolean elements, then select a bounded next formula family",
+  "overallBehaviorReviewCompleted": false,
+  "supportingSourceStudies": [
+    {
+      "ticket": "ZOD-426",
+      "report": "docs/behavior/ordinary-spell-movement-origins.md",
+      "receipt": "docs/evidence/ai/spell-movement-origins-source-v1.json",
+      "disposition": "Source-only origin/baseline study; selects ZOD-437. No full review group or runtime spell search is completed."
+    },
+    {
+      "ticket": "ZOD-442",
+      "report": "docs/behavior/ordinary-spell-list-integration.md",
+      "receipt": "docs/evidence/ai/spell-list-integration-source-v1.json",
+      "disposition": "Source-only list/scenario/ranked ownership and context lifetime study; selects ZOD-443. No runtime expansion or full review group completed."
+    }
+  ],
+  "supportingRuntimeMilestones": [
+    {
+      "ticket": "ZOD-437",
+      "report": "docs/behavior/ordinary-spell-movement-baselines.md",
+      "receipt": "docs/evidence/ai/spell-movement-baselines-implementation-v1.json",
+      "disposition": "Fresh offensive move-only diagnostics; no full review group, moved-origin casting or autonomous magic is completed."
+    },
+    {
+      "ticket": "ZOD-438",
+      "report": "docs/behavior/ordinary-spell-cast-origins.md",
+      "receipt": "docs/evidence/ai/spell-cast-origins-implementation-v1.json",
+      "disposition": "Potential cast-origin/pass diagnostics only; no moved-origin formulas, full review group or autonomous magic completed."
+    },
+    {
+      "ticket": "ZOD-439",
+      "report": "docs/behavior/ordinary-spell-origin-evaluation.md",
+      "receipt": "docs/evidence/ai/spell-origin-evaluation-implementation-v1.json",
+      "disposition": "One fresh selected-origin/pass simulation; no full cross-origin traversal, review group or autonomous magic completed."
+    },
+    {
+      "ticket": "ZOD-440",
+      "report": "docs/behavior/ordinary-spell-pass-search.md",
+      "receipt": "docs/evidence/ai/spell-pass-search-implementation-v1.json",
+      "disposition": "One fresh selected pass across origins with shared remaining aims/RNG; no caller/list dispatch, review group or autonomous magic completed."
+    },
+    {
+      "ticket": "ZOD-441",
+      "report": "docs/behavior/ordinary-spell-ability-search.md",
+      "receipt": "docs/evidence/ai/spell-ability-search-implementation-v1.json",
+      "disposition": "One fresh owned offensive slot/scenario caller; pass-local masks and shared best/RNG, no full dispatch/insertion, review group or autonomous magic completed."
+    },
+    {
+      "ticket": "ZOD-443",
+      "report": "docs/behavior/ordinary-spell-context.md",
+      "receipt": "docs/evidence/ai/spell-context-implementation-v1.json",
+      "disposition": "Validated raw-input context and three-argument ability-caller API; prior mechanics preserved. No full dispatch, review group or autonomous magic completed."
+    },
+    {
+      "ticket": "ZOD-444",
+      "report": "docs/architecture/default-ability-pathways.md",
+      "receipt": "docs/evidence/maintenance/default-ability-rename-v1.json",
+      "disposition": "DefaultAbility identifier/path naming maintenance and future menu-prefix record only; no gameplay expansion, full review group or autonomous magic completed."
+    },
+    {
+      "ticket": "ZOD-445",
+      "report": "docs/architecture/default-ability-execution-names.md",
+      "receipt": "docs/evidence/maintenance/default-ability-execution-rename-v1.json",
+      "disposition": "Naming-only alignment of Framework battle/execution and dependent content/client/CLI/test types to DefaultAbility; no gameplay expansion or full review group completed."
+    },
+    {
+      "ticket": "ZOD-446",
+      "report": "docs/architecture/ability-formula-dispatch.md",
+      "receipt": "docs/evidence/maintenance/ability-formula-refactor-v1.json",
+      "disposition": "Parameters/context and shared0x32/0x37 dispatch refactor only; existing gameplay/admission/RNG contracts retained. No full review group or autonomous magic completed."
+    },
+    {
+      "ticket": "ZOD-447",
+      "report": "docs/architecture/faith-magic-formula-dispatch.md",
+      "receipt": "docs/evidence/combat/faith-magic-dispatch-v1.json",
+      "disposition": "Existing0x08/0x0C amount/routing connected to shared context/dispatch/results; no new status formula, full review group or autonomous magic completed."
+    },
+    {
+      "ticket": "ZOD-448",
+      "report": "docs/architecture/shared-element-model.md",
+      "receipt": "docs/evidence/maintenance/shared-element-model-v1.json",
+      "disposition": "Shared semantic element representation and legacy adapters only; no custom element mechanics, elemental sword profile, full review group or autonomous magic completed."
+    }
+  ]
+}

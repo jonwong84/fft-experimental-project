@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-329",
+  "date": "2026-11-05",
+  "managedBaseRevision": "3f194e6bb1052bae16d905783a9400742a255ad5",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "behavior": "docs/development/dash-content-binding.md",
+  "sourceReceipt": "docs/evidence/combat/ability-formula-source-v1.json",
+  "validation": {
+    "dotnetPassed": 4562,
+    "frameworkPassed": 1521,
+    "aiPassed": 1217,
+    "contentPassed": 838,
+    "cliPassed": 328,
+    "pythonPassed": 603,
+    "newContentCases": 5,
+    "newCliCases": 26,
+    "newPythonCases": 7,
+    "trxReports": 7,
+    "lockedRestore": true,
+    "releaseWarnings": 0,
+    "releaseErrors": 0,
+    "preparedDashImport": true,
+    "preparedStonePackageAndProvenanceUnchanged": true,
+    "coverageAudit": true,
+    "localLinkAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": [
+      "scratch/dash-content-329/",
+      "scratch/effect-families-333/"
+    ]
+  },
+  "invariants": [
+    "effect identity and learned grants stay explicit; metadata and known slots confer no command authority",
+    "primary AI evasion share is independent of secondary combat evasion",
+    "schema1 wire shape and existing Stone outputs/API retained",
+    "actual Framework rules, existing fixtures, owner drafts and dependencies unchanged"
+  ],
+  "packageSchemaChanged": false,
+  "dependencyChanges": false,
+  "newFriendAccess": false
+}

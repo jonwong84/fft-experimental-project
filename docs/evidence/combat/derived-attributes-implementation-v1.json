@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "originalExecuted": false,
+  "cExecuted": false,
+  "milestones": [
+    {
+      "ticket": "ZOD-385",
+      "managedBaseRevision": "cec57a61a7fce60e9e6244db410bb613c6e8b291",
+      "validation": "Three managed cases pass14 mode1 literals, reward/growth/maxima composition, retained base stats and immutable/domain guards. Eight Python cases and28 descriptions pass; clean pinned7-file/7-function source audit passed.",
+      "reports": "scratch/derived-385-386/"
+    },
+    {
+      "ticket": "ZOD-386",
+      "managedBaseRevision": "4d8a7faa923a4cb5ab5d2c0d3ca1c4481c9542fb",
+      "validation": "Locked restore and zero-warning/error Release build pass;4767 .NET and736 Python cases passed, including nine new managed/eight new Python cases and28 independent descriptions. Fresh source/earlier prepared-data/guide/layout/preservation audits passed. Final HP/MP clamp follows armor; no complete refresh or live adoption.",
+      "reports": "scratch/derived-385-386/"
+    }
+  ],
+  "validation": {
+    "lockedRestorePassed": true,
+    "releaseBuild": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "dotnetPassed": 4767,
+    "dotnetReports": [
+      {
+        "path": "scratch/derived-385-386/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-06_01_40_16_net10.0.trx",
+        "total": 24,
+        "executed": 24,
+        "passed": 24,
+        "failed": 0,
+        "error": 0,
+        "notExecuted": 0
+      },
+      {
+        "path": "scratch/derived-385-386/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-06_01_40_16_net10.0[1].trx",
+        "total": 206,
+        "executed": 206,
+        "passed": 206,
+        "failed": 0,
+        "error": 0,
+        "notExecuted": 0
+      },
+      {
+        "path": "scratch/derived-385-386/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-06_01_40_17_net10.0.trx",
+        "total": 1726,
+        "executed": 1726,
+        "passed": 1726,
+        "failed": 0,
+        "error": 0,
+        "notExecuted": 0
+      },
+      {
+        "path": "scratch/derived-385-386/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-06_01_40_17_net10.0[1].trx",
+        "total": 1217,
+        "executed": 1217,
+        "passed": 1217,
+        "failed": 0,
+        "error": 0,
+        "notExecuted": 0
+      },
+      {
+        "path": "scratch/derived-385-386/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-06_01_40_17_net10.0[2].trx",
+        "total": 328,
+        "executed": 328,
+        "passed": 328,
+        "failed": 0,
+        "error": 0,
+        "notExecuted": 0
+      },
+      {
+        "path": "scratch/derived-385-386/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-06_01_40_17_net10.0[3].trx",
+        "total": 838,
+        "executed": 838,
+        "passed": 838,
+        "failed": 0,
+        "error": 0,
+        "notExecuted": 0
+      },
+      {
+        "path": "scratch/derived-385-386/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-06_01_40_17_net10.0[4].trx",
+        "total": 428,
+        "executed": 428,
+        "passed": 428,
+        "failed": 0,
+        "error": 0,
+        "notExecuted": 0
+      }
+    ],
+    "pythonPassed": 736,
+    "pythonReport": "scratch/derived-385-386/python.log",
+    "newManagedCases": 9,
+    "newPythonCases": 8,
+    "mode1Descriptions": 14,
+    "equipmentDescriptions": 14,
+    "sourceAudit": "scratch/derived-385-386/final-source-audit.json",
+    "priorPreparedDataAudits": [
+      "scratch/derived-385-386/prior-growth-audit.json",
+      "scratch/derived-385-386/prior-reward-audit.json"
+    ],
+    "guideAudit": "scratch/derived-385-386/guide-audit.json",
+    "layout": {
+      "publicTypes": 446,
+      "publicDeclarations": 448,
+      "newTypes": 7,
+      "onePublicDeclarationPerMatchingFile": true,
+      "existingPartialPartsPreserved": true
+    },
+    "preservation": {
+      "managedBaseRevision": "cec57a61a7fce60e9e6244db410bb613c6e8b291",
+      "ownerFiles": [
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AbilityToggles.cs",
+          "gitBlob": "16320578ffa448783221b68c4ef5c18e245b9f35",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AiBehaviorToggles.cs",
+          "gitBlob": "c67c4b154c471764fa11a6761710d2e9c9694a65",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AttributeToggles.cs",
+          "gitBlob": "1182777f8a0c3ca219afa23d0803c52af4ca9f8e",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Common/EquipmentSlot.cs",
+          "gitBlob": "091006b2d60ca558c303571a4eb779340be53629",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Common/StatusToggles.cs",
+          "gitBlob": "5136db2af350d7e3735e47fb92b905019316fd6f",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Item/ShopAvailabilityToggles.cs",
+          "gitBlob": "fd543d84dc8eb7860d710cf1c75499eb55306e14",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Job/EquipmentOptionToggles.cs",
+          "gitBlob": "694e44bbdc3e62103b64ff794addec1ad977d142",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Status/EffectBehaviorToggles.cs",
+          "gitBlob": "9792cdea7da1d92e9ec25cf1e97d3e879c24e8ae",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Status/StatusSelectionToggles.cs",
+          "gitBlob": "a0b2e2a8ddcb53a4bfd7416609927399b8339294",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Job/JobStats.cs",
+          "gitBlob": "bd617c374309aca1529a167a8d31a488160086cc",
+          "unchanged": true
+        }
+      ],
+      "allExistingProductionTestsAndBehaviorFixturesUnchanged": true,
+      "equipmentBreakOwnerIntentAndEnumUnchanged": true,
+      "contentAiHostAndImportsUnchanged": true,
+      "buildAndDependenciesUnchanged": true
+    },
+    "originalExecuted": false,
+    "cExecuted": false,
+    "uiReviewed": false,
+    "coverageEntriesChecked": 58,
+    "localLinksChecked": 2867
+  }
+}

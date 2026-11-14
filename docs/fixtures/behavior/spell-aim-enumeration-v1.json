@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "originalExecuted": false,
+  "cExecuted": false,
+  "scope": "Literal ordinary living-unit deadlines, completed working usage and lower-sheet potential masks; no C execution, ranking or live commands.",
+  "usage": [
+    { "id": "instant-adverse", "input": { "ct": 0, "actorDelay": 10, "selfNone": false, "force": false, "exhaustive": false }, "expected": false },
+    { "id": "short-adverse", "input": { "ct": 2, "actorDelay": 10, "selfNone": false, "force": false, "exhaustive": false }, "expected": false },
+    { "id": "actor-deadline", "input": { "ct": 10, "actorDelay": 10, "selfNone": false, "force": false, "exhaustive": false }, "expected": true },
+    { "id": "considered-high-bit", "input": { "ct": 131, "actorDelay": 10, "selfNone": false, "force": false, "exhaustive": false }, "expected": true },
+    { "id": "self-unaffected", "input": { "ct": 4, "actorDelay": 10, "selfNone": true, "force": false, "exhaustive": false }, "expected": true },
+    { "id": "forced", "input": { "ct": 2, "actorDelay": 10, "selfNone": false, "force": true, "exhaustive": false }, "expected": true },
+    { "id": "short-reach-exhaustive", "input": { "ct": 10, "actorDelay": 10, "selfNone": false, "force": false, "exhaustive": true }, "expected": false }
+  ],
+  "deadlines": [
+    { "id": "guard-ceiling", "input": { "ct": 80, "speed": 8, "charge": 2 }, "expected": { "delay": 3, "moves": false } },
+    { "id": "guard-equal", "input": { "ct": 80, "speed": 8, "charge": 3 }, "expected": { "delay": 3, "moves": true } },
+    { "id": "instant-ready", "input": { "ct": 100, "speed": 8, "charge": 0 }, "expected": { "delay": 0, "moves": false } },
+    { "id": "charged-ready", "input": { "ct": 100, "speed": 8, "charge": 1 }, "expected": { "delay": 0, "moves": true } },
+    { "id": "actor", "input": { "ct": 0, "speed": 10, "charge": 4 }, "expected": { "delay": 10, "moves": false } }
+  ],
+  "masks": [
+    { "id": "union-xor-range-order", "input": { "width": 7, "depth": 5, "caster": [0,2,0], "range": 4, "area": 1, "targets": [[4,2,0],[2,1,0]], "follow": true, "targeting": 5 }, "expected": [[2,0,0],[1,1,0],[3,1,0],[2,2,0],[3,2,0]] },
+    { "id": "overlapping-centers", "input": { "width": 7, "depth": 5, "caster": [0,2,0], "range": 4, "area": 1, "targets": [[4,2,0],[3,2,0]], "follow": true, "targeting": 5 }, "expected": [[3,1,0],[2,2,0],[3,3,0]] },
+    { "id": "clipped-corner", "input": { "width": 7, "depth": 5, "caster": [0,2,0], "range": 4, "area": 2, "targets": [[0,0,0]], "follow": true, "targeting": 5 }, "expected": [[1,0,0],[2,0,0],[0,1,0],[1,1,0],[0,2,0]] },
+    { "id": "source-bit-zero", "input": { "width": 16, "depth": 5, "caster": [8,2,0], "range": 7, "area": 0, "targets": [[15,2,0]], "follow": true, "targeting": 6 }, "expected": [[15,2,0]] }
+  ]
+}

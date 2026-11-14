@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "kind": "owner-requested-managed-cost-representation",
+  "managedBaseRevision": "0de5d62e2d5c6fa89ce4b356c01360a9d2c8b03f",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "behavior": "docs/development/managed-magic-mp-costs.md",
+  "sourceReceipt": "docs/evidence/combat/magic-resource-source-v1.json",
+  "reports": "scratch/managed-mp-costs/",
+  "focusedManagedPassed": 108,
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuild": {
+      "warnings": 0,
+      "errors": 0
+    },
+    "managedPassed": 4670,
+    "newManagedCases": 9,
+    "managedReports": [
+      {
+        "path": "scratch/managed-mp-costs/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_20_58_16_net10.0.trx",
+        "passed": 24
+      },
+      {
+        "path": "scratch/managed-mp-costs/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_20_58_17_net10.0.trx",
+        "passed": 206
+      },
+      {
+        "path": "scratch/managed-mp-costs/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_20_58_17_net10.0[1].trx",
+        "passed": 1217
+      },
+      {
+        "path": "scratch/managed-mp-costs/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_20_58_17_net10.0[2].trx",
+        "passed": 1629
+      },
+      {
+        "path": "scratch/managed-mp-costs/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_20_58_17_net10.0[3].trx",
+        "passed": 838
+      },
+      {
+        "path": "scratch/managed-mp-costs/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_20_58_17_net10.0[4].trx",
+        "passed": 428
+      },
+      {
+        "path": "scratch/managed-mp-costs/full-trx/Jonathan_DESKTOP-EXCALIB_2026-11-05_20_58_18_net10.0.trx",
+        "passed": 328
+      }
+    ],
+    "pythonPassed": 695,
+    "sourceAudit": "scratch/managed-mp-costs/source-audit.json",
+    "coverageEntriesChecked": 58,
+    "localLinksChecked": 1608,
+    "preservation": {
+      "managedBaseRevision": "0de5d62e2d5c6fa89ce4b356c01360a9d2c8b03f",
+      "ownerFiles": [
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AbilityToggles.cs",
+          "gitBlob": "16320578ffa448783221b68c4ef5c18e245b9f35",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AiBehaviorToggles.cs",
+          "gitBlob": "c67c4b154c471764fa11a6761710d2e9c9694a65",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Ability/AttributeToggles.cs",
+          "gitBlob": "1182777f8a0c3ca219afa23d0803c52af4ca9f8e",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Common/EquipmentSlot.cs",
+          "gitBlob": "091006b2d60ca558c303571a4eb779340be53629",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Common/StatusToggles.cs",
+          "gitBlob": "5136db2af350d7e3735e47fb92b905019316fd6f",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Item/ShopAvailabilityToggles.cs",
+          "gitBlob": "fd543d84dc8eb7860d710cf1c75499eb55306e14",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Job/EquipmentOptionToggles.cs",
+          "gitBlob": "694e44bbdc3e62103b64ff794addec1ad977d142",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Status/EffectBehaviorToggles.cs",
+          "gitBlob": "9792cdea7da1d92e9ec25cf1e97d3e879c24e8ae",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Status/StatusSelectionToggles.cs",
+          "gitBlob": "a0b2e2a8ddcb53a4bfd7416609927399b8339294",
+          "unchanged": true
+        },
+        {
+          "path": "src/Zodiac.Content/Definitions/Job/JobStats.cs",
+          "gitBlob": "bd617c374309aca1529a167a8d31a488160086cc",
+          "unchanged": true
+        }
+      ],
+      "productionChanges": [
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicCastQuery.cs",
+        "src/Zodiac.Framework/Battle/Combat/Magic/MagicResources.cs"
+      ],
+      "originalImportsAndContentUnchanged": true,
+      "sourceBehaviorFixturesUnchanged": true,
+      "buildAndDependenciesUnchanged": true
+    },
+    "originalExecuted": false,
+    "cExecuted": false,
+    "uiReviewed": false
+  }
+}

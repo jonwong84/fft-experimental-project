@@ -1,0 +1,6156 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "dcab45fbd0ebc68f37fd9f5deeab44d28d2c0c56",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Supplied formula0x08 top-level trace; supporting evidence only, ZOD-436 remains open.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/formulas.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 46088,
+      "sha256": "a9e58962104849ae4e947e3833236aaf2c1334394a1af12b19930428e6885e03"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54735,
+      "sha256": "b37712b2e33a060f057e87f866c25ef0f4d4ba9b8bacf89447e2eeb0cd0c2bf9"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40418,
+      "sha256": "04542e66135d779fd739adbce9fa6ee714feb6dc8607dfa4584c87222a38343c"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 85515,
+      "sha256": "820411f8293d559677ff676f4e3d19a16ae52b667e7aa1393ab5495741f1e149"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/status.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11673,
+      "sha256": "deeaeec02add8b9db7cca91c99517706033b18385ca433d32f1998d9d62e0e83"
+    },
+    {
+      "path": "include/fft/zodiac.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1226,
+      "sha256": "1fb6f4345d06c2afc850c1cebbe711a6e3b43bc6c008507b9fc786290d867a45"
+    },
+    {
+      "path": "include/fft/action.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14957,
+      "sha256": "6e97b3935c0d9cdcb8f6ba9ee2d40985b645bc0b03281a0d50d3d20aae35591c"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 23857,
+      "sha256": "57dd4fa8b07ef93c4a8e21c73657a0fdbe6c601a6db0b0351ae15b3cd15e4aea"
+    },
+    {
+      "path": "include/fft/weather.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3790,
+      "sha256": "baf439867bef5e0de3a0acc925b1a7205c4de05db582187c382cfd618492ef03"
+    },
+    {
+      "path": "src/lib/event/script/variables.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2400,
+      "sha256": "e6c0fe57771f63cbc92c03a0c7280238d4c657cc49dcd7e1d3a545159be58baf"
+    },
+    {
+      "path": "include/fft/script_variable.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 16299,
+      "sha256": "684cc112fc026d45fcb1e53be5ee34d67f8f9751756e5dbb8204636b7a63b3f1"
+    },
+    {
+      "path": "src/lib/event/script/control.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 17056,
+      "sha256": "2f34b99b9835980040b59f97f5d3c5b7561abb1410c70e4251b6ce0b9b9cc6af"
+    },
+    {
+      "path": "include/fft/move.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11466,
+      "sha256": "28cb002ca1ab5bf2fe139ffea6e4a71acaef70fe50c9023327439a1465b56fab"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 15884,
+      "sha256": "7ddb1c8ed2e0cad3de18dae6945364d4fffd2299aa4383a659ecbe27717b7eb9"
+    },
+    {
+      "path": "target/main.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 135004,
+      "sha256": "b6066d98d481d73eb49d2d16be57ae3fc5ae4070830176fdeeeaae2bdeaec2a3"
+    },
+    {
+      "path": "include/fft/formula.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9954,
+      "sha256": "2ed903ab22091474bfa4b364594dca038c201232b0062f3dbbd91c02d2d25bd2"
+    },
+    {
+      "path": "src/platform/psyq/libapi/rand.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 202,
+      "sha256": "6bae60cf1d89d9dd09abf3f36c837096bcac34b2928d49be98de770e9681ee52"
+    },
+    {
+      "path": "include/psx/abi_inline.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2336,
+      "sha256": "56c0193d73fdccb5eb180fd0e44ee2faefe2b1b240c94ed869d6ab100a4fc0f7"
+    },
+    {
+      "path": "include/psx/bios.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2708,
+      "sha256": "699cade209b354aedfd5c31a0e3a9b173cf6301758315c192ba4b5475ccd89f0"
+    },
+    {
+      "path": "src/main/unit_loadout.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 10491,
+      "sha256": "da8e9849ec2247b02e9dbfaced4524c9b9ca5553101f5d39b7cc5367fc4eb435"
+    },
+    {
+      "path": "src/main/status_check_data.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2914,
+      "sha256": "27f6e99fe2d9627af92c2a46f5277bf10c93978c7f880d9995332207893f1ba0"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_magical_damage",
+      "startLine": 214,
+      "endLine": 226,
+      "normalizedLfSha256": "af531fc4dc047745a0466ab1e30c3c69356e4702458c90e64649342efed85024"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_store_ma_and_y",
+      "startLine": 908,
+      "endLine": 914,
+      "normalizedLfSha256": "ab08ff83195c1ab0b066b81e7dee3251538befc0df41efe294d4824069d4ed58"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_element_apply_strengthen",
+      "startLine": 1027,
+      "endLine": 1031,
+      "normalizedLfSha256": "f19ac1e9a4cbbb2865d8d894049982303e3c3c4abb99d2b97578f30b841b4034"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_evade_calculate_magical",
+      "startLine": 896,
+      "endLine": 902,
+      "normalizedLfSha256": "98cd6ca6adacfe714ad5d1239aa35453951e9de2c9d906c5164c4a448707988d"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_apply_magical_modifiers",
+      "startLine": 957,
+      "endLine": 962,
+      "normalizedLfSha256": "e99f35218c3aa5d3c7a1a401f6c45c1b56378c8e2475b04c95b1a4062d8b69b4"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_calculate_elemental_xa_times_ya",
+      "startLine": 966,
+      "endLine": 971,
+      "normalizedLfSha256": "696a777a6edd1fc68246faa01b86565eb4571adaaceee15c643890d768be4c2c"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_calculate_faith",
+      "startLine": 213,
+      "endLine": 234,
+      "normalizedLfSha256": "0812837b942de11405114acecfb45320118930ffab21e427ce991a8ef39e2a3f"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_element_apply_absorption_and_status_proc",
+      "startLine": 950,
+      "endLine": 953,
+      "normalizedLfSha256": "4afb7b59c945892f674ea0ebbeecadfe2bbd42e591f58812ab36c47e65fa61ff"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_apply_status",
+      "startLine": 651,
+      "endLine": 663,
+      "normalizedLfSha256": "2fb9c77ece0d543631574be792c72bbcc1b4de59819bb11f062f438b96bc4998"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_calculate_target_result",
+      "startLine": 473,
+      "endLine": 673,
+      "normalizedLfSha256": "6855ceea86f5e95b4b1edc5fff1d4f47e6623e4bae0309b2a84ed2d232de91c0"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_magic_attack_up",
+      "startLine": 1073,
+      "endLine": 1077,
+      "normalizedLfSha256": "ae8a476c744a6e4907da1737c661ba0470f184119a18e9adfc7e1efdfabcea0e"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_magic_defense_up",
+      "startLine": 1101,
+      "endLine": 1105,
+      "normalizedLfSha256": "f1bf6bd3b80784a36c4c107fce4bb7a90ae165200e88dea916b513a4572b2e7c"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_target_magical_statuses",
+      "startLine": 1132,
+      "endLine": 1140,
+      "normalizedLfSha256": "bc905c3ec2eaffa1e57eaaf2e65de1f27d5d6a64ad1328678f5bac68a3870a0a"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_zodiac_compatibility",
+      "startLine": 319,
+      "endLine": 387,
+      "normalizedLfSha256": "b2983bca04a561e880d8f4d125419a63d7c792db0b9dba6f75488f6a0b6c1c77"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_store_xa_times_ya_damage",
+      "startLine": 1159,
+      "endLine": 1165,
+      "normalizedLfSha256": "f1716159cf32faad2dea79a588620b724cdc96e486bc3665de89f432550ee334"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_element_apply_weather",
+      "startLine": 132,
+      "endLine": 151,
+      "normalizedLfSha256": "c667afd197b14e8e970abf1c20ed8a7ee852d46c98d45b5d8a000799459a5e20"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_element_apply",
+      "startLine": 161,
+      "endLine": 191,
+      "normalizedLfSha256": "69ea5be9c0258753c1393424336e648878297e4e81c5473767b593514e020ec4"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "weather_get_effective",
+      "startLine": 52,
+      "endLine": 66,
+      "normalizedLfSha256": "fb4214f8dcf5207b63bf48cb3943e694b517ce6502cef338430d0cefc6211bfb"
+    },
+    {
+      "path": "src/lib/event/script/variables.c",
+      "symbol": "script_variable_get",
+      "startLine": 17,
+      "endLine": 38,
+      "normalizedLfSha256": "65107a1e3e6b2dff9ff89e2abce473c8dbad65fbae3b4694d491e6965f58688d"
+    },
+    {
+      "path": "src/lib/event/script/control.c",
+      "symbol": "script_variable_command_run",
+      "startLine": 243,
+      "endLine": 351,
+      "normalizedLfSha256": "46f845aa823b1f3869b21011dba6796bd331dfd5f48fb77920c1f12300991a70"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "status_modify_inflictions",
+      "startLine": 399,
+      "endLine": 469,
+      "normalizedLfSha256": "a19c63b4339bb0cd66da3a8b64d428b8fa1bf6a775490f5459a57352a611583e"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_nullify_action",
+      "startLine": 473,
+      "endLine": 489,
+      "normalizedLfSha256": "39ee3ba3c7f21f0e159eb3ef8409861e43b1a796c86ef5a1dd4260b394e26584"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_element_modify_damage",
+      "startLine": 493,
+      "endLine": 520,
+      "normalizedLfSha256": "06f727cc712d89400a3109b3d9d63ba6965102ddb5051c5511bf9aabaeca6d51"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_element_modify_weapon_damage",
+      "startLine": 154,
+      "endLine": 156,
+      "normalizedLfSha256": "bd672da379c7958c7cdb06829bfcbfe6039f5c210e5862481a0cc3628d803a4c"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "formula_clear_pending_proc",
+      "startLine": 757,
+      "endLine": 773,
+      "normalizedLfSha256": "679e3b748e75112e96b903da5b18fc71d97c015f84f6fedbaa2f8e63abf0080c"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "move_knockback_cancel",
+      "startLine": 777,
+      "endLine": 785,
+      "normalizedLfSha256": "b8375c1d3cc722956b37b757ea2dd50d20b60c3b9b884384b063a118dbbb0c57"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_element_apply_absorption",
+      "startLine": 194,
+      "endLine": 207,
+      "normalizedLfSha256": "90f66969ea618a56085bbe486af526c8910ab930a9cfbc7cd9357212ae7aa540"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_roll_conditional_status_proc",
+      "startLine": 857,
+      "endLine": 866,
+      "normalizedLfSha256": "0fc73881d8f26bf8b08f5ef4e88f1191ca80469bd89b2af35595d3df5f8a5c79"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "conditional_status_proc_roll_inner",
+      "startLine": 412,
+      "endLine": 418,
+      "normalizedLfSha256": "40d4f276cd1a506807f87002a9bc21cfac252bbf09da445b8ff5f0df14e9a008"
+    },
+    {
+      "path": "src/main/unit_state.c",
+      "symbol": "random_roll_pass_fail",
+      "startLine": 84,
+      "endLine": 88,
+      "normalizedLfSha256": "fe644f4e2a6aefc5520152de095c4762912d9dd0dbb92fadd12c0ff5a5c89f88"
+    },
+    {
+      "path": "src/platform/psyq/libapi/rand.c",
+      "symbol": "rand",
+      "startLine": 6,
+      "endLine": 8,
+      "normalizedLfSha256": "a9d63b6389f15294c76f44ffe3a25d8fbb11351048b52e21425665297089590e"
+    },
+    {
+      "path": "src/main/unit_loadout.c",
+      "symbol": "unit_job_abilities_learn",
+      "startLine": 119,
+      "endLine": 187,
+      "normalizedLfSha256": "a00159d0f4a24a516ea792816962b21bc1e3ca023a9370a8d09d055f3b88c3e0"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_apply_status_to_action",
+      "startLine": 674,
+      "endLine": 759,
+      "normalizedLfSha256": "f0d7b7151fe1d4a05cc9258db92475d68378d3c584ae19a57249aa68c2bebaa9"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_force_attack_miss",
+      "startLine": 56,
+      "endLine": 61,
+      "normalizedLfSha256": "c787313b90664c07e6dfaf637f597f90ccd31d51d090e31654d906bf3e4c7528"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "formula_get_random",
+      "startLine": 394,
+      "endLine": 399,
+      "normalizedLfSha256": "cdf6c4c0c319dc057ac12bd5c35829c7c3cd794b5acb4595ece35a9814e0512f"
+    },
+    {
+      "path": "src/main/status_check_data.c",
+      "symbol": "status_check_data_init",
+      "startLine": 9,
+      "endLine": 53,
+      "normalizedLfSha256": "74d4525fb05a45d294dee30dca144b02c76def68425a6cd30b475dc27963b2e6"
+    }
+  ],
+  "managedFiles": [
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicFormula.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 6079,
+      "sha256": "9115cd747357beed329a699da46a575e9bee266f58d51f51b3feeed1e468d1cb"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicAmountFormula.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4063,
+      "sha256": "888770c4f8e3105905c18bf02993b1874feaeaddde297b0d84d11989504e9579"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicArithmetic.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 760,
+      "sha256": "f186ba678127bdaafa02a47e91a8415b139e758c88e1f07f7b5fa22a59933e4d"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicEvasion.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4270,
+      "sha256": "b4ba9568ed47d77451d431a3faba369d0e4cf1eaafbf66b208e616e6149687b4"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicDamageElements.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2179,
+      "sha256": "3ff6535e3b30bd62d9e45c2a1ed28deb380e281aeed59abfccaadc6cc4aaa283"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicHpRouting.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 932,
+      "sha256": "f5615273ec917b3bf5b29139d799a1cb1040a8469032185826693f5d6553ac2c"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicConditionalProc.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3114,
+      "sha256": "f5ddff7711cca274010db4529a0ff93cbec725a4c77d20539baab2701ffa5627"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultFinalization.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2072,
+      "sha256": "708ce56c0be90a2cb225fc9ef5027143983cc46f8b341c6c0dfdab7df817f584"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/FaithMagicInputs.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4934,
+      "sha256": "0705858cf9ae17ac5ef1433e67310d8fdc4dd1b0f57514980727d5880dacb41a"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicElement.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 181,
+      "sha256": "5484a5351a2fad36ca483578f97f2065967dbdee5eca51d52b9ab24310a6da62"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicDamageWeather.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 230,
+      "sha256": "17f7ecfc92fd7d2534805fbff584bb934347983275c354b572de4e6118754193"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicResultFinalizationProfile.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 482,
+      "sha256": "ab974529b03dc13995560df1a3dafa2924a709bf2505645dc7692f8e4ca30e09"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/FaithValue.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 339,
+      "sha256": "a9a1f4c9a5669d862948a083998105ec95877dd1753c4984b06c2ebebd0a0f56"
+    },
+    {
+      "path": "src/Zodiac.Framework/Battle/Combat/Magic/MagicFormulaEvaluationMode.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 135,
+      "sha256": "378bc67c8bf7d692851dcec3c47b2c33d9e36b193eb3afa696ac3a605108b182"
+    }
+  ],
+  "preparedValidation": {
+    "byteLength": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "loadAddress": "0x80067000"
+  },
+  "suppliedInstructionCheck": {
+    "start": "0x80188d84",
+    "endInclusive": "0x80188df0",
+    "instructionCount": 28,
+    "allMatched": true,
+    "instructionWords": [
+      "27bdffe8",
+      "afbf0010",
+      "0c06216e",
+      "00000000",
+      "14400013",
+      "00000000",
+      "0c061725",
+      "00000000",
+      "0c0617ff",
+      "00000000",
+      "0c0621d1",
+      "00000000",
+      "0c0621df",
+      "00000000",
+      "14400009",
+      "00000000",
+      "0c061c54",
+      "00000000",
+      "0c0621c7",
+      "00000000",
+      "14400003",
+      "00000000",
+      "0c061fad",
+      "00000000",
+      "8fbf0010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ]
+  },
+  "directCalls": [
+    {
+      "callPc": "0x80188d8c",
+      "target": "0x801885b8"
+    },
+    {
+      "callPc": "0x80188d9c",
+      "target": "0x80185c94"
+    },
+    {
+      "callPc": "0x80188da4",
+      "target": "0x80185ffc"
+    },
+    {
+      "callPc": "0x80188dac",
+      "target": "0x80188744"
+    },
+    {
+      "callPc": "0x80188db4",
+      "target": "0x8018877c"
+    },
+    {
+      "callPc": "0x80188dc4",
+      "target": "0x80187150"
+    },
+    {
+      "callPc": "0x80188dcc",
+      "target": "0x8018871c"
+    },
+    {
+      "callPc": "0x80188ddc",
+      "target": "0x80187eb4"
+    }
+  ],
+  "earlyExitBranches": [
+    {
+      "branchPc": "0x80188d94",
+      "condition": "r2 != 0",
+      "target": "0x80188de4"
+    },
+    {
+      "branchPc": "0x80188dbc",
+      "condition": "r2 != 0",
+      "target": "0x80188de4"
+    },
+    {
+      "branchPc": "0x80188dd4",
+      "condition": "r2 != 0",
+      "target": "0x80188de4"
+    }
+  ],
+  "dispatchReturnCheck": {
+    "callPc": "0x8018b974",
+    "instruction": "0040f809",
+    "returnAddress": "0x8018b97c",
+    "kind": "indirect jalr through selected formula"
+  },
+  "findings": {
+    "faith": "Stored signed16 HP amount * target Faith * caster Faith /10000, one signed division; not two sequential /100 divisions.",
+    "helperReturns": "Zero continues after evasion/element checks and requests the status attempt after absorption/proc; nonzero branches to the shared epilogue.",
+    "statusBoundary": "formula_apply_status preserves hit, unsigned16 accuracy and miss type around status application. General status sets remain outside current managed admission.",
+    "managedOrder": "Pure input/amount projection may be computed before private evasion, but miss paths expose no amount/element/proc result. This is not a literal C instruction-by-instruction translation.",
+    "finalization": "Target result finalization belongs to action_calculate_target_result after formula return."
+  },
+  "validation": {
+    "faithDescriptions": 15,
+    "productDescriptions": 7,
+    "amountDescriptions": 22,
+    "entryDescriptions": 24,
+    "focusedPythonTestsPassed": 46,
+    "preparedTiersVerified": 8,
+    "ownerBlobsVerified": 10,
+    "runtimeChanged": false,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "managedExecuted": false,
+    "fullTicketCompleted": false
+  },
+  "suppliedMagicalModifierCheck": {
+    "managedBaseRevision": "526451b3cb376c5b2a3ade5a87f5bc7dfd344345",
+    "start": "0x80188744",
+    "endInclusive": "0x80188778",
+    "instructionCount": 14,
+    "instructionWords": [
+      "27bdffe8",
+      "afbf0010",
+      "0c061881",
+      "00000000",
+      "0c0618c7",
+      "00000000",
+      "0c061918",
+      "00000000",
+      "0c061259",
+      "00000000",
+      "8fbf0010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "orderedDirectCalls": [
+      {
+        "callPc": "0x8018874c",
+        "target": "0x80186204",
+        "symbol": "formula_apply_magic_attack_up"
+      },
+      {
+        "callPc": "0x80188754",
+        "target": "0x8018631c",
+        "symbol": "formula_apply_magic_defense_up"
+      },
+      {
+        "callPc": "0x8018875c",
+        "target": "0x80186460",
+        "symbol": "formula_apply_target_magical_statuses"
+      },
+      {
+        "callPc": "0x80188764",
+        "target": "0x80184964",
+        "symbol": "formula_apply_zodiac_compatibility"
+      }
+    ],
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80188974",
+        "returnAddress": "0x8018897c",
+        "target": "0x80188744",
+        "caller": "formula_calculate_magical_damage_without_faith"
+      },
+      {
+        "callPc": "0x801889dc",
+        "returnAddress": "0x801889e4",
+        "target": "0x80188744",
+        "caller": "magic_accuracy_without_strengthen_calculate"
+      },
+      {
+        "callPc": "0x80188a3c",
+        "returnAddress": "0x80188a44",
+        "target": "0x80188744",
+        "caller": "formula_accuracy_calculate_magic"
+      },
+      {
+        "callPc": "0x80188a9c",
+        "returnAddress": "0x80188aa4",
+        "target": "0x80188744",
+        "caller": "formula_accuracy_calculate_magic_without_faith"
+      },
+      {
+        "callPc": "0x80188c64",
+        "returnAddress": "0x80188c6c",
+        "target": "0x80188744",
+        "caller": "formula_magic_gun"
+      },
+      {
+        "callPc": "0x80188dac",
+        "returnAddress": "0x80188db4",
+        "target": "0x80188744",
+        "caller": "formula_magical_damage"
+      },
+      {
+        "callPc": "0x801892d4",
+        "returnAddress": "0x801892dc",
+        "target": "0x80188744",
+        "caller": "formula_destroy_sword_stat_ruin"
+      },
+      {
+        "callPc": "0x8018948c",
+        "returnAddress": "0x80189494",
+        "target": "0x80188744",
+        "caller": "formula_un_truth"
+      },
+      {
+        "callPc": "0x8018960c",
+        "returnAddress": "0x80189614",
+        "target": "0x80188744",
+        "caller": "formula_bizen_boat"
+      }
+    ],
+    "arithmeticOrder": [
+      "Magic Attack Up: signed16 XA *4 /3, stored",
+      "Magic Defense Up: signed16 XA *2 /3, stored",
+      "Shell: signed16 XA *2 /3, stored",
+      "Chicken or Frog: signed16 XA *3 /2 once, stored",
+      "Zodiac compatibility, including its unsigned16 XA*25 temporary and neutral floor/Serpentarius exception"
+    ],
+    "clarifications": [
+      "The percentage labels denote exact rational arithmetic, not multipliers1.33 or0.67.",
+      "Magic Defense Up and Shell stack as separate stores, not one OR-qualified reduction.",
+      "Chicken and Frog share one bonus; both statuses together do not apply it twice.",
+      "This wrapper modifies work XA, not the caster current MA or final HP field; strengthening precedes it and XA*Y/Faith follow it in formula0x08.",
+      "The wrapper has no branch or RNG call; broader caller/formula support is not implied by verifying these addresses."
+    ],
+    "roundingExample": {
+      "inputXa": 7,
+      "magicDefenseUp": true,
+      "shell": true,
+      "afterDefense": 4,
+      "afterShell": 2,
+      "combinedFourNinthsWouldBe": 3
+    },
+    "managedMapping": "FaithMagicAmountFormula.PrepareProduct applies these exact separate stores; healing0x0C uses its distinct branch and bypasses the three target-defense/status steps.",
+    "validation": {
+      "sourceAudit": {
+        "faithDescriptions": 15,
+        "productDescriptions": 7,
+        "amountDescriptions": 22,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 14,
+        "sourceFunctions": 36,
+        "preparedTiersVerified": 8
+      },
+      "ownerBlobsVerified": 10,
+      "focusedManagedTestsPassed": 11,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedMagicAttackUpCheck": {
+    "managedBaseRevision": "2198a38d5fcf438fb9edf16fae53f2fd10c7933e",
+    "start": "0x80186204",
+    "endInclusive": "0x80186250",
+    "instructionCount": 20,
+    "instructionWords": [
+      "3c028019",
+      "8c422d94",
+      "00000000",
+      "90420090",
+      "00000000",
+      "30420004",
+      "1040000b",
+      "3c025555",
+      "3c048019",
+      "248438ce",
+      "84830000",
+      "34425556",
+      "00031880",
+      "00620018",
+      "00031fc3",
+      "00001010",
+      "00431023",
+      "a4820000",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "supportCheck": {
+      "actorPointer": "0x80192d94",
+      "byteOffset": "0x90",
+      "mask": "0x04",
+      "branchPc": "0x8018621c",
+      "skipTarget": "0x8018624c",
+      "skipWhen": "Magic Attack Up bit is clear"
+    },
+    "arithmetic": {
+      "workAddress": "0x801938ce",
+      "load": "signed16",
+      "numerator": "XA*4 in signed32",
+      "divisionConstant": "0x55555556",
+      "operation": "signed product high32 minus numerator sign",
+      "rounding": "toward zero",
+      "store": "low16 bits as signed XA",
+      "inputCount": 65536,
+      "allSignedHalfwordsMatchDivision": true,
+      "samples": [
+        {
+          "inputXa": -32768,
+          "quotient": -43690,
+          "storedXa": 21846
+        },
+        {
+          "inputXa": -3,
+          "quotient": -4,
+          "storedXa": -4
+        },
+        {
+          "inputXa": -2,
+          "quotient": -2,
+          "storedXa": -2
+        },
+        {
+          "inputXa": -1,
+          "quotient": -1,
+          "storedXa": -1
+        },
+        {
+          "inputXa": 0,
+          "quotient": 0,
+          "storedXa": 0
+        },
+        {
+          "inputXa": 1,
+          "quotient": 1,
+          "storedXa": 1
+        },
+        {
+          "inputXa": 2,
+          "quotient": 2,
+          "storedXa": 2
+        },
+        {
+          "inputXa": 3,
+          "quotient": 4,
+          "storedXa": 4
+        },
+        {
+          "inputXa": 7,
+          "quotient": 9,
+          "storedXa": 9
+        },
+        {
+          "inputXa": 255,
+          "quotient": 340,
+          "storedXa": 340
+        },
+        {
+          "inputXa": 32767,
+          "quotient": 43689,
+          "storedXa": -21847
+        }
+      ]
+    },
+    "listedCallerChecks": [
+      {
+        "callPc": "0x8018874c",
+        "returnAddress": "0x80188754",
+        "target": "0x80186204"
+      },
+      {
+        "callPc": "0x80188808",
+        "returnAddress": "0x80188810",
+        "target": "0x80186204"
+      },
+      {
+        "callPc": "0x80188860",
+        "returnAddress": "0x80188868",
+        "target": "0x80186204"
+      },
+      {
+        "callPc": "0x80188898",
+        "returnAddress": "0x801888a0",
+        "target": "0x80186204"
+      },
+      {
+        "callPc": "0x80188fec",
+        "returnAddress": "0x80188ff4",
+        "target": "0x80186204"
+      },
+      {
+        "callPc": "0x8018a500",
+        "returnAddress": "0x8018a508",
+        "target": "0x80186204"
+      },
+      {
+        "callPc": "0x8018a83c",
+        "returnAddress": "0x8018a844",
+        "target": "0x80186204"
+      }
+    ],
+    "managedMapping": "FaithMagicAmountFormula.PrepareProduct conditionally calls ScaleXa(xa,4,3), whose unchecked signed16 store matches the source expression.",
+    "boundaries": [
+      "The routine changes work XA only, not unit MA, Y, HP or RNG.",
+      "No support bit leaves XA unchanged; the branch delay slot only loads a register constant.",
+      "This is a leaf routine with no jal; the wiki return-address warning is MIPS calling-convention guidance, not a C# restriction.",
+      "Exhaustive arithmetic comparison is an offline integer check, not original/C execution or admission of every signed16 value into a managed battle."
+    ],
+    "validation": {
+      "sourceAudit": {
+        "faithDescriptions": 15,
+        "productDescriptions": 7,
+        "amountDescriptions": 22,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 14,
+        "sourceFunctions": 36,
+        "preparedTiersVerified": 8
+      },
+      "ownerBlobsVerified": 10,
+      "focusedManagedTestsPassed": 11,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedMagicDefenseUpCheck": {
+    "managedBaseRevision": "e13757cc59abe7939ab606e73b58e2a82984bcf0",
+    "start": "0x8018631c",
+    "endInclusive": "0x80186368",
+    "instructionCount": 20,
+    "instructionWords": [
+      "3c028019",
+      "8c422d98",
+      "00000000",
+      "90420090",
+      "00000000",
+      "30420002",
+      "1040000b",
+      "3c025555",
+      "3c048019",
+      "248438ce",
+      "84830000",
+      "34425556",
+      "00031840",
+      "00620018",
+      "00031fc3",
+      "00001010",
+      "00431023",
+      "a4820000",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "supportCheck": {
+      "targetPointer": "0x80192d98",
+      "byteOffset": "0x90",
+      "mask": "0x02",
+      "branchPc": "0x80186334",
+      "skipTarget": "0x80186364",
+      "skipWhen": "Magic Defense Up bit is clear"
+    },
+    "arithmetic": {
+      "workAddress": "0x801938ce",
+      "load": "signed16",
+      "numerator": "XA*2 in signed32",
+      "divisionConstant": "0x55555556",
+      "operation": "signed product high32 minus numerator sign",
+      "rounding": "toward zero",
+      "store": "signed16",
+      "inputCount": 65536,
+      "allSignedHalfwordsMatchDivision": true,
+      "allQuotientsFitSigned16": true,
+      "samples": [
+        {
+          "inputXa": -32768,
+          "storedXa": -21845
+        },
+        {
+          "inputXa": -3,
+          "storedXa": -2
+        },
+        {
+          "inputXa": -2,
+          "storedXa": -1
+        },
+        {
+          "inputXa": -1,
+          "storedXa": 0
+        },
+        {
+          "inputXa": 0,
+          "storedXa": 0
+        },
+        {
+          "inputXa": 1,
+          "storedXa": 0
+        },
+        {
+          "inputXa": 2,
+          "storedXa": 1
+        },
+        {
+          "inputXa": 3,
+          "storedXa": 2
+        },
+        {
+          "inputXa": 7,
+          "storedXa": 4
+        },
+        {
+          "inputXa": 255,
+          "storedXa": 170
+        },
+        {
+          "inputXa": 32767,
+          "storedXa": 21844
+        }
+      ]
+    },
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80188754",
+        "returnAddress": "0x8018875c",
+        "target": "0x8018631c"
+      },
+      {
+        "callPc": "0x80189008",
+        "returnAddress": "0x80189010",
+        "target": "0x8018631c"
+      }
+    ],
+    "managedMapping": "FaithMagicAmountFormula.PrepareProduct conditionally uses ScaleXa(xa,2,3) for damage MagicDefenseUp; Shell remains a separate later step. Healing0x0C bypasses the target-defense branch.",
+    "clarifications": [
+      "A set support bit applies the reduction; beq skips it when the bit is clear.",
+      "The sign-correction register can be negative for negative XA; the wiki should-be-zero annotation is not a valid assumption across the signed16 domain.",
+      "The effect is exactly two thirds, not a decimal66% multiplier or nearest/floor rounding.",
+      "The leaf routine changes work XA only, with no RNG or unit-stat write. The no-r31-save warning concerns adding MIPS calls, not managed callers.",
+      "The exhaustive comparison is offline integer arithmetic, not original/C execution or a wider battle admission domain."
+    ],
+    "validation": {
+      "sourceAudit": {
+        "faithDescriptions": 15,
+        "productDescriptions": 7,
+        "amountDescriptions": 22,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 14,
+        "sourceFunctions": 36,
+        "preparedTiersVerified": 8
+      },
+      "ownerBlobsVerified": 10,
+      "focusedManagedTestsPassed": 11,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedMagicalTargetXaCheck": {
+    "managedBaseRevision": "93bbec5ea779882957b63af129a9893dece3eb22",
+    "start": "0x80186460",
+    "endInclusive": "0x801864f4",
+    "instructionCount": 38,
+    "instructionWords": [
+      "3c028019",
+      "8c422d98",
+      "00000000",
+      "9042005b",
+      "00000000",
+      "30420010",
+      "1040000b",
+      "3c025555",
+      "3c048019",
+      "248438ce",
+      "84830000",
+      "34425556",
+      "00031840",
+      "00620018",
+      "00031fc3",
+      "00001010",
+      "00431023",
+      "a4820000",
+      "3c028019",
+      "8c422d98",
+      "00000000",
+      "9042005a",
+      "00000000",
+      "30420006",
+      "1040000b",
+      "00000000",
+      "3c048019",
+      "248438ce",
+      "84830000",
+      "00000000",
+      "00031040",
+      "00431021",
+      "00021fc2",
+      "00431021",
+      "00021043",
+      "a4820000",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "listedCallerChecks": [
+      {
+        "callPc": "0x8018875c",
+        "returnAddress": "0x80188764",
+        "target": "0x80186460"
+      },
+      {
+        "callPc": "0x80189010",
+        "returnAddress": "0x80189018",
+        "target": "0x80186460"
+      }
+    ],
+    "shell": {
+      "statusByteOffset": "0x5b",
+      "mask": "0x10",
+      "skipBranch": "0x80186478",
+      "skipTarget": "0x801864a8",
+      "operation": "signed16(XA*2/3), truncating toward zero"
+    },
+    "frogChicken": {
+      "statusByteOffset": "0x5a",
+      "mask": "0x06",
+      "skipBranch": "0x801864c0",
+      "skipTarget": "0x801864f0",
+      "operation": "Reload signed16 XA; multiply3, add logical sign bit, arithmetic shift1, store signed16",
+      "appliesOnceForEitherOrBoth": true
+    },
+    "arithmeticComparison": {
+      "signedInputs": 65536,
+      "relevantStatusCombinations": 8,
+      "comparisons": 524288,
+      "allMatched": true,
+      "originalOrCExecuted": false,
+      "samples": [
+        {
+          "inputXa": -32768,
+          "shell": false,
+          "frog": false,
+          "chicken": false,
+          "afterShell": -32768,
+          "storedXa": -32768
+        },
+        {
+          "inputXa": -32768,
+          "shell": false,
+          "frog": false,
+          "chicken": true,
+          "afterShell": -32768,
+          "storedXa": 16384
+        },
+        {
+          "inputXa": -32768,
+          "shell": false,
+          "frog": true,
+          "chicken": false,
+          "afterShell": -32768,
+          "storedXa": 16384
+        },
+        {
+          "inputXa": -32768,
+          "shell": false,
+          "frog": true,
+          "chicken": true,
+          "afterShell": -32768,
+          "storedXa": 16384
+        },
+        {
+          "inputXa": -32768,
+          "shell": true,
+          "frog": false,
+          "chicken": false,
+          "afterShell": -21845,
+          "storedXa": -21845
+        },
+        {
+          "inputXa": -32768,
+          "shell": true,
+          "frog": false,
+          "chicken": true,
+          "afterShell": -21845,
+          "storedXa": -32767
+        },
+        {
+          "inputXa": -32768,
+          "shell": true,
+          "frog": true,
+          "chicken": false,
+          "afterShell": -21845,
+          "storedXa": -32767
+        },
+        {
+          "inputXa": -32768,
+          "shell": true,
+          "frog": true,
+          "chicken": true,
+          "afterShell": -21845,
+          "storedXa": -32767
+        },
+        {
+          "inputXa": -2,
+          "shell": false,
+          "frog": false,
+          "chicken": false,
+          "afterShell": -2,
+          "storedXa": -2
+        },
+        {
+          "inputXa": -2,
+          "shell": false,
+          "frog": false,
+          "chicken": true,
+          "afterShell": -2,
+          "storedXa": -3
+        },
+        {
+          "inputXa": -2,
+          "shell": false,
+          "frog": true,
+          "chicken": false,
+          "afterShell": -2,
+          "storedXa": -3
+        },
+        {
+          "inputXa": -2,
+          "shell": false,
+          "frog": true,
+          "chicken": true,
+          "afterShell": -2,
+          "storedXa": -3
+        },
+        {
+          "inputXa": -2,
+          "shell": true,
+          "frog": false,
+          "chicken": false,
+          "afterShell": -1,
+          "storedXa": -1
+        },
+        {
+          "inputXa": -2,
+          "shell": true,
+          "frog": false,
+          "chicken": true,
+          "afterShell": -1,
+          "storedXa": -1
+        },
+        {
+          "inputXa": -2,
+          "shell": true,
+          "frog": true,
+          "chicken": false,
+          "afterShell": -1,
+          "storedXa": -1
+        },
+        {
+          "inputXa": -2,
+          "shell": true,
+          "frog": true,
+          "chicken": true,
+          "afterShell": -1,
+          "storedXa": -1
+        },
+        {
+          "inputXa": 7,
+          "shell": false,
+          "frog": false,
+          "chicken": false,
+          "afterShell": 7,
+          "storedXa": 7
+        },
+        {
+          "inputXa": 7,
+          "shell": false,
+          "frog": false,
+          "chicken": true,
+          "afterShell": 7,
+          "storedXa": 10
+        },
+        {
+          "inputXa": 7,
+          "shell": false,
+          "frog": true,
+          "chicken": false,
+          "afterShell": 7,
+          "storedXa": 10
+        },
+        {
+          "inputXa": 7,
+          "shell": false,
+          "frog": true,
+          "chicken": true,
+          "afterShell": 7,
+          "storedXa": 10
+        },
+        {
+          "inputXa": 7,
+          "shell": true,
+          "frog": false,
+          "chicken": false,
+          "afterShell": 4,
+          "storedXa": 4
+        },
+        {
+          "inputXa": 7,
+          "shell": true,
+          "frog": false,
+          "chicken": true,
+          "afterShell": 4,
+          "storedXa": 6
+        },
+        {
+          "inputXa": 7,
+          "shell": true,
+          "frog": true,
+          "chicken": false,
+          "afterShell": 4,
+          "storedXa": 6
+        },
+        {
+          "inputXa": 7,
+          "shell": true,
+          "frog": true,
+          "chicken": true,
+          "afterShell": 4,
+          "storedXa": 6
+        },
+        {
+          "inputXa": 32767,
+          "shell": false,
+          "frog": false,
+          "chicken": false,
+          "afterShell": 32767,
+          "storedXa": 32767
+        },
+        {
+          "inputXa": 32767,
+          "shell": false,
+          "frog": false,
+          "chicken": true,
+          "afterShell": 32767,
+          "storedXa": -16386
+        },
+        {
+          "inputXa": 32767,
+          "shell": false,
+          "frog": true,
+          "chicken": false,
+          "afterShell": 32767,
+          "storedXa": -16386
+        },
+        {
+          "inputXa": 32767,
+          "shell": false,
+          "frog": true,
+          "chicken": true,
+          "afterShell": 32767,
+          "storedXa": -16386
+        },
+        {
+          "inputXa": 32767,
+          "shell": true,
+          "frog": false,
+          "chicken": false,
+          "afterShell": 21844,
+          "storedXa": 21844
+        },
+        {
+          "inputXa": 32767,
+          "shell": true,
+          "frog": false,
+          "chicken": true,
+          "afterShell": 21844,
+          "storedXa": 32766
+        },
+        {
+          "inputXa": 32767,
+          "shell": true,
+          "frog": true,
+          "chicken": false,
+          "afterShell": 21844,
+          "storedXa": 32766
+        },
+        {
+          "inputXa": 32767,
+          "shell": true,
+          "frog": true,
+          "chicken": true,
+          "afterShell": 21844,
+          "storedXa": 32766
+        }
+      ]
+    },
+    "managedMapping": "FaithMagicAmountFormula.PrepareProduct applies Shell then TargetChickenOrFrog as separate ScaleXa stores; FaithMagicInputs combines t.Chicken || t.Frog.",
+    "clarifications": [
+      "Shell stores before the optional Frog/Chicken reload; their combined effect is not an identity on all inputs.",
+      "The signed /2 correction truncates toward zero, not general upward rounding; negative arithmetic sra sign values are not always0 or1.",
+      "A zero-valued beq skips the respective effect. Neither bit set preserves work XA.",
+      "No unit-stat/status change, RNG draw or subroutine call occurs; MIPS leaf-call warnings are not managed API requirements.",
+      "Full signed-domain comparison is offline arithmetic evidence and does not expand managed battle/status admission."
+    ],
+    "validation": {
+      "sourceAudit": {
+        "faithDescriptions": 15,
+        "productDescriptions": 7,
+        "amountDescriptions": 22,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 14,
+        "sourceFunctions": 36,
+        "preparedTiersVerified": 8
+      },
+      "ownerBlobsVerified": 10,
+      "focusedManagedTestsPassed": 19,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedOriginalCompatibilityCheck": {
+    "managedBaseRevision": "d4cd9eb8b432a448b8479a12bce48fc7e510f30a",
+    "ownerDirection": "Use the original routine, preserving quirks. secondadvent rewrite is deferred for a much later explicit review; it is not the implementation target.",
+    "attachmentNormalizedLfSha256": "e703cbb04179179fea97d26d0d7721295b65315a0f509fd5429539e39faddc7a",
+    "start": "0x80184964",
+    "endInclusive": "0x80184b20",
+    "instructionCount": 112,
+    "instructionWords": [
+      "27bdfff8",
+      "3406000c",
+      "3c028019",
+      "8c422d94",
+      "3c038019",
+      "8c632d98",
+      "94420008",
+      "94630008",
+      "00022302",
+      "00031b02",
+      "00802821",
+      "10a60061",
+      "00601021",
+      "3042ffff",
+      "1046005e",
+      "0045102b",
+      "14400002",
+      "00831023",
+      "00641023",
+      "3042ffff",
+      "3c018019",
+      "00220821",
+      "9024f600",
+      "34020003",
+      "308300ff",
+      "14620015",
+      "00000000",
+      "3c028019",
+      "8c422d94",
+      "00000000",
+      "90430006",
+      "00000000",
+      "30620020",
+      "1440000d",
+      "34040001",
+      "3c028019",
+      "8c422d98",
+      "00000000",
+      "90450006",
+      "00000000",
+      "30a20020",
+      "14400005",
+      "306300c0",
+      "30a200c0",
+      "14620002",
+      "34040005",
+      "34040004",
+      "3c078019",
+      "24e738ce",
+      "84e20000",
+      "00000000",
+      "00021840",
+      "00621821",
+      "000318c0",
+      "00622821",
+      "00403021",
+      "308300ff",
+      "34020002",
+      "1062000f",
+      "30a2ffff",
+      "28620003",
+      "10400005",
+      "34020001",
+      "10620018",
+      "3c0351eb",
+      "080612bf",
+      "00000000",
+      "34020004",
+      "10620019",
+      "34020005",
+      "1062000a",
+      "3c0351eb",
+      "080612bf",
+      "00000000",
+      "3c0351eb",
+      "3463851f",
+      "00430019",
+      "00001010",
+      "00021142",
+      "080612be",
+      "00c21021",
+      "3463851f",
+      "30a2ffff",
+      "00430019",
+      "00001010",
+      "00021102",
+      "080612be",
+      "00c21021",
+      "3463851f",
+      "30a2ffff",
+      "00430019",
+      "00001010",
+      "080612bd",
+      "00021142",
+      "3c0351eb",
+      "3463851f",
+      "30a2ffff",
+      "00430019",
+      "00001010",
+      "00021102",
+      "00c21023",
+      "a4e20000",
+      "3c038019",
+      "246338ce",
+      "84620000",
+      "00000000",
+      "1c400002",
+      "34020001",
+      "a4620000",
+      "27bd0008",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "lookup": {
+      "address": "0x8018f600",
+      "bytes": [
+        0,
+        0,
+        0,
+        1,
+        2,
+        0,
+        3,
+        0,
+        2,
+        1,
+        0,
+        0
+      ],
+      "suppliedNotesAddressTypo": "0x8018f00"
+    },
+    "listedCallerChecks": [
+      {
+        "callPc": "0x801865d0",
+        "returnAddress": "0x801865d8",
+        "target": "0x80184964",
+        "caller": "formula_store_xa_plus_ya"
+      },
+      {
+        "callPc": "0x80188620",
+        "returnAddress": "0x80188628",
+        "target": "0x80184964",
+        "caller": "formula_apply_physical_modifiers"
+      },
+      {
+        "callPc": "0x80188764",
+        "returnAddress": "0x8018876c",
+        "target": "0x80184964",
+        "caller": "formula_apply_magical_modifiers"
+      },
+      {
+        "callPc": "0x80188810",
+        "returnAddress": "0x80188818",
+        "target": "0x80184964",
+        "caller": "friendly_magic_accuracy_calculate"
+      },
+      {
+        "callPc": "0x80188868",
+        "returnAddress": "0x80188870",
+        "target": "0x80184964",
+        "caller": "formula_calculate_magical_xa_times_ya"
+      },
+      {
+        "callPc": "0x80188afc",
+        "returnAddress": "0x80188b04",
+        "target": "0x80184964",
+        "caller": "formula_apply_physical_modifiers_without_supports"
+      },
+      {
+        "callPc": "0x80188d4c",
+        "returnAddress": "0x80188d54",
+        "target": "0x80184964",
+        "caller": "formula_healing_staff"
+      },
+      {
+        "callPc": "0x80189018",
+        "returnAddress": "0x80189020",
+        "target": "0x80184964",
+        "caller": "formula_damage_hp_percent_hit_faith_ma_x_percent"
+      },
+      {
+        "callPc": "0x801898b0",
+        "returnAddress": "0x801898b8",
+        "target": "0x80184964",
+        "caller": "formula_steal_exp"
+      },
+      {
+        "callPc": "0x80189920",
+        "returnAddress": "0x80189928",
+        "target": "0x80184964",
+        "caller": "formula_charm"
+      },
+      {
+        "callPc": "0x80189a44",
+        "returnAddress": "0x80189a4c",
+        "target": "0x80184964",
+        "caller": "formula_talk_skill"
+      },
+      {
+        "callPc": "0x80189e48",
+        "returnAddress": "0x80189e50",
+        "target": "0x80184964",
+        "caller": "formula_stigma_magic"
+      },
+      {
+        "callPc": "0x80189eac",
+        "returnAddress": "0x80189eb4",
+        "target": "0x80184964",
+        "caller": "formula_chakra"
+      },
+      {
+        "callPc": "0x80189f20",
+        "returnAddress": "0x80189f28",
+        "target": "0x80184964",
+        "caller": "formula_heal_y_percent_hit_pa_x_percent"
+      },
+      {
+        "callPc": "0x8018a18c",
+        "returnAddress": "0x8018a194",
+        "target": "0x80184964",
+        "caller": "formula_work"
+      },
+      {
+        "callPc": "0x8018a508",
+        "returnAddress": "0x8018a510",
+        "target": "0x80184964",
+        "caller": "formula_hit_ma_x_percent_no_evade"
+      },
+      {
+        "callPc": "0x8018a844",
+        "returnAddress": "0x8018a84c",
+        "target": "0x80184964",
+        "caller": "formula_moldball_virus"
+      }
+    ],
+    "classification": {
+      "validSigns": 13,
+      "monsterMaleFemaleFlagCombinationsPerUnit": 8,
+      "comparisons": 10816,
+      "allMatched": true,
+      "oppositeMonster": "Bad",
+      "oppositeSameSexFlagPair": "Worst",
+      "oppositeDifferentSexFlagPair": "Best",
+      "serpentarius": "Early return without reading table or clamping XA"
+    },
+    "arithmetic": {
+      "workAddress": "0x801938ce",
+      "loadStore": "signed16",
+      "quarterHalfTemporary": "unsigned16(XA*25)",
+      "exactUnsignedDivisionConstant": "0x51eb851f",
+      "unsignedDivisionInputs": 65536,
+      "signedInputs": 65536,
+      "compatibilityModes": 6,
+      "comparisons": 393216,
+      "allMatched": true,
+      "finalClamp": "At least1 after the signed store for every non-Serpentarius path, including Neutral",
+      "samples": [
+        {
+          "inputXa": -1,
+          "compatibility": "Neutral",
+          "storedXa": 1
+        },
+        {
+          "inputXa": -1,
+          "compatibility": "Bad",
+          "storedXa": 1
+        },
+        {
+          "inputXa": -1,
+          "compatibility": "Good",
+          "storedXa": 654
+        },
+        {
+          "inputXa": -1,
+          "compatibility": "Worst",
+          "storedXa": 1
+        },
+        {
+          "inputXa": -1,
+          "compatibility": "Best",
+          "storedXa": 1309
+        },
+        {
+          "inputXa": -1,
+          "compatibility": "Serpentarius",
+          "storedXa": -1
+        },
+        {
+          "inputXa": 0,
+          "compatibility": "Neutral",
+          "storedXa": 1
+        },
+        {
+          "inputXa": 0,
+          "compatibility": "Bad",
+          "storedXa": 1
+        },
+        {
+          "inputXa": 0,
+          "compatibility": "Good",
+          "storedXa": 1
+        },
+        {
+          "inputXa": 0,
+          "compatibility": "Worst",
+          "storedXa": 1
+        },
+        {
+          "inputXa": 0,
+          "compatibility": "Best",
+          "storedXa": 1
+        },
+        {
+          "inputXa": 0,
+          "compatibility": "Serpentarius",
+          "storedXa": 0
+        },
+        {
+          "inputXa": 7,
+          "compatibility": "Neutral",
+          "storedXa": 7
+        },
+        {
+          "inputXa": 7,
+          "compatibility": "Bad",
+          "storedXa": 6
+        },
+        {
+          "inputXa": 7,
+          "compatibility": "Good",
+          "storedXa": 8
+        },
+        {
+          "inputXa": 7,
+          "compatibility": "Worst",
+          "storedXa": 4
+        },
+        {
+          "inputXa": 7,
+          "compatibility": "Best",
+          "storedXa": 10
+        },
+        {
+          "inputXa": 7,
+          "compatibility": "Serpentarius",
+          "storedXa": 7
+        },
+        {
+          "inputXa": 2622,
+          "compatibility": "Neutral",
+          "storedXa": 2622
+        },
+        {
+          "inputXa": 2622,
+          "compatibility": "Bad",
+          "storedXa": 2622
+        },
+        {
+          "inputXa": 2622,
+          "compatibility": "Good",
+          "storedXa": 2622
+        },
+        {
+          "inputXa": 2622,
+          "compatibility": "Worst",
+          "storedXa": 2622
+        },
+        {
+          "inputXa": 2622,
+          "compatibility": "Best",
+          "storedXa": 2622
+        },
+        {
+          "inputXa": 2622,
+          "compatibility": "Serpentarius",
+          "storedXa": 2622
+        }
+      ]
+    },
+    "managedMapping": "FaithMagicInputs.ClassifyCompatibility matches the table/flags domain. FaithMagicAmountFormula.ApplyCompatibility preserves the unsigned temporary, separate adjustment, signed store, final floor and Serpentarius exception.",
+    "clarifications": [
+      "Bad/Worst are subtraction of a truncated adjustment, not a direct75%/50% multiply; XA7 becomes6/4.",
+      "XA2622 wraps XA*25 to14 before division; this behavior is preserved.",
+      "The attachment links secondadvent patch but contains no separate rewrite instruction body. No rewrite evaluation or adoption is claimed.",
+      "Offline classification/arithmetic checks do not execute original/C code or expand battle admission."
+    ],
+    "validation": {
+      "sourceAudit": {
+        "faithDescriptions": 15,
+        "productDescriptions": 7,
+        "amountDescriptions": 22,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 14,
+        "sourceFunctions": 36,
+        "preparedTiersVerified": 8
+      },
+      "ownerBlobsVerified": 10,
+      "unrelatedOwnerEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlobAtReview": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "excludedFromCommit": true
+      },
+      "focusedManagedTestsPassed": 19,
+      "focusedPythonTestsPassed": 16,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedElementalXaYaCheck": {
+    "managedBaseRevision": "1146d811f891f71a4c783e7535d1519f7f7b7eaf",
+    "start": "0x8018877c",
+    "endInclusive": "0x801887c0",
+    "instructionCount": 18,
+    "instructionWords": [
+      "27bdffe8",
+      "afbf0010",
+      "0c06195a",
+      "00000000",
+      "0c061bb4",
+      "00000000",
+      "0c061bfe",
+      "00000000",
+      "3c028019",
+      "8c422d90",
+      "00000000",
+      "90420000",
+      "00000000",
+      "2c420001",
+      "8fbf0010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "orderedDirectCalls": [
+      {
+        "callPc": "0x80188784",
+        "target": "0x80186568",
+        "symbol": "formula_store_xa_times_ya_damage"
+      },
+      {
+        "callPc": "0x8018878c",
+        "target": "0x80186ed0",
+        "symbol": "formula_element_apply_weather"
+      },
+      {
+        "callPc": "0x80188794",
+        "target": "0x80186ff8",
+        "symbol": "formula_element_apply"
+      }
+    ],
+    "listedCallerChecks": [
+      {
+        "callPc": "0x8018897c",
+        "returnAddress": "0x80188984",
+        "target": "0x8018877c"
+      },
+      {
+        "callPc": "0x80188c6c",
+        "returnAddress": "0x80188c74",
+        "target": "0x8018877c"
+      },
+      {
+        "callPc": "0x80188db4",
+        "returnAddress": "0x80188dbc",
+        "target": "0x8018877c"
+      },
+      {
+        "callPc": "0x80189494",
+        "returnAddress": "0x8018949c",
+        "target": "0x8018877c"
+      }
+    ],
+    "returnCheck": {
+      "loadPc": "0x801887a8",
+      "targetActionByteOffset": 0,
+      "comparisonPc": "0x801887b0",
+      "operation": "unsigned hitByte <1",
+      "clearedHitReturns": 1,
+      "nonzeroHitReturns": 0
+    },
+    "managedMapping": [
+      "FaithMagicArithmetic.MultiplyStored stores signed16 product; formula projection retains the original amount/product diagnostics.",
+      "MagicDamageElements.Transform applies weather to the stored amount, then the admitted affinity steps.",
+      "FaithMagicAmountFormula.ProjectWithElementsAfterHit omits Faith output on nullification; otherwise Faith follows the transformed stored amount.",
+      "FaithMagicHpRouting converts marked absorption to healing after Faith in formula0x08; conversion is not performed by this wrapper."
+    ],
+    "boundaries": [
+      "The return tests hit, not HP amount, displayed accuracy or absorption; legitimate zero damage is not elemental nullification.",
+      "Weather changes stored HP damage, not the earlier XA; elemental strengthening on XA is an earlier separate helper.",
+      "Absorption is marked during affinity work, while damage-to-healing conversion belongs to the later helper.",
+      "Oil/Fire, Earth/Float and rider/mount side effects remain positively excluded by the current managed profile; their source presence does not activate them.",
+      "The wrapper itself has no RNG call. General status side effects and broader formula families retain their existing boundaries."
+    ],
+    "validation": {
+      "sourceAudit": {
+        "transformDescriptions": 24,
+        "projectionDescriptions": 12,
+        "routingDescriptions": 14,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "sourceFiles": 9,
+        "sourceFunctions": 14,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true
+      },
+      "ownerBlobsVerified": 10,
+      "unrelatedOwnerEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlobAtReview": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "excludedFromCommit": true
+      },
+      "focusedManagedTestsPassed": 16,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedXaYaProductCheck": {
+    "managedBaseRevision": "b363edda0980923cb2cf374882ec12f11de2d1c3",
+    "start": "0x80186568",
+    "endInclusive": "0x80186598",
+    "instructionCount": 13,
+    "instructionWords": [
+      "3c038019",
+      "946338ce",
+      "3c028019",
+      "944238d0",
+      "00000000",
+      "00620018",
+      "3c038019",
+      "8c632d90",
+      "34020080",
+      "a0620025",
+      "00001012",
+      "03e00008",
+      "a4620004"
+    ],
+    "allMatched": true,
+    "listedCallerChecks": [
+      {
+        "callPc": "0x801886bc",
+        "returnAddress": "0x801886c4",
+        "target": "0x80186568"
+      },
+      {
+        "callPc": "0x80188784",
+        "returnAddress": "0x8018878c",
+        "target": "0x80186568"
+      },
+      {
+        "callPc": "0x80188870",
+        "returnAddress": "0x80188878",
+        "target": "0x80186568"
+      },
+      {
+        "callPc": "0x80188d64",
+        "returnAddress": "0x80188d6c",
+        "target": "0x80186568"
+      },
+      {
+        "callPc": "0x80189694",
+        "returnAddress": "0x8018969c",
+        "target": "0x80186568"
+      },
+      {
+        "callPc": "0x80189d10",
+        "returnAddress": "0x80189d18",
+        "target": "0x80186568"
+      },
+      {
+        "callPc": "0x80189eb4",
+        "returnAddress": "0x80189ebc",
+        "target": "0x80186568"
+      },
+      {
+        "callPc": "0x8018ac00",
+        "returnAddress": "0x8018ac08",
+        "target": "0x80186568"
+      },
+      {
+        "callPc": "0x8018ac5c",
+        "returnAddress": "0x8018ac64",
+        "target": "0x80186568"
+      }
+    ],
+    "loads": {
+      "xaAddress": "0x801938ce",
+      "yaAddress": "0x801938d0",
+      "instructions": "lhu: each operand zero-extends16 bits"
+    },
+    "stores": {
+      "typePc": "0x8018658c",
+      "typeByteOffset": "0x25",
+      "typeValue": "0x80",
+      "typeOperation": "Assign HP damage byte, not OR existing flags",
+      "damagePc": "0x80186598",
+      "damageHalfwordOffset": "0x04",
+      "damageStoreIsReturnDelaySlot": true,
+      "retainedProduct": "low16 bits of mult/mflo product"
+    },
+    "equivalence": {
+      "proof": "Each zero-extended operand differs from its signed16 interpretation by0 or65536. Multiplying changes the product only by multiples of65536, so the stored halfword agrees for every pair.",
+      "fullRawXaValues": 65536,
+      "selectedRawYaValues": [
+        0,
+        1,
+        2,
+        3,
+        14,
+        255,
+        256,
+        32767,
+        32768,
+        65535
+      ],
+      "comparisons": 655360,
+      "allMatched": true,
+      "exhaustiveAllPairsClaimed": false,
+      "examples": [
+        {
+          "xa": 255,
+          "ya": 255,
+          "storedSignedDamage": -511
+        },
+        {
+          "xaBits": "0xffff",
+          "yaBits": "0x0002",
+          "storedSignedDamage": -2
+        }
+      ]
+    },
+    "managedMapping": "FaithMagicArithmetic.MultiplyStored uses unchecked signed16 product storage. Element projection subsequently reads that signed amount before weather, Faith, routing and final caps.",
+    "clarifications": [
+      "No division, rounding, clamp, Faith, element/weather transform, live HP mutation or RNG is performed here.",
+      "Later changes to XA/YA do not retroactively alter stored damage; original product-before-Oil ordering is the compatibility target. Oil/Fire remains excluded by the current managed profile.",
+      "The note that every later XA/YA change is pointless is scoped to this already-stored product; later explicit reads or recomputation would remain separate behavior.",
+      "Offline modulo comparisons are not original/C execution and do not expand battle admission."
+    ],
+    "validation": {
+      "sourceAudit": {
+        "faithDescriptions": 15,
+        "productDescriptions": 7,
+        "amountDescriptions": 22,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 14,
+        "sourceFunctions": 36,
+        "preparedTiersVerified": 8
+      },
+      "ownerBlobsVerified": 10,
+      "unrelatedOwnerEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlobAtReview": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "excludedFromCommit": true
+      },
+      "focusedManagedTestsPassed": 10,
+      "focusedPythonTestsPassed": 16,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedWeatherElementCheck": {
+    "managedBaseRevision": "ba30e18a3b8a6c3c5c84b453a8ed32353686f4f4",
+    "attachmentNormalizedLfSha256": "68b0fecd5982eebed09584874530c725d94c771a81392528ab975cf9e97666ac",
+    "start": "0x80186ed0",
+    "endInclusive": "0x80186fcc",
+    "instructionCount": 64,
+    "instructionWords": [
+      "27bdffe8",
+      "afb00010",
+      "3c108019",
+      "921038f7",
+      "afbf0014",
+      "0c063998",
+      "00000000",
+      "00402821",
+      "24a2fffd",
+      "2c420002",
+      "1040001e",
+      "32020080",
+      "1040000e",
+      "32020040",
+      "3c048019",
+      "8c842d90",
+      "00000000",
+      "84830004",
+      "00000000",
+      "00031040",
+      "00431021",
+      "04410002",
+      "00000000",
+      "24420003",
+      "00021083",
+      "a4820004",
+      "32020040",
+      "1040000e",
+      "24a2fffa",
+      "3c048019",
+      "8c842d90",
+      "00000000",
+      "84830004",
+      "00000000",
+      "00031080",
+      "00431021",
+      "04410002",
+      "00000000",
+      "24420003",
+      "00021083",
+      "a4820004",
+      "24a2fffa",
+      "2c420002",
+      "1040000f",
+      "32020020",
+      "1040000d",
+      "00000000",
+      "3c048019",
+      "8c842d90",
+      "00000000",
+      "84830004",
+      "00000000",
+      "00031080",
+      "00431021",
+      "04410002",
+      "00000000",
+      "24420003",
+      "00021083",
+      "a4820004",
+      "8fbf0014",
+      "8fb00010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "effectiveWeatherCall": {
+      "callPc": "0x80186ee4",
+      "target": "0x8018e660",
+      "symbol": "weather_get_effective",
+      "managedBoundary": "Caller supplies already-effective weather; map/script selection remains separate"
+    },
+    "listedCallerChecks": [
+      {
+        "callPc": "0x8018878c",
+        "returnAddress": "0x80188794",
+        "target": "0x80186ed0"
+      },
+      {
+        "callPc": "0x80188e24",
+        "returnAddress": "0x80188e2c",
+        "target": "0x80186ed0"
+      },
+      {
+        "callPc": "0x80189d18",
+        "returnAddress": "0x80189d20",
+        "target": "0x80186ed0"
+      },
+      {
+        "callPc": "0x8018a614",
+        "returnAddress": "0x8018a61c",
+        "target": "0x80186ed0"
+      }
+    ],
+    "orderedRules": [
+      "Effective weather3/4: Fire bit0x80 applies storedAmount*3/4, then Lightning bit0x40 applies storedAmount*5/4.",
+      "Effective weather6/7: Ice bit0x20 applies storedAmount*5/4.",
+      "Effective weather0/1/2/5 has no damage modification. Unrelated element bits do not participate."
+    ],
+    "arithmetic": {
+      "loadStore": "signed16 HP damage at target-action offset0x04",
+      "rounding": "Negative numerator adds3 before arithmetic shift2, giving truncation toward zero",
+      "narrowAfterEachStep": true,
+      "signedInputs": 65536,
+      "admittedEffectiveWeathers": 8,
+      "relevantElementCombinations": 8,
+      "comparisons": 4194304,
+      "allMatched": true,
+      "samples": [
+        {
+          "inputAmount": -5,
+          "weather": 3,
+          "elementBits": "0xc0",
+          "storedAmount": -3
+        },
+        {
+          "inputAmount": -5,
+          "weather": 4,
+          "elementBits": "0x40",
+          "storedAmount": -6
+        },
+        {
+          "inputAmount": -5,
+          "weather": 5,
+          "elementBits": "0x20",
+          "storedAmount": -5
+        },
+        {
+          "inputAmount": -5,
+          "weather": 6,
+          "elementBits": "0x20",
+          "storedAmount": -6
+        },
+        {
+          "inputAmount": 5,
+          "weather": 3,
+          "elementBits": "0xc0",
+          "storedAmount": 3
+        },
+        {
+          "inputAmount": 5,
+          "weather": 4,
+          "elementBits": "0x40",
+          "storedAmount": 6
+        },
+        {
+          "inputAmount": 5,
+          "weather": 5,
+          "elementBits": "0x20",
+          "storedAmount": 5
+        },
+        {
+          "inputAmount": 5,
+          "weather": 6,
+          "elementBits": "0x20",
+          "storedAmount": 6
+        },
+        {
+          "inputAmount": 32767,
+          "weather": 3,
+          "elementBits": "0xc0",
+          "storedAmount": 30718
+        },
+        {
+          "inputAmount": 32767,
+          "weather": 4,
+          "elementBits": "0x40",
+          "storedAmount": -24578
+        },
+        {
+          "inputAmount": 32767,
+          "weather": 5,
+          "elementBits": "0x20",
+          "storedAmount": 32767
+        },
+        {
+          "inputAmount": 32767,
+          "weather": 6,
+          "elementBits": "0x20",
+          "storedAmount": -24578
+        }
+      ]
+    },
+    "clarifications": [
+      "The negative-arithmetic branches are meaningful after signed product overflow; their never annotations must not remove them.",
+      "The addiu3 instruction adds3 to a negative numerator, rather than replacing damage with3.",
+      "Fire and Lightning are separate ordered stores; amount5 with both in a storm becomes3, not the4 from one15/16 scaling.",
+      "No XA/YA, hit flag, type byte, affinities, live HP or RNG is changed by this weather calculation.",
+      "The source dependency reads script weather and applies ignore/snow map flags; the pure managed transform must not apply that conversion twice.",
+      "The exhaustive comparison is offline integer arithmetic, not original/C execution, full weather-system activation or wider battle admission."
+    ],
+    "managedMapping": "MagicDamageElements.Transform uses the same effective-weather values, element masks, ordered rational operations and unchecked signed16 stores.",
+    "validation": {
+      "sourceAudit": {
+        "transformDescriptions": 24,
+        "projectionDescriptions": 12,
+        "routingDescriptions": 14,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "sourceFiles": 9,
+        "sourceFunctions": 14,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true
+      },
+      "ownerBlobsVerified": 10,
+      "unrelatedOwnerEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlobAtReview": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "excludedFromCommit": true
+      },
+      "focusedManagedTestsPassed": 16,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedEffectiveWeatherCheck": {
+    "managedBaseRevision": "b8dd00c5c1dbad0be92f2ce6f1ac6a73043eab6e",
+    "start": "0x8018e660",
+    "endInclusive": "0x8018e6b4",
+    "instructionCount": 22,
+    "instructionWords": [
+      "27bdffe8",
+      "afbf0010",
+      "0c04ed64",
+      "34040023",
+      "3c04800b",
+      "8c846698",
+      "00401821",
+      "30820002",
+      "14400009",
+      "00001021",
+      "28620002",
+      "14400006",
+      "00601021",
+      "30820001",
+      "10400003",
+      "00601021",
+      "24630003",
+      "00601021",
+      "8fbf0010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "scriptVariableRead": {
+      "callPc": "0x8018e668",
+      "target": "0x8013b590",
+      "symbol": "script_variable_get",
+      "argument": "0x23",
+      "argumentSetInDelaySlot": true,
+      "performedBeforeIgnoreCheck": true,
+      "boundary": "Generic getter reads the script-variable bank through variable commands and restores comparison variable0. No event-VM port is added."
+    },
+    "flagWordAddress": "0x800b6698",
+    "branches": [
+      {
+        "pc": "0x8018e680",
+        "operation": "bne",
+        "target": "0x8018e6a8",
+        "delaySlotWord": "00001021"
+      },
+      {
+        "pc": "0x8018e68c",
+        "operation": "bne",
+        "target": "0x8018e6a8",
+        "delaySlotWord": "00601021"
+      },
+      {
+        "pc": "0x8018e698",
+        "operation": "beq",
+        "target": "0x8018e6a8",
+        "delaySlotWord": "00601021"
+      }
+    ],
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80174378",
+        "returnAddress": "0x80174380",
+        "target": "0x8018e660"
+      },
+      {
+        "callPc": "0x80186ee4",
+        "returnAddress": "0x80186eec",
+        "target": "0x8018e660"
+      }
+    ],
+    "orderedRules": [
+      "Ignore flag0x02 returns0, including when Snow is also set.",
+      "Otherwise signed raw weather<2 returns unchanged.",
+      "Otherwise Snow flag0x01 adds3; without Snow return unchanged. The source does not add an upper-range clamp."
+    ],
+    "literalVectors": [
+      {
+        "rawWeather": 0,
+        "flags": 0,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 0,
+        "flags": 1,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 0,
+        "flags": 2,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 0,
+        "flags": 3,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 1,
+        "flags": 0,
+        "effectiveWeather": 1,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 1,
+        "flags": 1,
+        "effectiveWeather": 1,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 1,
+        "flags": 2,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 1,
+        "flags": 3,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 2,
+        "flags": 0,
+        "effectiveWeather": 2,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 2,
+        "flags": 1,
+        "effectiveWeather": 5,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 2,
+        "flags": 2,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 2,
+        "flags": 3,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 3,
+        "flags": 0,
+        "effectiveWeather": 3,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 3,
+        "flags": 1,
+        "effectiveWeather": 6,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 3,
+        "flags": 2,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 3,
+        "flags": 3,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 4,
+        "flags": 0,
+        "effectiveWeather": 4,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 4,
+        "flags": 1,
+        "effectiveWeather": 7,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 4,
+        "flags": 2,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": 4,
+        "flags": 3,
+        "effectiveWeather": 0,
+        "normalScriptWeather": true
+      },
+      {
+        "rawWeather": -1,
+        "flags": 0,
+        "effectiveWeather": -1,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": -1,
+        "flags": 1,
+        "effectiveWeather": -1,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": -1,
+        "flags": 2,
+        "effectiveWeather": 0,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": -1,
+        "flags": 3,
+        "effectiveWeather": 0,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 5,
+        "flags": 0,
+        "effectiveWeather": 5,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 5,
+        "flags": 1,
+        "effectiveWeather": 8,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 5,
+        "flags": 2,
+        "effectiveWeather": 0,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 5,
+        "flags": 3,
+        "effectiveWeather": 0,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 7,
+        "flags": 0,
+        "effectiveWeather": 7,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 7,
+        "flags": 1,
+        "effectiveWeather": 10,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 7,
+        "flags": 2,
+        "effectiveWeather": 0,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 7,
+        "flags": 3,
+        "effectiveWeather": 0,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 2147483647,
+        "flags": 0,
+        "effectiveWeather": 2147483647,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 2147483647,
+        "flags": 1,
+        "effectiveWeather": -2147483646,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 2147483647,
+        "flags": 2,
+        "effectiveWeather": 0,
+        "normalScriptWeather": false
+      },
+      {
+        "rawWeather": 2147483647,
+        "flags": 3,
+        "effectiveWeather": 0,
+        "normalScriptWeather": false
+      }
+    ],
+    "notesCorrection": "Effective value5 is Snow, not Snowstorm. Value6 is Snowstorm and7 StrongSnowstorm. Plain Snow does not boost ice damage.",
+    "managedBoundary": "MagicDamageElements receives already-effective MagicDamageWeather; enum5 is Snow and6/7 are snowstorms. There is no general script/map weather classifier or event-VM activation in this milestone; invalid effective enums remain rejected.",
+    "clarifications": [
+      "The branch comments must be read with polarity and delay slots: ignore is tested first, clear values bypass snow conversion, and a clear Snow bit bypasses addition.",
+      "Raw values>=5, negative values and signed32 wrap cases are source-boundary descriptions only, not newly admitted managed weather.",
+      "Do not apply the snow offset again to an already-effective weather input."
+    ],
+    "validation": {
+      "sourceAudit": {
+        "transformDescriptions": 24,
+        "projectionDescriptions": 12,
+        "routingDescriptions": 14,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "sourceFiles": 9,
+        "sourceFunctions": 14,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true
+      },
+      "literalDescriptions": 36,
+      "normalWeatherFlagDescriptions": 20,
+      "sourceBoundaryDescriptions": 16,
+      "ownerBlobsVerified": 10,
+      "unrelatedOwnerEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlobAtReview": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "excludedFromCommit": true
+      },
+      "focusedManagedTestsPassed": 16,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedAbilityElementCheck": {
+    "managedBaseRevision": "6e87a99d5ce761df000a7f290d57f003420daae3",
+    "attachmentNormalizedLfSha256": "58e36f78dc7c0540557f16e25ac7f3ae7265083d704003c6eda953ace56728d2",
+    "start": "0x80186ff8",
+    "endInclusive": "0x801870f8",
+    "instructionCount": 65,
+    "instructionWords": [
+      "3c028019",
+      "8c422d98",
+      "27bdffe8",
+      "afbf0014",
+      "afb00010",
+      "9042005a",
+      "3c108019",
+      "921038f7",
+      "30420080",
+      "10400015",
+      "32020080",
+      "10400013",
+      "00002021",
+      "3c028019",
+      "844238ce",
+      "3c038019",
+      "8c632d90",
+      "00021040",
+      "3c018019",
+      "a42238ce",
+      "90620022",
+      "00000000",
+      "34420080",
+      "0c0612c9",
+      "a0620022",
+      "10400005",
+      "34020008",
+      "3c038019",
+      "8c632d90",
+      "00000000",
+      "a0620025",
+      "3c038019",
+      "8c632d98",
+      "00000000",
+      "90640182",
+      "00000000",
+      "30820080",
+      "10400007",
+      "3082001f",
+      "000218c0",
+      "00621823",
+      "00031980",
+      "3c028019",
+      "244208cc",
+      "00621821",
+      "9062005a",
+      "00000000",
+      "30420040",
+      "10400009",
+      "32020008",
+      "10400007",
+      "00000000",
+      "0c061390",
+      "00000000",
+      "3c038019",
+      "8c632d90",
+      "34020007",
+      "a0620002",
+      "0c0613a6",
+      "02002021",
+      "8fbf0014",
+      "8fb00010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "orderedDirectCalls": [
+      {
+        "callPc": "0x80187054",
+        "target": "0x80184b24",
+        "symbol": "status_modify_inflictions",
+        "delaySlotWord": "a0620022"
+      },
+      {
+        "callPc": "0x801870c8",
+        "target": "0x80184e40",
+        "symbol": "formula_nullify_action",
+        "delaySlotWord": "00000000"
+      },
+      {
+        "callPc": "0x801870e0",
+        "target": "0x80184e98",
+        "symbol": "formula_element_modify_damage",
+        "delaySlotWord": "02002021"
+      }
+    ],
+    "branches": [
+      {
+        "pc": "0x8018701c",
+        "operation": "beq",
+        "target": "0x80187074"
+      },
+      {
+        "pc": "0x80187024",
+        "operation": "beq",
+        "target": "0x80187074"
+      },
+      {
+        "pc": "0x8018705c",
+        "operation": "beq",
+        "target": "0x80187074"
+      },
+      {
+        "pc": "0x8018708c",
+        "operation": "beq",
+        "target": "0x801870ac"
+      },
+      {
+        "pc": "0x801870b8",
+        "operation": "beq",
+        "target": "0x801870e0"
+      },
+      {
+        "pc": "0x801870c0",
+        "operation": "beq",
+        "target": "0x801870e0"
+      }
+    ],
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80188794",
+        "returnAddress": "0x8018879c",
+        "target": "0x80186ff8"
+      },
+      {
+        "callPc": "0x80188e2c",
+        "returnAddress": "0x80188e34",
+        "target": "0x80186ff8"
+      },
+      {
+        "callPc": "0x80189d20",
+        "returnAddress": "0x80189d28",
+        "target": "0x80186ff8"
+      },
+      {
+        "callPc": "0x8018a61c",
+        "returnAddress": "0x8018a624",
+        "target": "0x80186ff8"
+      }
+    ],
+    "oilFire": {
+      "targetStatusOffset": "0x5a",
+      "oilMask": "0x80",
+      "fireElementMask": "0x80",
+      "xaEffect": "signed16 XA doubled after HP damage was already stored",
+      "stagedRemovalOffset": "0x22",
+      "filterArgument": 0,
+      "removalStoredInCallDelaySlot": true,
+      "survivingChangeType": "Assign type byte0x25 to0x08 when status_modify_inflictions returns nonzero",
+      "liveStatusChangedHere": false
+    },
+    "floatEarth": {
+      "targetStatusOffset": "0x5a",
+      "floatMask": "0x40",
+      "earthElementMask": "0x08",
+      "riderFlag": "0x80",
+      "partnerMask": "0x1f",
+      "originalUnitStride": "0x1c0",
+      "behavior": "Use the ridden partner status for a rider, otherwise target status. Float+Earth calls nullifier then assigns miss type7. Continue to common affinity processing; no early return."
+    },
+    "affinity": {
+      "parameter": "Saved ability-element byte passed in delay slot",
+      "alwaysCalledAfterOilFloat": true,
+      "order": "mark absorb, check nullify, then half and weak",
+      "liveHealingConversion": "Later absorption helper, not here"
+    },
+    "managedMapping": "MagicDamageElements.Transform owns admitted fresh affinity work. Fire/Oil and Earth/Float-or-rider branches remain explicit unsupported contexts; this source cross-check does not implement status filtering, mount lookup or Float miss routing.",
+    "clarifications": [
+      "Oil does not double stored HP or MP damage; retain original ordering, without applying the suggested bug fix.",
+      "The Oil filter sees all pending status-change work, not only the Oil bit; nonzero means changes remain after filtering.",
+      "The status-change type write assigns0x08 rather than ORing it into the existing type.",
+      "Float writes miss label7 before affinity processing; a later affinity-nullification call can replace it with the nullifier label5.",
+      "No change to general statuses, event VM, mount/rider behavior or runtime admission is made."
+    ],
+    "validation": {
+      "sourceAudit": {
+        "transformDescriptions": 24,
+        "projectionDescriptions": 12,
+        "routingDescriptions": 14,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "sourceFiles": 9,
+        "sourceFunctions": 14,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true
+      },
+      "ownerBlobsVerified": 10,
+      "unrelatedOwnerEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlobAtReview": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "excludedFromCommit": true
+      },
+      "focusedManagedTestsPassed": 16,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedElementalAffinityCheck": {
+    "managedBaseRevision": "40addfa3c1ecb3608621a716dd1966f357319935",
+    "attachmentNormalizedLfSha256": "58812b8755dc11066ce325289eed35015f209e2ace5b162fc748cce0cafc9f61",
+    "start": "0x80184e98",
+    "endInclusive": "0x80184f98",
+    "instructionCount": 65,
+    "instructionWords": [
+      "3c028019",
+      "8c422d98",
+      "27bdffe8",
+      "afbf0010",
+      "9042006d",
+      "00802821",
+      "00451024",
+      "10400008",
+      "00000000",
+      "3c038019",
+      "8c632d90",
+      "00000000",
+      "94620010",
+      "00000000",
+      "34420400",
+      "a4620010",
+      "3c038019",
+      "8c632d98",
+      "00000000",
+      "9062006e",
+      "00000000",
+      "00451024",
+      "10400005",
+      "00000000",
+      "0c061390",
+      "00000000",
+      "080613e3",
+      "00000000",
+      "9062006f",
+      "00000000",
+      "00451024",
+      "1040000c",
+      "00000000",
+      "3c028019",
+      "8c422d90",
+      "00000000",
+      "94430004",
+      "00000000",
+      "00031c00",
+      "00032403",
+      "00031fc2",
+      "00832021",
+      "00042043",
+      "a4440004",
+      "3c028019",
+      "8c422d98",
+      "00000000",
+      "90420070",
+      "00000000",
+      "00451024",
+      "1040000a",
+      "00000000",
+      "3c028019",
+      "8c422d90",
+      "00000000",
+      "94430010",
+      "84440004",
+      "34630800",
+      "00042040",
+      "a4430010",
+      "a4440004",
+      "8fbf0010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "parameter": "r4: weapon or ability element mask; matching any target-affinity bit qualifies that stage once",
+    "targetAffinityOffsets": {
+      "absorb": "0x6d",
+      "nullify": "0x6e",
+      "half": "0x6f",
+      "weak": "0x70"
+    },
+    "orderedRules": [
+      "Mark absorption by ORing0x0400 into the 16-bit effect field at TCA0x10.",
+      "If nullified, call formula_nullify_action at0x80184e40 then jump to epilogue; prior absorption is cleared and half/weak are skipped.",
+      "Otherwise, half signed HP damage with explicit sign extension/correction, truncating toward zero.",
+      "Then if weak, OR0x0800 into the 16-bit effect field and double/store the signed16 HP damage."
+    ],
+    "nullificationCall": {
+      "callPc": "0x80184ef8",
+      "target": "0x80184e40",
+      "symbol": "formula_nullify_action",
+      "exitJumpPc": "0x80184f00",
+      "exitTarget": "0x80184f8c"
+    },
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80186fe0",
+        "returnAddress": "0x80186fe8",
+        "target": "0x80184e98"
+      },
+      {
+        "callPc": "0x801870e0",
+        "returnAddress": "0x801870e8",
+        "target": "0x80184e98"
+      }
+    ],
+    "arithmetic": {
+      "freshWork": true,
+      "signedAmounts": 65536,
+      "affinityMatchCombinations": 16,
+      "comparisons": 1048576,
+      "allMatched": true,
+      "samples": [
+        {
+          "inputAmount": -5,
+          "affinityBits": 12,
+          "outputAmount": -4,
+          "effectsWord": "0x0800",
+          "nullified": false
+        },
+        {
+          "inputAmount": -1,
+          "affinityBits": 4,
+          "outputAmount": 0,
+          "effectsWord": "0x0000",
+          "nullified": false
+        },
+        {
+          "inputAmount": 0,
+          "affinityBits": 9,
+          "outputAmount": 0,
+          "effectsWord": "0x0c00",
+          "nullified": false
+        },
+        {
+          "inputAmount": 5,
+          "affinityBits": 12,
+          "outputAmount": 4,
+          "effectsWord": "0x0800",
+          "nullified": false
+        },
+        {
+          "inputAmount": 5,
+          "affinityBits": 15,
+          "outputAmount": 0,
+          "effectsWord": "0x0000",
+          "nullified": true
+        },
+        {
+          "inputAmount": 32767,
+          "affinityBits": 8,
+          "outputAmount": -2,
+          "effectsWord": "0x0800",
+          "nullified": false
+        }
+      ]
+    },
+    "managedMapping": "MagicDamageElements.Transform follows absorb/nullify/half/weak order and named markers, requires fresh work and preserves signed16 stores; later routing owns conversion to healing.",
+    "clarifications": [
+      "Matching several element bits does not stack one affinity stage repeatedly.",
+      "Half+weak is not an identity for odd amounts:5 becomes4 and-5 becomes-4.",
+      "The initial lhu in halving is followed by explicit signed reconstruction; treating it as unsigned division would be wrong.",
+      "Absorb and weakness can both survive, including for zero damage; nullification overrides both and skips later arithmetic.",
+      "Fresh-work comparisons do not certify stale effect fields, pending reactions/procs or broader weapon/formula admission."
+    ],
+    "validation": {
+      "sourceAudit": {
+        "transformDescriptions": 24,
+        "projectionDescriptions": 12,
+        "routingDescriptions": 14,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "sourceFiles": 9,
+        "sourceFunctions": 14,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true
+      },
+      "ownerBlobsVerified": 10,
+      "unrelatedOwnerEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlobAtReview": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "excludedFromCommit": true
+      },
+      "focusedManagedTestsPassed": 16,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedElementalNullifierCheck": {
+    "managedBaseRevision": "82521b8d7ef0055d4cecc597988bb27977deacd3",
+    "start": "0x80184e40",
+    "endInclusive": "0x80184e94",
+    "instructionCount": 22,
+    "instructionWords": [
+      "3c028019",
+      "8c422d90",
+      "27bdffe8",
+      "afbf0010",
+      "a0400000",
+      "3c038019",
+      "8c632d90",
+      "34020005",
+      "a0620002",
+      "3c028019",
+      "8c422d90",
+      "a4600004",
+      "a460002a",
+      "a4600010",
+      "0c062f3c",
+      "a0400025",
+      "0c062f4d",
+      "00000000",
+      "8fbf0010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "orderedDirectCalls": [
+      {
+        "callPc": "0x80184e78",
+        "target": "0x8018bcf0",
+        "symbol": "formula_clear_pending_proc",
+        "delaySlotWord": "a0400025"
+      },
+      {
+        "callPc": "0x80184e80",
+        "target": "0x8018bd34",
+        "symbol": "move_knockback_cancel",
+        "delaySlotWord": "00000000"
+      }
+    ],
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80184ef8",
+        "returnAddress": "0x80184f00",
+        "target": "0x80184e40",
+        "caller": "formula_element_modify_damage"
+      },
+      {
+        "callPc": "0x801870c8",
+        "returnAddress": "0x801870d0",
+        "target": "0x80184e40",
+        "caller": "formula_element_apply"
+      },
+      {
+        "callPc": "0x801897ac",
+        "returnAddress": "0x801897b4",
+        "target": "0x80184e40",
+        "caller": "formula_steal_equipment"
+      },
+      {
+        "callPc": "0x80189bbc",
+        "returnAddress": "0x80189bc4",
+        "target": "0x80184e40",
+        "caller": "formula_mighty_sword"
+      },
+      {
+        "callPc": "0x8018ad2c",
+        "returnAddress": "0x8018ad34",
+        "target": "0x80184e40",
+        "caller": "formula_apply_status_and_check_undead"
+      }
+    ],
+    "directResultWrites": [
+      {
+        "pc": "0x80184e50",
+        "offset": "0x00",
+        "byteWidth": 1,
+        "value": 0,
+        "inProcCallDelaySlot": false
+      },
+      {
+        "pc": "0x80184e60",
+        "offset": "0x02",
+        "byteWidth": 1,
+        "value": 5,
+        "inProcCallDelaySlot": false
+      },
+      {
+        "pc": "0x80184e6c",
+        "offset": "0x04",
+        "byteWidth": 2,
+        "value": 0,
+        "inProcCallDelaySlot": false
+      },
+      {
+        "pc": "0x80184e70",
+        "offset": "0x2a",
+        "byteWidth": 2,
+        "value": 0,
+        "inProcCallDelaySlot": false
+      },
+      {
+        "pc": "0x80184e74",
+        "offset": "0x10",
+        "byteWidth": 2,
+        "value": 0,
+        "inProcCallDelaySlot": false
+      },
+      {
+        "pc": "0x80184e7c",
+        "offset": "0x25",
+        "byteWidth": 1,
+        "value": 0,
+        "inProcCallDelaySlot": true
+      }
+    ],
+    "notesCorrection": "Miss type is byte0x02 set to0x05 (Nullified), not byte0x05 set to0x02. Type byte0x25 is also cleared; accuracy and effects are16-bit stores.",
+    "storeFootprint": {
+      "recordBytes": 44,
+      "changedByteOffsets": [
+        0,
+        2,
+        4,
+        5,
+        16,
+        17,
+        37,
+        42,
+        43
+      ],
+      "otherBytesPreservedBeforeCleanup": true,
+      "directDamageStoreDoesNotClearHpHealing": true,
+      "targetActionReactionIdNotDirectlyCleared": true
+    },
+    "cleanupBoundaries": [
+      "formula_clear_pending_proc only acts when weapon_proc_pending is nonzero: clear work reaction_id and proc_pending, then remove AddedEffect0x0200 from target effects.",
+      "move_knockback_cancel only acts when knockback Pending is set: clear the whole work knockback flags and remove target Knockback0x4000.",
+      "Type byte0x25 is cleared in the first cleanup call delay slot, before that helper executes.",
+      "This is not a wholesale action-result reset or unconditional clearing of all reactions/status work."
+    ],
+    "managedMapping": "MagicDamageElements nullification clears amount/affinity markers. FaithMagicFormula composes hitfalse, accuracy0, Nullified label and empty supported HP types/effects, skips Faith/proc output and adds no RNG draw; earlier evasion draws remain retained. NoPendingWeaponProcOrReaction/NoPendingKnockback guards keep broader cleanup outside admission.",
+    "validation": {
+      "sourceAudit": {
+        "rawDescriptions": 20,
+        "composedDescriptions": 20,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 8,
+        "sourceFunctions": 15,
+        "emptyStatusRecordVerified": true,
+        "fireTiersVerified": 4
+      },
+      "ownerBlobsVerified": 10,
+      "unrelatedOwnerEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlobAtReview": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "excludedFromCommit": true
+      },
+      "focusedManagedTestsPassed": 35,
+      "focusedPythonTestsPassed": 16,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedPendingProcCleanupCheck": {
+    "managedBaseRevision": "ab339ae94948b849531fe8a00b4c16f982f583e0",
+    "start": "0x8018bcf0",
+    "endInclusive": "0x8018bd30",
+    "instructionCount": 17,
+    "instructionWords": [
+      "3c048019",
+      "248438c8",
+      "94820000",
+      "00000000",
+      "1040000a",
+      "00000000",
+      "3c038019",
+      "8c632d90",
+      "3c018019",
+      "a42038c6",
+      "a4800000",
+      "94620010",
+      "00000000",
+      "3042fdff",
+      "a4620010",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "pendingGuard": {
+      "address": "0x801938c8",
+      "load": "unsigned16",
+      "skipBranchPc": "0x8018bd00",
+      "skipTarget": "0x8018bd2c",
+      "skipWhen": "pending halfword==0"
+    },
+    "writesWhenPending": [
+      {
+        "address": "0x801938c6",
+        "field": "work reaction_id",
+        "byteWidth": 2,
+        "value": 0
+      },
+      {
+        "address": "0x801938c8",
+        "field": "weapon_proc_pending",
+        "byteWidth": 2,
+        "value": 0
+      },
+      {
+        "field": "TCA special_effect at0x10",
+        "byteWidth": 2,
+        "operation": "AND0xfdff, removing only AddedEffect0x0200"
+      }
+    ],
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80184e78",
+        "returnAddress": "0x80184e80",
+        "target": "0x8018bcf0",
+        "caller": "formula_nullify_action"
+      },
+      {
+        "callPc": "0x80187dc8",
+        "returnAddress": "0x80187dd0",
+        "target": "0x8018bcf0",
+        "caller": "formula_apply_poach_and_train"
+      },
+      {
+        "callPc": "0x8018bb2c",
+        "returnAddress": "0x8018bb34",
+        "target": "0x8018bcf0",
+        "caller": "action_finalize_target_result"
+      },
+      {
+        "callPc": "0x8018bc40",
+        "returnAddress": "0x8018bc48",
+        "target": "0x8018bcf0",
+        "caller": "action_finalize_target_result"
+      }
+    ],
+    "maskCheck": {
+      "decodedMask": "0xfdff",
+      "clearsOnly": "0x0200",
+      "literalDescriptions": [
+        {
+          "pending": 0,
+          "workReactionId": 48879,
+          "effectsWord": 65535,
+          "expectedPending": 0,
+          "expectedWorkReactionId": 48879,
+          "expectedEffectsWord": 65535
+        },
+        {
+          "pending": 1,
+          "workReactionId": 48879,
+          "effectsWord": 65535,
+          "expectedPending": 0,
+          "expectedWorkReactionId": 0,
+          "expectedEffectsWord": 65023
+        },
+        {
+          "pending": 256,
+          "workReactionId": 4660,
+          "effectsWord": 1536,
+          "expectedPending": 0,
+          "expectedWorkReactionId": 0,
+          "expectedEffectsWord": 1024
+        },
+        {
+          "pending": 65535,
+          "workReactionId": 0,
+          "effectsWord": 49664,
+          "expectedPending": 0,
+          "expectedWorkReactionId": 0,
+          "expectedEffectsWord": 49152
+        },
+        {
+          "pending": 1,
+          "workReactionId": 0,
+          "effectsWord": 0,
+          "expectedPending": 0,
+          "expectedWorkReactionId": 0,
+          "expectedEffectsWord": 0
+        },
+        {
+          "pending": 0,
+          "workReactionId": 1,
+          "effectsWord": 512,
+          "expectedPending": 0,
+          "expectedWorkReactionId": 1,
+          "expectedEffectsWord": 512
+        }
+      ],
+      "allMatched": true
+    },
+    "clarifications": [
+      "Pending0 means no writes, even if AddedEffect or a work reaction ID is present.",
+      "Any nonzero16-bit pending value qualifies, including0x0100; do not narrow the guard to a low byte.",
+      "The cleared ID is shared work reaction_id, not target-action reaction_id0x0e.",
+      "All effect bits except0x0200 are preserved when called standalone; no HP, accuracy, type, target status or RNG change is performed.",
+      "The generic Proc/Reaction flag wording maps specifically to weapon_proc_pending, not universal reaction cancellation."
+    ],
+    "managedBoundary": "Current magic retains NoPendingWeaponProcOrReaction admission. Ordinary magic conditional AddedEffect is not erased solely because it is set; the no-pending cleanup path is a no-op, including during later lethal-result cleanup. No general pending-weapon reaction implementation is added.",
+    "validation": {
+      "sourceAudit": {
+        "rawDescriptions": 20,
+        "composedDescriptions": 20,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 8,
+        "sourceFunctions": 15,
+        "emptyStatusRecordVerified": true,
+        "fireTiersVerified": 4
+      },
+      "ownerBlobsVerified": 10,
+      "unrelatedOwnerEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlobAtReview": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "excludedFromCommit": true
+      },
+      "focusedManagedTestsPassed": 29,
+      "focusedPythonTestsPassed": 16,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedKnockbackCleanupCheck": {
+    "managedBaseRevision": "edb730666ee598d2059cfc3361efc465688a7cb7",
+    "start": "0x8018bd34",
+    "endInclusive": "0x8018bd70",
+    "instructionCount": 16,
+    "instructionWords": [
+      "3c048019",
+      "248438ed",
+      "90820000",
+      "00000000",
+      "30420080",
+      "10400008",
+      "00000000",
+      "3c038019",
+      "8c632d90",
+      "a0800000",
+      "94620010",
+      "00000000",
+      "3042bfff",
+      "a4620010",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "guard": {
+      "address": "0x801938ed",
+      "byteWidth": 1,
+      "pendingMask": "0x80",
+      "skipBranchPc": "0x8018bd48",
+      "skipTarget": "0x8018bd6c",
+      "skipWhen": "pending bit clear, even if other bits are nonzero"
+    },
+    "storesWhenPending": [
+      {
+        "address": "0x801938ed",
+        "byteWidth": 1,
+        "value": 0,
+        "meaning": "Clear the entire work byte, including low kind/fall bits"
+      },
+      {
+        "field": "Target-action special_effect at0x10",
+        "byteWidth": 2,
+        "operation": "AND0xbfff: remove only Knockback0x4000"
+      }
+    ],
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80184e80",
+        "returnAddress": "0x80184e88",
+        "target": "0x8018bd34",
+        "caller": "formula_nullify_action"
+      },
+      {
+        "callPc": "0x80187718",
+        "returnAddress": "0x80187720",
+        "target": "0x8018bd34",
+        "caller": "formula_queue_weapon_spell"
+      },
+      {
+        "callPc": "0x80187dc0",
+        "returnAddress": "0x80187dc8",
+        "target": "0x8018bd34",
+        "caller": "formula_apply_poach_and_train"
+      },
+      {
+        "callPc": "0x8018bb34",
+        "returnAddress": "0x8018bb3c",
+        "target": "0x8018bd34",
+        "caller": "action_finalize_target_result"
+      },
+      {
+        "callPc": "0x8018bc38",
+        "returnAddress": "0x8018bc40",
+        "target": "0x8018bd34",
+        "caller": "action_finalize_target_result"
+      },
+      {
+        "callPc": "0x8018bcd8",
+        "returnAddress": "0x8018bce0",
+        "target": "0x8018bd34",
+        "caller": "action_finalize_target_result"
+      }
+    ],
+    "literalDescriptions": [
+      {
+        "knockbackFlags": 0,
+        "effectsWord": 65535,
+        "expectedFlags": 0,
+        "expectedEffectsWord": 65535
+      },
+      {
+        "knockbackFlags": 1,
+        "effectsWord": 65535,
+        "expectedFlags": 1,
+        "expectedEffectsWord": 65535
+      },
+      {
+        "knockbackFlags": 127,
+        "effectsWord": 16384,
+        "expectedFlags": 127,
+        "expectedEffectsWord": 16384
+      },
+      {
+        "knockbackFlags": 128,
+        "effectsWord": 65535,
+        "expectedFlags": 0,
+        "expectedEffectsWord": 49151
+      },
+      {
+        "knockbackFlags": 129,
+        "effectsWord": 49664,
+        "expectedFlags": 0,
+        "expectedEffectsWord": 33280
+      },
+      {
+        "knockbackFlags": 255,
+        "effectsWord": 0,
+        "expectedFlags": 0,
+        "expectedEffectsWord": 0
+      },
+      {
+        "knockbackFlags": 128,
+        "effectsWord": 0,
+        "expectedFlags": 0,
+        "expectedEffectsWord": 0
+      }
+    ],
+    "notesCorrection": "The guard is bit0x80, not any nonzero work byte. Work values0x01..0x7f cause no writes.",
+    "boundaries": [
+      "No pending bit means no write to either work flags or target effects, even if a stale target Knockback marker is set.",
+      "When pending, clear the whole work byte, not only bit0x80; preserve every target effect bit except0x4000.",
+      "This helper does not move units, process falls, clear proc state, change HP/hit/accuracy/type or draw RNG; it contains no nested call.",
+      "Parent nullification separately clears target effects before this conditional work cleanup."
+    ],
+    "managedBoundary": "Ordinary magic still requires NoPendingKnockback and supported fresh result work. This confirms the scoped no-op cleanup boundary; no general pending-knockback cancellation integration is added to magic.",
+    "validation": {
+      "sourceAudit": {
+        "rawDescriptions": 20,
+        "composedDescriptions": 20,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 8,
+        "sourceFunctions": 15,
+        "emptyStatusRecordVerified": true,
+        "fireTiersVerified": 4
+      },
+      "ownerBlobsVerified": 10,
+      "unrelatedOwnerEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlobAtReview": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "excludedFromCommit": true
+      },
+      "focusedManagedTestsPassed": 19,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedFaithCalculationCheck": {
+    "managedBaseRevision": "0c6c9d938693f896d6c297a3e3cbb0792b29e6db",
+    "attachmentNormalizedLfSha256": "714310f01ebaafbb4f765990d3a7baad5081067eadab6997abbd301344681f01",
+    "start": "0x80187150",
+    "endInclusive": "0x80187244",
+    "instructionCount": 62,
+    "instructionWords": [
+      "3c028019",
+      "8c422d94",
+      "00000000",
+      "9042005c",
+      "00000000",
+      "30420080",
+      "10400003",
+      "34020064",
+      "3c018019",
+      "a02238d3",
+      "3c028019",
+      "8c422d94",
+      "00000000",
+      "9042005c",
+      "00000000",
+      "30420040",
+      "10400003",
+      "00000000",
+      "3c018019",
+      "a02038d3",
+      "3c028019",
+      "8c422d98",
+      "00000000",
+      "9042005c",
+      "00000000",
+      "30420080",
+      "10400003",
+      "34020064",
+      "3c018019",
+      "a02238d2",
+      "3c028019",
+      "8c422d98",
+      "00000000",
+      "9042005c",
+      "00000000",
+      "30420040",
+      "10400003",
+      "00000000",
+      "3c018019",
+      "a02038d2",
+      "3c048019",
+      "8c842d90",
+      "3c028019",
+      "904238d2",
+      "84830004",
+      "00000000",
+      "00620018",
+      "00001812",
+      "3c028019",
+      "904238d3",
+      "00000000",
+      "00620018",
+      "00001812",
+      "3c0268db",
+      "34428bad",
+      "00620018",
+      "00031fc3",
+      "00001010",
+      "00021303",
+      "00431023",
+      "03e00008",
+      "a4820004"
+    ],
+    "allMatched": true,
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80188820",
+        "returnAddress": "0x80188828",
+        "target": "0x80187150"
+      },
+      {
+        "callPc": "0x801889ec",
+        "returnAddress": "0x801889f4",
+        "target": "0x80187150"
+      },
+      {
+        "callPc": "0x80188a4c",
+        "returnAddress": "0x80188a54",
+        "target": "0x80187150"
+      },
+      {
+        "callPc": "0x80188c7c",
+        "returnAddress": "0x80188c84",
+        "target": "0x80187150"
+      },
+      {
+        "callPc": "0x80188dc4",
+        "returnAddress": "0x80188dcc",
+        "target": "0x80187150"
+      },
+      {
+        "callPc": "0x80188f18",
+        "returnAddress": "0x80188f20",
+        "target": "0x80187150"
+      },
+      {
+        "callPc": "0x80189028",
+        "returnAddress": "0x80189030",
+        "target": "0x80187150"
+      },
+      {
+        "callPc": "0x801892e4",
+        "returnAddress": "0x801892ec",
+        "target": "0x80187150"
+      }
+    ],
+    "overrides": {
+      "statusByteOffset": "0x5c",
+      "faithMask": "0x80",
+      "innocentMask": "0x40",
+      "attackerWorkingFaith": "0x801938d3",
+      "targetWorkingFaith": "0x801938d2",
+      "order": "Attacker Faith then Innocent, target Faith then Innocent; Innocent wins independently",
+      "literalDescriptions": [
+        {
+          "stored": 0,
+          "faithStatus": false,
+          "innocentStatus": false,
+          "effective": 0
+        },
+        {
+          "stored": 0,
+          "faithStatus": true,
+          "innocentStatus": false,
+          "effective": 100
+        },
+        {
+          "stored": 0,
+          "faithStatus": false,
+          "innocentStatus": true,
+          "effective": 0
+        },
+        {
+          "stored": 0,
+          "faithStatus": true,
+          "innocentStatus": true,
+          "effective": 0
+        },
+        {
+          "stored": 1,
+          "faithStatus": false,
+          "innocentStatus": false,
+          "effective": 1
+        },
+        {
+          "stored": 1,
+          "faithStatus": true,
+          "innocentStatus": false,
+          "effective": 100
+        },
+        {
+          "stored": 1,
+          "faithStatus": false,
+          "innocentStatus": true,
+          "effective": 0
+        },
+        {
+          "stored": 1,
+          "faithStatus": true,
+          "innocentStatus": true,
+          "effective": 0
+        },
+        {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false,
+          "effective": 70
+        },
+        {
+          "stored": 70,
+          "faithStatus": true,
+          "innocentStatus": false,
+          "effective": 100
+        },
+        {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": true,
+          "effective": 0
+        },
+        {
+          "stored": 70,
+          "faithStatus": true,
+          "innocentStatus": true,
+          "effective": 0
+        },
+        {
+          "stored": 100,
+          "faithStatus": false,
+          "innocentStatus": false,
+          "effective": 100
+        },
+        {
+          "stored": 100,
+          "faithStatus": true,
+          "innocentStatus": false,
+          "effective": 100
+        },
+        {
+          "stored": 100,
+          "faithStatus": false,
+          "innocentStatus": true,
+          "effective": 0
+        },
+        {
+          "stored": 100,
+          "faithStatus": true,
+          "innocentStatus": true,
+          "effective": 0
+        },
+        {
+          "stored": 255,
+          "faithStatus": false,
+          "innocentStatus": false,
+          "effective": 255
+        },
+        {
+          "stored": 255,
+          "faithStatus": true,
+          "innocentStatus": false,
+          "effective": 100
+        },
+        {
+          "stored": 255,
+          "faithStatus": false,
+          "innocentStatus": true,
+          "effective": 0
+        },
+        {
+          "stored": 255,
+          "faithStatus": true,
+          "innocentStatus": true,
+          "effective": 0
+        }
+      ]
+    },
+    "arithmetic": {
+      "damageLoad": "signed16 target-action0x04",
+      "faithLoads": "unsigned8 target then attacker",
+      "division": "Single signed division by10000 after both multiplications",
+      "magicConstant": "0x68db8bad",
+      "postHighShift": 12,
+      "signCorrection": "subtract numerator arithmetic sign (-1 or0)",
+      "numeratorMinimum": -2130739200,
+      "numeratorMaximum": 2130674175,
+      "signed32OverflowPossible": false,
+      "quotientIntervals": 426141,
+      "endpointChecks": 852282,
+      "monotoneIntervalProofPassed": true,
+      "coveredIntegerNumerators": 4261413376,
+      "finalStore": "low16 bits in return delay slot at0x80187244"
+    },
+    "examples": [
+      {
+        "amount": 5,
+        "targetFaith": 90,
+        "attackerFaith": 90,
+        "expected": 4,
+        "incorrectSequentialDivisions": 3
+      },
+      {
+        "amount": -5,
+        "targetFaith": 90,
+        "attackerFaith": 90,
+        "expected": -4
+      }
+    ],
+    "managedMapping": "FaithValue.Effective gives Innocent precedence; FaithMagicArithmetic.ScaleStored uses the same single division and unchecked signed16 store. Working overrides do not mutate unit Faith.",
+    "boundaries": [
+      "No unit-stat Faith write, HP publication, hit/type change, cap, element/absorption stage or RNG occurs here.",
+      "Zero effective Faith makes the amount0 without nullifying the hit; formula0x08 can still reach its later conditional-proc tail.",
+      "The prose /100 twice summary is not a valid integer implementation; the instruction sequence divides once by10000.",
+      "The interval proof is offline integer arithmetic over the signed16/byte envelope, not original/C execution or admission of out-of-game Faith/stat values."
+    ],
+    "validation": {
+      "sourceAudit": {
+        "faithDescriptions": 15,
+        "productDescriptions": 7,
+        "amountDescriptions": 22,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 14,
+        "sourceFunctions": 36,
+        "preparedTiersVerified": 8
+      },
+      "ownerBlobsVerified": 10,
+      "unrelatedOwnerEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlobAtReview": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "excludedFromCommit": true
+      },
+      "focusedManagedTestsPassed": 19,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedAbsorptionProcWrapperCheck": {
+    "managedBaseRevision": "204543225e7df9295c2469cfb68544945cd2d2e9",
+    "start": "0x8018871c",
+    "endInclusive": "0x80188740",
+    "instructionCount": 10,
+    "instructionWords": [
+      "27bdffe8",
+      "afbf0010",
+      "0c061c3f",
+      "00000000",
+      "0c062130",
+      "00000000",
+      "8fbf0010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "orderedDirectCalls": [
+      {
+        "callPc": "0x80188724",
+        "target": "0x801870fc",
+        "symbol": "formula_element_apply_absorption"
+      },
+      {
+        "callPc": "0x8018872c",
+        "target": "0x801884c0",
+        "symbol": "formula_roll_conditional_status_proc"
+      }
+    ],
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80188dcc",
+        "returnAddress": "0x80188dd4",
+        "target": "0x8018871c"
+      },
+      {
+        "callPc": "0x80188e50",
+        "returnAddress": "0x80188e58",
+        "target": "0x8018871c"
+      },
+      {
+        "callPc": "0x8018959c",
+        "returnAddress": "0x801895a4",
+        "target": "0x8018871c"
+      },
+      {
+        "callPc": "0x8018a640",
+        "returnAddress": "0x8018a648",
+        "target": "0x8018871c"
+      }
+    ],
+    "returnContract": "Forward the conditional-proc helper r2 unchanged:0 requests the later status attempt, nonzero skips it. The wrapper does not apply statuses.",
+    "order": "Elemental absorption/type routing first, conditional-proc helper second. Absorbed damage retains its original formula family and conditional tail.",
+    "modeBoundaries": [
+      "Fresh Execute context rolls19% through the later helper; not every invocation or mode draws.",
+      "Preview requests a status attempt without a draw or AddedEffect delta. Fresh AI with a clear marker excludes it without a draw.",
+      "Already-set AddedEffect can influence non-preview return behavior and remains outside the current fresh/no-pending composition.",
+      "Normal formula0x08 callers skip this entire wrapper after earlier nullification; the wrapper itself contains no such conditional branch."
+    ],
+    "managedMapping": "FaithMagicFormula.ResolveProjectedAfterHit calls FaithMagicHpRouting.Route before MagicConditionalProc.EvaluateAfterHit, retaining damage-family eligibility for absorbed healing and atomic candidate RNG/results.",
+    "validation": {
+      "sourceAudit": {
+        "rollDescriptions": 6,
+        "decisionDescriptions": 26,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 9,
+        "sourceFunctions": 10,
+        "emptyStatusRecordVerified": true,
+        "fireTiersVerified": 4
+      },
+      "ownerBlobsVerified": 10,
+      "ownerApprovedCiEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "committed": true,
+        "ciEnabledDefault": false
+      },
+      "focusedManagedTestsPassed": 23,
+      "focusedPythonTestsPassed": 16,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedElementalAbsorptionCheck": {
+    "managedBaseRevision": "7c599dc8dd6c47b2b539ba4dee42c18df0d56ab7",
+    "start": "0x801870fc",
+    "endInclusive": "0x8018714c",
+    "instructionCount": 21,
+    "instructionWords": [
+      "3c048019",
+      "8c842d90",
+      "00000000",
+      "90830002",
+      "34020005",
+      "1062000d",
+      "00000000",
+      "94820010",
+      "00000000",
+      "30420400",
+      "10400006",
+      "34020040",
+      "94830004",
+      "a4800004",
+      "a0820025",
+      "08061c52",
+      "a4830006",
+      "34020080",
+      "a0820025",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "listedCallerChecks": [
+      {
+        "callPc": "0x80188684",
+        "returnAddress": "0x8018868c",
+        "target": "0x801870fc",
+        "caller": "formula_calculate_weapon_damage"
+      },
+      {
+        "callPc": "0x80188724",
+        "returnAddress": "0x8018872c",
+        "target": "0x801870fc",
+        "caller": "formula_element_apply_absorption_and_status_proc"
+      },
+      {
+        "callPc": "0x801887cc",
+        "returnAddress": "0x801887d4",
+        "target": "0x801870fc",
+        "caller": "formula_element_apply_absorption_and_status"
+      },
+      {
+        "callPc": "0x80188c84",
+        "returnAddress": "0x80188c8c",
+        "target": "0x801870fc",
+        "caller": "formula_magic_gun"
+      },
+      {
+        "callPc": "0x80189b74",
+        "returnAddress": "0x80189b7c",
+        "target": "0x801870fc",
+        "caller": "formula_holy_sword"
+      },
+      {
+        "callPc": "0x80189c38",
+        "returnAddress": "0x80189c40",
+        "target": "0x801870fc",
+        "caller": "formula_mighty_sword"
+      },
+      {
+        "callPc": "0x80189d44",
+        "returnAddress": "0x80189d4c",
+        "target": "0x801870fc",
+        "caller": "formula_damage_pa_plus_y_half_times_pa"
+      },
+      {
+        "callPc": "0x8018ac2c",
+        "returnAddress": "0x8018ac34",
+        "target": "0x801870fc",
+        "caller": "formula_throw_damage"
+      }
+    ],
+    "literalRecordDescriptions": [
+      {
+        "miss": 0,
+        "effects": 1024,
+        "damageBits": 123,
+        "healingBits": 77,
+        "initialType": 160,
+        "expectedDamageBits": 0,
+        "expectedHealingBits": 123,
+        "expectedType": 64
+      },
+      {
+        "miss": 5,
+        "effects": 65535,
+        "damageBits": 123,
+        "healingBits": 77,
+        "initialType": 160,
+        "expectedDamageBits": 123,
+        "expectedHealingBits": 77,
+        "expectedType": 160
+      },
+      {
+        "miss": 0,
+        "effects": 0,
+        "damageBits": 123,
+        "healingBits": 77,
+        "initialType": 96,
+        "expectedDamageBits": 123,
+        "expectedHealingBits": 77,
+        "expectedType": 128
+      },
+      {
+        "miss": 7,
+        "effects": 1024,
+        "damageBits": 80,
+        "healingBits": 77,
+        "initialType": 160,
+        "expectedDamageBits": 0,
+        "expectedHealingBits": 80,
+        "expectedType": 64
+      },
+      {
+        "miss": 0,
+        "effects": 1024,
+        "damageBits": 65535,
+        "healingBits": 77,
+        "initialType": 160,
+        "expectedDamageBits": 0,
+        "expectedHealingBits": 65535,
+        "expectedType": 64
+      },
+      {
+        "miss": 0,
+        "effects": 1024,
+        "damageBits": 0,
+        "healingBits": 77,
+        "initialType": 160,
+        "expectedDamageBits": 0,
+        "expectedHealingBits": 0,
+        "expectedType": 64
+      }
+    ],
+    "guard": "Target-action miss byte0x02 equal5 returns with no writes; no generic hit/accuracy/zero-amount check occurs.",
+    "absorption": "If special_effect unsigned16 at0x10 has0x0400, load damage bits via lhu0x04, clear damage0x04, assign type0x40 and copy bits to healing0x06 in the jump delay slot at0x8018713c.",
+    "nonAbsorption": "Otherwise assign type0x80 only; this does not explicitly clear a stale healing field.",
+    "boundaries": [
+      "Transfer preserves all16 bits, including negative signed interpretations; no absolute value, clamp or recomputation occurs.",
+      "Type writes assign0x40/0x80 rather than ORing flags. The absorption/effect marker itself is preserved.",
+      "No target Undead/affinity read, live HP mutation, proc decision, RNG or nested call occurs here.",
+      "Elementally absorbed damage heals Undead too; formula0x0C healing-to-Undead reversal is a distinct later family path.",
+      "Raw miss7/stale-field descriptions explain source behavior only; current managed composition admits a fresh hit/nullified domain and no unrelated stale HP result work."
+    ],
+    "managedMapping": "FaithMagicHpRouting.Route preserves signed amount bits, nullification and the damage-family absorption route after Faith. Its separate Healing branch owns Undead reversal; absorbed damage retains the damage formula conditional tail.",
+    "validation": {
+      "sourceAudit": {
+        "transformDescriptions": 24,
+        "projectionDescriptions": 12,
+        "routingDescriptions": 14,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "sourceFiles": 9,
+        "sourceFunctions": 14,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true
+      },
+      "ownerBlobsVerified": 10,
+      "ownerApprovedCiEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "committed": true,
+        "ciEnabledDefault": false
+      },
+      "focusedManagedTestsPassed": 13,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedConditionalProcWrapperCheck": {
+    "managedBaseRevision": "5a17dcdf2094c3c71308b84d418fe6401e02ca6e",
+    "start": "0x801884c0",
+    "endInclusive": "0x8018850c",
+    "instructionCount": 20,
+    "suppliedListings": 2,
+    "listingsHaveIdenticalWords": true,
+    "instructionWords": [
+      "27bdffe8",
+      "afbf0010",
+      "0c061da4",
+      "00000000",
+      "3c038019",
+      "8c63f5fc",
+      "34020002",
+      "10620008",
+      "00001021",
+      "3c028019",
+      "8c422d90",
+      "00000000",
+      "94420010",
+      "00000000",
+      "30420200",
+      "2c420001",
+      "8fbf0010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "innerCall": {
+      "callPc": "0x801884c8",
+      "target": "0x80187690",
+      "symbol": "conditional_status_proc_roll_inner",
+      "calledBeforeModeBranch": true
+    },
+    "previewBranch": {
+      "pc": "0x801884dc",
+      "stateWord": "0x8018f5fc",
+      "previewValue": 2,
+      "target": "0x80188500",
+      "delaySlot": "Set r2=0"
+    },
+    "returnRule": "After the inner call, Preview2 returns0 without reading the target marker. Otherwise read unsigned16 effects at TCA0x10 and return0 iff AddedEffect0x0200 is set, else1.",
+    "literalReturnDescriptions": [
+      {
+        "actionState": 0,
+        "effectsAfterInnerCall": 0,
+        "expectedReturn": 1
+      },
+      {
+        "actionState": 0,
+        "effectsAfterInnerCall": 512,
+        "expectedReturn": 0
+      },
+      {
+        "actionState": 1,
+        "effectsAfterInnerCall": 0,
+        "expectedReturn": 1
+      },
+      {
+        "actionState": 1,
+        "effectsAfterInnerCall": 512,
+        "expectedReturn": 0
+      },
+      {
+        "actionState": 2,
+        "effectsAfterInnerCall": 0,
+        "expectedReturn": 0
+      },
+      {
+        "actionState": 2,
+        "effectsAfterInnerCall": 512,
+        "expectedReturn": 0
+      },
+      {
+        "actionState": 0,
+        "effectsAfterInnerCall": 1024,
+        "expectedReturn": 1
+      },
+      {
+        "actionState": 1,
+        "effectsAfterInnerCall": 65023,
+        "expectedReturn": 1
+      }
+    ],
+    "listedCallerChecks": [
+      {
+        "callPc": "0x8018868c",
+        "returnAddress": "0x80188694",
+        "target": "0x801884c0"
+      },
+      {
+        "callPc": "0x8018872c",
+        "returnAddress": "0x80188734",
+        "target": "0x801884c0"
+      },
+      {
+        "callPc": "0x801887d4",
+        "returnAddress": "0x801887dc",
+        "target": "0x801884c0"
+      },
+      {
+        "callPc": "0x80188ccc",
+        "returnAddress": "0x80188cd4",
+        "target": "0x801884c0"
+      },
+      {
+        "callPc": "0x80189d4c",
+        "returnAddress": "0x80189d54",
+        "target": "0x801884c0"
+      }
+    ],
+    "clarifications": [
+      "Both supplied instruction listings are identical annotations of one routine, not alternate implementations.",
+      "The mode load is a scalar state word, not a pointer to another state record.",
+      "The outer routine does not return an inner RNG result directly; it tests the effect marker left by the inner routine.",
+      "The outer routine always calls the inner routine, including Preview; the inner routine owns the execution-only RNG gate.",
+      "Return0 requests a later status attempt, not proof that a roll occurred or any status changed.",
+      "Non-preview stale AddedEffect can return0 after a failed/no inner roll; current non-preview admission requires the marker known clear at entry."
+    ],
+    "managedMapping": "MagicConditionalProc.Evaluate matches supported modes Execute0/AiSimulation1/Preview2, keeps no-draw Preview/AI paths and fresh-flag/no-pending guards. Broader stale/pending contexts remain rejected.",
+    "validation": {
+      "sourceAudit": {
+        "rollDescriptions": 6,
+        "decisionDescriptions": 26,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 9,
+        "sourceFunctions": 10,
+        "emptyStatusRecordVerified": true,
+        "fireTiersVerified": 4
+      },
+      "ownerBlobsVerified": 10,
+      "ownerApprovedCiEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "committed": true,
+        "ciEnabledDefault": false
+      },
+      "focusedManagedTestsPassed": 15,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedConditionalProcInnerCheck": {
+    "managedBaseRevision": "dba0887f692878b5cb2b8dcad76daa2a71db30a3",
+    "start": "0x80187690",
+    "endInclusive": "0x801876e0",
+    "instructionCount": 21,
+    "instructionWords": [
+      "3c028019",
+      "8c42f5fc",
+      "27bdffe8",
+      "1440000d",
+      "afbf0010",
+      "34040064",
+      "0c017833",
+      "34050013",
+      "14400008",
+      "00000000",
+      "3c038019",
+      "8c632d90",
+      "00000000",
+      "94620010",
+      "00000000",
+      "34420200",
+      "a4620010",
+      "8fbf0010",
+      "27bd0018",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "executionGate": {
+      "pc": "0x8018769c",
+      "stateWord": "0x8018f5fc",
+      "runOnlyFor": 0,
+      "nonzeroStateSkipTarget": "0x801876d4"
+    },
+    "chanceCall": {
+      "pc": "0x801876a8",
+      "target": "0x8005e0cc",
+      "symbol": "random_roll_pass_fail",
+      "maximum": 100,
+      "threshold": 19,
+      "thresholdSetInDelaySlot": true
+    },
+    "failedRollBranch": {
+      "pc": "0x801876b0",
+      "skipWhen": "r2!=0",
+      "target": "0x801876d4",
+      "successRequiresReturn": 0
+    },
+    "flagUpdate": {
+      "pc": "0x801876cc",
+      "operation": "OR0x0200",
+      "halfwordStorePc": "0x801876d0",
+      "targetActionOffset": "0x10",
+      "preservesOtherFlags": true
+    },
+    "listedCallerCheck": {
+      "callPc": "0x801884c8",
+      "returnAddress": "0x801884d0",
+      "target": "0x80187690"
+    },
+    "literalModeFlagDescriptions": [
+      {
+        "actionState": 0,
+        "passFailReturn": 0,
+        "initialEffects": 0,
+        "expectedEffects": 512,
+        "expectedDraws": 1
+      },
+      {
+        "actionState": 0,
+        "passFailReturn": 0,
+        "initialEffects": 1152,
+        "expectedEffects": 1664,
+        "expectedDraws": 1
+      },
+      {
+        "actionState": 0,
+        "passFailReturn": 1,
+        "initialEffects": 512,
+        "expectedEffects": 512,
+        "expectedDraws": 1
+      },
+      {
+        "actionState": 0,
+        "passFailReturn": 1,
+        "initialEffects": 0,
+        "expectedEffects": 0,
+        "expectedDraws": 1
+      },
+      {
+        "actionState": 1,
+        "passFailReturn": null,
+        "initialEffects": 1024,
+        "expectedEffects": 1024,
+        "expectedDraws": 0
+      },
+      {
+        "actionState": 2,
+        "passFailReturn": null,
+        "initialEffects": 0,
+        "expectedEffects": 0,
+        "expectedDraws": 0
+      },
+      {
+        "actionState": 0,
+        "passFailReturn": 0,
+        "initialEffects": 65535,
+        "expectedEffects": 65535,
+        "expectedDraws": 1
+      }
+    ],
+    "literalThresholdDescriptions": [
+      {
+        "raw": 0,
+        "percent": 0,
+        "expectedPassFailReturn": 0
+      },
+      {
+        "raw": 6225,
+        "percent": 18,
+        "expectedPassFailReturn": 0
+      },
+      {
+        "raw": 6226,
+        "percent": 19,
+        "expectedPassFailReturn": 1
+      },
+      {
+        "raw": 32700,
+        "percent": 99,
+        "expectedPassFailReturn": 1
+      },
+      {
+        "raw": 32767,
+        "percent": 99,
+        "expectedPassFailReturn": 1
+      }
+    ],
+    "documentationCorrections": [
+      "The inline rollResult!=0 success comment is inverted: nonzero skips the OR; zero succeeds.",
+      "Pass/Fail(100,19) scales a raw0..32767 draw into0..99, not an inclusive0..100 roll."
+    ],
+    "managedMapping": "MagicConditionalProc.Evaluate uses one existing Next draw only for fresh Execute, tests raw*100/32768<19 and returns a set delta. Preview/AI skip the draw; unsupported stale/pending work is rejected.",
+    "boundaries": [
+      "The inner routine does not inspect HP amount, hit flag, element, status record or a preexisting AddedEffect before drawing.",
+      "A failed roll or non-execution path never clears an old marker; the outer wrapper subsequently reads it outside Preview.",
+      "Success ORs a marker rather than applying a status or declaring an overall hit.",
+      "The source has no managed draw-count ceiling. The existing atomic counter-exhaustion rejection remains an explicit managed contract.",
+      "Only this one listed caller is claimed; source chance/root RNG ownership remains separate from this instruction check."
+    ],
+    "validation": {
+      "sourceAudit": {
+        "rollDescriptions": 6,
+        "decisionDescriptions": 26,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 9,
+        "sourceFunctions": 10,
+        "emptyStatusRecordVerified": true,
+        "fireTiersVerified": 4
+      },
+      "ownerBlobsVerified": 10,
+      "ownerApprovedCiEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "committed": true,
+        "ciEnabledDefault": false
+      },
+      "focusedManagedTestsPassed": 15,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedPassFailRollCheck": {
+    "managedBaseRevision": "48f91f040b780d286c57d85aa2bb80eb39509989",
+    "start": "0x8005e0cc",
+    "endInclusive": "0x8005e11c",
+    "instructionCount": 21,
+    "instructionWords": [
+      "27bdffe0",
+      "afb00010",
+      "00808021",
+      "afb10014",
+      "afbf0018",
+      "0c0088c3",
+      "00a08821",
+      "00500018",
+      "00001012",
+      "04410002",
+      "00000000",
+      "24427fff",
+      "000213c3",
+      "0051102a",
+      "38420001",
+      "8fbf0018",
+      "8fb10014",
+      "8fb00010",
+      "27bd0020",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "preparedExecutable": {
+      "path": "scratch/all-data-extraction/SCUS_942.21",
+      "byteLength": 356352,
+      "sha256": "287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562",
+      "loadAddress": "0x80010000",
+      "fileHeaderBytes": 2048
+    },
+    "randCall": {
+      "pc": "0x8005e0e0",
+      "target": "0x8002230c",
+      "thresholdPreservedInDelaySlot": true,
+      "veneerWords": [
+        "240a00a0",
+        "01400008",
+        "2409002f"
+      ],
+      "biosVector": "0x000000a0",
+      "biosService": "0x2f",
+      "draws": 1
+    },
+    "arithmetic": {
+      "product": "signed MULT; MFLO retains low32",
+      "division": "Add0x7fff only when signed low32 product is negative, then arithmetic shift15: truncation toward zero",
+      "comparison": "Signed SLT against threshold, XOR1: return0 below,1 otherwise",
+      "procMaximum": 100,
+      "procThreshold": 19,
+      "procScaledRange": [
+        0,
+        99
+      ],
+      "procSuccessfulRawValues": 6226
+    },
+    "listedCallers": [
+      {
+        "image": "SCUS",
+        "listedReturnAddress": "0x8005cfe0",
+        "returnAddress": "0x8005cfe8",
+        "callPc": "0x8005cfe0",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x80176c80",
+        "returnAddress": "0x80176c80",
+        "callPc": "0x80176c78",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x80180270",
+        "returnAddress": "0x80180270",
+        "callPc": "0x80180268",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x801807e8",
+        "returnAddress": "0x801807e8",
+        "callPc": "0x801807e0",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x801843c0",
+        "returnAddress": "0x801843c0",
+        "callPc": "0x801843b8",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x80184900",
+        "returnAddress": "0x80184900",
+        "callPc": "0x801848f8",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x801869cc",
+        "returnAddress": "0x801869cc",
+        "callPc": "0x801869c4",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x8018758c",
+        "returnAddress": "0x8018758c",
+        "callPc": "0x80187584",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x801876b0",
+        "returnAddress": "0x801876b0",
+        "callPc": "0x801876a8",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x80187990",
+        "returnAddress": "0x80187990",
+        "callPc": "0x80187988",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x801880f0",
+        "returnAddress": "0x801880f0",
+        "callPc": "0x801880e8",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x8018c6f4",
+        "returnAddress": "0x8018c6f4",
+        "callPc": "0x8018c6ec",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x8018d3a4",
+        "returnAddress": "0x8018d3a4",
+        "callPc": "0x8018d39c",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      },
+      {
+        "image": "BATTLE",
+        "listedReturnAddress": "0x8018e850",
+        "returnAddress": "0x8018e850",
+        "callPc": "0x8018e848",
+        "word": "0c017833",
+        "target": "0x8005e0cc",
+        "matched": true
+      }
+    ],
+    "documentationCorrections": [
+      "27bdffe0 allocates32 stack bytes; the accompanying -0x0010 text is incorrect.",
+      "The listed SCUS0x0005cfe0 is the JAL call, not its return. Its return is0x8005cfe8.",
+      "The negative-rounding branch tests the low32 product, not the unmultiplied RNG output."
+    ],
+    "arithmeticChecks": {
+      "rawValues": 32768,
+      "maxima": [
+        0,
+        1,
+        50,
+        100,
+        256,
+        32767,
+        65535
+      ],
+      "nonoverflowingProductComparisons": 229376,
+      "signedProductBoundaries": [
+        -2147483648,
+        -65537,
+        -65536,
+        -65535,
+        -32769,
+        -32768,
+        -32767,
+        -1,
+        0,
+        1,
+        32767,
+        32768,
+        2147483647
+      ],
+      "thresholdDescriptions": [
+        {
+          "raw": 0,
+          "maximum": 100,
+          "threshold": 0,
+          "scaledRoll": 0,
+          "expectedReturn": 1
+        },
+        {
+          "raw": 0,
+          "maximum": 100,
+          "threshold": 1,
+          "scaledRoll": 0,
+          "expectedReturn": 0
+        },
+        {
+          "raw": 6225,
+          "maximum": 100,
+          "threshold": 19,
+          "scaledRoll": 18,
+          "expectedReturn": 0
+        },
+        {
+          "raw": 6226,
+          "maximum": 100,
+          "threshold": 19,
+          "scaledRoll": 19,
+          "expectedReturn": 1
+        },
+        {
+          "raw": 32767,
+          "maximum": 100,
+          "threshold": 100,
+          "scaledRoll": 99,
+          "expectedReturn": 0
+        },
+        {
+          "raw": 32767,
+          "maximum": 100,
+          "threshold": 101,
+          "scaledRoll": 99,
+          "expectedReturn": 0
+        },
+        {
+          "raw": 0,
+          "maximum": 0,
+          "threshold": 0,
+          "scaledRoll": 0,
+          "expectedReturn": 1
+        },
+        {
+          "raw": 32767,
+          "maximum": 0,
+          "threshold": 1,
+          "scaledRoll": 0,
+          "expectedReturn": 0
+        }
+      ]
+    },
+    "managedMapping": "MagicConditionalProc.Evaluate consumes one RandomStateGenerator.Next output and scales raw*100/32768 before testing<19. All admitted products fit signed32. No generic pass/fail API or new runtime behavior is introduced.",
+    "boundaries": [
+      "The helper always calls rand, even for maximum0 or an out-of-range threshold; mode and invocation gates belong to callers.",
+      "The general arbitrary-int32 maximum can overflow the low32 product. This check records machine narrowing but does not promise unbounded mathematical or undefined-C-overflow equivalence.",
+      "The listed callers are checked at their instruction locations, not claimed as a complete call graph or full semantic port.",
+      "Existing BIOS RNG evidence is reused; no new BIOS/C/original execution or VSync scheduling claim.",
+      "The next useful supplied listing is formula_apply_status at0x80187eb4; general status-set implementation remains separate."
+    ],
+    "validation": {
+      "sourceAudit": {
+        "rollDescriptions": 6,
+        "decisionDescriptions": 26,
+        "originalExecuted": false,
+        "cExecuted": false,
+        "managedExecuted": false,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 9,
+        "sourceFunctions": 10,
+        "emptyStatusRecordVerified": true,
+        "fireTiersVerified": 4
+      },
+      "ownerBlobsVerified": 10,
+      "ownerApprovedCiEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "committed": true,
+        "ciEnabledDefault": false
+      },
+      "focusedManagedTestsPassed": 25,
+      "focusedPythonTestsPassed": 8,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedStatusPreservationCheck": {
+    "managedBaseRevision": "ec2658ed5ac460d57ebe7aff20699b27bedd2e6a",
+    "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "start": "0x80187eb4",
+    "endInclusive": "0x80187f20",
+    "instructionCount": 28,
+    "instructionWords": [
+      "3c028019",
+      "8c422d90",
+      "27bdffe0",
+      "afbf001c",
+      "afb20018",
+      "afb10014",
+      "afb00010",
+      "90520002",
+      "9451002a",
+      "90500000",
+      "0c061fc9",
+      "00000000",
+      "3c028019",
+      "8c422d90",
+      "00000000",
+      "a0500000",
+      "3c028019",
+      "8c422d90",
+      "00000000",
+      "a451002a",
+      "a0520002",
+      "8fbf001c",
+      "8fb20018",
+      "8fb10014",
+      "8fb00010",
+      "27bd0020",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "innerCall": {
+      "pc": "0x80187edc",
+      "target": "0x80187f24",
+      "returnAddress": "0x80187ee4",
+      "delaySlot": "nop"
+    },
+    "savedFields": [
+      {
+        "offset": "0x02",
+        "widthBits": 8,
+        "signed": false,
+        "register": 18,
+        "meaning": "miss type"
+      },
+      {
+        "offset": "0x2a",
+        "widthBits": 16,
+        "signed": false,
+        "register": 17,
+        "meaning": "attack accuracy"
+      },
+      {
+        "offset": "0x00",
+        "widthBits": 8,
+        "signed": false,
+        "register": 16,
+        "meaning": "hit byte"
+      }
+    ],
+    "restoredFields": [
+      {
+        "pc": "0x80187ef0",
+        "offset": "0x00",
+        "widthBits": 8
+      },
+      {
+        "pc": "0x80187f00",
+        "offset": "0x2a",
+        "widthBits": 16
+      },
+      {
+        "pc": "0x80187f04",
+        "offset": "0x02",
+        "widthBits": 8
+      }
+    ],
+    "restoredByteOffsets": [
+      "0x00",
+      "0x02",
+      "0x2a",
+      "0x2b"
+    ],
+    "listedCallers": [
+      {
+        "returnAddress": "0x801887ec",
+        "callPc": "0x801887e4",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x80188b94",
+        "callPc": "0x80188b8c",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x80188ce4",
+        "callPc": "0x80188cdc",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x80188de4",
+        "callPc": "0x80188ddc",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x80188e68",
+        "callPc": "0x80188e60",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x801895b4",
+        "callPc": "0x801895ac",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x80189b84",
+        "callPc": "0x80189b7c",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x80189d64",
+        "callPc": "0x80189d5c",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x8018a240",
+        "callPc": "0x8018a238",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x8018a5d4",
+        "callPc": "0x8018a5cc",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x8018a658",
+        "callPc": "0x8018a650",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x8018aa00",
+        "callPc": "0x8018a9f8",
+        "word": "0c061fad",
+        "matched": true
+      },
+      {
+        "returnAddress": "0x8018acec",
+        "callPc": "0x8018ace4",
+        "word": "0c061fad",
+        "matched": true
+      }
+    ],
+    "sourceFunctions": [
+      {
+        "path": "src/battle/combat/formula_modifiers.c",
+        "symbol": "formula_apply_status",
+        "startLine": 651,
+        "endLine": 663,
+        "normalizedLfSha256": "2fb9c77ece0d543631574be792c72bbcc1b4de59819bb11f062f438b96bc4998"
+      },
+      {
+        "path": "src/battle/combat/formula_modifiers.c",
+        "symbol": "formula_apply_status_to_action",
+        "startLine": 674,
+        "endLine": 759,
+        "normalizedLfSha256": "f0d7b7151fe1d4a05cc9258db92475d68378d3c584ae19a57249aa68c2bebaa9"
+      },
+      {
+        "path": "src/battle/combat/formula_core.c",
+        "symbol": "formula_force_attack_miss",
+        "startLine": 56,
+        "endLine": 61,
+        "normalizedLfSha256": "c787313b90664c07e6dfaf637f597f90ccd31d51d090e31654d906bf3e4c7528"
+      }
+    ],
+    "managedMapping": "FaithMagicFormula.ResolveProjectedAfterHit retains hit/unsigned16 accuracy/miss around the known-empty status attempt. MagicResultFinalization requires EmptyStatusRecord and may later clear hit for zero accuracy. No generic status wrapper/API is added.",
+    "boundaries": [
+      "No branch or RNG call in the wrapper; the inner applicator is called regardless of saved hit/accuracy/miss values. Inner RNG or work mutations are not rolled back.",
+      "Only four target-action bytes are restored, after rereading the global action pointer. HP/MP amounts, type/effect flags, status changes and ability work are not snapshotted by this wrapper.",
+      "An empty fresh status record reaches forced failure in the inner routine, which clears only the three fields restored here. The earlier proc marker and HP result therefore survive. This claim requires the admitted empty action/status context.",
+      "The wrapper preserves incoming values; it does not force hit=1, accuracy=100 or miss type=Hit, and later finalization may change them.",
+      "All13 supplied returns match, without claiming the list is exhaustive or those other ability families are ported.",
+      "General status infliction/removal/filtering is not activated. Apply status (to action) at0x80187f24 is the next useful supplied listing; ZOD-436 stays open."
+    ],
+    "validation": {
+      "sourceAudits": {
+        "proc": {
+          "rollDescriptions": 6,
+          "decisionDescriptions": 26,
+          "originalExecuted": false,
+          "cExecuted": false,
+          "managedExecuted": false,
+          "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+          "referenceClean": true,
+          "sourceFiles": 9,
+          "sourceFunctions": 10,
+          "emptyStatusRecordVerified": true,
+          "fireTiersVerified": 4
+        },
+        "finalization": {
+          "rawDescriptions": 20,
+          "composedDescriptions": 20,
+          "originalExecuted": false,
+          "cExecuted": false,
+          "managedExecuted": false,
+          "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+          "referenceClean": true,
+          "sourceFiles": 8,
+          "sourceFunctions": 15,
+          "emptyStatusRecordVerified": true,
+          "fireTiersVerified": 4
+        }
+      },
+      "ownerBlobsVerified": 10,
+      "ownerControllerBlob": "4856db5509cd27ee13f02e7918d72ce42a47852f",
+      "ownerApprovedCiEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "committed": true,
+        "ciEnabledDefault": false
+      },
+      "focusedManagedTestsPassed": 29,
+      "focusedPythonTestsPassed": 16,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedStatusApplicatorCheck": {
+    "managedBaseRevision": "d31b6f2a3f74517585dd672661cfe5bfbb406284",
+    "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "suppliedTextSha256": "af58b94cab55e84c7728f1c20340c66af81928bfccf9b5de8a5e294cdd121f62",
+    "start": "0x80187f24",
+    "endInclusive": "0x80188284",
+    "instructionCount": 217,
+    "instructionWords": [
+      "3c038019",
+      "90633906",
+      "27bdff38",
+      "afbf00c0",
+      "afb300bc",
+      "afb200b8",
+      "afb100b4",
+      "30620020",
+      "1040000b",
+      "afb000b0",
+      "3c048019",
+      "8c842d90",
+      "00000000",
+      "8482002a",
+      "00000000",
+      "04410002",
+      "00000000",
+      "24420003",
+      "00021083",
+      "a482002a",
+      "30620060",
+      "10400008",
+      "30620080",
+      "3c028019",
+      "8c42f5fc",
+      "00000000",
+      "10400003",
+      "30620080",
+      "34030080",
+      "30620080",
+      "10400010",
+      "00008021",
+      "3c038019",
+      "8c632d90",
+      "3c018019",
+      "00300821",
+      "90243907",
+      "00701821",
+      "9062001b",
+      "26100001",
+      "00441025",
+      "a062001b",
+      "2a020005",
+      "1440fff4",
+      "00002021",
+      "08062070",
+      "00000000",
+      "30620040",
+      "10400030",
+      "00008821",
+      "00008021",
+      "34050080",
+      "27a40010",
+      "06010002",
+      "02001021",
+      "26020007",
+      "000210c3",
+      "3c018019",
+      "00220821",
+      "90233907",
+      "32020007",
+      "00451007",
+      "00621824",
+      "10600004",
+      "00000000",
+      "ac900000",
+      "24840004",
+      "26310001",
+      "26100001",
+      "2a020028",
+      "1440ffee",
+      "00000000",
+      "0c063ba8",
+      "00000000",
+      "00510018",
+      "00001012",
+      "04410002",
+      "00000000",
+      "24427fff",
+      "000213c3",
+      "00021080",
+      "03a21021",
+      "8c450010",
+      "3c028019",
+      "8c422d90",
+      "04a10002",
+      "00a02021",
+      "24a40007",
+      "000420c3",
+      "00442021",
+      "30a50007",
+      "34020080",
+      "9083001b",
+      "00a21007",
+      "00621825",
+      "0806206f",
+      "a083001b",
+      "30620020",
+      "10400033",
+      "00008021",
+      "34130080",
+      "06010002",
+      "02001021",
+      "26020007",
+      "000288c3",
+      "3c018019",
+      "00310821",
+      "90233907",
+      "32020007",
+      "00539007",
+      "00721824",
+      "10600012",
+      "34040064",
+      "0c017833",
+      "34050018",
+      "14400006",
+      "34020002",
+      "3c038019",
+      "8c63f5fc",
+      "00000000",
+      "14620009",
+      "00000000",
+      "3c018019",
+      "00310821",
+      "90223907",
+      "00000000",
+      "00521026",
+      "3c018019",
+      "00310821",
+      "a0223907",
+      "26100001",
+      "2a020028",
+      "1440ffe0",
+      "00000000",
+      "00008021",
+      "3c038019",
+      "8c632d90",
+      "3c018019",
+      "00300821",
+      "90243907",
+      "00701821",
+      "9062001b",
+      "26100001",
+      "00441025",
+      "a062001b",
+      "2a020005",
+      "1440fff4",
+      "00002021",
+      "08062070",
+      "00000000",
+      "30620010",
+      "1040000f",
+      "00002021",
+      "3c038019",
+      "8c632d90",
+      "3c018019",
+      "00300821",
+      "90243907",
+      "00701821",
+      "90620020",
+      "26100001",
+      "00441025",
+      "a0620020",
+      "2a020005",
+      "1440fff4",
+      "00000000",
+      "00002021",
+      "00008021",
+      "3c058019",
+      "8ca52d90",
+      "00000000",
+      "00b01021",
+      "9043001b",
+      "90420020",
+      "26100001",
+      "00621825",
+      "2a020005",
+      "1440fff8",
+      "00832025",
+      "308200ff",
+      "10400005",
+      "00000000",
+      "0c0612c9",
+      "00002021",
+      "14400005",
+      "00000000",
+      "0c0610c3",
+      "00000000",
+      "0806209a",
+      "00000000",
+      "3c028019",
+      "8c422d90",
+      "00000000",
+      "90430025",
+      "00000000",
+      "34630008",
+      "a0430025",
+      "3c038019",
+      "8c632d90",
+      "00000000",
+      "9062001c",
+      "00000000",
+      "30420040",
+      "10400005",
+      "00000000",
+      "94620010",
+      "00000000",
+      "34420040",
+      "a4620010",
+      "8fbf00c0",
+      "8fb300bc",
+      "8fb200b8",
+      "8fb100b4",
+      "8fb000b0",
+      "27bd00c8",
+      "03e00008",
+      "00000000"
+    ],
+    "allMatched": true,
+    "directCalls": [
+      {
+        "pc": "0x80188044",
+        "target": "0x8018eea0"
+      },
+      {
+        "pc": "0x801880e8",
+        "target": "0x8005e0cc"
+      },
+      {
+        "pc": "0x801881fc",
+        "target": "0x80184b24"
+      },
+      {
+        "pc": "0x8018820c",
+        "target": "0x8018430c"
+      }
+    ],
+    "listedDirectCallers": [
+      {
+        "callPc": "0x80186ab8",
+        "returnAddress": "0x80186ac0",
+        "matched": true
+      },
+      {
+        "callPc": "0x80186bc4",
+        "returnAddress": "0x80186bcc",
+        "matched": true
+      },
+      {
+        "callPc": "0x80186cd0",
+        "returnAddress": "0x80186cd8",
+        "matched": true
+      },
+      {
+        "callPc": "0x80187edc",
+        "returnAddress": "0x80187ee4",
+        "matched": true
+      },
+      {
+        "callPc": "0x80188ea0",
+        "returnAddress": "0x80188ea8",
+        "matched": true
+      },
+      {
+        "callPc": "0x80188ee0",
+        "returnAddress": "0x80188ee8",
+        "matched": true
+      },
+      {
+        "callPc": "0x80189664",
+        "returnAddress": "0x8018966c",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018998c",
+        "returnAddress": "0x80189994",
+        "matched": true
+      },
+      {
+        "callPc": "0x80189e7c",
+        "returnAddress": "0x80189e84",
+        "matched": true
+      },
+      {
+        "callPc": "0x80189ff4",
+        "returnAddress": "0x80189ffc",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018a070",
+        "returnAddress": "0x8018a078",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018a0fc",
+        "returnAddress": "0x8018a104",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018a164",
+        "returnAddress": "0x8018a16c",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018a4d0",
+        "returnAddress": "0x8018a4d8",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018a53c",
+        "returnAddress": "0x8018a544",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018a7f4",
+        "returnAddress": "0x8018a7fc",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018a9ac",
+        "returnAddress": "0x8018a9b4",
+        "matched": true
+      }
+    ],
+    "formula38Dispatch": {
+      "tableAddress": "0x8018f614",
+      "oneBasedIndex": 56,
+      "entryAddress": "0x8018f6f0",
+      "entryValue": "0x80187f24",
+      "callPc": "0x8018b974",
+      "returnAddress": "0x8018b97c",
+      "instruction": "0040f809"
+    },
+    "sourceFunctions": [
+      {
+        "path": "src/battle/combat/formula_modifiers.c",
+        "symbol": "formula_apply_status_to_action",
+        "startLine": 674,
+        "endLine": 759,
+        "normalizedLfSha256": "f0d7b7151fe1d4a05cc9258db92475d68378d3c584ae19a57249aa68c2bebaa9"
+      },
+      {
+        "path": "src/battle/combat/formula_core.c",
+        "symbol": "status_modify_inflictions",
+        "startLine": 399,
+        "endLine": 469,
+        "normalizedLfSha256": "a19c63b4339bb0cd66da3a8b64d428b8fa1bf6a775490f5459a57352a611583e"
+      },
+      {
+        "path": "src/battle/combat/formula_core.c",
+        "symbol": "formula_force_attack_miss",
+        "startLine": 56,
+        "endLine": 61,
+        "normalizedLfSha256": "c787313b90664c07e6dfaf637f597f90ccd31d51d090e31654d906bf3e4c7528"
+      },
+      {
+        "path": "src/battle/combat/outcomes.c",
+        "symbol": "formula_get_random",
+        "startLine": 394,
+        "endLine": 399,
+        "normalizedLfSha256": "cdf6c4c0c319dc057ac12bd5c35829c7c3cd794b5acb4595ece35a9814e0512f"
+      }
+    ],
+    "findings": {
+      "modeOrder": "If Separate set, signed16 accuracy/4 is stored before mode conversion. Any nonzero mode and either Random/Separate locally replace type with0x80; work type byte is not rewritten.",
+      "typePrecedence": [
+        "AllOrNothing0x80",
+        "RandomOne0x40",
+        "Separate0x20",
+        "Cancel0x10"
+      ],
+      "allOrNothing": "OR five ability status bytes into existing TCA infliction bytes.",
+      "randomOne": "Enumerate40 MSB-first status IDs, call formula_get_random and select floor(raw*count/32768). No empty-list guard before the stack-list read.",
+      "separate": "For each configured status in ascending ID order call Pass/Fail(100,24); on failure remove that bit from ability work in place, then OR remaining five bytes into TCA infliction. Existing TCA inflictions survive this merge.",
+      "cancel": "OR five ability bytes into TCA removal.",
+      "confirmation": "Check accumulated TCA infliction/removal. If nonzero call status_modify_inflictions(0); if empty or filter returns0 call formula_force_attack_miss. Otherwise OR type0x08 and, if Invite remains, effect0x0040.",
+      "currentDomain": "Prepared Fire1-4 status record0 has all six bytes zero, and admitted TCA status changes start empty. No status RNG/filter call; force miss is undone by preserving wrapper. Proc draw/marker and HP work survive."
+    },
+    "accuracyCheck": {
+      "inputs": 65536,
+      "division": "Signed16 load, truncation toward zero, low16 store",
+      "sourceFieldType": "s16",
+      "sourceDivisionMatches": true,
+      "hypotheticalUnsignedDivisionDifferences": 32768,
+      "example": {
+        "inputBits": 32768,
+        "machineAndDecompOutputBits": 57344,
+        "hypotheticalUnsignedOutputBits": 8192
+      },
+      "currentRuntimeAffected": false
+    },
+    "separateThresholdDescriptions": [
+      {
+        "raw": 0,
+        "scaled": 0,
+        "keep": true
+      },
+      {
+        "raw": 7864,
+        "scaled": 23,
+        "keep": true
+      },
+      {
+        "raw": 7865,
+        "scaled": 24,
+        "keep": false
+      },
+      {
+        "raw": 32767,
+        "scaled": 99,
+        "keep": false
+      }
+    ],
+    "documentationCorrections": [
+      "Separate uses threshold24, while displayed accuracy is divided by4; the notes25% is not the literal execution roll.",
+      "Invitation sets effect0x0040, not the summary0x10.",
+      "The negative accuracy adjustment adds3 to the signed loaded value before shift; it does not force a minimum positive accuracy.",
+      "The status-work upper address is0x8019390b, not0x9019390b.",
+      "The local type register changes for nonexecution; the work type byte is not stored by this conversion."
+    ],
+    "boundaries": [
+      "Instruction equality plus source study, not original/C execution or a managed general status implementation.",
+      "The decomp field is s16 and matches signed LH/division. The outer wrapper saves/restores the bit pattern with unsigned LHU; that does not make inner arithmetic unsigned. Current empty-record path never enters Separate.",
+      "RandomOne with no configured statuses reads an uninitialized stack entry after its helper call; no deterministic empty-list behavior is claimed or activated.",
+      "Validate Status Changes is the next useful supplied listing. Its immunity/innate/mount/status-table dependencies remain a separate audit.",
+      "Pass/Fail and Force Attack Miss are already source-traced. Formula_get_random has an existing documented midpoint shortcut; its supplied listing may be checked separately without reopening root BIOS RNG.",
+      "Full original statuses, formula0x38, general AI status value and other listed formula families remain unimplemented by this milestone. ZOD-436 remains open."
+    ],
+    "validation": {
+      "sourceAudits": {
+        "proc": {
+          "rollDescriptions": 6,
+          "decisionDescriptions": 26,
+          "originalExecuted": false,
+          "cExecuted": false,
+          "managedExecuted": false,
+          "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+          "referenceClean": true,
+          "sourceFiles": 9,
+          "sourceFunctions": 10,
+          "emptyStatusRecordVerified": true,
+          "fireTiersVerified": 4
+        },
+        "finalization": {
+          "rawDescriptions": 20,
+          "composedDescriptions": 20,
+          "originalExecuted": false,
+          "cExecuted": false,
+          "managedExecuted": false,
+          "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+          "referenceClean": true,
+          "sourceFiles": 8,
+          "sourceFunctions": 15,
+          "emptyStatusRecordVerified": true,
+          "fireTiersVerified": 4
+        }
+      },
+      "ownerBlobsVerified": 10,
+      "ownerControllerBlob": "4856db5509cd27ee13f02e7918d72ce42a47852f",
+      "ownerApprovedCiEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "committed": true,
+        "ciEnabledDefault": false
+      },
+      "focusedManagedTestsPassed": 29,
+      "focusedPythonTestsPassed": 16,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  },
+  "suppliedStatusFilterCheck": {
+    "managedBaseRevision": "c5c4c17c153f706e7a743ffd25d43cda94de763c",
+    "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "suppliedTextSha256": "1457a0cc2ca2134c7390747be6f871f451eba31e435adf9c91eb86bb887566ac",
+    "start": "0x80184b24",
+    "endInclusive": "0x80184e3c",
+    "instructionCount": 199,
+    "instructionWords": [
+      "00803821",
+      "3c028019",
+      "8c422d98",
+      "00005021",
+      "90430005",
+      "90420182",
+      "00000000",
+      "30420080",
+      "1040000f",
+      "30680004",
+      "00003021",
+      "3c038019",
+      "8c632d90",
+      "3c018019",
+      "00260821",
+      "9024f60c",
+      "00661821",
+      "9062001b",
+      "24c60001",
+      "00441024",
+      "a062001b",
+      "28c20005",
+      "1440fff4",
+      "00000000",
+      "3c048019",
+      "8c842d90",
+      "00000000",
+      "9083001d",
+      "00000000",
+      "30620002",
+      "10400013",
+      "00003021",
+      "3c028019",
+      "8c422d98",
+      "00000000",
+      "9042005a",
+      "00000000",
+      "30420002",
+      "1040000b",
+      "00000000",
+      "14e00009",
+      "306200fd",
+      "a082001d",
+      "3c038019",
+      "8c632d90",
+      "00000000",
+      "90620022",
+      "00000000",
+      "34420002",
+      "a0620022",
+      "14e00023",
+      "28c20003",
+      "1040000a",
+      "00000000",
+      "3c058019",
+      "8ca52d90",
+      "3c028019",
+      "8c422d98",
+      "00000000",
+      "00461021",
+      "90430058",
+      "0806130f",
+      "00a62821",
+      "3c058019",
+      "8ca52d90",
+      "3c028019",
+      "8c422d98",
+      "00a62821",
+      "00461021",
+      "9043004e",
+      "90440053",
+      "90a2001b",
+      "00641827",
+      "00431024",
+      "1100000b",
+      "a0a2001b",
+      "3c028019",
+      "8c422d90",
+      "3c018006",
+      "00260821",
+      "902362ee",
+      "00461021",
+      "9044001b",
+      "00031827",
+      "00832024",
+      "a044001b",
+      "3c058019",
+      "8ca52d90",
+      "3c048019",
+      "8c842d98",
+      "00a62821",
+      "00862021",
+      "24c60001",
+      "9083004e",
+      "90a20020",
+      "908401bb",
+      "00031827",
+      "00431024",
+      "00441024",
+      "a0a20020",
+      "28c20005",
+      "1440ffcc",
+      "00000000",
+      "14e00051",
+      "00003021",
+      "340b0080",
+      "3c098006",
+      "25295def",
+      "04c10002",
+      "00c01021",
+      "24c20007",
+      "000238c3",
+      "3c028019",
+      "8c422d90",
+      "30c30007",
+      "00471021",
+      "9042001b",
+      "006b1807",
+      "00431024",
+      "10400019",
+      "00000000",
+      "00002821",
+      "00034027",
+      "01202021",
+      "3c028019",
+      "8c422d98",
+      "90830000",
+      "00451021",
+      "90420058",
+      "00000000",
+      "00431024",
+      "10400009",
+      "24840001",
+      "3c038019",
+      "8c632d90",
+      "00000000",
+      "00671821",
+      "9062001b",
+      "00000000",
+      "00481024",
+      "a062001b",
+      "24a50001",
+      "28a20005",
+      "1440ffec",
+      "00000000",
+      "24c60001",
+      "28c20028",
+      "1440ffd8",
+      "25290010",
+      "00003021",
+      "34090080",
+      "3c088006",
+      "25085dea",
+      "04c10002",
+      "00c01021",
+      "24c20007",
+      "000238c3",
+      "3c028019",
+      "8c422d90",
+      "30c30007",
+      "00471021",
+      "9042001b",
+      "00691807",
+      "00431024",
+      "1040000f",
+      "00000000",
+      "00002821",
+      "01003821",
+      "3c048019",
+      "8c842d90",
+      "90e30000",
+      "00852021",
+      "24a50001",
+      "9082001b",
+      "00031827",
+      "00431024",
+      "a082001b",
+      "28a20005",
+      "1440fff5",
+      "24e70001",
+      "24c60001",
+      "28c20028",
+      "1440ffe2",
+      "25080010",
+      "00003021",
+      "3c048019",
+      "8c842d90",
+      "00000000",
+      "00861821",
+      "24c60001",
+      "9062001b",
+      "90630020",
+      "01421021",
+      "00435021",
+      "28c20005",
+      "1440fff7",
+      "00000000",
+      "03e00008",
+      "01401021"
+    ],
+    "allMatched": true,
+    "directCalls": 0,
+    "listedCallers": [
+      {
+        "callPc": "0x80180070",
+        "returnAddress": "0x80180078",
+        "matched": true
+      },
+      {
+        "callPc": "0x80187054",
+        "returnAddress": "0x8018705c",
+        "matched": true
+      },
+      {
+        "callPc": "0x80187e64",
+        "returnAddress": "0x80187e6c",
+        "matched": true
+      },
+      {
+        "callPc": "0x801881fc",
+        "returnAddress": "0x80188204",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018b070",
+        "returnAddress": "0x8018b078",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018c4c8",
+        "returnAddress": "0x8018c4d0",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018d9d4",
+        "returnAddress": "0x8018d9dc",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018db70",
+        "returnAddress": "0x8018db78",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018dca4",
+        "returnAddress": "0x8018dcac",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018dccc",
+        "returnAddress": "0x8018dcd4",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018e104",
+        "returnAddress": "0x8018e10c",
+        "matched": true
+      },
+      {
+        "callPc": "0x8018e434",
+        "returnAddress": "0x8018e43c",
+        "matched": true
+      }
+    ],
+    "sourceFunctions": [
+      {
+        "path": "src/battle/combat/formula_core.c",
+        "symbol": "status_modify_inflictions",
+        "startLine": 399,
+        "endLine": 469,
+        "normalizedLfSha256": "a19c63b4339bb0cd66da3a8b64d428b8fa1bf6a775490f5459a57352a611583e"
+      },
+      {
+        "path": "src/main/status_check_data.c",
+        "symbol": "status_check_data_init",
+        "startLine": 9,
+        "endLine": 53,
+        "normalizedLfSha256": "74d4525fb05a45d294dee30dca144b02c76def68425a6cd30b475dc27963b2e6"
+      }
+    ],
+    "alternativeAnnotations": {
+      "title": "Modify Status Inflictions",
+      "url": "https://ffhacktics.com/wiki/Modify_Status_Inflictions",
+      "classification": "The supplied heading labels this as alternative annotations for the same address range, not another call. Linked page could not be retrieved; no comparison of its contents is claimed."
+    },
+    "tables": {
+      "rider": {
+        "address": "0x8018f60c",
+        "bytes": [
+          239,
+          0,
+          49,
+          121,
+          226
+        ]
+      },
+      "statusEffectRecords": {
+        "address": "0x80065de4",
+        "records": 40,
+        "stride": 16,
+        "cancelsOffset": 6,
+        "cantStackOffset": 11,
+        "byteLength": 640,
+        "sha256": "8fb32c7548c877c6032beb9673597d02ef1bfb30c9e76524eb08a7028bd6d40a"
+      },
+      "formationBlacklist": {
+        "address": "0x800662ee",
+        "row": 6,
+        "tableBase": "0x800662d0",
+        "bytes": [
+          112,
+          197,
+          6,
+          0,
+          33
+        ],
+        "construction": "Derived offline from prepared status-effect flags_2 bit0x02 using pinned status_check_data_init; not mistaken for an initialized executable row."
+      }
+    },
+    "orderedStages": [
+      "Always apply rider whitelist to pending inflictions when target mount bit0x80 is set.",
+      "For mode0 only, pending Frog on current Frog becomes pending removal.",
+      "For mode0 only, mask inflictions by immunity and current bytes0-2 or innate bytes3-4, then by formation blacklist for immortal targets.",
+      "Always filter removals by NOT innate AND inflicted_status at unit0x1bb, not current statuses at0x58.",
+      "For mode0 only, remove inflictions blocked by target current statuses and cant_stack records.",
+      "For mode0 only, iterate status IDs0..39 in order and remove canceled pending inflictions in place.",
+      "Return the unsigned-byte sum of the ten remaining action status bytes, copied in JR delay slot."
+    ],
+    "literalDescriptionEncoding": "Each status-set string encodes five bytes as ten hexadecimal digits in source byte order; mode/flags and total remain scalar.",
+    "literalDescriptions": [
+      {
+        "name": "Frog toggles to a removable inflicted status",
+        "input": {
+          "infliction": "0000020000",
+          "removal": "0000000000",
+          "current": "0000020000",
+          "innate": "0000000000",
+          "immunity": "0000000000",
+          "inflicted": "0000020000",
+          "mode": 0,
+          "riding": false,
+          "immortal": false
+        },
+        "expected": {
+          "infliction": "0000000000",
+          "removal": "0000020000",
+          "total": 2
+        }
+      },
+      {
+        "name": "Innate Frog cannot be removed after toggle",
+        "input": {
+          "infliction": "0000020000",
+          "removal": "0000000000",
+          "current": "0000020000",
+          "innate": "0000020000",
+          "immunity": "0000000000",
+          "inflicted": "0000020000",
+          "mode": 0,
+          "riding": false,
+          "immortal": false
+        },
+        "expected": {
+          "infliction": "0000000000",
+          "removal": "0000000000",
+          "total": 0
+        }
+      },
+      {
+        "name": "Removal uses inflicted status even when current is clear",
+        "input": {
+          "infliction": "0000000000",
+          "removal": "0000020000",
+          "current": "0000000000",
+          "innate": "0000000000",
+          "immunity": "0000000000",
+          "inflicted": "0000020000",
+          "mode": 0,
+          "riding": false,
+          "immortal": false
+        },
+        "expected": {
+          "infliction": "0000000000",
+          "removal": "0000020000",
+          "total": 2
+        }
+      },
+      {
+        "name": "Current status alone does not admit removal",
+        "input": {
+          "infliction": "0000000000",
+          "removal": "0000020000",
+          "current": "0000020000",
+          "innate": "0000000000",
+          "immunity": "0000000000",
+          "inflicted": "0000000000",
+          "mode": 0,
+          "riding": false,
+          "immortal": false
+        },
+        "expected": {
+          "infliction": "0000000000",
+          "removal": "0000000000",
+          "total": 0
+        }
+      },
+      {
+        "name": "Removal of innate status is always filtered",
+        "input": {
+          "infliction": "0000000000",
+          "removal": "0000004000",
+          "current": "0000004000",
+          "innate": "0000004000",
+          "immunity": "0000000000",
+          "inflicted": "0000004000",
+          "mode": 1,
+          "riding": false,
+          "immortal": false
+        },
+        "expected": {
+          "infliction": "0000000000",
+          "removal": "0000000000",
+          "total": 0
+        }
+      },
+      {
+        "name": "Timed current status may be refreshed",
+        "input": {
+          "infliction": "0000004000",
+          "removal": "0000000000",
+          "current": "0000004000",
+          "innate": "0000000000",
+          "immunity": "0000000000",
+          "inflicted": "0000000000",
+          "mode": 0,
+          "riding": false,
+          "immortal": false
+        },
+        "expected": {
+          "infliction": "0000004000",
+          "removal": "0000000000",
+          "total": 64
+        }
+      },
+      {
+        "name": "Nonzero mode skips frog immunity and immortal filters",
+        "input": {
+          "infliction": "0000020000",
+          "removal": "0000000000",
+          "current": "0000020000",
+          "innate": "0000000000",
+          "immunity": "0000020000",
+          "inflicted": "0000000000",
+          "mode": 2,
+          "riding": false,
+          "immortal": true
+        },
+        "expected": {
+          "infliction": "0000020000",
+          "removal": "0000000000",
+          "total": 2
+        }
+      },
+      {
+        "name": "Rider filter still applies with nonzero mode",
+        "input": {
+          "infliction": "0000022000",
+          "removal": "0000000000",
+          "current": "0000020000",
+          "innate": "0000000000",
+          "immunity": "0000000000",
+          "inflicted": "0000020000",
+          "mode": 1,
+          "riding": true,
+          "immortal": false
+        },
+        "expected": {
+          "infliction": "0000002000",
+          "removal": "0000000000",
+          "total": 32
+        }
+      },
+      {
+        "name": "Formation blacklist applies to immortal full-mode target",
+        "input": {
+          "infliction": "0000020000",
+          "removal": "0000000000",
+          "current": "0000000000",
+          "innate": "0000000000",
+          "immunity": "0000000000",
+          "inflicted": "0000000000",
+          "mode": 0,
+          "riding": false,
+          "immortal": true
+        },
+        "expected": {
+          "infliction": "0000000000",
+          "removal": "0000000000",
+          "total": 0
+        }
+      },
+      {
+        "name": "Earlier pending Haste cancels later pending Slow",
+        "input": {
+          "infliction": "0000000c00",
+          "removal": "0000000000",
+          "current": "0000000000",
+          "innate": "0000000000",
+          "immunity": "0000000000",
+          "inflicted": "0000000000",
+          "mode": 0,
+          "riding": false,
+          "immortal": false
+        },
+        "expected": {
+          "infliction": "0000000800",
+          "removal": "0000000000",
+          "total": 8
+        }
+      },
+      {
+        "name": "Immunity filters full-mode pending status",
+        "input": {
+          "infliction": "0000008000",
+          "removal": "0000000000",
+          "current": "0000000000",
+          "innate": "0000000000",
+          "immunity": "0000008000",
+          "inflicted": "0000000000",
+          "mode": 0,
+          "riding": false,
+          "immortal": false
+        },
+        "expected": {
+          "infliction": "0000000000",
+          "removal": "0000000000",
+          "total": 0
+        }
+      }
+    ],
+    "boundaries": [
+      "The routine has no calls/RNG. It filters existing action work; it does not itself force a miss, add status attack type, settle live statuses or publish commands.",
+      "Nonzero input is not pure removal: rider filtering and the final sum still include pending inflictions.",
+      "Mode0 handles last-two-byte timed status refresh differently from first-three-byte current statuses. Preserve this byte-group behavior in compatibility adapters.",
+      "The cancellation pass mutates pending inflictions in status order. It does not queue canceled live statuses as action removals here.",
+      "Formation blacklist is generated at initialization; detailed original table construction/runtime mutation is not ported by this check.",
+      "Current admitted fresh empty status record skips this validator upstream. General nonempty statuses, rider behavior and other caller families remain outside managed admission.",
+      "No further listing is required for the current empty-status domain; resume the broader ZOD-436 actual/preview/AI review."
+    ],
+    "validation": {
+      "sourceAudits": {
+        "proc": {
+          "rollDescriptions": 6,
+          "decisionDescriptions": 26,
+          "originalExecuted": false,
+          "cExecuted": false,
+          "managedExecuted": false,
+          "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+          "referenceClean": true,
+          "sourceFiles": 9,
+          "sourceFunctions": 10,
+          "emptyStatusRecordVerified": true,
+          "fireTiersVerified": 4
+        },
+        "finalization": {
+          "rawDescriptions": 20,
+          "composedDescriptions": 20,
+          "originalExecuted": false,
+          "cExecuted": false,
+          "managedExecuted": false,
+          "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+          "referenceClean": true,
+          "sourceFiles": 8,
+          "sourceFunctions": 15,
+          "emptyStatusRecordVerified": true,
+          "fireTiersVerified": 4
+        }
+      },
+      "literalDescriptions": 11,
+      "ownerBlobsVerified": 10,
+      "ownerControllerBlob": "4856db5509cd27ee13f02e7918d72ce42a47852f",
+      "ownerApprovedCiEdit": {
+        "path": ".circleci/config.yml",
+        "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+        "committed": true,
+        "ciEnabledDefault": false
+      },
+      "focusedManagedTestsPassed": 29,
+      "focusedPythonTestsPassed": 16,
+      "managedTestsExecuted": true,
+      "runtimeChanged": false,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "fullTicketCompleted": false
+    }
+  }
+}

@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-419",
+  "date": "2026-11-06",
+  "managedBaseRevision": "52f8f22f6ce1d1e28e83395bb77c021ebc693e26",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "kind": "source-study-and-semantic-content-design",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 40418,
+      "sha256": "04542e66135d779fd739adbce9fa6ee714feb6dc8607dfa4584c87222a38343c"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 46088,
+      "sha256": "a9e58962104849ae4e947e3833236aaf2c1334394a1af12b19930428e6885e03"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 85515,
+      "sha256": "820411f8293d559677ff676f4e3d19a16ae52b667e7aa1393ab5495741f1e149"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 23857,
+      "sha256": "57dd4fa8b07ef93c4a8e21c73657a0fdbe6c601a6db0b0351ae15b3cd15e4aea"
+    },
+    {
+      "path": "src/main/unit_init.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54895,
+      "sha256": "b00210ca20e145084bc70615dc57b13cf89f625b764567d6dc8e42fb1d8d9bca"
+    },
+    {
+      "path": "src/event/equip/unit_loadout.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11864,
+      "sha256": "31830c4caeefab38d7df308acc32d867e0ff25b2ae8c30ba684fa6a88fb50475"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 111880,
+      "sha256": "22555f06b061bc6f017f721998a5e44dfb3d4fa4c7284a2ee3367dfa27ce80ad"
+    },
+    {
+      "path": "include/fft/ability.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 34632,
+      "sha256": "530676861205ea3cf31cada08ffc927142db98af0ad2c986722ad83b069b9a2f"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/item.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 17162,
+      "sha256": "d416f46d0784ec89ad86459fe56ac1fe3303d8a744601310ece0dbd6f29b8450"
+    },
+    {
+      "path": "include/fft/action.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 14957,
+      "sha256": "6e97b3935c0d9cdcb8f6ba9ee2d40985b645bc0b03281a0d50d3d20aae35591c"
+    },
+    {
+      "path": "include/fft/menu.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 12422,
+      "sha256": "246096e9aee19d58aa5bb3c4f84fb75648fe44d6a815a802768d3a97c7f9d805"
+    },
+    {
+      "path": "include/fft/unit_entd.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4269,
+      "sha256": "0e71002649cc7176b677ffbb4849081c82c193f98b19f0174be36c7fd35bb53f"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_select_targeted_equipment",
+      "startLine": 523,
+      "endLine": 588,
+      "normalizedLfSha256": "c5a014f81ab8ad04fb6b98cd72c855d597262b2fe2b9872f2712a48674928df1"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "symbol": "formula_apply_maintenance",
+      "startLine": 402,
+      "endLine": 408,
+      "normalizedLfSha256": "bd38945d82ab59e866d7797934128b096b4c5e2ada1c46f79d9641097f79ec74"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_battle_skill_equipment_break",
+      "startLine": 552,
+      "endLine": 575,
+      "normalizedLfSha256": "d34c8913e9a7fb0ff74100bd2667ad16ddc65ecab45cb854fc142be9ec380563"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_steal_equipment",
+      "startLine": 580,
+      "endLine": 601,
+      "normalizedLfSha256": "75f7403d7590636942b8a7fec23736e19d38607a76a9004b474fd301a2f13334"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_mighty_sword",
+      "startLine": 714,
+      "endLine": 740,
+      "normalizedLfSha256": "95654bfefde10f40af82b93836163cfb76fdfae3503ae75130723afd0995e193"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_calculate_target_result",
+      "startLine": 473,
+      "endLine": 673,
+      "normalizedLfSha256": "6855ceea86f5e95b4b1edc5fff1d4f47e6623e4bae0309b2a84ed2d232de91c0"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_switch_ability_to_default_attack",
+      "startLine": 224,
+      "endLine": 244,
+      "normalizedLfSha256": "60bd64edbbea53fd25b9f6d9836ada0607cbbdd14ce38507d92fb879cda291ef"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "action_apply_target_result",
+      "startLine": 837,
+      "endLine": 1039,
+      "normalizedLfSha256": "72f17f94af572c3b4f21f92787e7f80000bdc33fb418921c718432c9d46b00a5"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "symbol": "equipment_removal_apply",
+      "startLine": 1537,
+      "endLine": 1579,
+      "normalizedLfSha256": "692493687b5e28be2d2ee8a4e068d11d796f65599f2945d997c0bf541d0c4ba4"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "item_give",
+      "startLine": 223,
+      "endLine": 241,
+      "normalizedLfSha256": "30987fef46af2b882d6d9be4798fbec9958eb504ec3409434a0a91c284022006"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "reward_add_war_funds",
+      "startLine": 247,
+      "endLine": 267,
+      "normalizedLfSha256": "385f638fbed0954457765f7652bacbf880a5b200b68beef9106e4c6cb86b30da"
+    },
+    {
+      "path": "src/main/unit_init.c",
+      "symbol": "encounter_equipment_set",
+      "startLine": 792,
+      "endLine": 946,
+      "normalizedLfSha256": "fe74c8969efc4cf4c4f31aa0c4eaf4db96efc281b85bb9606f20d0d8ae0297be"
+    },
+    {
+      "path": "src/event/equip/unit_loadout.c",
+      "symbol": "equipment_build_unit_preview",
+      "startLine": 58,
+      "endLine": 162,
+      "normalizedLfSha256": "a00b268854505a804242f12fb33fc8a0332c2954dce9f27286098f12c74a2dcb"
+    },
+    {
+      "path": "src/event/equip/unit_loadout.c",
+      "symbol": "equipment_commit_loadout",
+      "startLine": 211,
+      "endLine": 273,
+      "normalizedLfSha256": "4401d92264c217be62a72c36da4a40fe4e914fc53f57d4b0d216d4d7c6a07223"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_action_simulate_and_score",
+      "startLine": 1442,
+      "endLine": 1728,
+      "normalizedLfSha256": "9415274d3b38d3e7afe51922914355e40ff6bad7bccb9bc861bbbfae6894bcd4"
+    }
+  ],
+  "abilitySelectors": [
+    {
+      "originalId": 110,
+      "symbol": "ABILITY_ID_STEAL_HELMET",
+      "selector": "Head"
+    },
+    {
+      "originalId": 111,
+      "symbol": "ABILITY_ID_STEAL_ARMOR",
+      "selector": "Body"
+    },
+    {
+      "originalId": 112,
+      "symbol": "ABILITY_ID_STEAL_SHIELD",
+      "selector": "ShieldRightFirst"
+    },
+    {
+      "originalId": 113,
+      "symbol": "ABILITY_ID_STEAL_WEAPON",
+      "selector": "WeaponRequiredLevelRightTie"
+    },
+    {
+      "originalId": 114,
+      "symbol": "ABILITY_ID_STEAL_ACCESSORY",
+      "selector": "Accessory"
+    },
+    {
+      "originalId": 138,
+      "symbol": "ABILITY_ID_BATTLE_SKILL_HEAD_BREAK",
+      "selector": "Head"
+    },
+    {
+      "originalId": 139,
+      "symbol": "ABILITY_ID_BATTLE_SKILL_ARMOR_BREAK",
+      "selector": "Body"
+    },
+    {
+      "originalId": 140,
+      "symbol": "ABILITY_ID_BATTLE_SKILL_SHIELD_BREAK",
+      "selector": "ShieldRightFirst"
+    },
+    {
+      "originalId": 141,
+      "symbol": "ABILITY_ID_BATTLE_SKILL_WEAPON_BREAK",
+      "selector": "WeaponRequiredLevelRightTie"
+    },
+    {
+      "originalId": 160,
+      "symbol": "ABILITY_ID_MIGHTY_SWORD_SHELLBUST_STAB",
+      "selector": "Body"
+    },
+    {
+      "originalId": 161,
+      "symbol": "ABILITY_ID_MIGHTY_SWORD_BLASTAR_PUNCH",
+      "selector": "Head"
+    },
+    {
+      "originalId": 162,
+      "symbol": "ABILITY_ID_MIGHTY_SWORD_HELLCRY_PUNCH",
+      "selector": "WeaponRequiredLevelRightTie"
+    },
+    {
+      "originalId": 163,
+      "symbol": "ABILITY_ID_MIGHTY_SWORD_ICEWOLF_BITE",
+      "selector": "Accessory"
+    }
+  ],
+  "sourceWidths": {
+    "abilityId": "u16",
+    "equipmentItemId": "u8",
+    "itemRequiredLevel": "u8",
+    "weaponLevelComparison": "s32, absent=-1",
+    "equipmentResultMask": "u8, head=0x80 shifted right by source slot"
+  },
+  "originalExecuted": false,
+  "cExecuted": false,
+  "managedEquipmentEffectsImplemented": false,
+  "limits": [
+    "Source selection and caller/application boundaries; no complete accuracy/modifier/reaction/AI equipment port.",
+    "Hand-authored synthetic descriptions do not establish original-hardware or emulator equivalence.",
+    "No C, original executable or original media used at runtime; no owner draft enum changes."
+  ]
+}

@@ -1,0 +1,752 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-299",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "notes": [
+    "Independent source arithmetic descriptions; no C/original/managed execution.",
+    "Actual byte sprite heights are explicit for every initial living occupant. No raw asset table included."
+  ],
+  "vectors": [
+    {
+      "id": "ally-center-box-blocks-before-target",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "origin": [
+          1,
+          1
+        ],
+        "units": [
+          {
+            "id": "a",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              5,
+              1
+            ],
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              3,
+              1
+            ],
+            "height": 30
+          }
+        ]
+      },
+      "expected": {
+        "clear": false,
+        "blocker": "c",
+        "sample": 25,
+        "samples": 56,
+        "distance": 458752,
+        "point": [
+          91,
+          -140,
+          42
+        ]
+      }
+    },
+    {
+      "id": "obstacle-height-0-strict-top-boundary",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "origin": [
+          1,
+          1
+        ],
+        "units": [
+          {
+            "id": "a",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              5,
+              1
+            ],
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              3,
+              1
+            ],
+            "height": 0
+          }
+        ]
+      },
+      "expected": {
+        "clear": true,
+        "blocker": null,
+        "sample": null,
+        "samples": 56,
+        "distance": 458752,
+        "point": null
+      }
+    },
+    {
+      "id": "obstacle-height-20-strict-top-boundary",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "origin": [
+          1,
+          1
+        ],
+        "units": [
+          {
+            "id": "a",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              5,
+              1
+            ],
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              3,
+              1
+            ],
+            "height": 20
+          }
+        ]
+      },
+      "expected": {
+        "clear": true,
+        "blocker": null,
+        "sample": null,
+        "samples": 56,
+        "distance": 458752,
+        "point": null
+      }
+    },
+    {
+      "id": "obstacle-height-21-strict-top-boundary",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "origin": [
+          1,
+          1
+        ],
+        "units": [
+          {
+            "id": "a",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              5,
+              1
+            ],
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              3,
+              1
+            ],
+            "height": 21
+          }
+        ]
+      },
+      "expected": {
+        "clear": false,
+        "blocker": "c",
+        "sample": 25,
+        "samples": 56,
+        "distance": 458752,
+        "point": [
+          91,
+          -140,
+          42
+        ]
+      }
+    },
+    {
+      "id": "obstacle-height-255-strict-top-boundary",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "origin": [
+          1,
+          1
+        ],
+        "units": [
+          {
+            "id": "a",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              5,
+              1
+            ],
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              3,
+              1
+            ],
+            "height": 255
+          }
+        ]
+      },
+      "expected": {
+        "clear": false,
+        "blocker": "c",
+        "sample": 25,
+        "samples": 56,
+        "distance": 458752,
+        "point": [
+          91,
+          -140,
+          42
+        ]
+      }
+    },
+    {
+      "id": "third-team-obstacle-is-not-filtered",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "origin": [
+          1,
+          1
+        ],
+        "units": [
+          {
+            "id": "a",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              5,
+              1
+            ],
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 0,
+            "team": 3,
+            "tile": [
+              3,
+              1
+            ],
+            "height": 30
+          }
+        ]
+      },
+      "expected": {
+        "clear": false,
+        "blocker": "c",
+        "sample": 25,
+        "samples": 56,
+        "distance": 458752,
+        "point": [
+          91,
+          -140,
+          42
+        ]
+      }
+    },
+    {
+      "id": "negative-direction-arithmetic-rounding",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "origin": [
+          5,
+          1
+        ],
+        "units": [
+          {
+            "id": "a",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              5,
+              1
+            ],
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              1,
+              1
+            ],
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              3,
+              1
+            ],
+            "height": 30
+          }
+        ]
+      },
+      "expected": {
+        "clear": false,
+        "blocker": "c",
+        "sample": 25,
+        "samples": 56,
+        "distance": 458752,
+        "point": [
+          104,
+          -140,
+          42
+        ]
+      }
+    },
+    {
+      "id": "diagonal-center-obstacle",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "origin": [
+          1,
+          1
+        ],
+        "units": [
+          {
+            "id": "a",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              3
+            ],
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              2,
+              2
+            ],
+            "height": 30
+          }
+        ]
+      },
+      "expected": {
+        "clear": false,
+        "blocker": "c",
+        "sample": 15,
+        "samples": 39,
+        "distance": 324352,
+        "point": [
+          63,
+          -140,
+          63
+        ]
+      }
+    },
+    {
+      "id": "diagonal-off-path-clear",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "origin": [
+          1,
+          1
+        ],
+        "units": [
+          {
+            "id": "a",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              3
+            ],
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              2,
+              1
+            ],
+            "height": 30
+          }
+        ]
+      },
+      "expected": {
+        "clear": true,
+        "blocker": null,
+        "sample": null,
+        "samples": 39,
+        "distance": 324352,
+        "point": null
+      }
+    },
+    {
+      "id": "oblique-near-corner-sampled-box",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "origin": [
+          1,
+          1
+        ],
+        "units": [
+          {
+            "id": "a",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              4,
+              2
+            ],
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              2,
+              1
+            ],
+            "height": 30
+          }
+        ]
+      },
+      "expected": {
+        "clear": false,
+        "blocker": "c",
+        "sample": 12,
+        "samples": 44,
+        "distance": 361920,
+        "point": [
+          64,
+          -140,
+          49
+        ]
+      }
+    },
+    {
+      "id": "unequal-endpoint-heights",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "origin": [
+          1,
+          1
+        ],
+        "units": [
+          {
+            "id": "a",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              5,
+              1
+            ],
+            "height": 60
+          },
+          {
+            "id": "c",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              3,
+              1
+            ],
+            "height": 30
+          }
+        ]
+      },
+      "expected": {
+        "clear": false,
+        "blocker": "c",
+        "sample": 25,
+        "samples": 56,
+        "distance": 465664,
+        "point": [
+          91,
+          -149,
+          42
+        ]
+      }
+    },
+    {
+      "id": "target-zero-height-fallback-twelve",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "origin": [
+          1,
+          1
+        ],
+        "units": [
+          {
+            "id": "a",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "height": 255
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              5,
+              1
+            ],
+            "height": 0
+          },
+          {
+            "id": "c",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              3,
+              1
+            ],
+            "height": 1
+          }
+        ]
+      },
+      "expected": {
+        "clear": true,
+        "blocker": null,
+        "sample": null,
+        "samples": 96,
+        "distance": 791808,
+        "point": null
+      }
+    },
+    {
+      "id": "actor-at-supplied-move-first-origin",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "origin": [
+          2,
+          1
+        ],
+        "units": [
+          {
+            "id": "a",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              5,
+              1
+            ],
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              3,
+              1
+            ],
+            "height": 30
+          }
+        ]
+      },
+      "expected": {
+        "clear": false,
+        "blocker": "c",
+        "sample": 11,
+        "samples": 41,
+        "distance": 343616,
+        "point": [
+          92,
+          -140,
+          42
+        ]
+      }
+    },
+    {
+      "id": "adjacent-endpoints-excluded-as-obstacles",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "origin": [
+          1,
+          1
+        ],
+        "units": [
+          {
+            "id": "a",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "height": 30
+          }
+        ]
+      },
+      "expected": {
+        "clear": true,
+        "blocker": null,
+        "sample": null,
+        "samples": 14,
+        "distance": 114688,
+        "point": null
+      }
+    }
+  ]
+}

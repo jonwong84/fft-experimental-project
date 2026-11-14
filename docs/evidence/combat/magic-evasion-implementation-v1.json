@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-342",
+    "ZOD-344",
+    "ZOD-345",
+    "ZOD-346",
+    "ZOD-347"
+  ],
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "behavior": "docs/behavior/magic-evasion.md",
+  "sourceReceipt": "docs/evidence/combat/magic-evasion-source-v1.json",
+  "milestones": [
+    {
+      "ticket": "ZOD-342",
+      "managedBaseRevision": "c1fcf1ad11d85d753eb31cf7603371f9c24221b6",
+      "validation": "47 descriptions / 8 new Python tests; full Python643; managed code unchanged",
+      "reports": "scratch/magic-evasion-342-347/"
+    },
+    {
+      "ticket": "ZOD-344",
+      "managedBaseRevision": "285c25ca576ae42b6339aa91b555ca9ecb643e08",
+      "validation": "2 focused Framework cases / 8 literal loads; Release compilation passed",
+      "reports": "scratch/magic-evasion-342-347/"
+    },
+    {
+      "ticket": "ZOD-345",
+      "managedBaseRevision": "a25e4a46377eda4d2bc4fa4287c625a48a9821f2",
+      "validation": "4 cumulative focused Framework cases / 8 loads and15 preparations; two new cases, Release compilation passed",
+      "reports": "scratch/magic-evasion-342-347/"
+    },
+    {
+      "ticket": "ZOD-346",
+      "managedBaseRevision": "37ced64d8646407b8212a1dd5dc8b1b59f8225b6",
+      "validation": "7 cumulative focused Framework cases / all47 descriptions; three new cases, Release compilation passed",
+      "reports": "scratch/magic-evasion-342-347/"
+    },
+    {
+      "ticket": "ZOD-347",
+      "managedBaseRevision": "2f3bec378077f01ef26fd5beff32e1220f18b649",
+      "validation": "68 focused magic cases; five new entry cases and24 literal entries, Release compilation passed",
+      "reports": "scratch/magic-evasion-342-347/"
+    }
+  ],
+  "validation": {
+    "dotnetPassed": 4630,
+    "frameworkPassed": 1589,
+    "aiPassed": 1217,
+    "contentPassed": 838,
+    "cliPassed": 328,
+    "pythonPassed": 649,
+    "newFrameworkCases": 12,
+    "newPythonCases": 14,
+    "loadDescriptions": 8,
+    "preparationDescriptions": 15,
+    "rollDescriptions": 24,
+    "entryDescriptions": 24,
+    "sourceFiles": 13,
+    "sourceFunctions": 21,
+    "lockedRestore": true,
+    "releaseWarnings": 0,
+    "releaseErrors": 0,
+    "trxReports": 7,
+    "sourcePreparedAudits": true,
+    "algorithmGuideAudit": true,
+    "coverageAudit": true,
+    "localLinkAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/magic-evasion-342-347/"
+  },
+  "invariants": [
+    "Magic uses no physical Concentrate/Dark/facing/weather or weapon/class contribution; execution flag and AI metadata remain separate",
+    "None255 differs from item0; label preference and contributions remain independent",
+    "Transparent/Abandon/status clear/Defending order and Abandon diagnostic survive contribution clears",
+    "real evade draws occur even in preview/AI and for zero/certain contributions; actual success exits early",
+    "rounded accuracy0 does not imply a pre-tail miss; certain evade does",
+    "fresh includes known-clear preserved result reaction, ordinary nonzero ability and no earlier effects",
+    "whole query restores original RNG with no partial frame/evade/proc diagnostics on failure",
+    "all previous rules/fixtures/expectations, owner drafts, JobStats, content/AI/host/project/dependency code unchanged",
+    "result data only, no target geometry, live publication, spell commands or magic AI activation"
+  ]
+}

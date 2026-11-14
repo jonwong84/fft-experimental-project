@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "sourceFiles": [
+    {
+      "path": "src/battle/ai/abilities.c",
+      "sha256": "6c0d817fe11af76cf030a8969ac532f715383383934fb2e00baf0466bb7f310e"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "sha256": "723b7e2db8c3b74d7d88ee6776c6a65519b314d439bcb57df414f2bfe1c0a4c0"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "sha256": "78e9c58b26be31fc8b04107e8f22703efebc704a9297464cf0833f3452f826d5"
+    },
+    {
+      "path": "include/fft/ai.h",
+      "sha256": "53ac2b36f65d623ffc6cd3f972cfbad3a3389e31ef4f10d0332a31c3a93d34f4"
+    },
+    {
+      "path": "include/fft/skillset.h",
+      "sha256": "2c9255498d8ef30c40d074bfb581d371568861b22850c410cf70c6dea061797c"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "sha256": "654eb10f59d51776f591382d009824468e1d05db8772691a2d551be717af4365"
+    },
+    {
+      "path": "src/battle/combat/formula_modifiers.c",
+      "sha256": "0ce1d80048aa34769466ab470319de991ef58bebfc98ebcc33098ab8a402c328"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "sha256": "70ea706441e8d01f392d7f1c74669d18866ac1ca086e3d75ab12fc331974f9ea"
+    },
+    {
+      "path": "src/battle/turn/clock.c",
+      "sha256": "8d96a9971e6d7165132227c77647f87f4a28f45744adbaaabfe1abb7a9342941"
+    },
+    {
+      "path": "src/main/game_tables.c",
+      "sha256": "21bd5fcd3f31c7b74a2c3a06a08688cc9af0910c2d1bd0b5b576062618024f36"
+    }
+  ],
+  "originalExecuted": false,
+  "cExecuted": false,
+  "scope": "Source study of ordinary default-menu list initialization through a ready-hit scoring boundary; no charge-clock search equivalence.",
+  "preparedInputSha256": "287169026029ea8ff80b9d4e2bdfd8a401e828b7cf7544e0a22c19d41b6cc562",
+  "structuralFrogRecords": [
+    {
+      "address": 2147871728,
+      "stride": 8,
+      "index": 367,
+      "hex": "0000640182000181"
+    },
+    {
+      "address": 2147875824,
+      "stride": 14,
+      "index": 367,
+      "hex": "0100010901188200010000000000"
+    }
+  ]
+}

@@ -1,0 +1,2122 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-314/315",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "notes": [
+    "Independent composed source decisions, geometry, real formulas and choice settlement; no original/C/managed execution.",
+    "Input peers CT>=Speed and actor CT15/tick1 allow public AddCt-to-UNIT_TURN session construction.",
+    "Deferred corpse guard is a labelled managed domain boundary; it is not original terminal behavior."
+  ],
+  "vectors": [
+    {
+      "id": "first-attack-ACT-first",
+      "wholeTurn": false,
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "decisions": [
+          {
+            "afterAct": false,
+            "kind": "Attack",
+            "occurrence": 0,
+            "entryWord": 1,
+            "entryCount": 7,
+            "word": 267834847,
+            "count": 17
+          }
+        ],
+        "commands": [
+          "Attack"
+        ],
+        "failure": null,
+        "active": true,
+        "pending": false,
+        "continuation": false,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 15,
+            "moved": false,
+            "acted": true,
+            "face": "South",
+            "ko": 0
+          },
+          {
+            "id": "b",
+            "tile": [
+              2,
+              1
+            ],
+            "hp": 40,
+            "pa": 5,
+            "ct": 95,
+            "moved": false,
+            "acted": false,
+            "face": "West",
+            "ko": 0
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 5,
+            "moved": false,
+            "acted": false,
+            "face": "South",
+            "ko": 0
+          }
+        ],
+        "word": 3297241969,
+        "count": 23,
+        "ticks": 1,
+        "workspace": [
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "priority": -485
+          }
+        ]
+      }
+    },
+    {
+      "id": "complete-attack-then-fresh-post-ACT",
+      "wholeTurn": true,
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "decisions": [
+          {
+            "afterAct": false,
+            "kind": "Attack",
+            "occurrence": 0,
+            "entryWord": 1,
+            "entryCount": 7,
+            "word": 267834847,
+            "count": 17
+          },
+          {
+            "afterAct": true,
+            "kind": "Move",
+            "occurrence": null,
+            "entryWord": 3297241969,
+            "entryCount": 23,
+            "word": 3008955749,
+            "count": 35
+          }
+        ],
+        "commands": [
+          "Attack",
+          "Move"
+        ],
+        "failure": null,
+        "active": false,
+        "pending": false,
+        "continuation": false,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              0,
+              1
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 15,
+            "moved": true,
+            "acted": true,
+            "face": "North",
+            "ko": 0
+          },
+          {
+            "id": "b",
+            "tile": [
+              2,
+              1
+            ],
+            "hp": 40,
+            "pa": 5,
+            "ct": 95,
+            "moved": false,
+            "acted": false,
+            "face": "West",
+            "ko": 0
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 5,
+            "moved": false,
+            "acted": false,
+            "face": "South",
+            "ko": 0
+          }
+        ],
+        "word": 3008955749,
+        "count": 35,
+        "ticks": 1,
+        "workspace": [
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "priority": -511
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "priority": -511
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "priority": -511
+          }
+        ]
+      }
+    },
+    {
+      "id": "first-Stone-Move-first",
+      "wholeTurn": false,
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "decisions": [
+          {
+            "afterAct": false,
+            "kind": "Move",
+            "occurrence": 2,
+            "entryWord": 1,
+            "entryCount": 7,
+            "word": 3535774167,
+            "count": 25
+          }
+        ],
+        "commands": [
+          "Move"
+        ],
+        "failure": null,
+        "active": true,
+        "pending": false,
+        "continuation": true,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              0,
+              1
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 15,
+            "moved": true,
+            "acted": false,
+            "face": "West",
+            "ko": 0
+          },
+          {
+            "id": "b",
+            "tile": [
+              3,
+              1
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 95,
+            "moved": false,
+            "acted": false,
+            "face": "West",
+            "ko": 0
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 5,
+            "moved": false,
+            "acted": false,
+            "face": "South",
+            "ko": 0
+          }
+        ],
+        "word": 3535774167,
+        "count": 25,
+        "ticks": 1,
+        "workspace": [
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "priority": -485
+          }
+        ]
+      }
+    },
+    {
+      "id": "complete-frozen-Stone-followup-and-facing",
+      "wholeTurn": true,
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "decisions": [
+          {
+            "afterAct": false,
+            "kind": "Move",
+            "occurrence": 2,
+            "entryWord": 1,
+            "entryCount": 7,
+            "word": 3535774167,
+            "count": 25
+          }
+        ],
+        "commands": [
+          "Move",
+          "RetainedStone",
+          "FinishFacing"
+        ],
+        "failure": null,
+        "active": false,
+        "pending": false,
+        "continuation": false,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              0,
+              1
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 15,
+            "moved": true,
+            "acted": true,
+            "face": "North",
+            "ko": 0
+          },
+          {
+            "id": "b",
+            "tile": [
+              3,
+              1
+            ],
+            "hp": 40,
+            "pa": 5,
+            "ct": 95,
+            "moved": false,
+            "acted": false,
+            "face": "West",
+            "ko": 0
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 5,
+            "moved": false,
+            "acted": false,
+            "face": "South",
+            "ko": 0
+          }
+        ],
+        "word": 744964398,
+        "count": 32,
+        "ticks": 1,
+        "workspace": [
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "priority": -485
+          }
+        ]
+      }
+    },
+    {
+      "id": "reordered-list-same-live-Stone-stream",
+      "wholeTurn": true,
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone",
+              "Self"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "decisions": [
+          {
+            "afterAct": false,
+            "kind": "Move",
+            "occurrence": 1,
+            "entryWord": 1,
+            "entryCount": 7,
+            "word": 3535774167,
+            "count": 25
+          }
+        ],
+        "commands": [
+          "Move",
+          "RetainedStone",
+          "FinishFacing"
+        ],
+        "failure": null,
+        "active": false,
+        "pending": false,
+        "continuation": false,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              0,
+              1
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 15,
+            "moved": true,
+            "acted": true,
+            "face": "North",
+            "ko": 0
+          },
+          {
+            "id": "b",
+            "tile": [
+              3,
+              1
+            ],
+            "hp": 40,
+            "pa": 5,
+            "ct": 95,
+            "moved": false,
+            "acted": false,
+            "face": "West",
+            "ko": 0
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 5,
+            "moved": false,
+            "acted": false,
+            "face": "South",
+            "ko": 0
+          }
+        ],
+        "word": 744964398,
+        "count": 32,
+        "ticks": 1,
+        "workspace": [
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "priority": -485
+          }
+        ]
+      }
+    },
+    {
+      "id": "same-tile-empty-ranking-END",
+      "wholeTurn": true,
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 0,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 100,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "decisions": [
+          {
+            "afterAct": false,
+            "kind": "End",
+            "occurrence": null,
+            "entryWord": 1,
+            "entryCount": 7,
+            "word": 2111915288,
+            "count": 22
+          }
+        ],
+        "commands": [
+          "End"
+        ],
+        "failure": null,
+        "active": false,
+        "pending": false,
+        "continuation": false,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 55,
+            "moved": false,
+            "acted": false,
+            "face": "North",
+            "ko": 0
+          },
+          {
+            "id": "b",
+            "tile": [
+              3,
+              1
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 95,
+            "moved": false,
+            "acted": false,
+            "face": "West",
+            "ko": 0
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 5,
+            "moved": false,
+            "acted": false,
+            "face": "South",
+            "ko": 0
+          }
+        ],
+        "word": 2111915288,
+        "count": 22,
+        "ticks": 1,
+        "workspace": [
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "priority": -485
+          }
+        ]
+      }
+    },
+    {
+      "id": "empty-ranking-Move-then-frozen-END",
+      "wholeTurn": true,
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 100,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "decisions": [
+          {
+            "afterAct": false,
+            "kind": "Move",
+            "occurrence": null,
+            "entryWord": 1,
+            "entryCount": 7,
+            "word": 3914758370,
+            "count": 28
+          }
+        ],
+        "commands": [
+          "Move",
+          "RetainedEnd"
+        ],
+        "failure": null,
+        "active": false,
+        "pending": false,
+        "continuation": false,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              0,
+              1
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 35,
+            "moved": true,
+            "acted": false,
+            "face": "North",
+            "ko": 0
+          },
+          {
+            "id": "b",
+            "tile": [
+              3,
+              1
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 95,
+            "moved": false,
+            "acted": false,
+            "face": "West",
+            "ko": 0
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 5,
+            "moved": false,
+            "acted": false,
+            "face": "South",
+            "ko": 0
+          }
+        ],
+        "word": 3914758370,
+        "count": 28,
+        "ticks": 1,
+        "workspace": [
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "priority": -485
+          }
+        ]
+      }
+    },
+    {
+      "id": "initial-actual-ACT-used-fresh-empty-decision",
+      "wholeTurn": true,
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 6,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": true,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "decisions": [
+          {
+            "afterAct": true,
+            "kind": "Move",
+            "occurrence": null,
+            "entryWord": 1,
+            "entryCount": 7,
+            "word": 836760821,
+            "count": 19
+          }
+        ],
+        "commands": [
+          "Move"
+        ],
+        "failure": null,
+        "active": false,
+        "pending": false,
+        "continuation": false,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              0,
+              1
+            ],
+            "hp": 50,
+            "pa": 6,
+            "ct": 15,
+            "moved": true,
+            "acted": true,
+            "face": "North",
+            "ko": 0
+          },
+          {
+            "id": "b",
+            "tile": [
+              2,
+              1
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 95,
+            "moved": false,
+            "acted": false,
+            "face": "West",
+            "ko": 0
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 5,
+            "moved": false,
+            "acted": false,
+            "face": "South",
+            "ko": 0
+          }
+        ],
+        "word": 836760821,
+        "count": 19,
+        "ticks": 1,
+        "workspace": [
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "priority": -485
+          }
+        ]
+      }
+    },
+    {
+      "id": "actual-self-PA-then-fresh-post-ACT",
+      "wholeTurn": true,
+      "input": {
+        "actor": "a",
+        "word": 2,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 0,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              4,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "decisions": [
+          {
+            "afterAct": false,
+            "kind": "Self",
+            "occurrence": 1,
+            "entryWord": 2,
+            "entryCount": 7,
+            "word": 1964509445,
+            "count": 14
+          },
+          {
+            "afterAct": true,
+            "kind": "End",
+            "occurrence": null,
+            "entryWord": 1964509445,
+            "entryCount": 14,
+            "word": 3204851840,
+            "count": 25
+          }
+        ],
+        "commands": [
+          "Self",
+          "End"
+        ],
+        "failure": null,
+        "active": false,
+        "pending": false,
+        "continuation": false,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "hp": 50,
+            "pa": 6,
+            "ct": 35,
+            "moved": false,
+            "acted": true,
+            "face": "North",
+            "ko": 0
+          },
+          {
+            "id": "b",
+            "tile": [
+              4,
+              1
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 95,
+            "moved": false,
+            "acted": false,
+            "face": "West",
+            "ko": 0
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 5,
+            "moved": false,
+            "acted": false,
+            "face": "South",
+            "ko": 0
+          }
+        ],
+        "word": 3204851840,
+        "count": 25,
+        "ticks": 1,
+        "workspace": [
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "priority": -485
+          }
+        ]
+      }
+    },
+    {
+      "id": "accepted-ACT-first-KO-retained-at-deferred-corpse-guard",
+      "wholeTurn": true,
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 0,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 5,
+            "maxHp": 5,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "decisions": [
+          {
+            "afterAct": false,
+            "kind": "Attack",
+            "occurrence": 0,
+            "entryWord": 1,
+            "entryCount": 7,
+            "word": 3210001534,
+            "count": 16
+          }
+        ],
+        "commands": [
+          "Attack"
+        ],
+        "failure": "DeferredCorpseInput",
+        "active": true,
+        "pending": false,
+        "continuation": false,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 15,
+            "moved": false,
+            "acted": true,
+            "face": "South",
+            "ko": 0
+          },
+          {
+            "id": "b",
+            "tile": [
+              2,
+              1
+            ],
+            "hp": 0,
+            "pa": 5,
+            "ct": 95,
+            "moved": false,
+            "acted": false,
+            "face": "West",
+            "ko": 1
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 5,
+            "moved": false,
+            "acted": false,
+            "face": "South",
+            "ko": 0
+          }
+        ],
+        "word": 2111915288,
+        "count": 22,
+        "ticks": 1,
+        "workspace": [
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "priority": -485
+          }
+        ]
+      }
+    },
+    {
+      "id": "late-unknown-priority-before-any-actual-publication",
+      "wholeTurn": true,
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              5,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "decisions": [],
+        "commands": [],
+        "failure": "UnknownPriority",
+        "active": true,
+        "pending": false,
+        "continuation": false,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              1,
+              1
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 15,
+            "moved": false,
+            "acted": false,
+            "face": "South",
+            "ko": 0
+          },
+          {
+            "id": "b",
+            "tile": [
+              5,
+              1
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 95,
+            "moved": false,
+            "acted": false,
+            "face": "West",
+            "ko": 0
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 5,
+            "moved": false,
+            "acted": false,
+            "face": "South",
+            "ko": 0
+          }
+        ],
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "workspace": []
+      }
+    },
+    {
+      "id": "Move-first-KO-finishes-via-real-receipt",
+      "wholeTurn": true,
+      "input": {
+        "actor": "a",
+        "word": 1,
+        "count": 7,
+        "ticks": 1,
+        "kind": "scenarios",
+        "power": 2,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              3,
+              1
+            ],
+            "ct": 95,
+            "hp": 5,
+            "maxHp": 5,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "West",
+            "evade": 0,
+            "height": 30
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "move": 1,
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [],
+            "face": "South",
+            "evade": 0,
+            "height": 30
+          }
+        ],
+        "retained": [],
+        "facing": "North"
+      },
+      "expected": {
+        "decisions": [
+          {
+            "afterAct": false,
+            "kind": "Move",
+            "occurrence": 1,
+            "entryWord": 1,
+            "entryCount": 7,
+            "word": 3535774167,
+            "count": 25
+          }
+        ],
+        "commands": [
+          "Move",
+          "RetainedStone",
+          "FinishFacing"
+        ],
+        "failure": null,
+        "active": false,
+        "pending": false,
+        "continuation": false,
+        "units": [
+          {
+            "id": "a",
+            "tile": [
+              0,
+              1
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 15,
+            "moved": true,
+            "acted": true,
+            "face": "North",
+            "ko": 0
+          },
+          {
+            "id": "b",
+            "tile": [
+              3,
+              1
+            ],
+            "hp": 0,
+            "pa": 5,
+            "ct": 95,
+            "moved": false,
+            "acted": false,
+            "face": "West",
+            "ko": 1
+          },
+          {
+            "id": "c",
+            "tile": [
+              1,
+              2
+            ],
+            "hp": 50,
+            "pa": 5,
+            "ct": 5,
+            "moved": false,
+            "acted": false,
+            "face": "South",
+            "ko": 0
+          }
+        ],
+        "word": 744964398,
+        "count": 32,
+        "ticks": 1,
+        "workspace": [
+          {
+            "tile": [
+              1,
+              0
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "priority": -485
+          },
+          {
+            "tile": [
+              2,
+              1
+            ],
+            "priority": -485
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,423 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-434",
+  "managedBaseRevision": "0b6db614d0ab5cade08fc0dd9bd54c517cb7a29f",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "report": "docs/behavior/ai-rank-selection-review.md",
+  "scope": "Fresh marker-zero physical rank/baseline/insertion and ordered lottery/fallback owners, retained-priority contract and partial pair/roster/magic comparison/command edges; not full origin/command or special-policy review.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 147880,
+      "sha256": "5519c4550e9fea302ee4366848435b8131c7d3aef24f02462c7571d11bd1cd17"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 111880,
+      "sha256": "22555f06b061bc6f017f721998a5e44dfb3d4fa4c7284a2ee3367dfa27ce80ad"
+    },
+    {
+      "path": "include/fft/ai.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 25771,
+      "sha256": "fa7aabf5b4d21e3f42be7978c061fb859a52709a234e5b4205c5de5e2c8566b5"
+    },
+    {
+      "path": "include/fft/ai_decision.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9018,
+      "sha256": "a88a67152b5143b74121946b7dffd4c8b76b568d9947c828d6620014a741b02b"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "rank_compare",
+      "startLine": 1721,
+      "endLine": 1745,
+      "normalizedLfSha256": "4b8030c705f4d09006602503d0e1f437678378998b87b5c02e9cc2085aace112"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_rank_is_higher",
+      "startLine": 1753,
+      "endLine": 1772,
+      "normalizedLfSha256": "082674931431d31ee9304e6b0fcb475186f91ea0123d6ac77249a02dc5f712a5"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_best_rank_insert",
+      "startLine": 1816,
+      "endLine": 1836,
+      "normalizedLfSha256": "068dcaab34a7b6cbf3a99f2e0522319b8c0d863bdb5966f4ed3efeddc5c976bc"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_action_rank_reset",
+      "startLine": 1225,
+      "endLine": 1232,
+      "normalizedLfSha256": "36b0c3d4fee5d8b9adef0a2a7bc1d8e757542f373ec6bc79cb19e0f94fedbcc5"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "rank_baseline_seed",
+      "startLine": 1396,
+      "endLine": 1409,
+      "normalizedLfSha256": "812e239202dd2be38eb7ee736b1bb7a62c75d04e6aec4bfb5d7bb25561e28e36"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ranked_select",
+      "startLine": 1844,
+      "endLine": 1866,
+      "normalizedLfSha256": "249278485ed952f209f5fa3f59978d88ee4763d4973a5ce45b85cd10a748a48d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "fallback_select",
+      "startLine": 3156,
+      "endLine": 3171,
+      "normalizedLfSha256": "fad02f672586be9f22bb13f959623503a9e01f1b59e824e3d98007c8ff641f51"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_action_evaluate",
+      "startLine": 1410,
+      "endLine": 1423,
+      "normalizedLfSha256": "86cc7f91e9ae6614fdc2d6b1abf6acc6d19eeef8fcb7cad66cea35c10c390f80"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "rank_current_decision_clear",
+      "startLine": 1761,
+      "endLine": 1763,
+      "normalizedLfSha256": "ad1789400836dc9defaf5ce5fe3dff107bfdd8c2bf737c9a728e430ee1a4a2f0"
+    }
+  ],
+  "managedInputs": [
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiCandidateRank.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 918,
+      "sha256": "7152af3ef98c0e9515d86b484d2bc50f3818fc2010be9b7f469148165f526f2d"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiRankedInsertion.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1178,
+      "sha256": "37183b644cac3e9f606fbf81b570bf6573c203714fd055f644ad8086be69bf08"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiRankedLottery.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 1808,
+      "sha256": "6e55a9accd9ba91bbb1049ce18c375cd346c977613bfa4b95ba0bb103080f457"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Shared/AiPriorityWorkspace.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2367,
+      "sha256": "c3871622e291c33d5708196be06d08474a62c7d4cadf66ed8eb9d7f734e8cac9"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/AiDecisionMaker.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3137,
+      "sha256": "3311aedf9dd672476273a468198a7d893b9632e4b8c9c752140d2f802e2550b8"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Decision/AiAbilityEvaluator.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 4915,
+      "sha256": "c64dc556f042431e4793d3d70f4304198328b4ed80360f51ecbfaf5fc4290595"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListComposition.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9142,
+      "sha256": "51668eb5342f200c452038bc75cf78f7c6d2e0c7229a525e3a2bccf2251b8bd7"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListSelection.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3110,
+      "sha256": "84f8d0108ac1fd6fd59686770168f706ed9b7eac745cce90a7ecbbd6fdc843b7"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiPostActSelection.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 6335,
+      "sha256": "d1967b14712fd161a779fa2180491f7562a864336184ecc0e7eceb6a4efa52ad"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Sword/SwordAiComposition.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9926,
+      "sha256": "2a122c667d3a07b30d88074980657033e70f5a04a360f30066928615066d4e6b"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Sword/SwordAiSelection.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 7428,
+      "sha256": "ad05a4f795c2cb98860bb498c9872e4c2788bffb7b57503c06129731d1265399"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/AttackThrowStone/AttackThrowStoneAiFallbackExecution.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 5282,
+      "sha256": "8d1bd177226405ac07d3e72d20bad27a05c78c79dde33818b27af63798f054d7"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Sword/SwordAiCandidateScan.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11561,
+      "sha256": "923aebe2368ac45d3fd50e18073ec7b02dbcdb053bdb45449238262549080d47"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Sword/RosterSwordAiAttackEntry.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 5627,
+      "sha256": "2bc520643865eaa7ccb04e258891ae8f7bf0d4e323f8e46a1ee87f50fc465045"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiEntryEvaluation.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 2782,
+      "sha256": "aee863ea81636efdd5f89480aa82140b3671f137948d7c7d4657e69fbfe91b6b"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Accumulate/RosterAccumulateAiEntry.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 6595,
+      "sha256": "44d8b5b6a389463ce804b61ede502ab7472549b791be00bea4964f00e01e612a"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/ThrowStone/RosterThrowStoneAiEntry.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 8855,
+      "sha256": "4f9f47009001d422aa3d036f6c0028ac3563c5cbbf4302e6c82de6141408ef4c"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/Dash/RosterDashAiEntry.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 6443,
+      "sha256": "5579d694356c54118b81e3b23b89f816c3266bc71b685b5b734be8a5207df871"
+    },
+    {
+      "path": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiSearchQuery.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 3597,
+      "sha256": "f6b621fb378c674663e677a139e27d8279a8dddee61a0b44e773d52aef132c06"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiSelectionTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 7214,
+      "sha256": "2fa6002e0e4999039893ba049fdd6c524bede88bdec84c267233b1fed38a79a7"
+    },
+    {
+      "path": "tests/Zodiac.Framework.Ai.Tests/Sword/SwordAiSelectionTests.cs",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 15164,
+      "sha256": "2de75d32e11d0fc3aaab425ed6ef313d06b2fe42d8c293d2b7ae1daa3ade0cb9"
+    }
+  ],
+  "findings": [
+    {
+      "id": "RANK-434-01",
+      "disposition": "verified-within-domain",
+      "finding": "Fresh marker-zero signed priority/hit comparison, rank-only strict baseline gate, per-entry destination proximity ties and first full tie retained; null reset equivalence bounded by admitted physical score range."
+    },
+    {
+      "id": "RANK-434-02",
+      "disposition": "verified-within-domain",
+      "finding": "Eight ranked slots preserve complete action occurrences, stable equal-rank insertion, shift/capacity and fresh per-entry best reset without deduplication."
+    },
+    {
+      "id": "RANK-434-03",
+      "disposition": "verified-within-domain",
+      "finding": "Ordered raw%100<hit trials draw for every visited zero/certain slot, stop at first success, fall back to slot0 after all failures with any nonzero chance or movement after eight zeros."
+    },
+    {
+      "id": "RANK-434-04",
+      "disposition": "verified-within-domain",
+      "finding": "Fresh/retained priority knowledge remains immutable/map-owned with unknown read rejection; source draws survive nonadmission while managed unsupported/counter failure rolls back the whole query."
+    },
+    {
+      "id": "RANK-434-05",
+      "disposition": "deferred",
+      "finding": "Defend and wider policy/command/frame integration remain outside ordinary fallback certificates; magic current-origin best is not a full ranked decision; next checked-command review435 and final readability432 remain separate."
+    }
+  ],
+  "confirmedDefects": [],
+  "historicalEvidenceErrata": [],
+  "runtimeChanged": false,
+  "sourceAuditResults": {
+    "rankAdmission": {
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "referenceClean": true,
+      "files": 4,
+      "functions": 21,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false
+    },
+    "selection": {
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "referenceClean": true,
+      "files": 4,
+      "functions": 21,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false,
+      "additionalFunctions": 6,
+      "selectionHeaders": 4,
+      "selectionFunctions": 4,
+      "totalReferenceFiles": 8,
+      "totalReferenceFunctions": 31
+    },
+    "composition": {
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "referenceClean": true,
+      "files": 4,
+      "functions": 21,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false,
+      "additionalFunctions": 6
+    },
+    "variableLists": {
+      "variableListDescriptions": 16,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false,
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "referenceClean": true,
+      "sourceFiles": 9,
+      "sourceFunctions": 31
+    },
+    "magicAimRanking": {
+      "rankIterationDescriptions": 4,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "sourceFiles": 9,
+      "sourceFunctions": 33
+    },
+    "independentLotteryLiterals": {
+      "seed": 1,
+      "empty": {
+        "slot": null,
+        "draws": 8,
+        "raw": [
+          16838,
+          5758,
+          10113,
+          17515,
+          31051,
+          5627,
+          23010,
+          7419
+        ],
+        "word": 2633739833
+      },
+      "allFailedPositive": {
+        "slot": 0,
+        "draws": 8,
+        "raw": [
+          16838,
+          5758,
+          10113,
+          17515,
+          31051,
+          5627,
+          23010,
+          7419
+        ],
+        "word": 2633739833
+      },
+      "strictBoundary": {
+        "slot": 1,
+        "draws": 2,
+        "raw": [
+          16838,
+          5758
+        ],
+        "word": 2524885223
+      },
+      "certain": {
+        "slot": 0,
+        "draws": 1,
+        "raw": [
+          16838
+        ],
+        "word": 1103527590
+      }
+    },
+    "admittedPhysicalScoreEnvelope": {
+      "units": 16,
+      "maximumAbsoluteHpAndEquipmentSum": 7760,
+      "selfStatCredit": 3,
+      "strictlyAboveResetPriority": true
+    }
+  },
+  "validation": {
+    "freshAiTests": {
+      "total": 1384,
+      "failed": 0,
+      "skipped": 0,
+      "command": "dotnet test tests/Zodiac.Framework.Ai.Tests/Zodiac.Framework.Ai.Tests.csproj -c Release --no-restore"
+    },
+    "freshDotnet": {
+      "total": 5181,
+      "failed": 0,
+      "skipped": 0,
+      "projects": {
+        "Engine": 24,
+        "AssetTool": 206,
+        "Framework": 1827,
+        "Ai": 1384,
+        "Cli": 396,
+        "Content": 897,
+        "Client": 447
+      },
+      "command": "dotnet test Fft.sln -c Release --no-restore",
+      "includesLatestOwnerControllerFormatting": true
+    },
+    "previousPythonRegression": {
+      "receipt": "docs/evidence/ai/target-scenario-review-v1.json",
+      "python": {
+        "total": 794,
+        "result": "OK",
+        "command": "python -m unittest discover -s tools/verification -p 'test_*.py'"
+      },
+      "trackedSourceTestsToolsUnchangedSinceFullRun": true,
+      "rerunForThisDocumentationBatch": false
+    },
+    "productionTestsAndFixturesUnchanged": true,
+    "historicalReceiptsUnchanged": true,
+    "newRegressionCases": 0,
+    "ownerBlobs": 10,
+    "approvedFormattingPreserved": true,
+    "unstagedOwnerEdit": {
+      "path": "src/Zodiac.Framework.Ai/AiTurnController.cs",
+      "incomingGitBlob": "373d13f739439813f9608aefc2d84715d8ed1346",
+      "gitBlob": "4856db5509cd27ee13f02e7918d72ce42a47852f",
+      "ownerChangedFormattingDuringReview": true,
+      "preserved": true,
+      "excludedFromCommit": true
+    },
+    "originalExecuted": false,
+    "cExecuted": false,
+    "nativePresentationRerun": false
+  }
+}

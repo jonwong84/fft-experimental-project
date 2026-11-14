@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-335",
+    "ZOD-336"
+  ],
+  "date": "2026-11-05",
+  "managedBaseRevision": "8982dd467db70a5f5f49e9bb67a5d0793b23210d",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "behavior": "docs/behavior/faith-magic-amounts.md",
+  "sourceReceipt": "docs/evidence/combat/faith-magic-source-v1.json",
+  "validation": {
+    "dotnetPassed": 4573,
+    "frameworkPassed": 1532,
+    "aiPassed": 1217,
+    "contentPassed": 838,
+    "cliPassed": 328,
+    "pythonPassed": 611,
+    "newFrameworkCases": 11,
+    "newPythonCases": 8,
+    "sourceDescriptions": 44,
+    "sourceFiles": 14,
+    "sourceFunctions": 36,
+    "preparedTiersVerified": 8,
+    "trxReports": 7,
+    "lockedRestore": true,
+    "releaseWarnings": 0,
+    "releaseErrors": 0,
+    "coverageAudit": true,
+    "localLinkAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/faith-magic-334-336/"
+  },
+  "invariants": [
+    "pure arithmetic only; no commands, RNG, I/O or state publication",
+    "signed16 stores before and after Faith; one signed division by10000",
+    "Innocent wins; healing bypasses target defenses; neutral floors while Serpentarius returns early",
+    "shared MA/power parameters rather than Fire/Cure-specific classes",
+    "explicit damage weather/element scope; unsupported states not inferred neutral",
+    "existing runtime/state/content/AI/fixtures and owner drafts unchanged"
+  ],
+  "packageSchemaChanged": false,
+  "dependencyChanges": false,
+  "newFriendAccess": false
+}

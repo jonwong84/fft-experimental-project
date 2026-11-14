@@ -1,0 +1,263 @@
+{
+  "format": "fft.synthetic-world-checkpoint-validation",
+  "schemaVersion": 1,
+  "ticket": "ZOD-068",
+  "validatedOn": "2026-10-26",
+  "managedBase": "755dd37936ea6d81dc886771bb6819687d88d0f5",
+  "reference": {
+    "root": "C:/repositories/fft_decomp",
+    "revision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "cleanAtInspection": true,
+    "sourceContext": "docs/architecture/zod-067-campaign-save-state.md",
+    "newOriginalBehaviorTranslated": false
+  },
+  "scope": {
+    "profile": "sample:profile/world-checkpoint",
+    "profileVersion": 1,
+    "contentVersion": 1,
+    "saveSchema": 2,
+    "migratesInventedSchema": 1,
+    "checkpoint": "world-idle",
+    "rngCapability": "unsupported",
+    "maximumBytes": 65536,
+    "slots": 10,
+    "originalGameBytesCommitted": false,
+    "originalCampaignImplemented": false,
+    "originalCardImport": false,
+    "saveLoadUiImplemented": false,
+    "newGraphicsProcesses": 0,
+    "realUserSaveDirectoryWritten": false
+  },
+  "sourceIdentities": [
+    {
+      "localPath": "src/Zodiac.Framework/Campaign/WorldCheckpoint.cs",
+      "bytes": 9012,
+      "sha256": "f38704eda3501b4a9c8fbad8d1253f869643d0b983f8d7a8abcc88a41407e9d1"
+    },
+    {
+      "localPath": "src/Zodiac.Content/Samples/SyntheticWorldCheckpoint.cs",
+      "bytes": 1447,
+      "sha256": "fe0e2747cdc919f95158e9e7e2692bc6b666d137e544e4aad2028a4775c20318"
+    },
+    {
+      "localPath": "src/Zodiac.Content/Saves/WorldCheckpointSave.cs",
+      "bytes": 8140,
+      "sha256": "3782231bdcb161747348612877093fb63b4718319a83d720fc0850623753dd25"
+    },
+    {
+      "localPath": "src/Zodiac.Content/Saves/WorldSaveSlotStore.cs",
+      "bytes": 8953,
+      "sha256": "9a2985c19d22df943070ab0a941675f3e9689119bfed6be5d8f08dfce830f909"
+    },
+    {
+      "localPath": "src/Zodiac.Content/Saves/WorldCheckpointService.cs",
+      "bytes": 2333,
+      "sha256": "a5b9f664760c31712dfe3d14aa0b7d9adcc7c74c2bb8b51e6544e55fe7458169"
+    },
+    {
+      "localPath": "src/Zodiac.Content/Properties/AssemblyInfo.cs",
+      "bytes": 95,
+      "sha256": "7c672281917007ae0ba2a66cb5bac226302822720be64bd7e50f11701a35179d"
+    },
+    {
+      "localPath": "src/Fft.Client/WorldCheckpointCheck.cs",
+      "bytes": 4967,
+      "sha256": "b95e3fefc273c27f8841efdd89219dfd48537e738cc4a271c2cc36d7caf14a1c"
+    },
+    {
+      "localPath": "src/Fft.Client/Program.cs",
+      "bytes": 5017,
+      "sha256": "6ffaa7ccd4cf228948840208afe59dbf0bb8662a6ce23cc6b525bede4b43e522"
+    },
+    {
+      "localPath": "tests/Zodiac.Framework.Tests/WorldCheckpointTests.cs",
+      "bytes": 5307,
+      "sha256": "a7704ee778aa7a71413359c5bb1f0acfff26de9b6ff2cb4f74c1dc0c9e42b6d7"
+    },
+    {
+      "localPath": "tests/Zodiac.Content.Tests/Saves/WorldCheckpointSaveTests.cs",
+      "bytes": 8596,
+      "sha256": "04ccbfb75998c98819b6bfc138a34a43db3605bd0cea0d5f1673d59d4ec785c9"
+    },
+    {
+      "localPath": "tests/Zodiac.Content.Tests/Saves/WorldSaveSlotStoreTests.cs",
+      "bytes": 10438,
+      "sha256": "c3f12ecd0d23c8c5976718cf55a1aa92c941fc6cb51e5d182cd24dff014c6ee7"
+    },
+    {
+      "localPath": "tests/Fft.Client.Tests/WorldCheckpointCheckTests.cs",
+      "bytes": 1597,
+      "sha256": "1365e94edee3f531d3ed5502a795196b9f02ddcaf231b7dbd164582930e2058c"
+    },
+    {
+      "localPath": "tools/verification/verify_world_checkpoint.py",
+      "bytes": 5611,
+      "sha256": "8dad5451c21fc3d41d4f408841e301b2617a00975e2b9e44deaa418d9edddc18"
+    },
+    {
+      "localPath": "tools/verification/test_world_checkpoint.py",
+      "bytes": 1789,
+      "sha256": "c0386a6dae7745709ca4bf03d020426caec5b9ac4f3bed6d09f283ab1e925dbb"
+    }
+  ],
+  "fixtureIdentities": [
+    {
+      "localPath": "docs/fixtures/saves/synthetic-world-idle-v1.json",
+      "bytes": 1232,
+      "sha256": "8d20a569013f8c051a8982913f58a8f7436b9899e01166794f29f31415f5c4c2"
+    },
+    {
+      "localPath": "docs/fixtures/saves/synthetic-world-idle-v2.json",
+      "bytes": 1298,
+      "sha256": "35a8e0fadcddb1811210d3496e1f2379139fbb26945fd5ce6e2cd5187693124c"
+    }
+  ],
+  "managedValidation": {
+    "restore": "locked-mode",
+    "configuration": "Release",
+    "buildWarnings": 0,
+    "buildErrors": 0,
+    "passed": 2267,
+    "newTests": 94,
+    "assemblies": [
+      {
+        "assembly": "tessera.engine.tests.dll",
+        "passed": 24,
+        "failed": 0,
+        "trx": {
+          "localPath": "scratch/world-checkpoint-068-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_01_54_31_net10.0.trx",
+          "bytes": 36854,
+          "sha256": "0941d13337a6fce714edf358b665ab81c0fc459b58f110812ccb62ac1f25c0f6"
+        }
+      },
+      {
+        "assembly": "zodiac.assettool.tests.dll",
+        "passed": 202,
+        "failed": 0,
+        "trx": {
+          "localPath": "scratch/world-checkpoint-068-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_01_54_31_net10.0[1].trx",
+          "bytes": 299067,
+          "sha256": "38d699bfbf06173abcd52ccc20e09722ffe57cd2b1765c16e949e6af04e04f7a"
+        }
+      },
+      {
+        "assembly": "zodiac.framework.tests.dll",
+        "passed": 830,
+        "failed": 0,
+        "trx": {
+          "localPath": "scratch/world-checkpoint-068-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_01_54_31_net10.0[2].trx",
+          "bytes": 1255557,
+          "sha256": "006d25eb51407d43f084dbd3a345a85e094208fac3055f13cbedae2d32440e7c"
+        }
+      },
+      {
+        "assembly": "zodiac.content.tests.dll",
+        "passed": 644,
+        "failed": 0,
+        "trx": {
+          "localPath": "scratch/world-checkpoint-068-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_01_54_31_net10.0[3].trx",
+          "bytes": 938766,
+          "sha256": "10e1621875f2a382364357b3a83b28c79ba6dd16dec3151e2de76059adc3f0d8"
+        }
+      },
+      {
+        "assembly": "fft.client.tests.dll",
+        "passed": 356,
+        "failed": 0,
+        "trx": {
+          "localPath": "scratch/world-checkpoint-068-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_01_54_31_net10.0[4].trx",
+          "bytes": 527964,
+          "sha256": "9fe8d0dd5bb734c99240849b65c74cd0bf622380cc38f887ace9863e5cc1960a"
+        }
+      },
+      {
+        "assembly": "zodiac.assettool.cli.tests.dll",
+        "passed": 211,
+        "failed": 0,
+        "trx": {
+          "localPath": "scratch/world-checkpoint-068-full/Jonathan_DESKTOP-EXCALIB_2026-10-26_01_54_32_net10.0.trx",
+          "bytes": 324268,
+          "sha256": "cc4b7d2811cda1db79d6b462aca6246a49a5cdb77fc64a2136048498865f87ed"
+        }
+      }
+    ]
+  },
+  "pythonValidation": {
+    "passed": 281,
+    "newTests": 3,
+    "command": "python -m unittest discover -s tools/verification"
+  },
+  "logs": [
+    {
+      "localPath": "scratch/world-checkpoint-068-restore.log",
+      "bytes": 82,
+      "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc"
+    },
+    {
+      "localPath": "scratch/world-checkpoint-068-build.log",
+      "bytes": 2506,
+      "sha256": "ef42e80d8ba6422723784c88c0feb3d7551c8f4e3634a38848510dc4d3da75e2"
+    },
+    {
+      "localPath": "scratch/world-checkpoint-068-tests.log",
+      "bytes": 2934,
+      "sha256": "aaf09a14cac4dbd0cc07d30c2335c89b4783d79ca7a907c76d1204986e9284b2"
+    },
+    {
+      "localPath": "scratch/world-checkpoint-068-python.log",
+      "bytes": 1271,
+      "sha256": "a7b3efe649fc6d734291d38aef5c947bdefa9a194989a5f53f6904069e384a2c"
+    },
+    {
+      "localPath": "scratch/world-checkpoint-068-a.log",
+      "bytes": 112,
+      "sha256": "bb3d8ecedfcd67b3d0140af5f7cda03661f45a0ee37a5bc88c388fa8a1fae40d"
+    },
+    {
+      "localPath": "scratch/world-checkpoint-068-b.log",
+      "bytes": 112,
+      "sha256": "bb3d8ecedfcd67b3d0140af5f7cda03661f45a0ee37a5bc88c388fa8a1fae40d"
+    }
+  ],
+  "headlessChecks": {
+    "command": "dotnet src/Fft.Client/bin/Release/net10.0/Fft.Client.dll --world-save-check <fresh-output-directory>",
+    "outputInventories": {
+      "a": {
+        "localPath": "scratch/world-checkpoint-068-a-files.json",
+        "bytes": 2537,
+        "sha256": "c24dc90d3dc589872550670dff844cbe5239eaf76a64ff8fce30862839c90879"
+      },
+      "b": {
+        "localPath": "scratch/world-checkpoint-068-b-files.json",
+        "bytes": 2537,
+        "sha256": "d6bfc67dd843ecec2c8bb063c7965c7475d5f70973d440f2ef092bd3e3f63d18"
+      }
+    },
+    "independentAudit": {
+      "localPath": "scratch/world-checkpoint-068-audit.json",
+      "bytes": 201,
+      "sha256": "d3044df2f0e1ed6a99bc04eeabb1f4d44cb604773ec66b6ae14b70d75917a2ae"
+    },
+    "exactRepeatedFiles": 14,
+    "fixturesMatched": 2,
+    "nextLocation": "sample:location/hill",
+    "nextFunds": 93,
+    "nextElapsedSeconds": 53
+  },
+  "validatedCases": [
+    "Fresh-definition restore matches complete checkpoint and next command state/events; rejection preserves input.",
+    "Independent predecessor/current fixtures; migration verifies old checksum before restoring under the selected profile.",
+    "Required/null/unknown/duplicate fields, versions, checksum, bounded input and cross-field IDs/equipment/ownership/summary validated before publication.",
+    "Whitelisted slots, validated catalog metadata, expected-content revisions, busy locks and two competing writers.",
+    "Serialization and injected create/access/flush/promotion failures preserve live state and previous files; temporary files cleaned.",
+    "Actual Windows delete-sharing failure blocks replacement and preserves the prior save.",
+    "Canceled/failed load preserves live state; explicit validated backup load leaves damaged primary intact; recovered state saves to a new slot."
+  ],
+  "limitations": [
+    "All campaign definitions and travel rules are invented; no original campaign, date advancement, encounter or RNG continuation claim.",
+    "One application owner serializes live-session commands; per-slot locks coordinate cooperating store instances.",
+    "Revision tokens hash file content; identical rewrites have the same token.",
+    "Local Windows flush/promotion and tested failure paths are not a power-loss, adversarial-filesystem or remote-filesystem proof.",
+    "No menu/manual presentation review; ZOD-069 waits for minimal navigation under ZOD-042."
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-272",
+    "ZOD-273",
+    "ZOD-274",
+    "ZOD-275",
+    "ZOD-276"
+  ],
+  "date": "2026-11-04",
+  "kind": "managed-shared-roster-targeting-queries",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "95e25fe97dd9a1025d8b36aa1cd8596da92b79ca",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/roster-targeting-source-v1.json",
+  "design": "docs/architecture/zod-271-roster-targeting.md",
+  "behavior": "docs/behavior/ai-roster-targeting.md",
+  "implementationPaths": [
+    "src/Zodiac.Framework.Ai/Shared/AiTargetRoster.cs",
+    "src/Zodiac.Framework.Ai/Shared/AiRosterNearest.cs",
+    "src/Zodiac.Framework.Ai/Shared/AiRosterActiveTargets.cs",
+    "src/Zodiac.Framework.Ai/Shared/AiRosterProximity.cs",
+    "src/Zodiac.Framework.Ai/Shared/AiOrdinaryPairRoster.cs",
+    "src/Zodiac.Framework.Ai/Shared/AiMovementPrefix.cs",
+    "src/Zodiac.Framework.Ai/Sword/SwordAiPreparation.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Ai.Tests/Shared/AiRosterTargetingTests.cs",
+    "tests/Zodiac.Framework.Ai.Tests/Shared/AiRosterPairIntegrationTests.cs"
+  ],
+  "sourceFixture": "docs/fixtures/behavior/ai-roster-targeting-contract-v1.json",
+  "invariants": [
+    "owned immutable source-order facts, separate stable IDs and source ordering; no fixed managed roster capacity",
+    "current actor versus initial target teams and actor override",
+    "live untargetability differs from cached out-of-play; resolved four-bit rider lookup belongs in compatibility adapter",
+    "only eligible-enemy nearest mode, strict first-slot ties, explicit actor fallback, dead/Reraise exception",
+    "complete active-mask rebuild, Confusion bypasses only Considered, unknown signed modes behave as Any",
+    "proximity uses cached out-of-play and resolved delays/disabled status at pre-refresh cached actor byte",
+    "scenario0 writes only; u8 sum of enemy contributions, no clear outside mask",
+    "source status/turn-delay facts are supplied explicitly, not a new status simulator",
+    "existing admitted pair preparation/proximity use these shared owners on restored live state",
+    "no changed command/continuation/recovery API, admission guard, clock or RNG stream"
+  ],
+  "literalDescriptions": 17,
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4309,
+    "frameworkPassed": 1467,
+    "aiPassed": 1097,
+    "newAiCases": 11,
+    "pythonPassed": 545,
+    "newPythonCases": 3,
+    "trxReports": 7,
+    "sourceFiles": 7,
+    "sourceFunctions": 25,
+    "sourcePreparedAudit": true,
+    "rosterSourceAudit": true,
+    "algorithmGuideAudit": true,
+    "localLinkAudit": true,
+    "coverageAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/roster-targeting-271-276/"
+  },
+  "boundaries": [
+    "read-only resolved roster facts are not authoritative state or executable plans",
+    "actual movement/combat/search retain the existing two-living-opponent domain",
+    "full-roster refresh/team/ability/scoring/target enumeration and other nearest modes remain open",
+    "multi-unit movement and ordinary sword command prerequisites selected for source study ZOD-277",
+    "statuses/maps/policies, terminal routing, frame RNG, host/editor, owner drafts, replacement interfaces and ZOD-106 stay separate/deferred"
+  ],
+  "dependencyChanges": false,
+  "newProductionFriendAccess": false,
+  "originalExecuted": false,
+  "cExecuted": false
+}

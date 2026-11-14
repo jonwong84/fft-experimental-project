@@ -1,0 +1,522 @@
+{
+  "format": "fft.ready-profile-validation",
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "managedBase": "5aac0982fe2e391846d7a7857aca163fb8db15ba",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "policy": "ready-glyph-rgb5-v1",
+  "profile": "sample:event-profile/non-tutorial-speed1-preloaded-ready-v1",
+  "originalComparisonPerformed": false,
+  "originalFidelityEstablished": false,
+  "originalTimingVerified": false,
+  "emulatorLaunched": false,
+  "runtimeInputs": "prepared manifest/artwork/indices/palette/event only; source BIN is offline preparation input",
+  "preparationWorkflow": "Exact edition/hash verified BIN import, named file/range verification, fresh prepared manifest; does not require a previously extracted import manifest.",
+  "inputImage": {
+    "localPath": "scratch/fft-clean-base-game.bin",
+    "bytes": 541315152,
+    "sha256": "29e63bb6d2e7b842fe87f7c0ee03b7076681c34bcc47095cca27ec53236bf4f9"
+  },
+  "sourcePolicy": {
+    "localPath": "docs/evidence/events/ready-rendering-source-v1.json",
+    "bytes": 12063,
+    "sha256": "8161b34adc9a155c910d305e54ff99db6e063606ff2f03779a9c03758464bba1"
+  },
+  "specificationArtifacts": [
+    {
+      "localPath": "docs/evidence/events/ready-display-contract-v1.json",
+      "bytes": 17091,
+      "sha256": "b3e8ac35de7bc08bf45f1b69c925b193f2557912e31b5e1c54dcdd8cb13010bb"
+    },
+    {
+      "localPath": "docs/evidence/events/ready-presentation-contract-v1.json",
+      "bytes": 16640,
+      "sha256": "a2d6ace7a2bae848f101106b55e71ffc27d9babc0f01b9241bd97edc2ccc3632"
+    }
+  ],
+  "executedCaseIds": [
+    "RDY-029",
+    "RDY-030",
+    "RDY-031",
+    "RDY-032",
+    "RPR-001",
+    "RPR-002",
+    "RPR-003",
+    "RPR-004",
+    "RPR-005",
+    "RPR-006",
+    "RPR-007",
+    "RPR-008",
+    "RPR-009",
+    "RPR-010",
+    "RPR-011",
+    "RPR-012",
+    "RPR-013",
+    "RPR-014",
+    "RPR-015",
+    "RPR-016",
+    "RPR-017",
+    "RPR-018",
+    "RPR-019",
+    "RPR-020",
+    "RPR-021",
+    "RPR-022",
+    "RPR-023",
+    "RPR-024",
+    "RPR-025",
+    "RPR-026",
+    "RPR-027",
+    "RPR-028",
+    "RPR-029",
+    "RPR-030",
+    "RPR-031",
+    "RPR-032"
+  ],
+  "caseExecutionScope": "Managed regressions plus actual preparation/finite host audits. Historical specification flags unchanged; queued-source scope checks do not establish original displayed fidelity.",
+  "implementationFiles": [
+    {
+      "localPath": "src/Zodiac.AssetTool/ReadyArtworkDecoder.cs",
+      "bytes": 2817,
+      "sha256": "2a1432367c3290bd510c66622ec5eb5245eaa1268467f12e384ae8d73a2b1087"
+    },
+    {
+      "localPath": "src/Zodiac.AssetTool.Cli/ReadyEventExporter.cs",
+      "bytes": 1802,
+      "sha256": "471dc2ba6e92c8c41aa076f1b9c87b93f33536a1d18540d4a799506b4726f623"
+    },
+    {
+      "localPath": "src/Zodiac.AssetTool.Cli/PrepareReadyCommand.cs",
+      "bytes": 10262,
+      "sha256": "19898fae2378295f025c2cd6fd64253f2a9a77a126cfa71c17d275f650f0875f"
+    },
+    {
+      "localPath": "src/Zodiac.Content/PreparedReadyArtwork.cs",
+      "bytes": 5497,
+      "sha256": "487993e68422f7c86cae628a8e309f214bf3d21287a31a4aa555a4e5b16e4999"
+    },
+    {
+      "localPath": "src/Zodiac.Content/Events/PreparedReadyEvent.cs",
+      "bytes": 5779,
+      "sha256": "0c3305624649ee53ba587fcb18ddebf199822a4fa3c0f2ee281ba6c690c29a1e"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/ReadyPresentation.cs",
+      "bytes": 6500,
+      "sha256": "5a7cda34c4fb94414a572de66f663c9238ccd6d333d25031021e69a915c888ca"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/ReadyPreview.cs",
+      "bytes": 11282,
+      "sha256": "7e9222b3fb34251a1e848d07454d5831763c4a8061a60ef863b8f4d82043684e"
+    }
+  ],
+  "testFiles": [
+    {
+      "localPath": "tests/Zodiac.AssetTool.Tests/ReadyArtworkDecoderTests.cs",
+      "bytes": 4442,
+      "sha256": "9b8fb81a8342eb3b59687230e87ef3ebda5f709fc5f32591144f4977ce0cf419"
+    },
+    {
+      "localPath": "tests/Zodiac.Content.Tests/PreparedReadyTests.cs",
+      "bytes": 10025,
+      "sha256": "c53a8172ea4da929ac5ee940a920a6a5e22cb2822ed9c0d45a2339219793fefa"
+    },
+    {
+      "localPath": "tests/Zodiac.AssetTool.Cli.Tests/ReadyPreparationTests.cs",
+      "bytes": 5878,
+      "sha256": "b1e5a4482046849b92f093062a593f01cfc990f8d50a7db2b88ef1a0d802f42e"
+    },
+    {
+      "localPath": "tests/Fft.Client.Tests/ReadyPresentationTests.cs",
+      "bytes": 18181,
+      "sha256": "bc56be7406e5c2b62b9f004f13580ed946dc10e957d2f3c471453f17a40d48bc"
+    },
+    {
+      "localPath": "tests/Support/AuthoredReady.cs",
+      "bytes": 3489,
+      "sha256": "be9c8bf80b1ad28deb4152d6cb56b3100ba13d748e7032b8aa3abc985e70cb52"
+    }
+  ],
+  "scripts": [
+    {
+      "localPath": "scratch/prepare-ready-086-inputs.py",
+      "bytes": 780,
+      "sha256": "cd17e9e9decf148dc2504e67747eeb99eda561c6c00d7eec4eb39f10de82deed"
+    },
+    {
+      "localPath": "scratch/validate-ready-086-windows.ps1",
+      "bytes": 2697,
+      "sha256": "fdc9a241402636c49510df55d6c0b366dea2fa357283c3f6e5d7f31ea5e5ba09"
+    },
+    {
+      "localPath": "scratch/check-ready-086-preview.py",
+      "bytes": 6290,
+      "sha256": "78feace9e98ab98ea0c1c2bde7112b389c7fd285cb0e15c45224ac9fb5f1fe31"
+    },
+    {
+      "localPath": "scratch/validate-ready-086-guards.ps1",
+      "bytes": 2583,
+      "sha256": "a976529eefc55e02c5abcc14632131877e3e1780788a3a97b2e9a238f1578061"
+    },
+    {
+      "localPath": "scratch/check-ready-086-legacy.py",
+      "bytes": 1316,
+      "sha256": "cb226302db1a540bdc8f61095c7e70e4a4f1015307ce5bcaaf9770afe3d1c689"
+    }
+  ],
+  "reports": [
+    {
+      "localPath": "scratch/ready-086-review/report.json",
+      "bytes": 137538,
+      "sha256": "c7d9cc0ea20812d625118e22cffa32f8a6317f0f6b3cb6073abc1fabc4793e80"
+    },
+    {
+      "localPath": "scratch/ready-086-review/legacy-and-guards.json",
+      "bytes": 1219,
+      "sha256": "b7368451f1f60bce0ce063ad224598d359d674284d6cfd3a59e6f947872d9749"
+    }
+  ],
+  "artworkPreparations": [
+    {
+      "root": "scratch/ready-086-artwork-a",
+      "files": [
+        {
+          "localPath": "scratch/ready-086-artwork-a/artwork.json",
+          "bytes": 3912,
+          "sha256": "4099de6a8317bfe29054e70e585b3466b24df05b90d0365804e0f16c13f5a7dd"
+        },
+        {
+          "localPath": "scratch/ready-086-artwork-a/assets.manifest.json",
+          "bytes": 682,
+          "sha256": "251b40e4bff16bc9876d35539a9527ad28ffb9433e856da1ac3e8b51b28460a0"
+        },
+        {
+          "localPath": "scratch/ready-086-artwork-a/indices.bin",
+          "bytes": 51200,
+          "sha256": "515778839288e154c76e51db57a44e82c63a8e27c079bf3a1803136e389191dd"
+        },
+        {
+          "localPath": "scratch/ready-086-artwork-a/palette-2.bin",
+          "bytes": 32,
+          "sha256": "06ab76ecb265e6f4a40d0abf00812d2ac0f2817c4d20c80b69a502c2978b3256"
+        },
+        {
+          "localPath": "scratch/ready-086-artwork-a/provenance.json",
+          "bytes": 438,
+          "sha256": "16bbbbe8f566806d59f22c3a390e8250ea2378ddc1bb7e57813048eba1681293"
+        }
+      ]
+    },
+    {
+      "root": "scratch/ready-086-artwork-b",
+      "files": [
+        {
+          "localPath": "scratch/ready-086-artwork-b/artwork.json",
+          "bytes": 3912,
+          "sha256": "4099de6a8317bfe29054e70e585b3466b24df05b90d0365804e0f16c13f5a7dd"
+        },
+        {
+          "localPath": "scratch/ready-086-artwork-b/assets.manifest.json",
+          "bytes": 682,
+          "sha256": "251b40e4bff16bc9876d35539a9527ad28ffb9433e856da1ac3e8b51b28460a0"
+        },
+        {
+          "localPath": "scratch/ready-086-artwork-b/indices.bin",
+          "bytes": 51200,
+          "sha256": "515778839288e154c76e51db57a44e82c63a8e27c079bf3a1803136e389191dd"
+        },
+        {
+          "localPath": "scratch/ready-086-artwork-b/palette-2.bin",
+          "bytes": 32,
+          "sha256": "06ab76ecb265e6f4a40d0abf00812d2ac0f2817c4d20c80b69a502c2978b3256"
+        },
+        {
+          "localPath": "scratch/ready-086-artwork-b/provenance.json",
+          "bytes": 438,
+          "sha256": "16bbbbe8f566806d59f22c3a390e8250ea2378ddc1bb7e57813048eba1681293"
+        }
+      ]
+    }
+  ],
+  "artworkPreparationByteIdentical": true,
+  "repeatedWindowsArtifactsByteIdentical": true,
+  "rawProcessedStateTraceAndPixelsEqual": true,
+  "scenarios": [
+    {
+      "name": "preview-a",
+      "receipt": {
+        "localPath": "scratch/ready-086-preview-a/check.json",
+        "bytes": 212179,
+        "sha256": "e94525b3ee560519c847fb834f394e291f9a37fee2731483bc44867d379597b8"
+      },
+      "completionTick": 70,
+      "childClearTick": 68,
+      "dispatcherClearTick": 69,
+      "captureCount": 71,
+      "allCpuGpuReadbacksExact": true,
+      "independentModelExact": true
+    },
+    {
+      "name": "preview-b",
+      "receipt": {
+        "localPath": "scratch/ready-086-preview-b/check.json",
+        "bytes": 212179,
+        "sha256": "e94525b3ee560519c847fb834f394e291f9a37fee2731483bc44867d379597b8"
+      },
+      "completionTick": 70,
+      "childClearTick": 68,
+      "dispatcherClearTick": 69,
+      "captureCount": 71,
+      "allCpuGpuReadbacksExact": true,
+      "independentModelExact": true
+    },
+    {
+      "name": "preview-processed",
+      "receipt": {
+        "localPath": "scratch/ready-086-preview-processed/check.json",
+        "bytes": 212185,
+        "sha256": "ebe9458aea25cc5d06af149e08db3c27f440f3df751ddfb4e83cdecafc0a07d7"
+      },
+      "completionTick": 70,
+      "childClearTick": 68,
+      "dispatcherClearTick": 69,
+      "captureCount": 71,
+      "allCpuGpuReadbacksExact": true,
+      "independentModelExact": true
+    },
+    {
+      "name": "hold-0",
+      "receipt": {
+        "localPath": "scratch/ready-086-hold-0/check.json",
+        "bytes": 28744,
+        "sha256": "72f2dfc5038c495d507d0b1aedc7d75b38e193f35ec2534a96caffbe7d33e037"
+      },
+      "completionTick": 10,
+      "childClearTick": 8,
+      "dispatcherClearTick": 9,
+      "captureCount": 11,
+      "allCpuGpuReadbacksExact": true,
+      "independentModelExact": true
+    },
+    {
+      "name": "hold-1",
+      "receipt": {
+        "localPath": "scratch/ready-086-hold-1/check.json",
+        "bytes": 31797,
+        "sha256": "8595ad849385bfc984e394b3a30aec9f215fe9e08411a36e62b18eed8fac2184"
+      },
+      "completionTick": 11,
+      "childClearTick": 9,
+      "dispatcherClearTick": 10,
+      "captureCount": 12,
+      "allCpuGpuReadbacksExact": true,
+      "independentModelExact": true
+    },
+    {
+      "name": "hold-255",
+      "receipt": {
+        "localPath": "scratch/ready-086-hold-255/check.json",
+        "bytes": 808666,
+        "sha256": "8ec19d4b9588a338a0a068485b24b0fbd38d06d2c96052efd74894224fb43174"
+      },
+      "completionTick": 265,
+      "childClearTick": 263,
+      "dispatcherClearTick": 264,
+      "captureCount": 266,
+      "allCpuGpuReadbacksExact": true,
+      "independentModelExact": true
+    },
+    {
+      "name": "circle-1",
+      "receipt": {
+        "localPath": "scratch/ready-086-circle-1/check.json",
+        "bytes": 31796,
+        "sha256": "aa1c1155f9dac6902bf4382ff2beb0212fdd038ac15effe5a43d75dc3e6b2584"
+      },
+      "completionTick": 11,
+      "childClearTick": 9,
+      "dispatcherClearTick": 10,
+      "captureCount": 12,
+      "allCpuGpuReadbacksExact": true,
+      "independentModelExact": true
+    },
+    {
+      "name": "circle-5",
+      "receipt": {
+        "localPath": "scratch/ready-086-circle-5/check.json",
+        "bytes": 44001,
+        "sha256": "ed9c100abd7c63ba407ad92049a567e49513544e27850cb0a3d60cc7a4600622"
+      },
+      "completionTick": 15,
+      "childClearTick": 13,
+      "dispatcherClearTick": 14,
+      "captureCount": 16,
+      "allCpuGpuReadbacksExact": true,
+      "independentModelExact": true
+    },
+    {
+      "name": "circle-60",
+      "receipt": {
+        "localPath": "scratch/ready-086-circle-60/check.json",
+        "bytes": 212177,
+        "sha256": "a796cc3f5d1f1b38eb3e0191b510b142aa30f3252f9fb823a7847b8d161fae02"
+      },
+      "completionTick": 70,
+      "childClearTick": 68,
+      "dispatcherClearTick": 69,
+      "captureCount": 71,
+      "allCpuGpuReadbacksExact": true,
+      "independentModelExact": true
+    },
+    {
+      "name": "circle-after-release",
+      "receipt": {
+        "localPath": "scratch/ready-086-circle-after-release/check.json",
+        "bytes": 31794,
+        "sha256": "f993f39622f02e995131efeb4b33017b2f1010d6ffeefcdff33229e5e15b005d"
+      },
+      "completionTick": 11,
+      "childClearTick": 9,
+      "dispatcherClearTick": 10,
+      "captureCount": 12,
+      "allCpuGpuReadbacksExact": true,
+      "independentModelExact": true
+    },
+    {
+      "name": "circle-zero-hold",
+      "receipt": {
+        "localPath": "scratch/ready-086-circle-zero-hold/check.json",
+        "bytes": 28741,
+        "sha256": "3e3e7d083bfc731264969f116ae090a7dc53af5c6e8ff6b19b26390ec8203b8d"
+      },
+      "completionTick": 10,
+      "childClearTick": 8,
+      "dispatcherClearTick": 9,
+      "captureCount": 11,
+      "allCpuGpuReadbacksExact": true,
+      "independentModelExact": true
+    },
+    {
+      "name": "skipped",
+      "receipt": {
+        "localPath": "scratch/ready-086-skipped/check.json",
+        "bytes": 6986,
+        "sha256": "f13f84146fe620cc554678fd7fbe22f8527ea41a04a34779148b15a2e3ef49e9"
+      },
+      "completionTick": 1,
+      "childClearTick": null,
+      "dispatcherClearTick": null,
+      "captureCount": 2,
+      "allCpuGpuReadbacksExact": true,
+      "independentModelExact": true
+    }
+  ],
+  "scenarioCount": 12,
+  "comparedPngCount": 626,
+  "independentModel": "Pinned ZOD-085 cross-product/core-seed/unsigned-Q24 model, RGB5 modulation and STP joint-sum average; all 15 distinct scale/empty projections checked.",
+  "isolatedFinalBuildChecks": [
+    {
+      "workingRoot": "scratch/ready-086-rebuild-isolated-a",
+      "receipt": {
+        "localPath": "scratch/ready-086-rebuild-isolated-a/scratch/capture/check.json",
+        "bytes": 212179,
+        "sha256": "e94525b3ee560519c847fb834f394e291f9a37fee2731483bc44867d379597b8"
+      },
+      "stdout": {
+        "localPath": "scratch/ready-086-rebuild-isolated-a/stdout.txt",
+        "bytes": 51,
+        "sha256": "96b96fcb5f21622bb402d580afab186de53c0686555ef1157ba4122187fe6ba5"
+      },
+      "originalInputsOrReferenceCopied": false,
+      "resourceRebuildTick": 5,
+      "all72ArtifactsByteIdentical": true
+    },
+    {
+      "workingRoot": "scratch/ready-086-rebuild-isolated-b",
+      "receipt": {
+        "localPath": "scratch/ready-086-rebuild-isolated-b/scratch/capture/check.json",
+        "bytes": 212179,
+        "sha256": "e94525b3ee560519c847fb834f394e291f9a37fee2731483bc44867d379597b8"
+      },
+      "stdout": {
+        "localPath": "scratch/ready-086-rebuild-isolated-b/stdout.txt",
+        "bytes": 51,
+        "sha256": "96b96fcb5f21622bb402d580afab186de53c0686555ef1157ba4122187fe6ba5"
+      },
+      "originalInputsOrReferenceCopied": false,
+      "resourceRebuildTick": 5,
+      "all72ArtifactsByteIdentical": true
+    }
+  ],
+  "legacyComparisons": [
+    {
+      "historicalRoot": "scratch/banner-082-legacy-rgb8-a",
+      "currentRoot": "scratch/ready-086-legacy-rgb8",
+      "fileCount": 16,
+      "allFilesByteIdentical": true
+    },
+    {
+      "historicalRoot": "scratch/banner-triangle-windows-five-bit-a",
+      "currentRoot": "scratch/ready-086-legacy-rgb5",
+      "fileCount": 16,
+      "allFilesByteIdentical": true
+    },
+    {
+      "historicalRoot": "scratch/banner-082-window-a",
+      "currentRoot": "scratch/ready-086-legacy-ordered",
+      "fileCount": 17,
+      "allFilesByteIdentical": true
+    }
+  ],
+  "readinessFailures": [
+    {
+      "kind": "missing-event",
+      "outputCreated": false,
+      "exitCode": 1,
+      "stderrSha256": "f8ee91b7b1b40c5280b770700fdd414da86dbbca9e2b84df15e57c9b497b915a"
+    },
+    {
+      "kind": "wrong-artwork",
+      "outputCreated": false,
+      "exitCode": 1,
+      "stderrSha256": "aa2e5f3400301fe796eb839eea0dd04a89f4fb2f18ebd8c2554bde524cd34bb7"
+    },
+    {
+      "kind": "gpu-failure",
+      "outputCreated": false,
+      "exitCode": 1,
+      "stderrSha256": "f202ead03b6dc1936f82335077674a820c9c89f4fc1085b2a6453d1d3535f927"
+    }
+  ],
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetTestsPassed": 1794,
+    "newDotnetTests": 112,
+    "dotnetBreakdown": {
+      "engine": 24,
+      "framework": 621,
+      "content": 488,
+      "assetTool": 192,
+      "cli": 186,
+      "client": 283
+    },
+    "pythonTestsPassed": 163
+  },
+  "review": {
+    "localPath": "scratch/ready-086-review/review.html",
+    "bytes": 1691,
+    "sha256": "69465deaed60b4017d27df18f2e3941e21322cfef548ac7e0964b8a14a1f5f36"
+  },
+  "ownerReview": "approved-prepared-preview",
+  "ownerReviewDate": "2026-10-25",
+  "ownerReviewComment": "Looks good to me.",
+  "ownerReviewScope": "Prepared Ready gallery appearance only; original-game visual/timing comparison remains open.",
+  "limits": [
+    "Original Ready scanout/background/input/loading/timing comparisons remain open in ZOD-087.",
+    "Authored BATTLE/non-tutorial/speed-one, one preloaded condition-0 aggregate; no original events 4/401 or combined general-to-Ready playback.",
+    "CPU-buffer GPU readback verifies the selected host presentation, not native PS1 GPU/hardware or CRT equivalence.",
+    "No original pixel/table payloads, decoded assets, screenshots or emulator source committed."
+  ]
+}

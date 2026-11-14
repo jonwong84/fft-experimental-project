@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-337",
+    "ZOD-338",
+    "ZOD-339"
+  ],
+  "date": "2026-11-05",
+  "managedBaseRevision": "be973305b348b0b1b41c418b2be4082860e8bf08",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "behavior": "docs/behavior/magic-elements-and-routing.md",
+  "sourceReceipt": "docs/evidence/combat/magic-elements-source-v1.json",
+  "validation": {
+    "dotnetPassed": 4589,
+    "frameworkPassed": 1548,
+    "aiPassed": 1217,
+    "contentPassed": 838,
+    "cliPassed": 328,
+    "pythonPassed": 619,
+    "newFrameworkCases": 16,
+    "newPythonCases": 8,
+    "sourceDescriptions": 50,
+    "sourceFiles": 9,
+    "sourceFunctions": 14,
+    "priorAmountVectorsEqual": 22,
+    "priorSourceDescriptionsUnchanged": 44,
+    "trxReports": 7,
+    "lockedRestore": true,
+    "releaseWarnings": 0,
+    "releaseErrors": 0,
+    "coverageAudit": true,
+    "localLinkAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/magic-elements-337-339/"
+  },
+  "invariants": [
+    "pure raw calculations; no RNG, state, commands or live HP publication",
+    "signed16 stores, separate weather rounding, absorption/nullification/half/weak ordering before Faith",
+    "fresh work and relevant Oil/Float/rider exclusions explicitly certified",
+    "healing bypasses damage elements; nullification skips Faith",
+    "elemental absorption does not reverse on undead; undead healing requests full canceled-status-byte0 clear",
+    "old neutral API and all prior source expectations preserved; no package/schema/dependency or owner-draft change"
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-291",
+    "ZOD-292",
+    "ZOD-293"
+  ],
+  "date": "2026-11-05",
+  "kind": "managed-roster-cast-priority-and-isolated-self-entry",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "ddf9e628f15c399b5413b6c474019f02b84b19f1",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/roster-action-source-v1.json",
+  "design": "docs/architecture/zod-290-roster-action-search.md",
+  "behavior": "docs/behavior/roster-ai-action-foundation.md",
+  "sourceFixture": "docs/fixtures/behavior/roster-action-contract-v1.json",
+  "implementationPaths": [
+    "src/Zodiac.Framework.Ai/Shared/RosterAiCastOrigins.cs",
+    "src/Zodiac.Framework.Ai/Accumulate/RosterAccumulateAiUsefulness.cs",
+    "src/Zodiac.Framework.Ai/Accumulate/RosterAccumulateAiEntry.cs",
+    "src/Zodiac.Framework.Ai/Accumulate/AiSelfStatProjection.cs",
+    "src/Zodiac.Framework.Ai/Shared/AiMovementSimulation.cs",
+    "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiCandidateProjection.cs",
+    "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiUsefulness.cs",
+    "src/Zodiac.Framework.Ai/Shared/RosterAiGeneralScenarios.cs",
+    "src/Zodiac.Framework.Ai/Shared/RosterAiMovementBaseline.cs",
+    "src/Zodiac.Framework.Ai/Shared/RosterAiRefresh.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Ai.Tests/Shared/RosterAiActionTests.cs",
+    "tests/Zodiac.Framework.Ai.Tests/Shared/RosterAiTestData.cs"
+  ],
+  "invariants": [
+    "one fresh general prefix per owning query; no caller-populated executable result or fake pair target",
+    "range-one exhaustive Attack origins read no priority; Stone initial range-four union spans every active enemy team; self map work reads no ranked keys",
+    "fresh beats retained, retained uses current proximity, unknown ranked cells reject without publishing prefix writes; map-owned immutable workspace rules preserved",
+    "separate self filter validates complete typed zero-bonus bindings, actor grant, PA1..99 and explicit retail entry facts; distinct active subset may be empty",
+    "source-order coin per active ally, no enemy coin or inactive draw; input state and late-failure RNG remain unchanged",
+    "isolated selected self occurrence derives its ability, active mask and D1; post-ACT skips before invocation validation",
+    "no useful ally means no attempts; other-ally-only usefulness admits one/two NotValuable self attempts with zero candidate clock draws",
+    "valuable self orders each restore actual PA, share PA+1/clamp99 and private choice/placement/clock arithmetic, retain facing and all-unit team signs with +3/hit100",
+    "equal candidate ties retain ACT-first and best rank compares with fresh D0 baseline; no ranked list, full-list stream, lottery or command authority",
+    "existing pair APIs/admission/streams and owner drafts preserved; no Framework/Content/project/dependency changes"
+  ],
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4355,
+    "frameworkPassed": 1483,
+    "aiPassed": 1127,
+    "newAiCases": 12,
+    "pythonPassed": 557,
+    "newPythonCases": 3,
+    "trxReports": 7,
+    "sourceFiles": 9,
+    "sourceFunctions": 32,
+    "sourceDescriptions": 19,
+    "sourcePreparedAudit": true,
+    "algorithmGuideAudit": true,
+    "localLinkAudit": true,
+    "coverageAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/roster-actions-290-293/"
+  },
+  "boundaries": [
+    "living ordinary compact16, stable teams, MP0/positive Speed, raw Move<=124, strict flat ground and source general-policy guards",
+    "cast-provenance query does not infer actual grants/weapon/effects; entered self query separately validates its executable profile",
+    "full roster Attack/Stone projection/target/aim traversal, list composition/rank/lottery and roster AI command execution remain open",
+    "other abilities/policies/statuses/maps, corpse lifecycle, automatic facing, terminal routing and frame RNG remain open",
+    "host/editor, owner drafts, broad replacement interfaces and ZOD-106 deferred; ZOD-294 next traces the roster sword candidate/effect boundary"
+  ],
+  "dependencyChanges": false,
+  "newProductionFriendAccess": false,
+  "originalExecuted": false,
+  "cExecuted": false
+}

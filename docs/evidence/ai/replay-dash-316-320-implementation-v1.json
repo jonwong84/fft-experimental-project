@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-316",
+    "ZOD-317",
+    "ZOD-318",
+    "ZOD-319",
+    "ZOD-320"
+  ],
+  "date": "2026-11-05",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "720966b",
+  "productionImplemented": true,
+  "originalExecuted": false,
+  "cExecuted": false,
+  "sourceStudies": [
+    "docs/architecture/zod-317-dash.md",
+    "docs/evidence/ai/roster-authority-source-v1.json"
+  ],
+  "behavior": [
+    "docs/behavior/roster-ai-replay.md",
+    "docs/behavior/dash-actual.md"
+  ],
+  "validation": {
+    "dotnetPassed": 4457,
+    "frameworkPassed": 1521,
+    "aiPassed": 1191,
+    "pythonPassed": 591,
+    "releaseWarnings": 0,
+    "releaseErrors": 0,
+    "lockedRestore": true,
+    "trxReports": 7,
+    "sourceFunctions": 83,
+    "sourceFiles": 27,
+    "replayTurns": 18,
+    "dashFormulaDescriptions": 24,
+    "dashActualDescriptions": 8,
+    "preparedVerified": true,
+    "ownerDraftsUnchanged": true,
+    "logs": "scratch/dash-317-325/"
+  }
+}

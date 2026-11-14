@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-265",
+    "ZOD-266",
+    "ZOD-267",
+    "ZOD-268",
+    "ZOD-269",
+    "ZOD-270"
+  ],
+  "date": "2026-11-04",
+  "kind": "managed-variable-supported-list-search-and-turns",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "1136eec0a7cff27a1d61cee506e50a5bafcd0ad9",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/variable-search-source-v1.json",
+  "design": "docs/architecture/zod-265-variable-search-extension.md",
+  "behavior": "docs/behavior/variable-basic-skill-ai.md",
+  "implementationPaths": [
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListPreparation.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListScenarios.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListComposition.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListSelection.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListCommandExecution.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiListTurnExecution.cs",
+    "src/Zodiac.Framework.Ai/Shared/AiTurnProgress.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiCommandExecution.cs",
+    "src/Zodiac.Framework.Ai/BasicSkill/BasicSkillAiTurnExecution.cs",
+    "src/Zodiac.Framework.Ai/Accumulate/AccumulateAiCandidateProjection.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiListPreparationTests.cs",
+    "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiListQueryTests.cs",
+    "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiListExecutionTests.cs",
+    "tests/Zodiac.Framework.Ai.Tests/BasicSkill/BasicSkillAiContentListTests.cs"
+  ],
+  "invariants": [
+    "owned ordinary lists; structural Attack/Frog with zero to32 supported self/Stone occurrences",
+    "canonical list guards and old APIs/results retained",
+    "one shared refresh/movement per query, no public cached executable plan",
+    "grant inclusion for listed actions; absent AI actions may retain gameplay grants",
+    "share128 and lowest-ally clearing; peer retained flag unknown",
+    "Stone presence controls ranged D0 and range4 versus range1 cast-key reads",
+    "independent self coins/projected actual PA and repeated Stone aim passes, including full rank array",
+    "selected occurrence identity and last entered usable command derived from traversal",
+    "query and late command failures roll back incoming RNG/workspace",
+    "actual Framework command proposals, continuations and facing remain authoritative",
+    "post-ACT derives summaries/reach before clearing all action passes and running fresh empty lottery",
+    "recovery preserves accepted progress/knowledge and binds exact session, not equal replay"
+  ],
+  "literalCompleteTurnVectors": [
+    {
+      "middle": [],
+      "move": 0,
+      "evade": 0,
+      "finalWord": 675780521,
+      "finalCount": 31,
+      "pa": 5,
+      "targetHp": 40,
+      "ct": 35
+    },
+    {
+      "middle": [
+        "Accumulate",
+        "Accumulate"
+      ],
+      "move": 0,
+      "finalWord": 2473755763,
+      "finalCount": 29,
+      "pa": 6,
+      "targetHp": 50,
+      "ct": 35
+    },
+    {
+      "middle": [
+        "ThrowStone",
+        "Accumulate"
+      ],
+      "move": 0,
+      "finalWord": 1116175964,
+      "finalCount": 34,
+      "pa": 6,
+      "targetHp": 50,
+      "ct": 35
+    },
+    {
+      "middle": [
+        "Accumulate",
+        "Accumulate"
+      ],
+      "move": 0,
+      "initialPa": 99,
+      "finalWord": 1343201072,
+      "finalCount": 30,
+      "pa": 99,
+      "targetHp": 50,
+      "ct": 35
+    },
+    {
+      "middle": [
+        "ThrowStone",
+        "ThrowStone"
+      ],
+      "move": 0,
+      "evade": 0,
+      "target": [
+        5,
+        1,
+        0
+      ],
+      "finalWord": 4015624929,
+      "finalCount": 39,
+      "pa": 5,
+      "targetHp": 40,
+      "ct": 35
+    },
+    {
+      "middle": [],
+      "move": 0,
+      "target": [
+        6,
+        1,
+        0
+      ],
+      "finalWord": 180171308,
+      "finalCount": 18,
+      "pa": 5,
+      "targetHp": 50,
+      "ct": 55
+    }
+  ],
+  "vectorDefaults": {
+    "initialWord": 1,
+    "initialCount": 7,
+    "pa": 5,
+    "targetHp": 50,
+    "ct": 15,
+    "evade": 97,
+    "target": [
+      2,
+      1,
+      0
+    ],
+    "provenance": "pinned source call ordering and independent LCG arithmetic; managed regressions, not original observations"
+  },
+  "dependencies": {
+    "aiReferencesContent": false,
+    "frameworkReferencesAi": false,
+    "projectOrPackageOrLockChanges": false,
+    "newProductionFriendAccess": false,
+    "hostActivation": false
+  },
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4298,
+    "frameworkPassed": 1467,
+    "aiPassed": 1086,
+    "newAiCases": 26,
+    "pythonPassed": 542,
+    "trxReports": 7,
+    "sourceFiles": 14,
+    "sourceFunctions": 42,
+    "sourcePreparedAudit": true,
+    "listSourceDescriptions": 16,
+    "algorithmGuideAudit": true,
+    "coverageAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/variable-search-265-270/"
+  },
+  "boundaries": [
+    "two living ordinary opponents, supported sword/self/Stone, flat maps, admitted Blue/NonBlue policy and explicit missing context",
+    "general roster focus/target search selected for source study ZOD-271",
+    "full learning, special menus, other effects/maps/policies, Defend and terminal encounter routing remain open",
+    "original frame/VSync stream equivalence remains unresolved",
+    "owner definitions/AbilityToggles, editor, replacement interfaces and ZOD-106 deferred"
+  ],
+  "originalExecuted": false,
+  "cExecuted": false
+}

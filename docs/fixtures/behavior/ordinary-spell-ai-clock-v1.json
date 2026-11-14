@@ -1,0 +1,644 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "confidence": "Source-derived arithmetic descriptions; no original or C execution",
+  "cases": [
+    {
+      "id": "fire-ct4-tick13-unit-before-charge",
+      "input": {
+        "actor": "mage",
+        "charge": 4,
+        "ticks": 10,
+        "units": [
+          {
+            "id": "mage",
+            "order": 0,
+            "speed": 10,
+            "ct": 0,
+            "dead": false,
+            "moved": false,
+            "acted": true
+          },
+          {
+            "id": "guard",
+            "order": 1,
+            "speed": 8,
+            "ct": 80,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          }
+        ]
+      },
+      "expected": {
+        "ticks": 13,
+        "remaining": 0,
+        "cts": [
+          50,
+          4
+        ],
+        "moved": [
+          "guard"
+        ],
+        "upkeepDraws": 1,
+        "eventCount": 2,
+        "limit": false
+      }
+    },
+    {
+      "id": "tier4-actor-turn-no-wait-refund",
+      "input": {
+        "actor": "mage",
+        "charge": 10,
+        "ticks": 10,
+        "units": [
+          {
+            "id": "mage",
+            "order": 0,
+            "speed": 10,
+            "ct": 0,
+            "dead": false,
+            "moved": false,
+            "acted": true
+          },
+          {
+            "id": "guard",
+            "order": 1,
+            "speed": 8,
+            "ct": 80,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          }
+        ]
+      },
+      "expected": {
+        "ticks": 19,
+        "remaining": 0,
+        "cts": [
+          10,
+          52
+        ],
+        "moved": [
+          "mage",
+          "guard"
+        ],
+        "upkeepDraws": 2,
+        "eventCount": 3,
+        "limit": false
+      }
+    },
+    {
+      "id": "immediate-still-runs-one-event",
+      "input": {
+        "actor": "mage",
+        "charge": 0,
+        "ticks": 10,
+        "units": [
+          {
+            "id": "mage",
+            "order": 0,
+            "speed": 10,
+            "ct": 0,
+            "dead": false,
+            "moved": false,
+            "acted": true
+          },
+          {
+            "id": "guard",
+            "order": 1,
+            "speed": 8,
+            "ct": 80,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          }
+        ]
+      },
+      "expected": {
+        "ticks": 13,
+        "remaining": 0,
+        "cts": [
+          50,
+          4
+        ],
+        "moved": [
+          "guard"
+        ],
+        "upkeepDraws": 1,
+        "eventCount": 1,
+        "limit": false
+      }
+    },
+    {
+      "id": "immediate-ko-peer-upkeep-only",
+      "input": {
+        "actor": "mage",
+        "charge": 0,
+        "ticks": 10,
+        "units": [
+          {
+            "id": "mage",
+            "order": 0,
+            "speed": 10,
+            "ct": 0,
+            "dead": false,
+            "moved": false,
+            "acted": true
+          },
+          {
+            "id": "guard",
+            "order": 1,
+            "speed": 8,
+            "ct": 80,
+            "dead": true,
+            "moved": false,
+            "acted": false
+          }
+        ]
+      },
+      "expected": {
+        "ticks": 18,
+        "remaining": 0,
+        "cts": [
+          0,
+          44
+        ],
+        "moved": [
+          "mage"
+        ],
+        "upkeepDraws": 2,
+        "eventCount": 1,
+        "limit": false
+      }
+    },
+    {
+      "id": "already-moved-no-unused-move-refund",
+      "input": {
+        "actor": "mage",
+        "charge": 4,
+        "ticks": 10,
+        "units": [
+          {
+            "id": "mage",
+            "order": 0,
+            "speed": 10,
+            "ct": 0,
+            "dead": false,
+            "moved": true,
+            "acted": true
+          },
+          {
+            "id": "guard",
+            "order": 1,
+            "speed": 8,
+            "ct": 80,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          }
+        ]
+      },
+      "expected": {
+        "ticks": 13,
+        "remaining": 0,
+        "cts": [
+          30,
+          4
+        ],
+        "moved": [
+          "guard"
+        ],
+        "upkeepDraws": 1,
+        "eventCount": 2,
+        "limit": false
+      }
+    },
+    {
+      "id": "ct3-before-guard-opportunity",
+      "input": {
+        "actor": "mage",
+        "charge": 3,
+        "ticks": 10,
+        "units": [
+          {
+            "id": "mage",
+            "order": 0,
+            "speed": 10,
+            "ct": 0,
+            "dead": false,
+            "moved": false,
+            "acted": true
+          },
+          {
+            "id": "guard",
+            "order": 1,
+            "speed": 8,
+            "ct": 80,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          }
+        ]
+      },
+      "expected": {
+        "ticks": 12,
+        "remaining": 0,
+        "cts": [
+          40,
+          96
+        ],
+        "moved": [],
+        "upkeepDraws": 0,
+        "eventCount": 1,
+        "limit": false
+      }
+    },
+    {
+      "id": "ready-peer-picked-before-first-charge-tick",
+      "input": {
+        "actor": "mage",
+        "charge": 1,
+        "ticks": 10,
+        "units": [
+          {
+            "id": "mage",
+            "order": 0,
+            "speed": 10,
+            "ct": 0,
+            "dead": false,
+            "moved": false,
+            "acted": true
+          },
+          {
+            "id": "guard",
+            "order": 1,
+            "speed": 8,
+            "ct": 100,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          }
+        ]
+      },
+      "expected": {
+        "ticks": 10,
+        "remaining": 0,
+        "cts": [
+          20,
+          0
+        ],
+        "moved": [
+          "guard"
+        ],
+        "upkeepDraws": 1,
+        "eventCount": 2,
+        "limit": false
+      }
+    },
+    {
+      "id": "overshoot-before-slot-tie",
+      "input": {
+        "actor": "mage",
+        "charge": 1,
+        "ticks": 10,
+        "units": [
+          {
+            "id": "mage",
+            "order": 0,
+            "speed": 10,
+            "ct": 0,
+            "dead": false,
+            "moved": false,
+            "acted": true
+          },
+          {
+            "id": "guard",
+            "order": 1,
+            "speed": 8,
+            "ct": 120,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          },
+          {
+            "id": "third",
+            "order": 2,
+            "speed": 8,
+            "ct": 130,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          }
+        ]
+      },
+      "expected": {
+        "ticks": 10,
+        "remaining": 0,
+        "cts": [
+          20,
+          20,
+          30
+        ],
+        "moved": [
+          "guard",
+          "third"
+        ],
+        "upkeepDraws": 2,
+        "eventCount": 3,
+        "limit": false
+      }
+    },
+    {
+      "id": "ct1-ready-without-an-added-tick",
+      "input": {
+        "actor": "mage",
+        "charge": 1,
+        "ticks": 10,
+        "units": [
+          {
+            "id": "mage",
+            "order": 0,
+            "speed": 10,
+            "ct": 0,
+            "dead": false,
+            "moved": false,
+            "acted": true
+          },
+          {
+            "id": "guard",
+            "order": 1,
+            "speed": 8,
+            "ct": 0,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          }
+        ]
+      },
+      "expected": {
+        "ticks": 10,
+        "remaining": 0,
+        "cts": [
+          20,
+          0
+        ],
+        "moved": [],
+        "upkeepDraws": 0,
+        "eventCount": 1,
+        "limit": false
+      }
+    },
+    {
+      "id": "source255-event-cap-unresolved",
+      "input": {
+        "actor": "mage",
+        "charge": 127,
+        "ticks": 10,
+        "units": [
+          {
+            "id": "mage",
+            "order": 0,
+            "speed": 1,
+            "ct": 0,
+            "dead": false,
+            "moved": false,
+            "acted": true
+          },
+          {
+            "id": "peer1",
+            "order": 1,
+            "speed": 50,
+            "ct": 99,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          },
+          {
+            "id": "peer2",
+            "order": 2,
+            "speed": 50,
+            "ct": 99,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          },
+          {
+            "id": "peer3",
+            "order": 3,
+            "speed": 50,
+            "ct": 99,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          },
+          {
+            "id": "peer4",
+            "order": 4,
+            "speed": 50,
+            "ct": 99,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          },
+          {
+            "id": "peer5",
+            "order": 5,
+            "speed": 50,
+            "ct": 99,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          },
+          {
+            "id": "peer6",
+            "order": 6,
+            "speed": 50,
+            "ct": 99,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          },
+          {
+            "id": "peer7",
+            "order": 7,
+            "speed": 50,
+            "ct": 99,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          },
+          {
+            "id": "peer8",
+            "order": 8,
+            "speed": 50,
+            "ct": 99,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          },
+          {
+            "id": "peer9",
+            "order": 9,
+            "speed": 50,
+            "ct": 99,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          },
+          {
+            "id": "peer10",
+            "order": 10,
+            "speed": 50,
+            "ct": 99,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          },
+          {
+            "id": "peer11",
+            "order": 11,
+            "speed": 50,
+            "ct": 99,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          },
+          {
+            "id": "peer12",
+            "order": 12,
+            "speed": 50,
+            "ct": 99,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          },
+          {
+            "id": "peer13",
+            "order": 13,
+            "speed": 50,
+            "ct": 99,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          },
+          {
+            "id": "peer14",
+            "order": 14,
+            "speed": 50,
+            "ct": 99,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          },
+          {
+            "id": "peer15",
+            "order": 15,
+            "speed": 50,
+            "ct": 99,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          },
+          {
+            "id": "peer16",
+            "order": 16,
+            "speed": 50,
+            "ct": 99,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          },
+          {
+            "id": "peer17",
+            "order": 17,
+            "speed": 50,
+            "ct": 99,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          },
+          {
+            "id": "peer18",
+            "order": 18,
+            "speed": 50,
+            "ct": 99,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          },
+          {
+            "id": "peer19",
+            "order": 19,
+            "speed": 50,
+            "ct": 99,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          },
+          {
+            "id": "peer20",
+            "order": 20,
+            "speed": 50,
+            "ct": 99,
+            "dead": false,
+            "moved": false,
+            "acted": false
+          }
+        ]
+      },
+      "expected": {
+        "ticks": 35,
+        "remaining": 102,
+        "cts": [
+          45,
+          49,
+          49,
+          49,
+          49,
+          49,
+          49,
+          49,
+          49,
+          49,
+          49,
+          49,
+          49,
+          49,
+          49,
+          49,
+          149,
+          149,
+          149,
+          149,
+          149
+        ],
+        "moved": [
+          "peer1",
+          "peer2",
+          "peer3",
+          "peer4",
+          "peer5",
+          "peer6",
+          "peer7",
+          "peer8",
+          "peer9",
+          "peer10",
+          "peer11",
+          "peer12",
+          "peer13",
+          "peer14",
+          "peer15",
+          "peer16",
+          "peer17",
+          "peer18",
+          "peer19",
+          "peer20"
+        ],
+        "upkeepDraws": 255,
+        "eventCount": 255,
+        "limit": true
+      }
+    }
+  ]
+}

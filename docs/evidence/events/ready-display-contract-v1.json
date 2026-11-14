@@ -1,0 +1,625 @@
+{
+  "format": "fft.ready-display-contract-expectations",
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "managedBase": "d10ca2630b5080e9ea1f67da0dd49e548fdde813",
+  "specificationOnly": true,
+  "executed": false,
+  "proofId": "sample:ready-display-contract/v1",
+  "defaultSetup": {
+    "sceneRunId": "sample:scene/ready-a",
+    "ownerId": "sample:owner/ready-a",
+    "consumerId": "sample:consumer/ready-a",
+    "definitionId": "sample:ready/definition-a",
+    "artworkId": "sample:art/ready-image0-palette2",
+    "hold": 60,
+    "preloaded": true,
+    "tick": 0,
+    "variables": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "program": "Display(0,H) at 4; E5(56) at 7; synthetic D4 exit at 10; unreachable DB sentinel at 12",
+    "instructionBudget": 8192,
+    "updateBudget": 64,
+    "circleSample": false,
+    "unmanagedFacts": [],
+    "start": "RunUntilBlocked initializes dispatcher/child to their first yields at tick 0"
+  },
+  "scope": "BATTLE, non-tutorial, speed one, preloaded image 0/palette 2, one condition-0 instance",
+  "scheduling": "event VM -> condition dispatcher -> Ready child; all newly admitted work initializes at its first yield without an additional step",
+  "birth": "H>0 initializes draw scale 48; H=0 requests release before child starts and initializes draw scale 128; no Circle read at birth",
+  "timing": {
+    "release": "R=H with no Circle, or first sampled Circle tick 1..H; H=0 gives R=0",
+    "childClear": "R+8",
+    "dispatcherTask56Clear": "R+9",
+    "waitingEventResume": "R+10"
+  },
+  "evidencePolicy": "Independently authored future expectations from pinned source. No runtime reducer, executable-reference run, full original timing replay or observed completion claim.",
+  "cases": [
+    {
+      "id": "RDY-001",
+      "title": "Zero hold starts directly in fade-out",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "hold": 0
+      },
+      "commands": [
+        "Admit at tick 0; then false Circle samples"
+      ],
+      "expected": {
+        "initialScale": 128,
+        "initialPhase": "FadeOut",
+        "inputSamplesDuringWait": 0,
+        "childClearedAt": 8,
+        "dispatcherClearedAt": 9,
+        "parentResumedAt": 10
+      }
+    },
+    {
+      "id": "RDY-002",
+      "title": "One input-wait tick interrupts fade-in",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "hold": 1
+      },
+      "commands": [
+        "Admit; advance with false Circle"
+      ],
+      "expected": {
+        "initialScale": 48,
+        "releaseAt": 1,
+        "scaleAt1": 128,
+        "childClearedAt": 9,
+        "dispatcherClearedAt": 10,
+        "parentResumedAt": 11
+      }
+    },
+    {
+      "id": "RDY-003",
+      "title": "Natural hold 60",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "hold": 60
+      },
+      "commands": [
+        "Admit; advance with false Circle"
+      ],
+      "expected": {
+        "initialScale": 48,
+        "firstFullHoldDrawAt": 10,
+        "releaseAt": 60,
+        "childClearedAt": 68,
+        "dispatcherClearedAt": 69,
+        "parentResumedAt": 70
+      }
+    },
+    {
+      "id": "RDY-004",
+      "title": "Maximum byte hold",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "hold": 255
+      },
+      "commands": [
+        "Admit; advance with false Circle"
+      ],
+      "expected": {
+        "releaseAt": 255,
+        "childClearedAt": 263,
+        "dispatcherClearedAt": 264,
+        "parentResumedAt": 265
+      }
+    },
+    {
+      "id": "RDY-005",
+      "title": "Initial draw precedes first yield",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "hold": 60
+      },
+      "commands": [
+        "Observe accepted snapshots at ticks 0..10"
+      ],
+      "expected": {
+        "scales": [
+          48,
+          56,
+          64,
+          72,
+          80,
+          88,
+          96,
+          104,
+          112,
+          120,
+          128
+        ],
+        "firstDrawAtBirth": true,
+        "birthCircleConsumed": false
+      }
+    },
+    {
+      "id": "RDY-006",
+      "title": "Circle at first parent-wait resume",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "hold": 60
+      },
+      "commands": [
+        "Circle true at tick 1 only"
+      ],
+      "expected": {
+        "releaseAt": 1,
+        "releaseCause": "CircleSkipped",
+        "scaleAt1": 128,
+        "childClearedAt": 9,
+        "dispatcherClearedAt": 10,
+        "parentResumedAt": 11
+      }
+    },
+    {
+      "id": "RDY-007",
+      "title": "Circle before full opacity resets fade-out scale",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "hold": 60
+      },
+      "commands": [
+        "Circle true at tick 5 only"
+      ],
+      "expected": {
+        "scaleAt4": 80,
+        "scaleAt5": 128,
+        "releaseAt": 5,
+        "childClearedAt": 13,
+        "dispatcherClearedAt": 14,
+        "parentResumedAt": 15
+      }
+    },
+    {
+      "id": "RDY-008",
+      "title": "Circle on last wait sample keeps timing",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "hold": 60
+      },
+      "commands": [
+        "Circle true at tick 60 only"
+      ],
+      "expected": {
+        "releaseAt": 60,
+        "releaseCause": "CircleSkipped",
+        "childClearedAt": 68,
+        "dispatcherClearedAt": 69,
+        "parentResumedAt": 70
+      }
+    },
+    {
+      "id": "RDY-009",
+      "title": "Birth sample is not deferred",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "hold": 60
+      },
+      "commands": [
+        "Birth call consumes no input; tick 1 false Circle"
+      ],
+      "expected": {
+        "initialScale": 48,
+        "scaleAt1": 56,
+        "releaseAt": 60
+      }
+    },
+    {
+      "id": "RDY-010",
+      "title": "Zero hold never reads Circle",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "hold": 0
+      },
+      "commands": [
+        "Circle true at tick 1"
+      ],
+      "expected": {
+        "releaseAt": 0,
+        "releaseCause": "Natural",
+        "childClearedAt": 8,
+        "dispatcherClearedAt": 9,
+        "parentResumedAt": 10
+      }
+    },
+    {
+      "id": "RDY-011",
+      "title": "Circle after release cannot skip child fade-out",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "hold": 1
+      },
+      "commands": [
+        "False Circle at 1; true at 2"
+      ],
+      "expected": {
+        "scaleAt2": 116,
+        "releaseCause": "Natural",
+        "childClearedAt": 9,
+        "dispatcherClearedAt": 10,
+        "parentResumedAt": 11
+      }
+    },
+    {
+      "id": "RDY-012",
+      "title": "Release during fade-in jumps to 128",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "hold": 5
+      },
+      "commands": [
+        "No input through release"
+      ],
+      "expected": {
+        "scaleAt4": 80,
+        "scaleAt5": 128,
+        "releaseAt": 5,
+        "draw120BeforeRelease": false
+      }
+    },
+    {
+      "id": "RDY-013",
+      "title": "Child extra yield submits no draw",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "hold": 1
+      },
+      "commands": [
+        "No input through event exit"
+      ],
+      "expected": {
+        "lastFadeDrawAt": 7,
+        "lastFadeScale": 56,
+        "noDrawFrom": 8,
+        "childActiveAt8": true,
+        "childClearedAt": 9,
+        "dispatcherStillActiveAt9": true,
+        "dispatcherClearedAt": 10,
+        "parentResumedAt": 11
+      }
+    },
+    {
+      "id": "RDY-014",
+      "title": "Child is not a second class-56 task",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "hold": 0
+      },
+      "commands": [
+        "Inspect ledger through child clear at tick 8"
+      ],
+      "expected": {
+        "namedManagedTasks": 1,
+        "dispatcherTaskClass": 56,
+        "nativeChildTaskId": 0,
+        "dispatcherRevisionAt8": 0,
+        "barrierAt8": "Pending"
+      }
+    },
+    {
+      "id": "RDY-015",
+      "title": "Only dispatcher clear publishes completion",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "hold": 0
+      },
+      "commands": [
+        "Advance ticks 8, 9 and 10"
+      ],
+      "expected": {
+        "terminalRevisionAt9": 1,
+        "barrierAt9": "Pending",
+        "barrierReleasedAt": 10
+      }
+    },
+    {
+      "id": "RDY-016",
+      "title": "Other owners delay E5",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "hold": 60,
+        "otherClass56Running": true
+      },
+      "commands": [
+        "Post-VM Complete for other task at tick 70"
+      ],
+      "expected": {
+        "dispatcherClearedAt": 69,
+        "parentStillWaitingAt70": true,
+        "parentResumedAt": 71
+      }
+    },
+    {
+      "id": "RDY-017",
+      "title": "Post-poll Start cannot re-block released parent",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "hold": 60
+      },
+      "commands": [
+        "Post-VM class-56 Start at tick 70"
+      ],
+      "expected": {
+        "parentExitedAt": 70,
+        "newUnmanagedTaskLive": true
+      }
+    },
+    {
+      "id": "RDY-018",
+      "title": "Birth after F1 initializes but does not double-step",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "hold": 0,
+        "program": "F1(1); Display(0,0); E5(56); synthetic exit"
+      },
+      "commands": [
+        "Resume F1 at tick 1 with Circle true"
+      ],
+      "expected": {
+        "startTick": 1,
+        "scaleAt1": 128,
+        "scaleAt2": 116,
+        "childClearedAt": 9,
+        "dispatcherClearedAt": 10,
+        "parentResumedAt": 11
+      }
+    },
+    {
+      "id": "RDY-019",
+      "title": "Readiness failure cannot allocate",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "binding": "missing or wrong logical definition/artwork/owner; actual image/palette validation belongs to Content"
+      },
+      "commands": [
+        "Attempt admission"
+      ],
+      "expected": {
+        "rejected": true,
+        "exactInputStateReturned": true,
+        "trace": [],
+        "tasksAllocated": 0,
+        "ticksConsumed": 0
+      }
+    },
+    {
+      "id": "RDY-020",
+      "title": "Managed task authority survives child completion",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "atTick": 68,
+        "hold": 60
+      },
+      "commands": [
+        "External Phase/Complete/Cancel naming parent identity, live and terminal"
+      ],
+      "expected": {
+        "rejected": true,
+        "exactInputStateReturned": true,
+        "trace": [],
+        "childClearDoesNotAuthorizeCompletion": true
+      }
+    },
+    {
+      "id": "RDY-021",
+      "title": "Late instruction failure rolls back birth",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "program": "Ready; overflowing Add or insufficient remaining instruction budget; E5; exit"
+      },
+      "commands": [
+        "Run candidate transaction"
+      ],
+      "expected": {
+        "rejected": true,
+        "exactInputStateReturned": true,
+        "trace": [],
+        "noChildOrDispatcherPublished": true
+      }
+    },
+    {
+      "id": "RDY-022",
+      "title": "Generated dispatcher completion shares update budget",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "atTick": 68,
+        "hold": 60
+      },
+      "commands": [
+        "64 unmanaged facts at tick 69 with update budget 64; parent completion would be fact 65"
+      ],
+      "expected": {
+        "rejected": true,
+        "exactInputStateReturned": true,
+        "tick": 68,
+        "dispatcherStillRunning": true,
+        "trace": []
+      }
+    },
+    {
+      "id": "RDY-023",
+      "title": "Consumer exit/restart retains aggregate and tombstone",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "program": "Ready; synthetic exit"
+      },
+      "commands": [
+        "Start another consumer over retained scene; eventually attempt second Ready"
+      ],
+      "expected": {
+        "sameTaskIdentity": true,
+        "clockReset": false,
+        "childAndDispatcherStateRetained": true,
+        "secondAdmissionRejected": true
+      }
+    },
+    {
+      "id": "RDY-024",
+      "title": "Snapshot reads never affect replay",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "hold": 60
+      },
+      "commands": [
+        "Replay fixed samples with zero/one/repeated draw reads"
+      ],
+      "expected": {
+        "vmStateEqual": true,
+        "childStateEqual": true,
+        "dispatcherStateEqual": true,
+        "ledgerEqual": true,
+        "traceEqual": true
+      }
+    },
+    {
+      "id": "RDY-025",
+      "title": "Checked overflow and capacity failures are atomic",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "counter": "tick/identity/revision overflow, or no task capacity"
+      },
+      "commands": [
+        "Attempt matching operation"
+      ],
+      "expected": {
+        "rejected": true,
+        "exactInputStateReturned": true,
+        "trace": [],
+        "wrappedCounter": false
+      }
+    },
+    {
+      "id": "RDY-026",
+      "title": "Acknowledged owner cancellation is a separate native policy",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "hold": 60
+      },
+      "commands": [
+        "Acknowledge aggregate cancellation at tick 1; advance 2"
+      ],
+      "expected": {
+        "childCancelledAt": 1,
+        "dispatcherCancelledAt": 1,
+        "parentResumedAt": 2,
+        "releaseCause": "OwnerAcknowledgedCancellation",
+        "nativeParameter3Value1NotEmulated": true
+      }
+    },
+    {
+      "id": "RDY-027",
+      "title": "Explicit input and transaction boundaries",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "hold": 60
+      },
+      "commands": [
+        "Omit Circle sample or invoke a public half-tick/callback API"
+      ],
+      "expected": {
+        "missingSampleRejected": true,
+        "publicHalfTickOrCallbackAvailable": false,
+        "traceOnRejection": []
+      }
+    },
+    {
+      "id": "RDY-028",
+      "title": "Selected phase order is explicit",
+      "layer": "Core (ZOD-084)",
+      "given": {
+        "schedule": "event then dispatcher then child"
+      },
+      "commands": [
+        "Inspect ordered birth/release/clear trace phases"
+      ],
+      "expected": {
+        "arbitraryNativeSlotsUnsupported": true,
+        "birthOrder": [
+          "EventAdmission",
+          "DispatcherInitialized",
+          "ChildInitialized"
+        ],
+        "releaseOrder": [
+          "EventPoll",
+          "DispatcherRelease",
+          "ChildFadeOut"
+        ],
+        "childClearOrder": [
+          "EventPoll",
+          "DispatcherChildPollPending",
+          "ChildCleared"
+        ],
+        "dispatcherClearOrder": [
+          "EventPoll",
+          "DispatcherCleared"
+        ]
+      }
+    },
+    {
+      "id": "RDY-029",
+      "title": "Separate authored Ready profile only",
+      "layer": "Content/host (ZOD-086)",
+      "given": {},
+      "commands": [
+        "Reject old profiles and unsupported conditions 1..7/8, WORLD/tutorial/speed changes and unknown unreachable records"
+      ],
+      "expected": {
+        "oldProfilesUnchanged": true,
+        "unsupportedRecordsRejected": true,
+        "retailEvents4And401Rejected": true
+      }
+    },
+    {
+      "id": "RDY-030",
+      "title": "Preserve separate unsigned operands",
+      "layer": "Content/host (ZOD-086)",
+      "given": {},
+      "commands": [
+        "Prepare/load authored raw/processed condition 0 holds 0,1,60,255"
+      ],
+      "expected": {
+        "conditionDecodedSeparately": true,
+        "holdDecodedAsUnsignedByte": true,
+        "oneReadyRecord": true
+      }
+    },
+    {
+      "id": "RDY-031",
+      "title": "Ready artwork needs its own rendering/readiness contract",
+      "layer": "Presentation selection (ZOD-085)",
+      "given": {},
+      "commands": [
+        "Select image 0/palette 2/six full-corner glyphs; fail before scene if files/resources invalid"
+      ],
+      "expected": {
+        "legacyGeneralRendererPolicyUnchanged": true,
+        "noGeneralCropOrPalette4Reuse": true,
+        "resourcesNeverEnterCore": true
+      }
+    },
+    {
+      "id": "RDY-032",
+      "title": "Finite prepared host proof",
+      "layer": "Content/host (ZOD-086)",
+      "given": {},
+      "commands": [
+        "Compose authored Ready through preparation/load/ordered execution and selected snapshot rendering"
+      ],
+      "expected": {
+        "finiteRepeatableReceipts": true,
+        "rendererTaskAcknowledgments": 0,
+        "originalStartupOrVisualEquivalenceClaim": false
+      }
+    }
+  ]
+}

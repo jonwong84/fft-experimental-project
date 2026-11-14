@@ -1,0 +1,373 @@
+{
+  "format": "fft.dark-screen-worker-validation",
+  "schemaVersion": 1,
+  "date": "2026-10-25",
+  "managedBase": "c0641616cfdfe999dd5cc05811697d43a50d40ef",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "sourceEvidence": {
+    "localPath": "docs/evidence/events/dark-screen-source-v1.json",
+    "bytes": 15050,
+    "sha256": "8483734563853e8c4611dddd1ddc86610497d804e0068c5e0b0fe0d86f15be02"
+  },
+  "historicalContract": {
+    "localPath": "docs/evidence/events/dark-screen-contract-v1.json",
+    "bytes": 9649,
+    "sha256": "8aee6e121ce7a76662432babe6881f2edcfd022aa47d9e777fb53e0cf627c4f5"
+  },
+  "historicalContractModified": false,
+  "implementation": [
+    {
+      "localPath": "src/Zodiac.Framework/Events/DarkScreenState.cs",
+      "bytes": 6764,
+      "sha256": "c245a666f6da1c3e7a334812a4a0fbfce2768bcdb6eda80c82018d6111006451"
+    },
+    {
+      "localPath": "src/Zodiac.Framework/Events/DarkScreenProgram.cs",
+      "bytes": 3515,
+      "sha256": "5fe752f0a803c416ed62d6b7133ab6f8743f4f3db08d57381775ea62475421d9"
+    },
+    {
+      "localPath": "src/Zodiac.Framework/Events/DarkScreenResult.cs",
+      "bytes": 2848,
+      "sha256": "200e001a53b2bc24db8269b38cd79a5a6770515c3cdab91f4d579bf2f5022260"
+    },
+    {
+      "localPath": "src/Zodiac.Framework/Events/DarkScreenExecutor.cs",
+      "bytes": 13494,
+      "sha256": "0b5e3451e28f6910005f5a96b0d9050432c66a78a0407cd564943ac00656ed0a"
+    },
+    {
+      "localPath": "tests/Zodiac.Framework.Tests/DarkScreenContractTests.cs",
+      "bytes": 38218,
+      "sha256": "d5f85743463a166af9a9c3a8bd18e9fceeff19c9f0579472fa41ee86a91db984"
+    },
+    {
+      "localPath": "tests/Zodiac.Framework.Tests/Zodiac.Framework.Tests.csproj",
+      "bytes": 1828,
+      "sha256": "e178f803840b271cb460a2ab3b65f6ba5c5ad907c5455e98ee6050b4ff4fd4b1"
+    }
+  ],
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuild": true,
+    "buildWarnings": 0,
+    "buildErrors": 0,
+    "dotnetPassed": 1967,
+    "newManagedTests": 58,
+    "perSuite": {
+      "engine": 24,
+      "framework": 725,
+      "content": 516,
+      "assetTool": 192,
+      "cli": 196,
+      "client": 314
+    },
+    "pythonPassed": 229,
+    "logs": [
+      {
+        "localPath": "scratch/dark-screen-093-validation/restore.log",
+        "bytes": 82,
+        "sha256": "2ad9967f2280d0195ad457a92fe6a353a8492625846632386df6dfc446efe4bc"
+      },
+      {
+        "localPath": "scratch/dark-screen-093-validation/build.log",
+        "bytes": 1678,
+        "sha256": "4123ea66b78be5dec18e1899ada01a8959228581151edbcb91f17b453962cf98"
+      },
+      {
+        "localPath": "scratch/dark-screen-093-validation/dotnet.log",
+        "bytes": 2981,
+        "sha256": "a3f13732725062ae8402bef12cdb798a466e033895beb2350d9062fa7c99c794"
+      },
+      {
+        "localPath": "scratch/dark-screen-093-validation/python.log",
+        "bytes": 1219,
+        "sha256": "079c54b1e64c9ead1c7e137daaa9aa7cdc9950d798ff25794470a77b3f2074f1"
+      }
+    ],
+    "dotnetReports": [
+      {
+        "localPath": "scratch/dark-screen-093-validation/dotnet/Jonathan_DESKTOP-EXCALIB_2026-10-25_16_04_29_net10.0.trx",
+        "bytes": 36854,
+        "sha256": "d736c669c004e5ea913917d1854f90d9d0f5dbf89e5709605cdb405c9798eba8",
+        "passed": 24
+      },
+      {
+        "localPath": "scratch/dark-screen-093-validation/dotnet/Jonathan_DESKTOP-EXCALIB_2026-10-25_16_04_29_net10.0[1].trx",
+        "bytes": 1096890,
+        "sha256": "270692940bf1b7f8ee594f8995c4aee5e59d5cae80a722c32dc6ab6df908d25a",
+        "passed": 725
+      },
+      {
+        "localPath": "scratch/dark-screen-093-validation/dotnet/Jonathan_DESKTOP-EXCALIB_2026-10-25_16_04_30_net10.0.trx",
+        "bytes": 284666,
+        "sha256": "6c412575fa4daf42e2752ddacd0b9c1777db6e0276ff2b5d4bfbbe9cc4165972",
+        "passed": 192
+      },
+      {
+        "localPath": "scratch/dark-screen-093-validation/dotnet/Jonathan_DESKTOP-EXCALIB_2026-10-25_16_04_30_net10.0[1].trx",
+        "bytes": 301481,
+        "sha256": "6b04decb6917412506f26070ae3652e862d07fa8375bb33054a8c798bbc2bb6e",
+        "passed": 196
+      },
+      {
+        "localPath": "scratch/dark-screen-093-validation/dotnet/Jonathan_DESKTOP-EXCALIB_2026-10-25_16_04_30_net10.0[2].trx",
+        "bytes": 748793,
+        "sha256": "331b743647d01bb04547cef355ef41cb72dd89b9c74641a5f30739e4f3ac5e27",
+        "passed": 516
+      },
+      {
+        "localPath": "scratch/dark-screen-093-validation/dotnet/Jonathan_DESKTOP-EXCALIB_2026-10-25_16_04_30_net10.0[3].trx",
+        "bytes": 465422,
+        "sha256": "4efa6c4e4b0830dedeb825ece2b4f9c2ac17a0fa3e1bdcdd5dbd2cfe316e6b04",
+        "passed": 314
+      }
+    ]
+  },
+  "contractCases": [
+    {
+      "id": "DSC-001",
+      "status": "executed-logical-subset",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-001\")",
+      "remaining": "Actual prepared/resource readiness"
+    },
+    {
+      "id": "DSC-002",
+      "status": "executed-logical",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-002\")",
+      "remaining": null
+    },
+    {
+      "id": "DSC-003",
+      "status": "executed-logical",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-003\")",
+      "remaining": null
+    },
+    {
+      "id": "DSC-004",
+      "status": "executed-logical",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-004\")",
+      "remaining": null
+    },
+    {
+      "id": "DSC-005",
+      "status": "executed-logical",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-005\")",
+      "remaining": null
+    },
+    {
+      "id": "DSC-006",
+      "status": "executed-logical",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-006\")",
+      "remaining": null
+    },
+    {
+      "id": "DSC-007",
+      "status": "executed-logical",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-007\")",
+      "remaining": null
+    },
+    {
+      "id": "DSC-008",
+      "status": "executed-logical",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-008\")",
+      "remaining": null
+    },
+    {
+      "id": "DSC-009",
+      "status": "executed-logical",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-009\")",
+      "remaining": null
+    },
+    {
+      "id": "DSC-010",
+      "status": "executed-logical",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-010\")",
+      "remaining": null
+    },
+    {
+      "id": "DSC-011",
+      "status": "executed-logical",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-011\")",
+      "remaining": null
+    },
+    {
+      "id": "DSC-012",
+      "status": "executed-logical",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-012\")",
+      "remaining": null
+    },
+    {
+      "id": "DSC-013",
+      "status": "executed-logical",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-013\")",
+      "remaining": null
+    },
+    {
+      "id": "DSC-014",
+      "status": "executed-logical",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-014\")",
+      "remaining": null
+    },
+    {
+      "id": "DSC-015",
+      "status": "executed-logical",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-015\")",
+      "remaining": null
+    },
+    {
+      "id": "DSC-016",
+      "status": "executed-logical",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-016\")",
+      "remaining": null
+    },
+    {
+      "id": "DSC-017",
+      "status": "executed-logical",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-017\")",
+      "remaining": null
+    },
+    {
+      "id": "DSC-018",
+      "status": "executed-logical",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-018\")",
+      "remaining": null
+    },
+    {
+      "id": "DSC-019",
+      "status": "executed-logical",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-019\")",
+      "remaining": null
+    },
+    {
+      "id": "DSC-020",
+      "status": "executed-logical",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-020\")",
+      "remaining": null
+    },
+    {
+      "id": "DSC-021",
+      "status": "executed-logical",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-021\")",
+      "remaining": null
+    },
+    {
+      "id": "DSC-022",
+      "status": "executed-logical-subset",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-022\")",
+      "remaining": "Real presentation resource recreation"
+    },
+    {
+      "id": "DSC-023",
+      "status": "executed-logical",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-023\")",
+      "remaining": null
+    },
+    {
+      "id": "DSC-024",
+      "status": "executed-logical",
+      "test": "Zodiac.Framework.Tests.DarkScreenContractTests.Historical_logical_contract_cases_execute(id: \"DSC-024\")",
+      "remaining": null
+    },
+    {
+      "id": "DSC-025",
+      "status": "pending",
+      "remaining": "Prepared math, rendering/loading or source-bound original presentation gate"
+    },
+    {
+      "id": "DSC-026",
+      "status": "pending",
+      "remaining": "Prepared math, rendering/loading or source-bound original presentation gate"
+    },
+    {
+      "id": "DSC-027",
+      "status": "pending",
+      "remaining": "Prepared math, rendering/loading or source-bound original presentation gate"
+    },
+    {
+      "id": "DSC-028",
+      "status": "pending",
+      "remaining": "Prepared math, rendering/loading or source-bound original presentation gate"
+    },
+    {
+      "id": "DSC-029",
+      "status": "pending",
+      "remaining": "Prepared math, rendering/loading or source-bound original presentation gate"
+    },
+    {
+      "id": "DSC-030",
+      "status": "managed-regression-only",
+      "remaining": "Native capture/output comparisons not rerun"
+    }
+  ],
+  "additionalManagedChecks": [
+    "Zodiac.Framework.Tests.DarkScreenContractTests.A_skipped_syntactic_start_does_not_allocate_and_release_is_no_match",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Admission_rejects_scene_capacity_without_losing_prior_history",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Authored_delay_boundaries_preserve_strict_phase_lengths(maximum: 0)",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Authored_delay_boundaries_preserve_strict_phase_lengths(maximum: 1)",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Authored_delay_boundaries_preserve_strict_phase_lengths(maximum: 3)",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Authored_delay_boundaries_preserve_strict_phase_lengths(maximum: 41)",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Clock_overflow_is_atomic",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Completion_still_obeys_scene_wide_barriers_for_other_transition_tasks",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Corrupted_retained_binding_or_external_ledger_state_rejects(field: \"clock\")",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Corrupted_retained_binding_or_external_ledger_state_rejects(field: \"foreign\")",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Corrupted_retained_binding_or_external_ledger_state_rejects(field: \"owner\")",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Corrupted_retained_binding_or_external_ledger_state_rejects(field: \"phase\")",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Corrupted_retained_binding_or_external_ledger_state_rejects(field: \"revision\")",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Definition_defensively_copies_authored_data_and_enforces_layout_envelope",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Draws_preserve_row_major_submission_order_and_input_snapshots",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Every_authored_cell_matches_an_independent_closed_form_through_both_phases",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Exited_event_retains_worker_and_terminal_tombstone_without_revival",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.External_late_unknown_task_failure_restores_event_signal_and_clock",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.External_update_uses_remaining_budget_before_worker_phase_publication",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Invalid_instruction_budgets_are_atomic(budget: -1)",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Invalid_instruction_budgets_are_atomic(budget: 8193)",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Invalid_update_batches_reject_before_tick_and_worker",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Invalid_update_budgets_are_atomic(budget: -1)",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Invalid_update_budgets_are_atomic(budget: 65)",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Late_arithmetic_failure_rolls_back_admission_and_release",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.No_effect_program_needs_no_binding_and_empty_barrier_still_yields",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Parent_resume_budget_failure_does_not_publish_barrier_success",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Predicted_newborn_identity_cannot_be_completed_by_external_updates",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Profile_remains_typed_and_rejects_invalid_program_payloads",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Program_rejects_second_syntactic_admission",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Pure_adapter_rejects_ready_or_suspended_wrong_command_without_advancing",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Starting_on_an_existing_scene_preserves_sequences_and_completed_history",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Unmanaged_tasks_apply_after_parent_poll_and_share_update_budget",
+    "Zodiac.Framework.Tests.DarkScreenContractTests.Worker_born_during_parent_resume_stays_at_first_yield"
+  ],
+  "timing": {
+    "selectedMaximumDelay": 41,
+    "holdingBirth": 55,
+    "firstFlashAndEntryBarrierObservation": 56,
+    "release": 100,
+    "lastBodyAndExitYield": 155,
+    "taskClear": 156,
+    "parentObservation": 157
+  },
+  "authority": {
+    "immutableWorker": true,
+    "existingLedger": true,
+    "eventBeforeWorker": true,
+    "atomicRollback": true,
+    "retainedIdentity": true,
+    "externalManagedUpdates": false,
+    "circleInput": false,
+    "rendererCompletion": false,
+    "rawScriptImport": false
+  },
+  "definitionData": "Authored synthetic 288-cell layout with delays 0/1/41 and smaller boundary maxima; actual original delay/rotation preparation is pending.",
+  "fullOriginalDelayOrProjectionRuntimeCheck": false,
+  "preparedPackageImplemented": false,
+  "rendererImplemented": false,
+  "clientOrContentChanged": false,
+  "nativeCapturesRerun": false,
+  "newOriginalCaptures": false,
+  "emulatorLaunched": false,
+  "originalEntryOrReleaseObserved": false,
+  "originalPixelComparison": false,
+  "originalDurationEstablished": false,
+  "fullStartupEstablished": false,
+  "next": "ZOD-094: verified preparation, strict separate loading and bounded flat-quad preview; combined banner/Ready integration follows separately.",
+  "mediaPolicy": "Original data, generated logs and TRX remain ignored under scratch; only authored code/tests, documentation and metadata identities are committed."
+}

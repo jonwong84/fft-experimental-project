@@ -1,0 +1,1342 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-337",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "confidence": "source-derived stored-damage and routing descriptions; no original/C execution",
+  "scope": "Fresh element work, known Fire-no-Oil and Earth-no-Float-or-rider; already-effective weather; no HP publication or proc/status execution",
+  "transforms": [
+    {
+      "id": "none-weather",
+      "input": {
+        "amount": 5,
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "expected": {
+        "weatherAmount": 5,
+        "amount": 5,
+        "nullified": false,
+        "absorbed": false,
+        "weaknessApplied": false
+      }
+    },
+    {
+      "id": "alternate-clear",
+      "input": {
+        "amount": 5,
+        "elements": 128,
+        "weather": 1,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "expected": {
+        "weatherAmount": 5,
+        "amount": 5,
+        "nullified": false,
+        "absorbed": false,
+        "weaknessApplied": false
+      }
+    },
+    {
+      "id": "rain-no-damage-change",
+      "input": {
+        "amount": 5,
+        "elements": 128,
+        "weather": 2,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "expected": {
+        "weatherAmount": 5,
+        "amount": 5,
+        "nullified": false,
+        "absorbed": false,
+        "weaknessApplied": false
+      }
+    },
+    {
+      "id": "storm-fire-rounding",
+      "input": {
+        "amount": 5,
+        "elements": 128,
+        "weather": 3,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "expected": {
+        "weatherAmount": 3,
+        "amount": 3,
+        "nullified": false,
+        "absorbed": false,
+        "weaknessApplied": false
+      }
+    },
+    {
+      "id": "strong-storm-lightning",
+      "input": {
+        "amount": 8,
+        "elements": 64,
+        "weather": 4,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "expected": {
+        "weatherAmount": 10,
+        "amount": 10,
+        "nullified": false,
+        "absorbed": false,
+        "weaknessApplied": false
+      }
+    },
+    {
+      "id": "snow-no-ice-boost",
+      "input": {
+        "amount": 5,
+        "elements": 32,
+        "weather": 5,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "expected": {
+        "weatherAmount": 5,
+        "amount": 5,
+        "nullified": false,
+        "absorbed": false,
+        "weaknessApplied": false
+      }
+    },
+    {
+      "id": "snowstorm-ice-rounding",
+      "input": {
+        "amount": 5,
+        "elements": 32,
+        "weather": 6,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "expected": {
+        "weatherAmount": 6,
+        "amount": 6,
+        "nullified": false,
+        "absorbed": false,
+        "weaknessApplied": false
+      }
+    },
+    {
+      "id": "strong-snowstorm-ice",
+      "input": {
+        "amount": 8,
+        "elements": 32,
+        "weather": 7,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "expected": {
+        "weatherAmount": 10,
+        "amount": 10,
+        "nullified": false,
+        "absorbed": false,
+        "weaknessApplied": false
+      }
+    },
+    {
+      "id": "storm-fire-lightning-sequential-stores",
+      "input": {
+        "amount": 5,
+        "elements": 192,
+        "weather": 3,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "expected": {
+        "weatherAmount": 3,
+        "amount": 3,
+        "nullified": false,
+        "absorbed": false,
+        "weaknessApplied": false
+      }
+    },
+    {
+      "id": "negative-storm-combination",
+      "input": {
+        "amount": -5,
+        "elements": 192,
+        "weather": 3,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "expected": {
+        "weatherAmount": -3,
+        "amount": -3,
+        "nullified": false,
+        "absorbed": false,
+        "weaknessApplied": false
+      }
+    },
+    {
+      "id": "storm-lightning-halfword-wrap",
+      "input": {
+        "amount": 32767,
+        "elements": 64,
+        "weather": 3,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "expected": {
+        "weatherAmount": -24578,
+        "amount": -24578,
+        "nullified": false,
+        "absorbed": false,
+        "weaknessApplied": false
+      }
+    },
+    {
+      "id": "half-then-weak-is-not-identity-on-odd",
+      "input": {
+        "amount": 5,
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 128,
+        "weak": 128
+      },
+      "expected": {
+        "weatherAmount": 5,
+        "amount": 4,
+        "nullified": false,
+        "absorbed": false,
+        "weaknessApplied": true
+      }
+    },
+    {
+      "id": "negative-half-then-weak",
+      "input": {
+        "amount": -5,
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 128,
+        "weak": 128
+      },
+      "expected": {
+        "weatherAmount": -5,
+        "amount": -4,
+        "nullified": false,
+        "absorbed": false,
+        "weaknessApplied": true
+      }
+    },
+    {
+      "id": "weak-halfword-wrap",
+      "input": {
+        "amount": 20000,
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 128
+      },
+      "expected": {
+        "weatherAmount": 20000,
+        "amount": -25536,
+        "nullified": false,
+        "absorbed": false,
+        "weaknessApplied": true
+      }
+    },
+    {
+      "id": "multiple-weak-elements-still-one-step",
+      "input": {
+        "amount": 5,
+        "elements": 160,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 160
+      },
+      "expected": {
+        "weatherAmount": 5,
+        "amount": 10,
+        "nullified": false,
+        "absorbed": false,
+        "weaknessApplied": true
+      }
+    },
+    {
+      "id": "weather-before-half-and-weak",
+      "input": {
+        "amount": 100,
+        "elements": 32,
+        "weather": 6,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 32,
+        "weak": 32
+      },
+      "expected": {
+        "weatherAmount": 125,
+        "amount": 124,
+        "nullified": false,
+        "absorbed": false,
+        "weaknessApplied": true
+      }
+    },
+    {
+      "id": "absorption-mark-retained-before-half-weak",
+      "input": {
+        "amount": 5,
+        "elements": 128,
+        "weather": 0,
+        "absorb": 128,
+        "nullify": 0,
+        "half": 128,
+        "weak": 128
+      },
+      "expected": {
+        "weatherAmount": 5,
+        "amount": 4,
+        "nullified": false,
+        "absorbed": true,
+        "weaknessApplied": true
+      }
+    },
+    {
+      "id": "nullify-clears-absorb-and-skips-half-weak",
+      "input": {
+        "amount": 5,
+        "elements": 128,
+        "weather": 0,
+        "absorb": 128,
+        "nullify": 128,
+        "half": 128,
+        "weak": 128
+      },
+      "expected": {
+        "weatherAmount": 5,
+        "amount": 0,
+        "nullified": true,
+        "absorbed": false,
+        "weaknessApplied": false
+      }
+    },
+    {
+      "id": "nonmatching-affinities",
+      "input": {
+        "amount": 5,
+        "elements": 32,
+        "weather": 0,
+        "absorb": 128,
+        "nullify": 128,
+        "half": 128,
+        "weak": 128
+      },
+      "expected": {
+        "weatherAmount": 5,
+        "amount": 5,
+        "nullified": false,
+        "absorbed": false,
+        "weaknessApplied": false
+      }
+    },
+    {
+      "id": "no-elements-means-no-affinity-intersection",
+      "input": {
+        "amount": 5,
+        "elements": 0,
+        "weather": 3,
+        "absorb": 255,
+        "nullify": 255,
+        "half": 255,
+        "weak": 255
+      },
+      "expected": {
+        "weatherAmount": 5,
+        "amount": 5,
+        "nullified": false,
+        "absorbed": false,
+        "weaknessApplied": false
+      }
+    },
+    {
+      "id": "zero-weak-keeps-marker",
+      "input": {
+        "amount": 0,
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 128
+      },
+      "expected": {
+        "weatherAmount": 0,
+        "amount": 0,
+        "nullified": false,
+        "absorbed": false,
+        "weaknessApplied": true
+      }
+    },
+    {
+      "id": "zero-absorb-keeps-marker",
+      "input": {
+        "amount": 0,
+        "elements": 128,
+        "weather": 0,
+        "absorb": 128,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "expected": {
+        "weatherAmount": 0,
+        "amount": 0,
+        "nullified": false,
+        "absorbed": true,
+        "weaknessApplied": false
+      }
+    },
+    {
+      "id": "earth-with-known-no-Float-rider",
+      "input": {
+        "amount": 9,
+        "elements": 8,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 8,
+        "weak": 0
+      },
+      "expected": {
+        "weatherAmount": 9,
+        "amount": 4,
+        "nullified": false,
+        "absorbed": false,
+        "weaknessApplied": false
+      }
+    },
+    {
+      "id": "all-mask-weak-applies-once",
+      "input": {
+        "amount": 3,
+        "elements": 255,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 255
+      },
+      "expected": {
+        "weatherAmount": 3,
+        "amount": 6,
+        "nullified": false,
+        "absorbed": false,
+        "weaknessApplied": true
+      }
+    }
+  ],
+  "projections": [
+    {
+      "id": "weather-before-Faith-differs-from-reordered",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 1,
+        "caster": {
+          "stored": 90,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 90,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 3,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "expected": {
+        "product": 5,
+        "preFaith": 3,
+        "amount": 2,
+        "nullified": false
+      }
+    },
+    {
+      "id": "half-before-Faith-differs-from-reordered",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 1,
+        "caster": {
+          "stored": 90,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 90,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 128,
+        "weak": 0
+      },
+      "expected": {
+        "product": 5,
+        "preFaith": 2,
+        "amount": 1,
+        "nullified": false
+      }
+    },
+    {
+      "id": "weak-before-Faith",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 7,
+        "power": 1,
+        "caster": {
+          "stored": 90,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 90,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 128
+      },
+      "expected": {
+        "product": 7,
+        "preFaith": 14,
+        "amount": 11,
+        "nullified": false
+      }
+    },
+    {
+      "id": "nullification-skips-Faith",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 128,
+        "nullify": 128,
+        "half": 128,
+        "weak": 128
+      },
+      "expected": {
+        "product": 70,
+        "preFaith": 0,
+        "amount": null,
+        "nullified": true
+      }
+    },
+    {
+      "id": "negative-weather-then-Faith",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 255,
+        "power": 255,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 64,
+        "weather": 3,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "expected": {
+        "product": -511,
+        "preFaith": -638,
+        "amount": -312,
+        "nullified": false
+      }
+    },
+    {
+      "id": "weather-wrap-before-Faith",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 128,
+        "power": 255,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 64,
+        "weather": 3,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "expected": {
+        "product": 32640,
+        "preFaith": -24736,
+        "amount": -12120,
+        "nullified": false
+      }
+    },
+    {
+      "id": "damage-absorption-marker-after-Faith",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 128,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "expected": {
+        "product": 70,
+        "preFaith": 70,
+        "amount": 34,
+        "nullified": false
+      }
+    },
+    {
+      "id": "healing-ignores-all-element-context",
+      "input": {
+        "kind": "Healing",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 255,
+        "weather": 99,
+        "absorb": 255,
+        "nullify": 255,
+        "half": 255,
+        "weak": 255
+      },
+      "expected": {
+        "product": 70,
+        "preFaith": null,
+        "amount": 34,
+        "nullified": false
+      }
+    },
+    {
+      "id": "zero-Faith-is-not-nullification",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 0,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 0,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "expected": {
+        "product": 70,
+        "preFaith": 70,
+        "amount": 0,
+        "nullified": false
+      }
+    },
+    {
+      "id": "half-weak-and-Faith",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 1,
+        "caster": {
+          "stored": 90,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 90,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 128,
+        "weak": 128
+      },
+      "expected": {
+        "product": 5,
+        "preFaith": 4,
+        "amount": 3,
+        "nullified": false
+      }
+    },
+    {
+      "id": "uncapped-raw-damage",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 99,
+        "power": 40,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "expected": {
+        "product": 3960,
+        "preFaith": 3960,
+        "amount": 1940,
+        "nullified": false
+      }
+    },
+    {
+      "id": "uncapped-raw-healing",
+      "input": {
+        "kind": "Healing",
+        "magicAttack": 99,
+        "power": 40,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 0,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "expected": {
+        "product": 3960,
+        "preFaith": null,
+        "amount": 1940,
+        "nullified": false
+      }
+    }
+  ],
+  "routes": [
+    {
+      "id": "damage-living",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": false,
+      "expected": {
+        "route": "Damage",
+        "hpDamage": 34,
+        "hpHealing": 0,
+        "clearFirstCanceledStatusByte": false
+      }
+    },
+    {
+      "id": "damage-undead-unchanged",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": true,
+      "expected": {
+        "route": "Damage",
+        "hpDamage": 34,
+        "hpHealing": 0,
+        "clearFirstCanceledStatusByte": false
+      }
+    },
+    {
+      "id": "absorbed-damage-living",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 128,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": false,
+      "expected": {
+        "route": "Healing",
+        "hpDamage": 0,
+        "hpHealing": 34,
+        "clearFirstCanceledStatusByte": false
+      }
+    },
+    {
+      "id": "absorbed-damage-undead-stays-healing",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 128,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": true,
+      "expected": {
+        "route": "Healing",
+        "hpDamage": 0,
+        "hpHealing": 34,
+        "clearFirstCanceledStatusByte": false
+      }
+    },
+    {
+      "id": "healing-living",
+      "input": {
+        "kind": "Healing",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 128,
+        "nullify": 128,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": false,
+      "expected": {
+        "route": "Healing",
+        "hpDamage": 0,
+        "hpHealing": 34,
+        "clearFirstCanceledStatusByte": false
+      }
+    },
+    {
+      "id": "healing-undead-clears-whole-first-byte",
+      "input": {
+        "kind": "Healing",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 128,
+        "nullify": 128,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": true,
+      "expected": {
+        "route": "Damage",
+        "hpDamage": 34,
+        "hpHealing": 0,
+        "clearFirstCanceledStatusByte": true
+      }
+    },
+    {
+      "id": "nullified-absorb-does-not-heal",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 128,
+        "nullify": 128,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": true,
+      "expected": {
+        "route": "Nullified",
+        "hpDamage": 0,
+        "hpHealing": 0,
+        "clearFirstCanceledStatusByte": false
+      }
+    },
+    {
+      "id": "zero-damage-keeps-route",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 0,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 0,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": false,
+      "expected": {
+        "route": "Damage",
+        "hpDamage": 0,
+        "hpHealing": 0,
+        "clearFirstCanceledStatusByte": false
+      }
+    },
+    {
+      "id": "zero-absorb-keeps-route",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 0,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 0,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 128,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": true,
+      "expected": {
+        "route": "Healing",
+        "hpDamage": 0,
+        "hpHealing": 0,
+        "clearFirstCanceledStatusByte": false
+      }
+    },
+    {
+      "id": "zero-heal-undead-still-clears-byte",
+      "input": {
+        "kind": "Healing",
+        "magicAttack": 5,
+        "power": 14,
+        "caster": {
+          "stored": 0,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 0,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": true,
+      "expected": {
+        "route": "Damage",
+        "hpDamage": 0,
+        "hpHealing": 0,
+        "clearFirstCanceledStatusByte": true
+      }
+    },
+    {
+      "id": "negative-absorption-preserves-bits",
+      "input": {
+        "kind": "Damage",
+        "magicAttack": 255,
+        "power": 255,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 128,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": true,
+      "expected": {
+        "route": "Healing",
+        "hpDamage": 0,
+        "hpHealing": -250,
+        "clearFirstCanceledStatusByte": false
+      }
+    },
+    {
+      "id": "negative-healing-undead",
+      "input": {
+        "kind": "Healing",
+        "magicAttack": 255,
+        "power": 255,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": true,
+      "expected": {
+        "route": "Damage",
+        "hpDamage": -250,
+        "hpHealing": 0,
+        "clearFirstCanceledStatusByte": true
+      }
+    },
+    {
+      "id": "routing-does-not-cap-at-999",
+      "input": {
+        "kind": "Healing",
+        "magicAttack": 99,
+        "power": 40,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": false,
+      "expected": {
+        "route": "Healing",
+        "hpDamage": 0,
+        "hpHealing": 1940,
+        "clearFirstCanceledStatusByte": false
+      }
+    },
+    {
+      "id": "negative-healing-living",
+      "input": {
+        "kind": "Healing",
+        "magicAttack": 255,
+        "power": 255,
+        "caster": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "target": {
+          "stored": 70,
+          "faithStatus": false,
+          "innocentStatus": false
+        },
+        "modifiers": {}
+      },
+      "context": {
+        "elements": 128,
+        "weather": 0,
+        "absorb": 0,
+        "nullify": 0,
+        "half": 0,
+        "weak": 0
+      },
+      "targetIsUndead": false,
+      "expected": {
+        "route": "Healing",
+        "hpDamage": 0,
+        "hpHealing": -250,
+        "clearFirstCanceledStatusByte": false
+      }
+    }
+  ]
+}

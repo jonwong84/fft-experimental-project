@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-278",
+    "ZOD-279",
+    "ZOD-280",
+    "ZOD-281",
+    "ZOD-282"
+  ],
+  "date": "2026-11-04",
+  "kind": "managed-ordinary-roster-movement-sword-facing",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "ac83f9a978e52fce124fcf68d29a96799f5634f2",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/combat/roster-combat-source-v1.json",
+  "design": "docs/architecture/zod-277-roster-combat.md",
+  "behavior": "docs/behavior/flat-roster-combat.md",
+  "sourceFixture": "docs/fixtures/behavior/roster-combat-contract-v1.json",
+  "implementationPaths": [
+    "src/Zodiac.Framework/FlatRosterBattleProfile.cs",
+    "src/Zodiac.Framework/FlatRosterMovement.cs",
+    "src/Zodiac.Framework/FlatRosterPathMovement.cs",
+    "src/Zodiac.Framework/ConfirmedPathMovement.cs",
+    "src/Zodiac.Framework/RosterFacingTurnBattle.cs",
+    "src/Zodiac.Framework/FacingReceiptRules.cs",
+    "src/Zodiac.Framework/FlatOrdinaryMovement.cs",
+    "src/Zodiac.Framework/FlatSwordBattleProfile.cs",
+    "src/Zodiac.Framework/AttackBattleSimulator.cs",
+    "src/Zodiac.Framework/FacingTurnPathMovement.cs",
+    "src/Zodiac.Framework/FacingTurnBattle.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Tests/FlatRosterCombatTests.cs",
+    "tests/Zodiac.Framework.Tests/RosterFacingTurnTests.cs",
+    "tests/Zodiac.Framework.Tests/RosterCombatTestData.cs"
+  ],
+  "invariants": [
+    "owned stable team/source-order profile; complete state matching; original-compatible <=21 units, movement <=16 other living records; uncapped profile storage",
+    "shared flat range/backtrace, ally transit and empty endpoints, no enemy horizontal-jump shortcut",
+    "optional reverse focus rows clear all occupancy; no provided focus means no row writes",
+    "shared actual path/heading/choice/CT settlement with atomic rejection and no movement RNG",
+    "one private sword resolution owner; selected friendly fire allowed; bystanders add no draws or effects",
+    "critical landing checks all occupants including corpses; lethal damage cancels push after draws",
+    "separate opaque roster sessions and shared exact receipt guards; complete actual result binding",
+    "explicit fixed/kept facing only, no automatic AI facing/next-clock/terminal routing or frozen roster plan",
+    "old pair profiles/APIs/AI guards and streams remain unchanged"
+  ],
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4325,
+    "frameworkPassed": 1483,
+    "aiPassed": 1097,
+    "newFrameworkCases": 16,
+    "pythonPassed": 548,
+    "newPythonCases": 3,
+    "trxReports": 7,
+    "sourceFiles": 9,
+    "sourceFunctions": 28,
+    "sourceDescriptions": 11,
+    "sourcePreparedAudit": true,
+    "algorithmGuideAudit": true,
+    "localLinkAudit": true,
+    "coverageAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/roster-combat-277-282/"
+  },
+  "boundaries": [
+    "corpse movement/overlap and death scheduling remain unsupported; raw result corpses still occupy knockback landing tiles",
+    "existing AI drivers retain two-opponent domain; full roster refresh/team/ability/scoring/target search pending",
+    "ZOD-283 next traces ordinary-roster AI preparation and hypothetical simulation",
+    "other maps/statuses/policies, automatic facing, terminal routing, frame RNG, host/editor, owner drafts, replacement interfaces and ZOD-106 stay separate/deferred"
+  ],
+  "dependencyChanges": false,
+  "newProductionFriendAccess": false,
+  "originalExecuted": false,
+  "cExecuted": false
+}

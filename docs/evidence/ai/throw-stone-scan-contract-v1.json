@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-190",
+  "date": "2026-10-29",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "adce90ce127f80d074c13ef0529729039a38c534",
+  "productionImplemented": false,
+  "sourceReceipt": "docs/evidence/ai/ability-iteration-contract-v1.json",
+  "fixture": "docs/fixtures/behavior/ai-throw-stone-scan-contract-v1.json",
+  "contract": "docs/architecture/zod-190-throw-stone-ai-scan.md",
+  "sourceFiles": [
+    {
+      "path": "src/battle/ai/abilities.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 20079,
+      "sha256": "42b793235173dbc98e77249df6488eed3708ef3c60c9d10520557fc9636c6862"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 147880,
+      "sha256": "5519c4550e9fea302ee4366848435b8131c7d3aef24f02462c7571d11bd1cd17"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 111880,
+      "sha256": "22555f06b061bc6f017f721998a5e44dfb3d4fa4c7284a2ee3367dfa27ce80ad"
+    },
+    {
+      "path": "src/battle/combat/targets.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 69383,
+      "sha256": "b891ce80c358af2b3914d68f06a832fd0d4e73ba7516c37aeffed6ba1c09071d"
+    },
+    {
+      "path": "src/battle/effects/projectile.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 29334,
+      "sha256": "427296982506a888b71698bfec63e09e7b0aceaa49be169e097ce8c7e08be960"
+    },
+    {
+      "path": "include/fft/ai.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 25771,
+      "sha256": "fa7aabf5b4d21e3f42be7978c061fb859a52709a234e5b4205c5de5e2c8566b5"
+    },
+    {
+      "path": "include/fft/ability.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 34632,
+      "sha256": "530676861205ea3cf31cada08ffc927142db98af0ad2c986722ad83b069b9a2f"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/ai/abilities.c",
+      "symbol": "ai_unit_abilities_init",
+      "startLine": 86,
+      "endLine": 197,
+      "normalizedLfSha256": "fb9c5da2b0c69815e35072a175ae22a865c76821481eb51de260564caf49aac4"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ability_considerations_set",
+      "startLine": 607,
+      "endLine": 904,
+      "normalizedLfSha256": "6ee3cb512ac66ef6799dce7b4f78c549cc10d1eaa0a4fa7701e0fbf6bed4d21d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_ability_entry_load",
+      "startLine": 974,
+      "endLine": 1131,
+      "normalizedLfSha256": "98619a79ae6c72e98affb0803445984e5291b27b130e0fb27394b73fccb4e832"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "rank_baseline_seed",
+      "startLine": 1396,
+      "endLine": 1409,
+      "normalizedLfSha256": "812e239202dd2be38eb7ee736b1bb7a62c75d04e6aec4bfb5d7bb25561e28e36"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "rank_compare",
+      "startLine": 1721,
+      "endLine": 1745,
+      "normalizedLfSha256": "4b8030c705f4d09006602503d0e1f437678378998b87b5c02e9cc2085aace112"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_rank_is_higher",
+      "startLine": 1753,
+      "endLine": 1772,
+      "normalizedLfSha256": "082674931431d31ee9304e6b0fcb475186f91ea0123d6ac77249a02dc5f712a5"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "foe_proximity_grid_fill",
+      "startLine": 3240,
+      "endLine": 3292,
+      "normalizedLfSha256": "4452983c86938f116afa90a47edea3a7a32d7b7c79578309104f046a0167c01d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "target_is_excluded_from_imminent_enemies",
+      "startLine": 3298,
+      "endLine": 3314,
+      "normalizedLfSha256": "06411bcace6b17d5c12aa65cf7a59e2a97b5ac0b67e5f2711954bff54020a0c3"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "reachable_tiles_score",
+      "startLine": 3323,
+      "endLine": 3387,
+      "normalizedLfSha256": "a1267e9003813caf13232b6d5192c71f6f1cf8fd416bbaf21bc8038400b22fb1"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_ability_outcome_evaluate",
+      "startLine": 311,
+      "endLine": 467,
+      "normalizedLfSha256": "ef236fb9f5cb2ed53870489b054483c7227e76c62c6fcb7d1b6f3c1f1b126f68"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "useful_targets_filter",
+      "startLine": 2015,
+      "endLine": 2031,
+      "normalizedLfSha256": "299bc384c97e93ab71b5f9c8951ffae4b11c427174e6f54f4d1c0c6a9ab83954"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_target_classify_ability_effect",
+      "startLine": 2039,
+      "endLine": 2313,
+      "normalizedLfSha256": "00ee8d38a45c4fffda9167a0197e6d3c56d42cd0c4ff95ec8975c0a981772439"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "target_enemies_with_move_opportunity_exclude",
+      "startLine": 2363,
+      "endLine": 2384,
+      "normalizedLfSha256": "fce505f3335178ae24639cd8103142b4818c377b8715b04f4f01ab036ac7850f"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "unit_can_move_by_charge_deadline",
+      "startLine": 2388,
+      "endLine": 2402,
+      "normalizedLfSha256": "206c6d373eabc19dcb3aa3b05d3f2935be523755985f5fd3d0456bda419291b8"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "origin_reachable_evaluate",
+      "startLine": 832,
+      "endLine": 905,
+      "normalizedLfSha256": "f213309e60e63e57e9b159868cd3e6a95aee7e49a5d9b71f5bac60c0ec4d528b"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "origin_destination_finalize",
+      "startLine": 913,
+      "endLine": 923,
+      "normalizedLfSha256": "456dc6cf56cf7c3e86c5bdfc3876b641f58d126e24b3f5920e491a693a7c1436"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "origin_next_take",
+      "startLine": 931,
+      "endLine": 962,
+      "normalizedLfSha256": "528327ddb6e45728cc46749c03a9c7b4fce817d5637e9d81d8e9e010982d5930"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_cast_aim_tiles_build",
+      "startLine": 976,
+      "endLine": 1087,
+      "normalizedLfSha256": "09da56be25432d8c072b85eb489b9d8ffd05d470df2e5ce0be8a8b5efb294fda"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "origin_targetable_mask_build",
+      "startLine": 1102,
+      "endLine": 1162,
+      "normalizedLfSha256": "4f5dd6bf289e68bd306624f4071a33682fb8e31d65a495a31301947371ec801b"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "origin_aim_tiles_evaluate",
+      "startLine": 1233,
+      "endLine": 1360,
+      "normalizedLfSha256": "c3c7e39451e0cfc495fba11e327d472693dc185bdb14462017ac40b463482741"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "target_unit_on_panel_find",
+      "startLine": 1364,
+      "endLine": 1391,
+      "normalizedLfSha256": "b3665d3444dc0ec24a8f045b3f681fb492363735d9dd5b88dfaf784e50f20f9d"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_action_evaluate",
+      "startLine": 1410,
+      "endLine": 1423,
+      "normalizedLfSha256": "86cc7f91e9ae6614fdc2d6b1abf6acc6d19eeef8fcb7cad66cea35c10c390f80"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "action_hits_simulate",
+      "startLine": 1772,
+      "endLine": 1796,
+      "normalizedLfSha256": "8645f10a3b9f3738453919558247b8ae951627fc279ca971bf1e4d465c216919"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "strikes_simulate",
+      "startLine": 1808,
+      "endLine": 1897,
+      "normalizedLfSha256": "72f586ff192e9466e7af3dfe1c3093b890c458fc31747757649e243bb731ea6c"
+    },
+    {
+      "path": "src/battle/combat/targets.c",
+      "symbol": "target_range_set_for_action",
+      "startLine": 968,
+      "endLine": 1058,
+      "normalizedLfSha256": "3e0fa439ba68dd52e1ef6455d41a11ec87c37b04aaae0e95c731e20a4c68397f"
+    },
+    {
+      "path": "src/battle/combat/targets.c",
+      "symbol": "ability_range_set",
+      "startLine": 708,
+      "endLine": 795,
+      "normalizedLfSha256": "a0a7d76d1a7f994e9fc8c1263e875bcc047a8a61477e52ffc851740f935ff898"
+    },
+    {
+      "path": "src/battle/effects/projectile.c",
+      "symbol": "projectile_direct_check_between_units",
+      "startLine": 609,
+      "endLine": 633,
+      "normalizedLfSha256": "b64c0c26353fe672a9d3597a40ab9e3fa32903a49197da10be17d5cd8b268416"
+    },
+    {
+      "path": "src/battle/effects/projectile.c",
+      "symbol": "direct_path_trace",
+      "startLine": 562,
+      "endLine": 600,
+      "normalizedLfSha256": "59df1d7c4ffe24aab09df83e7448806d43d50211ea956b26b3273705404ef430"
+    }
+  ],
+  "selectedDataFacts": {
+    "abilityId": 148,
+    "staticAiFacts": {
+      "targetAllies": false,
+      "targetEnemies": true,
+      "affectsStats": false,
+      "affectsHp": true,
+      "evadeable": true,
+      "randomUse": false,
+      "followTarget": false,
+      "reflectable": false,
+      "targetMapTiles": false,
+      "physicalAttack": true,
+      "directTrajectory": true,
+      "arcTrajectory": false
+    },
+    "range": 4,
+    "aoe": 0,
+    "formula": 55,
+    "x": 0,
+    "y": 2,
+    "ct": 0,
+    "mp": 0,
+    "vertical": 0,
+    "cannotTargetSelf": true,
+    "cannotHitCaster": true,
+    "noFollowTarget": true
+  },
+  "preparedPolicy": {
+    "exhaustiveOrigins": false,
+    "forceConsumeAim": false,
+    "consumeAim": true,
+    "selfEffect": "None",
+    "randomUse": false
+  },
+  "selectedChild": {
+    "ticket": "ZOD-191",
+    "scope": "fresh-movement-prefix-and-one-clear-Throw-Stone-origin"
+  },
+  "limitations": "Source fingerprints and isolated supplied descriptions only; no managed, C or original execution, no complete projectile or AI equivalence claim."
+}

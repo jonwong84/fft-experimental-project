@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-296"
+  ],
+  "date": "2026-11-05",
+  "kind": "managed-fresh-roster-ordinary-attack-enumeration",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "managedBaseRevision": "6094d3b06635dcfd0b659ae4a7192363786c1df5",
+  "productionImplemented": true,
+  "sourceStudy": "docs/evidence/ai/roster-attack-source-v1.json",
+  "design": "docs/architecture/zod-296-roster-attack-enumeration.md",
+  "behavior": "docs/behavior/roster-sword-ai-attack.md",
+  "sourceFixture": "docs/fixtures/behavior/roster-attack-contract-v1.json",
+  "implementationPaths": [
+    "src/Zodiac.Framework.Ai/Sword/RosterSwordAiAttackEntry.cs",
+    "src/Zodiac.Framework.Ai/Shared/AiRosterCastGeometry.cs",
+    "src/Zodiac.Framework.Ai/Shared/RosterAiCastOrigins.cs",
+    "src/Zodiac.Framework.Ai/Sword/RosterSwordAiCandidate.cs",
+    "src/Zodiac.Framework.Ai/Sword/SwordAiFormulaProjection.cs"
+  ],
+  "tests": [
+    "tests/Zodiac.Framework.Ai.Tests/Sword/RosterSwordAiAttackEntryTests.cs"
+  ],
+  "invariants": [
+    "one fresh general prefix and derived first Attack occurrence; explicit ordinary tile/exhaustive policy and actual sword binding",
+    "shared masks span every active useful enemy, independently of focus and imminent proximity; source map origin then aim-panel order",
+    "actor origin substitutes D1/ACT-first, others Move-first; no synthesized duplicate order or destination deduplication",
+    "no ranked-origin priority read, aim consumption or unentered action work; post-ACT skips before weapon invocation",
+    "every candidate restores live baseline while supported RNG chains, including losing, NotValuable and projected KO outcomes",
+    "source strict rank/lower final proximity replacement and first complete tie; best compares with owned D0 without ranked array/lottery",
+    "shared private geometry/formula/selected-target/candidate/clock/scoring owners; pair API/admission/streams unchanged",
+    "whole-query failure restores input RNG and publishes no partial prefix/candidates; no cached executable input or live command authority"
+  ],
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "releaseBuildErrors": 0,
+    "dotnetPassed": 4371,
+    "frameworkPassed": 1483,
+    "aiPassed": 1143,
+    "newAiCases": 8,
+    "pythonPassed": 563,
+    "newPythonCases": 3,
+    "trxReports": 7,
+    "sourceFiles": 16,
+    "sourceFunctions": 55,
+    "sourceDescriptions": 10,
+    "sourcePreparedAudit": true,
+    "algorithmGuideAudit": true,
+    "localLinkAudit": true,
+    "coverageAudit": true,
+    "ownerDraftsUnchanged": true,
+    "reports": "scratch/roster-attack-296/"
+  },
+  "boundaries": [
+    "living ordinary compact16, stable teams, MP0/positive Speed, source general policy, raw Move<=124 and strict flat geometry",
+    "isolates first Attack occurrence; other listed entries affect preparation only, not their effects or complete-list stream",
+    "Stone, full-list ranking/lottery and roster AI commands/turns remain open; ZOD-297 next traces Stone effects/trajectories/ranked aims",
+    "other abilities/policies/statuses/maps, full corpse lifecycle, automatic facing, terminal routing and frame RNG remain open",
+    "owner drafts, host/editor, broad replacement interfaces and ZOD-106 deferred"
+  ],
+  "dependencyChanges": false,
+  "newProductionFriendAccess": false,
+  "originalExecuted": false,
+  "cExecuted": false
+}

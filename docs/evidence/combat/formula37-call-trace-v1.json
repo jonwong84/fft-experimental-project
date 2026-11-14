@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "review": "ZOD-427 supplied formula0x37 trace confirmation",
+  "managedBaseRevision": "34e6ff5e3df38264d83d3f210e41a880fbaa37e0",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "sourceReceipt": "docs/evidence/combat/physical-pipeline-review-source-v1.json",
+  "targetMetadata": {
+    "path": "target/battle.yaml",
+    "hashEncoding": "utf8-lf",
+    "byteLength": 301903,
+    "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+  },
+  "handler": {
+    "symbol": "formula_damage_random_y_times_pa",
+    "address": "0x80189f84",
+    "preparedFileOffset": "0x122f84"
+  },
+  "verifiedCalls": [
+    {
+      "callPc": "0x80189f8c",
+      "targetPc": "0x80188510",
+      "symbol": "formula_evade_calculate_physical"
+    },
+    {
+      "callPc": "0x80189f9c",
+      "targetPc": "0x80185e04",
+      "symbol": "formula_store_pa_and_y"
+    },
+    {
+      "callPc": "0x80189fa4",
+      "targetPc": "0x8018614c",
+      "symbol": "formula_apply_attack_up_and_martial_arts"
+    },
+    {
+      "callPc": "0x80189fac",
+      "targetPc": "0x80188adc",
+      "symbol": "formula_apply_physical_modifiers_without_supports"
+    },
+    {
+      "callPc": "0x80189fb4",
+      "targetPc": "0x8018691c",
+      "symbol": "formula_apply_damage_and_knockback"
+    }
+  ],
+  "evasionBranch": {
+    "pc": "0x80189f94",
+    "condition": "v0 != 0: exit handler",
+    "target": "0x80189fbc",
+    "fallthrough": "v0 == 0: continue PA/Y, modifiers and damage/knockback"
+  },
+  "returnToCaller": {
+    "symbol": "action_calculate_target_result",
+    "entryPc": "0x8018b34c",
+    "dispatchCallPc": "0x8018b974",
+    "delaySlotPc": "0x8018b978",
+    "returnPc": "0x8018b97c",
+    "resumedOperation": "Unsigned formula < 7 comparison before applicable aftermath/finalization"
+  },
+  "preparedValidation": {
+    "path": "scratch/fft-decomp-work/build/extracted/files/BATTLE.BIN",
+    "loadAddress": "0x80067000",
+    "size": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "readOnly": true
+  },
+  "behaviorChange": false,
+  "originalExecuted": false,
+  "cExecuted": false
+}

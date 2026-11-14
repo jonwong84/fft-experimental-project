@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    "ZOD-418",
+    "ZOD-423"
+  ],
+  "managedBaseRevision": "230faf286054826db213b73e91b2cafac8a3994b",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "sourceReceipt": "docs/evidence/ai/spell-aim-search-source-v1.json",
+  "sourceAudit": {
+    "aimMaskDescriptions": 4,
+    "targetingPassDescriptions": 4,
+    "rankDescriptions": 7,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "sourceFiles": 9,
+    "sourceFunctions": 24
+  },
+  "movedFiles": [
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetChoice.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Selection/SpellTargetChoice.cs",
+      "sha256": "c1506301f2905cd98abb2942d2894a239b036730b5d3f6835ec9f79b5fce3221"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetChoiceMode.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Selection/SpellTargetChoiceMode.cs",
+      "sha256": "636a8614679fc13914cb6d14ee09d749c0b650c4d46fe0c53f010b0eaf3e3d24"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetChoiceQuery.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Selection/SpellTargetChoiceQuery.cs",
+      "sha256": "582f54d989594f7f1d972444a17e5e84dc9cb4e76ccdd4522b22004bbfe8a52a"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetChoiceResult.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Selection/SpellTargetChoiceResult.cs",
+      "sha256": "2f74b7c0f7bc90cc8a90ea6850abfb8e057cadb3cd554eacb9909c751137e79e"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimCapture.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Selection/SpellAimCapture.cs",
+      "sha256": "087060d08ba958c991bb1d88038a27bdf09987770ae7c1613f1d3c41d62e952f"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimCaptureResult.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Selection/SpellAimCaptureResult.cs",
+      "sha256": "5a07886be517dde9d9fa2654799d085001c0fa92aaedc9bd592cc4663ff3afee"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimCaptureProfile.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Selection/SpellAimCaptureProfile.cs",
+      "sha256": "126aec95af49e3f7c60927c21d694b1e4b2c1dfeecb72d01b35f9b4a500d7791"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/ConfirmedSpellAim.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Selection/ConfirmedSpellAim.cs",
+      "sha256": "47e0010b4d2881b73195c3c208018e8b628c4d13940eaa2c28eb0132e8a72362"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/StoredSpellAim.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Selection/StoredSpellAim.cs",
+      "sha256": "49b3165bb5287199ab044d8e2fca6820c7ee890f6b34f833a9d39c55a230c9c2"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/OrdinarySpellGeometry.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Geometry/OrdinarySpellGeometry.cs",
+      "sha256": "18e314b837439c46468096b40519132dcb8362320d14ceaa44c1986c4c0fbb13"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetPanels.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Geometry/SpellTargetPanels.cs",
+      "sha256": "3fec9a1743bb076ce9db6a3296a91e8d22e3e855e3b32c8c10845ab130256c02"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellPanelQueryResult.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Geometry/SpellPanelQueryResult.cs",
+      "sha256": "3a30bfa2341f78362246d160240f00a7015520d21415814e30b4895839b1838c"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetingProfile.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Geometry/SpellTargetingProfile.cs",
+      "sha256": "cda1c0e71320b07e2dbb224138a87163c3aa823680434f7cdffebfd6cfb7510a"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimResolver.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Resolution/SpellAimResolver.cs",
+      "sha256": "969bf69b29430c746e81b49f155dd57059e1b3565615b05019b244bd4e310430"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimResolutionResult.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Resolution/SpellAimResolutionResult.cs",
+      "sha256": "cb5cfbf32ce5c83bd3bcdee0237b6a0943329e6586f4962d0bfb824af33ee2a2"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimResolutionProfile.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Resolution/SpellAimResolutionProfile.cs",
+      "sha256": "f691542915c68f8778589e7b1e18ac15f2cb11cd242f5a93941c8ee4717aa41a"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellAimAnchor.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Resolution/SpellAimAnchor.cs",
+      "sha256": "8a78ad2ca1aaac6d3dacceba6023125621987913d9e01042bc7ea8798f706477"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/StoredSpellCastQuery.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Resolution/StoredSpellCastQuery.cs",
+      "sha256": "3331c5ee3fb80ab56560e8ef0998efa83889430ba87ffa9434e2f38c53e656dd"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/StoredSpellCastRequest.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Resolution/StoredSpellCastRequest.cs",
+      "sha256": "1ced766675b8c683c5d9324d57bc3f97b3532863ed7fb3c2c7ded876e99a8328"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellGeometryCastRequest.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Resolution/SpellGeometryCastRequest.cs",
+      "sha256": "307e3d80375969ecd220b53a73606dc8fc772c35a4671ee31590239a5ec3a71b"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetCastProfile.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Resolution/SpellTargetCastProfile.cs",
+      "sha256": "32e6f7a59d29267b59efb93a98a1c3e851803e4fdf08ff02a001fb3ac9b84918"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetCombatant.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Resolution/SpellTargetCombatant.cs",
+      "sha256": "29045304e7a51d1254edc764d66a99aa7caf6869dda03b8a4b54d432704b1e45"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetOccupant.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Resolution/SpellTargetOccupant.cs",
+      "sha256": "e774bf48921dcff01e3396586d0ab11d6c6eb22e7caff0b4844f8e0e61cc06ba"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetSelection.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Resolution/SpellTargetSelection.cs",
+      "sha256": "2b814c20746088ed3f0c6427352e4b1ab4991475696b72a1025b393035a80797"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetSelectionResult.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Resolution/SpellTargetSelectionResult.cs",
+      "sha256": "d9b96137c3b029a4b485c626d2441403538f055ca847c49ba92f52b30d9b84a4"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetRosterProfile.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Resolution/SpellTargetRosterProfile.cs",
+      "sha256": "93bb3022b9044b3128448ae3da23fe7e808b1c7454a0375ffdf980bb27a48a5f"
+    },
+    {
+      "old": "src/Zodiac.Framework/Battle/Combat/Targeting/SpellTargetTeam.cs",
+      "new": "src/Zodiac.Framework/Battle/Combat/Targeting/Resolution/SpellTargetTeam.cs",
+      "sha256": "3a8d438d84388c867aa165f690775e489d2e91b0ae91b04f42373ce901054e6e"
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiCatalog.cs",
+      "new": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiCatalog.cs",
+      "sha256": "254e72e081bd7a9845ebe0634c74d762278261e8b8c9e3fe9425efb16cfc2076"
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiLists.cs",
+      "new": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiLists.cs",
+      "sha256": "bc0b92ebdc512657bd45c21a03c459af0c50867d360fa55f8784a7953a7fe2b0"
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiParameters.cs",
+      "new": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiParameters.cs",
+      "sha256": "23d42f5aaf998e98b7ec3197cf757acc43f715fac92a96df9f064ba900fd0830"
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiStatistics.cs",
+      "new": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiStatistics.cs",
+      "sha256": "66cba31eb973f82b630f6b645359ae937a14b9c5be89e1b1e20ca28a8c090476"
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiUsefulness.cs",
+      "new": "src/Zodiac.Framework.Ai/OrdinarySpells/Selection/OrdinarySpellAiUsefulness.cs",
+      "sha256": "df212daa6c1af4999491694c280121ec7193595fb8cd05bc116efcac285ab1d9"
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiWork.cs",
+      "new": "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiWork.cs",
+      "sha256": "37a505522a6760b5cadd279ee74e75d8c90ae140255ab04302ab8c2deafc1b31"
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiSimulation.cs",
+      "new": "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiSimulation.cs",
+      "sha256": "70bcf579a3fc709b91eb4db2b22ccbb32abdeb902fdfbd878fff4c064fe1d424"
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiHitWork.cs",
+      "new": "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiHitWork.cs",
+      "sha256": "23307019e781028982b5da5342414cda9734ca43f22b740dd959067fda8e9d5a"
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiClock.cs",
+      "new": "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiClock.cs",
+      "sha256": "c1b887581950702c3d069048c61b9cb9d968ff3bc9773324fd32638527f6fd3f"
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiProjection.cs",
+      "new": "src/Zodiac.Framework.Ai/OrdinarySpells/Simulation/OrdinarySpellAiProjection.cs",
+      "sha256": "9c90c52cf84b12189d178c8512d65cba2c8ebbbb5a0b71c2a1cbb4f1ac9cdf40"
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiAccounting.cs",
+      "new": "src/Zodiac.Framework.Ai/OrdinarySpells/Scoring/OrdinarySpellAiAccounting.cs",
+      "sha256": "ebec8d6ff889030c8f163fc01dfbd28b6bedfc9747529b146c6fffac00563b8a"
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiScoring.cs",
+      "new": "src/Zodiac.Framework.Ai/OrdinarySpells/Scoring/OrdinarySpellAiScoring.cs",
+      "sha256": "8b83b407b72ed4c6f5a71e93ac5270c3a7c2444a67692876e877f677798460b6"
+    },
+    {
+      "old": "src/Zodiac.Framework.Ai/OrdinarySpells/OrdinarySpellAiReadyQuery.cs",
+      "new": "src/Zodiac.Framework.Ai/OrdinarySpells/Diagnostics/OrdinarySpellAiReadyQuery.cs",
+      "sha256": "d2a9311176f7ba8c8da4ad8eed3193c4599f6c0f786409dd3af03353927e06b5"
+    }
+  ],
+  "validation": {
+    "lockedRestore": true,
+    "releaseWarnings": 0,
+    "releaseErrors": 0,
+    "dotnetTests": 5094,
+    "dotnetAssemblies": [
+      {
+        "assembly": "Tessera.Engine.Tests.dll",
+        "passed": 24
+      },
+      {
+        "assembly": "Zodiac.AssetTool.Tests.dll",
+        "passed": 206
+      },
+      {
+        "assembly": "Zodiac.AssetTool.Cli.Tests.dll",
+        "passed": 396
+      },
+      {
+        "assembly": "Zodiac.Content.Tests.dll",
+        "passed": 897
+      },
+      {
+        "assembly": "Fft.Client.Tests.dll",
+        "passed": 447
+      },
+      {
+        "assembly": "Zodiac.Framework.Ai.Tests.dll",
+        "passed": 1308
+      },
+      {
+        "assembly": "Zodiac.Framework.Tests.dll",
+        "passed": 1816
+      }
+    ],
+    "pythonTests": 782,
+    "newPythonTests": 6,
+    "organizationAudit": {
+      "unchangedMovedFiles": 40,
+      "extractedBodiesChecked": 6,
+      "publicTargetingSignaturesPreserved": true,
+      "ownerBlobs": 10,
+      "localLinks": 3005,
+      "completedTickets": 390,
+      "openTickets": 34
+    },
+    "native": {
+      "basicSteps": 121,
+      "basicJournalReplays": 2,
+      "basicFinalSha256": "539bba6b8cd1400c7aab66c9d8a4a841c1674a911b3ce9e4f7aa1fe86a409484",
+      "fireCheckpoints": 4,
+      "fireFinalSha256": "05f08744a6fc01b22de9c623c71ab6c28cbebce4685cbe2653a14aff38a829f7",
+      "allGameplayCheckpointsUnchanged": true
+    },
+    "ownerBlobsUnchanged": 10,
+    "approvedFormatting": {
+      "commit": "b7a222d",
+      "path": "src/Zodiac.Framework/Battle/Combat/Targeting/Selection/SpellTargetChoiceQuery.cs",
+      "unchanged": true
+    }
+  },
+  "runtimeBoundary": {
+    "managedOnly": true,
+    "preparedContentOnly": true,
+    "referenceRequired": false,
+    "originalMediaRequired": false,
+    "namespacesAndPublicApisPreserved": true,
+    "ordinaryAimSearchActivated": false,
+    "newRuleFamiliesActivated": false
+  },
+  "nextTicket": "ZOD-424",
+  "originalExecuted": false,
+  "cExecuted": false
+}

@@ -1,0 +1,22 @@
+{
+  "format": "fft.ai-movement-scenario-implementation-evidence",
+  "schemaVersion": 1,
+  "ticket": "ZOD-143",
+  "date": "2026-10-28",
+  "managedBaseRevision": "a961c0f3ae6f17377aa810b1fdd9fc1954ae3633",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "sourceReceipt": "docs/evidence/ai/movement-scenario-contract-v1.json",
+  "contract": "docs/architecture/zod-141-ai-movement-scenario.md",
+  "behavior": "docs/behavior/sword-ai-movement-scenario.md",
+  "productionImplemented": true,
+  "runtimeActivated": false,
+  "originalExecuted": false,
+  "cReferenceExecuted": false,
+  "tests": "tests/Zodiac.Framework.Tests/SwordAiMovementScenarioTests.cs",
+  "focusedCases": 22,
+  "dotnetPassed": 3728,
+  "pythonPassed": 496,
+  "results": "scratch/ai-scenario-143-full-trx/",
+  "ownerChangesIncludedInBuild": true,
+  "ownerChangesIncludedInCommit": false
+}

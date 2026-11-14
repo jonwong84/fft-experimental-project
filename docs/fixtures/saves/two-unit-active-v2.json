@@ -1,0 +1,52 @@
+{
+  "format": "fft.two-unit-battle-save",
+  "schemaVersion": 2,
+  "sha256": "7ab046283eefb2558135c5ae9a8cf02354fc03a36f20dad679811dee772757e2",
+  "snapshot": {
+    "profileId": "sample:profile/two-unit-battle",
+    "profileVersion": 1,
+    "contentVersion": 1,
+    "scenarioId": "sample:scenario/two-unit-battle",
+    "rngAlgorithmId": "fft.ps1:rng/bios-v3-us",
+    "battle": {
+      "ticks": 10,
+      "phase": "unit-turn",
+      "activeUnitId": "sample:unit/second",
+      "rngWord": 2937909499,
+      "rngDrawCount": 14,
+      "outcome": "in-progress",
+      "units": [
+        {
+          "id": "sample:unit/first",
+          "weaponId": "sample:item/plain-sword",
+          "x": 0,
+          "y": 1,
+          "layer": 0,
+          "hp": 25,
+          "mp": 0,
+          "facing": "east",
+          "status": "healthy",
+          "koCount": 0,
+          "ct": 0,
+          "movementTaken": true,
+          "actionTaken": true
+        },
+        {
+          "id": "sample:unit/second",
+          "weaponId": "sample:item/plain-sword",
+          "x": 1,
+          "y": 1,
+          "layer": 0,
+          "hp": 25,
+          "mp": 0,
+          "facing": "west",
+          "status": "healthy",
+          "koCount": 0,
+          "ct": 0,
+          "movementTaken": false,
+          "actionTaken": true
+        }
+      ]
+    }
+  }
+}

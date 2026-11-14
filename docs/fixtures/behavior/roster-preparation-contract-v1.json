@@ -1,0 +1,1551 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-283",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "kind": "isolated-roster-preparation-descriptions",
+  "productionImplemented": false,
+  "vectors": [
+    {
+      "id": "refresh-whole-roster",
+      "kind": "refresh",
+      "input": {
+        "actor": "a",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 0,
+            "ct": 15,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              1,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 1,
+            "ct": 95,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              2,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 0,
+            "ct": 0,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              3,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ],
+        "word": 1,
+        "count": 7,
+        "ticks": 20
+      },
+      "expected": {
+        "turnEndCt": 55,
+        "next": "b",
+        "elapsed": 1,
+        "ticks": 21,
+        "word": 1103527590,
+        "count": 8,
+        "ct": [
+          {
+            "id": "a",
+            "ct": 60
+          },
+          {
+            "id": "b",
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "ct": 5
+          }
+        ],
+        "cachedDelay": 17,
+        "enemy": [
+          "b"
+        ],
+        "belowHalf": [],
+        "belowThreeQuarters": []
+      }
+    },
+    {
+      "id": "refresh-ready-peer-before-tick-first-tie",
+      "kind": "refresh",
+      "input": {
+        "actor": "a",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 0,
+            "ct": 15,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              1,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 1,
+            "ct": 150,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              2,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 0,
+            "ct": 150,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              3,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ],
+        "word": 1,
+        "count": 7,
+        "ticks": 20
+      },
+      "expected": {
+        "turnEndCt": 55,
+        "next": "b",
+        "elapsed": 0,
+        "ticks": 20,
+        "word": 1103527590,
+        "count": 8,
+        "ct": [
+          {
+            "id": "a",
+            "ct": 55
+          },
+          {
+            "id": "b",
+            "ct": 50
+          },
+          {
+            "id": "c",
+            "ct": 150
+          }
+        ],
+        "cachedDelay": 17,
+        "enemy": [
+          "b"
+        ],
+        "belowHalf": [],
+        "belowThreeQuarters": []
+      }
+    },
+    {
+      "id": "refresh-actor-next",
+      "kind": "refresh",
+      "input": {
+        "actor": "a",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 0,
+            "ct": 15,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              1,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 1,
+            "ct": 0,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              2,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 0,
+            "ct": 0,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              3,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ],
+        "word": 1,
+        "count": 7,
+        "ticks": 20
+      },
+      "expected": {
+        "turnEndCt": 55,
+        "next": "a",
+        "elapsed": 9,
+        "ticks": 29,
+        "word": 1103527590,
+        "count": 8,
+        "ct": [
+          {
+            "id": "a",
+            "ct": 0
+          },
+          {
+            "id": "b",
+            "ct": 45
+          },
+          {
+            "id": "c",
+            "ct": 45
+          }
+        ],
+        "cachedDelay": 17,
+        "enemy": [
+          "b"
+        ],
+        "belowHalf": [],
+        "belowThreeQuarters": []
+      }
+    },
+    {
+      "id": "refresh-odd-half-threshold-moved",
+      "kind": "refresh",
+      "input": {
+        "actor": "a",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 0,
+            "ct": 15,
+            "speed": 5,
+            "hp": 24,
+            "maxHp": 49,
+            "move": 3,
+            "tile": [
+              1,
+              1
+            ],
+            "moved": true,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 1,
+            "ct": 95,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              2,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 0,
+            "ct": 0,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              3,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ],
+        "word": 1,
+        "count": 7,
+        "ticks": 20
+      },
+      "expected": {
+        "turnEndCt": 35,
+        "next": "b",
+        "elapsed": 1,
+        "ticks": 21,
+        "word": 1103527590,
+        "count": 8,
+        "ct": [
+          {
+            "id": "a",
+            "ct": 40
+          },
+          {
+            "id": "b",
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "ct": 5
+          }
+        ],
+        "cachedDelay": 17,
+        "enemy": [
+          "b"
+        ],
+        "belowHalf": [],
+        "belowThreeQuarters": [
+          "a"
+        ]
+      }
+    },
+    {
+      "id": "support-first-lowest-share-ally",
+      "kind": "preparation",
+      "input": {
+        "actor": "a",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 0,
+            "ct": 15,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              1,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Self"
+            ]
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 1,
+            "ct": 95,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              2,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 0,
+            "ct": 0,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              3,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Self"
+            ]
+          }
+        ],
+        "word": 1,
+        "count": 7,
+        "ticks": 20
+      },
+      "expected": {
+        "turnEndCt": 55,
+        "next": "b",
+        "elapsed": 1,
+        "ticks": 21,
+        "word": 1103527590,
+        "count": 8,
+        "ct": [
+          {
+            "id": "a",
+            "ct": 60
+          },
+          {
+            "id": "b",
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "ct": 5
+          }
+        ],
+        "cachedDelay": 17,
+        "enemy": [
+          "b"
+        ],
+        "belowHalf": [],
+        "belowThreeQuarters": [],
+        "share": {
+          "a": 85,
+          "b": 0,
+          "c": 85
+        },
+        "mostly": {
+          "a": false,
+          "b": null,
+          "c": true
+        },
+        "harmful": 1,
+        "support": true,
+        "single": true,
+        "policyExit": false,
+        "counts": [
+          2,
+          1,
+          0
+        ],
+        "policies": {
+          "a": false,
+          "b": false,
+          "c": false
+        },
+        "usable": [
+          "Attack",
+          "Self",
+          "Self"
+        ],
+        "enemyReach": 4,
+        "allyReach": 3
+      }
+    },
+    {
+      "id": "support-source-order-clears-other-ally",
+      "kind": "preparation",
+      "input": {
+        "actor": "a",
+        "units": [
+          {
+            "id": "a",
+            "order": 3,
+            "team": 0,
+            "ct": 15,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              1,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Self"
+            ]
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 1,
+            "ct": 95,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              2,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 0,
+            "team": 0,
+            "ct": 0,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              3,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Self"
+            ]
+          }
+        ],
+        "word": 1,
+        "count": 7,
+        "ticks": 20
+      },
+      "expected": {
+        "turnEndCt": 55,
+        "next": "b",
+        "elapsed": 1,
+        "ticks": 21,
+        "word": 1103527590,
+        "count": 8,
+        "ct": [
+          {
+            "id": "c",
+            "ct": 5
+          },
+          {
+            "id": "b",
+            "ct": 0
+          },
+          {
+            "id": "a",
+            "ct": 60
+          }
+        ],
+        "cachedDelay": 17,
+        "enemy": [
+          "b"
+        ],
+        "belowHalf": [],
+        "belowThreeQuarters": [],
+        "share": {
+          "a": 85,
+          "b": 0,
+          "c": 85
+        },
+        "mostly": {
+          "c": false,
+          "b": null,
+          "a": true
+        },
+        "harmful": 1,
+        "support": true,
+        "single": true,
+        "policyExit": false,
+        "counts": [
+          2,
+          1,
+          0
+        ],
+        "policies": {
+          "a": false,
+          "b": false,
+          "c": false
+        },
+        "usable": [
+          "Attack",
+          "Self",
+          "Self"
+        ],
+        "enemyReach": 4,
+        "allyReach": 3
+      }
+    },
+    {
+      "id": "support-nonblue-all-critical-propagation",
+      "kind": "preparation",
+      "input": {
+        "actor": "a",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "ct": 15,
+            "speed": 5,
+            "hp": 10,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              1,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Self"
+            ]
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "ct": 95,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              2,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "ct": 0,
+            "speed": 5,
+            "hp": 10,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              3,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Self"
+            ]
+          }
+        ],
+        "word": 1,
+        "count": 7,
+        "ticks": 20
+      },
+      "expected": {
+        "turnEndCt": 55,
+        "next": "b",
+        "elapsed": 1,
+        "ticks": 21,
+        "word": 1103527590,
+        "count": 8,
+        "ct": [
+          {
+            "id": "a",
+            "ct": 60
+          },
+          {
+            "id": "b",
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "ct": 5
+          }
+        ],
+        "cachedDelay": 17,
+        "enemy": [
+          "b"
+        ],
+        "belowHalf": [
+          "a",
+          "c"
+        ],
+        "belowThreeQuarters": [
+          "a",
+          "c"
+        ],
+        "share": {
+          "a": 85,
+          "b": 0,
+          "c": 85
+        },
+        "mostly": {
+          "a": false,
+          "b": null,
+          "c": true
+        },
+        "harmful": 1,
+        "support": false,
+        "single": false,
+        "policyExit": false,
+        "counts": [
+          2,
+          1,
+          2
+        ],
+        "policies": {
+          "a": true,
+          "b": false,
+          "c": true
+        },
+        "usable": [
+          "Attack",
+          "Self",
+          "Self"
+        ],
+        "enemyReach": 4,
+        "allyReach": 3
+      }
+    },
+    {
+      "id": "support-blue-preserves-retained-flags",
+      "kind": "preparation",
+      "input": {
+        "actor": "a",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 0,
+            "ct": 15,
+            "speed": 5,
+            "hp": 10,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              1,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Self"
+            ]
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 1,
+            "ct": 95,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              2,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 0,
+            "ct": 0,
+            "speed": 5,
+            "hp": 10,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              3,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Self"
+            ]
+          }
+        ],
+        "word": 1,
+        "count": 7,
+        "ticks": 20
+      },
+      "expected": {
+        "turnEndCt": 55,
+        "next": "b",
+        "elapsed": 1,
+        "ticks": 21,
+        "word": 1103527590,
+        "count": 8,
+        "ct": [
+          {
+            "id": "a",
+            "ct": 60
+          },
+          {
+            "id": "b",
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "ct": 5
+          }
+        ],
+        "cachedDelay": 17,
+        "enemy": [
+          "b"
+        ],
+        "belowHalf": [
+          "a",
+          "c"
+        ],
+        "belowThreeQuarters": [
+          "a",
+          "c"
+        ],
+        "share": {
+          "a": 85,
+          "b": 0,
+          "c": 85
+        },
+        "mostly": {
+          "a": false,
+          "b": null,
+          "c": true
+        },
+        "harmful": 1,
+        "support": false,
+        "single": false,
+        "policyExit": false,
+        "counts": [
+          2,
+          1,
+          2
+        ],
+        "policies": {
+          "a": false,
+          "b": false,
+          "c": false
+        },
+        "usable": [
+          "Attack",
+          "Self",
+          "Self"
+        ],
+        "enemyReach": 4,
+        "allyReach": 3
+      }
+    },
+    {
+      "id": "support-retained-early-exit-does-not-propagate",
+      "kind": "preparation",
+      "input": {
+        "actor": "a",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "ct": 15,
+            "speed": 5,
+            "hp": 10,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              1,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": true,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Self"
+            ]
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "ct": 95,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              2,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "ct": 0,
+            "speed": 5,
+            "hp": 10,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              3,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Self"
+            ]
+          }
+        ],
+        "word": 1,
+        "count": 7,
+        "ticks": 20
+      },
+      "expected": {
+        "turnEndCt": 55,
+        "next": "b",
+        "elapsed": 1,
+        "ticks": 21,
+        "word": 1103527590,
+        "count": 8,
+        "ct": [
+          {
+            "id": "a",
+            "ct": 60
+          },
+          {
+            "id": "b",
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "ct": 5
+          }
+        ],
+        "cachedDelay": 17,
+        "enemy": [
+          "b"
+        ],
+        "belowHalf": [
+          "a",
+          "c"
+        ],
+        "belowThreeQuarters": [
+          "a",
+          "c"
+        ],
+        "share": {
+          "a": 85,
+          "b": 0,
+          "c": 85
+        },
+        "mostly": {
+          "a": false,
+          "b": null,
+          "c": true
+        },
+        "harmful": 1,
+        "support": false,
+        "single": false,
+        "policyExit": true,
+        "counts": null,
+        "policies": {
+          "a": true,
+          "b": false,
+          "c": false
+        },
+        "usable": [
+          "Attack",
+          "Self",
+          "Self"
+        ],
+        "enemyReach": 4,
+        "allyReach": 3
+      }
+    },
+    {
+      "id": "preparation-multiple-enemy-threats-after-ACT",
+      "kind": "preparation",
+      "input": {
+        "actor": "a",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "ct": 15,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              1,
+              1
+            ],
+            "moved": false,
+            "acted": true,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Self"
+            ]
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "ct": 95,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              2,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone",
+              "Stone"
+            ]
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "ct": 0,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              3,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Self",
+              "Self"
+            ]
+          },
+          {
+            "id": "d",
+            "order": 3,
+            "team": 2,
+            "ct": 0,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              4,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": [
+              "Stone"
+            ]
+          }
+        ],
+        "word": 1,
+        "count": 7,
+        "ticks": 20
+      },
+      "expected": {
+        "turnEndCt": 35,
+        "next": "b",
+        "elapsed": 1,
+        "ticks": 21,
+        "word": 1103527590,
+        "count": 8,
+        "ct": [
+          {
+            "id": "a",
+            "ct": 40
+          },
+          {
+            "id": "b",
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "ct": 5
+          },
+          {
+            "id": "d",
+            "ct": 5
+          }
+        ],
+        "cachedDelay": 17,
+        "enemy": [
+          "b",
+          "d"
+        ],
+        "belowHalf": [],
+        "belowThreeQuarters": [],
+        "share": {
+          "a": 85,
+          "b": 0,
+          "c": 85,
+          "d": 0
+        },
+        "mostly": {
+          "a": false,
+          "b": null,
+          "c": true,
+          "d": null
+        },
+        "harmful": 5,
+        "support": true,
+        "single": false,
+        "policyExit": false,
+        "counts": [
+          2,
+          2,
+          0
+        ],
+        "policies": {
+          "a": false,
+          "b": false,
+          "c": false,
+          "d": false
+        },
+        "usable": [],
+        "enemyReach": 4,
+        "allyReach": 3
+      }
+    },
+    {
+      "id": "movement-critical-ally-does-not-cancel",
+      "kind": "movement",
+      "input": {
+        "actor": "a",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 0,
+            "ct": 15,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              1,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 1,
+            "ct": 95,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              2,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 0,
+            "ct": 0,
+            "speed": 5,
+            "hp": 10,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              3,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ],
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "destination": [
+          1,
+          1
+        ]
+      },
+      "expected": {
+        "turnEndCt": 55,
+        "next": "b",
+        "elapsed": 1,
+        "ticks": 21,
+        "word": 1103527590,
+        "count": 8,
+        "ct": [
+          {
+            "id": "a",
+            "ct": 60
+          },
+          {
+            "id": "b",
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "ct": 5
+          }
+        ],
+        "priority": 350,
+        "running": [
+          485,
+          0,
+          350
+        ],
+        "hit": 100
+      }
+    },
+    {
+      "id": "movement-three-teams-all-enemies-score",
+      "kind": "movement",
+      "input": {
+        "actor": "a",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 0,
+            "ct": 15,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              1,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 1,
+            "ct": 95,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              2,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 2,
+            "ct": 0,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              3,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ],
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "destination": [
+          0,
+          1
+        ]
+      },
+      "expected": {
+        "turnEndCt": 35,
+        "next": "b",
+        "elapsed": 1,
+        "ticks": 21,
+        "word": 1103527590,
+        "count": 8,
+        "ct": [
+          {
+            "id": "a",
+            "ct": 40
+          },
+          {
+            "id": "b",
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "ct": 5
+          }
+        ],
+        "priority": -485,
+        "running": [
+          485,
+          0,
+          -485
+        ],
+        "hit": 100
+      }
+    },
+    {
+      "id": "movement-after-ACT-refunds-neither-choice",
+      "kind": "movement",
+      "input": {
+        "actor": "a",
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 0,
+            "ct": 15,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              1,
+              1
+            ],
+            "moved": false,
+            "acted": true,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 1,
+            "ct": 95,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              2,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 0,
+            "ct": 0,
+            "speed": 5,
+            "hp": 50,
+            "maxHp": 50,
+            "move": 3,
+            "tile": [
+              3,
+              1
+            ],
+            "moved": false,
+            "acted": false,
+            "support": false,
+            "conserve": false,
+            "actions": []
+          }
+        ],
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "destination": [
+          0,
+          1
+        ]
+      },
+      "expected": {
+        "turnEndCt": 15,
+        "next": "b",
+        "elapsed": 1,
+        "ticks": 21,
+        "word": 1103527590,
+        "count": 8,
+        "ct": [
+          {
+            "id": "a",
+            "ct": 20
+          },
+          {
+            "id": "b",
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "ct": 5
+          }
+        ],
+        "priority": 485,
+        "running": [
+          485,
+          0,
+          485
+        ],
+        "hit": 100
+      }
+    }
+  ]
+}

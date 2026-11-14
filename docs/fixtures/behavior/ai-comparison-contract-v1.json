@@ -1,0 +1,6337 @@
+{
+  "format": "fft.ai-comparison-source-description",
+  "schemaVersion": 1,
+  "ticket": "ZOD-128",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "execution": "offline-source-and-proposed-pair-description",
+  "productionImplemented": false,
+  "vectorCount": 60,
+  "vectors": [
+    {
+      "id": "decided-precedes-priority",
+      "family": "source-rank",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "first": {
+          "decided": 255,
+          "priority": -32768,
+          "hit": 0,
+          "proximity": 255
+        },
+        "second": {
+          "decided": 0,
+          "priority": 32767,
+          "hit": 255,
+          "proximity": 0
+        }
+      },
+      "expected": {
+        "rankOrder": 1,
+        "firstIsHigher": true,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "candidate-below-decided",
+      "family": "source-rank",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "first": {
+          "decided": 0,
+          "priority": 320,
+          "hit": 100,
+          "proximity": 9
+        },
+        "second": {
+          "decided": 255,
+          "priority": -160,
+          "hit": 1,
+          "proximity": 255
+        }
+      },
+      "expected": {
+        "rankOrder": -1,
+        "firstIsHigher": false,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "signed-negative-below-zero",
+      "family": "source-rank",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "first": {
+          "decided": 0,
+          "priority": -1,
+          "hit": 100,
+          "proximity": 0
+        },
+        "second": {
+          "decided": 0,
+          "priority": 0,
+          "hit": 1,
+          "proximity": 255
+        }
+      },
+      "expected": {
+        "rankOrder": -1,
+        "firstIsHigher": false,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "signed-minimum-below-maximum",
+      "family": "source-rank",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "first": {
+          "decided": 0,
+          "priority": -32768,
+          "hit": 100,
+          "proximity": 9
+        },
+        "second": {
+          "decided": 0,
+          "priority": 32767,
+          "hit": 100,
+          "proximity": 9
+        }
+      },
+      "expected": {
+        "rankOrder": -1,
+        "firstIsHigher": false,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "negative-improves-negative",
+      "family": "source-rank",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "first": {
+          "decided": 0,
+          "priority": -71,
+          "hit": 1,
+          "proximity": 255
+        },
+        "second": {
+          "decided": 0,
+          "priority": -135,
+          "hit": 100,
+          "proximity": 0
+        }
+      },
+      "expected": {
+        "rankOrder": 1,
+        "firstIsHigher": true,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "priority-before-hit",
+      "family": "source-rank",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "first": {
+          "decided": 0,
+          "priority": 65,
+          "hit": 1,
+          "proximity": 255
+        },
+        "second": {
+          "decided": 0,
+          "priority": 64,
+          "hit": 100,
+          "proximity": 0
+        }
+      },
+      "expected": {
+        "rankOrder": 1,
+        "firstIsHigher": true,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "hit-before-proximity",
+      "family": "source-rank",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "first": {
+          "decided": 0,
+          "priority": 64,
+          "hit": 51,
+          "proximity": 255
+        },
+        "second": {
+          "decided": 0,
+          "priority": 64,
+          "hit": 50,
+          "proximity": 0
+        }
+      },
+      "expected": {
+        "rankOrder": 1,
+        "firstIsHigher": true,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "lower-proximity-wins",
+      "family": "source-rank",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "first": {
+          "decided": 0,
+          "priority": 64,
+          "hit": 100,
+          "proximity": 8
+        },
+        "second": {
+          "decided": 0,
+          "priority": 64,
+          "hit": 100,
+          "proximity": 9
+        }
+      },
+      "expected": {
+        "rankOrder": 0,
+        "firstIsHigher": true,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "higher-proximity-loses",
+      "family": "source-rank",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "first": {
+          "decided": 0,
+          "priority": 64,
+          "hit": 100,
+          "proximity": 9
+        },
+        "second": {
+          "decided": 0,
+          "priority": 64,
+          "hit": 100,
+          "proximity": 8
+        }
+      },
+      "expected": {
+        "rankOrder": 0,
+        "firstIsHigher": false,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "exact-tie-not-higher",
+      "family": "source-rank",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "first": {
+          "decided": 0,
+          "priority": 64,
+          "hit": 100,
+          "proximity": 9
+        },
+        "second": {
+          "decided": 0,
+          "priority": 64,
+          "hit": 100,
+          "proximity": 9
+        }
+      },
+      "expected": {
+        "rankOrder": 0,
+        "firstIsHigher": false,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "zero-is-legitimate-priority",
+      "family": "source-rank",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "first": {
+          "decided": 0,
+          "priority": 0,
+          "hit": 100,
+          "proximity": 9
+        },
+        "second": {
+          "decided": 0,
+          "priority": -1,
+          "hit": 100,
+          "proximity": 9
+        }
+      },
+      "expected": {
+        "rankOrder": 1,
+        "firstIsHigher": true,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "sentinel-is-signed-number-only",
+      "family": "source-rank",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "first": {
+          "decided": 0,
+          "priority": -32767,
+          "hit": 100,
+          "proximity": 9
+        },
+        "second": {
+          "decided": 0,
+          "priority": -32768,
+          "hit": 100,
+          "proximity": 9
+        }
+      },
+      "expected": {
+        "rankOrder": 1,
+        "firstIsHigher": true,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "delay-0-1",
+      "family": "source-delay",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "ct": 0,
+        "speed": 1
+      },
+      "expected": {
+        "delay": 100,
+        "actorCacheByte": 100,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "delay-0-255",
+      "family": "source-delay",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "ct": 0,
+        "speed": 255
+      },
+      "expected": {
+        "delay": 1,
+        "actorCacheByte": 1,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "delay-0-10",
+      "family": "source-delay",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "ct": 0,
+        "speed": 10
+      },
+      "expected": {
+        "delay": 10,
+        "actorCacheByte": 10,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "delay-1-10",
+      "family": "source-delay",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "ct": 1,
+        "speed": 10
+      },
+      "expected": {
+        "delay": 10,
+        "actorCacheByte": 10,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "delay-99-1",
+      "family": "source-delay",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "ct": 99,
+        "speed": 1
+      },
+      "expected": {
+        "delay": 1,
+        "actorCacheByte": 1,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "delay-99-255",
+      "family": "source-delay",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "ct": 99,
+        "speed": 255
+      },
+      "expected": {
+        "delay": 1,
+        "actorCacheByte": 1,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "delay-100-1",
+      "family": "source-delay",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "ct": 100,
+        "speed": 1
+      },
+      "expected": {
+        "delay": 0,
+        "actorCacheByte": 0,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "delay-254-1",
+      "family": "source-delay",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "ct": 254,
+        "speed": 1
+      },
+      "expected": {
+        "delay": 0,
+        "actorCacheByte": 0,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "delay-0-9",
+      "family": "source-delay",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "ct": 0,
+        "speed": 9
+      },
+      "expected": {
+        "delay": 12,
+        "actorCacheByte": 12,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "equal-delay-included",
+      "family": "source-eligibility",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "actorDelayByte": 10,
+        "targetDelay": 10,
+        "enemy": true,
+        "outOfPlay": false,
+        "stop": false,
+        "dontAct": false,
+        "sleep": false,
+        "chicken": false,
+        "charm": false
+      },
+      "expected": {
+        "eligible": true,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "earlier-included",
+      "family": "source-eligibility",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "actorDelayByte": 10,
+        "targetDelay": 9,
+        "enemy": true,
+        "outOfPlay": false,
+        "stop": false,
+        "dontAct": false,
+        "sleep": false,
+        "chicken": false,
+        "charm": false
+      },
+      "expected": {
+        "eligible": true,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "later-excluded",
+      "family": "source-eligibility",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "actorDelayByte": 10,
+        "targetDelay": 11,
+        "enemy": true,
+        "outOfPlay": false,
+        "stop": false,
+        "dontAct": false,
+        "sleep": false,
+        "chicken": false,
+        "charm": false
+      },
+      "expected": {
+        "eligible": false,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "non-enemy-excluded",
+      "family": "source-eligibility",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "actorDelayByte": 10,
+        "targetDelay": 10,
+        "enemy": false,
+        "outOfPlay": false,
+        "stop": false,
+        "dontAct": false,
+        "sleep": false,
+        "chicken": false,
+        "charm": false
+      },
+      "expected": {
+        "eligible": false,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "out-of-play-excluded",
+      "family": "source-eligibility",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "actorDelayByte": 10,
+        "targetDelay": 10,
+        "enemy": true,
+        "outOfPlay": true,
+        "stop": false,
+        "dontAct": false,
+        "sleep": false,
+        "chicken": false,
+        "charm": false
+      },
+      "expected": {
+        "eligible": false,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "stop-excluded",
+      "family": "source-eligibility",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "actorDelayByte": 10,
+        "targetDelay": 10,
+        "enemy": true,
+        "outOfPlay": false,
+        "stop": true,
+        "dontAct": false,
+        "sleep": false,
+        "chicken": false,
+        "charm": false
+      },
+      "expected": {
+        "eligible": false,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "dontAct-excluded",
+      "family": "source-eligibility",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "actorDelayByte": 10,
+        "targetDelay": 10,
+        "enemy": true,
+        "outOfPlay": false,
+        "stop": false,
+        "dontAct": true,
+        "sleep": false,
+        "chicken": false,
+        "charm": false
+      },
+      "expected": {
+        "eligible": false,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "sleep-excluded",
+      "family": "source-eligibility",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "actorDelayByte": 10,
+        "targetDelay": 10,
+        "enemy": true,
+        "outOfPlay": false,
+        "stop": false,
+        "dontAct": false,
+        "sleep": true,
+        "chicken": false,
+        "charm": false
+      },
+      "expected": {
+        "eligible": false,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "chicken-excluded",
+      "family": "source-eligibility",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "actorDelayByte": 10,
+        "targetDelay": 10,
+        "enemy": true,
+        "outOfPlay": false,
+        "stop": false,
+        "dontAct": false,
+        "sleep": false,
+        "chicken": true,
+        "charm": false
+      },
+      "expected": {
+        "eligible": false,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "charm-excluded",
+      "family": "source-eligibility",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "actorDelayByte": 10,
+        "targetDelay": 10,
+        "enemy": true,
+        "outOfPlay": false,
+        "stop": false,
+        "dontAct": false,
+        "sleep": false,
+        "chicken": false,
+        "charm": true
+      },
+      "expected": {
+        "eligible": false,
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "distance-cutoff",
+      "family": "source-proximity",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "cells": [
+          {
+            "tile": [
+              0,
+              0,
+              0
+            ],
+            "reachable": true,
+            "previous": 233
+          },
+          {
+            "tile": [
+              1,
+              0,
+              0
+            ],
+            "reachable": true,
+            "previous": 233
+          },
+          {
+            "tile": [
+              9,
+              0,
+              0
+            ],
+            "reachable": true,
+            "previous": 233
+          },
+          {
+            "tile": [
+              10,
+              0,
+              0
+            ],
+            "reachable": true,
+            "previous": 233
+          },
+          {
+            "tile": [
+              11,
+              0,
+              0
+            ],
+            "reachable": true,
+            "previous": 233
+          }
+        ],
+        "foes": [
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          }
+        ]
+      },
+      "expected": {
+        "cells": [
+          {
+            "tile": [
+              0,
+              0,
+              0
+            ],
+            "value": 10,
+            "written": true
+          },
+          {
+            "tile": [
+              1,
+              0,
+              0
+            ],
+            "value": 9,
+            "written": true
+          },
+          {
+            "tile": [
+              9,
+              0,
+              0
+            ],
+            "value": 1,
+            "written": true
+          },
+          {
+            "tile": [
+              10,
+              0,
+              0
+            ],
+            "value": 0,
+            "written": true
+          },
+          {
+            "tile": [
+              11,
+              0,
+              0
+            ],
+            "value": 0,
+            "written": true
+          }
+        ],
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "diagonal-distance",
+      "family": "source-proximity",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "cells": [
+          {
+            "tile": [
+              3,
+              4,
+              0
+            ],
+            "reachable": true,
+            "previous": 233
+          }
+        ],
+        "foes": [
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          }
+        ]
+      },
+      "expected": {
+        "cells": [
+          {
+            "tile": [
+              3,
+              4,
+              0
+            ],
+            "value": 3,
+            "written": true
+          }
+        ],
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "layers-ignore-height",
+      "family": "source-proximity",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "cells": [
+          {
+            "tile": [
+              1,
+              2,
+              0
+            ],
+            "reachable": true,
+            "previous": 233
+          },
+          {
+            "tile": [
+              1,
+              2,
+              1
+            ],
+            "reachable": true,
+            "previous": 233
+          }
+        ],
+        "foes": [
+          {
+            "position": [
+              2,
+              2
+            ],
+            "eligible": true
+          }
+        ]
+      },
+      "expected": {
+        "cells": [
+          {
+            "tile": [
+              1,
+              2,
+              0
+            ],
+            "value": 9,
+            "written": true
+          },
+          {
+            "tile": [
+              1,
+              2,
+              1
+            ],
+            "value": 9,
+            "written": true
+          }
+        ],
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "unmarked-cell-retains-stale-byte",
+      "family": "source-proximity",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "cells": [
+          {
+            "tile": [
+              1,
+              0,
+              0
+            ],
+            "reachable": false,
+            "previous": 233
+          },
+          {
+            "tile": [
+              2,
+              0,
+              0
+            ],
+            "reachable": true,
+            "previous": 233
+          }
+        ],
+        "foes": []
+      },
+      "expected": {
+        "cells": [
+          {
+            "tile": [
+              1,
+              0,
+              0
+            ],
+            "value": 233,
+            "written": false
+          },
+          {
+            "tile": [
+              2,
+              0,
+              0
+            ],
+            "value": 0,
+            "written": true
+          }
+        ],
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "ineligible-foe-zero",
+      "family": "source-proximity",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "cells": [
+          {
+            "tile": [
+              1,
+              0,
+              0
+            ],
+            "reachable": true,
+            "previous": 233
+          }
+        ],
+        "foes": [
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": false
+          }
+        ]
+      },
+      "expected": {
+        "cells": [
+          {
+            "tile": [
+              1,
+              0,
+              0
+            ],
+            "value": 0,
+            "written": true
+          }
+        ],
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "byte-wrap-isolated-roster-kernel",
+      "family": "source-proximity",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "cells": [
+          {
+            "tile": [
+              0,
+              0,
+              0
+            ],
+            "reachable": true,
+            "previous": 233
+          }
+        ],
+        "foes": [
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          }
+        ]
+      },
+      "expected": {
+        "cells": [
+          {
+            "tile": [
+              0,
+              0,
+              0
+            ],
+            "value": 4,
+            "written": true
+          }
+        ],
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "two-contributions-isolated-roster-kernel",
+      "family": "source-proximity",
+      "expectationKind": "source-derived-isolated-kernel",
+      "inputs": {
+        "cells": [
+          {
+            "tile": [
+              1,
+              0,
+              0
+            ],
+            "reachable": true,
+            "previous": 233
+          }
+        ],
+        "foes": [
+          {
+            "position": [
+              0,
+              0
+            ],
+            "eligible": true
+          },
+          {
+            "position": [
+              2,
+              0
+            ],
+            "eligible": true
+          }
+        ]
+      },
+      "expected": {
+        "cells": [
+          {
+            "tile": [
+              1,
+              0,
+              0
+            ],
+            "value": 18,
+            "written": true
+          }
+        ],
+        "additionalDraws": 0
+      }
+    },
+    {
+      "id": "pair-exact-tie",
+      "family": "proposed-pair",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "freshDecisionBaseline": true,
+        "sameActorAndTarget": true,
+        "movementSupported": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "actorId": "Ramza",
+        "targetId": "Delita",
+        "units": [
+          {
+            "id": "Ramza",
+            "slot": 0,
+            "ct": 15,
+            "speed": 5,
+            "position": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "Delita",
+            "slot": 1,
+            "ct": 95,
+            "speed": 5,
+            "position": [
+              1,
+              0
+            ]
+          }
+        ],
+        "targetPosition": [
+          1,
+          0
+        ],
+        "candidates": [
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          },
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          }
+        ]
+      },
+      "expected": {
+        "disposition": "Compared",
+        "reason": null,
+        "retained": 0,
+        "evaluations": [
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 64,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 485
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": 64
+                }
+              ]
+            },
+            "rngWord": 4182499122,
+            "rngCount": 12
+          },
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 64,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 485
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": 64
+                }
+              ]
+            },
+            "rngWord": 267834847,
+            "rngCount": 17
+          }
+        ],
+        "rngWord": 267834847,
+        "rngCount": 17,
+        "scoreCalls": 2,
+        "additionalComparisonDraws": 0,
+        "inputUnchanged": true,
+        "baselineActorDelay": 17,
+        "baselineTargetDelay": 1,
+        "eligibleEnemy": true,
+        "eligibleEnemyId": "Delita",
+        "proximity": [
+          9,
+          9
+        ]
+      }
+    },
+    {
+      "id": "pair-critical-target",
+      "family": "proposed-pair",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "freshDecisionBaseline": true,
+        "sameActorAndTarget": true,
+        "movementSupported": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "actorId": "Ramza",
+        "targetId": "Delita",
+        "units": [
+          {
+            "id": "Ramza",
+            "slot": 0,
+            "ct": 15,
+            "speed": 5,
+            "position": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "Delita",
+            "slot": 1,
+            "ct": 95,
+            "speed": 5,
+            "position": [
+              1,
+              0
+            ]
+          }
+        ],
+        "targetPosition": [
+          1,
+          0
+        ],
+        "candidates": [
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 40,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          },
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 40,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          }
+        ]
+      },
+      "expected": {
+        "disposition": "Compared",
+        "reason": null,
+        "retained": 0,
+        "evaluations": [
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 135,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 485
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 25,
+                  "statusTerm": -32,
+                  "equipmentTerm": 357,
+                  "unitTotal": 350,
+                  "signedContribution": -350,
+                  "storedPriority": 135
+                }
+              ]
+            },
+            "rngWord": 4182499122,
+            "rngCount": 12
+          },
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 135,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 485
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 25,
+                  "statusTerm": -32,
+                  "equipmentTerm": 357,
+                  "unitTotal": 350,
+                  "signedContribution": -350,
+                  "storedPriority": 135
+                }
+              ]
+            },
+            "rngWord": 267834847,
+            "rngCount": 17
+          }
+        ],
+        "rngWord": 267834847,
+        "rngCount": 17,
+        "scoreCalls": 2,
+        "additionalComparisonDraws": 0,
+        "inputUnchanged": true,
+        "baselineActorDelay": 17,
+        "baselineTargetDelay": 1,
+        "eligibleEnemy": true,
+        "eligibleEnemyId": "Delita",
+        "proximity": [
+          9,
+          9
+        ]
+      }
+    },
+    {
+      "id": "pair-negative-priority",
+      "family": "proposed-pair",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "freshDecisionBaseline": true,
+        "sameActorAndTarget": true,
+        "movementSupported": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "actorId": "Ramza",
+        "targetId": "Delita",
+        "units": [
+          {
+            "id": "Ramza",
+            "slot": 0,
+            "ct": 15,
+            "speed": 5,
+            "position": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "Delita",
+            "slot": 1,
+            "ct": 95,
+            "speed": 5,
+            "position": [
+              1,
+              0
+            ]
+          }
+        ],
+        "targetPosition": [
+          1,
+          0
+        ],
+        "candidates": [
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "Critical",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 10,
+              "actorMaxHp": 50
+            }
+          },
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "Critical",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 10,
+              "actorMaxHp": 50
+            }
+          }
+        ]
+      },
+      "expected": {
+        "disposition": "Compared",
+        "reason": null,
+        "retained": 0,
+        "evaluations": [
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": -71,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 25,
+                  "statusTerm": -32,
+                  "equipmentTerm": 357,
+                  "unitTotal": 350,
+                  "signedContribution": 350,
+                  "storedPriority": 350
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": -71
+                }
+              ]
+            },
+            "rngWord": 4182499122,
+            "rngCount": 12
+          },
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": -71,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 25,
+                  "statusTerm": -32,
+                  "equipmentTerm": 357,
+                  "unitTotal": 350,
+                  "signedContribution": 350,
+                  "storedPriority": 350
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": -71
+                }
+              ]
+            },
+            "rngWord": 267834847,
+            "rngCount": 17
+          }
+        ],
+        "rngWord": 267834847,
+        "rngCount": 17,
+        "scoreCalls": 2,
+        "additionalComparisonDraws": 0,
+        "inputUnchanged": true,
+        "baselineActorDelay": 17,
+        "baselineTargetDelay": 1,
+        "eligibleEnemy": true,
+        "eligibleEnemyId": "Delita",
+        "proximity": [
+          9,
+          9
+        ]
+      }
+    },
+    {
+      "id": "pair-hit-improvement",
+      "family": "proposed-pair",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "freshDecisionBaseline": true,
+        "sameActorAndTarget": true,
+        "movementSupported": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "actorId": "Ramza",
+        "targetId": "Delita",
+        "units": [
+          {
+            "id": "Ramza",
+            "slot": 0,
+            "ct": 15,
+            "speed": 5,
+            "position": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "Delita",
+            "slot": 1,
+            "ct": 95,
+            "speed": 5,
+            "position": [
+              1,
+              0
+            ]
+          }
+        ],
+        "targetPosition": [
+          1,
+          0
+        ],
+        "candidates": [
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  2,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 50,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          },
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          }
+        ]
+      },
+      "expected": {
+        "disposition": "Compared",
+        "reason": null,
+        "retained": 1,
+        "evaluations": [
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 64,
+              "hitPercent": 50,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 485
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": 64
+                }
+              ]
+            },
+            "rngWord": 4182499122,
+            "rngCount": 12
+          },
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 64,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 485
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": 64
+                }
+              ]
+            },
+            "rngWord": 267834847,
+            "rngCount": 17
+          }
+        ],
+        "rngWord": 267834847,
+        "rngCount": 17,
+        "scoreCalls": 2,
+        "additionalComparisonDraws": 0,
+        "inputUnchanged": true,
+        "baselineActorDelay": 17,
+        "baselineTargetDelay": 1,
+        "eligibleEnemy": true,
+        "eligibleEnemyId": "Delita",
+        "proximity": [
+          9,
+          9
+        ]
+      }
+    },
+    {
+      "id": "pair-proximity-improvement",
+      "family": "proposed-pair",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "freshDecisionBaseline": true,
+        "sameActorAndTarget": true,
+        "movementSupported": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "actorId": "Ramza",
+        "targetId": "Delita",
+        "units": [
+          {
+            "id": "Ramza",
+            "slot": 0,
+            "ct": 15,
+            "speed": 5,
+            "position": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "Delita",
+            "slot": 1,
+            "ct": 95,
+            "speed": 5,
+            "position": [
+              1,
+              0
+            ]
+          }
+        ],
+        "targetPosition": [
+          1,
+          0
+        ],
+        "candidates": [
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          },
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "ActThenMove",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  1
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          }
+        ]
+      },
+      "expected": {
+        "disposition": "Compared",
+        "reason": null,
+        "retained": 1,
+        "evaluations": [
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 64,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 485
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": 64
+                }
+              ]
+            },
+            "rngWord": 4182499122,
+            "rngCount": 12
+          },
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 64,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 485
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": 64
+                }
+              ]
+            },
+            "rngWord": 267834847,
+            "rngCount": 17
+          }
+        ],
+        "rngWord": 267834847,
+        "rngCount": 17,
+        "scoreCalls": 2,
+        "additionalComparisonDraws": 0,
+        "inputUnchanged": true,
+        "baselineActorDelay": 17,
+        "baselineTargetDelay": 1,
+        "eligibleEnemy": true,
+        "eligibleEnemyId": "Delita",
+        "proximity": [
+          9,
+          8
+        ]
+      }
+    },
+    {
+      "id": "pair-no-imminent-foe",
+      "family": "proposed-pair",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "freshDecisionBaseline": true,
+        "sameActorAndTarget": true,
+        "movementSupported": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "actorId": "Ramza",
+        "targetId": "Delita",
+        "units": [
+          {
+            "id": "Ramza",
+            "slot": 0,
+            "ct": 15,
+            "speed": 5,
+            "position": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "Delita",
+            "slot": 1,
+            "ct": 0,
+            "speed": 1,
+            "position": [
+              1,
+              0
+            ]
+          }
+        ],
+        "targetPosition": [
+          1,
+          0
+        ],
+        "candidates": [
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 0,
+                "targetSpeed": 1,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          },
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 0,
+                "targetSpeed": 1,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          }
+        ]
+      },
+      "expected": {
+        "disposition": "Compared",
+        "reason": null,
+        "retained": 0,
+        "evaluations": [
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 64,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 485
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": 64
+                }
+              ]
+            },
+            "rngWord": 4182499122,
+            "rngCount": 12
+          },
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 64,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 485
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": 64
+                }
+              ]
+            },
+            "rngWord": 267834847,
+            "rngCount": 17
+          }
+        ],
+        "rngWord": 267834847,
+        "rngCount": 17,
+        "scoreCalls": 2,
+        "additionalComparisonDraws": 0,
+        "inputUnchanged": true,
+        "baselineActorDelay": 17,
+        "baselineTargetDelay": 100,
+        "eligibleEnemy": false,
+        "eligibleEnemyId": null,
+        "proximity": [
+          0,
+          0
+        ]
+      }
+    },
+    {
+      "id": "pair-lethal-retains-baseline-foe",
+      "family": "proposed-pair",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "freshDecisionBaseline": true,
+        "sameActorAndTarget": true,
+        "movementSupported": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "actorId": "Ramza",
+        "targetId": "Delita",
+        "units": [
+          {
+            "id": "Ramza",
+            "slot": 0,
+            "ct": 15,
+            "speed": 5,
+            "position": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "Delita",
+            "slot": 1,
+            "ct": 95,
+            "speed": 5,
+            "position": [
+              1,
+              0
+            ]
+          }
+        ],
+        "targetPosition": [
+          1,
+          0
+        ],
+        "candidates": [
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 50,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          },
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 50,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          }
+        ]
+      },
+      "expected": {
+        "disposition": "Compared",
+        "reason": null,
+        "retained": 0,
+        "evaluations": [
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 320,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 485
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 0,
+                  "statusTerm": -192,
+                  "equipmentTerm": 357,
+                  "unitTotal": 165,
+                  "signedContribution": -165,
+                  "storedPriority": 320
+                }
+              ]
+            },
+            "rngWord": 2516284547,
+            "rngCount": 13
+          },
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 320,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 485
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 0,
+                  "statusTerm": -192,
+                  "equipmentTerm": 357,
+                  "unitTotal": 165,
+                  "signedContribution": -165,
+                  "storedPriority": 320
+                }
+              ]
+            },
+            "rngWord": 836760821,
+            "rngCount": 19
+          }
+        ],
+        "rngWord": 836760821,
+        "rngCount": 19,
+        "scoreCalls": 2,
+        "additionalComparisonDraws": 0,
+        "inputUnchanged": true,
+        "baselineActorDelay": 17,
+        "baselineTargetDelay": 1,
+        "eligibleEnemy": true,
+        "eligibleEnemyId": "Delita",
+        "proximity": [
+          9,
+          9
+        ]
+      }
+    },
+    {
+      "id": "pair-incumbent-not-valuable",
+      "family": "proposed-pair",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "freshDecisionBaseline": true,
+        "sameActorAndTarget": true,
+        "movementSupported": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "actorId": "Ramza",
+        "targetId": "Delita",
+        "units": [
+          {
+            "id": "Ramza",
+            "slot": 0,
+            "ct": 15,
+            "speed": 5,
+            "position": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "Delita",
+            "slot": 1,
+            "ct": 95,
+            "speed": 5,
+            "position": [
+              1,
+              0
+            ]
+          }
+        ],
+        "targetPosition": [
+          1,
+          0
+        ],
+        "candidates": [
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  2,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 0,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          },
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          }
+        ]
+      },
+      "expected": {
+        "disposition": "Compared",
+        "reason": null,
+        "retained": 1,
+        "evaluations": [
+          {
+            "disposition": "NotValuable",
+            "score": null,
+            "rngWord": 3295386429,
+            "rngCount": 11
+          },
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 64,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 485
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": 64
+                }
+              ]
+            },
+            "rngWord": 3210001534,
+            "rngCount": 16
+          }
+        ],
+        "rngWord": 3210001534,
+        "rngCount": 16,
+        "scoreCalls": 2,
+        "additionalComparisonDraws": 0,
+        "inputUnchanged": true,
+        "baselineActorDelay": 17,
+        "baselineTargetDelay": 1,
+        "eligibleEnemy": true,
+        "eligibleEnemyId": "Delita",
+        "proximity": [
+          9,
+          9
+        ]
+      }
+    },
+    {
+      "id": "pair-challenger-not-valuable",
+      "family": "proposed-pair",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "freshDecisionBaseline": true,
+        "sameActorAndTarget": true,
+        "movementSupported": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "actorId": "Ramza",
+        "targetId": "Delita",
+        "units": [
+          {
+            "id": "Ramza",
+            "slot": 0,
+            "ct": 15,
+            "speed": 5,
+            "position": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "Delita",
+            "slot": 1,
+            "ct": 95,
+            "speed": 5,
+            "position": [
+              1,
+              0
+            ]
+          }
+        ],
+        "targetPosition": [
+          1,
+          0
+        ],
+        "candidates": [
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          },
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  2,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 0,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          }
+        ]
+      },
+      "expected": {
+        "disposition": "Compared",
+        "reason": null,
+        "retained": 0,
+        "evaluations": [
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 64,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 485
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": 64
+                }
+              ]
+            },
+            "rngWord": 4182499122,
+            "rngCount": 12
+          },
+          {
+            "disposition": "NotValuable",
+            "score": null,
+            "rngWord": 3210001534,
+            "rngCount": 16
+          }
+        ],
+        "rngWord": 3210001534,
+        "rngCount": 16,
+        "scoreCalls": 2,
+        "additionalComparisonDraws": 0,
+        "inputUnchanged": true,
+        "baselineActorDelay": 17,
+        "baselineTargetDelay": 1,
+        "eligibleEnemy": true,
+        "eligibleEnemyId": "Delita",
+        "proximity": [
+          9,
+          9
+        ]
+      }
+    },
+    {
+      "id": "pair-both-not-valuable",
+      "family": "proposed-pair",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "freshDecisionBaseline": true,
+        "sameActorAndTarget": true,
+        "movementSupported": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "actorId": "Ramza",
+        "targetId": "Delita",
+        "units": [
+          {
+            "id": "Ramza",
+            "slot": 0,
+            "ct": 15,
+            "speed": 5,
+            "position": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "Delita",
+            "slot": 1,
+            "ct": 95,
+            "speed": 5,
+            "position": [
+              1,
+              0
+            ]
+          }
+        ],
+        "targetPosition": [
+          1,
+          0
+        ],
+        "candidates": [
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  2,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 0,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          },
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  2,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 0,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          }
+        ]
+      },
+      "expected": {
+        "disposition": "NoScoredCandidate",
+        "reason": null,
+        "retained": null,
+        "evaluations": [
+          {
+            "disposition": "NotValuable",
+            "score": null,
+            "rngWord": 3295386429,
+            "rngCount": 11
+          },
+          {
+            "disposition": "NotValuable",
+            "score": null,
+            "rngWord": 2633739833,
+            "rngCount": 15
+          }
+        ],
+        "rngWord": 2633739833,
+        "rngCount": 15,
+        "scoreCalls": 2,
+        "additionalComparisonDraws": 0,
+        "inputUnchanged": true,
+        "baselineActorDelay": 17,
+        "baselineTargetDelay": 1,
+        "eligibleEnemy": true,
+        "eligibleEnemyId": "Delita",
+        "proximity": [
+          9,
+          9
+        ]
+      }
+    },
+    {
+      "id": "pair-invalid-comparison-profile",
+      "family": "proposed-pair",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "freshDecisionBaseline": false,
+        "sameActorAndTarget": true,
+        "movementSupported": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "actorId": "Ramza",
+        "targetId": "Delita",
+        "units": [
+          {
+            "id": "Ramza",
+            "slot": 0,
+            "ct": 15,
+            "speed": 5,
+            "position": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "Delita",
+            "slot": 1,
+            "ct": 95,
+            "speed": 5,
+            "position": [
+              1,
+              0
+            ]
+          }
+        ],
+        "targetPosition": [
+          1,
+          0
+        ],
+        "candidates": [
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          },
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          }
+        ]
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "reason": "UnsupportedComparisonProfile",
+        "retained": null,
+        "evaluations": null,
+        "failedIndex": null,
+        "evaluationRejection": null,
+        "rngWord": 1,
+        "rngCount": 7,
+        "scoreCalls": 0,
+        "additionalComparisonDraws": 0,
+        "inputUnchanged": true
+      }
+    },
+    {
+      "id": "pair-mismatched-identities",
+      "family": "proposed-pair",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "freshDecisionBaseline": true,
+        "sameActorAndTarget": false,
+        "movementSupported": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "actorId": "Ramza",
+        "targetId": "Delita",
+        "units": [
+          {
+            "id": "Ramza",
+            "slot": 0,
+            "ct": 15,
+            "speed": 5,
+            "position": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "Delita",
+            "slot": 1,
+            "ct": 95,
+            "speed": 5,
+            "position": [
+              1,
+              0
+            ]
+          }
+        ],
+        "targetPosition": [
+          1,
+          0
+        ],
+        "candidates": [
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          },
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          }
+        ]
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "reason": "UnsupportedComparisonProfile",
+        "retained": null,
+        "evaluations": null,
+        "failedIndex": null,
+        "evaluationRejection": null,
+        "rngWord": 1,
+        "rngCount": 7,
+        "scoreCalls": 0,
+        "additionalComparisonDraws": 0,
+        "inputUnchanged": true
+      }
+    },
+    {
+      "id": "pair-unwritten-cache-cell",
+      "family": "proposed-pair",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "freshDecisionBaseline": true,
+        "sameActorAndTarget": true,
+        "movementSupported": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "actorId": "Ramza",
+        "targetId": "Delita",
+        "units": [
+          {
+            "id": "Ramza",
+            "slot": 0,
+            "ct": 15,
+            "speed": 5,
+            "position": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "Delita",
+            "slot": 1,
+            "ct": 95,
+            "speed": 5,
+            "position": [
+              1,
+              0
+            ]
+          }
+        ],
+        "targetPosition": [
+          1,
+          0
+        ],
+        "candidates": [
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          },
+          {
+            "scenarioZeroMember": false,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          }
+        ]
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "reason": "InvalidCacheDestination",
+        "retained": null,
+        "evaluations": null,
+        "failedIndex": null,
+        "evaluationRejection": null,
+        "rngWord": 1,
+        "rngCount": 7,
+        "scoreCalls": 0,
+        "additionalComparisonDraws": 0,
+        "inputUnchanged": true
+      }
+    },
+    {
+      "id": "pair-first-evaluation-rejected",
+      "family": "proposed-pair",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "freshDecisionBaseline": true,
+        "sameActorAndTarget": true,
+        "movementSupported": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "actorId": "Ramza",
+        "targetId": "Delita",
+        "units": [
+          {
+            "id": "Ramza",
+            "slot": 0,
+            "ct": 15,
+            "speed": 5,
+            "position": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "Delita",
+            "slot": 1,
+            "ct": 95,
+            "speed": 5,
+            "position": [
+              1,
+              0
+            ]
+          }
+        ],
+        "targetPosition": [
+          1,
+          0
+        ],
+        "candidates": [
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": true,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          },
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": true,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          }
+        ]
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "reason": "EvaluationRejected",
+        "retained": null,
+        "evaluations": null,
+        "failedIndex": 0,
+        "evaluationRejection": {
+          "reason": "UnsupportedScoreProfile",
+          "projectionReason": null
+        },
+        "rngWord": 1,
+        "rngCount": 7,
+        "scoreCalls": 1,
+        "additionalComparisonDraws": 0,
+        "inputUnchanged": true
+      }
+    },
+    {
+      "id": "pair-second-evaluation-rejected",
+      "family": "proposed-pair",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "freshDecisionBaseline": true,
+        "sameActorAndTarget": true,
+        "movementSupported": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "actorId": "Ramza",
+        "targetId": "Delita",
+        "units": [
+          {
+            "id": "Ramza",
+            "slot": 0,
+            "ct": 15,
+            "speed": 5,
+            "position": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "Delita",
+            "slot": 1,
+            "ct": 0,
+            "speed": 1,
+            "position": [
+              1,
+              0
+            ]
+          }
+        ],
+        "targetPosition": [
+          1,
+          0
+        ],
+        "candidates": [
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 0,
+                "targetSpeed": 1,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 18446744073709551602
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          },
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "ActThenMove",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  1
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 0,
+                "targetSpeed": 1,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 18446744073709551602
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          }
+        ]
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "reason": "EvaluationRejected",
+        "retained": null,
+        "evaluations": null,
+        "failedIndex": 1,
+        "evaluationRejection": {
+          "reason": "ProjectionRejected",
+          "projectionReason": "TickCountExhausted"
+        },
+        "rngWord": 1,
+        "rngCount": 7,
+        "scoreCalls": 2,
+        "additionalComparisonDraws": 0,
+        "inputUnchanged": true
+      }
+    },
+    {
+      "id": "pair-second-overflow-atomic",
+      "family": "proposed-pair",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "freshDecisionBaseline": true,
+        "sameActorAndTarget": true,
+        "movementSupported": true,
+        "rngWord": 1,
+        "rngCount": 18446744073709551610,
+        "actorId": "Ramza",
+        "targetId": "Delita",
+        "units": [
+          {
+            "id": "Ramza",
+            "slot": 0,
+            "ct": 15,
+            "speed": 5,
+            "position": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "Delita",
+            "slot": 1,
+            "ct": 95,
+            "speed": 5,
+            "position": [
+              1,
+              0
+            ]
+          }
+        ],
+        "targetPosition": [
+          1,
+          0
+        ],
+        "candidates": [
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          },
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          }
+        ]
+      },
+      "expected": {
+        "disposition": "Rejected",
+        "reason": "EvaluationRejected",
+        "retained": null,
+        "evaluations": null,
+        "failedIndex": 1,
+        "evaluationRejection": {
+          "reason": "ProjectionRejected",
+          "projectionReason": "RandomDrawCountExhausted"
+        },
+        "rngWord": 1,
+        "rngCount": 18446744073709551610,
+        "scoreCalls": 2,
+        "additionalComparisonDraws": 0,
+        "inputUnchanged": true
+      }
+    },
+    {
+      "id": "pair-exact-MAX-draw-budget",
+      "family": "proposed-pair",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "freshDecisionBaseline": true,
+        "sameActorAndTarget": true,
+        "movementSupported": true,
+        "rngWord": 1,
+        "rngCount": 18446744073709551605,
+        "actorId": "Ramza",
+        "targetId": "Delita",
+        "units": [
+          {
+            "id": "Ramza",
+            "slot": 0,
+            "ct": 15,
+            "speed": 5,
+            "position": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "Delita",
+            "slot": 1,
+            "ct": 95,
+            "speed": 5,
+            "position": [
+              1,
+              0
+            ]
+          }
+        ],
+        "targetPosition": [
+          1,
+          0
+        ],
+        "candidates": [
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          },
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          }
+        ]
+      },
+      "expected": {
+        "disposition": "Compared",
+        "reason": null,
+        "retained": 0,
+        "evaluations": [
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 64,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 485
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": 64
+                }
+              ]
+            },
+            "rngWord": 4182499122,
+            "rngCount": 18446744073709551610
+          },
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 64,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 485
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": 64
+                }
+              ]
+            },
+            "rngWord": 267834847,
+            "rngCount": 18446744073709551615
+          }
+        ],
+        "rngWord": 267834847,
+        "rngCount": 18446744073709551615,
+        "scoreCalls": 2,
+        "additionalComparisonDraws": 0,
+        "inputUnchanged": true,
+        "baselineActorDelay": 17,
+        "baselineTargetDelay": 1,
+        "eligibleEnemy": true,
+        "eligibleEnemyId": "Delita",
+        "proximity": [
+          9,
+          9
+        ]
+      }
+    },
+    {
+      "id": "pair-actor-slot-permutation",
+      "family": "proposed-pair",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "freshDecisionBaseline": true,
+        "sameActorAndTarget": true,
+        "movementSupported": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "actorId": "Ramza",
+        "targetId": "Delita",
+        "units": [
+          {
+            "id": "Ramza",
+            "slot": 1,
+            "ct": 15,
+            "speed": 5,
+            "position": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "Delita",
+            "slot": 0,
+            "ct": 95,
+            "speed": 5,
+            "position": [
+              1,
+              0
+            ]
+          }
+        ],
+        "targetPosition": [
+          1,
+          0
+        ],
+        "candidates": [
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 1,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          },
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 1,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          }
+        ]
+      },
+      "expected": {
+        "disposition": "Compared",
+        "reason": null,
+        "retained": 0,
+        "evaluations": [
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 64,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": -421
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 64
+                }
+              ]
+            },
+            "rngWord": 4182499122,
+            "rngCount": 12
+          },
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 64,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": -421
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 64
+                }
+              ]
+            },
+            "rngWord": 267834847,
+            "rngCount": 17
+          }
+        ],
+        "rngWord": 267834847,
+        "rngCount": 17,
+        "scoreCalls": 2,
+        "additionalComparisonDraws": 0,
+        "inputUnchanged": true,
+        "baselineActorDelay": 17,
+        "baselineTargetDelay": 1,
+        "eligibleEnemy": true,
+        "eligibleEnemyId": "Delita",
+        "proximity": [
+          9,
+          9
+        ]
+      }
+    },
+    {
+      "id": "pair-move-then-act",
+      "family": "proposed-pair",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "freshDecisionBaseline": true,
+        "sameActorAndTarget": true,
+        "movementSupported": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "actorId": "Ramza",
+        "targetId": "Delita",
+        "units": [
+          {
+            "id": "Ramza",
+            "slot": 0,
+            "ct": 15,
+            "speed": 5,
+            "position": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "Delita",
+            "slot": 1,
+            "ct": 95,
+            "speed": 5,
+            "position": [
+              1,
+              0
+            ]
+          }
+        ],
+        "targetPosition": [
+          1,
+          0
+        ],
+        "candidates": [
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          },
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          }
+        ]
+      },
+      "expected": {
+        "disposition": "Compared",
+        "reason": null,
+        "retained": 0,
+        "evaluations": [
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 64,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 485
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": 64
+                }
+              ]
+            },
+            "rngWord": 4182499122,
+            "rngCount": 12
+          },
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 64,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 485
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": 64
+                }
+              ]
+            },
+            "rngWord": 267834847,
+            "rngCount": 17
+          }
+        ],
+        "rngWord": 267834847,
+        "rngCount": 17,
+        "scoreCalls": 2,
+        "additionalComparisonDraws": 0,
+        "inputUnchanged": true,
+        "baselineActorDelay": 17,
+        "baselineTargetDelay": 1,
+        "eligibleEnemy": true,
+        "eligibleEnemyId": "Delita",
+        "proximity": [
+          9,
+          9
+        ]
+      }
+    },
+    {
+      "id": "pair-act-then-move",
+      "family": "proposed-pair",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "freshDecisionBaseline": true,
+        "sameActorAndTarget": true,
+        "movementSupported": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "actorId": "Ramza",
+        "targetId": "Delita",
+        "units": [
+          {
+            "id": "Ramza",
+            "slot": 0,
+            "ct": 15,
+            "speed": 5,
+            "position": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "Delita",
+            "slot": 1,
+            "ct": 95,
+            "speed": 5,
+            "position": [
+              1,
+              0
+            ]
+          }
+        ],
+        "targetPosition": [
+          1,
+          0
+        ],
+        "candidates": [
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "ActThenMove",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          },
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "ActThenMove",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          }
+        ]
+      },
+      "expected": {
+        "disposition": "Compared",
+        "reason": null,
+        "retained": 0,
+        "evaluations": [
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 64,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 485
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": 64
+                }
+              ]
+            },
+            "rngWord": 4182499122,
+            "rngCount": 12
+          },
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 64,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 485
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": 64
+                }
+              ]
+            },
+            "rngWord": 267834847,
+            "rngCount": 17
+          }
+        ],
+        "rngWord": 267834847,
+        "rngCount": 17,
+        "scoreCalls": 2,
+        "additionalComparisonDraws": 0,
+        "inputUnchanged": true,
+        "baselineActorDelay": 17,
+        "baselineTargetDelay": 1,
+        "eligibleEnemy": true,
+        "eligibleEnemyId": "Delita",
+        "proximity": [
+          9,
+          9
+        ]
+      }
+    },
+    {
+      "id": "pair-reverse-collection",
+      "family": "proposed-pair",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "freshDecisionBaseline": true,
+        "sameActorAndTarget": true,
+        "movementSupported": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "actorId": "Ramza",
+        "targetId": "Delita",
+        "units": [
+          {
+            "id": "Delita",
+            "slot": 1,
+            "ct": 95,
+            "speed": 5,
+            "position": [
+              1,
+              0
+            ]
+          },
+          {
+            "id": "Ramza",
+            "slot": 0,
+            "ct": 15,
+            "speed": 5,
+            "position": [
+              0,
+              0
+            ]
+          }
+        ],
+        "targetPosition": [
+          1,
+          0
+        ],
+        "candidates": [
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          },
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  0,
+                  0
+                ],
+                "destination": [
+                  0,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 15,
+                "actorSpeed": 5,
+                "actorSlot": 0,
+                "actorStatus": "None",
+                "targetCt": 95,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          }
+        ]
+      },
+      "expected": {
+        "disposition": "Compared",
+        "reason": null,
+        "retained": 0,
+        "evaluations": [
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 64,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 485
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": 64
+                }
+              ]
+            },
+            "rngWord": 4182499122,
+            "rngCount": 12
+          },
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 64,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 485
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": 64
+                }
+              ]
+            },
+            "rngWord": 267834847,
+            "rngCount": 17
+          }
+        ],
+        "rngWord": 267834847,
+        "rngCount": 17,
+        "scoreCalls": 2,
+        "additionalComparisonDraws": 0,
+        "inputUnchanged": true,
+        "baselineActorDelay": 17,
+        "baselineTargetDelay": 1,
+        "eligibleEnemy": true,
+        "eligibleEnemyId": "Delita",
+        "proximity": [
+          9,
+          9
+        ]
+      }
+    },
+    {
+      "id": "pair-other-actor-ID",
+      "family": "proposed-pair",
+      "expectationKind": "managed-design-proposal",
+      "inputs": {
+        "freshDecisionBaseline": true,
+        "sameActorAndTarget": true,
+        "movementSupported": true,
+        "rngWord": 1,
+        "rngCount": 7,
+        "actorId": "Delita",
+        "targetId": "Ramza",
+        "units": [
+          {
+            "id": "Ramza",
+            "slot": 0,
+            "ct": 15,
+            "speed": 5,
+            "position": [
+              0,
+              0
+            ]
+          },
+          {
+            "id": "Delita",
+            "slot": 1,
+            "ct": 95,
+            "speed": 5,
+            "position": [
+              1,
+              0
+            ]
+          }
+        ],
+        "targetPosition": [
+          0,
+          0
+        ],
+        "candidates": [
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  1,
+                  0
+                ],
+                "destination": [
+                  1,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 95,
+                "actorSpeed": 5,
+                "actorSlot": 1,
+                "actorStatus": "None",
+                "targetCt": 15,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          },
+          {
+            "scenarioZeroMember": true,
+            "scoring": {
+              "candidate": {
+                "terminal": false,
+                "activeActor": true,
+                "acted": false,
+                "moved": false,
+                "profileSupported": true,
+                "placementAllowed": true,
+                "order": "MoveThenAct",
+                "origin": [
+                  1,
+                  0
+                ],
+                "destination": [
+                  1,
+                  0
+                ],
+                "facing": "West",
+                "targetFacing": "East",
+                "rngWord": 1,
+                "rngCount": 7,
+                "hitPercent": 100,
+                "damage": 25,
+                "actorCt": 95,
+                "actorSpeed": 5,
+                "actorSlot": 1,
+                "actorStatus": "None",
+                "targetCt": 15,
+                "targetSpeed": 5,
+                "targetStatus": "None",
+                "targetHp": 50,
+                "targetMaxHp": 50,
+                "deathCounter": 255,
+                "targetMoved": true,
+                "targetActed": true,
+                "elapsedTicks": 20
+              },
+              "profile": {
+                "idsMatch": true,
+                "stableOpponents": true,
+                "unchangedTeams": true,
+                "units": [
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  },
+                  {
+                    "monster": false,
+                    "keptSlots": 7,
+                    "mp": 0,
+                    "maxMp": 0,
+                    "golem": 0,
+                    "baselineGolem": 0
+                  }
+                ]
+              },
+              "actorHp": 50,
+              "actorMaxHp": 50
+            }
+          }
+        ]
+      },
+      "expected": {
+        "disposition": "Compared",
+        "reason": null,
+        "retained": 0,
+        "evaluations": [
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 64,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": -421
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 64
+                }
+              ]
+            },
+            "rngWord": 4182499122,
+            "rngCount": 12
+          },
+          {
+            "disposition": "Scored",
+            "score": {
+              "priority": 64,
+              "hitPercent": 100,
+              "contributions": [
+                {
+                  "slot": 0,
+                  "hpTerm": 64,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 421,
+                  "signedContribution": -421,
+                  "storedPriority": -421
+                },
+                {
+                  "slot": 1,
+                  "hpTerm": 128,
+                  "statusTerm": 0,
+                  "equipmentTerm": 357,
+                  "unitTotal": 485,
+                  "signedContribution": 485,
+                  "storedPriority": 64
+                }
+              ]
+            },
+            "rngWord": 267834847,
+            "rngCount": 17
+          }
+        ],
+        "rngWord": 267834847,
+        "rngCount": 17,
+        "scoreCalls": 2,
+        "additionalComparisonDraws": 0,
+        "inputUnchanged": true,
+        "baselineActorDelay": 1,
+        "baselineTargetDelay": 17,
+        "eligibleEnemy": false,
+        "eligibleEnemyId": null,
+        "proximity": [
+          0,
+          0
+        ]
+      }
+    }
+  ],
+  "implementationCases": [
+    {
+      "id": "ACM-001",
+      "description": "Fresh score calls once each on one baseline; no external score/cache input",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACM-002",
+      "description": "Candidate decided marker 0; signed priority then independent hit then lower proximity",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACM-003",
+      "description": "Exact tie keeps incumbent; swap arguments reverses only strict improvements",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACM-004",
+      "description": "Baseline actor byte delay, target s32 delay, equal delay admitted; None/Critical subset",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACM-005",
+      "description": "Baseline eligible enemy and coordinates retained after projected lethal/first-clock changes",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACM-006",
+      "description": "Scenario-0 AI origin membership including stay; reject invalid/unwritten destinations before draws",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACM-007",
+      "description": "Bounded map/certificates/identity pairing and fresh-cache provenance; no guessed flags",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACM-008",
+      "description": "Both action orders compare final destination, not attack origin or projected heading",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACM-009",
+      "description": "Same decision stream carried through both fresh scores, including discarded/NotValuable outcomes",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACM-010",
+      "description": "Only one Scored wins; two NotValuable gives NoScoredCandidate; absent score never zero",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACM-011",
+      "description": "Pair rejection atomicity: first failure skips second; late second failure returns original pair RNG",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACM-012",
+      "description": "Zero cache/compare draws and successful exact-MAX budget; preserve typed nested failure diagnostics",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACM-013",
+      "description": "Both actor IDs/TieKey order and collection reversal; replay and branch/input preservation",
+      "status": "unexecuted"
+    },
+    {
+      "id": "ACM-014",
+      "description": "No command receipt, active/live state or authoritative RNG publication, rank list, lottery or interface",
+      "status": "unexecuted"
+    }
+  ]
+}

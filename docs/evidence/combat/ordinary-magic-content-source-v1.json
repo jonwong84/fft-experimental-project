@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "sourceFiles": [
+    {
+      "path": "src/main/game_tables.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 7063,
+      "sha256": "35b6df66b42f21c0ab95fa0dfbd0596592a193235f615181b0d3cbfac3559a5f"
+    },
+    {
+      "path": "src/battle/menu/ability_choices.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 33117,
+      "sha256": "3b551809fc63ec825a7b2156c45591719871793c857c481564d2e74b558638fc"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 46088,
+      "sha256": "a9e58962104849ae4e947e3833236aaf2c1334394a1af12b19930428e6885e03"
+    },
+    {
+      "path": "src/battle/combat/resolution.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 85515,
+      "sha256": "820411f8293d559677ff676f4e3d19a16ae52b667e7aa1393ab5495741f1e149"
+    },
+    {
+      "path": "include/fft/ability.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 34632,
+      "sha256": "530676861205ea3cf31cada08ffc927142db98af0ad2c986722ad83b069b9a2f"
+    },
+    {
+      "path": "target/main.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 135004,
+      "sha256": "b6066d98d481d73eb49d2d16be57ae3fc5ae4070830176fdeeeaae2bdeaec2a3"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/main/game_tables.c",
+      "symbol": "ability_skillset_id_get",
+      "startLine": 35,
+      "endLine": 73,
+      "normalizedLfSha256": "fce3686f6d7e10c178f9a111451a7deeb95c8718e52f7153648a37e0be0f55d1"
+    },
+    {
+      "path": "src/main/game_tables.c",
+      "symbol": "ability_records_get",
+      "startLine": 120,
+      "endLine": 159,
+      "normalizedLfSha256": "7af1702246b96659a9452d312adfa7f7634ce277dd9fd05670ff2822cd394c1e"
+    },
+    {
+      "path": "src/battle/menu/ability_choices.c",
+      "symbol": "skillset_get_unit_ability_data",
+      "startLine": 328,
+      "endLine": 447,
+      "normalizedLfSha256": "0300747c4c0265b87fe20c32de2d19f2f5b29f94f75d3486e4a1933ef4e9b3b3"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_magical_damage",
+      "startLine": 214,
+      "endLine": 226,
+      "normalizedLfSha256": "af531fc4dc047745a0466ab1e30c3c69356e4702458c90e64649342efed85024"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_magical_heal",
+      "startLine": 263,
+      "endLine": 269,
+      "normalizedLfSha256": "6283c1300418be96f44690b192c923771733f99bd56bb0d2b99cac3ea8c5c02f"
+    }
+  ],
+  "originalExecuted": false,
+  "cExecuted": false,
+  "scope": "Selected ordinary spell table, family dispatch and learned slot order; earlier formula/targeting receipts own calculation breadth."
+}

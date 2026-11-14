@@ -1,0 +1,1881 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-297",
+  "date": "2026-11-05",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "notes": [
+    "Independent Python source descriptions; no managed/original/C execution.",
+    "Candidate trajectories explicitly certified clear; search clearance supplied facts do not implement sampled geometry."
+  ],
+  "candidates": [
+    {
+      "id": "selected-target-only-peer-hp-retained",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "destination": [
+          1,
+          1
+        ],
+        "order": "ActThenMove",
+        "move": 1,
+        "moved": false,
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "West",
+            "evade": 0
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 31,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          }
+        ],
+        "clearTrajectory": true
+      },
+      "expected": {
+        "disposition": "Scored",
+        "hit": 100,
+        "damage": 10,
+        "endCt": 35,
+        "next": "b",
+        "elapsed": 1,
+        "ticks": 21,
+        "units": [
+          {
+            "id": "a",
+            "hp": 50,
+            "status": "None",
+            "counter": 255,
+            "ct": 40
+          },
+          {
+            "id": "b",
+            "hp": 40,
+            "status": "None",
+            "counter": 255,
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "hp": 31,
+            "status": "None",
+            "counter": 255,
+            "ct": 5
+          }
+        ],
+        "groups": [
+          {
+            "id": "b",
+            "dead": false,
+            "count": 1
+          }
+        ],
+        "priority": 462,
+        "running": [
+          485,
+          26,
+          462
+        ],
+        "word": 4182499122,
+        "count": 12
+      }
+    },
+    {
+      "id": "half-front-hit-applies-full-normal-damage",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "destination": [
+          1,
+          1
+        ],
+        "order": "ActThenMove",
+        "move": 1,
+        "moved": false,
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "West",
+            "evade": 50
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 31,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          }
+        ],
+        "clearTrajectory": true
+      },
+      "expected": {
+        "disposition": "Scored",
+        "hit": 50,
+        "damage": 10,
+        "endCt": 35,
+        "next": "b",
+        "elapsed": 1,
+        "ticks": 21,
+        "units": [
+          {
+            "id": "a",
+            "hp": 50,
+            "status": "None",
+            "counter": 255,
+            "ct": 40
+          },
+          {
+            "id": "b",
+            "hp": 40,
+            "status": "None",
+            "counter": 255,
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "hp": 31,
+            "status": "None",
+            "counter": 255,
+            "ct": 5
+          }
+        ],
+        "groups": [
+          {
+            "id": "b",
+            "dead": false,
+            "count": 1
+          }
+        ],
+        "priority": 462,
+        "running": [
+          485,
+          26,
+          462
+        ],
+        "word": 4182499122,
+        "count": 12
+      }
+    },
+    {
+      "id": "certain-front-evade-stops-before-clock",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "destination": [
+          1,
+          1
+        ],
+        "order": "ActThenMove",
+        "move": 1,
+        "moved": false,
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "West",
+            "evade": 100
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 31,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          }
+        ],
+        "clearTrajectory": true
+      },
+      "expected": {
+        "disposition": "NotValuable",
+        "word": 3295386429,
+        "count": 11
+      }
+    },
+    {
+      "id": "rear-class-evade-is-ignored",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "destination": [
+          1,
+          1
+        ],
+        "order": "ActThenMove",
+        "move": 1,
+        "moved": false,
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "East",
+            "evade": 100
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 31,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          }
+        ],
+        "clearTrajectory": true
+      },
+      "expected": {
+        "disposition": "Scored",
+        "hit": 100,
+        "damage": 10,
+        "endCt": 35,
+        "next": "b",
+        "elapsed": 1,
+        "ticks": 21,
+        "units": [
+          {
+            "id": "a",
+            "hp": 50,
+            "status": "None",
+            "counter": 255,
+            "ct": 40
+          },
+          {
+            "id": "b",
+            "hp": 40,
+            "status": "None",
+            "counter": 255,
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "hp": 31,
+            "status": "None",
+            "counter": 255,
+            "ct": 5
+          }
+        ],
+        "groups": [
+          {
+            "id": "b",
+            "dead": false,
+            "count": 1
+          }
+        ],
+        "priority": 462,
+        "running": [
+          485,
+          26,
+          462
+        ],
+        "word": 4182499122,
+        "count": 12
+      }
+    },
+    {
+      "id": "target-critical-does-not-change-allied-peer",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "destination": [
+          1,
+          1
+        ],
+        "order": "ActThenMove",
+        "move": 1,
+        "moved": false,
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 15,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "West",
+            "evade": 0
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 31,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          }
+        ],
+        "clearTrajectory": true
+      },
+      "expected": {
+        "disposition": "Scored",
+        "hit": 100,
+        "damage": 10,
+        "endCt": 35,
+        "next": "b",
+        "elapsed": 1,
+        "ticks": 21,
+        "units": [
+          {
+            "id": "a",
+            "hp": 50,
+            "status": "None",
+            "counter": 255,
+            "ct": 40
+          },
+          {
+            "id": "b",
+            "hp": 5,
+            "status": "Critical",
+            "counter": 255,
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "hp": 31,
+            "status": "None",
+            "counter": 255,
+            "ct": 5
+          }
+        ],
+        "groups": [
+          {
+            "id": "b",
+            "dead": false,
+            "count": 1
+          }
+        ],
+        "priority": 584,
+        "running": [
+          485,
+          148,
+          584
+        ],
+        "word": 4182499122,
+        "count": 12
+      }
+    },
+    {
+      "id": "ko-corpse-upkeep-precedes-living-actor",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "destination": [
+          1,
+          1
+        ],
+        "order": "ActThenMove",
+        "move": 1,
+        "moved": false,
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 5,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "West",
+            "evade": 0
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 31,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          }
+        ],
+        "clearTrajectory": true
+      },
+      "expected": {
+        "disposition": "Scored",
+        "hit": 100,
+        "damage": 10,
+        "endCt": 35,
+        "next": "a",
+        "elapsed": 13,
+        "ticks": 33,
+        "units": [
+          {
+            "id": "a",
+            "hp": 50,
+            "status": "None",
+            "counter": 255,
+            "ct": 0
+          },
+          {
+            "id": "b",
+            "hp": 0,
+            "status": "Dead",
+            "counter": 3,
+            "ct": 60
+          },
+          {
+            "id": "c",
+            "hp": 31,
+            "status": "None",
+            "counter": 255,
+            "ct": 65
+          }
+        ],
+        "groups": [
+          {
+            "id": "b",
+            "dead": true,
+            "count": 1
+          },
+          {
+            "id": "a",
+            "dead": false,
+            "count": 1
+          }
+        ],
+        "priority": 756,
+        "running": [
+          485,
+          320,
+          756
+        ],
+        "word": 2516284547,
+        "count": 13
+      }
+    },
+    {
+      "id": "first-ready-source-slot-can-precede-corpse-upkeep",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "destination": [
+          1,
+          1
+        ],
+        "order": "ActThenMove",
+        "move": 1,
+        "moved": false,
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "units": [
+          {
+            "id": "a",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 100,
+            "hp": 5,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "West",
+            "evade": 0
+          },
+          {
+            "id": "c",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 100,
+            "hp": 31,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          }
+        ],
+        "clearTrajectory": true
+      },
+      "expected": {
+        "disposition": "Scored",
+        "hit": 100,
+        "damage": 10,
+        "endCt": 35,
+        "next": "c",
+        "elapsed": 0,
+        "ticks": 20,
+        "units": [
+          {
+            "id": "c",
+            "hp": 31,
+            "status": "None",
+            "counter": 255,
+            "ct": 0
+          },
+          {
+            "id": "b",
+            "hp": 0,
+            "status": "Dead",
+            "counter": 3,
+            "ct": 100
+          },
+          {
+            "id": "a",
+            "hp": 50,
+            "status": "None",
+            "counter": 255,
+            "ct": 35
+          }
+        ],
+        "groups": [
+          {
+            "id": "c",
+            "dead": false,
+            "count": 1
+          }
+        ],
+        "priority": 756,
+        "running": [
+          436,
+          271,
+          756
+        ],
+        "word": 4182499122,
+        "count": 12
+      }
+    },
+    {
+      "id": "act-first-formula-uses-original-facing-origin",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "destination": [
+          2,
+          0
+        ],
+        "order": "ActThenMove",
+        "move": 2,
+        "moved": false,
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "West",
+            "evade": 50
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 31,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          }
+        ],
+        "clearTrajectory": true
+      },
+      "expected": {
+        "disposition": "Scored",
+        "hit": 50,
+        "damage": 10,
+        "endCt": 15,
+        "next": "b",
+        "elapsed": 1,
+        "ticks": 21,
+        "units": [
+          {
+            "id": "a",
+            "hp": 50,
+            "status": "None",
+            "counter": 255,
+            "ct": 20
+          },
+          {
+            "id": "b",
+            "hp": 40,
+            "status": "None",
+            "counter": 255,
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "hp": 31,
+            "status": "None",
+            "counter": 255,
+            "ct": 5
+          }
+        ],
+        "groups": [
+          {
+            "id": "b",
+            "dead": false,
+            "count": 1
+          }
+        ],
+        "priority": 462,
+        "running": [
+          485,
+          26,
+          462
+        ],
+        "word": 4182499122,
+        "count": 12
+      }
+    },
+    {
+      "id": "move-first-formula-uses-destination-flank",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "destination": [
+          2,
+          0
+        ],
+        "order": "MoveThenAct",
+        "move": 2,
+        "moved": false,
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "West",
+            "evade": 50
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 31,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          }
+        ],
+        "clearTrajectory": true
+      },
+      "expected": {
+        "disposition": "Scored",
+        "hit": 100,
+        "damage": 10,
+        "endCt": 15,
+        "next": "b",
+        "elapsed": 1,
+        "ticks": 21,
+        "units": [
+          {
+            "id": "a",
+            "hp": 50,
+            "status": "None",
+            "counter": 255,
+            "ct": 20
+          },
+          {
+            "id": "b",
+            "hp": 40,
+            "status": "None",
+            "counter": 255,
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "hp": 31,
+            "status": "None",
+            "counter": 255,
+            "ct": 5
+          }
+        ],
+        "groups": [
+          {
+            "id": "b",
+            "dead": false,
+            "count": 1
+          }
+        ],
+        "priority": 462,
+        "running": [
+          485,
+          26,
+          462
+        ],
+        "word": 4182499122,
+        "count": 12
+      }
+    },
+    {
+      "id": "fast-corpse-101-picks-retains-counter-three",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "destination": [
+          1,
+          1
+        ],
+        "order": "ActThenMove",
+        "move": 1,
+        "moved": true,
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "units": [
+          {
+            "id": "a",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 0,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 1,
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 100,
+            "hp": 5,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 255,
+            "face": "West",
+            "evade": 0
+          },
+          {
+            "id": "c",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 31,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 1,
+            "face": "South",
+            "evade": 0
+          }
+        ],
+        "clearTrajectory": true
+      },
+      "expected": {
+        "disposition": "Scored",
+        "hit": 100,
+        "damage": 10,
+        "endCt": 0,
+        "next": "c",
+        "elapsed": 100,
+        "ticks": 120,
+        "units": [
+          {
+            "id": "c",
+            "hp": 31,
+            "status": "None",
+            "counter": 255,
+            "ct": 0
+          },
+          {
+            "id": "b",
+            "hp": 0,
+            "status": "Dead",
+            "counter": 3,
+            "ct": 54
+          },
+          {
+            "id": "a",
+            "hp": 50,
+            "status": "None",
+            "counter": 255,
+            "ct": 100
+          }
+        ],
+        "groups": [
+          {
+            "id": "b",
+            "dead": true,
+            "count": 101
+          },
+          {
+            "id": "c",
+            "dead": false,
+            "count": 1
+          }
+        ],
+        "priority": 756,
+        "running": [
+          436,
+          271,
+          756
+        ],
+        "word": 446673791,
+        "count": 113
+      }
+    },
+    {
+      "id": "range-four-front-positive-accuracy",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "destination": [
+          1,
+          1
+        ],
+        "order": "ActThenMove",
+        "move": 1,
+        "moved": false,
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              4,
+              2
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "West",
+            "evade": 75
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 31,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          }
+        ],
+        "clearTrajectory": true
+      },
+      "expected": {
+        "disposition": "Scored",
+        "hit": 25,
+        "damage": 10,
+        "endCt": 35,
+        "next": "b",
+        "elapsed": 1,
+        "ticks": 21,
+        "units": [
+          {
+            "id": "a",
+            "hp": 50,
+            "status": "None",
+            "counter": 255,
+            "ct": 40
+          },
+          {
+            "id": "b",
+            "hp": 40,
+            "status": "None",
+            "counter": 255,
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "hp": 31,
+            "status": "None",
+            "counter": 255,
+            "ct": 5
+          }
+        ],
+        "groups": [
+          {
+            "id": "b",
+            "dead": false,
+            "count": 1
+          }
+        ],
+        "priority": 462,
+        "running": [
+          485,
+          26,
+          462
+        ],
+        "word": 4182499122,
+        "count": 12
+      }
+    },
+    {
+      "id": "diagonal-front-either-axis",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "destination": [
+          1,
+          1
+        ],
+        "order": "ActThenMove",
+        "move": 1,
+        "moved": false,
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              2
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 75
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 31,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          }
+        ],
+        "clearTrajectory": true
+      },
+      "expected": {
+        "disposition": "Scored",
+        "hit": 25,
+        "damage": 10,
+        "endCt": 35,
+        "next": "b",
+        "elapsed": 1,
+        "ticks": 21,
+        "units": [
+          {
+            "id": "a",
+            "hp": 50,
+            "status": "None",
+            "counter": 255,
+            "ct": 40
+          },
+          {
+            "id": "b",
+            "hp": 40,
+            "status": "None",
+            "counter": 255,
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "hp": 31,
+            "status": "None",
+            "counter": 255,
+            "ct": 5
+          }
+        ],
+        "groups": [
+          {
+            "id": "b",
+            "dead": false,
+            "count": 1
+          }
+        ],
+        "priority": 462,
+        "running": [
+          485,
+          26,
+          462
+        ],
+        "word": 4182499122,
+        "count": 12
+      }
+    },
+    {
+      "id": "pa-99-midpoint-198-no-knockback",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "destination": [
+          1,
+          1
+        ],
+        "order": "ActThenMove",
+        "move": 1,
+        "moved": false,
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 99,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "West",
+            "evade": 0
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 31,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          }
+        ],
+        "clearTrajectory": true
+      },
+      "expected": {
+        "disposition": "Scored",
+        "hit": 100,
+        "damage": 198,
+        "endCt": 35,
+        "next": "a",
+        "elapsed": 13,
+        "ticks": 33,
+        "units": [
+          {
+            "id": "a",
+            "hp": 50,
+            "status": "None",
+            "counter": 255,
+            "ct": 0
+          },
+          {
+            "id": "b",
+            "hp": 0,
+            "status": "Dead",
+            "counter": 3,
+            "ct": 60
+          },
+          {
+            "id": "c",
+            "hp": 31,
+            "status": "None",
+            "counter": 255,
+            "ct": 65
+          }
+        ],
+        "groups": [
+          {
+            "id": "b",
+            "dead": true,
+            "count": 1
+          },
+          {
+            "id": "a",
+            "dead": false,
+            "count": 1
+          }
+        ],
+        "priority": 756,
+        "running": [
+          485,
+          320,
+          756
+        ],
+        "word": 2516284547,
+        "count": 13
+      }
+    },
+    {
+      "id": "pa-one-midpoint-two",
+      "input": {
+        "actor": "a",
+        "target": "b",
+        "destination": [
+          1,
+          1
+        ],
+        "order": "ActThenMove",
+        "move": 1,
+        "moved": false,
+        "word": 1,
+        "count": 7,
+        "ticks": 20,
+        "units": [
+          {
+            "id": "a",
+            "order": 0,
+            "team": 1,
+            "tile": [
+              1,
+              1
+            ],
+            "ct": 15,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 1,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          },
+          {
+            "id": "b",
+            "order": 1,
+            "team": 0,
+            "tile": [
+              2,
+              1
+            ],
+            "ct": 95,
+            "hp": 50,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "West",
+            "evade": 0
+          },
+          {
+            "id": "c",
+            "order": 2,
+            "team": 1,
+            "tile": [
+              1,
+              2
+            ],
+            "ct": 0,
+            "hp": 31,
+            "maxHp": 50,
+            "pa": 5,
+            "speed": 5,
+            "face": "South",
+            "evade": 0
+          }
+        ],
+        "clearTrajectory": true
+      },
+      "expected": {
+        "disposition": "Scored",
+        "hit": 100,
+        "damage": 2,
+        "endCt": 35,
+        "next": "b",
+        "elapsed": 1,
+        "ticks": 21,
+        "units": [
+          {
+            "id": "a",
+            "hp": 50,
+            "status": "None",
+            "counter": 255,
+            "ct": 40
+          },
+          {
+            "id": "b",
+            "hp": 48,
+            "status": "None",
+            "counter": 255,
+            "ct": 0
+          },
+          {
+            "id": "c",
+            "hp": 31,
+            "status": "None",
+            "counter": 255,
+            "ct": 5
+          }
+        ],
+        "groups": [
+          {
+            "id": "b",
+            "dead": false,
+            "count": 1
+          }
+        ],
+        "priority": 442,
+        "running": [
+          485,
+          6,
+          442
+        ],
+        "word": 4182499122,
+        "count": 12
+      }
+    }
+  ],
+  "search": [
+    {
+      "id": "last-origin-tie-map-aim-order-and-consume-zero",
+      "input": {
+        "origins": [
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "priority": 0,
+            "proximity": 0
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "priority": 0,
+            "proximity": 0
+          }
+        ],
+        "aims": [
+          {
+            "id": "b",
+            "tile": [
+              3,
+              1
+            ],
+            "hit": 100,
+            "upkeep": 1
+          },
+          {
+            "id": "c",
+            "tile": [
+              2,
+              0
+            ],
+            "hit": 0,
+            "upkeep": 1
+          }
+        ],
+        "clearance": {
+          "1,1:b": true,
+          "1,1:c": true
+        }
+      },
+      "expected": {
+        "events": [
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "c",
+            "result": "NotValuable",
+            "draws": 4
+          },
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "result": "Scored",
+            "draws": 5
+          }
+        ],
+        "consumed": [
+          "c",
+          "b"
+        ],
+        "remainingOrigins": 1,
+        "remainingAims": 0,
+        "draws": 9
+      }
+    },
+    {
+      "id": "blocked-aim-remains-for-later-origin",
+      "input": {
+        "origins": [
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "priority": -2,
+            "proximity": 0
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "priority": -1,
+            "proximity": 0
+          }
+        ],
+        "aims": [
+          {
+            "id": "b",
+            "tile": [
+              3,
+              1
+            ],
+            "hit": 100,
+            "upkeep": 1
+          },
+          {
+            "id": "c",
+            "tile": [
+              2,
+              0
+            ],
+            "hit": 100,
+            "upkeep": 1
+          }
+        ],
+        "clearance": {
+          "0,1:b": false,
+          "0,1:c": true,
+          "1,1:b": true
+        }
+      },
+      "expected": {
+        "events": [
+          {
+            "origin": [
+              0,
+              1
+            ],
+            "target": "c",
+            "result": "Scored",
+            "draws": 5
+          },
+          {
+            "origin": [
+              0,
+              1
+            ],
+            "target": "b",
+            "result": "Blocked",
+            "draws": 0
+          },
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "result": "Scored",
+            "draws": 5
+          }
+        ],
+        "consumed": [
+          "c",
+          "b"
+        ],
+        "remainingOrigins": 0,
+        "remainingAims": 0,
+        "draws": 10
+      }
+    },
+    {
+      "id": "all-blocked-exhausts-origins-without-consuming-aim",
+      "input": {
+        "origins": [
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "priority": 0,
+            "proximity": 0
+          },
+          {
+            "tile": [
+              1,
+              1
+            ],
+            "priority": 0,
+            "proximity": 0
+          }
+        ],
+        "aims": [
+          {
+            "id": "b",
+            "tile": [
+              3,
+              1
+            ],
+            "hit": 100,
+            "upkeep": 1
+          }
+        ],
+        "clearance": {
+          "0,1:b": false,
+          "1,1:b": false
+        }
+      },
+      "expected": {
+        "events": [
+          {
+            "origin": [
+              1,
+              1
+            ],
+            "target": "b",
+            "result": "Blocked",
+            "draws": 0
+          },
+          {
+            "origin": [
+              0,
+              1
+            ],
+            "target": "b",
+            "result": "Blocked",
+            "draws": 0
+          }
+        ],
+        "consumed": [],
+        "remainingOrigins": 0,
+        "remainingAims": 1,
+        "draws": 0
+      }
+    },
+    {
+      "id": "out-of-range-aim-remains-after-other-evaluation",
+      "input": {
+        "origins": [
+          {
+            "tile": [
+              0,
+              1
+            ],
+            "priority": 0,
+            "proximity": 0
+          }
+        ],
+        "aims": [
+          {
+            "id": "b",
+            "tile": [
+              3,
+              1
+            ],
+            "hit": 100,
+            "upkeep": 1
+          },
+          {
+            "id": "c",
+            "tile": [
+              6,
+              1
+            ],
+            "hit": 100,
+            "upkeep": 1
+          }
+        ],
+        "clearance": {
+          "0,1:b": true
+        }
+      },
+      "expected": {
+        "events": [
+          {
+            "origin": [
+              0,
+              1
+            ],
+            "target": "b",
+            "result": "Scored",
+            "draws": 5
+          }
+        ],
+        "consumed": [
+          "b"
+        ],
+        "remainingOrigins": 0,
+        "remainingAims": 1,
+        "draws": 5
+      }
+    }
+  ]
+}

@@ -1,0 +1,231 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "907cbb5b3fb5ec0b9af0462340c1ec8ea606ed86",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Owner-supplied Attacker Berserk/Frog helper; original signed arithmetic and wrapper link, without physical status admission.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54735,
+      "sha256": "b37712b2e33a060f057e87f866c25ef0f4d4ba9b8bacf89447e2eeb0cd0c2bf9"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 46088,
+      "sha256": "a9e58962104849ae4e947e3833236aaf2c1334394a1af12b19930428e6885e03"
+    },
+    {
+      "path": "include/fft/status.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11673,
+      "sha256": "deeaeec02add8b9db7cca91c99517706033b18385ca433d32f1998d9d62e0e83"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_attacker_berserk_frog",
+      "startLine": 1083,
+      "endLine": 1091,
+      "normalizedLfSha256": "f6214a8937b7b6dc8e94b668fda34250a42fd85a535914af1f5c28a53f5a889a"
+    },
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_apply_physical_modifiers_without_supports",
+      "startLine": 110,
+      "endLine": 115,
+      "normalizedLfSha256": "fb11100b19830097d618dff379b79fbf777b986a2c5884d8fd13e334be608fc6"
+    }
+  ],
+  "preparedBattle": {
+    "path": "scratch/fft-decomp-work/build/extracted/files/BATTLE.BIN",
+    "byteLength": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "loadAddress": "0x80067000"
+  },
+  "start": "0x80186254",
+  "endInclusive": "0x801862c8",
+  "instructionCount": 30,
+  "instructionWords": [
+    "3c028019",
+    "8c422d94",
+    "00000000",
+    "9042005a",
+    "00000000",
+    "30420008",
+    "1040000b",
+    "00000000",
+    "3c048019",
+    "248438ce",
+    "84830000",
+    "00000000",
+    "00031040",
+    "00431021",
+    "00021fc2",
+    "00431021",
+    "00021043",
+    "a4820000",
+    "3c028019",
+    "8c422d94",
+    "00000000",
+    "9042005a",
+    "00000000",
+    "30420002",
+    "10400003",
+    "34020001",
+    "3c018019",
+    "a42238ce",
+    "03e00008",
+    "00000000"
+  ],
+  "allMatched": true,
+  "directCalls": 0,
+  "listedCallers": [
+    {
+      "callPc": "0x80188608",
+      "returnAddress": "0x80188610",
+      "matched": true
+    },
+    {
+      "callPc": "0x80188ae4",
+      "returnAddress": "0x80188aec",
+      "matched": true
+    },
+    {
+      "callPc": "0x80189898",
+      "returnAddress": "0x801898a0",
+      "matched": true
+    },
+    {
+      "callPc": "0x80189e40",
+      "returnAddress": "0x80189e48",
+      "matched": true
+    }
+  ],
+  "statusSelection": {
+    "unitByte": "0x5a",
+    "berserkMask": "0x08",
+    "frogMask": "0x02",
+    "xaAddress": "0x801938ce"
+  },
+  "arithmetic": {
+    "order": [
+      "Berserk: signed16 XA*3/2, truncation toward zero and low16 store.",
+      "Frog: independently test and overwrite XA with1."
+    ],
+    "signedXaInputs": 65536,
+    "statusCombinations": 4,
+    "comparisons": 262144,
+    "literalDescriptions": [
+      {
+        "xa": 5,
+        "berserk": true,
+        "frog": false,
+        "expectedXa": 7
+      },
+      {
+        "xa": -5,
+        "berserk": true,
+        "frog": false,
+        "expectedXa": -7
+      },
+      {
+        "xa": 0,
+        "berserk": true,
+        "frog": false,
+        "expectedXa": 0
+      },
+      {
+        "xa": 32767,
+        "berserk": true,
+        "frog": false,
+        "expectedXa": -16386
+      },
+      {
+        "xa": -32768,
+        "berserk": true,
+        "frog": false,
+        "expectedXa": 16384
+      },
+      {
+        "xa": 32767,
+        "berserk": true,
+        "frog": true,
+        "expectedXa": 1
+      },
+      {
+        "xa": -5,
+        "berserk": false,
+        "frog": true,
+        "expectedXa": 1
+      },
+      {
+        "xa": 5,
+        "berserk": false,
+        "frog": false,
+        "expectedXa": 5
+      }
+    ]
+  },
+  "clarifications": [
+    "The caller return0x80188aec belongs to the physical-modifier cluster at0x80188adc; the supplied Magical XA*YA label is incorrect.",
+    "The Frog branch delay slot assigns register v0=1 even when Frog is absent. Only the conditional halfword store changes XA; this is a void helper, not a public hit/result code.",
+    "Berserk XA5 yields7 and XA-5 yields-7. Positive percentages do not imply rounding upward.",
+    "When both statuses are set, Berserk is processed first and Frog overrides its stored result. The input is working XA, possibly already modified by attacker supports, not necessarily raw PA."
+  ],
+  "boundaries": [
+    "Leaf helper: no RNG, other calls, YA update, final damage write, critical, target Defense Up or zodiac work.",
+    "Frog forces1 only at this stage. Later Defense Up/target statuses/original compatibility retain their own ordering and stores.",
+    "Current physical profiles exclude these status modifiers. No runtime, fixture, content or owner-draft change is required.",
+    "Next useful supplied listing is Defense Up at0x801862cc; target physical statuses and alternative damage/knockback remain useful."
+  ],
+  "validation": {
+    "referenceClean": true,
+    "sourceAudit": {
+      "formulaDescriptions": 24,
+      "actualDescriptions": 8,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false
+    },
+    "preparedDash": {
+      "abilityId": 147,
+      "range": 1,
+      "verticalTolerance": 1,
+      "formula": 55,
+      "y": 4,
+      "evadeable": false,
+      "directTrajectory": false,
+      "aiPhysical": true,
+      "aiDirectTrajectory": false,
+      "aiExhaustive": false,
+      "preparedVerified": true
+    },
+    "ownerBlobsVerified": 10,
+    "ownerApprovedCiEdit": {
+      "path": ".circleci/config.yml",
+      "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+      "committed": true,
+      "ciEnabledDefault": false
+    },
+    "runtimeChanged": false,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "runtimeTestsRerun": false,
+    "previousRuntimeValidationReceipt": "docs/evidence/combat/attack-up-martial-arts-trace-v1.json"
+  }
+}

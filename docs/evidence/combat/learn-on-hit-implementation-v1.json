@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "tickets": [
+    398,
+    399,
+    400,
+    401,
+    402
+  ],
+  "managedBaseCommit": "7aae6b6e24f319abbe3d2e605058352e47ce9899",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "sourceReceipt": "docs/evidence/combat/learn-on-hit-source-v1.json",
+  "completedCommitsBeforeFinalMilestone": {
+    "398": "15d3b75",
+    "399": "7115bd2",
+    "400": "2b13a78",
+    "401": "f7f43dd"
+  },
+  "validation": {
+    "lockedRestore": true,
+    "releaseWarnings": 0,
+    "releaseErrors": 0,
+    "dotnetTests": 4931,
+    "pythonTests": 749,
+    "sourceAudit": {
+      "arithmeticComparisons": 229376,
+      "rowHex": "808004",
+      "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+      "sourceFiles": 11,
+      "referenceClean": true,
+      "automaticallyLearnsWhenDisabled": true,
+      "preparedStatusRecords": 2,
+      "originalExecuted": false,
+      "cExecuted": false
+    },
+    "preparedProfiles": [
+      {
+        "bindingVectors": 1,
+        "sharedFormulas": 1,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 6,
+        "sourceFunctions": 5,
+        "preparedRecords": 35,
+        "metadataRecordsChecked": 1,
+        "manifestVerified": true,
+        "originalExecuted": false,
+        "cExecuted": false
+      },
+      {
+        "bindingVectors": 12,
+        "sharedFormulas": 1,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 6,
+        "sourceFunctions": 5,
+        "preparedRecords": 57,
+        "metadataRecordsChecked": 12,
+        "manifestVerified": true,
+        "originalExecuted": false,
+        "cExecuted": false
+      },
+      {
+        "bindingVectors": 2,
+        "sharedFormulas": 2,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 6,
+        "sourceFunctions": 7,
+        "preparedRecords": 39,
+        "metadataRecordsChecked": 2,
+        "manifestVerified": true,
+        "originalExecuted": false,
+        "cExecuted": false
+      },
+      {
+        "bindingVectors": 2,
+        "sharedFormulas": 1,
+        "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+        "referenceClean": true,
+        "sourceFiles": 6,
+        "sourceFunctions": 5,
+        "preparedRecords": 37,
+        "metadataRecordsChecked": 2,
+        "manifestVerified": true,
+        "originalExecuted": false,
+        "cExecuted": false
+      }
+    ],
+    "native": [
+      {
+        "profile": "fire",
+        "scenario": "fire",
+        "checkpoints": 4,
+        "allReplaysMatched": true,
+        "renderingPreservedState": true,
+        "restartMatched": true,
+        "movementChecked": true,
+        "finalSha256": "05f08744a6fc01b22de9c623c71ab6c28cbebce4685cbe2653a14aff38a829f7",
+        "programmedRoutes": true,
+        "originalMediaUsed": false
+      },
+      {
+        "profile": "elemental",
+        "scenario": "fire",
+        "checkpoints": 4,
+        "allReplaysMatched": true,
+        "renderingPreservedState": true,
+        "restartMatched": true,
+        "movementChecked": true,
+        "finalSha256": "5c1fd7e2cf5da76ba3442b3e3dcd3c9dfa575ec0fc62781fb209eeb2770dc744",
+        "programmedRoutes": true,
+        "originalMediaUsed": false
+      },
+      {
+        "profile": "healing",
+        "scenario": "cure-then-fire",
+        "checkpoints": 4,
+        "allReplaysMatched": true,
+        "renderingPreservedState": true,
+        "restartMatched": true,
+        "movementChecked": true,
+        "finalSha256": "215d32aad03e0056fd483769a60afab05b88b9da0482736f6baa7741ce792547",
+        "programmedRoutes": true,
+        "originalMediaUsed": false
+      },
+      {
+        "profile": "learning",
+        "scenario": "fire4-learn-on-hit",
+        "checkpoints": 6,
+        "allReplaysMatched": true,
+        "renderingPreservedState": true,
+        "restartMatched": true,
+        "movementChecked": true,
+        "finalSha256": "5e49ea88f2ae386f737248501db90ff84a93e94ad3e0d09d3b4b41d29d0228f5",
+        "programmedRoutes": true,
+        "originalMediaUsed": false
+      }
+    ],
+    "preservation": {
+      "ownerFiles": 10,
+      "ownerBlobsUnchanged": true,
+      "independentTargetingFormattingPreserved": true,
+      "publicDeclarations": 465,
+      "sourceFiles": 470,
+      "matchingPublicFiles": true,
+      "partialPartsPreserved": true
+    }
+  },
+  "limits": [
+    "Source-traced arithmetic and authored encounters; no C or original execution.",
+    "Special-job learned-row aliases, monsters/reactions, general magic AI, corpse/Golem/terminal/frame RNG and job switching remain deferred.",
+    "Reports/learned rows are battle state, not save or campaign persistence.",
+    "Owner drafts, JobStats and the independent targeting-format change are preserved."
+  ]
+}

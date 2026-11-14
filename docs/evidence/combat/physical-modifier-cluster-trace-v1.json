@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 1,
+  "managedBaseRevision": "67ea52c54e3935f1bccab85abceb9c9a45642b4e",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "scope": "Supplied Cluster of Physical Routines wrapper and dependency accounting; no broader support/status/zodiac runtime admission.",
+  "sourceFiles": [
+    {
+      "path": "src/battle/combat/formulas.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 46088,
+      "sha256": "a9e58962104849ae4e947e3833236aaf2c1334394a1af12b19930428e6885e03"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 54735,
+      "sha256": "b37712b2e33a060f057e87f866c25ef0f4d4ba9b8bacf89447e2eeb0cd0c2bf9"
+    },
+    {
+      "path": "target/battle.yaml",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 301903,
+      "sha256": "6f2bb866a9cf3fd112b3722d33b6f90b791bd153bd9a5607ef40a734398a99ec"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/status.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 11673,
+      "sha256": "deeaeec02add8b9db7cca91c99517706033b18385ca433d32f1998d9d62e0e83"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/combat/formulas.c",
+      "symbol": "formula_apply_physical_modifiers_without_supports",
+      "startLine": 110,
+      "endLine": 115,
+      "normalizedLfSha256": "fb11100b19830097d618dff379b79fbf777b986a2c5884d8fd13e334be608fc6"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_attacker_berserk_frog",
+      "startLine": 1083,
+      "endLine": 1091,
+      "normalizedLfSha256": "f6214a8937b7b6dc8e94b668fda34250a42fd85a535914af1f5c28a53f5a889a"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_defense_up",
+      "startLine": 1094,
+      "endLine": 1098,
+      "normalizedLfSha256": "9518367a88831e128e0d5ef1c1b0d8be7e3b4498105e5d52f55118d83a05e460"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_target_physical_statuses",
+      "startLine": 1110,
+      "endLine": 1129,
+      "normalizedLfSha256": "ac56f4a4499df58be52652dbac5f34748dd09823be6d6fc7f291d72b5cb0f1c4"
+    },
+    {
+      "path": "src/battle/combat/formula_core.c",
+      "symbol": "formula_apply_zodiac_compatibility",
+      "startLine": 319,
+      "endLine": 387,
+      "normalizedLfSha256": "b2983bca04a561e880d8f4d125419a63d7c792db0b9dba6f75488f6a0b6c1c77"
+    }
+  ],
+  "preparedBattle": {
+    "path": "scratch/fft-decomp-work/build/extracted/files/BATTLE.BIN",
+    "byteLength": 1397096,
+    "sha256": "7af579c7bcfd46f21f8d6886acb6aae156474dace667553e76079be7c7d6db94",
+    "loadAddress": "0x80067000"
+  },
+  "start": "0x80188adc",
+  "endInclusive": "0x80188b10",
+  "instructionCount": 14,
+  "instructionWords": [
+    "27bdffe8",
+    "afbf0010",
+    "0c061895",
+    "00000000",
+    "0c0618b3",
+    "00000000",
+    "0c0618db",
+    "00000000",
+    "0c061259",
+    "00000000",
+    "8fbf0010",
+    "27bd0018",
+    "03e00008",
+    "00000000"
+  ],
+  "allMatched": true,
+  "orderedCalls": [
+    {
+      "pc": "0x80188ae4",
+      "target": "0x80186254",
+      "symbol": "formula_apply_attacker_berserk_frog",
+      "delaySlot": "nop"
+    },
+    {
+      "pc": "0x80188aec",
+      "target": "0x801862cc",
+      "symbol": "formula_apply_defense_up",
+      "delaySlot": "nop"
+    },
+    {
+      "pc": "0x80188af4",
+      "target": "0x8018636c",
+      "symbol": "formula_apply_target_physical_statuses",
+      "delaySlot": "nop"
+    },
+    {
+      "pc": "0x80188afc",
+      "target": "0x80184964",
+      "symbol": "formula_apply_zodiac_compatibility",
+      "delaySlot": "nop"
+    }
+  ],
+  "listedCallers": [
+    {
+      "callPc": "0x80188b24",
+      "returnAddress": "0x80188b2c",
+      "matched": true
+    },
+    {
+      "callPc": "0x80189d00",
+      "returnAddress": "0x80189d08",
+      "matched": true
+    },
+    {
+      "callPc": "0x80189d9c",
+      "returnAddress": "0x80189da4",
+      "matched": true
+    },
+    {
+      "callPc": "0x80189fac",
+      "returnAddress": "0x80189fb4",
+      "matched": true
+    },
+    {
+      "callPc": "0x8018abf8",
+      "returnAddress": "0x8018ac00",
+      "matched": true
+    },
+    {
+      "callPc": "0x8018ac54",
+      "returnAddress": "0x8018ac5c",
+      "matched": true
+    }
+  ],
+  "sourceDependencyNotes": [
+    "Attacker: Berserk3/2 store then Frog overwrites XA with1.",
+    "Defense Up: independent target support step2/3 with its own store.",
+    "Target: Protect2/3, Sleep OR Charging3/2 once, then Chicken OR Frog3/2 once. Those two positive groups are separate cumulative stages.",
+    "Original compatibility runs last. Normal neutral still floors XA at1; Serpentarius returns without that floor. The secondadvent rewrite remains deferred."
+  ],
+  "documentationCoverage": {
+    "attackerBerserkFrog": "Source traced; next useful separately supplied listing at0x80186254.",
+    "defenseUp": "Source traced; separately supplied listing at0x801862cc remains useful.",
+    "targetPhysicalStatuses": "Source traced; separately supplied listing at0x8018636c remains useful.",
+    "compatibility": {
+      "existingReceipt": "docs/evidence/combat/formula08-supplied-trace-v1.json#suppliedOriginalCompatibilityCheck",
+      "originalWordsRechecked": 112,
+      "duplicateListingNeeded": false
+    }
+  },
+  "boundaries": [
+    "The wrapper has no gates, RNG or direct XA writes; four callees own their own stores and conditions.",
+    "Its name without_supports means attacker Attack Up/Martial Arts are outside the cluster, not that target Defense Up is skipped. Formula0x37 calls the attacker support helper immediately before this cluster.",
+    "Order and separate stores matter: Frog1 can become0 at Defense Up; later ordinary compatibility floors it, rather than Frog forcing a final universal1.",
+    "No combined multiplier, new custom quirk fix or activation of guarded physical support/status/general zodiac inputs.",
+    "Caller checks account for the six supplied locations, not complete implementation of the other formula families."
+  ],
+  "validation": {
+    "referenceClean": true,
+    "sourceAudit": {
+      "formulaDescriptions": 24,
+      "actualDescriptions": 8,
+      "originalExecuted": false,
+      "cExecuted": false,
+      "managedExecuted": false
+    },
+    "preparedDash": {
+      "abilityId": 147,
+      "range": 1,
+      "verticalTolerance": 1,
+      "formula": 55,
+      "y": 4,
+      "evadeable": false,
+      "directTrajectory": false,
+      "aiPhysical": true,
+      "aiDirectTrajectory": false,
+      "aiExhaustive": false,
+      "preparedVerified": true
+    },
+    "ownerBlobsVerified": 10,
+    "ownerApprovedCiEdit": {
+      "path": ".circleci/config.yml",
+      "gitBlob": "ebb152c3e8f1be9418923526e936939042f3b41a",
+      "committed": true,
+      "ciEnabledDefault": false
+    },
+    "runtimeChanged": false,
+    "originalExecuted": false,
+    "cExecuted": false,
+    "runtimeTestsRerun": false,
+    "previousRuntimeValidationReceipt": "docs/evidence/combat/attack-up-martial-arts-trace-v1.json"
+  }
+}

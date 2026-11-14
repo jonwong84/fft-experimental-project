@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "sourceFiles": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 147880,
+      "sha256": "5519c4550e9fea302ee4366848435b8131c7d3aef24f02462c7571d11bd1cd17"
+    },
+    {
+      "path": "src/battle/ai/abilities.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 20079,
+      "sha256": "42b793235173dbc98e77249df6488eed3708ef3c60c9d10520557fc9636c6862"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 23857,
+      "sha256": "57dd4fa8b07ef93c4a8e21c73657a0fdbe6c601a6db0b0351ae15b3cd15e4aea"
+    },
+    {
+      "path": "src/main/game_tables.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 7063,
+      "sha256": "35b6df66b42f21c0ab95fa0dfbd0596592a193235f615181b0d3cbfac3559a5f"
+    },
+    {
+      "path": "include/fft/ai.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 25771,
+      "sha256": "fa7aabf5b4d21e3f42be7978c061fb859a52709a234e5b4205c5de5e2c8566b5"
+    },
+    {
+      "path": "include/fft/ability.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 34632,
+      "sha256": "530676861205ea3cf31cada08ffc927142db98af0ad2c986722ad83b069b9a2f"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_ability_entry_load",
+      "startLine": 974,
+      "endLine": 1131,
+      "normalizedLfSha256": "98619a79ae6c72e98affb0803445984e5291b27b130e0fb27394b73fccb4e832"
+    },
+    {
+      "path": "src/battle/ai/abilities.c",
+      "symbol": "usable_abilities_build",
+      "startLine": 223,
+      "endLine": 278,
+      "normalizedLfSha256": "804a26a4db6daeeffa6316d6ca444d61bd96e295aa4ff47c170d6940889db4de"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "ability_find_learn_on_hit_unit",
+      "startLine": 83,
+      "endLine": 157,
+      "normalizedLfSha256": "641d882ecfc44d76d2523cb78a9c3248b9d89cc2fe60d1bb60948645909e641a"
+    },
+    {
+      "path": "src/battle/combat/outcomes.c",
+      "symbol": "ability_learn_used",
+      "startLine": 166,
+      "endLine": 207,
+      "normalizedLfSha256": "26ab42ff38287b2e9d8a58f21baba508e59c5a8e8ac39f4b81bd4c86d047800d"
+    },
+    {
+      "path": "src/main/game_tables.c",
+      "symbol": "ability_records_get",
+      "startLine": 120,
+      "endLine": 159,
+      "normalizedLfSha256": "7af1702246b96659a9452d312adfa7f7634ce277dd9fd05670ff2822cd394c1e"
+    }
+  ],
+  "originalExecuted": false,
+  "cExecuted": false,
+  "scope": "Primary semantic AI/learning metadata and static-vs-working flags. Learn-on-hit post-action execution is the next child, not implemented by metadata binding."
+}

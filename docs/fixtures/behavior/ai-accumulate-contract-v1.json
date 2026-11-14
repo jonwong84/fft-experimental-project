@@ -1,0 +1,369 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-229",
+  "kind": "supplied-accumulate-source-descriptions",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "vectors": [
+    {
+      "id": "even-zero",
+      "kind": "usefulness",
+      "input": {
+        "gate": "EligibleAlly",
+        "pa": 5,
+        "raw": 0
+      },
+      "expected": {
+        "effect": "Useful",
+        "draws": 1
+      }
+    },
+    {
+      "id": "odd-one",
+      "kind": "usefulness",
+      "input": {
+        "gate": "EligibleAlly",
+        "pa": 5,
+        "raw": 1
+      },
+      "expected": {
+        "effect": "None",
+        "draws": 1
+      }
+    },
+    {
+      "id": "even-at-cap",
+      "kind": "usefulness",
+      "input": {
+        "gate": "EligibleAlly",
+        "pa": 99,
+        "raw": 32766
+      },
+      "expected": {
+        "effect": "Useful",
+        "draws": 1
+      }
+    },
+    {
+      "id": "odd-at-cap",
+      "kind": "usefulness",
+      "input": {
+        "gate": "EligibleAlly",
+        "pa": 99,
+        "raw": 32767
+      },
+      "expected": {
+        "effect": "None",
+        "draws": 1
+      }
+    },
+    {
+      "id": "enemy-before-coin",
+      "kind": "usefulness",
+      "input": {
+        "gate": "Enemy",
+        "pa": 5,
+        "raw": null
+      },
+      "expected": {
+        "effect": "Adverse",
+        "draws": 0
+      }
+    },
+    {
+      "id": "blocked-before-coin",
+      "kind": "usefulness",
+      "input": {
+        "gate": "Blocked",
+        "pa": 5,
+        "raw": null
+      },
+      "expected": {
+        "effect": "None",
+        "draws": 0
+      }
+    },
+    {
+      "id": "pa-five",
+      "kind": "pa",
+      "input": {
+        "base": 5,
+        "bonus": 0,
+        "effective": 5
+      },
+      "expected": {
+        "base": 6,
+        "effective": 6,
+        "changed": true,
+        "restoredBase": 5,
+        "restoredEffective": 5,
+        "resolutionDraws": 0
+      }
+    },
+    {
+      "id": "pa-98",
+      "kind": "pa",
+      "input": {
+        "base": 98,
+        "bonus": 0,
+        "effective": 98
+      },
+      "expected": {
+        "base": 99,
+        "effective": 99,
+        "changed": true,
+        "restoredBase": 98,
+        "restoredEffective": 98,
+        "resolutionDraws": 0
+      }
+    },
+    {
+      "id": "pa-cap",
+      "kind": "pa",
+      "input": {
+        "base": 99,
+        "bonus": 0,
+        "effective": 99
+      },
+      "expected": {
+        "base": 99,
+        "effective": 99,
+        "changed": false,
+        "restoredBase": 99,
+        "restoredEffective": 99,
+        "resolutionDraws": 0
+      }
+    },
+    {
+      "id": "equipment-cap-source-only",
+      "kind": "pa",
+      "input": {
+        "base": 98,
+        "bonus": 5,
+        "effective": 99
+      },
+      "expected": {
+        "base": 99,
+        "effective": 99,
+        "changed": true,
+        "restoredBase": 98,
+        "restoredEffective": 99,
+        "resolutionDraws": 0
+      }
+    },
+    {
+      "id": "unchanged-base-keeps-effective-source-only",
+      "kind": "pa",
+      "input": {
+        "base": 99,
+        "bonus": 5,
+        "effective": 98
+      },
+      "expected": {
+        "base": 99,
+        "effective": 98,
+        "changed": false,
+        "restoredBase": 99,
+        "restoredEffective": 98,
+        "resolutionDraws": 0
+      }
+    },
+    {
+      "id": "full-pair-stat-credit",
+      "kind": "score",
+      "input": {
+        "units": [
+          {
+            "enemy": false,
+            "hp": 50,
+            "maxHp": 50
+          },
+          {
+            "enemy": true,
+            "hp": 50,
+            "maxHp": 50
+          }
+        ]
+      },
+      "expected": {
+        "statHitCredit": 3,
+        "hitPercent": 100,
+        "priority": 3,
+        "contributions": [
+          {
+            "hp": 128,
+            "status": 0,
+            "equipment": 357,
+            "signed": 485,
+            "running": 488
+          },
+          {
+            "hp": 128,
+            "status": 0,
+            "equipment": 357,
+            "signed": -485,
+            "running": 3
+          }
+        ]
+      }
+    },
+    {
+      "id": "critical-actor-absolute-negative",
+      "kind": "score",
+      "input": {
+        "units": [
+          {
+            "enemy": false,
+            "hp": 10,
+            "maxHp": 50
+          },
+          {
+            "enemy": true,
+            "hp": 50,
+            "maxHp": 50
+          }
+        ]
+      },
+      "expected": {
+        "statHitCredit": 3,
+        "hitPercent": 100,
+        "priority": -132,
+        "contributions": [
+          {
+            "hp": 25,
+            "status": -32,
+            "equipment": 357,
+            "signed": 350,
+            "running": 353
+          },
+          {
+            "hp": 128,
+            "status": 0,
+            "equipment": 357,
+            "signed": -485,
+            "running": -132
+          }
+        ]
+      }
+    },
+    {
+      "id": "critical-enemy-absolute-positive",
+      "kind": "score",
+      "input": {
+        "units": [
+          {
+            "enemy": true,
+            "hp": 10,
+            "maxHp": 50
+          },
+          {
+            "enemy": false,
+            "hp": 50,
+            "maxHp": 50
+          }
+        ]
+      },
+      "expected": {
+        "statHitCredit": 3,
+        "hitPercent": 100,
+        "priority": 138,
+        "contributions": [
+          {
+            "hp": 25,
+            "status": -32,
+            "equipment": 357,
+            "signed": -350,
+            "running": -347
+          },
+          {
+            "hp": 128,
+            "status": 0,
+            "equipment": 357,
+            "signed": 485,
+            "running": 138
+          }
+        ]
+      }
+    },
+    {
+      "id": "stat-credit-beats-equal-state-move",
+      "kind": "rank",
+      "input": {
+        "candidate": [
+          3,
+          100,
+          5
+        ],
+        "baseline": [
+          0,
+          100,
+          0
+        ]
+      },
+      "expected": {
+        "beatsMovementBaseline": true,
+        "higherIncludingProximity": true
+      }
+    },
+    {
+      "id": "negative-absolute-still-improves-move",
+      "kind": "rank",
+      "input": {
+        "candidate": [
+          -132,
+          100,
+          5
+        ],
+        "baseline": [
+          -135,
+          100,
+          0
+        ]
+      },
+      "expected": {
+        "beatsMovementBaseline": true,
+        "higherIncludingProximity": true
+      }
+    },
+    {
+      "id": "complete-tie-stable",
+      "kind": "rank",
+      "input": {
+        "candidate": [
+          3,
+          100,
+          5
+        ],
+        "baseline": [
+          3,
+          100,
+          5
+        ]
+      },
+      "expected": {
+        "beatsMovementBaseline": false,
+        "higherIncludingProximity": false
+      }
+    },
+    {
+      "id": "proximity-alone-cannot-beat-move-gate",
+      "kind": "rank",
+      "input": {
+        "candidate": [
+          3,
+          100,
+          1
+        ],
+        "baseline": [
+          3,
+          100,
+          5
+        ]
+      },
+      "expected": {
+        "beatsMovementBaseline": false,
+        "higherIncludingProximity": true
+      }
+    }
+  ]
+}

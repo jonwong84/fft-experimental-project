@@ -1,0 +1,259 @@
+{
+  "format": "fft.ai-wait-facing-source-evidence",
+  "schemaVersion": 1,
+  "ticket": "ZOD-150",
+  "date": "2026-10-28",
+  "managedBaseRevision": "45123d96c03b7e5fd12e6ba95ac8cd5777d15796",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "referenceClean": true,
+  "sourceReceipt": "docs/evidence/ai/out-of-reach-scenario-contract-v1.json",
+  "contract": "docs/architecture/zod-150-ai-wait-facing.md",
+  "sourceFiles": [
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 111880,
+      "sha256": "22555f06b061bc6f017f721998a5e44dfb3d4fa4c7284a2ee3367dfa27ce80ad"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 187246,
+      "sha256": "2792e2b861e8de4f4f996a5491dbacde0b96f77518a75cc4b8eebf2d6bc1557f"
+    },
+    {
+      "path": "include/fft/ai_decision.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 9018,
+      "sha256": "a88a67152b5143b74121946b7dffd4c8b76b568d9947c828d6620014a741b02b"
+    },
+    {
+      "path": "include/fft/unit_runtime.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 24677,
+      "sha256": "dd205932204a10a48224c7ddc3b73ca6aad3bd92bcf3cdbdd4f0c205d206f865"
+    },
+    {
+      "path": "include/fft/unit.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 32072,
+      "sha256": "017636792a9403b329f70cd05f0d877135fe17733c22a2361f92f229e9648187"
+    },
+    {
+      "path": "include/fft/battle_map.h",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 22162,
+      "sha256": "8e31c1b1320542770f2ddf587f22edf9e293e4bc45d5c85116d34a4cde96c296"
+    },
+    {
+      "path": "QUIRKS.md",
+      "hashEncoding": "utf8-lf",
+      "byteLength": 84705,
+      "sha256": "64db8296dbd4385a8a2ff8dc37777e85e28db45bcfafc623b0c75e5ad0a329a3"
+    }
+  ],
+  "sourceFunctions": [
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_wait_facing_choose",
+      "startLine": 170,
+      "endLine": 224,
+      "normalizedLfSha256": "624ba50d1d8f16aab68bd3aea5e941c06f73035123118d7d7336c04a0f483880"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "facing_is_tile_blocked",
+      "startLine": 233,
+      "endLine": 251,
+      "normalizedLfSha256": "d375b005a079b568141268896148cbcebd1779f447b7e8bb4ee225f8658de49f"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_height_difference_calculate",
+      "startLine": 593,
+      "endLine": 605,
+      "normalizedLfSha256": "70079ad8592471dcb2eb1e5119b2f96dfebb9f10549bb6f6d9117757104c61cb"
+    },
+    {
+      "path": "src/battle/ai/evaluation.c",
+      "symbol": "ai_unit_coordinates_copy",
+      "startLine": 2449,
+      "endLine": 2454,
+      "normalizedLfSha256": "3d404709f0cc778bd90d0bf21eda80afc7c10966238e093bb56b9557f2bfb8ab"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_target_facing_find",
+      "startLine": 2113,
+      "endLine": 2133,
+      "normalizedLfSha256": "2162a4ff32d143338a7fd6cb3322f3847172c433bd4105aa6d29495f35ee37ca"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_target_find_nearest",
+      "startLine": 3036,
+      "endLine": 3096,
+      "normalizedLfSha256": "6850f511caed7f4bd91a5a01ee5bb9a53fb94e5f728e97ca3878fa9a0b5bb84d"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_unit_distance_calculate",
+      "startLine": 3099,
+      "endLine": 3107,
+      "normalizedLfSha256": "49541e0186b66284281209ca5f5e5330d97d3f92485e85cbcdf18a1445522974"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_target_is_untargetable",
+      "startLine": 1686,
+      "endLine": 1713,
+      "normalizedLfSha256": "9637259eec334dfd321b0bd33394f504e55f72f965128c9912383b2984294c14"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "target_is_excluded_from_imminent_enemies",
+      "startLine": 3298,
+      "endLine": 3314,
+      "normalizedLfSha256": "06411bcace6b17d5c12aa65cf7a59e2a97b5ac0b67e5f2711954bff54020a0c3"
+    },
+    {
+      "path": "src/battle/ai/turn.c",
+      "symbol": "ai_unit_turn_delay_calculate",
+      "startLine": 3394,
+      "endLine": 3431,
+      "normalizedLfSha256": "abda23c263216d91e3146f5d4b8e0314e299c49d0b5d627bd1d5f6c89a26ae10"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_wait_direction_enter",
+      "startLine": 1034,
+      "endLine": 1058,
+      "normalizedLfSha256": "a356903cb09ce880fb1c957b88630b1c26a0c1c2f6c84176b7f87463efbc6354"
+    },
+    {
+      "path": "src/battle/turn/controller.c",
+      "symbol": "battle_state_wait_direction_update",
+      "startLine": 3185,
+      "endLine": 3248,
+      "normalizedLfSha256": "9bb9e7c487ac1a24d09ab0134288fe116b7aa2e706bcb4e8456bd39dddb9e19c"
+    }
+  ],
+  "directionVectors": [
+    {
+      "origin": [
+        7,
+        7
+      ],
+      "target": [
+        7,
+        5
+      ],
+      "expected": "South"
+    },
+    {
+      "origin": [
+        7,
+        7
+      ],
+      "target": [
+        5,
+        7
+      ],
+      "expected": "West"
+    },
+    {
+      "origin": [
+        7,
+        7
+      ],
+      "target": [
+        7,
+        9
+      ],
+      "expected": "North"
+    },
+    {
+      "origin": [
+        7,
+        7
+      ],
+      "target": [
+        9,
+        7
+      ],
+      "expected": "East"
+    },
+    {
+      "origin": [
+        7,
+        7
+      ],
+      "target": [
+        6,
+        6
+      ],
+      "expected": "South"
+    },
+    {
+      "origin": [
+        7,
+        7
+      ],
+      "target": [
+        6,
+        8
+      ],
+      "expected": "West"
+    },
+    {
+      "origin": [
+        7,
+        7
+      ],
+      "target": [
+        8,
+        8
+      ],
+      "expected": "North"
+    },
+    {
+      "origin": [
+        7,
+        7
+      ],
+      "target": [
+        8,
+        6
+      ],
+      "expected": "East"
+    }
+  ],
+  "productionImplemented": false,
+  "runtimeActivated": false,
+  "originalExecuted": false,
+  "cReferenceExecuted": false,
+  "managedWaitFacingExecuted": false,
+  "managedAcceptanceStatus": "Unexecuted proposals for ZOD-151",
+  "scope": "Settled ChooseAtWait for two distinct living eligible ordinary opponents on clear flat lower-layer rectangle",
+  "sourceFacts": {
+    "playerControlMask": 8,
+    "chooseAtWait": 5,
+    "overlap": 4,
+    "quarterTurn": 1024,
+    "sourceOrdinals": [
+      "South",
+      "West",
+      "North",
+      "East"
+    ],
+    "managedOrdinals": [
+      "East",
+      "North",
+      "West",
+      "South"
+    ],
+    "rngDraws": 0,
+    "clockTicks": 0
+  },
+  "unresolvedQuirk": "Overlap indexes a never-written byte past the viability array; no-enemy sentinel can cause overlap. Excluded, not fixed."
+}

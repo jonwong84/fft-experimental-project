@@ -1,0 +1,44 @@
+{
+  "format": "fft.visual-checkpoint-evidence",
+  "schemaVersion": 1,
+  "date": "2026-10-24",
+  "managedBase": "c561efc",
+  "evidenceKind": "synthetic-expectation-and-workstation-regression",
+  "originalComparisonPerformed": false,
+  "pythonTestsPassed": 22,
+  "lastManagedTestsPassed": 1388,
+  "managedSuiteRerunForThisMilestone": false,
+  "presentationFrame": 120,
+  "logicalTick": 0,
+  "rngState": 1,
+  "rngDraws": 0,
+  "thresholdPolicy": "Zero channel delta and zero above-tolerance pixels in all three regions; static authored native-size point sampling with matching recorded environment.",
+  "simulationBindingScope": "Explicit synthetic-turns-v1 projection; legacy receipt lacks cross-capture HP/position/definition assertions.",
+  "humanInspection": "Synthetic scene inspected locally: labels, two authored sprites, four map tiles, palette accents and transparent corners. No original render inspected.",
+  "captures": [
+    {
+      "id": "synthetic-window-frame120-reference-v1",
+      "kind": "managed-synthetic-image",
+      "localPath": "scratch/visual-033-a/scene.png",
+      "sha256": "3dfa7cd09c6a30b6af4f0b4942aa3c99d07f7a323af12245bc5146c22641adc6",
+      "byteLength": 27020,
+      "tool": "Fft.Client / MonoGame DesktopGL 3.8.6 / AMD Radeon RX 6600 / .NET 10.0.13 / Windows 10.0.26200",
+      "procedure": "Run --window-check to frame 120 at native 960x640; receipt verifies unchanged snapshot and authored corner/palette pixels.",
+      "editionVerification": "Not applicable: authored synthetic art/state, no original game files."
+    },
+    {
+      "id": "synthetic-window-comparison-report-v1",
+      "kind": "same-recorded-environment-report",
+      "localPath": "scratch/visual-033-report-a/report.json",
+      "sha256": "f6f091c1cb6ed0481cd2c8cc42b000cf4eceb893bf552acd5f35abb98f5ea7d4",
+      "byteLength": 8484,
+      "tool": "compare_visual_checkpoints.py / Python 3.12.14 / Pillow 12.3.0",
+      "procedure": "Bind scratch/visual-033-a and scratch/visual-033-b through prepare_synthetic_visual_comparison.py; run the comparer twice with identical plans/manifests. All three regions have zero changed pixels and RGBA deltas.",
+      "editionVerification": "Not applicable: same-environment synthetic workstation regression, not original equivalence."
+    }
+  ],
+  "repeatImage": "scratch/visual-033-b/scene.png",
+  "repeatReport": "scratch/visual-033-report-b/report.json",
+  "repeatBytesMatch": true,
+  "remainingGate": "Owner has no emulator/save/state/recording available. Matched original rendered captures, original comparison profile/thresholds and original human visual review remain open."
+}

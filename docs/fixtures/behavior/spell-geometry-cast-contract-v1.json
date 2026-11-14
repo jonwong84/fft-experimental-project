@@ -1,0 +1,4237 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-362",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "productionImplemented": false,
+  "confidence": "Independent normalized composition descriptions; expected magic frames/RNG reuse prior literal source vectors; no original or C execution.",
+  "casts": [
+    {
+      "id": "source-order-not-input-order",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Execute",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "mp": 21,
+          "cost": 9,
+          "targets": [
+            {
+              "id": "first",
+              "result": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "damage": 34,
+                "healing": 0,
+                "types": {
+                  "damage": true,
+                  "healing": false,
+                  "pseudo": true
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": false,
+                  "added": true
+                },
+                "clear": false
+              },
+              "evasion": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "itemLost": 0,
+                "abandon": false
+              },
+              "procDisposition": "Passed",
+              "setFlag": true
+            },
+            {
+              "id": "second",
+              "result": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "damage": 68,
+                "healing": 0,
+                "types": {
+                  "damage": true,
+                  "healing": false,
+                  "pseudo": true
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": true,
+                  "added": false
+                },
+                "clear": false
+              },
+              "evasion": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "itemLost": 0,
+                "abandon": false
+              },
+              "procDisposition": "Failed",
+              "setFlag": false
+            }
+          ]
+        },
+        "word": 1579910103,
+        "count": 19
+      },
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 4,
+        "area": 1,
+        "vertical": 2,
+        "rangeVertical": true,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "geometryBound": true,
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "entry": {
+        "validatedAim": true,
+        "noEarlier": true
+      },
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "casterPosition": [
+        0,
+        0,
+        0
+      ],
+      "units": [
+        {
+          "occupant": {
+            "id": "second",
+            "order": 3,
+            "position": [
+              2,
+              1,
+              0
+            ],
+            "initial": 1,
+            "current": 1,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "second",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {
+              "undead": false
+            },
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 128
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        },
+        {
+          "occupant": {
+            "id": "actor",
+            "order": 0,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "actor",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {},
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        },
+        {
+          "occupant": {
+            "id": "first",
+            "order": 1,
+            "position": [
+              1,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "first",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {
+              "undead": false
+            },
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "ally-team-filters-second",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Execute",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "mp": 21,
+          "cost": 9,
+          "targets": [
+            {
+              "id": "first",
+              "result": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "damage": 34,
+                "healing": 0,
+                "types": {
+                  "damage": true,
+                  "healing": false,
+                  "pseudo": true
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": false,
+                  "added": true
+                },
+                "clear": false
+              },
+              "evasion": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "itemLost": 0,
+                "abandon": false
+              },
+              "procDisposition": "Passed",
+              "setFlag": true
+            }
+          ]
+        },
+        "word": 2224270474,
+        "count": 14
+      },
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 4,
+        "area": 1,
+        "vertical": 2,
+        "rangeVertical": true,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": true,
+        "enemies": false
+      },
+      "geometryBound": true,
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "entry": {
+        "validatedAim": true,
+        "noEarlier": true
+      },
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "casterPosition": [
+        0,
+        0,
+        0
+      ],
+      "units": [
+        {
+          "occupant": {
+            "id": "second",
+            "order": 3,
+            "position": [
+              2,
+              1,
+              0
+            ],
+            "initial": 1,
+            "current": 1,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "second",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {
+              "undead": false
+            },
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 128
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        },
+        {
+          "occupant": {
+            "id": "actor",
+            "order": 0,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "actor",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {},
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        },
+        {
+          "occupant": {
+            "id": "first",
+            "order": 1,
+            "position": [
+              1,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "first",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {
+              "undead": false
+            },
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "no-blue-range-recheck",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Execute",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "mp": 21,
+          "cost": 9,
+          "targets": [
+            {
+              "id": "first",
+              "result": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "damage": 34,
+                "healing": 0,
+                "types": {
+                  "damage": true,
+                  "healing": false,
+                  "pseudo": true
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": false,
+                  "added": true
+                },
+                "clear": false
+              },
+              "evasion": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "itemLost": 0,
+                "abandon": false
+              },
+              "procDisposition": "Passed",
+              "setFlag": true
+            },
+            {
+              "id": "second",
+              "result": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "damage": 68,
+                "healing": 0,
+                "types": {
+                  "damage": true,
+                  "healing": false,
+                  "pseudo": true
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": true,
+                  "added": false
+                },
+                "clear": false
+              },
+              "evasion": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "itemLost": 0,
+                "abandon": false
+              },
+              "procDisposition": "Failed",
+              "setFlag": false
+            }
+          ]
+        },
+        "word": 1579910103,
+        "count": 19
+      },
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 0,
+        "area": 1,
+        "vertical": 2,
+        "rangeVertical": true,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "geometryBound": true,
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "entry": {
+        "validatedAim": true,
+        "noEarlier": true
+      },
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "casterPosition": [
+        0,
+        0,
+        0
+      ],
+      "units": [
+        {
+          "occupant": {
+            "id": "second",
+            "order": 3,
+            "position": [
+              2,
+              1,
+              0
+            ],
+            "initial": 1,
+            "current": 1,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "second",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {
+              "undead": false
+            },
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 128
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        },
+        {
+          "occupant": {
+            "id": "actor",
+            "order": 0,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "actor",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {},
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        },
+        {
+          "occupant": {
+            "id": "first",
+            "order": 1,
+            "position": [
+              1,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "first",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {
+              "undead": false
+            },
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "missing-earlier-effects-certificate",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Execute",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "outcome": null,
+        "word": 57,
+        "count": 9
+      },
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 4,
+        "area": 1,
+        "vertical": 2,
+        "rangeVertical": true,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "geometryBound": true,
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "entry": {
+        "validatedAim": true,
+        "noEarlier": false
+      },
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "casterPosition": [
+        0,
+        0,
+        0
+      ],
+      "units": [
+        {
+          "occupant": {
+            "id": "second",
+            "order": 3,
+            "position": [
+              2,
+              1,
+              0
+            ],
+            "initial": 1,
+            "current": 1,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "second",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {
+              "undead": false
+            },
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 128
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        },
+        {
+          "occupant": {
+            "id": "actor",
+            "order": 0,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "actor",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {},
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        },
+        {
+          "occupant": {
+            "id": "first",
+            "order": 1,
+            "position": [
+              1,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "first",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {
+              "undead": false
+            },
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "late-dead-target-rolls-back",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Execute",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "outcome": null,
+        "word": 57,
+        "count": 9
+      },
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 4,
+        "area": 1,
+        "vertical": 2,
+        "rangeVertical": true,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "geometryBound": true,
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "entry": {
+        "validatedAim": true,
+        "noEarlier": true
+      },
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "casterPosition": [
+        0,
+        0,
+        0
+      ],
+      "units": [
+        {
+          "occupant": {
+            "id": "second",
+            "order": 3,
+            "position": [
+              2,
+              1,
+              0
+            ],
+            "initial": 1,
+            "current": 1,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "second",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {
+              "undead": false,
+              "dead": true
+            },
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 128
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        },
+        {
+          "occupant": {
+            "id": "actor",
+            "order": 0,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "actor",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {},
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        },
+        {
+          "occupant": {
+            "id": "first",
+            "order": 1,
+            "position": [
+              1,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "first",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {
+              "undead": false
+            },
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "late-rng-rolls-back",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Execute",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "word": 57,
+      "count": 18446744073709551608,
+      "expected": {
+        "accepted": false,
+        "rejection": "RandomDrawCountExhausted",
+        "outcome": null,
+        "word": 57,
+        "count": 18446744073709551608
+      },
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 4,
+        "area": 1,
+        "vertical": 2,
+        "rangeVertical": true,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "geometryBound": true,
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "entry": {
+        "validatedAim": true,
+        "noEarlier": true
+      },
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "casterPosition": [
+        0,
+        0,
+        0
+      ],
+      "units": [
+        {
+          "occupant": {
+            "id": "second",
+            "order": 3,
+            "position": [
+              2,
+              1,
+              0
+            ],
+            "initial": 1,
+            "current": 1,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "second",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {
+              "undead": false
+            },
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 128
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        },
+        {
+          "occupant": {
+            "id": "actor",
+            "order": 0,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "actor",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {},
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        },
+        {
+          "occupant": {
+            "id": "first",
+            "order": 1,
+            "position": [
+              1,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "first",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {
+              "undead": false
+            },
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "unbound-geometry",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Execute",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "outcome": null,
+        "word": 57,
+        "count": 9
+      },
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 4,
+        "area": 1,
+        "vertical": 2,
+        "rangeVertical": true,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "geometryBound": false,
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "entry": {
+        "validatedAim": true,
+        "noEarlier": true
+      },
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "casterPosition": [
+        0,
+        0,
+        0
+      ],
+      "units": [
+        {
+          "occupant": {
+            "id": "second",
+            "order": 3,
+            "position": [
+              2,
+              1,
+              0
+            ],
+            "initial": 1,
+            "current": 1,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "second",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {
+              "undead": false
+            },
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 128
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        },
+        {
+          "occupant": {
+            "id": "actor",
+            "order": 0,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "actor",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {},
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        },
+        {
+          "occupant": {
+            "id": "first",
+            "order": 1,
+            "position": [
+              1,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "first",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {
+              "undead": false
+            },
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "moldball-special-rule-excluded",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 329,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Execute",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "outcome": null,
+        "word": 57,
+        "count": 9
+      },
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 4,
+        "area": 1,
+        "vertical": 2,
+        "rangeVertical": true,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "geometryBound": true,
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "entry": {
+        "validatedAim": true,
+        "noEarlier": true
+      },
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "casterPosition": [
+        0,
+        0,
+        0
+      ],
+      "units": [
+        {
+          "occupant": {
+            "id": "second",
+            "order": 3,
+            "position": [
+              2,
+              1,
+              0
+            ],
+            "initial": 1,
+            "current": 1,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "second",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {
+              "undead": false
+            },
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 128
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        },
+        {
+          "occupant": {
+            "id": "actor",
+            "order": 0,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "actor",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {},
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        },
+        {
+          "occupant": {
+            "id": "first",
+            "order": 1,
+            "position": [
+              1,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "first",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {
+              "undead": false
+            },
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "map-geometry-Preview",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Preview",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "mp": 30,
+          "cost": 9,
+          "targets": [
+            {
+              "id": "first",
+              "result": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "damage": 34,
+                "healing": 0,
+                "types": {
+                  "damage": true,
+                  "healing": false,
+                  "pseudo": false
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": false,
+                  "added": false
+                },
+                "clear": false
+              },
+              "evasion": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "itemLost": 0,
+                "abandon": false
+              },
+              "procDisposition": "Passed",
+              "setFlag": false
+            },
+            {
+              "id": "second",
+              "result": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "damage": 68,
+                "healing": 0,
+                "types": {
+                  "damage": true,
+                  "healing": false,
+                  "pseudo": true
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": true,
+                  "added": false
+                },
+                "clear": false
+              },
+              "evasion": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "itemLost": 0,
+                "abandon": false
+              },
+              "procDisposition": "Passed",
+              "setFlag": false
+            }
+          ]
+        },
+        "word": 361004401,
+        "count": 17
+      },
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 4,
+        "area": 1,
+        "vertical": 2,
+        "rangeVertical": true,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "geometryBound": true,
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "entry": {
+        "validatedAim": true,
+        "noEarlier": true
+      },
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "casterPosition": [
+        0,
+        0,
+        0
+      ],
+      "units": [
+        {
+          "occupant": {
+            "id": "second",
+            "order": 3,
+            "position": [
+              2,
+              1,
+              0
+            ],
+            "initial": 1,
+            "current": 1,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "second",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {
+              "undead": false
+            },
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 128
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        },
+        {
+          "occupant": {
+            "id": "actor",
+            "order": 0,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "actor",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {},
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        },
+        {
+          "occupant": {
+            "id": "first",
+            "order": 1,
+            "position": [
+              1,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "first",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {
+              "undead": false
+            },
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "map-geometry-AiSimulation",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "AiSimulation",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "mp": 21,
+          "cost": 9,
+          "targets": [
+            {
+              "id": "first",
+              "result": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "damage": 34,
+                "healing": 0,
+                "types": {
+                  "damage": true,
+                  "healing": false,
+                  "pseudo": false
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": false,
+                  "added": false
+                },
+                "clear": false
+              },
+              "evasion": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "itemLost": 0,
+                "abandon": false
+              },
+              "procDisposition": "Failed",
+              "setFlag": false
+            },
+            {
+              "id": "second",
+              "result": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "damage": 68,
+                "healing": 0,
+                "types": {
+                  "damage": true,
+                  "healing": false,
+                  "pseudo": true
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": true,
+                  "added": false
+                },
+                "clear": false
+              },
+              "evasion": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "itemLost": 0,
+                "abandon": false
+              },
+              "procDisposition": "Failed",
+              "setFlag": false
+            }
+          ]
+        },
+        "word": 361004401,
+        "count": 17
+      },
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 4,
+        "area": 1,
+        "vertical": 2,
+        "rangeVertical": true,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "geometryBound": true,
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "entry": {
+        "validatedAim": true,
+        "noEarlier": true
+      },
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "casterPosition": [
+        0,
+        0,
+        0
+      ],
+      "units": [
+        {
+          "occupant": {
+            "id": "second",
+            "order": 3,
+            "position": [
+              2,
+              1,
+              0
+            ],
+            "initial": 1,
+            "current": 1,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "second",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {
+              "undead": false
+            },
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 128
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        },
+        {
+          "occupant": {
+            "id": "actor",
+            "order": 0,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "actor",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {},
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        },
+        {
+          "occupant": {
+            "id": "first",
+            "order": 1,
+            "position": [
+              1,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "first",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {
+              "undead": false
+            },
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "selected-current-input-missing",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Execute",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "outcome": null,
+        "word": 57,
+        "count": 9
+      },
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 4,
+        "area": 1,
+        "vertical": 2,
+        "rangeVertical": true,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "geometryBound": true,
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "entry": {
+        "validatedAim": true,
+        "noEarlier": true
+      },
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "casterPosition": [
+        0,
+        0,
+        0
+      ],
+      "units": [
+        {
+          "occupant": {
+            "id": "second",
+            "order": 3,
+            "position": [
+              2,
+              1,
+              0
+            ],
+            "initial": 1,
+            "current": 1,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": null
+        },
+        {
+          "occupant": {
+            "id": "actor",
+            "order": 0,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "actor",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {},
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        },
+        {
+          "occupant": {
+            "id": "first",
+            "order": 1,
+            "position": [
+              1,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "first",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {
+              "undead": false
+            },
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "empty-area-has-no-cast-outcome",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Damage",
+        "power": 14,
+        "elements": 128,
+        "evadeable": true
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Execute",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "word": 57,
+      "count": 9,
+      "expected": {
+        "accepted": false,
+        "rejection": "UnsupportedContext",
+        "outcome": null,
+        "word": 57,
+        "count": 9
+      },
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 4,
+        "area": 1,
+        "vertical": 2,
+        "rangeVertical": true,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "geometryBound": true,
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "entry": {
+        "validatedAim": true,
+        "noEarlier": true
+      },
+      "aim": [
+        1,
+        1,
+        0
+      ],
+      "casterPosition": [
+        0,
+        0,
+        0
+      ],
+      "units": [
+        {
+          "occupant": {
+            "id": "actor",
+            "order": 0,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "actor",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {},
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        }
+      ]
+    },
+    {
+      "id": "geometry-self-heal",
+      "caster": {
+        "id": "actor",
+        "ma": 5,
+        "faith": 70,
+        "identity": {
+          "sign": 0,
+          "male": true,
+          "female": false,
+          "monster": false
+        },
+        "statuses": {},
+        "supports": {},
+        "strengthen": 0,
+        "affinities": {
+          "absorb": 0,
+          "nullify": 0,
+          "half": 0,
+          "weak": 0
+        },
+        "equipment": {
+          "monster": false,
+          "accessory": {
+            "item": 10,
+            "evade": 0,
+            "qualifies": true
+          },
+          "right": {
+            "item": 20,
+            "evade": 0,
+            "qualifies": true
+          },
+          "left": {
+            "item": 30,
+            "evade": 0,
+            "qualifies": true
+          },
+          "rightWeapon": 255,
+          "leftWeapon": 255
+        },
+        "unrestricted": true,
+        "rider": false,
+        "mp": 30
+      },
+      "spell": {
+        "kind": "Healing",
+        "power": 14,
+        "elements": 128,
+        "evadeable": false
+      },
+      "definition": {
+        "id": "fft:ability/test-fire",
+        "originalId": 16,
+        "cost": 9,
+        "ct": 9,
+        "affected": true,
+        "persevere": false
+      },
+      "mode": "Execute",
+      "weather": 0,
+      "resultProfile": {
+        "living": true,
+        "noBlocked": true,
+        "noGolem": true,
+        "emptyStatus": true,
+        "noKnockback": true,
+        "hpOnly": true,
+        "entry": {
+          "primary": true,
+          "noPending": true,
+          "clearFlag": true
+        }
+      },
+      "ready": {
+        "chargeReady": true,
+        "bookkeeping": true,
+        "noHamedo": true,
+        "single": true,
+        "fresh": true
+      },
+      "targetProfile": {
+        "order": true,
+        "noEarlier": true
+      },
+      "word": 57,
+      "count": 18446744073709551615,
+      "expected": {
+        "accepted": true,
+        "rejection": "None",
+        "outcome": {
+          "mp": 21,
+          "cost": 9,
+          "targets": [
+            {
+              "id": "actor",
+              "result": {
+                "hit": true,
+                "accuracy": 100,
+                "miss": 0,
+                "damage": 0,
+                "healing": 34,
+                "types": {
+                  "damage": false,
+                  "healing": true,
+                  "pseudo": false
+                },
+                "effects": {
+                  "absorb": false,
+                  "weak": false,
+                  "added": false
+                },
+                "clear": false
+              },
+              "evasion": null,
+              "procDisposition": "NoConditionalBranch",
+              "setFlag": false
+            }
+          ]
+        },
+        "word": 57,
+        "count": 18446744073709551615
+      },
+      "map": {
+        "width": 3,
+        "depth": 3,
+        "layers": 1,
+        "overrides": []
+      },
+      "geometry": {
+        "range": 4,
+        "area": 0,
+        "vertical": 2,
+        "rangeVertical": true,
+        "cannotTargetSelf": false,
+        "cannotHitCaster": false,
+        "topDown": false,
+        "allies": false,
+        "enemies": false
+      },
+      "geometryBound": true,
+      "profile": {
+        "ordinary": true,
+        "noSpecial": true,
+        "noCross": true,
+        "padding": true
+      },
+      "complete": true,
+      "entry": {
+        "validatedAim": true,
+        "noEarlier": true
+      },
+      "casterPosition": [
+        0,
+        0,
+        0
+      ],
+      "aim": [
+        0,
+        0,
+        0
+      ],
+      "units": [
+        {
+          "occupant": {
+            "id": "actor",
+            "order": 0,
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "initial": 0,
+            "current": 0,
+            "active": true,
+            "crystal": false,
+            "treasure": false,
+            "jump": false,
+            "mount": false
+          },
+          "current": {
+            "id": "actor",
+            "ma": 5,
+            "faith": 70,
+            "identity": {
+              "sign": 0,
+              "male": true,
+              "female": false,
+              "monster": false
+            },
+            "statuses": {},
+            "supports": {},
+            "strengthen": 0,
+            "affinities": {
+              "absorb": 0,
+              "nullify": 0,
+              "half": 0,
+              "weak": 0
+            },
+            "equipment": {
+              "monster": false,
+              "accessory": {
+                "item": 10,
+                "evade": 0,
+                "qualifies": true
+              },
+              "right": {
+                "item": 20,
+                "evade": 0,
+                "qualifies": true
+              },
+              "left": {
+                "item": 30,
+                "evade": 0,
+                "qualifies": true
+              },
+              "rightWeapon": 255,
+              "leftWeapon": 255
+            },
+            "unrestricted": true,
+            "rider": false,
+            "mp": 30
+          }
+        }
+      ]
+    }
+  ]
+}

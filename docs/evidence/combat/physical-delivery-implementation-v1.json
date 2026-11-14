@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "ticket": "ZOD-421",
+  "managedBaseRevision": "f55a611997b0bf77488b04f2eb8f13a3ed9fbb25",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "sourceReceipt": "docs/evidence/combat/physical-formula-assignment-source-v1.json",
+  "sourceAudit": {
+    "physicalFormulaDescriptions": 18,
+    "sourceFormulaIds": [
+      50,
+      55
+    ],
+    "originalExecuted": false,
+    "cExecuted": false,
+    "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "sourceFiles": 8,
+    "sourceFunctions": 16
+  },
+  "validation": {
+    "lockedRestore": true,
+    "releaseWarnings": 0,
+    "releaseErrors": 0,
+    "dotnetTests": 5094,
+    "dotnetAssemblies": [
+      {
+        "assembly": "Tessera.Engine.Tests.dll",
+        "passed": 24
+      },
+      {
+        "assembly": "Zodiac.AssetTool.Tests.dll",
+        "passed": 206
+      },
+      {
+        "assembly": "Zodiac.AssetTool.Cli.Tests.dll",
+        "passed": 396
+      },
+      {
+        "assembly": "Zodiac.Content.Tests.dll",
+        "passed": 897
+      },
+      {
+        "assembly": "Fft.Client.Tests.dll",
+        "passed": 447
+      },
+      {
+        "assembly": "Zodiac.Framework.Ai.Tests.dll",
+        "passed": 1308
+      },
+      {
+        "assembly": "Zodiac.Framework.Tests.dll",
+        "passed": 1816
+      }
+    ],
+    "pythonTests": 776,
+    "existingAiCases": 1308,
+    "newFrameworkCases": 5,
+    "newContentCases": 2,
+    "customImportedDashUsesGenericBinding": true,
+    "bothActualActionOrdersPreserved": true,
+    "originalImports": [
+      {
+        "profile": "dash",
+        "schema": 1,
+        "sha256": "74c0a04927dc5ad5237b2616ab039161bea290227f273fbd694e81f7c74bc158",
+        "bytesUnchanged": true
+      },
+      {
+        "profile": "stone",
+        "schema": 1,
+        "sha256": "50a45c020f6c52c3a05f285e43bdf05497f320a906210a46081e926fa1bab648",
+        "bytesUnchanged": true
+      }
+    ],
+    "ownerFiles": 10,
+    "ownerBlobsUnchanged": true,
+    "approvedFormattingUnchanged": true,
+    "nativeBasic": {
+      "freshRuns": 1,
+      "steps": 121,
+      "journalReplays": 2,
+      "allStepsMatch420": true,
+      "finalSha256": "539bba6b8cd1400c7aab66c9d8a4a841c1674a911b3ce9e4f7aa1fe86a409484",
+      "headlessMatched": true,
+      "replayMatched": true,
+      "drawingPreservedState": true
+    }
+  },
+  "runtimeBoundary": {
+    "managedOnly": true,
+    "preparedContentOnly": true,
+    "referenceRequired": false,
+    "originalMediaRequired": false,
+    "sharedPhysicalDefinitionOwnership": true,
+    "explicitDeliverySelection": true,
+    "legacySchemasAndApisPreserved": true
+  },
+  "limits": [
+    "Adjacent range1/no evasion/trajectory or range4 evadeable direct projectile, immediate zero MP.",
+    "Pair admission remains exactly two units; generic roster admission still requires complete supported flat ground.",
+    "Legacy event names and AI/command entry points remain compatibility contracts; no broader interfaces or namespace migration.",
+    "Owner drafts, statuses, flags, equipment, modifiers, shapes, editor, automatic facing, frame RNG and saves remain separate."
+  ],
+  "originalExecuted": false,
+  "cExecuted": false
+}

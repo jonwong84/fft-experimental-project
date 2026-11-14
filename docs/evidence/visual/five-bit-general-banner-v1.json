@@ -1,0 +1,235 @@
+{
+  "format": "fft.five-bit-general-banner-evidence",
+  "schemaVersion": 1,
+  "date": "2026-10-24",
+  "managedBase": "ec50eb7",
+  "referenceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+  "evidenceKind": "bounded-client-material-profile-and-observed-foreground-comparison",
+  "originalComparisonPerformed": true,
+  "originalFidelityEstablished": false,
+  "timingComparisonPerformed": false,
+  "runtimeMaterialProfileAdded": true,
+  "defaultProfile": "modern-rgb8",
+  "universalBannerDitherDefaultEstablished": false,
+  "sourceTrace": {
+    "format": "fft.banner-draw-state-trace",
+    "schemaVersion": 1,
+    "sourceRevision": "11464943bbdbd2a0af022d90cb7f10455cf911df",
+    "evidence": "frozen RAM DMA-chain reconstruction; not live command execution",
+    "renderBuffer": 2148517212,
+    "otag": 2147838744,
+    "root": 2147840276,
+    "dmaNodes": 755,
+    "nonemptyPackets": 371,
+    "mainRamSha256": "883458064886d3e5a48027d49a48142cdc8ba70fb62670e079a0559d05dccd64",
+    "banners": [
+      {
+        "pieceIndex": 0,
+        "packetAddress": 313032,
+        "bank": 0,
+        "precedingMode": {
+          "address": 1929696,
+          "command": 3774873606,
+          "ditherEnabled": false
+        }
+      },
+      {
+        "pieceIndex": 1,
+        "packetAddress": 313084,
+        "bank": 0,
+        "precedingMode": {
+          "address": 1929696,
+          "command": 3774873606,
+          "ditherEnabled": false
+        }
+      },
+      {
+        "pieceIndex": 2,
+        "packetAddress": 313136,
+        "bank": 0,
+        "precedingMode": {
+          "address": 1929696,
+          "command": 3774873606,
+          "ditherEnabled": false
+        }
+      },
+      {
+        "pieceIndex": 3,
+        "packetAddress": 313188,
+        "bank": 0,
+        "precedingMode": {
+          "address": 1929696,
+          "command": 3774873606,
+          "ditherEnabled": false
+        }
+      },
+      {
+        "pieceIndex": 4,
+        "packetAddress": 313240,
+        "bank": 0,
+        "precedingMode": {
+          "address": 1929696,
+          "command": 3774873606,
+          "ditherEnabled": false
+        }
+      },
+      {
+        "pieceIndex": 5,
+        "packetAddress": 313292,
+        "bank": 0,
+        "precedingMode": {
+          "address": 1929696,
+          "command": 3774873606,
+          "ditherEnabled": false
+        }
+      }
+    ],
+    "writerSymbol": "g_conditions_burst_draw_modes[1]",
+    "initializer": "src/event/require/entry_dark_screen.c::require_dark_screen_entrypoint",
+    "enqueue": "gfx_append_gpu_primitive_to_secondary_otag; reverse head insertion",
+    "universalBannerDitherDefaultEstablished": false,
+    "originalEvent401Verified": false
+  },
+  "nativeDrawState": {
+    "ditherEnabled": false,
+    "framebufferOrigin": [
+      0,
+      0
+    ]
+  },
+  "originalState": {
+    "path": "scratch/banner-033-original-a/fft-clean-base-game.state",
+    "sha256": "133b893188d0abe7909725f910496b74bad9cfc85733cb38d76fece03048901a"
+  },
+  "originalImage": {
+    "path": "scratch/banner-033-original-a/restore-004-a/frame.png",
+    "sha256": "4fc1a51f516efbd1c94493476f0b382e901e2c0e0baf7cc865a391e4463d65aa"
+  },
+  "nativeImage": {
+    "localPath": "scratch/banner-five-bit-a/tick-020.png",
+    "byteLength": 9458,
+    "sha256": "4d9a7c7c43e8ab97cee792d5d0babf1f2843a28daa3c8679c6d4b937b5a3e6a9"
+  },
+  "nativeReceipt": {
+    "localPath": "scratch/banner-five-bit-a/check.json",
+    "byteLength": 20798,
+    "sha256": "0c41cbc9a8749d0d1ce265189f0a4368c41250473d2d3f476d8af176cfc60f27"
+  },
+  "repeatNativeReceipt": {
+    "localPath": "scratch/banner-five-bit-b/check.json",
+    "byteLength": 20798,
+    "sha256": "0c41cbc9a8749d0d1ce265189f0a4368c41250473d2d3f476d8af176cfc60f27"
+  },
+  "nativeComparisons": [
+    {
+      "localPath": "scratch/banner-five-bit-report-g/report.json",
+      "byteLength": 32205,
+      "sha256": "fc9790ee0483eb454672d40426110bc43167f7074d516a8b21740e2529833705"
+    },
+    {
+      "localPath": "scratch/banner-five-bit-report-h/report.json",
+      "byteLength": 32205,
+      "sha256": "fc9790ee0483eb454672d40426110bc43167f7074d516a8b21740e2529833705"
+    },
+    {
+      "localPath": "scratch/banner-five-bit-report-i/report.json",
+      "byteLength": 32205,
+      "sha256": "582a719698c47c21df5c62ce147d64afd9c0d8ec604a88397e66f0e70b2550a0"
+    }
+  ],
+  "review": {
+    "localPath": "scratch/banner-five-bit-report-g/review.html",
+    "byteLength": 104103,
+    "sha256": "d037b738fefa6f0a35452057bc575c59f3d477d32dfd2ef0459ef95ff60fa920"
+  },
+  "negativeControl": {
+    "localPath": "scratch/banner-five-bit-report-on-final/report.json",
+    "byteLength": 32249,
+    "sha256": "be8f5f254e48d66785430a05ee2484618dc6c52867ed5feefae50aa35ed6a086"
+  },
+  "repeatVerification": {
+    "localPath": "scratch/banner-five-bit-verification.json",
+    "byteLength": 6185,
+    "sha256": "84dac97d2f923602bd7fb57f84515cc64381f64e28511ad047f0ab8831cbe053"
+  },
+  "nativeCaptureFilesCompared": 16,
+  "nativeCaptureSetsByteIdentical": true,
+  "legacyRgb8CaptureFilesCompared": 16,
+  "legacyRgb8FilesMatchHistoricalBytes": true,
+  "repeatedReportAndReviewByteIdentical": true,
+  "actualForegroundSamples": 1577,
+  "actualChangedForegroundPixels": 0,
+  "actualMaxRgbDelta": [
+    0,
+    0,
+    0
+  ],
+  "thresholdRgb": [
+    0,
+    0,
+    0
+  ],
+  "ditherOnControl": {
+    "samples": 1433,
+    "excludedBackgroundSensitive": 144,
+    "changedPixels": 657,
+    "failures": [
+      "draw-state-mismatch",
+      "foreground-color-mismatch"
+    ],
+    "nativeModelMatches": true
+  },
+  "validation": {
+    "lockedRestore": true,
+    "releaseBuildWarnings": 0,
+    "dotnetTestsPassed": 1418,
+    "dotnetTestsAdded": 30,
+    "pythonTestsPassed": 81,
+    "pythonTestsAdded": 15,
+    "managedSuiteRerun": true
+  },
+  "code": [
+    {
+      "localPath": "src/Fft.Client/Presentation/FiveBitGeneralBannerPresentation.cs",
+      "byteLength": 5454,
+      "sha256": "c78e10ee6919665ff3f92e534735765e9a12fa51f9b381ec6bfd2fd5f9e6a272"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/BannerPreviewOptions.cs",
+      "byteLength": 1461,
+      "sha256": "c4d2fee5cdf61d94d60352a0230ca72a15f3fc8cd15bad46f85a46fbddce7b60"
+    },
+    {
+      "localPath": "src/Fft.Client/Presentation/GeneralBannerPreview.cs",
+      "byteLength": 10163,
+      "sha256": "d30354a86f2152e0339ea5a5d9ee16581cfef876025d6a7eb6357c0acfba61cf"
+    },
+    {
+      "localPath": "tests/Fft.Client.Tests/FiveBitGeneralBannerPresentationTests.cs",
+      "byteLength": 8277,
+      "sha256": "c0ee3760c9982e5d1bc832de2cae86fd62199a063fb27ba0ee58ee6b3559f81a"
+    },
+    {
+      "localPath": "tools/verification/trace_banner_draw_state.py",
+      "byteLength": 5610,
+      "sha256": "f26eecf3ba0988be80d2db30646a6b128d7675b3171126b794635780faa56635"
+    },
+    {
+      "localPath": "tools/verification/compare_native_banner.py",
+      "byteLength": 8980,
+      "sha256": "99d123bb84a864357ee06619581c6a0415d2da3aad2c044ed451b644e9f46fa9"
+    },
+    {
+      "localPath": "tools/verification/analyze_banner_precision.py",
+      "byteLength": 11397,
+      "sha256": "63d262fa2374dec4114ec2a6577c8c6071456696d538cafa30594be7e882052e"
+    },
+    {
+      "localPath": "tools/verification/test_native_banner.py",
+      "byteLength": 11589,
+      "sha256": "1bb17be61a8783cd8b3d05500e15447c61d676ed8fd1945e8674c71f2abf4805"
+    }
+  ],
+  "manualInspection": "Native hold PNG inspected locally: complete two-line artwork and expected placement/darker foreground. Original background, shadows and general raster/timing fidelity remain unverified.",
+  "nextGate": "Obtain a pre-banner state/input sequence for reveal/hide timing, then extend original background-sensitive blending and coverage checks. Full scene/event integration remains separate."
+}
